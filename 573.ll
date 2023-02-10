@@ -527,7 +527,7 @@ for.body55.i.i:                                   ; preds = %for.inc74.i.i, %for
   %62 = load ptr, ptr %arrayidx59.i.i, align 8, !tbaa !22
   %term.i.i = getelementptr inbounds %struct.Action, ptr %62, i64 0, i32 1
   %63 = load ptr, ptr %term.i.i, align 8, !tbaa !25
-  %cmp60.i.i = icmp eq ptr %63, %58
+  %cmp60.i.i = icmp eq ptr %63, %59
   br i1 %cmp60.i.i, label %land.lhs.true.i.i9, label %for.inc74.i.i
 
 land.lhs.true.i.i9:                               ; preds = %for.body55.i.i
@@ -550,7 +550,7 @@ for.end76.i.i:                                    ; preds = %for.inc74.i.i, %if.
   %call.i192.i.i = tail call noalias dereferenceable_or_null(48) ptr @malloc(i64 noundef 48) #13
   store i32 1, ptr %call.i192.i.i, align 8, !tbaa !23
   %term.i193.i.i = getelementptr inbounds %struct.Action, ptr %call.i192.i.i, i64 0, i32 1
-  store ptr %58, ptr %term.i193.i.i, align 8, !tbaa !25
+  store ptr %59, ptr %term.i193.i.i, align 8, !tbaa !25
   %rule.i194.i.i = getelementptr inbounds %struct.Action, ptr %call.i192.i.i, i64 0, i32 2
   store ptr null, ptr %rule.i194.i.i, align 8, !tbaa !26
   %state.i195.i.i = getelementptr inbounds %struct.Action, ptr %call.i192.i.i, i64 0, i32 3
@@ -584,7 +584,7 @@ if.then104.i.i:                                   ; preds = %if.then100.i.i
   %inc109.i.i = add nuw nsw i32 %61, 1
   store i32 %inc109.i.i, ptr %shift_actions.i.i, align 8, !tbaa !56
   %idxprom110.i.i = zext i32 %61 to i64
-  %arrayidx111.i.i = getelementptr inbounds ptr, ptr %e97.i.i, i64 %idxprom110.i.i
+  %arrayidx111.i.i = getelementptr inbounds ptr, ptr %.pre.i.i6, i64 %idxprom110.i.i
   store ptr %call.i192.i.i, ptr %arrayidx111.i.i, align 8, !tbaa !22
   br label %for.inc.i
 
@@ -685,7 +685,7 @@ if.then26.i.i:                                    ; preds = %if.then22.i.i
   %inc31.i.i = add nuw nsw i32 %72, 1
   store i32 %inc31.i.i, ptr %reduce_actions.i.i, align 8, !tbaa !64
   %idxprom32.i.i = zext i32 %72 to i64
-  %arrayidx33.i.i = getelementptr inbounds ptr, ptr %e19.i.i, i64 %idxprom32.i.i
+  %arrayidx33.i.i = getelementptr inbounds ptr, ptr %.pre217.i.i, i64 %idxprom32.i.i
   store ptr %call.i.i.i15, ptr %arrayidx33.i.i, align 8, !tbaa !22
   br label %for.inc37.i
 
@@ -903,7 +903,7 @@ if.then72.i:                                      ; preds = %if.then68.i
   %inc83.i = add nuw nsw i32 %113, 1
   store i32 %inc83.i, ptr %right_epsilon_hints.i, align 8, !tbaa !79
   %idxprom84.i = zext i32 %113 to i64
-  %arrayidx85.i = getelementptr inbounds ptr, ptr %e65.i, i64 %idxprom84.i
+  %arrayidx85.i = getelementptr inbounds ptr, ptr %110, i64 %idxprom84.i
   store ptr %call.i190.i, ptr %arrayidx85.i, align 8, !tbaa !22
   br label %for.inc118.i
 
@@ -1120,7 +1120,7 @@ if.then311.i:                                     ; preds = %if.else.thread.i, %
   store ptr %130, ptr %rule.i405.i, align 8, !tbaa !78
   %inc317.i = add nuw nsw i32 %138, 1
   store i32 %inc317.i, ptr %error_recovery_hints.i, align 8, !tbaa !83
-  %arrayidx319.i = getelementptr inbounds ptr, ptr %e302.i, i64 %idxprom318.i.pre-phi
+  %arrayidx319.i = getelementptr inbounds ptr, ptr %.pre.i69, i64 %idxprom318.i.pre-phi
   store ptr %call.i403.i, ptr %arrayidx319.i, align 8, !tbaa !22
   br label %for.inc340.i
 
@@ -1256,7 +1256,7 @@ if.then17.i:                                      ; preds = %if.then13.i
   %inc22.i = add nuw nsw i32 %12, 1
   store i32 %inc22.i, ptr %items, align 8, !tbaa !44
   %idxprom23.i = zext i32 %12 to i64
-  %arrayidx24.i = getelementptr inbounds ptr, ptr %e4.i, i64 %idxprom23.i
+  %arrayidx24.i = getelementptr inbounds ptr, ptr %10, i64 %idxprom23.i
   store ptr %cond, ptr %arrayidx24.i, align 8, !tbaa !22
   br label %insert_item.exit
 

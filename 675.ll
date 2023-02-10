@@ -103,14 +103,14 @@ for.end:                                          ; preds = %for.inc, %if.then25
   %arrayidx86 = getelementptr inbounds ptr, ptr %12, i64 %add62
   %13 = load ptr, ptr %arrayidx86, align 8, !tbaa !17
   %tobool87.not202 = icmp eq ptr %13, null
-  br i1 %tobool87.not202, label %while.end, label %while.body.lr.ph
+  br i1 %tobool87.not202, label %if.then103, label %while.body.lr.ph
 
 while.body.lr.ph:                                 ; preds = %for.end
   %14 = load i8, ptr %pt.0, align 1, !tbaa !16
   %15 = load ptr, ptr %13, align 8, !tbaa !5
   %16 = load i8, ptr %15, align 1, !tbaa !16
-  %cmp93.not215 = icmp ult i8 %14, %16
-  br i1 %cmp93.not215, label %if.end96, label %while.end
+  %cmp93.not218 = icmp ult i8 %14, %16
+  br i1 %cmp93.not218, label %if.end96, label %while.end
 
 while.body:                                       ; preds = %if.end96
   %17 = load ptr, ptr %19, align 8, !tbaa !5
@@ -119,19 +119,19 @@ while.body:                                       ; preds = %if.end96
   br i1 %cmp93.not, label %if.end96, label %while.end, !llvm.loop !23
 
 if.end96:                                         ; preds = %while.body.lr.ph, %while.body
-  %next.0204216 = phi ptr [ %19, %while.body ], [ %13, %while.body.lr.ph ]
-  %next97 = getelementptr inbounds %struct.cli_bm_patt, ptr %next.0204216, i64 0, i32 7
+  %next.0204219 = phi ptr [ %19, %while.body ], [ %13, %while.body.lr.ph ]
+  %next97 = getelementptr inbounds %struct.cli_bm_patt, ptr %next.0204219, i64 0, i32 7
   %19 = load ptr, ptr %next97, align 8, !tbaa !24
   %tobool87.not = icmp eq ptr %19, null
   br i1 %tobool87.not, label %while.end, label %while.body, !llvm.loop !23
 
-while.end:                                        ; preds = %while.body, %if.end96, %while.body.lr.ph, %for.end
-  %prev.0.lcssa = phi ptr [ null, %for.end ], [ %13, %while.body.lr.ph ], [ %next.0204216, %if.end96 ], [ %next.0204216, %while.body ]
-  %next.0.lcssa = phi ptr [ null, %for.end ], [ %13, %while.body.lr.ph ], [ null, %if.end96 ], [ %19, %while.body ]
+while.end:                                        ; preds = %while.body, %if.end96, %while.body.lr.ph
+  %prev.0.lcssa = phi ptr [ %13, %while.body.lr.ph ], [ %next.0204219, %if.end96 ], [ %next.0204219, %while.body ]
+  %next.0.lcssa = phi ptr [ %13, %while.body.lr.ph ], [ %19, %while.body ], [ null, %if.end96 ]
   %cmp101 = icmp eq ptr %next.0.lcssa, %13
   br i1 %cmp101, label %if.then103, label %if.else
 
-if.then103:                                       ; preds = %while.end
+if.then103:                                       ; preds = %for.end, %while.end
   %next107 = getelementptr inbounds %struct.cli_bm_patt, ptr %pattern, i64 0, i32 7
   store ptr %13, ptr %next107, align 8, !tbaa !24
   %20 = load ptr, ptr %arrayidx86, align 8, !tbaa !17

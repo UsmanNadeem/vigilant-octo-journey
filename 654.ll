@@ -1012,10 +1012,10 @@ if.then48:                                        ; preds = %term_IsAtom.exit
   br label %if.end54.sink.split
 
 if.end54.sink.split:                              ; preds = %entry, %if.then48
-  %call50.val.sink133 = phi ptr [ %call50.val, %if.then48 ], [ %0, %entry ]
-  %15 = getelementptr i8, ptr %call50.val.sink133, i64 8
+  %call50.val.sink128 = phi ptr [ %call50.val, %if.then48 ], [ %0, %entry ]
+  %15 = getelementptr i8, ptr %call50.val.sink128, i64 8
   %call51.val = load ptr, ptr %15, align 8
-  %.val72 = load ptr, ptr %call50.val.sink133, align 8
+  %.val72 = load ptr, ptr %call50.val.sink128, align 8
   store ptr %.val72, ptr @sharing_DATALIST, align 8
   br label %if.end54
 

@@ -331,7 +331,7 @@ if.then5:                                         ; preds = %if.else
   store ptr %call, ptr %v2, align 8, !tbaa !21
   %conv = zext i32 %0 to i64
   %mul = shl nuw nsw i64 %conv, 3
-  tail call void @llvm.memcpy.p0.p0.i64(ptr align 8 %call, ptr nonnull align 8 %1, i64 %mul, i1 false)
+  tail call void @llvm.memcpy.p0.p0.i64(ptr align 8 %call, ptr nonnull align 8 %e3, i64 %mul, i1 false)
   br label %if.end32
 
 if.else11:                                        ; preds = %if.else
@@ -844,7 +844,7 @@ entry:
 
 if.then:                                          ; preds = %entry
   %e5 = getelementptr inbounds %struct.AbstractVec, ptr %vv, i64 0, i32 3
-  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %e5, ptr noundef nonnull align 8 dereferenceable(24) %1, i64 24, i1 false)
+  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %e5, ptr noundef nonnull align 8 dereferenceable(24) %e, i64 24, i1 false)
   store ptr %e5, ptr %v3, align 8, !tbaa !21
   br label %if.end
 

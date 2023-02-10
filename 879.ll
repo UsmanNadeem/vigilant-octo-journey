@@ -112,7 +112,7 @@ if.else39:                                        ; preds = %entry
   %entries43 = getelementptr inbounds %struct.IndexNode, ptr %node, i64 0, i32 1
   %8 = load ptr, ptr %entries43, align 8, !tbaa !12
   %cmp45.not123 = icmp eq ptr %8, null
-  br i1 %cmp45.not123, label %while.end49.thread, label %while.body46
+  br i1 %cmp45.not123, label %while.end49, label %while.body46
 
 while.body46:                                     ; preds = %if.else39, %while.body46
   %numberOfEntries42.0125 = phi i64 [ %inc47, %while.body46 ], [ 0, %if.else39 ]
@@ -123,25 +123,21 @@ while.body46:                                     ; preds = %if.else39, %while.b
   %cmp45.not = icmp eq ptr %9, null
   br i1 %cmp45.not, label %while.end49, label %while.body46, !llvm.loop !21
 
-while.end49:                                      ; preds = %while.body46
-  %cmp50 = icmp slt i64 %inc47, %fan
-  br i1 %cmp50, label %if.else55, label %if.else58
+while.end49:                                      ; preds = %while.body46, %if.else39
+  %lastEntry40.0.lcssa = phi ptr [ null, %if.else39 ], [ %tempEntry41.0124, %while.body46 ]
+  %numberOfEntries42.0.lcssa = phi i64 [ 0, %if.else39 ], [ %inc47, %while.body46 ]
+  %cmp50 = icmp slt i64 %numberOfEntries42.0.lcssa, %fan
+  br i1 %cmp50, label %if.then51, label %if.else58
 
-while.end49.thread:                               ; preds = %if.else39
-  %cmp50135 = icmp sgt i64 %fan, 0
-  br i1 %cmp50135, label %if.end57, label %if.else58
-
-if.else55:                                        ; preds = %while.end49
-  %next56 = getelementptr inbounds %struct.IndexEntry, ptr %tempEntry41.0124, i64 0, i32 2
-  br label %if.end57
-
-if.end57:                                         ; preds = %while.end49.thread, %if.else55
-  %next56.sink = phi ptr [ %next56, %if.else55 ], [ %entries43, %while.end49.thread ]
+if.then51:                                        ; preds = %while.end49
+  %cmp52 = icmp eq ptr %lastEntry40.0.lcssa, null
+  %next56 = getelementptr inbounds %struct.IndexEntry, ptr %lastEntry40.0.lcssa, i64 0, i32 2
+  %next56.sink = select i1 %cmp52, ptr %entries43, ptr %next56
   store ptr %entry1, ptr %next56.sink, align 8, !tbaa !13
   store ptr null, ptr %splitEntry, align 8, !tbaa !13
   br label %cleanup74
 
-if.else58:                                        ; preds = %while.end49.thread, %while.end49
+if.else58:                                        ; preds = %while.end49
   %call59 = tail call i64 @splitNode(ptr noundef nonnull %node, ptr noundef %entry1, i64 noundef %fan, ptr noundef %splitEntry) #3
   %cmp60 = icmp eq i64 %call59, 1
   br i1 %cmp60, label %if.then61, label %cleanup74
@@ -161,8 +157,8 @@ if.else65:                                        ; preds = %if.then61
   tail call void @errorMessage(ptr noundef nonnull @insertEntry.name, i8 noundef signext 1) #3
   br label %cleanup74
 
-cleanup74:                                        ; preds = %if.end57, %if.else58, %if.then7, %if.else28, %if.end24, %if.then64, %if.else65, %cleanup36.thread
-  %retval.4 = phi i64 [ %retval.2.ph, %cleanup36.thread ], [ 3, %if.then64 ], [ 2, %if.else65 ], [ 0, %if.end24 ], [ 0, %if.else28 ], [ 0, %if.then7 ], [ 0, %if.else58 ], [ 0, %if.end57 ]
+cleanup74:                                        ; preds = %if.then51, %if.else58, %if.then7, %if.else28, %if.end24, %if.then64, %if.else65, %cleanup36.thread
+  %retval.4 = phi i64 [ %retval.2.ph, %cleanup36.thread ], [ 3, %if.then64 ], [ 2, %if.else65 ], [ 0, %if.end24 ], [ 0, %if.else28 ], [ 0, %if.then7 ], [ 0, %if.else58 ], [ 0, %if.then51 ]
   ret i64 %retval.4
 }
 

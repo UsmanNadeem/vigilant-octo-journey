@@ -1364,7 +1364,7 @@ land.lhs.true66.i:                                ; preds = %lor.lhs.false65.i
 lor.lhs.false71.i:                                ; preds = %land.lhs.true66.i
   %Term2.val183.i = load ptr, ptr %2, align 8
   %cmp.not1.i.i = icmp eq ptr %Term2.val183.i, %Father.0
-  br i1 %cmp.not1.i.i, label %if.then18, label %while.body.i.i
+  br i1 %cmp.not1.i.i, label %lor.rhs.i, label %while.body.i.i
 
 while.body.i.i:                                   ; preds = %lor.lhs.false71.i, %if.end6.i.i
   %Term2.addr.02.i.i = phi ptr [ %Term2.addr.0.val12.i.i, %if.end6.i.i ], [ %Term2.val183.i, %lor.lhs.false71.i ]
@@ -1378,8 +1378,8 @@ if.end6.i.i:                                      ; preds = %while.body.i.i
   %cmp.not.i.i = icmp eq ptr %Term2.addr.0.val12.i.i, %Father.0
   br i1 %cmp.not.i.i, label %lor.rhs.i, label %while.body.i.i, !llvm.loop !22
 
-lor.rhs.i:                                        ; preds = %if.end6.i.i, %lor.lhs.false65.lor.rhs_crit_edge.i
-  %Term2.val182.i = phi ptr [ %Term2.val182.pre.i, %lor.lhs.false65.lor.rhs_crit_edge.i ], [ %Term2.val183.i, %if.end6.i.i ]
+lor.rhs.i:                                        ; preds = %if.end6.i.i, %lor.lhs.false71.i, %lor.lhs.false65.lor.rhs_crit_edge.i
+  %Term2.val182.i = phi ptr [ %Term2.val182.pre.i, %lor.lhs.false65.lor.rhs_crit_edge.i ], [ %Term2.val183.i, %lor.lhs.false71.i ], [ %Term2.val183.i, %if.end6.i.i ]
   %cmp.not1.i184.i = icmp eq ptr %Term2.val182.i, %Father.0
   br i1 %cmp.not1.i184.i, label %if.then18, label %while.body.lr.ph.i185.i
 
@@ -1471,7 +1471,7 @@ ren_HasNonZeroBenefit.exit:                       ; preds = %lor.lhs.false82.i, 
   %retval.0.shrunk.i.not = icmp eq i32 %retval.0.shrunk.i.in, 0
   br i1 %retval.0.shrunk.i.not, label %if.then18, label %if.else
 
-if.then18:                                        ; preds = %if.end6.i196.i, %lor.lhs.false71.i, %lor.rhs.i, %lor.rhs103.i, %lor.rhs85.i, %ren_HasNonZeroBenefit.exit, %while.end
+if.then18:                                        ; preds = %if.end6.i196.i, %lor.rhs.i, %lor.rhs103.i, %lor.rhs85.i, %ren_HasNonZeroBenefit.exit, %while.end
   %25 = load ptr, ptr %1, align 8
   %cmp.i.not5.i.i = icmp eq ptr %25, null
   br i1 %cmp.i.not5.i.i, label %ren_Delete.exit, label %while.body.i.i50

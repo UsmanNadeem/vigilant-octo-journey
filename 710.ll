@@ -899,7 +899,7 @@ if.end27.sink.split:                              ; preds = %for.body10, %if.els
   br label %if.end27
 
 if.end27:                                         ; preds = %for.cond8, %if.end27.sink.split, %for.cond8.preheader, %if.else
-  %11 = phi ptr [ null, %if.else ], [ null, %for.cond8.preheader ], [ %.sink, %if.end27.sink.split ], [ null, %for.cond8 ]
+  %11 = phi ptr [ null, %if.else ], [ null, %for.cond8.preheader ], [ %.sink, %if.end27.sink.split ], [ %2, %for.cond8 ]
   %indvars.iv.next62 = add nuw nsw i64 %indvars.iv61, 1
   %exitcond65.not = icmp eq i64 %indvars.iv.next62, %wide.trip.count64
   br i1 %exitcond65.not, label %for.inc32, label %land.rhs, !llvm.loop !49
@@ -5843,7 +5843,7 @@ if.end27.sink.split.i:                            ; preds = %for.body10.i, %if.e
   br label %if.end27.i
 
 if.end27.i:                                       ; preds = %for.cond8.i, %if.end27.sink.split.i, %if.else.i161, %for.cond8.preheader.i
-  %141 = phi ptr [ null, %if.else.i161 ], [ null, %for.cond8.preheader.i ], [ %.sink.i, %if.end27.sink.split.i ], [ null, %for.cond8.i ]
+  %141 = phi ptr [ null, %if.else.i161 ], [ null, %for.cond8.preheader.i ], [ %.sink.i, %if.end27.sink.split.i ], [ %132, %for.cond8.i ]
   %indvars.iv.next62.i = add nuw nsw i64 %indvars.iv61.i, 1
   %exitcond65.not.i = icmp eq i64 %indvars.iv.next62.i, %wide.trip.count64.i
   br i1 %exitcond65.not.i, label %for.inc32.i, label %land.rhs.i, !llvm.loop !49
@@ -11696,7 +11696,6 @@ for.body41.lr.ph:                                 ; preds = %for.cond37.preheade
   %6 = load ptr, ptr %errsym, align 8, !tbaa !160
   %add49 = or i32 %mul, 1
   %wide.trip.count564 = zext i32 %0 to i64
-  %dtnum = getelementptr inbounds %struct.symbol, ptr %6, i64 0, i32 13
   br label %for.body41
 
 if.then34:                                        ; preds = %for.end26
@@ -11713,6 +11712,7 @@ for.body41:                                       ; preds = %for.body41.lr.ph, %
   br i1 %cmp46, label %if.then48, label %if.end50
 
 if.then48:                                        ; preds = %for.body41
+  %dtnum = getelementptr inbounds %struct.symbol, ptr %9, i64 0, i32 13
   store i32 %add49, ptr %dtnum, align 8, !tbaa !309
   br label %cleanup340
 

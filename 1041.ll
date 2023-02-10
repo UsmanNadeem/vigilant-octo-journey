@@ -317,7 +317,7 @@ for.end197.loopexit:                              ; preds = %for.inc193
   br label %for.end197
 
 for.end197:                                       ; preds = %for.end197.loopexit, %sw.bb
-  %link.2919 = phi ptr [ %link.2919.pre, %for.end197.loopexit ], [ %x, %sw.bb ]
+  %link.2919 = phi ptr [ %link.2919.pre, %for.end197.loopexit ], [ %link.0907, %sw.bb ]
   store i32 0, ptr @ReplaceWithTidy.buff_len, align 4, !tbaa !10
   store i32 11, ptr @ReplaceWithTidy.buff_typ, align 4, !tbaa !10
   %ofile_num = getelementptr inbounds %struct.word_type, ptr %x, i64 0, i32 1, i32 0, i32 2

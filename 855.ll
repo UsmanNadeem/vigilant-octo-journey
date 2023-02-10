@@ -939,13 +939,13 @@ done_old.i.i:                                     ; preds = %if.end351.i.i, %if.
   br i1 %or.cond543.i.i, label %if.then359.i.i, label %if.end372.i.i
 
 if.then359.i.i:                                   ; preds = %done_old.i.i
-  %seq360.i.i = getelementptr inbounds %struct.ptext, ptr %136, i64 0, i32 6
+  %seq360.i.i = getelementptr inbounds %struct.ptext, ptr %137, i64 0, i32 6
   %139 = load i32, ptr %seq360.i.i, align 8, !tbaa !39
   %cmp361.i.i = icmp eq i32 %139, 1
   br i1 %cmp361.i.i, label %if.then363.i.i, label %if.else368.i.i
 
 if.then363.i.i:                                   ; preds = %if.then359.i.i
-  store ptr %136, ptr @comp_thru, align 8, !tbaa !5
+  store ptr %137, ptr @comp_thru, align 8, !tbaa !5
   %140 = load i32, ptr @nd_pkts, align 4, !tbaa !9
   %cmp364.i.i = icmp eq i32 %140, 1
   br i1 %cmp364.i.i, label %all_done.i.i, label %if.end370.i.i

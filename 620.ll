@@ -3709,25 +3709,29 @@ _Z15yy_flush_bufferP15yy_buffer_state.exit.i.thread: ; preds = %if.end.i.i
   br label %cond.end.i
 
 _Z15yy_flush_bufferP15yy_buffer_state.exit.thread.i: ; preds = %cond.end.i.i
-  store i32 0, ptr @_ZL10yy_n_chars, align 4, !tbaa !9
-  store ptr %call.i15, ptr @_ZL10yy_c_buf_p, align 8, !tbaa !5
-  store ptr %call.i15, ptr @yytext_ptr, align 8, !tbaa !5
-  %6 = load ptr, ptr %arrayidx6.i.i, align 8, !tbaa !5
-  %7 = load ptr, ptr %6, align 8, !tbaa !16
-  store ptr %7, ptr @yyin, align 8, !tbaa !5
-  %8 = load i8, ptr %call.i15, align 1, !tbaa !17
-  store i8 %8, ptr @_ZL12yy_hold_char, align 1, !tbaa !17
+  %yy_n_chars.i.i.i = getelementptr inbounds %struct.yy_buffer_state, ptr %5, i64 0, i32 4
+  %6 = load i32, ptr %yy_n_chars.i.i.i, align 4, !tbaa !13
+  store i32 %6, ptr @_ZL10yy_n_chars, align 4, !tbaa !9
+  %yy_buf_pos.i.i.i = getelementptr inbounds %struct.yy_buffer_state, ptr %5, i64 0, i32 2
+  %7 = load ptr, ptr %yy_buf_pos.i.i.i, align 8, !tbaa !15
+  store ptr %7, ptr @_ZL10yy_c_buf_p, align 8, !tbaa !5
+  store ptr %7, ptr @yytext_ptr, align 8, !tbaa !5
+  %8 = load ptr, ptr %arrayidx6.i.i, align 8, !tbaa !5
+  %9 = load ptr, ptr %8, align 8, !tbaa !16
+  store ptr %9, ptr @yyin, align 8, !tbaa !5
+  %10 = load i8, ptr %7, align 1, !tbaa !17
+  store i8 %10, ptr @_ZL12yy_hold_char, align 1, !tbaa !17
   br label %cond.true.i
 
 cond.true.i:                                      ; preds = %cond.end.i.i, %_Z15yy_flush_bufferP15yy_buffer_state.exit.thread.i
   store ptr %file, ptr %call.i, align 8
-  %9 = getelementptr inbounds %struct.yy_buffer_state, ptr %call.i, i64 0, i32 10
-  store i32 1, ptr %9, align 4
-  %10 = load ptr, ptr %arrayidx6.i.i, align 8, !tbaa !5
+  %11 = getelementptr inbounds %struct.yy_buffer_state, ptr %call.i, i64 0, i32 10
+  store i32 1, ptr %11, align 4
+  %12 = load ptr, ptr %arrayidx6.i.i, align 8, !tbaa !5
   br label %cond.end.i
 
 cond.end.i:                                       ; preds = %_Z15yy_flush_bufferP15yy_buffer_state.exit.i.thread, %cond.true.i
-  %cond.i = phi ptr [ %10, %cond.true.i ], [ null, %_Z15yy_flush_bufferP15yy_buffer_state.exit.i.thread ]
+  %cond.i = phi ptr [ %12, %cond.true.i ], [ null, %_Z15yy_flush_bufferP15yy_buffer_state.exit.i.thread ]
   %cmp.not.i = icmp eq ptr %cond.i, %call.i
   br i1 %cmp.not.i, label %_ZL14yy_init_bufferP15yy_buffer_stateP8_IO_FILE.exit, label %if.then.i
 
@@ -4775,9 +4779,9 @@ cond.true:                                        ; preds = %if.end.i, %if.then5
   %arrayidx = getelementptr inbounds ptr, ptr %5, i64 %4
   %6 = load ptr, ptr %arrayidx, align 8, !tbaa !5
   %7 = icmp eq ptr %6, null
-  br i1 %7, label %if.end14, label %if.then13
+  br i1 %7, label %if.end14, label %cond.true7
 
-if.then13:                                        ; preds = %cond.true
+cond.true7:                                       ; preds = %cond.true
   %8 = load i8, ptr @_ZL12yy_hold_char, align 1, !tbaa !17
   %9 = load ptr, ptr @_ZL10yy_c_buf_p, align 8, !tbaa !5
   store i8 %8, ptr %9, align 1, !tbaa !17
@@ -4788,26 +4792,30 @@ if.then13:                                        ; preds = %cond.true
   %12 = load ptr, ptr %arrayidx, align 8, !tbaa !5
   %yy_n_chars = getelementptr inbounds %struct.yy_buffer_state, ptr %12, i64 0, i32 4
   store i32 %11, ptr %yy_n_chars, align 4, !tbaa !13
+  %13 = icmp eq ptr %12, null
+  br i1 %13, label %if.end14, label %if.then13
+
+if.then13:                                        ; preds = %cond.true7
   %inc = add i64 %4, 1
   store i64 %inc, ptr @_ZL19yy_buffer_stack_top, align 8, !tbaa !11
   br label %if.end14
 
-if.end14:                                         ; preds = %cond.true, %if.then13
-  %13 = phi i64 [ %inc, %if.then13 ], [ %4, %cond.true ]
-  %arrayidx15 = getelementptr inbounds ptr, ptr %5, i64 %13
+if.end14:                                         ; preds = %cond.true, %if.then13, %cond.true7
+  %14 = phi i64 [ %inc, %if.then13 ], [ %4, %cond.true7 ], [ %4, %cond.true ]
+  %arrayidx15 = getelementptr inbounds ptr, ptr %5, i64 %14
   store ptr %new_buffer, ptr %arrayidx15, align 8, !tbaa !5
   %yy_n_chars.i = getelementptr inbounds %struct.yy_buffer_state, ptr %new_buffer, i64 0, i32 4
-  %14 = load i32, ptr %yy_n_chars.i, align 4, !tbaa !13
-  store i32 %14, ptr @_ZL10yy_n_chars, align 4, !tbaa !9
+  %15 = load i32, ptr %yy_n_chars.i, align 4, !tbaa !13
+  store i32 %15, ptr @_ZL10yy_n_chars, align 4, !tbaa !9
   %yy_buf_pos.i = getelementptr inbounds %struct.yy_buffer_state, ptr %new_buffer, i64 0, i32 2
-  %15 = load ptr, ptr %yy_buf_pos.i, align 8, !tbaa !15
-  store ptr %15, ptr @_ZL10yy_c_buf_p, align 8, !tbaa !5
-  store ptr %15, ptr @yytext_ptr, align 8, !tbaa !5
-  %16 = load ptr, ptr %arrayidx15, align 8, !tbaa !5
-  %17 = load ptr, ptr %16, align 8, !tbaa !16
-  store ptr %17, ptr @yyin, align 8, !tbaa !5
-  %18 = load i8, ptr %15, align 1, !tbaa !17
-  store i8 %18, ptr @_ZL12yy_hold_char, align 1, !tbaa !17
+  %16 = load ptr, ptr %yy_buf_pos.i, align 8, !tbaa !15
+  store ptr %16, ptr @_ZL10yy_c_buf_p, align 8, !tbaa !5
+  store ptr %16, ptr @yytext_ptr, align 8, !tbaa !5
+  %17 = load ptr, ptr %arrayidx15, align 8, !tbaa !5
+  %18 = load ptr, ptr %17, align 8, !tbaa !16
+  store ptr %18, ptr @yyin, align 8, !tbaa !5
+  %19 = load i8, ptr %16, align 1, !tbaa !17
+  store i8 %19, ptr @_ZL12yy_hold_char, align 1, !tbaa !17
   br label %return
 
 return:                                           ; preds = %entry, %if.end14

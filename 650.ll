@@ -4469,8 +4469,8 @@ if.then.i.i343:                                   ; preds = %if.then18.i
   %193 = load i32, ptr @memory_OFFSET, align 4
   %idx.ext.i.i = zext i32 %193 to i64
   %idx.neg.i.i = sub nsw i64 0, %idx.ext.i.i
-  %add.ptr.i.i415 = getelementptr i8, ptr %192, i64 -16
-  %add.ptr1.i.i = getelementptr i8, ptr %add.ptr.i.i415, i64 %idx.neg.i.i
+  %add.ptr.i.i416 = getelementptr i8, ptr %192, i64 -16
+  %add.ptr1.i.i = getelementptr i8, ptr %add.ptr.i.i416, i64 %idx.neg.i.i
   %194 = load ptr, ptr %add.ptr1.i.i, align 8
   %cmp2.not.i.i = icmp eq ptr %194, null
   %next6.i.i = getelementptr inbounds %struct.MEMORY_BIGBLOCKHEADERHELP, ptr %add.ptr1.i.i, i64 0, i32 1
@@ -4644,9 +4644,9 @@ while.body96:                                     ; preds = %land.rhs91
   br i1 %cmp2.i258, label %while.body.i264.preheader, label %while.end.i266
 
 while.body.i264.preheader:                        ; preds = %while.body96
-  %xtraiter425 = and i32 %.pr.i257, 1
-  %lcmp.mod426.not = icmp eq i32 %xtraiter425, 0
-  br i1 %lcmp.mod426.not, label %while.body.i264.prol.loopexit, label %while.body.i264.prol
+  %xtraiter426 = and i32 %.pr.i257, 1
+  %lcmp.mod427.not = icmp eq i32 %xtraiter426, 0
+  br i1 %lcmp.mod427.not, label %while.body.i264.prol.loopexit, label %while.body.i264.prol
 
 while.body.i264.prol:                             ; preds = %while.body.i264.preheader
   %225 = load ptr, ptr @cont_LASTBINDING, align 8
@@ -4664,12 +4664,12 @@ while.body.i264.prol:                             ; preds = %while.body.i264.pre
   br label %while.body.i264.prol.loopexit
 
 while.body.i264.prol.loopexit:                    ; preds = %while.body.i264.prol, %while.body.i264.preheader
-  %.unr427 = phi i32 [ %.pr.i257, %while.body.i264.preheader ], [ %dec.i.i.i262.prol, %while.body.i264.prol ]
+  %.unr428 = phi i32 [ %.pr.i257, %while.body.i264.preheader ], [ %dec.i.i.i262.prol, %while.body.i264.prol ]
   %228 = icmp eq i32 %.pr.i257, 1
   br i1 %228, label %while.end.i266, label %while.body.i264
 
 while.body.i264:                                  ; preds = %while.body.i264.prol.loopexit, %while.body.i264
-  %229 = phi i32 [ %dec.i.i.i262.1, %while.body.i264 ], [ %.unr427, %while.body.i264.prol.loopexit ]
+  %229 = phi i32 [ %dec.i.i.i262.1, %while.body.i264 ], [ %.unr428, %while.body.i264.prol.loopexit ]
   %230 = load ptr, ptr @cont_LASTBINDING, align 8
   store ptr %230, ptr @cont_CURRENTBINDING, align 8
   %231 = getelementptr i8, ptr %230, i64 24
@@ -4737,9 +4737,9 @@ if.then102:                                       ; preds = %land.rhs91
   br i1 %cmp2.i281, label %while.body.i287.preheader, label %while.end.i289
 
 while.body.i287.preheader:                        ; preds = %if.then102
-  %xtraiter428 = and i32 %.pr.i280, 1
-  %lcmp.mod429.not = icmp eq i32 %xtraiter428, 0
-  br i1 %lcmp.mod429.not, label %while.body.i287.prol.loopexit, label %while.body.i287.prol
+  %xtraiter429 = and i32 %.pr.i280, 1
+  %lcmp.mod430.not = icmp eq i32 %xtraiter429, 0
+  br i1 %lcmp.mod430.not, label %while.body.i287.prol.loopexit, label %while.body.i287.prol
 
 while.body.i287.prol:                             ; preds = %while.body.i287.preheader
   %245 = load ptr, ptr @cont_LASTBINDING, align 8
@@ -4757,12 +4757,12 @@ while.body.i287.prol:                             ; preds = %while.body.i287.pre
   br label %while.body.i287.prol.loopexit
 
 while.body.i287.prol.loopexit:                    ; preds = %while.body.i287.prol, %while.body.i287.preheader
-  %.unr430 = phi i32 [ %.pr.i280, %while.body.i287.preheader ], [ %dec.i.i.i285.prol, %while.body.i287.prol ]
+  %.unr431 = phi i32 [ %.pr.i280, %while.body.i287.preheader ], [ %dec.i.i.i285.prol, %while.body.i287.prol ]
   %248 = icmp eq i32 %.pr.i280, 1
   br i1 %248, label %while.end.i289, label %while.body.i287
 
 while.body.i287:                                  ; preds = %while.body.i287.prol.loopexit, %while.body.i287
-  %249 = phi i32 [ %dec.i.i.i285.1, %while.body.i287 ], [ %.unr430, %while.body.i287.prol.loopexit ]
+  %249 = phi i32 [ %dec.i.i.i285.1, %while.body.i287 ], [ %.unr431, %while.body.i287.prol.loopexit ]
   %250 = load ptr, ptr @cont_LASTBINDING, align 8
   store ptr %250, ptr @cont_CURRENTBINDING, align 8
   %251 = getelementptr i8, ptr %250, i64 24

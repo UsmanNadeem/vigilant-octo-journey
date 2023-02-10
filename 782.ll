@@ -400,74 +400,97 @@ if.else.lr.ph:                                    ; preds = %entry
   %len.i = getelementptr inbounds %struct.SString, ptr %word, i64 0, i32 2
   br i1 %cmp.i, label %if.else.us, label %if.else
 
-if.else.us:                                       ; preds = %if.else.lr.ph
-  %0 = load i8, ptr %t, align 8, !tbaa !5
-  tail call void @insertChar(ptr noundef null, i8 noundef signext %0)
-  %word1.us = getelementptr inbounds %struct.trie, ptr %t, i64 0, i32 1
+if.else.us:                                       ; preds = %if.else.lr.ph, %deleteChar.exit.us
+  %t.tr17.us = phi ptr [ %7, %deleteChar.exit.us ], [ %t, %if.else.lr.ph ]
+  %0 = load i8, ptr %t.tr17.us, align 8, !tbaa !5
+  tail call void @insertChar(ptr noundef %word, i8 noundef signext %0)
+  %word1.us = getelementptr inbounds %struct.trie, ptr %t.tr17.us, i64 0, i32 1
   %1 = load i32, ptr %word1.us, align 4, !tbaa !14
   %cmp2.us = icmp eq i32 %1, -1
-  br i1 %cmp2.us, label %if.then2.i.loopexit, label %if.end.us
+  br i1 %cmp2.us, label %if.end.thread.us, label %if.end.us
 
 if.end.us:                                        ; preds = %if.else.us
-  %postfix.us = getelementptr inbounds %struct.trie, ptr %t, i64 0, i32 3
+  %postfix.us = getelementptr inbounds %struct.trie, ptr %t.tr17.us, i64 0, i32 3
   %2 = load ptr, ptr %postfix.us, align 8, !tbaa !15
-  tail call void @printTheRest(ptr noundef %2, ptr noundef null)
+  tail call void @printTheRest(ptr noundef %2, ptr noundef %word)
   tail call void @abort() #12
   unreachable
 
+if.end.thread.us:                                 ; preds = %if.else.us
+  %3 = load ptr, ptr %word, align 8, !tbaa !17
+  %puts.us = tail call i32 @puts(ptr nonnull dereferenceable(1) %3)
+  %postfix14.us = getelementptr inbounds %struct.trie, ptr %t.tr17.us, i64 0, i32 3
+  %4 = load ptr, ptr %postfix14.us, align 8, !tbaa !15
+  tail call void @printTheRest(ptr noundef %4, ptr noundef nonnull %word)
+  %5 = load ptr, ptr %word, align 8, !tbaa !17
+  %cmp1.i.us = icmp eq ptr %5, null
+  br i1 %cmp1.i.us, label %if.then2.i, label %if.else3.i.us
+
+if.else3.i.us:                                    ; preds = %if.end.thread.us
+  %6 = load i32, ptr %len.i, align 4, !tbaa !20
+  %cmp4.i.us = icmp sgt i32 %6, 0
+  br i1 %cmp4.i.us, label %if.then5.i.us, label %deleteChar.exit.us
+
+if.then5.i.us:                                    ; preds = %if.else3.i.us
+  %dec.i.us = add nsw i32 %6, -1
+  store i32 %dec.i.us, ptr %len.i, align 4, !tbaa !20
+  %idxprom.i.us = zext i32 %dec.i.us to i64
+  %arrayidx.i.us = getelementptr inbounds i8, ptr %5, i64 %idxprom.i.us
+  store i8 0, ptr %arrayidx.i.us, align 1, !tbaa !11
+  br label %deleteChar.exit.us
+
+deleteChar.exit.us:                               ; preds = %if.then5.i.us, %if.else3.i.us
+  %otherChar.us = getelementptr inbounds %struct.trie, ptr %t.tr17.us, i64 0, i32 4
+  %7 = load ptr, ptr %otherChar.us, align 8, !tbaa !16
+  %cmp.us = icmp eq ptr %7, null
+  br i1 %cmp.us, label %if.end5, label %if.else.us
+
 if.else:                                          ; preds = %if.else.lr.ph, %deleteChar.exit
-  %t.tr17 = phi ptr [ %10, %deleteChar.exit ], [ %t, %if.else.lr.ph ]
-  %3 = load i8, ptr %t.tr17, align 8, !tbaa !5
-  tail call void @insertChar(ptr noundef nonnull %word, i8 noundef signext %3)
+  %t.tr17 = phi ptr [ %14, %deleteChar.exit ], [ %t, %if.else.lr.ph ]
+  %8 = load i8, ptr %t.tr17, align 8, !tbaa !5
+  tail call void @insertChar(ptr noundef nonnull %word, i8 noundef signext %8)
   %word1 = getelementptr inbounds %struct.trie, ptr %t.tr17, i64 0, i32 1
-  %4 = load i32, ptr %word1, align 4, !tbaa !14
-  %cmp2 = icmp eq i32 %4, -1
+  %9 = load i32, ptr %word1, align 4, !tbaa !14
+  %cmp2 = icmp eq i32 %9, -1
   br i1 %cmp2, label %if.end.thread, label %if.else.i
 
 if.end.thread:                                    ; preds = %if.else
-  %5 = load ptr, ptr %word, align 8, !tbaa !17
-  %puts = tail call i32 @puts(ptr nonnull dereferenceable(1) %5)
+  %10 = load ptr, ptr %word, align 8, !tbaa !17
+  %puts = tail call i32 @puts(ptr nonnull dereferenceable(1) %10)
   br label %if.else.i
 
 if.else.i:                                        ; preds = %if.else, %if.end.thread
   %postfix = getelementptr inbounds %struct.trie, ptr %t.tr17, i64 0, i32 3
-  %6 = load ptr, ptr %postfix, align 8, !tbaa !15
-  tail call void @printTheRest(ptr noundef %6, ptr noundef nonnull %word)
-  %7 = load ptr, ptr %word, align 8, !tbaa !17
-  %cmp1.i = icmp eq ptr %7, null
+  %11 = load ptr, ptr %postfix, align 8, !tbaa !15
+  tail call void @printTheRest(ptr noundef %11, ptr noundef nonnull %word)
+  %12 = load ptr, ptr %word, align 8, !tbaa !17
+  %cmp1.i = icmp eq ptr %12, null
   br i1 %cmp1.i, label %if.then2.i, label %if.else3.i
 
-if.then2.i.loopexit:                              ; preds = %if.else.us
-  %puts.us = tail call i32 @puts(ptr nonnull dereferenceable(1) undef)
-  %postfix14.us = getelementptr inbounds %struct.trie, ptr %t, i64 0, i32 3
-  %8 = load ptr, ptr %postfix14.us, align 8, !tbaa !15
-  tail call void @printTheRest(ptr noundef %8, ptr noundef nonnull null)
-  br label %if.then2.i
-
-if.then2.i:                                       ; preds = %if.else.i, %if.then2.i.loopexit
+if.then2.i:                                       ; preds = %if.else.i, %if.end.thread.us
   tail call void @abort() #12
   unreachable
 
 if.else3.i:                                       ; preds = %if.else.i
-  %9 = load i32, ptr %len.i, align 4, !tbaa !20
-  %cmp4.i = icmp sgt i32 %9, 0
+  %13 = load i32, ptr %len.i, align 4, !tbaa !20
+  %cmp4.i = icmp sgt i32 %13, 0
   br i1 %cmp4.i, label %if.then5.i, label %deleteChar.exit
 
 if.then5.i:                                       ; preds = %if.else3.i
-  %dec.i = add nsw i32 %9, -1
+  %dec.i = add nsw i32 %13, -1
   store i32 %dec.i, ptr %len.i, align 4, !tbaa !20
   %idxprom.i = zext i32 %dec.i to i64
-  %arrayidx.i = getelementptr inbounds i8, ptr %7, i64 %idxprom.i
+  %arrayidx.i = getelementptr inbounds i8, ptr %12, i64 %idxprom.i
   store i8 0, ptr %arrayidx.i, align 1, !tbaa !11
   br label %deleteChar.exit
 
 deleteChar.exit:                                  ; preds = %if.else3.i, %if.then5.i
   %otherChar = getelementptr inbounds %struct.trie, ptr %t.tr17, i64 0, i32 4
-  %10 = load ptr, ptr %otherChar, align 8, !tbaa !16
-  %cmp = icmp eq ptr %10, null
+  %14 = load ptr, ptr %otherChar, align 8, !tbaa !16
+  %cmp = icmp eq ptr %14, null
   br i1 %cmp, label %if.end5, label %if.else
 
-if.end5:                                          ; preds = %deleteChar.exit, %entry
+if.end5:                                          ; preds = %deleteChar.exit, %deleteChar.exit.us, %entry
   ret void
 }
 

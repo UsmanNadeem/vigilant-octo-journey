@@ -240,7 +240,7 @@ if.then7:                                         ; preds = %for.body
   %call1.i = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1, ptr noundef nonnull @.str.4, i32 noundef %l2) #19
   %idxprom25 = and i64 %indvars.iv, 4294967295
   %arrayidx26 = getelementptr inbounds ptr, ptr %call, i64 %idxprom25
-  store ptr null, ptr %arrayidx26, align 8, !tbaa !5
+  store ptr %call.i, ptr %arrayidx26, align 8, !tbaa !5
   %2 = load ptr, ptr @stderr, align 8, !tbaa !5
   %call8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2, ptr noundef nonnull @.str.5, i32 noundef %l1, i32 noundef %l2) #19
   tail call void @exit(i32 noundef 1) #21

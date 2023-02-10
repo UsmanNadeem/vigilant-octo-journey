@@ -376,31 +376,31 @@ _ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_res
   %__end_.i = getelementptr inbounds %"class.std::__1::vector", ptr %args, i64 0, i32 1
   %__end_cap_.i.i = getelementptr inbounds %"class.std::__1::vector", ptr %args, i64 0, i32 2
   %call.i5.i.i.i.i.i.i6 = invoke noalias noundef nonnull dereferenceable(8) ptr @_Znwm(i64 noundef 8) #17
-          to label %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i30 unwind label %lpad
+          to label %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i32 unwind label %lpad
 
-_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i30: ; preds = %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i
+_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i32: ; preds = %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i
   %add.ptr6.i.i.i = getelementptr inbounds i64, ptr %call.i5.i.i.i.i.i.i6, i64 1
   store i64 %x, ptr %call.i5.i.i.i.i.i.i6, align 8, !tbaa !17
   store ptr %call.i5.i.i.i.i.i.i6, ptr %args, align 8, !tbaa !9
   store ptr %add.ptr6.i.i.i, ptr %__end_cap_.i.i, align 8, !tbaa !9
-  %call.i5.i.i.i.i.i.i50 = invoke noalias noundef nonnull dereferenceable(16) ptr @_Znwm(i64 noundef 16) #17
-          to label %while.body.i.i.i.i.i.i.i.i.i42.preheader unwind label %lpad
+  %call.i5.i.i.i.i.i.i52 = invoke noalias noundef nonnull dereferenceable(16) ptr @_Znwm(i64 noundef 16) #17
+          to label %while.body.i.i.i.i.i.i.i.i.i44.preheader unwind label %lpad
 
-while.body.i.i.i.i.i.i.i.i.i42.preheader:         ; preds = %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i30
-  %add.ptr.i.i.i32 = getelementptr inbounds i64, ptr %call.i5.i.i.i.i.i.i50, i64 1
-  %add.ptr6.i.i.i33 = getelementptr inbounds i64, ptr %call.i5.i.i.i.i.i.i50, i64 2
-  store i64 %y, ptr %add.ptr.i.i.i32, align 8, !tbaa !17
-  %incdec.ptr.i4.i34 = getelementptr inbounds i64, ptr %call.i5.i.i.i.i.i.i50, i64 2
+while.body.i.i.i.i.i.i.i.i.i44.preheader:         ; preds = %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i32
+  %add.ptr.i.i.i34 = getelementptr inbounds i64, ptr %call.i5.i.i.i.i.i.i52, i64 1
+  %add.ptr6.i.i.i35 = getelementptr inbounds i64, ptr %call.i5.i.i.i.i.i.i52, i64 2
+  store i64 %y, ptr %add.ptr.i.i.i34, align 8, !tbaa !17
+  %incdec.ptr.i4.i36 = getelementptr inbounds i64, ptr %call.i5.i.i.i.i.i.i52, i64 2
   %0 = load i64, ptr %call.i5.i.i.i.i.i.i6, align 8, !tbaa !17, !noalias !36
-  store i64 %0, ptr %call.i5.i.i.i.i.i.i50, align 8, !tbaa !17, !noalias !36
-  store ptr %call.i5.i.i.i.i.i.i50, ptr %args, align 8, !tbaa !9
-  store ptr %incdec.ptr.i4.i34, ptr %__end_.i, align 8, !tbaa !9
-  store ptr %add.ptr6.i.i.i33, ptr %__end_cap_.i.i, align 8, !tbaa !9
+  store i64 %0, ptr %call.i5.i.i.i.i.i.i52, align 8, !tbaa !17, !noalias !36
+  store ptr %call.i5.i.i.i.i.i.i52, ptr %args, align 8, !tbaa !9
+  store ptr %incdec.ptr.i4.i36, ptr %__end_.i, align 8, !tbaa !9
+  store ptr %add.ptr6.i.i.i35, ptr %__end_cap_.i.i, align 8, !tbaa !9
   tail call void @_ZdlPv(ptr noundef nonnull %call.i5.i.i.i.i.i.i6) #18
   %call = invoke noundef ptr @_ZN9benchmark8internal9Benchmark4ArgsERKNSt3__16vectorIlNS2_9allocatorIlEEEE(ptr noundef nonnull align 8 dereferenceable(208) %this, ptr noundef nonnull align 8 dereferenceable(24) %args)
           to label %invoke.cont3 unwind label %lpad
 
-invoke.cont3:                                     ; preds = %while.body.i.i.i.i.i.i.i.i.i42.preheader
+invoke.cont3:                                     ; preds = %while.body.i.i.i.i.i.i.i.i.i44.preheader
   %1 = load ptr, ptr %args, align 8, !tbaa !13
   %cmp.not.i.i = icmp eq ptr %1, null
   br i1 %cmp.not.i.i, label %_ZNSt3__16vectorIlNS_9allocatorIlEEED2B7v170000Ev.exit, label %if.then.i.i
@@ -414,19 +414,19 @@ _ZNSt3__16vectorIlNS_9allocatorIlEEED2B7v170000Ev.exit: ; preds = %invoke.cont3,
   call void @llvm.lifetime.end.p0(i64 24, ptr nonnull %args) #16
   ret ptr %call
 
-lpad:                                             ; preds = %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i30, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i, %while.body.i.i.i.i.i.i.i.i.i42.preheader
+lpad:                                             ; preds = %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i32, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIlEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS5_m.exit.i.i.i, %while.body.i.i.i.i.i.i.i.i.i44.preheader
   %2 = landingpad { ptr, i32 }
           cleanup
   %3 = load ptr, ptr %args, align 8, !tbaa !13
-  %cmp.not.i.i52 = icmp eq ptr %3, null
-  br i1 %cmp.not.i.i52, label %_ZNSt3__16vectorIlNS_9allocatorIlEEED2B7v170000Ev.exit55, label %if.then.i.i54
+  %cmp.not.i.i54 = icmp eq ptr %3, null
+  br i1 %cmp.not.i.i54, label %_ZNSt3__16vectorIlNS_9allocatorIlEEED2B7v170000Ev.exit57, label %if.then.i.i56
 
-if.then.i.i54:                                    ; preds = %lpad
+if.then.i.i56:                                    ; preds = %lpad
   store ptr %3, ptr %__end_.i, align 8, !tbaa !45
   call void @_ZdlPv(ptr noundef nonnull %3) #18
-  br label %_ZNSt3__16vectorIlNS_9allocatorIlEEED2B7v170000Ev.exit55
+  br label %_ZNSt3__16vectorIlNS_9allocatorIlEEED2B7v170000Ev.exit57
 
-_ZNSt3__16vectorIlNS_9allocatorIlEEED2B7v170000Ev.exit55: ; preds = %lpad, %if.then.i.i54
+_ZNSt3__16vectorIlNS_9allocatorIlEEED2B7v170000Ev.exit57: ; preds = %lpad, %if.then.i.i56
   call void @llvm.lifetime.end.p0(i64 24, ptr nonnull %args) #16
   resume { ptr, i32 } %2
 }

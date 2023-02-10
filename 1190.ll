@@ -386,17 +386,17 @@ if.then:                                          ; preds = %sw.bb5
   store ptr %add.ptr6.i.i.i.i56, ptr %__end_.i.i53, align 8, !tbaa !18
   store ptr %add.ptr6.i.i.i.i56, ptr %__end_cap_.i.i.i54, align 16, !tbaa !18
   %32 = load ptr, ptr %__end_cap_.i.i58, align 8, !tbaa !18
-  %cmp.i59 = icmp ult ptr %30, %32
+  %cmp.i59 = icmp ult ptr %31, %32
   br i1 %cmp.i59, label %invoke.cont11.thread, label %if.else.i66
 
 invoke.cont11.thread:                             ; preds = %if.then
-  %__end_cap_.i.i.i.i.i.i61 = getelementptr inbounds %"class.std::__1::vector.0", ptr %30, i64 0, i32 2
-  call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %30, i8 0, i64 24, i1 false)
+  %__end_cap_.i.i.i.i.i.i61 = getelementptr inbounds %"class.std::__1::vector.0", ptr %31, i64 0, i32 2
+  call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %31, i8 0, i64 24, i1 false)
   %33 = load <2 x ptr>, ptr %ref.tmp9, align 16, !tbaa !18
-  store <2 x ptr> %33, ptr %30, align 8, !tbaa !18
+  store <2 x ptr> %33, ptr %31, align 8, !tbaa !18
   %34 = load ptr, ptr %__end_cap_.i.i.i54, align 16, !tbaa !18
   store ptr %34, ptr %__end_cap_.i.i.i.i.i.i61, align 8, !tbaa !18
-  %incdec.ptr.i.i64 = getelementptr inbounds %class.BigInt, ptr %30, i64 1
+  %incdec.ptr.i.i64 = getelementptr inbounds %class.BigInt, ptr %31, i64 1
   store ptr %incdec.ptr.i.i64, ptr %__end_.i, align 8, !tbaa !5
   br label %_ZN6BigIntD2Ev.exit72
 
@@ -647,13 +647,7 @@ _ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEEC2EmmS4_.exit: ; preds = %
   %add.ptr.i = getelementptr inbounds %class.BigInt, ptr %call.i.i.i.i.i, i64 %sub.ptr.div.i14
   %add.ptr6.i = getelementptr inbounds %class.BigInt, ptr %call.i.i.i.i.i, i64 %__n
   %cmp.i.not19.i.i = icmp eq ptr %2, %1
-  br i1 %cmp.i.not19.i.i, label %invoke.cont.thread, label %invoke.cont4.i.i
-
-invoke.cont.thread:                               ; preds = %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEEC2EmmS4_.exit
-  store ptr %add.ptr.i, ptr %this, align 8, !tbaa !18
-  store ptr %add.ptr.i, ptr %__end_.i, align 8, !tbaa !18
-  store ptr %add.ptr6.i, ptr %__end_cap_.i.i, align 8, !tbaa !18
-  br label %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i
+  br i1 %cmp.i.not19.i.i, label %invoke.cont, label %invoke.cont4.i.i
 
 invoke.cont4.i.i:                                 ; preds = %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEEC2EmmS4_.exit, %invoke.cont4.i.i
   %3 = phi ptr [ %incdec.ptr.i.i.i.i.i.i, %invoke.cont4.i.i ], [ %add.ptr.i, %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEEC2EmmS4_.exit ]
@@ -668,41 +662,46 @@ invoke.cont4.i.i:                                 ; preds = %_ZNSt3__114__split_
   store ptr %5, ptr %__end_cap_.i.i.i.i.i.i, align 8, !tbaa !18
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %incdec.ptr.i.i.i, i8 0, i64 24, i1 false)
   %cmp.i.not.i.i = icmp eq ptr %incdec.ptr.i.i.i, %1
-  br i1 %cmp.i.not.i.i, label %invoke.cont, label %invoke.cont4.i.i, !llvm.loop !27
+  br i1 %cmp.i.not.i.i, label %invoke.cont.loopexit, label %invoke.cont4.i.i, !llvm.loop !27
 
-invoke.cont:                                      ; preds = %invoke.cont4.i.i
+invoke.cont.loopexit:                             ; preds = %invoke.cont4.i.i
   %.pre = load ptr, ptr %this, align 8, !tbaa !18
   %.pre18 = load ptr, ptr %__end_.i, align 8, !tbaa !18
-  store ptr %incdec.ptr.i.i.i.i.i.i, ptr %this, align 8, !tbaa !18
+  br label %invoke.cont
+
+invoke.cont:                                      ; preds = %invoke.cont.loopexit, %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEEC2EmmS4_.exit
+  %6 = phi ptr [ %2, %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEEC2EmmS4_.exit ], [ %.pre18, %invoke.cont.loopexit ]
+  %7 = phi ptr [ %1, %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEEC2EmmS4_.exit ], [ %.pre, %invoke.cont.loopexit ]
+  %retval.sroa.2.0.copyload.i.i = phi ptr [ %add.ptr.i, %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEEC2EmmS4_.exit ], [ %incdec.ptr.i.i.i.i.i.i, %invoke.cont.loopexit ]
+  store ptr %retval.sroa.2.0.copyload.i.i, ptr %this, align 8, !tbaa !18
   store ptr %add.ptr.i, ptr %__end_.i, align 8, !tbaa !18
   store ptr %add.ptr6.i, ptr %__end_cap_.i.i, align 8, !tbaa !18
-  %cmp.not4.i.i.i.i = icmp eq ptr %.pre18, %.pre
+  %cmp.not4.i.i.i.i = icmp eq ptr %6, %7
   br i1 %cmp.not4.i.i.i.i, label %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i, label %while.body.i.i.i.i
 
 while.body.i.i.i.i:                               ; preds = %invoke.cont, %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i
-  %6 = phi ptr [ %incdec.ptr.i.i.i.i, %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i ], [ %.pre18, %invoke.cont ]
-  %incdec.ptr.i.i.i.i = getelementptr inbounds %class.BigInt, ptr %6, i64 -1
-  %7 = load ptr, ptr %incdec.ptr.i.i.i.i, align 8, !tbaa !17
-  %cmp.not.i.i.i.i.i.i.i.i.i = icmp eq ptr %7, null
+  %8 = phi ptr [ %incdec.ptr.i.i.i.i, %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i ], [ %6, %invoke.cont ]
+  %incdec.ptr.i.i.i.i = getelementptr inbounds %class.BigInt, ptr %8, i64 -1
+  %9 = load ptr, ptr %incdec.ptr.i.i.i.i, align 8, !tbaa !17
+  %cmp.not.i.i.i.i.i.i.i.i.i = icmp eq ptr %9, null
   br i1 %cmp.not.i.i.i.i.i.i.i.i.i, label %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i, label %if.then.i.i.i.i.i.i.i.i.i
 
 if.then.i.i.i.i.i.i.i.i.i:                        ; preds = %while.body.i.i.i.i
-  %__end_.i.i.i.i.i.i.i.i.i.i.i = getelementptr %class.BigInt, ptr %6, i64 -1, i32 0, i32 1
-  store ptr %7, ptr %__end_.i.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !13
-  tail call void @_ZdlPv(ptr noundef nonnull %7) #24
+  %__end_.i.i.i.i.i.i.i.i.i.i.i = getelementptr %class.BigInt, ptr %8, i64 -1, i32 0, i32 1
+  store ptr %9, ptr %__end_.i.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !13
+  tail call void @_ZdlPv(ptr noundef nonnull %9) #24
   br label %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i
 
 _ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i: ; preds = %if.then.i.i.i.i.i.i.i.i.i, %while.body.i.i.i.i
-  %cmp.not.i.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i, %.pre
+  %cmp.not.i.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i, %7
   br i1 %cmp.not.i.i.i.i, label %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i, label %while.body.i.i.i.i
 
-_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i: ; preds = %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i, %invoke.cont.thread, %invoke.cont
-  %8 = phi ptr [ %.pre18, %invoke.cont ], [ %1, %invoke.cont.thread ], [ %.pre, %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i ]
-  %tobool.not.i = icmp eq ptr %8, null
+_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i: ; preds = %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i, %invoke.cont
+  %tobool.not.i = icmp eq ptr %7, null
   br i1 %tobool.not.i, label %if.end7, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %8) #24
+  tail call void @_ZdlPv(ptr noundef nonnull %7) #24
   br label %if.end7
 
 if.end7:                                          ; preds = %if.then.i, %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i, %entry
@@ -987,8 +986,10 @@ if.then.i.i.i102:                                 ; preds = %if.else.i101
   unreachable
 
 _ZNKSt3__16vectorImNS_9allocatorImEEE11__recommendB7v170000Em.exit.i.i: ; preds = %if.else.i101
-  %cmp3.not.i.i.i = icmp ult i64 %sub.ptr.sub.i.i.i97, 9223372036854775800
-  %mul.i.i.i = lshr exact i64 %sub.ptr.sub.i.i.i97, 2
+  %sub.ptr.lhs.cast.i.i.i.i = ptrtoint ptr %34 to i64
+  %sub.ptr.sub.i.i.i.i = sub i64 %sub.ptr.lhs.cast.i.i.i.i, %sub.ptr.rhs.cast.i.i.i96
+  %cmp3.not.i.i.i = icmp ult i64 %sub.ptr.sub.i.i.i.i, 9223372036854775800
+  %mul.i.i.i = lshr exact i64 %sub.ptr.sub.i.i.i.i, 2
   %.sroa.speculated.i.i.i = tail call i64 @llvm.umax.i64(i64 %mul.i.i.i, i64 %add.i.i99)
   %retval.0.i.i.i = select i1 %cmp3.not.i.i.i, i64 %.sroa.speculated.i.i.i, i64 2305843009213693951
   %cmp.i16.i.i = icmp eq i64 %retval.0.i.i.i, 0
@@ -3674,13 +3675,7 @@ invoke.cont:                                      ; preds = %_ZNSt3__119__alloca
   %5 = load ptr, ptr %__end_.i, align 8, !tbaa !5
   %6 = load ptr, ptr %this, align 8, !tbaa !12
   %cmp.i.not19.i.i = icmp eq ptr %5, %6
-  br i1 %cmp.i.not19.i.i, label %invoke.cont7.thread, label %invoke.cont4.i.i
-
-invoke.cont7.thread:                              ; preds = %invoke.cont
-  store ptr %add.ptr.i, ptr %this, align 8, !tbaa !18
-  store ptr %incdec.ptr, ptr %__end_.i, align 8, !tbaa !18
-  store ptr %add.ptr6.i, ptr %__end_cap_.i, align 8, !tbaa !18
-  br label %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i
+  br i1 %cmp.i.not19.i.i, label %invoke.cont7, label %invoke.cont4.i.i
 
 invoke.cont4.i.i:                                 ; preds = %invoke.cont, %invoke.cont4.i.i
   %7 = phi ptr [ %incdec.ptr.i.i.i.i.i.i, %invoke.cont4.i.i ], [ %add.ptr.i, %invoke.cont ]
@@ -3697,41 +3692,46 @@ invoke.cont4.i.i:                                 ; preds = %invoke.cont, %invok
   store ptr %10, ptr %__end_cap_.i.i.i.i.i.i, align 8, !tbaa !18
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %incdec.ptr.i.i.i, i8 0, i64 24, i1 false)
   %cmp.i.not.i.i = icmp eq ptr %incdec.ptr.i.i.i, %6
-  br i1 %cmp.i.not.i.i, label %invoke.cont7, label %invoke.cont4.i.i, !llvm.loop !27
+  br i1 %cmp.i.not.i.i, label %invoke.cont7.loopexit, label %invoke.cont4.i.i, !llvm.loop !27
 
-invoke.cont7:                                     ; preds = %invoke.cont4.i.i
+invoke.cont7.loopexit:                            ; preds = %invoke.cont4.i.i
   %.pre = load ptr, ptr %this, align 8, !tbaa !18
   %.pre21 = load ptr, ptr %__end_.i, align 8, !tbaa !18
-  store ptr %incdec.ptr.i.i.i.i.i.i, ptr %this, align 8, !tbaa !18
+  br label %invoke.cont7
+
+invoke.cont7:                                     ; preds = %invoke.cont7.loopexit, %invoke.cont
+  %11 = phi ptr [ %5, %invoke.cont ], [ %.pre21, %invoke.cont7.loopexit ]
+  %12 = phi ptr [ %6, %invoke.cont ], [ %.pre, %invoke.cont7.loopexit ]
+  %retval.sroa.2.0.copyload.i.i = phi ptr [ %add.ptr.i, %invoke.cont ], [ %incdec.ptr.i.i.i.i.i.i, %invoke.cont7.loopexit ]
+  store ptr %retval.sroa.2.0.copyload.i.i, ptr %this, align 8, !tbaa !18
   store ptr %incdec.ptr, ptr %__end_.i, align 8, !tbaa !18
   store ptr %add.ptr6.i, ptr %__end_cap_.i, align 8, !tbaa !18
-  %cmp.not4.i.i.i.i = icmp eq ptr %.pre21, %.pre
+  %cmp.not4.i.i.i.i = icmp eq ptr %11, %12
   br i1 %cmp.not4.i.i.i.i, label %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i, label %while.body.i.i.i.i
 
 while.body.i.i.i.i:                               ; preds = %invoke.cont7, %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i
-  %11 = phi ptr [ %incdec.ptr.i.i.i.i, %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i ], [ %.pre21, %invoke.cont7 ]
-  %incdec.ptr.i.i.i.i = getelementptr inbounds %class.BigInt, ptr %11, i64 -1
-  %12 = load ptr, ptr %incdec.ptr.i.i.i.i, align 8, !tbaa !17
-  %cmp.not.i.i.i.i.i.i.i.i.i = icmp eq ptr %12, null
+  %13 = phi ptr [ %incdec.ptr.i.i.i.i, %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i ], [ %11, %invoke.cont7 ]
+  %incdec.ptr.i.i.i.i = getelementptr inbounds %class.BigInt, ptr %13, i64 -1
+  %14 = load ptr, ptr %incdec.ptr.i.i.i.i, align 8, !tbaa !17
+  %cmp.not.i.i.i.i.i.i.i.i.i = icmp eq ptr %14, null
   br i1 %cmp.not.i.i.i.i.i.i.i.i.i, label %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i, label %if.then.i.i.i.i.i.i.i.i.i
 
 if.then.i.i.i.i.i.i.i.i.i:                        ; preds = %while.body.i.i.i.i
-  %__end_.i.i.i.i.i.i.i.i.i.i.i = getelementptr %class.BigInt, ptr %11, i64 -1, i32 0, i32 1
-  store ptr %12, ptr %__end_.i.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !13
-  tail call void @_ZdlPv(ptr noundef nonnull %12) #24
+  %__end_.i.i.i.i.i.i.i.i.i.i.i = getelementptr %class.BigInt, ptr %13, i64 -1, i32 0, i32 1
+  store ptr %14, ptr %__end_.i.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !13
+  tail call void @_ZdlPv(ptr noundef nonnull %14) #24
   br label %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i
 
 _ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i: ; preds = %if.then.i.i.i.i.i.i.i.i.i, %while.body.i.i.i.i
-  %cmp.not.i.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i, %.pre
+  %cmp.not.i.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i, %12
   br i1 %cmp.not.i.i.i.i, label %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i, label %while.body.i.i.i.i
 
-_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i: ; preds = %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i, %invoke.cont7.thread, %invoke.cont7
-  %13 = phi ptr [ %.pre21, %invoke.cont7 ], [ %5, %invoke.cont7.thread ], [ %.pre, %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i ]
-  %tobool.not.i = icmp eq ptr %13, null
+_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i: ; preds = %_ZNSt3__116allocator_traitsINS_9allocatorI6BigIntEEE7destroyB7v170000IS2_vEEvRS3_PT_.exit.i.i.i.i, %invoke.cont7
+  %tobool.not.i = icmp eq ptr %12, null
   br i1 %tobool.not.i, label %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEED2Ev.exit, label %if.then.i20
 
 if.then.i20:                                      ; preds = %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %13) #24
+  tail call void @_ZdlPv(ptr noundef nonnull %12) #24
   br label %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEED2Ev.exit
 
 _ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEED2Ev.exit: ; preds = %_ZNSt3__114__split_bufferI6BigIntRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i, %if.then.i20

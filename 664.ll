@@ -1908,7 +1908,7 @@ cleanup:                                          ; preds = %if.end6
 while.end:                                        ; preds = %cleanup, %if.else, %if.end6, %entry
   %TermR.addr.2.val96 = phi i32 [ %TermR.addr.0.val90119, %entry ], [ %TermR.addr.0.val90123, %if.end6 ], [ %TermR.addr.0.val90123, %if.else ], [ %TermR.addr.0.val90, %cleanup ]
   %TermR.addr.0.lcssa = phi ptr [ %TermR, %entry ], [ %TermR.addr.0121, %if.end6 ], [ %TermR.addr.0121, %if.else ], [ %3, %cleanup ]
-  %CtR.addr.3 = phi ptr [ %CtR, %entry ], [ %CtR.addr.1, %if.end6 ], [ %0, %if.else ], [ %4, %cleanup ]
+  %CtR.addr.3 = phi ptr [ %CtR, %entry ], [ %CtR.addr.1, %if.end6 ], [ %CtR.addr.0122, %if.else ], [ %4, %cleanup ]
   %TermL.val89 = load i32, ptr %TermL, align 8
   %cmp.i.i98 = icmp slt i32 %TermL.val89, 1
   br i1 %cmp.i.i98, label %if.else29, label %if.then16
@@ -2029,7 +2029,7 @@ cleanup:                                          ; preds = %if.end6
 while.end:                                        ; preds = %cleanup, %if.else, %if.end6, %entry
   %TermR.addr.2.val121 = phi i32 [ %TermR.addr.0.val124171, %entry ], [ %TermR.addr.0.val124175, %if.end6 ], [ %TermR.addr.0.val124175, %if.else ], [ %TermR.addr.0.val124, %cleanup ]
   %TermR.addr.0.lcssa = phi ptr [ %TermR, %entry ], [ %TermR.addr.0173, %if.end6 ], [ %TermR.addr.0173, %if.else ], [ %3, %cleanup ]
-  %CtR.addr.3 = phi ptr [ %CtR, %entry ], [ %CtR.addr.1, %if.end6 ], [ %0, %if.else ], [ %4, %cleanup ]
+  %CtR.addr.3 = phi ptr [ %CtR, %entry ], [ %CtR.addr.1, %if.end6 ], [ %CtR.addr.0174, %if.else ], [ %4, %cleanup ]
   %TermL.val123 = load i32, ptr %TermL, align 8
   %cmp.i.i138 = icmp slt i32 %TermL.val123, 1
   br i1 %cmp.i.i138, label %if.else40, label %if.then16

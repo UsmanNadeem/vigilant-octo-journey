@@ -2739,7 +2739,7 @@ sw.epilog.i:                                      ; preds = %cont_Reset.exit.i, 
   br label %cleanup
 
 cleanup:                                          ; preds = %entry, %sw.epilog.i, %if.then5, %st_Exist.exit, %if.then
-  %retval.0 = phi ptr [ %call4, %if.then ], [ null, %st_Exist.exit ], [ null, %if.then5 ], [ null, %sw.epilog.i ], [ null, %entry ]
+  %retval.0 = phi ptr [ %call4, %if.then ], [ null, %st_Exist.exit ], [ null, %if.then5 ], [ %call4, %sw.epilog.i ], [ null, %entry ]
   ret ptr %retval.0
 }
 
@@ -3087,7 +3087,7 @@ sw.epilog.i:                                      ; preds = %cont_Reset.exit.i, 
   br label %cleanup
 
 cleanup:                                          ; preds = %entry, %sw.epilog.i, %if.then6, %st_Exist.exit, %if.then
-  %retval.0 = phi ptr [ %call5, %if.then ], [ null, %st_Exist.exit ], [ null, %if.then6 ], [ null, %sw.epilog.i ], [ null, %entry ]
+  %retval.0 = phi ptr [ %call5, %if.then ], [ null, %st_Exist.exit ], [ null, %if.then6 ], [ %call5, %sw.epilog.i ], [ null, %entry ]
   ret ptr %retval.0
 }
 
@@ -3438,7 +3438,7 @@ sw.epilog.i:                                      ; preds = %cont_Reset.exit.i, 
   br label %cleanup
 
 cleanup:                                          ; preds = %entry, %sw.epilog.i, %if.then7, %st_Exist.exit, %if.then
-  %retval.0 = phi ptr [ %call5, %if.then ], [ null, %st_Exist.exit ], [ null, %if.then7 ], [ null, %sw.epilog.i ], [ null, %entry ]
+  %retval.0 = phi ptr [ %call5, %if.then ], [ null, %st_Exist.exit ], [ null, %if.then7 ], [ %call5, %sw.epilog.i ], [ null, %entry ]
   ret ptr %retval.0
 }
 
@@ -3793,7 +3793,7 @@ sw.epilog.i:                                      ; preds = %cont_Reset.exit.i, 
   br label %cleanup
 
 cleanup:                                          ; preds = %entry, %sw.epilog.i, %if.then5, %st_Exist.exit, %if.then
-  %retval.0 = phi ptr [ %call4, %if.then ], [ null, %st_Exist.exit ], [ null, %if.then5 ], [ null, %sw.epilog.i ], [ null, %entry ]
+  %retval.0 = phi ptr [ %call4, %if.then ], [ null, %st_Exist.exit ], [ null, %if.then5 ], [ %call4, %sw.epilog.i ], [ null, %entry ]
   ret ptr %retval.0
 }
 
@@ -4144,7 +4144,7 @@ sw.epilog.i:                                      ; preds = %cont_Reset.exit.i, 
   br label %cleanup
 
 cleanup:                                          ; preds = %entry, %sw.epilog.i, %if.then7, %st_Exist.exit, %if.then
-  %retval.0 = phi ptr [ %call5, %if.then ], [ null, %st_Exist.exit ], [ null, %if.then7 ], [ null, %sw.epilog.i ], [ null, %entry ]
+  %retval.0 = phi ptr [ %call5, %if.then ], [ null, %st_Exist.exit ], [ null, %if.then7 ], [ %call5, %sw.epilog.i ], [ null, %entry ]
   ret ptr %retval.0
 }
 
@@ -4534,7 +4534,7 @@ sw.epilog.i:                                      ; preds = %cont_Reset.exit.i, 
   br label %cleanup
 
 cleanup:                                          ; preds = %sw.epilog.i, %if.then22, %if.end, %if.then
-  %retval.0 = phi ptr [ %call.val, %if.then ], [ %NewResult.1, %if.end ], [ null, %if.then22 ], [ null, %sw.epilog.i ]
+  %retval.0 = phi ptr [ %call.val, %if.then ], [ %NewResult.1, %if.end ], [ null, %if.then22 ], [ %NewResult.1, %sw.epilog.i ]
   ret ptr %retval.0
 }
 

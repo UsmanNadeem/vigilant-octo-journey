@@ -1484,7 +1484,7 @@ delete.notnull:                                   ; preds = %if.then24
   br label %if.end36
 
 if.end36:                                         ; preds = %if.then24, %delete.notnull, %if.then9, %lor.lhs.false, %land.lhs.true22, %if.end4
-  %exp.1 = phi ptr [ %call12, %land.lhs.true22 ], [ %call12, %lor.lhs.false ], [ %call12, %if.then9 ], [ %this, %if.end4 ], [ %call27, %delete.notnull ], [ %call12, %if.then24 ]
+  %exp.1 = phi ptr [ %call12, %land.lhs.true22 ], [ %call12, %lor.lhs.false ], [ %call12, %if.then9 ], [ %call7, %if.end4 ], [ %call27, %delete.notnull ], [ %call12, %if.then24 ]
   %call37 = call noundef ptr @_ZN8var_node13reduce_numberEv(ptr noundef nonnull align 8 dereferenceable(24) %this)
   %tobool38.not = icmp eq ptr %call37, null
   br i1 %tobool38.not, label %if.end48, label %if.then39
@@ -5510,7 +5510,7 @@ if.end5.i413:                                     ; preds = %delete.notnull.i412
   br label %_ZN8app_node9set_rightEP8exp_nodes.exit418
 
 _ZN8app_node9set_rightEP8exp_nodes.exit418:       ; preds = %if.then252, %if.end5.i413
-  %90 = phi ptr [ %call259, %if.then252 ], [ %.pre, %if.end5.i413 ]
+  %90 = phi ptr [ %87, %if.then252 ], [ %.pre, %if.end5.i413 ]
   %vtable261 = load ptr, ptr %90, align 8, !tbaa !12
   %vfn262 = getelementptr inbounds ptr, ptr %vtable261, i64 13
   %91 = load ptr, ptr %vfn262, align 8

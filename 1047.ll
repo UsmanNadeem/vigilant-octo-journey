@@ -608,7 +608,7 @@ for.inc198:                                       ; preds = %for.cond172, %land.
   br i1 %cmp166.not, label %for.end202, label %for.cond172.preheader, !llvm.loop !23
 
 for.end202:                                       ; preds = %for.inc198, %land.lhs.true189, %for.cond165.preheader
-  %lp.0.lcssa = phi ptr [ %tlink.0, %for.cond165.preheader ], [ %lp.01638, %land.lhs.true189 ], [ %tlink.0, %for.inc198 ]
+  %lp.0.lcssa = phi ptr [ %lp.01636, %for.cond165.preheader ], [ %lp.01638, %land.lhs.true189 ], [ %lp.0, %for.inc198 ]
   %cmp166.not.lcssa = phi i1 [ true, %for.cond165.preheader ], [ false, %land.lhs.true189 ], [ true, %for.inc198 ]
   %rp.01644 = load ptr, ptr %osucc97, align 8, !tbaa !5
   %cmp207.not1645 = icmp eq ptr %rp.01644, %tlink.0
@@ -652,6 +652,7 @@ for.inc239:                                       ; preds = %for.cond213, %land.
   br i1 %cmp207.not, label %for.end243, label %for.cond213.preheader, !llvm.loop !24
 
 for.end243:                                       ; preds = %for.inc239, %for.end202
+  %rp.0.lcssa = phi ptr [ %rp.01644, %for.end202 ], [ %rp.0, %for.inc239 ]
   %32 = load i32, ptr %b.addr, align 4, !tbaa !19
   store i32 %32, ptr %arrayidx, align 4, !tbaa !5
   %33 = load i32, ptr %f.addr, align 4, !tbaa !19
@@ -677,7 +678,7 @@ if.then264:                                       ; preds = %land.lhs.true257
   br label %if.end383
 
 if.else293:                                       ; preds = %for.end243.thread, %land.lhs.true257, %for.end243
-  %rp.0.lcssa1758 = phi ptr [ %rp.01646, %for.end243.thread ], [ %tlink.0, %land.lhs.true257 ], [ %tlink.0, %for.end243 ]
+  %rp.0.lcssa1758 = phi ptr [ %rp.01646, %for.end243.thread ], [ %rp.0.lcssa, %land.lhs.true257 ], [ %rp.0.lcssa, %for.end243 ]
   %link.1.in1652 = getelementptr inbounds %struct.LIST, ptr %lp.0.lcssa, i64 0, i32 1
   %link.11653 = load ptr, ptr %link.1.in1652, align 8, !tbaa !5
   %cmp298.not1654 = icmp eq ptr %link.11653, %rp.0.lcssa1758
@@ -1382,7 +1383,7 @@ for.inc833:                                       ; preds = %for.cond807, %land.
   br i1 %cmp801.not, label %for.end837, label %for.cond807.preheader, !llvm.loop !26
 
 for.end837:                                       ; preds = %for.inc833, %land.lhs.true824, %for.cond800.preheader
-  %lp.1.lcssa = phi ptr [ %tlink.0, %for.cond800.preheader ], [ %lp.11615, %land.lhs.true824 ], [ %tlink.0, %for.inc833 ]
+  %lp.1.lcssa = phi ptr [ %lp.11613, %for.cond800.preheader ], [ %lp.11615, %land.lhs.true824 ], [ %lp.1, %for.inc833 ]
   %cmp801.not.lcssa = phi i1 [ true, %for.cond800.preheader ], [ false, %land.lhs.true824 ], [ true, %for.inc833 ]
   %rp.11620 = load ptr, ptr %osucc97, align 8, !tbaa !5
   %cmp842.not1621 = icmp eq ptr %rp.11620, %tlink.0
@@ -1426,6 +1427,7 @@ for.inc874:                                       ; preds = %for.cond848, %land.
   br i1 %cmp842.not, label %for.end878, label %for.cond848.preheader, !llvm.loop !27
 
 for.end878:                                       ; preds = %for.inc874, %for.end837
+  %rp.1.lcssa = phi ptr [ %rp.11620, %for.end837 ], [ %rp.1, %for.inc874 ]
   %180 = load i32, ptr %b.addr, align 4, !tbaa !19
   store i32 %180, ptr %arrayidx, align 4, !tbaa !5
   %181 = load i32, ptr %f.addr, align 4, !tbaa !19
@@ -1435,7 +1437,7 @@ for.end878:                                       ; preds = %for.inc874, %for.en
   br i1 %cmp801.not.lcssa, label %if.then892, label %for.cond925.preheader
 
 for.cond925.preheader:                            ; preds = %for.end878.thread, %for.end878
-  %rp.1.lcssa1764 = phi ptr [ %rp.11622, %for.end878.thread ], [ %tlink.0, %for.end878 ]
+  %rp.1.lcssa1764 = phi ptr [ %rp.11622, %for.end878.thread ], [ %rp.1.lcssa, %for.end878 ]
   %link.2.in1628 = getelementptr inbounds %struct.LIST, ptr %lp.1.lcssa, i64 0, i32 1
   %link.21629 = load ptr, ptr %link.2.in1628, align 8, !tbaa !5
   %cmp926.not1630 = icmp eq ptr %link.21629, %rp.1.lcssa1764

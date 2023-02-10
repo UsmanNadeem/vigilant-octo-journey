@@ -382,7 +382,7 @@ _ZNSt3__14sortB7v170000INS_11__wrap_iterIPNS_4pairIPKciEEEEEEvT_S8_.exit: ; pred
   br i1 %cmp46101.not, label %for.cond.cleanup, label %for.body
 
 for.cond.cleanup:                                 ; preds = %for.body, %_ZNSt3__14sortB7v170000INS_11__wrap_iterIPNS_4pairIPKciEEEEEEvT_S8_.exit
-  %.lcssa = phi ptr [ %20, %_ZNSt3__14sortB7v170000INS_11__wrap_iterIPNS_4pairIPKciEEEEEEvT_S8_.exit ], [ %30, %for.body ]
+  %.lcssa = phi ptr [ %21, %_ZNSt3__14sortB7v170000INS_11__wrap_iterIPNS_4pairIPKciEEEEEEvT_S8_.exit ], [ %30, %for.body ]
   %cmp.not.i.i = icmp eq ptr %.lcssa, null
   br i1 %cmp.not.i.i, label %_ZNSt3__16vectorINS_4pairIPKciEENS_9allocatorIS4_EEED2B7v170000Ev.exit, label %if.then.i.i79
 
@@ -695,7 +695,7 @@ _ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit: ; 
   br label %if.end
 
 if.end:                                           ; preds = %_ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit, %if.else
-  %12 = phi ptr [ %0, %if.else ], [ %.pre191, %_ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit ]
+  %12 = phi ptr [ %3, %if.else ], [ %.pre191, %_ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit ]
   %13 = phi ptr [ %2, %if.else ], [ %.pre190, %_ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit ]
   %14 = phi ptr [ %0, %if.else ], [ %7, %_ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit ]
   %__is_black_31 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %14, i64 0, i32 3
@@ -739,14 +739,13 @@ land.lhs.true41:                                  ; preds = %if.else36
   br i1 %tobool43.not, label %if.end70, label %if.else54
 
 if.else54:                                        ; preds = %land.lhs.true41, %if.else36
-  %__parent_.i.le = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %__x.addr.0183, i64 0, i32 2
-  %__parent_.i117.le202 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %0, i64 0, i32 2
+  %__parent_.i117.le201 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %0, i64 0, i32 2
   %20 = load ptr, ptr %0, align 8, !tbaa !21
   %cmp.i143 = icmp eq ptr %20, %__x.addr.0183
   br i1 %cmp.i143, label %if.then56, label %if.end59
 
 if.then56:                                        ; preds = %if.else54
-  %__right_.i146 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %__x.addr.0183, i64 0, i32 1
+  %__right_.i146 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %20, i64 0, i32 1
   %21 = load ptr, ptr %__right_.i146, align 8, !tbaa !47
   store ptr %21, ptr %0, align 8, !tbaa !21
   %cmp5.not.i147 = icmp eq ptr %21, null
@@ -755,26 +754,27 @@ if.then56:                                        ; preds = %if.else54
 if.then.i149:                                     ; preds = %if.then56
   %__parent_.i.i148 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %21, i64 0, i32 2
   store ptr %0, ptr %__parent_.i.i148, align 8, !tbaa !31
-  %.pre = load ptr, ptr %__parent_.i117.le202, align 8, !tbaa !31
+  %.pre = load ptr, ptr %__parent_.i117.le201, align 8, !tbaa !31
   br label %_ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit155
 
 _ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit155: ; preds = %if.then56, %if.then.i149
   %22 = phi ptr [ %2, %if.then56 ], [ %.pre, %if.then.i149 ]
-  store ptr %22, ptr %__parent_.i.le, align 8, !tbaa !31
-  %23 = load ptr, ptr %__parent_.i117.le202, align 8, !tbaa !31
+  %__parent_7.i151 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %20, i64 0, i32 2
+  store ptr %22, ptr %__parent_7.i151, align 8, !tbaa !31
+  %23 = load ptr, ptr %__parent_.i117.le201, align 8, !tbaa !31
   %24 = load ptr, ptr %23, align 8, !tbaa !21
   %cmp.i.i152 = icmp eq ptr %24, %0
   %__right_12.i153 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %23, i64 0, i32 1
   %__right_12.sink.i154 = select i1 %cmp.i.i152, ptr %23, ptr %__right_12.i153
-  store ptr %__x.addr.0183, ptr %__right_12.sink.i154, align 8, !tbaa !13
+  store ptr %20, ptr %__right_12.sink.i154, align 8, !tbaa !13
   store ptr %0, ptr %__right_.i146, align 8, !tbaa !47
-  store ptr %__x.addr.0183, ptr %__parent_.i117.le202, align 8, !tbaa !31
-  %.pre188 = load ptr, ptr %__parent_.i.le, align 8, !tbaa !31
+  store ptr %20, ptr %__parent_.i117.le201, align 8, !tbaa !31
+  %.pre188 = load ptr, ptr %__parent_7.i151, align 8, !tbaa !31
   br label %if.end59
 
 if.end59:                                         ; preds = %_ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit155, %if.else54
   %25 = phi ptr [ %.pre188, %_ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit155 ], [ %2, %if.else54 ]
-  %26 = phi ptr [ %__x.addr.0183, %_ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit155 ], [ %0, %if.else54 ]
+  %26 = phi ptr [ %20, %_ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit155 ], [ %0, %if.else54 ]
   %__is_black_62 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %26, i64 0, i32 3
   store i8 1, ptr %__is_black_62, align 8, !tbaa !52
   %__is_black_65 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %25, i64 0, i32 3
@@ -1036,7 +1036,7 @@ do.body.backedge.i:                               ; preds = %_ZNKSt3__16__lessIN
   br i1 %cmp7.not.i, label %do.end.i, label %land.rhs.i, !llvm.loop !59
 
 do.end.i:                                         ; preds = %do.body.backedge.i, %_ZNKSt3__16__lessINS_4pairIPKciEES4_EclB7v170000ERKS4_S7_.exit32.i, %cond.true.i.i27.i, %if.then3.i
-  %__k.0.lcssa40.i = phi ptr [ %__first.addr.0, %if.then3.i ], [ %__k.044.i, %_ZNKSt3__16__lessINS_4pairIPKciEES4_EclB7v170000ERKS4_S7_.exit32.i ], [ %__first.addr.0, %do.body.backedge.i ], [ %__k.044.i, %cond.true.i.i27.i ]
+  %__k.0.lcssa40.i = phi ptr [ %__first.pn52.i, %if.then3.i ], [ %__k.044.i, %_ZNKSt3__16__lessINS_4pairIPKciEES4_EclB7v170000ERKS4_S7_.exit32.i ], [ %incdec.ptr8.i, %do.body.backedge.i ], [ %__k.044.i, %cond.true.i.i27.i ]
   %second.i.le.i = getelementptr inbounds %"struct.std::__1::pair.4", ptr %__k.0.lcssa40.i, i64 0, i32 1
   store ptr %__t.sroa.0.0.copyload.i, ptr %__k.0.lcssa40.i, align 8, !tbaa !45
   store i32 %6, ptr %second.i.le.i, align 8, !tbaa !43
@@ -1920,7 +1920,7 @@ do.body.backedge:                                 ; preds = %cond.true.i.i70.do.
   br i1 %cmp21.not, label %do.end, label %land.rhs, !llvm.loop !79
 
 do.end:                                           ; preds = %_ZNKSt3__16__lessINS_4pairIPKciEES4_EclB7v170000ERKS4_S7_.exit75, %do.body.backedge, %cond.true.i.i70, %if.then17
-  %__k.0.lcssa91 = phi ptr [ %__first, %if.then17 ], [ %__k.095, %cond.true.i.i70 ], [ %__first, %do.body.backedge ], [ %__k.095, %_ZNKSt3__16__lessINS_4pairIPKciEES4_EclB7v170000ERKS4_S7_.exit75 ]
+  %__k.0.lcssa91 = phi ptr [ %__j.0103, %if.then17 ], [ %__k.095, %cond.true.i.i70 ], [ %incdec.ptr22, %do.body.backedge ], [ %__k.095, %_ZNKSt3__16__lessINS_4pairIPKciEES4_EclB7v170000ERKS4_S7_.exit75 ]
   %second.i.le = getelementptr inbounds %"struct.std::__1::pair.4", ptr %__k.0.lcssa91, i64 0, i32 1
   store ptr %__t.sroa.0.0.copyload, ptr %__k.0.lcssa91, align 8, !tbaa !45
   store i32 %6, ptr %second.i.le, align 8, !tbaa !43

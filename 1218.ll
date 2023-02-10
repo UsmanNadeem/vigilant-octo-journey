@@ -49,43 +49,43 @@ for.end66.us.us:                                  ; preds = %for.inc62.us.us
   br i1 %cmp69.not.us.us, label %for.cond73.preheader.us.us, label %if.then71
 
 for.cond73.us.us:                                 ; preds = %for.cond73.preheader.us.us
-  %q.2.us.us = getelementptr inbounds i8, ptr %indvars.iv157, i64 3
+  %q.2.us.us = getelementptr inbounds i8, ptr %q.1136.us.us, i64 3
   %4 = load i8, ptr %q.2.us.us, align 1, !tbaa !5
   %cmp79.not.us.us.1 = icmp eq i8 %4, 97
   br i1 %cmp79.not.us.us.1, label %for.cond73.us.us.1, label %if.then81
 
 for.cond73.us.us.1:                               ; preds = %for.cond73.us.us
-  %q.2.us.us.1 = getelementptr inbounds i8, ptr %indvars.iv157, i64 4
+  %q.2.us.us.1 = getelementptr inbounds i8, ptr %q.1136.us.us, i64 4
   %5 = load i8, ptr %q.2.us.us.1, align 1, !tbaa !5
   %cmp79.not.us.us.2 = icmp eq i8 %5, 97
   br i1 %cmp79.not.us.us.2, label %for.cond73.us.us.2, label %if.then81
 
 for.cond73.us.us.2:                               ; preds = %for.cond73.us.us.1
-  %q.2.us.us.2 = getelementptr inbounds i8, ptr %indvars.iv157, i64 5
+  %q.2.us.us.2 = getelementptr inbounds i8, ptr %q.1136.us.us, i64 5
   %6 = load i8, ptr %q.2.us.us.2, align 1, !tbaa !5
   %cmp79.not.us.us.3 = icmp eq i8 %6, 97
   br i1 %cmp79.not.us.us.3, label %for.cond73.us.us.3, label %if.then81
 
 for.cond73.us.us.3:                               ; preds = %for.cond73.us.us.2
-  %q.2.us.us.3 = getelementptr inbounds i8, ptr %indvars.iv157, i64 6
+  %q.2.us.us.3 = getelementptr inbounds i8, ptr %q.1136.us.us, i64 6
   %7 = load i8, ptr %q.2.us.us.3, align 1, !tbaa !5
   %cmp79.not.us.us.4 = icmp eq i8 %7, 97
   br i1 %cmp79.not.us.us.4, label %for.cond73.us.us.4, label %if.then81
 
 for.cond73.us.us.4:                               ; preds = %for.cond73.us.us.3
-  %q.2.us.us.4 = getelementptr inbounds i8, ptr %indvars.iv157, i64 7
+  %q.2.us.us.4 = getelementptr inbounds i8, ptr %q.1136.us.us, i64 7
   %8 = load i8, ptr %q.2.us.us.4, align 1, !tbaa !5
   %cmp79.not.us.us.5 = icmp eq i8 %8, 97
   br i1 %cmp79.not.us.us.5, label %for.cond73.us.us.5, label %if.then81
 
 for.cond73.us.us.5:                               ; preds = %for.cond73.us.us.4
-  %q.2.us.us.5 = getelementptr inbounds i8, ptr %indvars.iv157, i64 8
+  %q.2.us.us.5 = getelementptr inbounds i8, ptr %q.1136.us.us, i64 8
   %9 = load i8, ptr %q.2.us.us.5, align 1, !tbaa !5
   %cmp79.not.us.us.6 = icmp eq i8 %9, 97
   br i1 %cmp79.not.us.us.6, label %for.cond73.us.us.6, label %if.then81
 
 for.cond73.us.us.6:                               ; preds = %for.cond73.us.us.5
-  %q.2.us.us.6 = getelementptr inbounds i8, ptr %indvars.iv157, i64 9
+  %q.2.us.us.6 = getelementptr inbounds i8, ptr %q.1136.us.us, i64 9
   %10 = load i8, ptr %q.2.us.us.6, align 1, !tbaa !5
   %cmp79.not.us.us.7 = icmp eq i8 %10, 97
   br i1 %cmp79.not.us.us.7, label %for.cond73.us.us.7, label %if.then81
@@ -156,7 +156,7 @@ for.body16.us.us.1:                               ; preds = %for.body16.us.us
   br label %for.body16.us.us
 
 for.cond73.preheader.us.us:                       ; preds = %for.end66.us.us
-  %q.2138.us.us = getelementptr inbounds i8, ptr %indvars.iv157, i64 2
+  %q.2138.us.us = getelementptr inbounds i8, ptr %q.1136.us.us, i64 2
   %13 = load i8, ptr %q.2138.us.us, align 1, !tbaa !5
   %cmp79.not.us.us = icmp eq i8 %13, 97
   br i1 %cmp79.not.us.us, label %for.cond73.us.us, label %if.then81

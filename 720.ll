@@ -63,20 +63,22 @@ if.end7.i:                                        ; preds = %if.else3.i, %land.l
   %2 = load ptr, ptr @yystack.2, align 8, !tbaa !14
   %conv9.i = zext i32 %newsize.0.i to i64
   %mul10.i = shl nuw nsw i64 %conv9.i, 1
-  %malloc = tail call ptr @malloc(i64 %mul10.i)
-  %cmp11.i = icmp eq ptr %malloc, null
+  %call.i = tail call ptr @realloc(ptr noundef %0, i64 noundef %mul10.i) #4
+  %cmp11.i = icmp eq ptr %call.i, null
   br i1 %cmp11.i, label %yyoverflow, label %if.end14.i
 
 if.end14.i:                                       ; preds = %if.end7.i
   %sub.ptr.lhs.cast.i = ptrtoint ptr %2 to i64
-  store ptr %malloc, ptr @yystack.1, align 8, !tbaa !9
-  %sext.i = shl i64 %sub.ptr.lhs.cast.i, 31
+  %sub.ptr.rhs.cast.i = ptrtoint ptr %0 to i64
+  %sub.ptr.sub.i = sub i64 %sub.ptr.lhs.cast.i, %sub.ptr.rhs.cast.i
+  store ptr %call.i, ptr @yystack.1, align 8, !tbaa !9
+  %sext.i = shl i64 %sub.ptr.sub.i, 31
   %idx.ext.i = ashr i64 %sext.i, 32
-  %add.ptr.i = getelementptr inbounds i16, ptr %malloc, i64 %idx.ext.i
+  %add.ptr.i = getelementptr inbounds i16, ptr %call.i, i64 %idx.ext.i
   store ptr %add.ptr.i, ptr @yystack.2, align 8, !tbaa !14
   %3 = load ptr, ptr @yystack.4, align 8, !tbaa !12
   %mul18.i = shl nuw nsw i64 %conv9.i, 3
-  %call19.i = tail call ptr @realloc(ptr noundef %3, i64 noundef %mul18.i) #5
+  %call19.i = tail call ptr @realloc(ptr noundef %3, i64 noundef %mul18.i) #4
   %cmp20.i = icmp eq ptr %call19.i, null
   br i1 %cmp20.i, label %yyoverflow, label %yygrowstack.exit
 
@@ -123,7 +125,7 @@ if.end4.peel:                                     ; preds = %if.end4.lr.ph
   br i1 %cmp5.peel, label %if.then7.peel, label %if.end13.peel
 
 if.then7.peel:                                    ; preds = %if.end4.peel
-  %call8.peel = tail call i32 @yylex() #6
+  %call8.peel = tail call i32 @yylex() #5
   %spec.store.select.peel = tail call i32 @llvm.smax.i32(i32 %call8.peel, i32 0)
   store i32 %spec.store.select.peel, ptr @yychar, align 4
   br label %if.end13.peel
@@ -153,7 +155,7 @@ if.end70.peel:                                    ; preds = %land.lhs.true60.pee
   br i1 %tobool71.not.peel, label %if.end73.peel, label %yyinrecovery.peel
 
 if.end73.peel:                                    ; preds = %if.end70.peel
-  tail call void @yyerror(ptr noundef nonnull @.str) #6
+  tail call void @yyerror(ptr noundef nonnull @.str) #5
   %17 = load i32, ptr @yynerrs, align 4, !tbaa !5
   %inc.peel = add nsw i32 %17, 1
   store i32 %inc.peel, ptr @yynerrs, align 4, !tbaa !5
@@ -179,7 +181,7 @@ if.end4.us.peel:                                  ; preds = %if.end4.lr.ph
   br i1 %cmp5.us.peel, label %if.then7.us.peel, label %if.end13.us.peel
 
 if.then7.us.peel:                                 ; preds = %if.end4.us.peel
-  %call8.us.peel = tail call i32 @yylex() #6
+  %call8.us.peel = tail call i32 @yylex() #5
   %spec.store.select.us.peel = tail call i32 @llvm.smax.i32(i32 %call8.us.peel, i32 0)
   store i32 %spec.store.select.us.peel, ptr @yychar, align 4
   br label %if.end13.us.peel
@@ -224,7 +226,7 @@ if.end70.us.peel:                                 ; preds = %land.lhs.true60.us.
   br i1 %tobool71.not.us.peel, label %if.end73.us.peel, label %yyinrecovery.us.peel
 
 if.end73.us.peel:                                 ; preds = %if.end70.us.peel
-  tail call void @yyerror(ptr noundef nonnull @.str) #6
+  tail call void @yyerror(ptr noundef nonnull @.str) #5
   %26 = load i32, ptr @yynerrs, align 4, !tbaa !5
   %inc.us.peel = add nsw i32 %26, 1
   store i32 %inc.us.peel, ptr @yynerrs, align 4, !tbaa !5
@@ -246,7 +248,7 @@ if.end120.us.peel:                                ; preds = %if.else116.us.peel
   br label %if.end4.us
 
 if.end4.us:                                       ; preds = %if.end120.us.peel, %if.end120.us
-  %call8.us = tail call i32 @yylex() #6
+  %call8.us = tail call i32 @yylex() #5
   %spec.store.select.us = tail call i32 @llvm.smax.i32(i32 %call8.us, i32 0)
   store i32 %spec.store.select.us, ptr @yychar, align 4
   %29 = load i16, ptr %arrayidx15, align 2, !tbaa !17
@@ -287,7 +289,7 @@ if.end70.us:                                      ; preds = %land.lhs.true60.us,
   br i1 %tobool71.not.us, label %if.end73.us, label %yyinrecovery.us
 
 if.end73.us:                                      ; preds = %if.end70.us
-  tail call void @yyerror(ptr noundef nonnull @.str) #6
+  tail call void @yyerror(ptr noundef nonnull @.str) #5
   %34 = load i32, ptr @yynerrs, align 4, !tbaa !5
   %inc.us = add nsw i32 %34, 1
   store i32 %inc.us, ptr @yynerrs, align 4, !tbaa !5
@@ -321,7 +323,7 @@ if.then30.split.us.if.end37_crit_edge:            ; preds = %if.then30.split.us
   br label %if.end37
 
 if.end4:                                          ; preds = %if.end120.peel, %if.end120
-  %call8 = tail call i32 @yylex() #6
+  %call8 = tail call i32 @yylex() #5
   %spec.store.select = tail call i32 @llvm.smax.i32(i32 %call8, i32 0)
   store i32 %spec.store.select, ptr @yychar, align 4
   br i1 %tobool52.not.not, label %land.lhs.true53, label %if.end70
@@ -345,7 +347,7 @@ if.end7.i316:                                     ; preds = %if.else3.i310, %lan
   %40 = load ptr, ptr @yystack.1, align 8, !tbaa !9
   %conv9.i312 = zext i32 %newsize.0.i311 to i64
   %mul10.i313 = shl nuw nsw i64 %conv9.i312, 1
-  %call.i314 = tail call ptr @realloc(ptr noundef %40, i64 noundef %mul10.i313) #5
+  %call.i314 = tail call ptr @realloc(ptr noundef %40, i64 noundef %mul10.i313) #4
   %cmp11.i315 = icmp eq ptr %call.i314, null
   br i1 %cmp11.i315, label %yyoverflow, label %if.end14.i326
 
@@ -360,7 +362,7 @@ if.end14.i326:                                    ; preds = %if.end7.i316
   store ptr %add.ptr.i322, ptr @yystack.2, align 8, !tbaa !14
   %41 = load ptr, ptr @yystack.4, align 8, !tbaa !12
   %mul18.i323 = shl nuw nsw i64 %conv9.i312, 3
-  %call19.i324 = tail call ptr @realloc(ptr noundef %41, i64 noundef %mul18.i323) #5
+  %call19.i324 = tail call ptr @realloc(ptr noundef %41, i64 noundef %mul18.i323) #4
   %cmp20.i325 = icmp eq ptr %call19.i324, null
   br i1 %cmp20.i325, label %yyoverflow, label %yygrowstack.exit332
 
@@ -429,7 +431,7 @@ if.end70:                                         ; preds = %land.lhs.true60, %l
   br i1 %tobool71.not, label %if.end73, label %yyinrecovery
 
 if.end73:                                         ; preds = %if.end70
-  tail call void @yyerror(ptr noundef nonnull @.str) #6
+  tail call void @yyerror(ptr noundef nonnull @.str) #5
   %51 = load i32, ptr @yynerrs, align 4, !tbaa !5
   %inc = add nsw i32 %51, 1
   store i32 %inc, ptr @yynerrs, align 4, !tbaa !5
@@ -523,7 +525,7 @@ if.end129:                                        ; preds = %yyreduce, %if.then1
   ]
 
 sw.bb:                                            ; preds = %if.end129
-  tail call void @yyfinished() #6
+  tail call void @yyfinished() #5
   br label %sw.epilog
 
 sw.bb130:                                         ; preds = %if.end129
@@ -531,7 +533,7 @@ sw.bb130:                                         ; preds = %if.end129
   %arrayidx131 = getelementptr inbounds %union.YYSTYPE, ptr %60, i64 -2
   %61 = load ptr, ptr %arrayidx131, align 8, !tbaa !22
   %62 = load ptr, ptr %60, align 8, !tbaa !22
-  tail call void @doSpec(ptr noundef %61, ptr noundef %62) #6
+  tail call void @doSpec(ptr noundef %61, ptr noundef %62) #5
   br label %sw.epilog
 
 sw.bb133:                                         ; preds = %if.end129
@@ -543,14 +545,14 @@ sw.bb134:                                         ; preds = %if.end129
   %64 = load ptr, ptr %63, align 8, !tbaa !22
   %arrayidx136 = getelementptr inbounds %union.YYSTYPE, ptr %63, i64 -1
   %65 = load ptr, ptr %arrayidx136, align 8, !tbaa !22
-  %call137 = tail call ptr @newList(ptr noundef %64, ptr noundef %65) #6
+  %call137 = tail call ptr @newList(ptr noundef %64, ptr noundef %65) #5
   store ptr %call137, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
 sw.bb138:                                         ; preds = %if.end129
   %66 = load ptr, ptr @yystack.5, align 8, !tbaa !16
   %67 = load ptr, ptr %66, align 8, !tbaa !22
-  %call140 = tail call ptr @newArity(i32 noundef -1, ptr noundef %67) #6
+  %call140 = tail call ptr @newArity(i32 noundef -1, ptr noundef %67) #5
   store ptr %call140, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -558,14 +560,14 @@ sw.bb141:                                         ; preds = %if.end129
   store ptr null, ptr @yyval, align 8, !tbaa !22
   %68 = load ptr, ptr @yystack.5, align 8, !tbaa !16
   %69 = load ptr, ptr %68, align 8, !tbaa !22
-  tail call void (ptr, ...) @doGram(ptr noundef %69) #6
+  tail call void (ptr, ...) @doGram(ptr noundef %69) #5
   br label %sw.epilog
 
 sw.bb143:                                         ; preds = %if.end129
   store ptr null, ptr @yyval, align 8, !tbaa !22
   %70 = load ptr, ptr @yystack.5, align 8, !tbaa !16
   %71 = load ptr, ptr %70, align 8, !tbaa !22
-  tail call void @doStart(ptr noundef %71) #6
+  tail call void @doStart(ptr noundef %71) #5
   br label %sw.epilog
 
 sw.bb145:                                         ; preds = %if.end129
@@ -577,7 +579,7 @@ sw.bb146:                                         ; preds = %if.end129
   %73 = load ptr, ptr %72, align 8, !tbaa !22
   %arrayidx148 = getelementptr inbounds %union.YYSTYPE, ptr %72, i64 -1
   %74 = load ptr, ptr %arrayidx148, align 8, !tbaa !22
-  %call149 = tail call ptr @newList(ptr noundef %73, ptr noundef %74) #6
+  %call149 = tail call ptr @newList(ptr noundef %73, ptr noundef %74) #5
   store ptr %call149, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -590,7 +592,7 @@ sw.bb151:                                         ; preds = %if.end129
   %76 = load ptr, ptr %75, align 8, !tbaa !22
   %arrayidx153 = getelementptr inbounds %union.YYSTYPE, ptr %75, i64 -1
   %77 = load ptr, ptr %arrayidx153, align 8, !tbaa !22
-  %call154 = tail call ptr @newList(ptr noundef %76, ptr noundef %77) #6
+  %call154 = tail call ptr @newList(ptr noundef %76, ptr noundef %77) #5
   store ptr %call154, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -599,7 +601,7 @@ sw.bb155:                                         ; preds = %if.end129
   %arrayidx156 = getelementptr inbounds %union.YYSTYPE, ptr %78, i64 -2
   %79 = load ptr, ptr %arrayidx156, align 8, !tbaa !22
   %80 = load i32, ptr %78, align 8, !tbaa !22
-  %call158 = tail call ptr @newBinding(ptr noundef %79, i32 noundef %80) #6
+  %call158 = tail call ptr @newBinding(ptr noundef %79, i32 noundef %80) #5
   store ptr %call158, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -612,7 +614,7 @@ sw.bb160:                                         ; preds = %if.end129
   %82 = load ptr, ptr %81, align 8, !tbaa !22
   %arrayidx162 = getelementptr inbounds %union.YYSTYPE, ptr %81, i64 -1
   %83 = load ptr, ptr %arrayidx162, align 8, !tbaa !22
-  %call163 = tail call ptr @newList(ptr noundef %82, ptr noundef %83) #6
+  %call163 = tail call ptr @newList(ptr noundef %82, ptr noundef %83) #5
   store ptr %call163, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -626,14 +628,14 @@ sw.bb164:                                         ; preds = %if.end129
   %87 = load i32, ptr %arrayidx167, align 8, !tbaa !22
   %arrayidx168 = getelementptr inbounds %union.YYSTYPE, ptr %84, i64 -1
   %88 = load ptr, ptr %arrayidx168, align 8, !tbaa !22
-  %call169 = tail call ptr @newRuleAST(ptr noundef %85, ptr noundef %86, i32 noundef %87, ptr noundef %88) #6
+  %call169 = tail call ptr @newRuleAST(ptr noundef %85, ptr noundef %86, i32 noundef %87, ptr noundef %88) #5
   store ptr %call169, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
 sw.bb170:                                         ; preds = %if.end129
   %89 = load ptr, ptr @yystack.5, align 8, !tbaa !16
   %90 = load ptr, ptr %89, align 8, !tbaa !22
-  %call172 = tail call ptr @newPatternAST(ptr noundef %90, ptr noundef null) #6
+  %call172 = tail call ptr @newPatternAST(ptr noundef %90, ptr noundef null) #5
   store ptr %call172, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -643,8 +645,8 @@ sw.bb173:                                         ; preds = %if.end129
   %92 = load ptr, ptr %arrayidx174, align 8, !tbaa !22
   %arrayidx175 = getelementptr inbounds %union.YYSTYPE, ptr %91, i64 -1
   %93 = load ptr, ptr %arrayidx175, align 8, !tbaa !22
-  %call176 = tail call ptr @newList(ptr noundef %93, ptr noundef null) #6
-  %call177 = tail call ptr @newPatternAST(ptr noundef %92, ptr noundef %call176) #6
+  %call176 = tail call ptr @newList(ptr noundef %93, ptr noundef null) #5
+  %call177 = tail call ptr @newPatternAST(ptr noundef %92, ptr noundef %call176) #5
   store ptr %call177, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -656,9 +658,9 @@ sw.bb178:                                         ; preds = %if.end129
   %96 = load ptr, ptr %arrayidx180, align 8, !tbaa !22
   %arrayidx181 = getelementptr inbounds %union.YYSTYPE, ptr %94, i64 -1
   %97 = load ptr, ptr %arrayidx181, align 8, !tbaa !22
-  %call182 = tail call ptr @newList(ptr noundef %97, ptr noundef null) #6
-  %call183 = tail call ptr @newList(ptr noundef %96, ptr noundef %call182) #6
-  %call184 = tail call ptr @newPatternAST(ptr noundef %95, ptr noundef %call183) #6
+  %call182 = tail call ptr @newList(ptr noundef %97, ptr noundef null) #5
+  %call183 = tail call ptr @newList(ptr noundef %96, ptr noundef %call182) #5
+  %call184 = tail call ptr @newPatternAST(ptr noundef %95, ptr noundef %call183) #5
   store ptr %call184, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -672,7 +674,7 @@ sw.bb186:                                         ; preds = %if.end129
   %99 = load i32, ptr %arrayidx187, align 8, !tbaa !22
   %arrayidx188 = getelementptr inbounds %union.YYSTYPE, ptr %98, i64 -1
   %100 = load ptr, ptr %arrayidx188, align 8, !tbaa !22
-  %call189 = tail call ptr @newIntList(i32 noundef %99, ptr noundef %100) #6
+  %call189 = tail call ptr @newIntList(i32 noundef %99, ptr noundef %100) #5
   store ptr %call189, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -685,7 +687,7 @@ sw.bb191:                                         ; preds = %if.end129
   %arrayidx192 = getelementptr inbounds %union.YYSTYPE, ptr %101, i64 -1
   %102 = load i32, ptr %arrayidx192, align 8, !tbaa !22
   %103 = load ptr, ptr %101, align 8, !tbaa !22
-  %call194 = tail call ptr @newIntList(i32 noundef %102, ptr noundef %103) #6
+  %call194 = tail call ptr @newIntList(i32 noundef %102, ptr noundef %103) #5
   store ptr %call194, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -694,7 +696,7 @@ sw.bb195:                                         ; preds = %if.end129
   %arrayidx196 = getelementptr inbounds %union.YYSTYPE, ptr %104, i64 -1
   %105 = load i32, ptr %arrayidx196, align 8, !tbaa !22
   %106 = load ptr, ptr %104, align 8, !tbaa !22
-  %call198 = tail call ptr @newIntList(i32 noundef %105, ptr noundef %106) #6
+  %call198 = tail call ptr @newIntList(i32 noundef %105, ptr noundef %106) #5
   store ptr %call198, ptr @yyval, align 8, !tbaa !22
   br label %sw.epilog
 
@@ -728,7 +730,7 @@ if.then211:                                       ; preds = %sw.epilog
   br i1 %cmp214, label %if.then216, label %if.end222
 
 if.then216:                                       ; preds = %if.then211
-  %call217 = tail call i32 @yylex() #6
+  %call217 = tail call i32 @yylex() #5
   %spec.store.select269 = tail call i32 @llvm.smax.i32(i32 %call217, i32 0)
   store i32 %spec.store.select269, ptr @yychar, align 4
   br label %if.end222
@@ -798,7 +800,7 @@ if.end7.i344:                                     ; preds = %if.else3.i338, %lan
   %122 = load ptr, ptr @yystack.1, align 8, !tbaa !9
   %conv9.i340 = zext i32 %newsize.0.i339 to i64
   %mul10.i341 = shl nuw nsw i64 %conv9.i340, 1
-  %call.i342 = tail call ptr @realloc(ptr noundef %122, i64 noundef %mul10.i341) #5
+  %call.i342 = tail call ptr @realloc(ptr noundef %122, i64 noundef %mul10.i341) #4
   %cmp11.i343 = icmp eq ptr %call.i342, null
   br i1 %cmp11.i343, label %yyoverflow, label %if.end14.i354
 
@@ -813,7 +815,7 @@ if.end14.i354:                                    ; preds = %if.end7.i344
   store ptr %add.ptr.i350, ptr @yystack.2, align 8, !tbaa !14
   %123 = load ptr, ptr @yystack.4, align 8, !tbaa !12
   %mul18.i351 = shl nuw nsw i64 %conv9.i340, 3
-  %call19.i352 = tail call ptr @realloc(ptr noundef %123, i64 noundef %mul18.i351) #5
+  %call19.i352 = tail call ptr @realloc(ptr noundef %123, i64 noundef %mul18.i351) #4
   %cmp20.i353 = icmp eq ptr %call19.i352, null
   br i1 %cmp20.i353, label %yyoverflow, label %yygrowstack.exit360
 
@@ -841,7 +843,7 @@ if.end260:                                        ; preds = %yygrowstack.exit360
   br label %yyloop.outer.backedge
 
 yyoverflow:                                       ; preds = %if.end14.i354, %if.end7.i344, %if.else.i335, %if.end14.i326, %if.end7.i316, %if.else.i307, %if.end14.i, %if.end7.i, %if.else.i
-  tail call void @yyerror(ptr noundef nonnull @.str.1) #6
+  tail call void @yyerror(ptr noundef nonnull @.str.1) #5
   br label %cleanup
 
 for.cond.cleanup.loopexit_crit_edge:              ; preds = %if.end112
@@ -887,16 +889,12 @@ declare i32 @llvm.smax.i32(i32, i32) #3
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare i32 @llvm.umin.i32(i32, i32) #3
 
-; Function Attrs: nofree nounwind willreturn allockind("alloc,uninitialized") allocsize(0) memory(inaccessiblemem: readwrite)
-declare noalias noundef ptr @malloc(i64 noundef) local_unnamed_addr #4
-
 attributes #0 = { nounwind uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
 attributes #1 = { "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
 attributes #2 = { mustprogress nounwind willreturn allockind("realloc") allocsize(1) memory(argmem: readwrite, inaccessiblemem: readwrite) "alloc-family"="malloc" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
 attributes #3 = { nocallback nofree nosync nounwind speculatable willreturn memory(none) }
-attributes #4 = { nofree nounwind willreturn allockind("alloc,uninitialized") allocsize(0) memory(inaccessiblemem: readwrite) "alloc-family"="malloc" }
-attributes #5 = { nounwind allocsize(1) }
-attributes #6 = { nounwind }
+attributes #4 = { nounwind allocsize(1) }
+attributes #5 = { nounwind }
 
 !llvm.module.flags = !{!0, !1, !2, !3}
 !llvm.ident = !{!4}

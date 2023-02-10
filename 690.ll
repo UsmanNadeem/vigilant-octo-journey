@@ -623,7 +623,7 @@ entry:
 
 tree_root_alloc.exit.thread:                      ; preds = %entry
   %root_regex58 = getelementptr inbounds %struct.regex_matcher, ptr %matcher, i64 0, i32 1
-  store ptr null, ptr %root_regex58, align 8, !tbaa !42
+  store ptr %call.i.i, ptr %root_regex58, align 8, !tbaa !42
   br label %cleanup
 
 if.end:                                           ; preds = %entry
@@ -646,7 +646,7 @@ if.end:                                           ; preds = %entry
 
 if.then6:                                         ; preds = %if.end
   %root_regex_hostonly59 = getelementptr inbounds %struct.regex_matcher, ptr %matcher, i64 0, i32 2
-  store ptr null, ptr %root_regex_hostonly59, align 8, !tbaa !43
+  store ptr %call.i.i42, ptr %root_regex_hostonly59, align 8, !tbaa !43
   %0 = load ptr, ptr %root_regex, align 8, !tbaa !42
   tail call void @free(ptr noundef %0) #17
   br label %cleanup

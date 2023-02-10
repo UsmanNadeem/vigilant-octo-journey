@@ -1496,22 +1496,22 @@ land.rhs9.i:                                      ; preds = %while.cond6.i
   %call10.val.i = load ptr, ptr %scan2.1.val47.i, align 8
   %call129.i.i = tail call i32 @strcmp(ptr noundef nonnull dereferenceable(1) %call10.val.i, ptr noundef nonnull dereferenceable(1) %Name) #13
   %cmp136.i.not.i = icmp eq i32 %call129.i.i, 0
-  br i1 %cmp136.i.not.i, label %if.then.i14, label %while.cond6.i, !llvm.loop !13
+  br i1 %cmp136.i.not.i, label %if.then.i15, label %while.cond6.i, !llvm.loop !13
 
 while.end.i:                                      ; preds = %while.cond6.i
   %scan.0.i = load ptr, ptr %scan.062.i, align 8
-  %cmp.i.not.not.i = icmp eq ptr %scan.0.i, null
-  br i1 %cmp.i.not.not.i, label %if.else.i, label %while.body.i, !llvm.loop !14
+  %cmp.i.not.i.not = icmp eq ptr %scan.0.i, null
+  br i1 %cmp.i.not.i.not, label %if.else.i, label %while.body.i, !llvm.loop !14
 
-if.then.i14:                                      ; preds = %land.rhs9.i
+if.then.i15:                                      ; preds = %land.rhs9.i
   %37 = getelementptr i8, ptr %scan2.1.i, i64 8
-  %call.i.i13 = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %Name) #15
-  %38 = trunc i64 %call.i.i13 to i32
+  %call.i.i14 = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %Name) #15
+  %38 = trunc i64 %call.i.i14 to i32
   %conv.i55.i = add i32 %38, 1
   %cmp.i.i.i.i = icmp ult i32 %conv.i55.i, 1024
   br i1 %cmp.i.i.i.i, label %if.else25.i.i.i, label %if.then.i.i.i
 
-if.then.i.i.i:                                    ; preds = %if.then.i14
+if.then.i.i.i:                                    ; preds = %if.then.i15
   %39 = load i32, ptr @memory_ALIGN, align 4
   %rem2.i.i.i.i.i = urem i32 %conv.i55.i, %39
   %tobool3.not.i.i.i.i.i = icmp eq i32 %rem2.i.i.i.i.i, 0
@@ -1561,10 +1561,10 @@ if.end23.i.i.i:                                   ; preds = %if.then18.i.i.i, %i
   tail call void @free(ptr noundef nonnull %add.ptr24.i.i.i) #13
   br label %ia_StringFree.exit.i
 
-if.else25.i.i.i:                                  ; preds = %if.then.i14
-  %idxprom.i.i.i15 = zext i32 %conv.i55.i to i64
-  %arrayidx.i.i.i16 = getelementptr inbounds [0 x ptr], ptr @memory_ARRAY, i64 0, i64 %idxprom.i.i.i15
-  %48 = load ptr, ptr %arrayidx.i.i.i16, align 8
+if.else25.i.i.i:                                  ; preds = %if.then.i15
+  %idxprom.i.i.i16 = zext i32 %conv.i55.i to i64
+  %arrayidx.i.i.i17 = getelementptr inbounds [0 x ptr], ptr @memory_ARRAY, i64 0, i64 %idxprom.i.i.i16
+  %48 = load ptr, ptr %arrayidx.i.i.i17, align 8
   %total_size.i.i.i = getelementptr inbounds %struct.MEMORY_RESOURCEHELP, ptr %48, i64 0, i32 4
   %49 = load i32, ptr %total_size.i.i.i, align 8
   %conv26.i.i.i = sext i32 %49 to i64
@@ -1573,7 +1573,7 @@ if.else25.i.i.i:                                  ; preds = %if.then.i14
   store i64 %add27.i.i.i, ptr @memory_FREEDBYTES, align 8
   %51 = load ptr, ptr %48, align 8
   store ptr %51, ptr %Name, align 8
-  %52 = load ptr, ptr %arrayidx.i.i.i16, align 8
+  %52 = load ptr, ptr %arrayidx.i.i.i17, align 8
   store ptr %Name, ptr %52, align 8
   br label %ia_StringFree.exit.i
 
@@ -1611,9 +1611,9 @@ if.else31.i:                                      ; preds = %if.else.i
   %58 = load ptr, ptr @stderr, align 8
   %call.i59.i = tail call i32 @fflush(ptr noundef %58)
   %59 = load ptr, ptr @stdout, align 8
-  %call1.i.i17 = tail call i32 @fflush(ptr noundef %59)
+  %call1.i.i18 = tail call i32 @fflush(ptr noundef %59)
   %60 = load ptr, ptr @stderr, align 8
-  %call2.i.i18 = tail call i32 @fflush(ptr noundef %60)
+  %call2.i.i19 = tail call i32 @fflush(ptr noundef %60)
   tail call void @exit(i32 noundef 1) #14
   unreachable
 

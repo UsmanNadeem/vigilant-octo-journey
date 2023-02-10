@@ -8311,11 +8311,7 @@ if.then21:                                        ; preds = %if.end16
   %62 = getelementptr i8, ptr %targettoprove.0, i64 16
   %targettoprove.0.val163 = load ptr, ptr %62, align 8
   %cmp.i182.not206 = icmp eq ptr %targettoprove.0.val163, null
-  br i1 %cmp.i182.not206, label %for.end.thread, label %for.body.preheader
-
-for.end.thread:                                   ; preds = %if.then21
-  store ptr null, ptr %62, align 8
-  br label %if.then39
+  br i1 %cmp.i182.not206, label %if.then39, label %for.body.preheader
 
 for.body.preheader:                               ; preds = %if.then21
   %63 = getelementptr i8, ptr %orterm.0, i64 16
@@ -8353,7 +8349,7 @@ for.end:                                          ; preds = %for.inc, %if.then30
   %cmp.i184.not = icmp eq ptr %arglist.0, null
   br i1 %cmp.i184.not, label %if.then39, label %if.end42
 
-if.then39:                                        ; preds = %for.end.thread, %for.end
+if.then39:                                        ; preds = %if.then21, %for.end
   tail call void @term_Delete(ptr noundef nonnull %targettoprove.0) #18
   br label %cleanup94
 
@@ -9259,7 +9255,8 @@ if.end55.i:                                       ; preds = %while.body47.i, %if
   br i1 %cmp.not.i, label %while.end56.i, label %while.cond2.preheader.i, !llvm.loop !155
 
 while.end56.i:                                    ; preds = %if.end55.i, %entry
-  %call57.i = tail call ptr @fol_FreeVariables(ptr noundef %call.i) #18
+  %Term1.0.lcssa.i = phi ptr [ %SubTerm.val.i, %entry ], [ %Term1.1.lcssa.i, %if.end55.i ]
+  %call57.i = tail call ptr @fol_FreeVariables(ptr noundef %Term1.0.lcssa.i) #18
   %cmp.i123.not.i = icmp eq ptr %call57.i, null
   br i1 %cmp.i123.not.i, label %cnf_RemoveQuantFromPathAndFlatten.exit, label %if.then60.i
 
@@ -9268,7 +9265,7 @@ if.then60.i:                                      ; preds = %while.end56.i
   %18 = load i32, ptr @fol_ALL, align 4
   %call.i.i125.i = tail call ptr @memory_Malloc(i32 noundef 16) #18
   %car.i.i126.i = getelementptr inbounds %struct.LIST_HELP, ptr %call.i.i125.i, i64 0, i32 1
-  store ptr %call.i, ptr %car.i.i126.i, align 8
+  store ptr %Term1.0.lcssa.i, ptr %car.i.i126.i, align 8
   store ptr null, ptr %call.i.i125.i, align 8
   %call63.i = tail call ptr @fol_CreateQuantifier(i32 noundef %18, ptr noundef nonnull %call57.i, ptr noundef nonnull %call.i.i125.i) #18
   br label %cnf_RemoveQuantFromPathAndFlatten.exit

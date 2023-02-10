@@ -2654,11 +2654,11 @@ if.end709:                                        ; preds = %if.then698, %if.els
   %cmp745 = icmp ne i32 %rem, 0
   %spec.select = zext i1 %cmp745 to i8
   %not.cmp745 = xor i1 %cmp745, true
-  %spec.select1131 = zext i1 %not.cmp745 to i8
+  %spec.select1132 = zext i1 %not.cmp745 to i8
   %114 = getelementptr inbounds i8, ptr %113, i64 41
   store i8 %spec.select, ptr %114, align 1
   %115 = getelementptr inbounds i8, ptr %113, i64 42
-  store i8 %spec.select1131, ptr %115, align 2
+  store i8 %spec.select1132, ptr %115, align 2
   %116 = load i8, ptr @zz_lengths, align 1, !tbaa !5
   %conv755 = zext i8 %116 to i32
   store i32 %conv755, ptr @zz_size, align 4, !tbaa !19
@@ -2811,7 +2811,7 @@ for.inc962:                                       ; preds = %for.cond625, %cond.
   br i1 %cmp619.not, label %for.end966, label %for.cond625.preheader, !llvm.loop !30
 
 for.end966:                                       ; preds = %for.inc962, %if.end612
-  %.lcssa = phi ptr [ %105, %if.end612 ], [ %link.0, %for.inc962 ]
+  %.lcssa = phi ptr [ %105, %if.end612 ], [ %150, %for.inc962 ]
   %call968 = call i32 @DisposeObject(ptr noundef %.lcssa) #7
   store ptr null, ptr %oopt_components, align 8, !tbaa !5
   %151 = load ptr, ptr %oopt_constraints, align 8, !tbaa !5

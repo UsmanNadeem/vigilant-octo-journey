@@ -3186,7 +3186,7 @@ for.inc.i:                                        ; preds = %for.body.i
   br i1 %cmp.i.i.not.i, label %_ZN9benchmark5State13StateIteratorppEv.exit, label %for.body.i, !llvm.loop !71
 
 _ZN9benchmark5State13StateIteratorppEv.exit:      ; preds = %for.inc.i, %for.body.i, %for.body
-  %__first.sroa.0.0.lcssa.i = phi ptr [ %14, %for.body ], [ %15, %for.inc.i ], [ %__first.sroa.0.08.i, %for.body.i ]
+  %__first.sroa.0.0.lcssa.i = phi ptr [ %14, %for.body ], [ %incdec.ptr.i.i, %for.inc.i ], [ %__first.sroa.0.08.i, %for.body.i ]
   %17 = ptrtoint ptr %__first.sroa.0.0.lcssa.i to i64
   call void asm sideeffect "", "r|m,~{memory},~{dirflag},~{fpsr},~{flags}"(i64 %17) #23, !srcloc !31
   %dec.i = add i64 %__begin1.sroa.0.068, -1

@@ -574,7 +574,7 @@ if.end:                                           ; preds = %entry
   br i1 %cmp.i, label %if.end.invoke.cont_crit_edge, label %if.end.i
 
 if.end.invoke.cont_crit_edge:                     ; preds = %if.end
-  %.pre = load ptr, ptr %resultName, align 8, !tbaa !11
+  %.pre = load ptr, ptr %ref.tmp, align 8, !tbaa !11
   br label %invoke.cont
 
 if.end.i:                                         ; preds = %if.end
@@ -866,7 +866,7 @@ if.end:                                           ; preds = %entry
   br i1 %cmp.i, label %if.end.invoke.cont_crit_edge, label %if.end.i
 
 if.end.invoke.cont_crit_edge:                     ; preds = %if.end
-  %.pre = load ptr, ptr %resultName, align 8, !tbaa !11
+  %.pre = load ptr, ptr %ref.tmp, align 8, !tbaa !11
   br label %invoke.cont
 
 if.end.i:                                         ; preds = %if.end
@@ -1025,7 +1025,7 @@ invoke.cont:                                      ; preds = %_ZN11CStringBaseIcE
   br i1 %cmp.i, label %invoke.cont.invoke.cont5_crit_edge, label %if.end.i
 
 invoke.cont.invoke.cont5_crit_edge:               ; preds = %invoke.cont
-  %.pre = load ptr, ptr %resultPath, align 8, !tbaa !11
+  %.pre = load ptr, ptr %ref.tmp, align 8, !tbaa !11
   br label %invoke.cont5
 
 if.end.i:                                         ; preds = %invoke.cont
@@ -3651,7 +3651,7 @@ invoke.cont30:                                    ; preds = %if.then25
   br i1 %cmp.i, label %invoke.cont30.invoke.cont32_crit_edge, label %if.end.i
 
 invoke.cont30.invoke.cont32_crit_edge:            ; preds = %invoke.cont30
-  %.pre124 = load ptr, ptr %resultPath, align 8, !tbaa !11
+  %.pre124 = load ptr, ptr %ref.tmp28, align 8, !tbaa !11
   br label %invoke.cont32
 
 if.end.i:                                         ; preds = %invoke.cont30

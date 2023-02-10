@@ -1151,6 +1151,7 @@ while.body.i.prol:                                ; preds = %while.body.i.prehea
   br i1 %prol.iter.cmp.not, label %while.body.i.prol.loopexit, label %while.body.i.prol, !llvm.loop !37
 
 while.body.i.prol.loopexit:                       ; preds = %while.body.i.prol, %while.body.i.preheader128
+  %incdec.ptr.i.lcssa.unr = phi ptr [ undef, %while.body.i.preheader128 ], [ %incdec.ptr.i.prol, %while.body.i.prol ]
   %incdec.ptr17.i.lcssa.unr = phi ptr [ undef, %while.body.i.preheader128 ], [ %incdec.ptr17.i.prol, %while.body.i.prol ]
   %out.0154.i.unr = phi ptr [ %out.0154.i.ph, %while.body.i.preheader128 ], [ %incdec.ptr17.i.prol, %while.body.i.prol ]
   %in.addr.0153.i.unr = phi ptr [ %in.addr.0153.i.ph, %while.body.i.preheader128 ], [ %incdec.ptr.i.prol, %while.body.i.prol ]
@@ -1196,7 +1197,7 @@ while.body.i:                                     ; preds = %while.body.i.prol.l
   br i1 %cmp16.not.i.7, label %while.end.i, label %while.body.i, !llvm.loop !39
 
 while.end.i:                                      ; preds = %while.body.i.prol.loopexit, %while.body.i, %middle.block, %while.cond.preheader.i
-  %in.addr.0.lcssa.i = phi ptr [ %arg.addr.0, %while.cond.preheader.i ], [ %ptr.0150.i, %middle.block ], [ %ptr.0150.i, %while.body.i ], [ %ptr.0150.i, %while.body.i.prol.loopexit ]
+  %in.addr.0.lcssa.i = phi ptr [ %arg.addr.0, %while.cond.preheader.i ], [ %ind.end122, %middle.block ], [ %incdec.ptr.i.lcssa.unr, %while.body.i.prol.loopexit ], [ %incdec.ptr.i.7, %while.body.i ]
   %out.0.lcssa.i = phi ptr [ %call12.i, %while.cond.preheader.i ], [ %ind.end, %middle.block ], [ %incdec.ptr17.i.lcssa.unr, %while.body.i.prol.loopexit ], [ %incdec.ptr17.i.7, %while.body.i ]
   store i8 61, ptr %out.0.lcssa.i, align 1, !tbaa !20
   br label %while.cond19.i
@@ -1372,7 +1373,7 @@ while.end81.i:                                    ; preds = %sw.epilog.i, %while
 
 if.then84.i:                                      ; preds = %while.end81.i
   tail call void @free(ptr noundef %call12.i) #17
-  tail call void (ptr, ...) @cli_warnmsg(ptr noundef nonnull @.str.113, ptr noundef %in.addr.0.lcssa.i) #17
+  tail call void (ptr, ...) @cli_warnmsg(ptr noundef nonnull @.str.113, ptr noundef nonnull %in.addr.0.lcssa.i) #17
   %call85.i = tail call ptr @cli_strdup(ptr noundef nonnull @.str.8) #17
   br label %rfc2231.exit
 

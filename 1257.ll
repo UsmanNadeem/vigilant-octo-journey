@@ -933,7 +933,7 @@ if.then16:                                        ; preds = %cond.end
   %idx.neg = sub nsw i64 0, %cond
   %__binp_.i151 = getelementptr inbounds %"class.std::__1::basic_streambuf", ptr %this, i64 0, i32 2
   %12 = load ptr, ptr %__binp_.i151, align 8, !tbaa !43
-  %add.ptr19 = getelementptr inbounds i8, ptr %10, i64 %idx.neg
+  %add.ptr19 = getelementptr inbounds i8, ptr %.pre191, i64 %idx.neg
   call void @llvm.memmove.p0.p0.i64(ptr align 1 %12, ptr align 1 %add.ptr19, i64 %cond, i1 false)
   %__always_noconv_ = getelementptr inbounds %"class.std::__1::basic_filebuf", ptr %this, i64 0, i32 16
   %13 = load i8, ptr %__always_noconv_, align 2, !tbaa !29, !range !23, !noundef !24
@@ -985,7 +985,7 @@ if.then43:                                        ; preds = %if.else
   br label %if.end54
 
 if.end54:                                         ; preds = %if.then43, %if.else
-  %23 = phi ptr [ %.pre193, %if.then43 ], [ %20, %if.else ]
+  %23 = phi ptr [ %.pre193, %if.then43 ], [ %21, %if.else ]
   %24 = phi ptr [ %.pre192, %if.then43 ], [ %20, %if.else ]
   %__extbuf_55 = getelementptr inbounds %"class.std::__1::basic_filebuf", ptr %this, i64 0, i32 1
   %25 = load ptr, ptr %__extbuf_55, align 8, !tbaa !25

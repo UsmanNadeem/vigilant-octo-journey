@@ -407,7 +407,7 @@ if.else221:                                       ; preds = %while.body
 
 if.end226:                                        ; preds = %while.body, %if.else221
   %viazero.1 = phi i32 [ 0, %if.else221 ], [ 1, %while.body ]
-  %cp.1 = phi ptr [ %incdec.ptr223, %if.else221 ], [ %62, %while.body ]
+  %cp.1 = phi ptr [ %incdec.ptr223, %if.else221 ], [ %cp.09571000, %while.body ]
   %ind.1 = phi ptr [ %arrayidx225, %if.else221 ], [ %67, %while.body ]
   %numents = getelementptr inbounds %struct.flagptr, ptr %ind.1, i64 0, i32 1
   %69 = load i32, ptr %numents, align 8, !tbaa !33

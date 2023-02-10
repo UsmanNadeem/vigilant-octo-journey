@@ -180,7 +180,7 @@ for.end52.loopexit:                               ; preds = %if.end47
   br label %for.cond59.preheader
 
 for.cond59.preheader:                             ; preds = %for.end52.loopexit, %if.end17
-  %.pn.ph = phi ptr [ %names, %if.end17 ], [ %.pre, %for.end52.loopexit ]
+  %.pn.ph = phi ptr [ %link.01027, %if.end17 ], [ %.pre, %for.end52.loopexit ]
   br label %for.cond59
 
 for.cond59:                                       ; preds = %for.cond59.preheader, %for.cond59

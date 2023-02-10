@@ -524,7 +524,7 @@ if.then210.us:                                    ; preds = %if.then206.us
   %11 = load i32, ptr %visited, align 8, !tbaa !36
   %call211.us = tail call ptr @Bitfield_new(i32 noundef %11) #10
   %12 = load ptr, ptr %targetNode.us, align 8, !tbaa !32
-  tail call void @findAndRecordAllPaths(ptr noundef %12, ptr noundef nonnull %arrayidx207, ptr noundef nonnull %arrayidx214, ptr noundef nonnull %result, ptr noundef %call211.us, ptr noundef null, ptr noundef %options)
+  tail call void @findAndRecordAllPaths(ptr noundef %12, ptr noundef nonnull %arrayidx207, ptr noundef nonnull %arrayidx214, ptr noundef nonnull %result, ptr noundef %call211.us, ptr noundef %storage, ptr noundef %options)
   tail call void @Bitfield_delete(ptr noundef %call211.us) #10
   br label %for.inc.us
 

@@ -13,6 +13,7 @@ entry:
   %0 = load i16, ptr %u, align 2, !tbaa !5
   %value = getelementptr inbounds %struct.precisionType, ptr %u, i64 0, i32 4
   %1 = load i16, ptr %value, align 2, !tbaa !5
+  store i16 %0, ptr %u, align 2, !tbaa !5
   %cmp5 = icmp eq i16 %0, 0
   br i1 %cmp5, label %land.rhs7, label %land.end9
 

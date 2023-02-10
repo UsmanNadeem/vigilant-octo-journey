@@ -6734,7 +6734,7 @@ if.then.i:                                        ; preds = %if.end17
 
 cleanup20:                                        ; preds = %if.then.i, %if.end17
   %.sink.i = phi i32 [ %20, %if.then.i ], [ -1, %if.end17 ]
-  %21 = phi ptr [ %19, %if.then.i ], [ %call.i, %if.end17 ]
+  %21 = phi ptr [ %19, %if.then.i ], [ %18, %if.end17 ]
   %22 = load ptr, ptr %next_pos4.i, align 8, !tbaa !33
   %arrayidx6.i = getelementptr inbounds i32, ptr %22, i64 %indvars.iv.next
   store i32 %.sink.i, ptr %arrayidx6.i, align 4, !tbaa !38

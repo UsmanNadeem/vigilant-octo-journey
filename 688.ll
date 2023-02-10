@@ -1368,7 +1368,8 @@ if.then12:                                        ; preds = %if.end
   br i1 %tobool.not.i, label %if.then12.if.end17_crit_edge, label %for.cond.i.i
 
 if.then12.if.end17_crit_edge:                     ; preds = %if.then12
-  %.pre = load ptr, ptr inttoptr (i64 16 to ptr), align 16, !tbaa !34
+  %data18.phi.trans.insert = getelementptr inbounds %struct.string, ptr %cond, i64 0, i32 2
+  %.pre = load ptr, ptr %data18.phi.trans.insert, align 8, !tbaa !34
   br label %if.end17
 
 for.cond.i.i:                                     ; preds = %if.then12, %if.then.i.i

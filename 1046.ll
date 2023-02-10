@@ -1643,7 +1643,7 @@ REST_OF_HEAD:                                     ; preds = %if.end364, %if.else
   %116 = phi i32 [ %113, %if.end364 ], [ %36, %if.else283 ]
   %117 = phi i32 [ %115, %if.end364 ], [ %38, %if.else283 ]
   %118 = phi i32 [ %114, %if.end364 ], [ %37, %if.else283 ]
-  %ou1241091 = getelementptr inbounds %struct.word_type, ptr %tlink.0, i64 0, i32 1
+  %ou1241092 = getelementptr inbounds %struct.word_type, ptr %tlink.0, i64 0, i32 1
   %lp.0979 = load ptr, ptr %cond, align 8, !tbaa !18
   %cmp385.not980 = icmp eq ptr %lp.0979, %tlink.0
   br i1 %cmp385.not980, label %for.end421, label %for.cond391.preheader
@@ -1676,7 +1676,7 @@ for.inc417:                                       ; preds = %for.cond391, %land.
   br i1 %cmp385.not, label %for.end421, label %for.cond391.preheader, !llvm.loop !21
 
 for.end421:                                       ; preds = %for.inc417, %land.lhs.true408, %REST_OF_HEAD
-  %lp.0.lcssa = phi ptr [ %tlink.0, %REST_OF_HEAD ], [ %lp.0981, %land.lhs.true408 ], [ %tlink.0, %for.inc417 ]
+  %lp.0.lcssa = phi ptr [ %lp.0979, %REST_OF_HEAD ], [ %lp.0981, %land.lhs.true408 ], [ %lp.0, %for.inc417 ]
   %cmp385.not.lcssa = phi i1 [ true, %REST_OF_HEAD ], [ false, %land.lhs.true408 ], [ true, %for.inc417 ]
   %rp.0986 = load ptr, ptr %osucc23, align 8, !tbaa !18
   %cmp426.not987 = icmp eq ptr %rp.0986, %tlink.0
@@ -1711,10 +1711,11 @@ for.inc458:                                       ; preds = %for.cond432, %land.
   br i1 %cmp426.not, label %for.end462, label %for.cond432.preheader, !llvm.loop !22
 
 for.end462:                                       ; preds = %for.inc458, %for.end421
+  %rp.0.lcssa = phi ptr [ %rp.0986, %for.end421 ], [ %rp.0, %for.inc458 ]
   br i1 %cmp385.not.lcssa, label %land.lhs.true468, label %if.else528
 
 land.lhs.true468:                                 ; preds = %for.end462
-  %123 = load i8, ptr %ou1241091, align 8, !tbaa !18
+  %123 = load i8, ptr %ou1241092, align 8, !tbaa !18
   %cmp472 = icmp eq i8 %123, 8
   br i1 %cmp472, label %land.lhs.true474, label %if.then481
 
@@ -1758,7 +1759,7 @@ cond.end514:                                      ; preds = %cond.end493.thread,
   br label %cleanup
 
 if.else528:                                       ; preds = %land.lhs.true449, %land.lhs.true474, %for.end462
-  %rp.0.lcssa1056 = phi ptr [ %tlink.0, %land.lhs.true474 ], [ %tlink.0, %for.end462 ], [ %rp.0988, %land.lhs.true449 ]
+  %rp.0.lcssa1056 = phi ptr [ %rp.0.lcssa, %land.lhs.true474 ], [ %rp.0.lcssa, %for.end462 ], [ %rp.0988, %land.lhs.true449 ]
   %link.0.in994 = getelementptr inbounds %struct.LIST, ptr %lp.0.lcssa, i64 0, i32 1
   %link.0995 = load ptr, ptr %link.0.in994, align 8, !tbaa !18
   %cmp533.not996 = icmp eq ptr %link.0995, %rp.0.lcssa1056

@@ -1685,7 +1685,7 @@ if.then1032:                                      ; preds = %skiptoword.exit
   br label %if.end1034
 
 if.end1034:                                       ; preds = %if.then1032, %skiptoword.exit
-  %262 = phi ptr [ %.pre1352, %if.then1032 ], [ %258, %skiptoword.exit ]
+  %262 = phi ptr [ %.pre1352, %if.then1032 ], [ %261, %skiptoword.exit ]
   %263 = load i8, ptr %262, align 1, !tbaa !5
   %cmp1036 = icmp eq i8 %263, 0
   br i1 %cmp1036, label %for.end1162, label %if.else.i1275

@@ -379,7 +379,7 @@ invoke.cont17:                                    ; preds = %_ZN11CStringBaseIcE
   br i1 %cmp.i, label %invoke.cont17.invoke.cont19_crit_edge, label %if.end.i
 
 invoke.cont17.invoke.cont19_crit_edge:            ; preds = %invoke.cont17
-  %.pre120 = load ptr, ptr %message, align 8, !tbaa !24
+  %.pre120 = load ptr, ptr %ref.tmp, align 8, !tbaa !24
   br label %invoke.cont19
 
 if.end.i:                                         ; preds = %invoke.cont17

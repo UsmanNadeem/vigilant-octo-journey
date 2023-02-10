@@ -376,8 +376,8 @@ if.then240:                                       ; preds = %land.lhs.true235
 land.lhs.true255:                                 ; preds = %if.end230
   %73 = zext i32 %72 to i64
   %cmp277.not = icmp eq i64 %indvars.iv445, %73
-  %or.cond460 = select i1 %cmp259, i1 %cmp277.not, i1 false
-  br i1 %or.cond460, label %for.body288.preheader, label %cond.end
+  %or.cond461 = select i1 %cmp259, i1 %cmp277.not, i1 false
+  br i1 %or.cond461, label %for.body288.preheader, label %cond.end
 
 if.then266:                                       ; preds = %land.lhs.true235
   %cmp270.not = icmp eq i32 %71, %sub226

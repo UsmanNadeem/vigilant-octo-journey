@@ -719,7 +719,7 @@ if.then290:                                       ; preds = %while.body
   br i1 %cmp16.i654, label %cleanup425, label %if.end295
 
 if.end295:                                        ; preds = %if.then290
-  %sub.ptr.lhs.cast.i639 = ptrtoint ptr %da.sroa.51733.2 to i64
+  %sub.ptr.lhs.cast.i639 = ptrtoint ptr %ptr.1 to i64
   %sub.ptr.rhs.cast.i640 = ptrtoint ptr %da.sroa.0.2 to i64
   %sub.ptr.sub.i641 = sub i64 %sub.ptr.lhs.cast.i639, %sub.ptr.rhs.cast.i640
   %da.sroa.51733.3 = getelementptr inbounds i8, ptr %call.i653, i64 %cond8.i647
@@ -1040,7 +1040,7 @@ if.then34:                                        ; preds = %if.then30
   br i1 %cmp16.i, label %cleanup, label %if.end38
 
 if.end38:                                         ; preds = %if.then34
-  %sub.ptr.lhs.cast.i = ptrtoint ptr %da.sroa.45165.0 to i64
+  %sub.ptr.lhs.cast.i = ptrtoint ptr %ptr.0 to i64
   %sub.ptr.rhs.cast.i = ptrtoint ptr %da.sroa.0.0 to i64
   %sub.ptr.sub.i = sub i64 %sub.ptr.lhs.cast.i, %sub.ptr.rhs.cast.i
   %da.sroa.45165.1 = getelementptr inbounds i8, ptr %call.i, i64 %cond8.i
@@ -1082,7 +1082,7 @@ if.then53:                                        ; preds = %if.end49
   br i1 %cmp16.i124, label %cleanup, label %if.end58
 
 if.end58:                                         ; preds = %if.then53
-  %sub.ptr.lhs.cast.i109 = ptrtoint ptr %da.sroa.45165.0 to i64
+  %sub.ptr.lhs.cast.i109 = ptrtoint ptr %ptr.0 to i64
   %sub.ptr.rhs.cast.i110 = ptrtoint ptr %da.sroa.0.0 to i64
   %sub.ptr.sub.i111 = sub i64 %sub.ptr.lhs.cast.i109, %sub.ptr.rhs.cast.i110
   %idx.ext.i139 = and i64 %sub.ptr.sub.i111, 4294967295
@@ -1204,7 +1204,7 @@ if.then103.us:                                    ; preds = %if.end99.us
   br i1 %cmp16.i.us, label %cleanup115, label %if.end108.us
 
 if.end108.us:                                     ; preds = %if.then103.us
-  %sub.ptr.lhs.cast.i.us = ptrtoint ptr %da.sroa.28178.1.us to i64
+  %sub.ptr.lhs.cast.i.us = ptrtoint ptr %ptr.1.us to i64
   %sub.ptr.rhs.cast.i.us = ptrtoint ptr %da.sroa.0.1.us to i64
   %sub.ptr.sub.i.us = sub i64 %sub.ptr.lhs.cast.i.us, %sub.ptr.rhs.cast.i.us
   %da.sroa.28178.2.us = getelementptr inbounds i8, ptr %call.i.us, i64 %cond8.i.us
@@ -1400,7 +1400,7 @@ if.then103:                                       ; preds = %if.end99
   br i1 %cmp16.i, label %cleanup115, label %if.end108
 
 if.end108:                                        ; preds = %if.then103
-  %sub.ptr.lhs.cast.i = ptrtoint ptr %da.sroa.28178.1.ph to i64
+  %sub.ptr.lhs.cast.i = ptrtoint ptr %ptr.1.ph to i64
   %sub.ptr.rhs.cast.i = ptrtoint ptr %da.sroa.0.1.ph to i64
   %sub.ptr.sub.i = sub i64 %sub.ptr.lhs.cast.i, %sub.ptr.rhs.cast.i
   %da.sroa.28178.2 = getelementptr inbounds i8, ptr %call.i, i64 %cond8.i

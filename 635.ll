@@ -1894,13 +1894,13 @@ if.else38:                                        ; preds = %if.end34
 
 do.cond41:                                        ; preds = %if.then36, %if.else38
   %i.3 = phi i32 [ %inc37, %if.then36 ], [ 0, %if.else38 ]
-  br i1 %cmp.i96.not, label %do.end45, label %do.body24, !llvm.loop !32
+  br i1 %cmp.i96.not, label %list_Delete.exit, label %do.body24, !llvm.loop !32
 
-do.end45:                                         ; preds = %do.cond41
+list_Delete.exit:                                 ; preds = %do.cond41
   %33 = tail call i64 @fwrite(ptr nonnull @.str.40, i64 3, i64 1, ptr %File)
   br label %list_Delete.exit111
 
-list_Delete.exit111:                              ; preds = %do.end45, %if.end19
+list_Delete.exit111:                              ; preds = %list_Delete.exit, %if.end19
   ret void
 }
 

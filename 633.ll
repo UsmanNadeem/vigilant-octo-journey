@@ -3892,7 +3892,7 @@ entry:
   br i1 %cmp.not, label %if.end.thread, label %if.then6
 
 if.end.thread:                                    ; preds = %entry
-  %call339 = tail call i32 @symbol_Lookup(ptr noundef %Name) #14
+  %call340 = tail call i32 @symbol_Lookup(ptr noundef %Name) #14
   br label %if.end8
 
 if.then6:                                         ; preds = %entry
@@ -3904,8 +3904,8 @@ if.then6:                                         ; preds = %entry
   br label %if.end8
 
 if.end8:                                          ; preds = %if.end.thread, %if.then6
-  %call340 = phi i32 [ %call339, %if.end.thread ], [ %call3, %if.then6 ]
-  %cmp9.not = icmp eq i32 %call340, 0
+  %call341 = phi i32 [ %call340, %if.end.thread ], [ %call3, %if.then6 ]
+  %cmp9.not = icmp eq i32 %call341, 0
   br i1 %cmp9.not, label %if.else, label %if.then11
 
 if.then11:                                        ; preds = %if.end8
@@ -3922,7 +3922,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %2 = getelementptr i8, ptr %scan.0.i, i64 8
   %scan.0.val.i = load ptr, ptr %2, align 8
   %3 = load i32, ptr %scan.0.val.i, align 4
-  %cmp.not.i = icmp eq i32 %3, %call340
+  %cmp.not.i = icmp eq i32 %3, %call341
   br i1 %cmp.not.i, label %if.then.i, label %while.cond.i, !llvm.loop !16
 
 if.then.i:                                        ; preds = %while.body.i
@@ -3943,7 +3943,7 @@ if.then5.i:                                       ; preds = %if.then3.i
   %7 = load i32, ptr @dfg_LINENUMBER, align 4
   tail call void (ptr, ...) @misc_UserErrorReport(ptr noundef nonnull @.str.224, i32 noundef %7) #14
   tail call void (ptr, ...) @misc_UserErrorReport(ptr noundef nonnull @.str.225, i32 noundef %Arity) #14
-  %sub.i.i.i = sub nsw i32 0, %call340
+  %sub.i.i.i = sub nsw i32 0, %call341
   %8 = load i32, ptr @symbol_TYPESTATBITS, align 4
   %shr.i.i.i = ashr i32 %sub.i.i.i, %8
   %9 = load ptr, ptr @symbol_SIGNATURE, align 8
@@ -3969,7 +3969,7 @@ if.else.i:                                        ; preds = %if.then.i
   br label %if.end18
 
 while.end.i:                                      ; preds = %while.cond.i
-  %sub.i.i39.i = sub nsw i32 0, %call340
+  %sub.i.i39.i = sub nsw i32 0, %call341
   %16 = load i32, ptr @symbol_TYPESTATBITS, align 4
   %shr.i.i40.i = ashr i32 %sub.i.i39.i, %16
   %17 = load ptr, ptr @symbol_SIGNATURE, align 8
@@ -4022,10 +4022,10 @@ if.then14:                                        ; preds = %if.else
 if.end16:                                         ; preds = %if.else
   %scan.058.i = load ptr, ptr @dfg_VARLIST, align 8
   %cmp.i.not59.not.i = icmp eq ptr %scan.058.i, null
-  br i1 %cmp.i.not59.not.i, label %if.else.i34, label %while.body.i30
+  br i1 %cmp.i.not59.not.i, label %if.else.i35, label %while.body.i30
 
-while.body.i30:                                   ; preds = %if.end16, %while.end.i32
-  %scan.060.i = phi ptr [ %scan.0.i31, %while.end.i32 ], [ %scan.058.i, %if.end16 ]
+while.body.i30:                                   ; preds = %if.end16, %while.end.i33
+  %scan.060.i = phi ptr [ %scan.0.i31, %while.end.i33 ], [ %scan.058.i, %if.end16 ]
   %34 = getelementptr i8, ptr %scan.060.i, i64 8
   br label %while.cond6.i
 
@@ -4033,7 +4033,7 @@ while.cond6.i:                                    ; preds = %land.rhs9.i, %while
   %scan2.1.in.i = phi ptr [ %34, %while.body.i30 ], [ %scan2.1.i, %land.rhs9.i ]
   %scan2.1.i = load ptr, ptr %scan2.1.in.i, align 8
   %cmp.i51.not.i = icmp eq ptr %scan2.1.i, null
-  br i1 %cmp.i51.not.i, label %while.end.i32, label %land.rhs9.i
+  br i1 %cmp.i51.not.i, label %while.end.i33, label %land.rhs9.i
 
 land.rhs9.i:                                      ; preds = %while.cond6.i
   %35 = getelementptr i8, ptr %scan2.1.i, i64 8
@@ -4041,42 +4041,42 @@ land.rhs9.i:                                      ; preds = %while.cond6.i
   %call10.val.i = load ptr, ptr %scan2.1.val.i, align 8
   %call129.i.i = tail call i32 @strcmp(ptr noundef nonnull dereferenceable(1) %call10.val.i, ptr noundef nonnull dereferenceable(1) %Name) #14
   %cmp136.i.not.i = icmp eq i32 %call129.i.i, 0
-  br i1 %cmp136.i.not.i, label %if.then.i33, label %while.cond6.i, !llvm.loop !17
+  br i1 %cmp136.i.not.i, label %if.then.i34, label %while.cond6.i, !llvm.loop !17
 
-while.end.i32:                                    ; preds = %while.cond6.i
+while.end.i33:                                    ; preds = %while.cond6.i
   %scan.0.i31 = load ptr, ptr %scan.060.i, align 8
-  %cmp.i.not.not.i = icmp eq ptr %scan.0.i31, null
-  br i1 %cmp.i.not.not.i, label %if.else.i34, label %while.body.i30, !llvm.loop !18
+  %cmp.i.not.i32.not = icmp eq ptr %scan.0.i31, null
+  br i1 %cmp.i.not.i32.not, label %if.else.i35, label %while.body.i30, !llvm.loop !18
 
-if.then.i33:                                      ; preds = %land.rhs9.i
+if.then.i34:                                      ; preds = %land.rhs9.i
   %36 = getelementptr i8, ptr %scan2.1.i, i64 8
   tail call void @string_StringFree(ptr noundef %Name) #14
   %scan2.0.val.i = load ptr, ptr %36, align 8
   br label %dfg_VarLookup.exit
 
-if.else.i34:                                      ; preds = %while.end.i32, %if.end16
+if.else.i35:                                      ; preds = %while.end.i33, %if.end16
   %.b.i = load i1, ptr @dfg_VARDECL, align 4
   br i1 %.b.i, label %if.then24.i, label %if.else31.i
 
-if.then24.i:                                      ; preds = %if.else.i34
-  %call.i.i35 = tail call ptr @memory_Malloc(i32 noundef 16) #14
-  store ptr %Name, ptr %call.i.i35, align 8
+if.then24.i:                                      ; preds = %if.else.i35
+  %call.i.i36 = tail call ptr @memory_Malloc(i32 noundef 16) #14
+  store ptr %Name, ptr %call.i.i36, align 8
   %37 = load i32, ptr @symbol_STANDARDVARCOUNTER, align 4
   %inc.i.i = add nsw i32 %37, 1
   store i32 %inc.i.i, ptr @symbol_STANDARDVARCOUNTER, align 4
-  %symbol27.i = getelementptr inbounds %struct.DFG_VARENTRY, ptr %call.i.i35, i64 0, i32 1
+  %symbol27.i = getelementptr inbounds %struct.DFG_VARENTRY, ptr %call.i.i36, i64 0, i32 1
   store i32 %inc.i.i, ptr %symbol27.i, align 8
   %38 = load ptr, ptr @dfg_VARLIST, align 8
   %39 = getelementptr i8, ptr %38, i64 8
   %.val.i = load ptr, ptr %39, align 8
   %call.i55.i = tail call ptr @memory_Malloc(i32 noundef 16) #14
   %car.i.i = getelementptr inbounds %struct.LIST_HELP, ptr %call.i55.i, i64 0, i32 1
-  store ptr %call.i.i35, ptr %car.i.i, align 8
+  store ptr %call.i.i36, ptr %car.i.i, align 8
   store ptr %.val.i, ptr %call.i55.i, align 8
   store ptr %call.i55.i, ptr %39, align 8
   br label %dfg_VarLookup.exit
 
-if.else31.i:                                      ; preds = %if.else.i34
+if.else31.i:                                      ; preds = %if.else.i35
   %40 = load ptr, ptr @stdout, align 8
   %call32.i = tail call i32 @fflush(ptr noundef %40)
   %41 = load i32, ptr @dfg_LINENUMBER, align 4
@@ -4084,20 +4084,20 @@ if.else31.i:                                      ; preds = %if.else.i34
   %42 = load ptr, ptr @stderr, align 8
   %call.i57.i = tail call i32 @fflush(ptr noundef %42)
   %43 = load ptr, ptr @stdout, align 8
-  %call1.i.i36 = tail call i32 @fflush(ptr noundef %43)
+  %call1.i.i37 = tail call i32 @fflush(ptr noundef %43)
   %44 = load ptr, ptr @stderr, align 8
-  %call2.i.i37 = tail call i32 @fflush(ptr noundef %44)
+  %call2.i.i38 = tail call i32 @fflush(ptr noundef %44)
   tail call void @exit(i32 noundef 1) #15
   unreachable
 
-dfg_VarLookup.exit:                               ; preds = %if.then.i33, %if.then24.i
-  %call.i.pn.i = phi ptr [ %call.i.i35, %if.then24.i ], [ %scan2.0.val.i, %if.then.i33 ]
+dfg_VarLookup.exit:                               ; preds = %if.then.i34, %if.then24.i
+  %call.i.pn.i = phi ptr [ %call.i.i36, %if.then24.i ], [ %scan2.0.val.i, %if.then.i34 ]
   %symbol.0.in.i = getelementptr i8, ptr %call.i.pn.i, i64 8
   %symbol.0.i = load i32, ptr %symbol.0.in.i, align 8
   br label %if.end18
 
 if.end18:                                         ; preds = %while.end.i, %if.else.i, %if.then3.i, %dfg_VarLookup.exit
-  %symbol.0 = phi i32 [ %symbol.0.i, %dfg_VarLookup.exit ], [ %call340, %if.then3.i ], [ %call340, %if.else.i ], [ %call340, %while.end.i ]
+  %symbol.0 = phi i32 [ %symbol.0.i, %dfg_VarLookup.exit ], [ %call341, %if.then3.i ], [ %call341, %if.else.i ], [ %call341, %while.end.i ]
   ret i32 %symbol.0
 }
 

@@ -153,8 +153,8 @@ for.cond86:                                       ; preds = %for.cond86, %for.en
 
 if.end104:                                        ; preds = %for.cond86
   %cmp105 = icmp eq ptr %row_thread.01923, null
-  %cmp109.not2059 = icmp eq ptr %row_thread.01923, %sv.0
-  %cmp109.not = select i1 %cmp105, i1 true, i1 %cmp109.not2059
+  %spec.select = select i1 %cmp105, ptr %sv.0, ptr %row_thread.01923
+  %cmp109.not = icmp eq ptr %sv.0, %spec.select
   br i1 %cmp109.not, label %if.end112, label %cleanup
 
 if.end112:                                        ; preds = %if.end104
@@ -171,7 +171,7 @@ for.cond119:                                      ; preds = %for.cond119, %if.en
   br i1 %cmp123, label %for.cond119, label %for.end130, !llvm.loop !13
 
 for.end130:                                       ; preds = %for.cond119
-  %cmp131.not = icmp eq ptr %shp.0, %sv.0
+  %cmp131.not = icmp eq ptr %shp.0, %spec.select
   br i1 %cmp131.not, label %if.end134, label %cleanup
 
 if.end134:                                        ; preds = %for.end130
@@ -191,7 +191,7 @@ if.else147:                                       ; preds = %if.end134
 for.inc154:                                       ; preds = %if.else147, %if.then140, %if.then21
   %large_comp_split.1 = phi ptr [ %large_comp_split.01921, %if.then21 ], [ %large_comp_split.01921, %if.then140 ], [ %s2.1, %if.else147 ]
   %rump_fwd.1 = phi i32 [ %rump_fwd.01922, %if.then21 ], [ %.rump_fwd.0, %if.then140 ], [ %rump_fwd.01922, %if.else147 ]
-  %row_thread.2 = phi ptr [ %row_thread.01923, %if.then21 ], [ %sv.0, %if.then140 ], [ %sv.0, %if.else147 ]
+  %row_thread.2 = phi ptr [ %row_thread.01923, %if.then21 ], [ %spec.select, %if.then140 ], [ %spec.select, %if.else147 ]
   %large_comp.1 = phi ptr [ %large_comp.01924, %if.then21 ], [ %large_comp.01924, %if.then140 ], [ %sh.0, %if.else147 ]
   %link.0.in = getelementptr inbounds %struct.LIST, ptr %link.01925, i64 0, i32 1
   %link.0 = load ptr, ptr %link.0.in, align 8, !tbaa !5
@@ -206,7 +206,7 @@ if.end162:                                        ; preds = %for.end158
   %osucc165 = getelementptr inbounds %struct.LIST, ptr %large_comp.1, i64 0, i32 1
   %link.11929 = load ptr, ptr %osucc165, align 8, !tbaa !5
   %cmp167.not1930 = icmp eq ptr %link.11929, %large_comp.1
-  br i1 %cmp167.not1930, label %cleanup, label %for.cond173.preheader
+  br i1 %cmp167.not1930, label %for.end228, label %for.cond173.preheader
 
 for.cond173.preheader:                            ; preds = %if.end162, %for.inc224
   %link.11932 = phi ptr [ %link.1, %for.inc224 ], [ %link.11929, %if.end162 ]
@@ -238,15 +238,17 @@ for.inc224:                                       ; preds = %for.cond173, %cond.
   %osucc227 = getelementptr inbounds %struct.LIST, ptr %link.11932, i64 0, i32 1
   %link.1 = load ptr, ptr %osucc227, align 8, !tbaa !5
   %cmp167.not = icmp eq ptr %link.1, %large_comp.1
-  br i1 %cmp167.not, label %cleanup, label %for.cond173.preheader, !llvm.loop !15
+  br i1 %cmp167.not, label %for.end228, label %for.cond173.preheader, !llvm.loop !15
 
-for.end228:                                       ; preds = %cond.true204, %cond.false207
-  %cmp229.not1949 = icmp eq ptr %link.11932, %large_comp.1
+for.end228:                                       ; preds = %for.inc224, %cond.true204, %cond.false207, %if.end162
+  %link.1.lcssa = phi ptr [ %link.11929, %if.end162 ], [ %link.11932, %cond.false207 ], [ %link.11932, %cond.true204 ], [ %link.1, %for.inc224 ]
+  %prev.2 = phi ptr [ undef, %if.end162 ], [ %prev.1, %cond.false207 ], [ %prev.1, %cond.true204 ], [ %prev.1, %for.inc224 ]
+  %cmp229.not1949 = icmp eq ptr %link.1.lcssa, %large_comp.1
   br i1 %cmp229.not1949, label %cleanup, label %land.rhs231
 
 land.rhs231:                                      ; preds = %for.end228, %for.end484
-  %link.21951 = phi ptr [ %link.31942, %for.end484 ], [ %link.11932, %for.end228 ]
-  %prev.31950 = phi ptr [ %prev.5, %for.end484 ], [ %prev.1, %for.end228 ]
+  %link.21951 = phi ptr [ %link.3.lcssa, %for.end484 ], [ %link.1.lcssa, %for.end228 ]
+  %prev.31950 = phi ptr [ %prev.6, %for.end484 ], [ %prev.2, %for.end228 ]
   %ou1232 = getelementptr inbounds %struct.word_type, ptr %prev.31950, i64 0, i32 1
   %16 = load i8, ptr %ou1232, align 8, !tbaa !5
   %cmp235 = icmp eq i8 %16, 19
@@ -390,7 +392,7 @@ if.then413:                                       ; preds = %cond.end378
 if.end415:                                        ; preds = %if.then413, %cond.end378
   %link.31939 = load ptr, ptr %osucc165, align 8, !tbaa !5
   %cmp420.not1940 = icmp eq ptr %link.31939, %large_comp.1
-  br i1 %cmp420.not1940, label %cleanup, label %for.cond426.preheader
+  br i1 %cmp420.not1940, label %for.end484, label %for.cond426.preheader
 
 for.cond426.preheader:                            ; preds = %if.end415, %for.inc480
   %link.31942 = phi ptr [ %link.3, %for.inc480 ], [ %link.31939, %if.end415 ]
@@ -422,10 +424,12 @@ for.inc480:                                       ; preds = %for.cond426, %cond.
   %osucc483 = getelementptr inbounds %struct.LIST, ptr %link.31942, i64 0, i32 1
   %link.3 = load ptr, ptr %osucc483, align 8, !tbaa !5
   %cmp420.not = icmp eq ptr %link.3, %large_comp.1
-  br i1 %cmp420.not, label %cleanup, label %for.cond426.preheader, !llvm.loop !18
+  br i1 %cmp420.not, label %for.end484, label %for.cond426.preheader, !llvm.loop !18
 
-for.end484:                                       ; preds = %cond.true460, %cond.false463
-  %cmp229.not = icmp eq ptr %link.31942, %large_comp.1
+for.end484:                                       ; preds = %for.inc480, %cond.true460, %cond.false463, %if.end415
+  %link.3.lcssa = phi ptr [ %link.31939, %if.end415 ], [ %link.31942, %cond.false463 ], [ %link.31942, %cond.true460 ], [ %link.3, %for.inc480 ]
+  %prev.6 = phi ptr [ %prev.31950, %if.end415 ], [ %prev.5, %cond.false463 ], [ %prev.5, %cond.true460 ], [ %prev.5, %for.inc480 ]
+  %cmp229.not = icmp eq ptr %link.3.lcssa, %large_comp.1
   br i1 %cmp229.not, label %cleanup, label %land.rhs231, !llvm.loop !19
 
 lor.lhs.false487:                                 ; preds = %land.rhs231
@@ -443,7 +447,7 @@ if.end504:                                        ; preds = %if.then498, %lor.lh
   %link.4.in1952 = getelementptr inbounds %struct.LIST, ptr %link.21951, i64 0, i32 1
   %link.41953 = load ptr, ptr %link.4.in1952, align 8, !tbaa !5
   %cmp514.not1954 = icmp eq ptr %link.41953, %large_comp.1
-  br i1 %cmp514.not1954, label %cleanup, label %for.cond520.preheader
+  br i1 %cmp514.not1954, label %for.end583, label %for.cond520.preheader
 
 for.cond520.preheader:                            ; preds = %if.end504, %for.inc579
   %link.41957 = phi ptr [ %link.4, %for.inc579 ], [ %link.41953, %if.end504 ]
@@ -486,10 +490,13 @@ for.inc579:                                       ; preds = %for.cond520, %cond.
   %link.4.in = getelementptr inbounds %struct.LIST, ptr %link.41957, i64 0, i32 1
   %link.4 = load ptr, ptr %link.4.in, align 8, !tbaa !5
   %cmp514.not = icmp eq ptr %link.4, %large_comp.1
-  br i1 %cmp514.not, label %cleanup, label %for.cond520.preheader, !llvm.loop !20
+  br i1 %cmp514.not, label %for.end583, label %for.cond520.preheader, !llvm.loop !20
 
-for.end583:                                       ; preds = %if.then571, %if.then574
-  %cmp585.not1975 = icmp eq ptr %link.41957, %large_comp.1
+for.end583:                                       ; preds = %for.inc579, %if.end504, %if.then571, %if.then574
+  %g.01890 = phi ptr [ %g.01956, %if.then571 ], [ null, %if.then574 ], [ null, %if.end504 ], [ %g.1, %for.inc579 ]
+  %link.41888 = phi ptr [ %link.41957, %if.then571 ], [ %link.41957, %if.then574 ], [ %link.41953, %if.end504 ], [ %link.4, %for.inc579 ]
+  %nxt.2 = phi ptr [ %nxt.1, %if.then571 ], [ %nxt.1, %if.then574 ], [ undef, %if.end504 ], [ %nxt.1, %for.inc579 ]
+  %cmp585.not1975 = icmp eq ptr %link.41888, %large_comp.1
   br i1 %cmp585.not1975, label %cleanup, label %land.rhs587.lr.ph
 
 land.rhs587.lr.ph:                                ; preds = %for.end583
@@ -497,9 +504,9 @@ land.rhs587.lr.ph:                                ; preds = %for.end583
   br label %land.rhs587
 
 land.rhs587:                                      ; preds = %land.rhs587.lr.ph, %for.end1101
-  %link.51978 = phi ptr [ %link.41957, %land.rhs587.lr.ph ], [ %link.61971, %for.end1101 ]
-  %g.21977 = phi ptr [ %g.01956, %land.rhs587.lr.ph ], [ %g.31970, %for.end1101 ]
-  %nxt.31976 = phi ptr [ %nxt.1, %land.rhs587.lr.ph ], [ %nxt.5, %for.end1101 ]
+  %link.51978 = phi ptr [ %link.41888, %land.rhs587.lr.ph ], [ %link.61874, %for.end1101 ]
+  %g.21977 = phi ptr [ %g.01890, %land.rhs587.lr.ph ], [ %g.31876, %for.end1101 ]
+  %nxt.31976 = phi ptr [ %nxt.2, %land.rhs587.lr.ph ], [ %nxt.6, %for.end1101 ]
   %ou1588 = getelementptr inbounds %struct.word_type, ptr %nxt.31976, i64 0, i32 1
   %59 = load i8, ptr %ou1588, align 8, !tbaa !5
   %cmp591 = icmp eq i8 %59, 19
@@ -815,7 +822,7 @@ if.end1024:                                       ; preds = %if.then1022, %cond.
   %link.6.in1966 = getelementptr inbounds %struct.LIST, ptr %130, i64 0, i32 1
   %link.61967 = load ptr, ptr %link.6.in1966, align 8, !tbaa !5
   %cmp1032.not1968 = icmp eq ptr %link.61967, %large_comp.1
-  br i1 %cmp1032.not1968, label %cleanup, label %for.cond1038.preheader
+  br i1 %cmp1032.not1968, label %for.end1101, label %for.cond1038.preheader
 
 for.cond1038.preheader:                           ; preds = %if.end1024, %for.inc1097
   %link.61971 = phi ptr [ %link.6, %for.inc1097 ], [ %link.61967, %if.end1024 ]
@@ -858,10 +865,13 @@ for.inc1097:                                      ; preds = %for.cond1038, %cond
   %link.6.in = getelementptr inbounds %struct.LIST, ptr %link.61971, i64 0, i32 1
   %link.6 = load ptr, ptr %link.6.in, align 8, !tbaa !5
   %cmp1032.not = icmp eq ptr %link.6, %large_comp.1
-  br i1 %cmp1032.not, label %cleanup, label %for.cond1038.preheader, !llvm.loop !22
+  br i1 %cmp1032.not, label %for.end1101, label %for.cond1038.preheader, !llvm.loop !22
 
-for.end1101:                                      ; preds = %if.then1089, %if.then1092
-  %cmp585.not = icmp eq ptr %link.61971, %large_comp.1
+for.end1101:                                      ; preds = %for.inc1097, %if.end1024, %if.then1089, %if.then1092
+  %g.31876 = phi ptr [ %g.31970, %if.then1089 ], [ null, %if.then1092 ], [ null, %if.end1024 ], [ %g.4, %for.inc1097 ]
+  %link.61874 = phi ptr [ %link.61971, %if.then1089 ], [ %link.61971, %if.then1092 ], [ %link.61967, %if.end1024 ], [ %link.6, %for.inc1097 ]
+  %nxt.6 = phi ptr [ %nxt.5, %if.then1089 ], [ %nxt.5, %if.then1092 ], [ %nxt.31976, %if.end1024 ], [ %nxt.5, %for.inc1097 ]
+  %cmp585.not = icmp eq ptr %link.61874, %large_comp.1
   br i1 %cmp585.not, label %cleanup, label %land.rhs587, !llvm.loop !23
 
 lor.lhs.false1105:                                ; preds = %land.rhs587
@@ -1252,8 +1262,8 @@ if.end1551:                                       ; preds = %cond.end1504, %if.e
   %cmp1427.not = icmp eq ptr %203, %204
   br i1 %cmp1427.not, label %cleanup, label %for.cond1436.preheader, !llvm.loop !30
 
-cleanup:                                          ; preds = %if.else147, %for.end130, %if.end104, %if.end54, %if.then21, %for.cond86, %for.inc224, %if.end415, %for.end484, %for.inc480, %for.inc579, %if.end1024, %for.end1101, %for.inc1097, %land.lhs.true1197, %if.end1551, %if.end504, %if.end162, %if.end, %for.end228, %for.end583, %for.end1419, %if.end1135, %for.end158
-  %retval.0 = phi i32 [ 0, %for.end158 ], [ 0, %if.end1135 ], [ 1, %for.end1419 ], [ 0, %for.end583 ], [ 0, %for.end228 ], [ 0, %if.end ], [ 0, %if.end162 ], [ 0, %if.end504 ], [ 1, %if.end1551 ], [ 0, %land.lhs.true1197 ], [ 0, %for.inc1097 ], [ 0, %for.end1101 ], [ 0, %if.end1024 ], [ 0, %for.inc579 ], [ 0, %for.inc480 ], [ 0, %for.end484 ], [ 0, %if.end415 ], [ 0, %for.inc224 ], [ 0, %for.cond86 ], [ 0, %if.then21 ], [ 0, %if.end54 ], [ 0, %if.end104 ], [ 0, %for.end130 ], [ 0, %if.else147 ]
+cleanup:                                          ; preds = %if.else147, %for.end130, %if.end104, %if.end54, %if.then21, %for.cond86, %for.end484, %for.end1101, %land.lhs.true1197, %if.end1551, %if.end, %for.end228, %for.end583, %for.end1419, %if.end1135, %for.end158
+  %retval.0 = phi i32 [ 0, %for.end158 ], [ 0, %if.end1135 ], [ 1, %for.end1419 ], [ 0, %for.end583 ], [ 0, %for.end228 ], [ 0, %if.end ], [ 1, %if.end1551 ], [ 0, %land.lhs.true1197 ], [ 0, %for.end1101 ], [ 0, %for.end484 ], [ 0, %for.cond86 ], [ 0, %if.then21 ], [ 0, %if.end54 ], [ 0, %if.end104 ], [ 0, %for.end130 ], [ 0, %if.else147 ]
   ret i32 %retval.0
 }
 

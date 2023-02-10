@@ -38,7 +38,8 @@ if.then10:                                        ; preds = %if.end6
   unreachable
 
 if.end11:                                         ; preds = %if.end6
-  store i64 -1, ptr inttoptr (i64 24 to ptr), align 8, !tbaa !11
+  %add.ptr = getelementptr inbounds %union.u0, ptr %1, i64 3
+  store i64 -1, ptr %add.ptr, align 8, !tbaa !11
   br label %l4
 
 l3:                                               ; preds = %if.end3

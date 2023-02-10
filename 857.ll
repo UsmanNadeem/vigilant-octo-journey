@@ -216,27 +216,28 @@ if.then17:                                        ; preds = %if.end15
 
 if.end18:                                         ; preds = %if.end15
   %cmp19 = icmp eq ptr %current.0107, %p.addr.1
-  %next26 = getelementptr inbounds %struct.vlink, ptr %current.0107, i64 0, i32 20
-  %2 = load ptr, ptr %next26, align 8, !tbaa !15
   br i1 %cmp19, label %if.end25, label %if.end21
 
 if.end21:                                         ; preds = %if.end18
+  %next22 = getelementptr inbounds %struct.vlink, ptr %current.0107, i64 0, i32 20
+  %2 = load ptr, ptr %next22, align 8, !tbaa !15
   %tobool.not = icmp eq ptr %2, null
   br i1 %tobool.not, label %cleanup, label %while.body, !llvm.loop !18
 
 if.end25:                                         ; preds = %if.end18
-  %next26.le = getelementptr inbounds %struct.vlink, ptr %current.0107, i64 0, i32 20
+  %next26 = getelementptr inbounds %struct.vlink, ptr %p.addr.1, i64 0, i32 20
+  %3 = load ptr, ptr %next26, align 8, !tbaa !15
   %next27 = getelementptr inbounds %struct.vlink, ptr %ul, i64 0, i32 20
-  store ptr %2, ptr %next27, align 8, !tbaa !15
-  store ptr %ul, ptr %next26.le, align 8, !tbaa !15
+  store ptr %3, ptr %next27, align 8, !tbaa !15
+  store ptr %ul, ptr %next26, align 8, !tbaa !15
   %previous29 = getelementptr inbounds %struct.vlink, ptr %ul, i64 0, i32 19
-  store ptr %current.0107, ptr %previous29, align 8, !tbaa !17
-  %3 = load ptr, ptr %next27, align 8, !tbaa !15
-  %tobool31.not = icmp eq ptr %3, null
+  store ptr %p.addr.1, ptr %previous29, align 8, !tbaa !17
+  %4 = load ptr, ptr %next27, align 8, !tbaa !15
+  %tobool31.not = icmp eq ptr %4, null
   br i1 %tobool31.not, label %while.cond38.preheader, label %if.end36.sink.split
 
 if.end36.sink.split:                              ; preds = %if.end25, %if.then3
-  %.sink = phi ptr [ %ul, %if.then3 ], [ %3, %if.end25 ]
+  %.sink = phi ptr [ %ul, %if.then3 ], [ %4, %if.end25 ]
   %ul.sink = phi ptr [ null, %if.then3 ], [ %ul, %if.end25 ]
   %previous34 = getelementptr inbounds %struct.vlink, ptr %.sink, i64 0, i32 19
   store ptr %ul.sink, ptr %previous34, align 8, !tbaa !17
@@ -259,18 +260,18 @@ while.body40:                                     ; preds = %while.cond38
 
 if.then43:                                        ; preds = %while.body40
   %next44 = getelementptr inbounds %struct.vlink, ptr %current.1, i64 0, i32 20
-  %4 = load ptr, ptr %next44, align 8, !tbaa !15
+  %5 = load ptr, ptr %next44, align 8, !tbaa !15
   %previous45 = getelementptr inbounds %struct.vlink, ptr %current.1, i64 0, i32 19
-  %5 = load ptr, ptr %previous45, align 8, !tbaa !17
-  %next46 = getelementptr inbounds %struct.vlink, ptr %5, i64 0, i32 20
-  store ptr %4, ptr %next46, align 8, !tbaa !15
-  %6 = load ptr, ptr %next44, align 8, !tbaa !15
-  %tobool48.not = icmp eq ptr %6, null
+  %6 = load ptr, ptr %previous45, align 8, !tbaa !17
+  %next46 = getelementptr inbounds %struct.vlink, ptr %6, i64 0, i32 20
+  store ptr %5, ptr %next46, align 8, !tbaa !15
+  %7 = load ptr, ptr %next44, align 8, !tbaa !15
+  %tobool48.not = icmp eq ptr %7, null
   br i1 %tobool48.not, label %if.end53, label %if.then49
 
 if.then49:                                        ; preds = %if.then43
-  %previous52 = getelementptr inbounds %struct.vlink, ptr %6, i64 0, i32 19
-  store ptr %5, ptr %previous52, align 8, !tbaa !17
+  %previous52 = getelementptr inbounds %struct.vlink, ptr %7, i64 0, i32 19
+  store ptr %6, ptr %previous52, align 8, !tbaa !17
   br label %if.end53
 
 if.end53:                                         ; preds = %if.then49, %if.then43

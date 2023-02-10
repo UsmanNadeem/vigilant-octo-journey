@@ -1463,20 +1463,17 @@ if.end233:                                        ; preds = %if.then26
 while.cond.outer.split.us:                        ; preds = %if.end233, %while.cond.preheader
   %xchg.0.ph.lcssa = phi ptr [ %.fr773, %while.cond.preheader ], [ %.us-phi671, %if.end233 ]
   %lines.0.ph.lcssa = phi i32 [ 0, %while.cond.preheader ], [ %.us-phi672, %if.end233 ]
-  %xchg.0.ph642.us.fr876 = freeze ptr %xchg.0.ph.lcssa
-  %tobool235.not.us877 = icmp eq ptr %xchg.0.ph642.us.fr876, null
-  br i1 %tobool235.not.us877, label %while.cond.us.us.preheader, label %while.cond.us.us717.preheader
-
-while.cond.us.us.preheader:                       ; preds = %if.end486.us, %while.cond.outer.split.us
-  br label %while.cond.us.us
+  %xchg.0.ph642.us.fr878 = freeze ptr %xchg.0.ph.lcssa
+  %tobool235.not.us879 = icmp eq ptr %xchg.0.ph642.us.fr878, null
+  br i1 %tobool235.not.us879, label %while.cond.outer641.split.us.split.us, label %while.cond.us.us717.preheader
 
 while.cond.us.us717.preheader:                    ; preds = %while.cond.outer.split.us, %if.end486.us
-  %xchg.0.ph642.us.fr879 = phi ptr [ %xchg.0.ph642.us.fr, %if.end486.us ], [ %xchg.0.ph642.us.fr876, %while.cond.outer.split.us ]
-  %lines.0.ph643.us878 = phi i32 [ %inc.us.us722, %if.end486.us ], [ %lines.0.ph.lcssa, %while.cond.outer.split.us ]
+  %xchg.0.ph642.us.fr881 = phi ptr [ %xchg.0.ph642.us.fr, %if.end486.us ], [ %xchg.0.ph642.us.fr878, %while.cond.outer.split.us ]
+  %lines.0.ph643.us880 = phi i32 [ %inc.us.us722, %if.end486.us ], [ %lines.0.ph.lcssa, %while.cond.outer.split.us ]
   br label %while.cond.us.us717
 
 if.end473.us:                                     ; preds = %if.then240.split.us.us
-  %str2.us = getelementptr inbounds %struct.cdiff_node, ptr %xchg.0.ph642.us.fr879, i64 0, i32 2
+  %str2.us = getelementptr inbounds %struct.cdiff_node, ptr %xchg.0.ph642.us.fr881, i64 0, i32 2
   %9 = load ptr, ptr %str2.us, align 8, !tbaa !30
   %call474.us = call i32 @fputs(ptr noundef %9, ptr noundef nonnull %call17)
   %cmp475.us = icmp eq i32 %call474.us, -1
@@ -1488,21 +1485,21 @@ lor.lhs.false477.us:                              ; preds = %if.end473.us
   br i1 %cmp479.us, label %if.then481, label %if.end486.us
 
 if.end486.us:                                     ; preds = %lor.lhs.false477.us
-  %next487.us = getelementptr inbounds %struct.cdiff_node, ptr %xchg.0.ph642.us.fr879, i64 0, i32 3
+  %next487.us = getelementptr inbounds %struct.cdiff_node, ptr %xchg.0.ph642.us.fr881, i64 0, i32 3
   %10 = load ptr, ptr %next487.us, align 8, !tbaa !24
   %xchg.0.ph642.us.fr = freeze ptr %10
   %tobool235.not.us = icmp eq ptr %xchg.0.ph642.us.fr, null
-  br i1 %tobool235.not.us, label %while.cond.us.us.preheader, label %while.cond.us.us717.preheader, !llvm.loop !44
+  br i1 %tobool235.not.us, label %while.cond.outer641.split.us.split.us.loopexit, label %while.cond.us.us717.preheader, !llvm.loop !44
 
 while.cond.us.us717:                              ; preds = %while.cond.us.us717.preheader, %if.end488.us.us723
-  %lines.0.us.us718 = phi i32 [ %inc.us.us722, %if.end488.us.us723 ], [ %lines.0.ph643.us878, %while.cond.us.us717.preheader ]
+  %lines.0.us.us718 = phi i32 [ %inc.us.us722, %if.end488.us.us723 ], [ %lines.0.ph643.us880, %while.cond.us.us717.preheader ]
   %call23.us.us719 = call ptr @fgets(ptr noundef nonnull %line, i32 noundef 1024, ptr noundef nonnull %call5)
   %tobool24.not.us.us720 = icmp eq ptr %call23.us.us719, null
   br i1 %tobool24.not.us.us720, label %while.end, label %while.body.us.us721
 
 while.body.us.us721:                              ; preds = %while.cond.us.us717
   %inc.us.us722 = add i32 %lines.0.us.us718, 1
-  %11 = load i32, ptr %xchg.0.ph642.us.fr879, align 8, !tbaa !41
+  %11 = load i32, ptr %xchg.0.ph642.us.fr881, align 8, !tbaa !41
   %cmp238.us.us = icmp eq i32 %11, %inc.us.us722
   br i1 %cmp238.us.us, label %if.then240.split.us.us, label %if.end488.us.us723
 
@@ -1512,7 +1509,7 @@ if.end488.us.us723:                               ; preds = %while.body.us.us721
   br i1 %cmp491.us.us725, label %if.then493, label %while.cond.us.us717, !llvm.loop !44
 
 if.then240.split.us.us:                           ; preds = %while.body.us.us721
-  %str241.us = getelementptr inbounds %struct.cdiff_node, ptr %xchg.0.ph642.us.fr879, i64 0, i32 1
+  %str241.us = getelementptr inbounds %struct.cdiff_node, ptr %xchg.0.ph642.us.fr881, i64 0, i32 1
   %12 = load ptr, ptr %str241.us, align 8, !tbaa !22
   %call242.us = call i64 @strlen(ptr noundef nonnull dereferenceable(1) %12) #18
   %call465.us = call i32 @strncmp(ptr noundef nonnull %line, ptr noundef %12, i64 noundef %call242.us) #18
@@ -1580,7 +1577,15 @@ if.end486:                                        ; preds = %lor.lhs.false477
   %tobool235.not = icmp eq ptr %.fr771, null
   br i1 %tobool235.not, label %while.cond.us657.preheader, label %while.cond.outer641.split.split, !llvm.loop !44
 
-while.cond.us.us:                                 ; preds = %while.cond.us.us.preheader, %while.body.us.us
+while.cond.outer641.split.us.split.us.loopexit:   ; preds = %if.end486.us
+  %xchg.0.ph642.us.fr.le = freeze ptr %10
+  br label %while.cond.outer641.split.us.split.us
+
+while.cond.outer641.split.us.split.us:            ; preds = %while.cond.outer641.split.us.split.us.loopexit, %while.cond.outer.split.us
+  %xchg.0.ph642.us.fr.lcssa = phi ptr [ %xchg.0.ph642.us.fr878, %while.cond.outer.split.us ], [ %xchg.0.ph642.us.fr.le, %while.cond.outer641.split.us.split.us.loopexit ]
+  br label %while.cond.us.us
+
+while.cond.us.us:                                 ; preds = %while.body.us.us, %while.cond.outer641.split.us.split.us
   %call23.us.us = call ptr @fgets(ptr noundef nonnull %line, i32 noundef 1024, ptr noundef nonnull %call5)
   %tobool24.not.us.us = icmp eq ptr %call23.us.us, null
   br i1 %tobool24.not.us.us, label %while.end, label %while.body.us.us
@@ -1627,7 +1632,7 @@ if.then493:                                       ; preds = %if.end488.us664, %i
 
 while.end:                                        ; preds = %while.cond.us657, %while.cond, %while.cond.us.us717, %while.cond.us.us
   %.us-phi = phi ptr [ null, %while.cond.us.us ], [ null, %while.cond.us.us717 ], [ %del.0.ph763, %while.cond ], [ %del.0.ph763, %while.cond.us657 ]
-  %.us-phi655 = phi ptr [ null, %while.cond.us.us ], [ %xchg.0.ph642.us.fr879, %while.cond.us.us717 ], [ %xchg.0.ph642758, %while.cond ], [ null, %while.cond.us657 ]
+  %.us-phi655 = phi ptr [ %xchg.0.ph642.us.fr.lcssa, %while.cond.us.us ], [ %xchg.0.ph642.us.fr881, %while.cond.us.us717 ], [ %xchg.0.ph642758, %while.cond ], [ null, %while.cond.us657 ]
   %call499 = call i32 @fclose(ptr noundef nonnull %call5)
   %call500 = call i32 @fclose(ptr noundef nonnull %call17)
   %tobool501 = icmp ne ptr %.us-phi, null

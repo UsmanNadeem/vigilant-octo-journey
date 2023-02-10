@@ -1811,7 +1811,7 @@ while.body.i214:                                  ; preds = %land.lhs.true.i206
   br i1 %exitcond.not.i213, label %while.end.i220, label %land.lhs.true.i206, !llvm.loop !60
 
 while.end.i220:                                   ; preds = %while.body.i214, %land.lhs.true.i206
-  %139 = phi ptr [ %uglygep.i196, %while.body.i214 ], [ %incdec.ptr2325.i200, %land.lhs.true.i206 ]
+  %139 = phi ptr [ %incdec.ptr.i208, %while.body.i214 ], [ %incdec.ptr2325.i200, %land.lhs.true.i206 ]
   %count.0.lcssa.i215 = phi i32 [ %add.i211, %while.body.i214 ], [ %count.026.i199, %land.lhs.true.i206 ]
   %ndigits.0.lcssa.i216 = phi i32 [ 1, %while.body.i214 ], [ %ndigits.027.i198, %land.lhs.true.i206 ]
   %cmp7.i217 = icmp ne i32 %ndigits.0.lcssa.i216, 0
@@ -3176,7 +3176,7 @@ while.body.i160:                                  ; preds = %land.lhs.true.i152
   br i1 %exitcond.not.i159, label %while.end.i166, label %land.lhs.true.i152, !llvm.loop !60
 
 while.end.i166:                                   ; preds = %while.body.i160, %land.lhs.true.i152
-  %118 = phi ptr [ %uglygep.i142, %while.body.i160 ], [ %incdec.ptr2325.i146, %land.lhs.true.i152 ]
+  %118 = phi ptr [ %incdec.ptr.i154, %while.body.i160 ], [ %incdec.ptr2325.i146, %land.lhs.true.i152 ]
   %count.0.lcssa.i161 = phi i32 [ %add.i157, %while.body.i160 ], [ %count.026.i145, %land.lhs.true.i152 ]
   %ndigits.0.lcssa.i162 = phi i32 [ 1, %while.body.i160 ], [ %ndigits.027.i144, %land.lhs.true.i152 ]
   %cmp7.i163 = icmp ne i32 %ndigits.0.lcssa.i162, 0
@@ -4239,7 +4239,7 @@ while.body.i.i:                                   ; preds = %land.rhs.i.i
   br i1 %exitcond.not.i.i, label %while.end.loopexit.i.i, label %land.rhs.i.i, !llvm.loop !71
 
 while.end.loopexit.i.i:                           ; preds = %while.body.i.i, %land.rhs.i.i
-  %.lcssa.ph.i.i = phi ptr [ %incdec.ptr265267.i.i, %land.rhs.i.i ], [ %uglygep.i.i, %while.body.i.i ]
+  %.lcssa.ph.i.i = phi ptr [ %incdec.ptr265267.i.i, %land.rhs.i.i ], [ %incdec.ptr.i.i, %while.body.i.i ]
   %.pre.i.i = ptrtoint ptr %.lcssa.ph.i.i to i64
   br label %while.end.i.i
 

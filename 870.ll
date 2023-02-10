@@ -635,17 +635,11 @@ if.then:                                          ; preds = %entry
 
 if.then.i:                                        ; preds = %if.then
   %cmp2.i = icmp eq ptr %2, %i
-  br i1 %cmp2.i, label %if.end7.thread.i, label %if.else.i
-
-if.end7.thread.i:                                 ; preds = %if.then.i
-  store ptr null, ptr %child.i, align 8, !tbaa !17
-  br label %RemoveEntry.exit.i
-
-if.else.i:                                        ; preds = %if.then.i
-  store ptr %2, ptr %child.i, align 8, !tbaa !17
+  %..i = select i1 %cmp2.i, ptr null, ptr %2
+  store ptr %..i, ptr %child.i, align 8, !tbaa !17
   br label %if.end7.i
 
-if.end7.i:                                        ; preds = %if.else.i, %if.then
+if.end7.i:                                        ; preds = %if.then.i, %if.then
   %cmp.i.i = icmp eq ptr %2, %i
   br i1 %cmp.i.i, label %RemoveEntry.exit.i, label %if.end.i.i
 
@@ -659,7 +653,7 @@ if.end.i.i:                                       ; preds = %if.end7.i
   store ptr %2, ptr %forward5.i.i, align 8, !tbaa !13
   br label %RemoveEntry.exit.i
 
-RemoveEntry.exit.i:                               ; preds = %if.end.i.i, %if.end7.i, %if.end7.thread.i
+RemoveEntry.exit.i:                               ; preds = %if.end.i.i, %if.end7.i
   %rank.i = getelementptr inbounds %struct._Heap, ptr %i, i64 0, i32 5
   %5 = load i32, ptr %rank.i, align 8, !tbaa !15
   %add.neg.i = xor i32 %5, -1
@@ -714,17 +708,11 @@ entry:
 
 if.then:                                          ; preds = %entry
   %cmp2 = icmp eq ptr %2, %i
-  br i1 %cmp2, label %if.end7.thread, label %if.else
-
-if.end7.thread:                                   ; preds = %if.then
-  store ptr null, ptr %child, align 8, !tbaa !17
-  br label %RemoveEntry.exit
-
-if.else:                                          ; preds = %if.then
-  store ptr %2, ptr %child, align 8, !tbaa !17
+  %. = select i1 %cmp2, ptr null, ptr %2
+  store ptr %., ptr %child, align 8, !tbaa !17
   br label %if.end7
 
-if.end7:                                          ; preds = %entry, %if.else
+if.end7:                                          ; preds = %if.then, %entry
   %cmp.i = icmp eq ptr %2, %i
   br i1 %cmp.i, label %RemoveEntry.exit, label %if.end.i
 
@@ -738,7 +726,7 @@ if.end.i:                                         ; preds = %if.end7
   store ptr %2, ptr %forward5.i, align 8, !tbaa !13
   br label %RemoveEntry.exit
 
-RemoveEntry.exit:                                 ; preds = %if.end7.thread, %if.end7, %if.end.i
+RemoveEntry.exit:                                 ; preds = %if.end7, %if.end.i
   %rank = getelementptr inbounds %struct._Heap, ptr %i, i64 0, i32 5
   %5 = load i32, ptr %rank, align 8, !tbaa !15
   %add.neg = xor i32 %5, -1
@@ -828,17 +816,11 @@ if.else:                                          ; preds = %if.end
 
 if.then.i41:                                      ; preds = %if.else
   %cmp2.i = icmp eq ptr %5, %i
-  br i1 %cmp2.i, label %if.end7.thread.i, label %if.else.i
-
-if.end7.thread.i:                                 ; preds = %if.then.i41
-  store ptr null, ptr %child.i38, align 8, !tbaa !17
-  br label %RemoveEntry.exit.i
-
-if.else.i:                                        ; preds = %if.then.i41
-  store ptr %5, ptr %child.i38, align 8, !tbaa !17
+  %..i = select i1 %cmp2.i, ptr null, ptr %5
+  store ptr %..i, ptr %child.i38, align 8, !tbaa !17
   br label %if.end7.i
 
-if.end7.i:                                        ; preds = %if.else.i, %if.else
+if.end7.i:                                        ; preds = %if.then.i41, %if.else
   %cmp.i.i = icmp eq ptr %5, %i
   br i1 %cmp.i.i, label %RemoveEntry.exit.i, label %if.end.i.i
 
@@ -852,7 +834,7 @@ if.end.i.i:                                       ; preds = %if.end7.i
   store ptr %5, ptr %forward5.i.i, align 8, !tbaa !13
   br label %RemoveEntry.exit.i
 
-RemoveEntry.exit.i:                               ; preds = %if.end.i.i, %if.end7.i, %if.end7.thread.i
+RemoveEntry.exit.i:                               ; preds = %if.end.i.i, %if.end7.i
   %rank.i = getelementptr inbounds %struct._Heap, ptr %i, i64 0, i32 5
   %8 = load i32, ptr %rank.i, align 8, !tbaa !15
   %add.neg.i = xor i32 %8, -1

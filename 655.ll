@@ -4348,7 +4348,7 @@ while.body.us.i:                                  ; preds = %while.body.lr.ph.i2
   %39 = getelementptr i8, ptr %List.addr.012.us.i, i64 8
   %List.addr.0.val7.us.i = load ptr, ptr %39, align 8
   %call.i.us.i = tail call i32 @list_Length(ptr noundef %List.addr.0.val7.us.i) #12
-  %call1.i.us.i = tail call i32 @list_Length(ptr noundef null) #12
+  %call1.i.us.i = tail call i32 @list_Length(ptr noundef %call47.val201) #12
   %cmp.not.i.us.i = icmp eq i32 %call.i.us.i, %call1.i.us.i
   br i1 %cmp.not.i.us.i, label %if.end.i.us.i, label %if.end.us.i
 
@@ -5107,7 +5107,7 @@ cont_BackTrack.exit.i.i:                          ; preds = %if.then.i.i62.i, %w
   br i1 %cmp.i49.not108.i.i, label %for.end.thread.i.i, label %for.body.lr.ph.i63.i
 
 for.end.thread.i.i:                               ; preds = %cont_BackTrack.exit.i.i
-  tail call void @subst_Free(ptr noundef null) #12
+  tail call void @subst_Free(ptr noundef %call4.i.i) #12
   br label %land.lhs.true24.i
 
 for.body.lr.ph.i63.i:                             ; preds = %cont_BackTrack.exit.i.i

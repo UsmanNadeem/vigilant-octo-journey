@@ -2968,7 +2968,7 @@ list_Nconc.exit:                                  ; preds = %if.then, %if.end.i,
   br i1 %tobool22.not, label %if.end24, label %cleanup
 
 if.else:                                          ; preds = %entry
-  tail call void @list_DeleteWithElement(ptr noundef null, ptr noundef nonnull @term_Delete) #7
+  tail call void @list_DeleteWithElement(ptr noundef %call4, ptr noundef nonnull @term_Delete) #7
   tail call void @term_Delete(ptr noundef %call3) #7
   br label %if.end24
 

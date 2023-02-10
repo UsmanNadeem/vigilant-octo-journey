@@ -1805,7 +1805,7 @@ land.lhs.true102:                                 ; preds = %if.else100
   br i1 %cmp105, label %if.then107, label %do.cond
 
 if.then107:                                       ; preds = %land.lhs.true102
-  %23 = load ptr, ptr %call103, align 8, !tbaa !28
+  %23 = load ptr, ptr %22, align 8, !tbaa !28
   %call110 = tail call ptr @lineGetData(ptr noundef %23) #17
   tail call void (ptr, ...) @cli_dbgmsg(ptr noundef nonnull @.str.89, ptr noundef %call110) #17
   %call111 = tail call i32 @messageGetEncoding(ptr noundef %messageIn) #17
@@ -2203,7 +2203,7 @@ if.then652:                                       ; preds = %land.lhs.true649
   br label %if.end653
 
 if.end653:                                        ; preds = %if.then652, %land.lhs.true649, %sw.epilog647
-  %mainMessage.4 = phi ptr [ null, %if.then652 ], [ %messageIn, %land.lhs.true649 ], [ null, %sw.epilog647 ]
+  %mainMessage.4 = phi ptr [ null, %if.then652 ], [ %mainMessage.0.lcssa, %land.lhs.true649 ], [ null, %sw.epilog647 ]
   tail call void (ptr, ...) @cli_dbgmsg(ptr noundef nonnull @.str.104, i32 noundef %multiparts.0.lcssa) #17
   %56 = and i8 %infected.1.lcssa, 1
   %tobool654.not = icmp eq i8 %56, 0

@@ -5536,29 +5536,24 @@ entry:
 
 for.body:                                         ; preds = %entry, %for.inc
   %l.018 = phi ptr [ %call6, %for.inc ], [ %elems, %entry ]
-  %result.017 = phi ptr [ %result.1, %for.inc ], [ null, %entry ]
+  %result.017 = phi ptr [ %call2, %for.inc ], [ null, %entry ]
   %cmp1 = icmp eq ptr %l.018, %elems
-  br i1 %cmp1, label %if.then, label %if.else
-
-if.then:                                          ; preds = %for.body
-  %call = tail call ptr @car(ptr noundef nonnull %elems) #25
-  %call2 = tail call ptr @cons(ptr noundef %call, ptr noundef %result.017) #25
-  br label %for.inc
+  %call = tail call ptr @car(ptr noundef nonnull %l.018) #25
+  br i1 %cmp1, label %for.inc, label %if.else
 
 if.else:                                          ; preds = %for.body
-  %call3 = tail call ptr @car(ptr noundef nonnull %l.018) #25
   %call4 = tail call ptr @cons(ptr noundef %lmarker, ptr noundef %result.017) #25
-  %call5 = tail call ptr @cons(ptr noundef %call3, ptr noundef %call4) #25
   br label %for.inc
 
-for.inc:                                          ; preds = %if.then, %if.else
-  %result.1 = phi ptr [ %call2, %if.then ], [ %call5, %if.else ]
+for.inc:                                          ; preds = %for.body, %if.else
+  %result.017.sink = phi ptr [ %call4, %if.else ], [ %result.017, %for.body ]
+  %call2 = tail call ptr @cons(ptr noundef %call, ptr noundef %result.017.sink) #25
   %call6 = tail call ptr @cdr(ptr noundef nonnull %l.018) #25
   %cmp.not = icmp eq ptr %call6, null
   br i1 %cmp.not, label %for.end, label %for.body, !llvm.loop !98
 
 for.end:                                          ; preds = %for.inc, %entry
-  %result.0.lcssa = phi ptr [ null, %entry ], [ %result.1, %for.inc ]
+  %result.0.lcssa = phi ptr [ null, %entry ], [ %call2, %for.inc ]
   %call7 = tail call ptr @nreverse(ptr noundef %result.0.lcssa) #25
   %call8 = tail call ptr @string_append(ptr noundef %call7)
   ret ptr %call8
@@ -7037,7 +7032,7 @@ for.body.us:                                      ; preds = %for.body.lr.ph, %fo
   call void @llvm.lifetime.start.p0(i64 8, ptr nonnull %fcn.addr.i)
   %call3.i.us = tail call ptr @cons(ptr noundef %call9, ptr noundef null) #25
   %call4.i.us = tail call ptr @cons(ptr noundef %call5, ptr noundef %call3.i.us) #25
-  %call5.i.us = tail call ptr @lapply(ptr noundef null, ptr noundef %call4.i.us) #25
+  %call5.i.us = tail call ptr @lapply(ptr noundef %call2, ptr noundef %call4.i.us) #25
   call void @llvm.lifetime.end.p0(i64 8, ptr nonnull %fcn.addr.i)
   %inc.us = add nuw nsw i64 %j.021.us, 1
   %exitcond23.not = icmp eq i64 %inc.us, %conv3.i
@@ -7252,7 +7247,7 @@ for.body.us:                                      ; preds = %cond.end16.us
   call void @llvm.lifetime.start.p0(i64 8, ptr nonnull %fcn.addr.i46)
   %call3.i58.us = call ptr @cons(ptr noundef %7, ptr noundef null) #25
   %call4.i59.us = call ptr @cons(ptr noundef %6, ptr noundef %call3.i58.us) #25
-  %call5.i60.us = call ptr @lapply(ptr noundef null, ptr noundef %call4.i59.us) #25
+  %call5.i60.us = call ptr @lapply(ptr noundef %fcn, ptr noundef %call4.i59.us) #25
   call void @llvm.lifetime.end.p0(i64 8, ptr nonnull %fcn.addr.i46)
   %cdr.us = getelementptr inbounds %struct.obj, ptr %ptr.070.us, i64 0, i32 2, i32 0, i32 1
   %8 = load ptr, ptr %cdr.us, align 8, !tbaa !17
@@ -7510,7 +7505,7 @@ land.lhs.true.us:                                 ; preds = %cond.end9.us
   call void @llvm.lifetime.start.p0(i64 8, ptr nonnull %fcn.addr.i)
   %call3.i.us = tail call ptr @cons(ptr noundef %x, ptr noundef null) #25
   %call4.i.us = tail call ptr @cons(ptr noundef %3, ptr noundef %call3.i.us) #25
-  %call5.i.us = tail call ptr @lapply(ptr noundef null, ptr noundef %call4.i.us) #25
+  %call5.i.us = tail call ptr @lapply(ptr noundef %fcn, ptr noundef %call4.i.us) #25
   call void @llvm.lifetime.end.p0(i64 8, ptr nonnull %fcn.addr.i)
   %cmp15.not.us = icmp eq ptr %call5.i.us, null
   br i1 %cmp15.not.us, label %for.inc.us, label %cleanup
@@ -8066,7 +8061,7 @@ cond.false25.i:                                   ; preds = %if.then20.i
   br i1 %or.cond.i, label %if.then37.i, label %swrite2.exit
 
 if.then37.i:                                      ; preds = %cond.false25.i
-  %call40.i = tail call ptr @hset(ptr noundef %table, ptr noundef nonnull %data, ptr noundef nonnull %7)
+  %call40.i = tail call ptr @hset(ptr noundef %table, ptr noundef %key.0.i, ptr noundef nonnull %7)
   br label %swrite2.exit
 
 swrite2.exit.thread:                              ; preds = %if.end.i, %cond.false13.i
@@ -8167,7 +8162,7 @@ cond.false25.i62:                                 ; preds = %if.then20.i58
   br i1 %or.cond.i61, label %if.then37.i64, label %if.end41.i65
 
 if.then37.i64:                                    ; preds = %cond.false25.i62
-  %call40.i63 = tail call ptr @hset(ptr noundef %table, ptr noundef %16, ptr noundef nonnull %23)
+  %call40.i63 = tail call ptr @hset(ptr noundef %table, ptr noundef %key.0.i49, ptr noundef nonnull %23)
   br label %if.end41.i65
 
 if.end41.i65:                                     ; preds = %if.then37.i64, %cond.false25.i62, %if.then20.i58

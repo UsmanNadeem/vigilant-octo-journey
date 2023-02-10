@@ -818,13 +818,11 @@ while.body.i:                                     ; preds = %while.body, %lor.en
   %dec10.i = add i64 %dec10.in.i, -1
   %0 = load ptr, ptr %b, align 8, !tbaa !28
   %cmp.i = icmp ult ptr %0, %add.ptr.i
-  br i1 %cmp.i, label %lor.end.i, label %lor.rhs.i
-
-lor.rhs.i:                                        ; preds = %while.body.i
   %cmp.i.i31 = icmp eq ptr %0, %buffer.i
-  br i1 %cmp.i.i31, label %lor.end.i, label %if.then.i
+  %or.cond = select i1 %cmp.i, i1 true, i1 %cmp.i.i31
+  br i1 %or.cond, label %lor.end.i, label %if.then.i
 
-if.then.i:                                        ; preds = %lor.rhs.i
+if.then.i:                                        ; preds = %while.body.i
   %sub.ptr.lhs.cast.i.i33 = ptrtoint ptr %0 to i64
   %sub.ptr.sub.i.i34 = sub i64 %sub.ptr.lhs.cast.i.i33, %sub.ptr.rhs.cast.i.i32
   %1 = load ptr, ptr %L1.i, align 8, !tbaa !26
@@ -867,8 +865,8 @@ do.end.i.i:                                       ; preds = %do.body.i.i
   %.pre.i.pre = load ptr, ptr %b, align 8, !tbaa !28
   br label %lor.end.i
 
-lor.end.i:                                        ; preds = %do.end.i.i, %if.then.i, %lor.rhs.i, %while.body.i
-  %6 = phi ptr [ %0, %while.body.i ], [ %buffer.i, %lor.rhs.i ], [ %buffer.i, %if.then.i ], [ %.pre.i.pre, %do.end.i.i ]
+lor.end.i:                                        ; preds = %do.end.i.i, %if.then.i, %while.body.i
+  %6 = phi ptr [ %0, %while.body.i ], [ %buffer.i, %if.then.i ], [ %.pre.i.pre, %do.end.i.i ]
   %incdec.ptr.i = getelementptr inbounds i8, ptr %s.addr.09.i, i64 1
   %7 = load i8, ptr %s.addr.09.i, align 1, !tbaa !24
   %incdec.ptr3.i = getelementptr inbounds i8, ptr %6, i64 1
@@ -888,13 +886,11 @@ while.body.i.i:                                   ; preds = %luaL_addlstring.exi
   %dec10.i.i = add i64 %dec10.in.i.i, -1
   %8 = load ptr, ptr %b, align 8, !tbaa !28
   %cmp.i.i = icmp ult ptr %8, %add.ptr.i
-  br i1 %cmp.i.i, label %lor.end.i.i, label %lor.rhs.i.i
-
-lor.rhs.i.i:                                      ; preds = %while.body.i.i
   %cmp.i.i40 = icmp eq ptr %8, %buffer.i
-  br i1 %cmp.i.i40, label %lor.end.i.i, label %if.then.i48
+  %or.cond75 = select i1 %cmp.i.i, i1 true, i1 %cmp.i.i40
+  br i1 %or.cond75, label %lor.end.i.i, label %if.then.i48
 
-if.then.i48:                                      ; preds = %lor.rhs.i.i
+if.then.i48:                                      ; preds = %while.body.i.i
   %sub.ptr.lhs.cast.i.i42 = ptrtoint ptr %8 to i64
   %sub.ptr.sub.i.i43 = sub i64 %sub.ptr.lhs.cast.i.i42, %sub.ptr.rhs.cast.i.i32
   %9 = load ptr, ptr %L1.i, align 8, !tbaa !26
@@ -937,8 +933,8 @@ do.end.i.i67:                                     ; preds = %do.body.i.i64
   %.pre.i.i.pre = load ptr, ptr %b, align 8, !tbaa !28
   br label %lor.end.i.i
 
-lor.end.i.i:                                      ; preds = %do.end.i.i67, %if.then.i48, %lor.rhs.i.i, %while.body.i.i
-  %14 = phi ptr [ %8, %while.body.i.i ], [ %buffer.i, %lor.rhs.i.i ], [ %buffer.i, %if.then.i48 ], [ %.pre.i.i.pre, %do.end.i.i67 ]
+lor.end.i.i:                                      ; preds = %do.end.i.i67, %if.then.i48, %while.body.i.i
+  %14 = phi ptr [ %8, %while.body.i.i ], [ %buffer.i, %if.then.i48 ], [ %.pre.i.i.pre, %do.end.i.i67 ]
   %incdec.ptr.i.i = getelementptr inbounds i8, ptr %s.addr.09.i.i, i64 1
   %15 = load i8, ptr %s.addr.09.i.i, align 1, !tbaa !24
   %incdec.ptr3.i.i = getelementptr inbounds i8, ptr %14, i64 1
