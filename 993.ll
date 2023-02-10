@@ -88,7 +88,7 @@ do.end15.i.loopexit:                              ; preds = %while.cond.i
   br label %do.end15.i
 
 do.end15.i:                                       ; preds = %do.end15.i.loopexit, %if.then.i
-  %.sink.i = phi ptr [ %1, %if.then.i ], [ %2, %do.end15.i.loopexit ]
+  %.sink.i = phi ptr [ %1, %if.then.i ], [ %3, %do.end15.i.loopexit ]
   %genmalloc_memory_head.sink.i = phi ptr [ @genmalloc_memory_head, %if.then.i ], [ %genmalloc_memory_entries4.i.le, %do.end15.i.loopexit ]
   %genmalloc_memory_entries.i = getelementptr inbounds %struct.genmalloc_memory_entry, ptr %.sink.i, i64 0, i32 2
   %4 = load ptr, ptr %genmalloc_memory_entries.i, align 8, !tbaa !16
@@ -140,7 +140,7 @@ while.end:                                        ; preds = %while.cond
   br label %do.end15
 
 do.end15:                                         ; preds = %if.then, %while.end
-  %.sink = phi ptr [ %2, %while.end ], [ %1, %if.then ]
+  %.sink = phi ptr [ %3, %while.end ], [ %1, %if.then ]
   %genmalloc_memory_head.sink = phi ptr [ %genmalloc_memory_entries4.le, %while.end ], [ @genmalloc_memory_head, %if.then ]
   %genmalloc_memory_entries = getelementptr inbounds %struct.genmalloc_memory_entry, ptr %.sink, i64 0, i32 2
   %4 = load ptr, ptr %genmalloc_memory_entries, align 8, !tbaa !16
@@ -306,7 +306,7 @@ do.end15.i.loopexit:                              ; preds = %while.cond.i
   br label %do.end15.i
 
 do.end15.i:                                       ; preds = %do.end15.i.loopexit, %if.then.i
-  %.sink.i = phi ptr [ %2, %if.then.i ], [ %3, %do.end15.i.loopexit ]
+  %.sink.i = phi ptr [ %2, %if.then.i ], [ %4, %do.end15.i.loopexit ]
   %genmalloc_memory_head.sink.i = phi ptr [ @genmalloc_memory_head, %if.then.i ], [ %genmalloc_memory_entries4.i.le, %do.end15.i.loopexit ]
   %genmalloc_memory_entries.i = getelementptr inbounds %struct.genmalloc_memory_entry, ptr %.sink.i, i64 0, i32 2
   %5 = load ptr, ptr %genmalloc_memory_entries.i, align 8, !tbaa !16
@@ -353,7 +353,7 @@ do.end15.i22.loopexit:                            ; preds = %while.cond.i16
   br label %do.end15.i22
 
 do.end15.i22:                                     ; preds = %do.end15.i22.loopexit, %if.then.i12
-  %.sink.i19 = phi ptr [ %7, %if.then.i12 ], [ %8, %do.end15.i22.loopexit ]
+  %.sink.i19 = phi ptr [ %7, %if.then.i12 ], [ %9, %do.end15.i22.loopexit ]
   %genmalloc_memory_head.sink.i20 = phi ptr [ @genmalloc_memory_head, %if.then.i12 ], [ %genmalloc_memory_entries4.i14.le, %do.end15.i22.loopexit ]
   %genmalloc_memory_entries.i21 = getelementptr inbounds %struct.genmalloc_memory_entry, ptr %.sink.i19, i64 0, i32 2
   %10 = load ptr, ptr %genmalloc_memory_entries.i21, align 8, !tbaa !16
@@ -845,7 +845,7 @@ do.end15.i.loopexit:                              ; preds = %while.cond.i
   br label %do.end15.i
 
 do.end15.i:                                       ; preds = %do.end15.i.loopexit, %if.then.i
-  %.sink.i = phi ptr [ %3, %if.then.i ], [ %4, %do.end15.i.loopexit ]
+  %.sink.i = phi ptr [ %3, %if.then.i ], [ %5, %do.end15.i.loopexit ]
   %genmalloc_memory_head.sink.i = phi ptr [ @genmalloc_memory_head, %if.then.i ], [ %genmalloc_memory_entries4.i.le, %do.end15.i.loopexit ]
   %genmalloc_memory_entries.i = getelementptr inbounds %struct.genmalloc_memory_entry, ptr %.sink.i, i64 0, i32 2
   %6 = load ptr, ptr %genmalloc_memory_entries.i, align 8, !tbaa !16
@@ -893,7 +893,7 @@ do.end15.i25.loopexit:                            ; preds = %while.cond.i19
   br label %do.end15.i25
 
 do.end15.i25:                                     ; preds = %do.end15.i25.loopexit, %if.then.i15
-  %.sink.i22 = phi ptr [ %9, %if.then.i15 ], [ %10, %do.end15.i25.loopexit ]
+  %.sink.i22 = phi ptr [ %9, %if.then.i15 ], [ %11, %do.end15.i25.loopexit ]
   %genmalloc_memory_head.sink.i23 = phi ptr [ @genmalloc_memory_head, %if.then.i15 ], [ %genmalloc_memory_entries4.i17.le, %do.end15.i25.loopexit ]
   %genmalloc_memory_entries.i24 = getelementptr inbounds %struct.genmalloc_memory_entry, ptr %.sink.i22, i64 0, i32 2
   %12 = load ptr, ptr %genmalloc_memory_entries.i24, align 8, !tbaa !16
@@ -944,7 +944,7 @@ do.end15.i47.loopexit:                            ; preds = %while.cond.i41
   br label %do.end15.i47
 
 do.end15.i47:                                     ; preds = %do.end15.i47.loopexit, %if.then.i37
-  %.sink.i44 = phi ptr [ %14, %if.then.i37 ], [ %15, %do.end15.i47.loopexit ]
+  %.sink.i44 = phi ptr [ %14, %if.then.i37 ], [ %16, %do.end15.i47.loopexit ]
   %genmalloc_memory_head.sink.i45 = phi ptr [ @genmalloc_memory_head, %if.then.i37 ], [ %genmalloc_memory_entries4.i39.le, %do.end15.i47.loopexit ]
   %genmalloc_memory_entries.i46 = getelementptr inbounds %struct.genmalloc_memory_entry, ptr %.sink.i44, i64 0, i32 2
   %17 = load ptr, ptr %genmalloc_memory_entries.i46, align 8, !tbaa !16

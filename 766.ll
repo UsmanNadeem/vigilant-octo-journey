@@ -726,7 +726,7 @@ add_y_line.exit279:                               ; preds = %if.then44.i241, %if
 
 sw.epilog:                                        ; preds = %if.end39, %if.else, %add_y_line.exit279, %if.end83, %if.then88, %sw.bb
   %dir.0 = phi i32 [ 0, %sw.bb ], [ %cond31, %if.then88 ], [ %cond31, %if.end83 ], [ %cond31, %add_y_line.exit279 ], [ %cond31, %if.else ], [ %cond31, %if.end39 ]
-  %plast.1 = phi ptr [ %5, %sw.bb ], [ %pseg.0321, %if.then88 ], [ %pseg.0321, %if.end83 ], [ %pseg.0321, %add_y_line.exit279 ], [ %pseg.0321, %if.else ], [ %plast.0319, %if.end39 ]
+  %plast.1 = phi ptr [ %5, %sw.bb ], [ %plast.0319, %if.then88 ], [ %plast.0319, %if.end83 ], [ %plast.0319, %add_y_line.exit279 ], [ %plast.0319, %if.else ], [ %plast.0319, %if.end39 ]
   %psub.1 = phi ptr [ %pseg.0321, %sw.bb ], [ %psub.0320, %if.then88 ], [ %psub.0320, %if.end83 ], [ %psub.0320, %add_y_line.exit279 ], [ %psub.0320, %if.else ], [ %psub.0320, %if.end39 ]
   %next = getelementptr inbounds %struct.segment_s, ptr %pseg.0321, i64 0, i32 1
   %61 = load ptr, ptr %next, align 8, !tbaa !64

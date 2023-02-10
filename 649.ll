@@ -8141,7 +8141,7 @@ if.end94.thread.i:                                ; preds = %lor.lhs.false85.i
 
 if.then96.i:                                      ; preds = %if.end94.thread.i, %if.end94.i
   %RedAtom.5321.i = phi ptr [ %RedAtom.1368.i, %if.end94.thread.i ], [ %RedAtom.5.i, %if.end94.i ]
-  %Copy.5317.i = phi ptr [ %RedClause, %if.end94.thread.i ], [ %Copy.5.i, %if.end94.i ]
+  %Copy.5317.i = phi ptr [ %Copy.1366.i, %if.end94.thread.i ], [ %Copy.5.i, %if.end94.i ]
   %53 = load i32, ptr %arrayidx.i284.i, align 4
   %tobool98.not.i = icmp eq i32 %53, 0
   br i1 %tobool98.not.i, label %if.end103.i, label %if.then99.i
@@ -8282,7 +8282,7 @@ if.else110.i:                                     ; preds = %if.end103.thread.i
 
 if.end114.i:                                      ; preds = %if.else110.i, %red_DocumentRewriting.exit.i, %if.end103.thread.i, %if.end103.i, %if.end94.thread.i
   %RedAtom.5319.i = phi ptr [ %RedAtom.5.i, %if.end103.thread.i ], [ %RedAtom.5321.i, %red_DocumentRewriting.exit.i ], [ %RedAtom.5.i, %if.else110.i ], [ %RedAtom.5321.i, %if.end103.i ], [ %RedAtom.1368.i, %if.end94.thread.i ]
-  %Copy.5315.i = phi ptr [ %Copy.5.i, %if.end103.thread.i ], [ %Copy.5317.i, %red_DocumentRewriting.exit.i ], [ %Copy.5.i, %if.else110.i ], [ %Copy.5317.i, %if.end103.i ], [ %RedClause, %if.end94.thread.i ]
+  %Copy.5315.i = phi ptr [ %Copy.5.i, %if.end103.thread.i ], [ %Copy.5317.i, %red_DocumentRewriting.exit.i ], [ %Copy.5.i, %if.else110.i ], [ %Copy.5317.i, %if.end103.i ], [ %Copy.1366.i, %if.end94.thread.i ]
   %83 = load ptr, ptr @cont_LEFTCONTEXT, align 8
   %call116.i = tail call ptr @term_Copy(ptr noundef %Right.0.i) #11
   %call117.i = tail call ptr @cont_ApplyBindingsModuloMatching(ptr noundef %83, ptr noundef %call116.i, i32 noundef 1) #11
@@ -8810,7 +8810,7 @@ if.end75.thread:                                  ; preds = %lor.lhs.false
 
 if.then77:                                        ; preds = %if.end75.thread, %if.end75
   %RedAtom.4327 = phi ptr [ %RedAtom.0372, %if.end75.thread ], [ %RedAtom.4, %if.end75 ]
-  %Copy.6323 = phi ptr [ %RedClause, %if.end75.thread ], [ %Copy.6, %if.end75 ]
+  %Copy.6323 = phi ptr [ %Copy.2370, %if.end75.thread ], [ %Copy.6, %if.end75 ]
   %177 = load i32, ptr %arrayidx.i264, align 4
   %tobool79.not = icmp eq i32 %177, 0
   br i1 %tobool79.not, label %if.end84, label %if.then80
@@ -8959,7 +8959,7 @@ if.else:                                          ; preds = %if.end84.thread
 
 if.end90:                                         ; preds = %if.end75.thread, %if.end84.thread, %red_DocumentRewriting.exit, %if.else, %if.end84
   %RedAtom.4325 = phi ptr [ %RedAtom.4, %if.end84.thread ], [ %RedAtom.4327, %red_DocumentRewriting.exit ], [ %RedAtom.4, %if.else ], [ %RedAtom.4327, %if.end84 ], [ %RedAtom.0372, %if.end75.thread ]
-  %Copy.6321 = phi ptr [ %Copy.6, %if.end84.thread ], [ %Copy.6323, %red_DocumentRewriting.exit ], [ %Copy.6, %if.else ], [ %Copy.6323, %if.end84 ], [ %RedClause, %if.end75.thread ]
+  %Copy.6321 = phi ptr [ %Copy.6, %if.end84.thread ], [ %Copy.6323, %red_DocumentRewriting.exit ], [ %Copy.6, %if.else ], [ %Copy.6323, %if.end84 ], [ %Copy.2370, %if.end75.thread ]
   %209 = load ptr, ptr @cont_LEFTCONTEXT, align 8
   %call38.val219 = load ptr, ptr %168, align 8
   %call38.val219.val = load ptr, ptr %call38.val219, align 8
@@ -9602,7 +9602,7 @@ if.then.i.i309:                                   ; preds = %if.then89
   br label %if.end92
 
 if.end92:                                         ; preds = %if.then.i.i309, %if.then89, %lor.lhs.false84, %if.then76
-  %Copy.6 = phi ptr [ %RedClause, %lor.lhs.false84 ], [ %Copy.4476, %if.then76 ], [ %call90, %if.then89 ], [ %call90, %if.then.i.i309 ]
+  %Copy.6 = phi ptr [ %Copy.4476, %lor.lhs.false84 ], [ %Copy.4476, %if.then76 ], [ %call90, %if.then89 ], [ %call90, %if.then.i.i309 ]
   %RedAtom.4 = phi ptr [ %RedAtom.2478, %lor.lhs.false84 ], [ %RedAtom.2478, %if.then76 ], [ %call.val.i304, %if.then89 ], [ %call1.val.val.i.i308, %if.then.i.i309 ]
   %tobool93.not = icmp eq i32 %Result.4477, 0
   br i1 %tobool93.not, label %land.lhs.true94, label %if.end100
@@ -10578,7 +10578,7 @@ if.then37:                                        ; preds = %lor.lhs.false, %lan
   br label %if.end39
 
 if.end39:                                         ; preds = %if.then37, %lor.lhs.false, %for.body
-  %Copy.2 = phi ptr [ %call38, %if.then37 ], [ %Clause, %lor.lhs.false ], [ %Copy.1187, %for.body ]
+  %Copy.2 = phi ptr [ %call38, %if.then37 ], [ %Copy.1187, %lor.lhs.false ], [ %Copy.1187, %for.body ]
   %21 = getelementptr i8, ptr %Scan.0186, i64 8
   %Scan.0.val141 = load ptr, ptr %21, align 8
   %22 = getelementptr i8, ptr %Scan.0.val141, i64 48
@@ -11084,7 +11084,6 @@ entry:
 while.body.lr.ph:                                 ; preds = %entry
   %arrayidx.i175 = getelementptr inbounds i32, ptr %Flags, i64 20
   %tobool32.not = icmp eq i32 %3, 0
-  %4 = getelementptr i8, ptr %Clause, i64 12
   br label %while.body
 
 while.body:                                       ; preds = %while.body.lr.ph, %if.end45
@@ -11095,60 +11094,60 @@ while.body:                                       ; preds = %while.body.lr.ph, %
   %j.0217 = phi i32 [ 0, %while.body.lr.ph ], [ %j.1, %if.end45 ]
   %i.0216 = phi i32 [ 0, %while.body.lr.ph ], [ %i.1, %if.end45 ]
   %Copy.0215 = phi ptr [ %Clause, %while.body.lr.ph ], [ %Copy.2, %if.end45 ]
-  %5 = getelementptr i8, ptr %Copy.0215, i64 56
-  %Copy.0.val = load ptr, ptr %5, align 8
+  %4 = getelementptr i8, ptr %Copy.0215, i64 56
+  %Copy.0.val = load ptr, ptr %4, align 8
   %idxprom.i = sext i32 %i.0216 to i64
   %arrayidx.i166 = getelementptr inbounds ptr, ptr %Copy.0.val, i64 %idxprom.i
-  %6 = load ptr, ptr %arrayidx.i166, align 8
-  %7 = getelementptr i8, ptr %6, i64 24
-  %call6.val = load ptr, ptr %7, align 8
+  %5 = load ptr, ptr %arrayidx.i166, align 8
+  %6 = getelementptr i8, ptr %5, i64 24
+  %call6.val = load ptr, ptr %6, align 8
   %L.val7.val.i = load i32, ptr %call6.val, align 8
-  %8 = load i32, ptr @fol_NOT, align 4
-  %cmp.i.not.i = icmp eq i32 %8, %L.val7.val.i
+  %7 = load i32, ptr @fol_NOT, align 4
+  %cmp.i.not.i = icmp eq i32 %7, %L.val7.val.i
   br i1 %cmp.i.not.i, label %clause_LiteralAtom.exit, label %if.then
 
 clause_LiteralAtom.exit:                          ; preds = %while.body
-  %9 = getelementptr i8, ptr %call6.val, i64 16
-  %call1.val.i = load ptr, ptr %9, align 8
-  %10 = getelementptr i8, ptr %call1.val.i, i64 8
-  %call1.val.val.i = load ptr, ptr %10, align 8
+  %8 = getelementptr i8, ptr %call6.val, i64 16
+  %call1.val.i = load ptr, ptr %8, align 8
+  %9 = getelementptr i8, ptr %call1.val.i, i64 8
+  %call1.val.val.i = load ptr, ptr %9, align 8
   %call7.val.pre = load i32, ptr %call1.val.val.i, align 8
-  %11 = load i32, ptr @fol_EQUALITY, align 4
-  %cmp.i.not = icmp eq i32 %11, %call7.val.pre
+  %10 = load i32, ptr @fol_EQUALITY, align 4
+  %cmp.i.not = icmp eq i32 %10, %call7.val.pre
   %or.cond = and i1 %cmp.i.not, %cmp.i.not.i
   br i1 %or.cond, label %if.else43, label %if.then
 
 if.then:                                          ; preds = %while.body, %clause_LiteralAtom.exit
-  %12 = getelementptr i8, ptr %6, i64 16
-  %ActLit.val46.i = load ptr, ptr %12, align 8
-  %13 = getelementptr i8, ptr %ActLit.val46.i, i64 56
-  %call.val.i.i = load ptr, ptr %13, align 8
+  %11 = getelementptr i8, ptr %5, i64 16
+  %ActLit.val46.i = load ptr, ptr %11, align 8
+  %12 = getelementptr i8, ptr %ActLit.val46.i, i64 56
+  %call.val.i.i = load ptr, ptr %12, align 8
   br label %while.cond.i.i
 
 while.cond.i.i:                                   ; preds = %while.cond.i.i, %if.then
   %indvars.iv.i.i = phi i64 [ %indvars.iv.next.i.i, %while.cond.i.i ], [ 0, %if.then ]
   %arrayidx.i.i.i = getelementptr inbounds ptr, ptr %call.val.i.i, i64 %indvars.iv.i.i
-  %14 = load ptr, ptr %arrayidx.i.i.i, align 8
-  %cmp.not.i.i = icmp eq ptr %14, %6
+  %13 = load ptr, ptr %arrayidx.i.i.i, align 8
+  %cmp.not.i.i = icmp eq ptr %13, %5
   %indvars.iv.next.i.i = add nuw i64 %indvars.iv.i.i, 1
   br i1 %cmp.not.i.i, label %clause_LiteralGetIndex.exit.i, label %while.cond.i.i, !llvm.loop !11
 
 clause_LiteralGetIndex.exit.i:                    ; preds = %while.cond.i.i
-  %15 = trunc i64 %indvars.iv.i.i to i32
-  %16 = load ptr, ptr @cont_LEFTCONTEXT, align 8
+  %14 = trunc i64 %indvars.iv.i.i to i32
+  %15 = load ptr, ptr @cont_LEFTCONTEXT, align 8
   %ShIndex.val.i = load ptr, ptr %ShIndex, align 8
   br i1 %cmp.i.not.i, label %if.then.i.i, label %clause_LiteralAtom.exit.i
 
 if.then.i.i:                                      ; preds = %clause_LiteralGetIndex.exit.i
-  %17 = getelementptr i8, ptr %call6.val, i64 16
-  %call1.val.i.i = load ptr, ptr %17, align 8
-  %18 = getelementptr i8, ptr %call1.val.i.i, i64 8
-  %call1.val.val.i.i = load ptr, ptr %18, align 8
+  %16 = getelementptr i8, ptr %call6.val, i64 16
+  %call1.val.i.i = load ptr, ptr %16, align 8
+  %17 = getelementptr i8, ptr %call1.val.i.i, i64 8
+  %call1.val.val.i.i = load ptr, ptr %17, align 8
   br label %clause_LiteralAtom.exit.i
 
 clause_LiteralAtom.exit.i:                        ; preds = %if.then.i.i, %clause_LiteralGetIndex.exit.i
   %retval.0.i.i = phi ptr [ %call1.val.val.i.i, %if.then.i.i ], [ %call6.val, %clause_LiteralGetIndex.exit.i ]
-  %call5.i = tail call ptr @st_ExistGen(ptr noundef %16, ptr noundef %ShIndex.val.i, ptr noundef %retval.0.i.i) #11
+  %call5.i = tail call ptr @st_ExistGen(ptr noundef %15, ptr noundef %ShIndex.val.i, ptr noundef %retval.0.i.i) #11
   %tobool.not64.i = icmp eq ptr %call5.i, null
   br i1 %tobool.not64.i, label %if.else, label %while.body.i
 
@@ -11168,36 +11167,36 @@ while.body12.preheader.i:                         ; preds = %if.then.i167
   br label %while.body12.i
 
 while.body12.i:                                   ; preds = %if.end24.i, %while.body12.preheader.i
-  %19 = phi i32 [ %29, %if.end24.i ], [ %.pre67.i, %while.body12.preheader.i ]
+  %18 = phi i32 [ %28, %if.end24.i ], [ %.pre67.i, %while.body12.preheader.i ]
   %LitScan.063.i = phi ptr [ %LitScan.0.val44.i, %if.end24.i ], [ %call8.i, %while.body12.preheader.i ]
-  %20 = getelementptr i8, ptr %LitScan.063.i, i64 8
-  %LitScan.0.val.i = load ptr, ptr %20, align 8
-  %ActLit.val47.i = load ptr, ptr %7, align 8
+  %19 = getelementptr i8, ptr %LitScan.063.i, i64 8
+  %LitScan.0.val.i = load ptr, ptr %19, align 8
+  %ActLit.val47.i = load ptr, ptr %6, align 8
   %ActLit.val47.val.i = load i32, ptr %ActLit.val47.i, align 8
-  %cmp.i.not.i48.i = icmp eq i32 %19, %ActLit.val47.val.i
-  %21 = getelementptr i8, ptr %LitScan.0.val.i, i64 24
-  %L2.val10.i.i = load ptr, ptr %21, align 8
+  %cmp.i.not.i48.i = icmp eq i32 %18, %ActLit.val47.val.i
+  %20 = getelementptr i8, ptr %LitScan.0.val.i, i64 24
+  %L2.val10.i.i = load ptr, ptr %20, align 8
   %L2.val10.val.i.i = load i32, ptr %L2.val10.i.i, align 8
   br i1 %cmp.i.not.i48.i, label %land.lhs.true.i.i, label %lor.rhs.i.i
 
 land.lhs.true.i.i:                                ; preds = %while.body12.i
-  %cmp.i.i.not.i.i = icmp eq i32 %L2.val10.val.i.i, %19
+  %cmp.i.i.not.i.i = icmp eq i32 %L2.val10.val.i.i, %18
   br i1 %cmp.i.i.not.i.i, label %if.end24.i, label %if.then16.i
 
 lor.rhs.i.i:                                      ; preds = %while.body12.i
-  %cmp.i11.not.i.i.not = icmp eq i32 %19, %L2.val10.val.i.i
+  %cmp.i11.not.i.i.not = icmp eq i32 %18, %L2.val10.val.i.i
   br i1 %cmp.i11.not.i.i.not, label %if.then16.i, label %if.end24.i
 
 if.then16.i:                                      ; preds = %lor.rhs.i.i, %land.lhs.true.i.i
-  %22 = getelementptr i8, ptr %LitScan.0.val.i, i64 16
-  %call13.val45.i = load ptr, ptr %22, align 8
-  %23 = getelementptr i8, ptr %call13.val45.i, i64 64
-  %Clause.val6.i.i = load i32, ptr %23, align 8
-  %24 = getelementptr i8, ptr %call13.val45.i, i64 68
-  %Clause.val.i.i = load i32, ptr %24, align 4
+  %21 = getelementptr i8, ptr %LitScan.0.val.i, i64 16
+  %call13.val45.i = load ptr, ptr %21, align 8
+  %22 = getelementptr i8, ptr %call13.val45.i, i64 64
+  %Clause.val6.i.i = load i32, ptr %22, align 8
+  %23 = getelementptr i8, ptr %call13.val45.i, i64 68
+  %Clause.val.i.i = load i32, ptr %23, align 4
   %add.i.i = add nsw i32 %Clause.val.i.i, %Clause.val6.i.i
-  %25 = getelementptr i8, ptr %call13.val45.i, i64 72
-  %Clause.val7.i.i = load i32, ptr %25, align 8
+  %24 = getelementptr i8, ptr %call13.val45.i, i64 72
+  %Clause.val7.i.i = load i32, ptr %24, align 8
   %add3.i.i = add nsw i32 %add.i.i, %Clause.val7.i.i
   %cmp.i168 = icmp eq i32 %add3.i.i, 1
   br i1 %cmp.i168, label %red_GetMRResLit.exit.thread, label %lor.lhs.false.i
@@ -11207,27 +11206,27 @@ red_GetMRResLit.exit.thread:                      ; preds = %if.then16.i
   br label %if.then14
 
 lor.lhs.false.i:                                  ; preds = %if.then16.i
-  %26 = getelementptr i8, ptr %call13.val45.i, i64 56
-  %call.val.i50.i = load ptr, ptr %26, align 8
+  %25 = getelementptr i8, ptr %call13.val45.i, i64 56
+  %call.val.i50.i = load ptr, ptr %25, align 8
   br label %while.cond.i55.i
 
 while.cond.i55.i:                                 ; preds = %while.cond.i55.i, %lor.lhs.false.i
   %indvars.iv.i51.i = phi i64 [ %indvars.iv.next.i54.i, %while.cond.i55.i ], [ 0, %lor.lhs.false.i ]
   %arrayidx.i.i52.i = getelementptr inbounds ptr, ptr %call.val.i50.i, i64 %indvars.iv.i51.i
-  %27 = load ptr, ptr %arrayidx.i.i52.i, align 8
-  %cmp.not.i53.i = icmp eq ptr %27, %LitScan.0.val.i
+  %26 = load ptr, ptr %arrayidx.i.i52.i, align 8
+  %cmp.not.i53.i = icmp eq ptr %26, %LitScan.0.val.i
   %indvars.iv.next.i54.i = add nuw i64 %indvars.iv.i51.i, 1
   br i1 %cmp.not.i53.i, label %clause_LiteralGetIndex.exit56.i, label %while.cond.i55.i, !llvm.loop !11
 
 clause_LiteralGetIndex.exit56.i:                  ; preds = %while.cond.i55.i
-  %28 = trunc i64 %indvars.iv.i51.i to i32
-  %call21.i = tail call i32 @subs_SubsumesBasic(ptr noundef %call13.val45.i, ptr noundef %ActLit.val46.i, i32 noundef %28, i32 noundef %15) #11
+  %27 = trunc i64 %indvars.iv.i51.i to i32
+  %call21.i = tail call i32 @subs_SubsumesBasic(ptr noundef %call13.val45.i, ptr noundef %ActLit.val46.i, i32 noundef %27, i32 noundef %14) #11
   %tobool22.not.i = icmp eq i32 %call21.i, 0
   %.pre.i = load i32, ptr @fol_NOT, align 4
   br i1 %tobool22.not.i, label %if.end24.i, label %red_GetMRResLit.exit
 
 if.end24.i:                                       ; preds = %clause_LiteralGetIndex.exit56.i, %lor.rhs.i.i, %land.lhs.true.i.i
-  %29 = phi i32 [ %19, %lor.rhs.i.i ], [ %.pre.i, %clause_LiteralGetIndex.exit56.i ], [ %19, %land.lhs.true.i.i ]
+  %28 = phi i32 [ %18, %lor.rhs.i.i ], [ %.pre.i, %clause_LiteralGetIndex.exit56.i ], [ %18, %land.lhs.true.i.i ]
   %LitScan.0.val44.i = load ptr, ptr %LitScan.063.i, align 8
   %cmp.i.not.i169 = icmp eq ptr %LitScan.0.val44.i, null
   br i1 %cmp.i.not.i169, label %if.end26.i, label %while.body12.i, !llvm.loop !91
@@ -11243,57 +11242,57 @@ red_GetMRResLit.exit:                             ; preds = %clause_LiteralGetIn
   br i1 %cmp.i171.not, label %if.else, label %if.then14
 
 if.then14:                                        ; preds = %red_GetMRResLit.exit.thread, %red_GetMRResLit.exit
-  %30 = getelementptr i8, ptr %LitScan.0.val.i, i64 16
+  %29 = getelementptr i8, ptr %LitScan.0.val.i, i64 16
   %cmp.i173.not = icmp eq ptr %PLits.0221, null
   br i1 %cmp.i173.not, label %land.lhs.true, label %if.end
 
 land.lhs.true:                                    ; preds = %if.then14
-  %31 = load i32, ptr %arrayidx.i175, align 4
-  %tobool18.not = icmp eq i32 %31, 0
+  %30 = load i32, ptr %arrayidx.i175, align 4
+  %tobool18.not = icmp eq i32 %30, 0
   br i1 %tobool18.not, label %if.end, label %if.then19
 
 if.then19:                                        ; preds = %land.lhs.true
-  %32 = load ptr, ptr @stdout, align 8
-  %33 = tail call i64 @fwrite(ptr nonnull @.str.36, i64 33, i64 1, ptr %32)
+  %31 = load ptr, ptr @stdout, align 8
+  %32 = tail call i64 @fwrite(ptr nonnull @.str.36, i64 33, i64 1, ptr %31)
   tail call void @clause_Print(ptr noundef %Copy.0215) #11
   br label %if.end
 
 if.end:                                           ; preds = %if.then19, %land.lhs.true, %if.then14
-  %call11.val = load ptr, ptr %30, align 8
+  %call11.val = load ptr, ptr %29, align 8
   %call21.val = load i32, ptr %call11.val, align 8
   %conv = sext i32 %call21.val to i64
-  %34 = inttoptr i64 %conv to ptr
+  %33 = inttoptr i64 %conv to ptr
   %call.i = tail call ptr @memory_Malloc(i32 noundef 16) #11
   %car.i = getelementptr inbounds %struct.LIST_HELP, ptr %call.i, i64 0, i32 1
-  store ptr %34, ptr %car.i, align 8
+  store ptr %33, ptr %car.i, align 8
   store ptr %ReducedBy.0219, ptr %call.i, align 8
-  %L.val.i = load ptr, ptr %30, align 8
-  %35 = getelementptr i8, ptr %L.val.i, i64 56
-  %call.val.i = load ptr, ptr %35, align 8
+  %L.val.i = load ptr, ptr %29, align 8
+  %34 = getelementptr i8, ptr %L.val.i, i64 56
+  %call.val.i = load ptr, ptr %34, align 8
   br label %while.cond.i
 
 while.cond.i:                                     ; preds = %while.cond.i, %if.end
   %indvars.iv.i = phi i64 [ %indvars.iv.next.i, %while.cond.i ], [ 0, %if.end ]
   %arrayidx.i.i = getelementptr inbounds ptr, ptr %call.val.i, i64 %indvars.iv.i
-  %36 = load ptr, ptr %arrayidx.i.i, align 8
-  %cmp.not.i = icmp eq ptr %36, %LitScan.0.val.i
+  %35 = load ptr, ptr %arrayidx.i.i, align 8
+  %cmp.not.i = icmp eq ptr %35, %LitScan.0.val.i
   %indvars.iv.next.i = add nuw i64 %indvars.iv.i, 1
   br i1 %cmp.not.i, label %clause_LiteralGetIndex.exit, label %while.cond.i, !llvm.loop !11
 
 clause_LiteralGetIndex.exit:                      ; preds = %while.cond.i
   %sext = shl i64 %indvars.iv.i, 32
   %conv25 = ashr exact i64 %sext, 32
-  %37 = inttoptr i64 %conv25 to ptr
+  %36 = inttoptr i64 %conv25 to ptr
   %call.i176 = tail call ptr @memory_Malloc(i32 noundef 16) #11
   %car.i177 = getelementptr inbounds %struct.LIST_HELP, ptr %call.i176, i64 0, i32 1
-  store ptr %37, ptr %car.i177, align 8
+  store ptr %36, ptr %car.i177, align 8
   store ptr %PLits.0221, ptr %call.i176, align 8
   %add = add nsw i32 %j.0217, %i.0216
   %conv27 = sext i32 %add to i64
-  %38 = inttoptr i64 %conv27 to ptr
+  %37 = inttoptr i64 %conv27 to ptr
   %call.i178 = tail call ptr @memory_Malloc(i32 noundef 16) #11
   %car.i179 = getelementptr inbounds %struct.LIST_HELP, ptr %call.i178, i64 0, i32 1
-  store ptr %38, ptr %car.i179, align 8
+  store ptr %37, ptr %car.i179, align 8
   store ptr %ReducedLits.0220, ptr %call.i178, align 8
   %cmp29 = icmp eq ptr %Copy.0215, %Clause
   br i1 %cmp29, label %land.lhs.true31, label %if.end40
@@ -11302,9 +11301,10 @@ land.lhs.true31:                                  ; preds = %clause_LiteralGetIn
   br i1 %tobool32.not, label %lor.lhs.false33, label %if.then38
 
 lor.lhs.false33:                                  ; preds = %land.lhs.true31
-  %39 = getelementptr i8, ptr %call11.val, i64 12
-  %call21.val164 = load i32, ptr %39, align 4
-  %Copy.0.val163 = load i32, ptr %4, align 4
+  %38 = getelementptr i8, ptr %call11.val, i64 12
+  %call21.val164 = load i32, ptr %38, align 4
+  %39 = getelementptr i8, ptr %Copy.0215, i64 12
+  %Copy.0.val163 = load i32, ptr %39, align 4
   %cmp.i180 = icmp ule i32 %call21.val164, %Copy.0.val163
   %cmp1.i = icmp ule i32 %call21.val164, %Level
   %.not = and i1 %cmp1.i, %cmp.i180
@@ -11315,7 +11315,7 @@ if.then38:                                        ; preds = %lor.lhs.false33, %l
   br label %if.end40
 
 if.end40:                                         ; preds = %if.then38, %lor.lhs.false33, %clause_LiteralGetIndex.exit
-  %Copy.1 = phi ptr [ %call39, %if.then38 ], [ %Clause, %lor.lhs.false33 ], [ %Copy.0215, %clause_LiteralGetIndex.exit ]
+  %Copy.1 = phi ptr [ %call39, %if.then38 ], [ %Copy.0215, %lor.lhs.false33 ], [ %Copy.0215, %clause_LiteralGetIndex.exit ]
   tail call fastcc void @clause_UpdateSplitDataFromPartner(ptr noundef %Copy.1, ptr noundef nonnull %call11.val)
   tail call void @clause_DeleteLiteral(ptr noundef %Copy.1, i32 noundef %i.0216, ptr noundef %Flags, ptr noundef %Precedence) #11
   %dec = add nsw i32 %length.0218, -1

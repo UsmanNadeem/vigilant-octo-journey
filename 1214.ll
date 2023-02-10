@@ -182,333 +182,224 @@ invoke.cont:                                      ; preds = %for.body.i.i
 invoke.cont5:                                     ; preds = %invoke.cont
   %1 = load ptr, ptr %__f_.i.i.i43, align 16, !tbaa !17
   %cmp.i.i = icmp eq ptr %1, %agg.tmp2
-  br i1 %cmp.i.i, label %if.then.i.i, label %if.else.i.i
-
-if.then.i.i:                                      ; preds = %invoke.cont5
-  %vtable.i.i = load ptr, ptr %agg.tmp2, align 16, !tbaa !15
-  %vfn.i.i = getelementptr inbounds ptr, ptr %vtable.i.i, i64 4
-  br label %if.end8.sink.split.i.i
+  br i1 %cmp.i.i, label %if.end8.sink.split.i.i, label %if.else.i.i
 
 if.else.i.i:                                      ; preds = %invoke.cont5
   %tobool.not.i.i = icmp eq ptr %1, null
-  br i1 %tobool.not.i.i, label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit, label %if.then4.i.i
+  br i1 %tobool.not.i.i, label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit, label %if.end8.sink.split.i.i
 
-if.then4.i.i:                                     ; preds = %if.else.i.i
+if.end8.sink.split.i.i:                           ; preds = %if.else.i.i, %invoke.cont5
+  %.sink.i.i = phi i64 [ 4, %invoke.cont5 ], [ 5, %if.else.i.i ]
   %vtable6.i.i = load ptr, ptr %1, align 8, !tbaa !15
-  %vfn7.i.i = getelementptr inbounds ptr, ptr %vtable6.i.i, i64 5
-  br label %if.end8.sink.split.i.i
-
-if.end8.sink.split.i.i:                           ; preds = %if.then4.i.i, %if.then.i.i
-  %vfn7.sink.i.i = phi ptr [ %vfn7.i.i, %if.then4.i.i ], [ %vfn.i.i, %if.then.i.i ]
-  %.sink.i.i = phi ptr [ %1, %if.then4.i.i ], [ %agg.tmp2, %if.then.i.i ]
-  %2 = load ptr, ptr %vfn7.sink.i.i, align 8
-  call void %2(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i) #24
+  %vfn7.i.i = getelementptr inbounds ptr, ptr %vtable6.i.i, i64 %.sink.i.i
+  %2 = load ptr, ptr %vfn7.i.i, align 8
+  call void %2(ptr noundef nonnull align 8 dereferenceable(8) %1) #24
   br label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit
 
 _ZNSt3__18functionIFvPjS1_jEED2Ev.exit:           ; preds = %if.else.i.i, %if.end8.sink.split.i.i
   %3 = load ptr, ptr %__f_.i.i.i, align 16, !tbaa !17
   %cmp.i.i45 = icmp eq ptr %3, %agg.tmp
-  br i1 %cmp.i.i45, label %if.then.i.i48, label %if.else.i.i50
+  br i1 %cmp.i.i45, label %if.end8.sink.split.i.i51, label %if.else.i.i47
 
-if.then.i.i48:                                    ; preds = %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit
-  %vtable.i.i46 = load ptr, ptr %agg.tmp, align 16, !tbaa !15
-  %vfn.i.i47 = getelementptr inbounds ptr, ptr %vtable.i.i46, i64 4
-  br label %if.end8.sink.split.i.i56
+if.else.i.i47:                                    ; preds = %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit
+  %tobool.not.i.i46 = icmp eq ptr %3, null
+  br i1 %tobool.not.i.i46, label %invoke.cont15, label %if.end8.sink.split.i.i51
 
-if.else.i.i50:                                    ; preds = %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit
-  %tobool.not.i.i49 = icmp eq ptr %3, null
-  br i1 %tobool.not.i.i49, label %invoke.cont15, label %if.then4.i.i53
-
-if.then4.i.i53:                                   ; preds = %if.else.i.i50
-  %vtable6.i.i51 = load ptr, ptr %3, align 8, !tbaa !15
-  %vfn7.i.i52 = getelementptr inbounds ptr, ptr %vtable6.i.i51, i64 5
-  br label %if.end8.sink.split.i.i56
-
-if.end8.sink.split.i.i56:                         ; preds = %if.then4.i.i53, %if.then.i.i48
-  %vfn7.sink.i.i54 = phi ptr [ %vfn7.i.i52, %if.then4.i.i53 ], [ %vfn.i.i47, %if.then.i.i48 ]
-  %.sink.i.i55 = phi ptr [ %3, %if.then4.i.i53 ], [ %agg.tmp, %if.then.i.i48 ]
-  %4 = load ptr, ptr %vfn7.sink.i.i54, align 8
-  call void %4(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i55) #24
+if.end8.sink.split.i.i51:                         ; preds = %if.else.i.i47, %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit
+  %.sink.i.i48 = phi i64 [ 4, %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit ], [ 5, %if.else.i.i47 ]
+  %vtable6.i.i49 = load ptr, ptr %3, align 8, !tbaa !15
+  %vfn7.i.i50 = getelementptr inbounds ptr, ptr %vtable6.i.i49, i64 %.sink.i.i48
+  %4 = load ptr, ptr %vfn7.i.i50, align 8
+  call void %4(ptr noundef nonnull align 8 dereferenceable(8) %3) #24
   br label %invoke.cont15
 
-invoke.cont15:                                    ; preds = %if.end8.sink.split.i.i56, %if.else.i.i50
-  %__f_.i.i.i58 = getelementptr inbounds %"class.std::__1::__function::__value_func", ptr %agg.tmp10, i64 0, i32 1
+invoke.cont15:                                    ; preds = %if.end8.sink.split.i.i51, %if.else.i.i47
+  %__f_.i.i.i53 = getelementptr inbounds %"class.std::__1::__function::__value_func", ptr %agg.tmp10, i64 0, i32 1
   store ptr getelementptr inbounds ({ [11 x ptr] }, ptr @"_ZTVNSt3__110__function6__funcIZ4mainE3$_2NS_9allocatorIS2_EEFvPjS5_jEEE", i64 0, inrange i32 0, i64 2), ptr %agg.tmp10, align 16, !tbaa !15
-  store ptr %agg.tmp10, ptr %__f_.i.i.i58, align 16, !tbaa !17
-  %__f_.i.i.i59 = getelementptr inbounds %"class.std::__1::__function::__value_func", ptr %agg.tmp12, i64 0, i32 1
+  store ptr %agg.tmp10, ptr %__f_.i.i.i53, align 16, !tbaa !17
+  %__f_.i.i.i54 = getelementptr inbounds %"class.std::__1::__function::__value_func", ptr %agg.tmp12, i64 0, i32 1
   store ptr getelementptr inbounds ({ [11 x ptr] }, ptr @"_ZTVNSt3__110__function6__funcIZ4mainE3$_3NS_9allocatorIS2_EEFvPjS5_jEEE", i64 0, inrange i32 0, i64 2), ptr %agg.tmp12, align 16, !tbaa !15
-  store ptr %agg.tmp12, ptr %__f_.i.i.i59, align 16, !tbaa !17
+  store ptr %agg.tmp12, ptr %__f_.i.i.i54, align 16, !tbaa !17
   invoke fastcc void @_ZL19checkVectorFunctionIjEvNSt3__18functionIFvPT_S3_jEEES5_PKc(ptr noundef nonnull %agg.tmp10, ptr noundef nonnull %agg.tmp12, ptr noundef nonnull @.str.1)
           to label %invoke.cont17 unwind label %lpad16
 
 invoke.cont17:                                    ; preds = %invoke.cont15
-  %5 = load ptr, ptr %__f_.i.i.i59, align 16, !tbaa !17
-  %cmp.i.i61 = icmp eq ptr %5, %agg.tmp12
-  br i1 %cmp.i.i61, label %if.then.i.i64, label %if.else.i.i66
+  %5 = load ptr, ptr %__f_.i.i.i54, align 16, !tbaa !17
+  %cmp.i.i56 = icmp eq ptr %5, %agg.tmp12
+  br i1 %cmp.i.i56, label %if.end8.sink.split.i.i62, label %if.else.i.i58
 
-if.then.i.i64:                                    ; preds = %invoke.cont17
-  %vtable.i.i62 = load ptr, ptr %agg.tmp12, align 16, !tbaa !15
-  %vfn.i.i63 = getelementptr inbounds ptr, ptr %vtable.i.i62, i64 4
-  br label %if.end8.sink.split.i.i72
+if.else.i.i58:                                    ; preds = %invoke.cont17
+  %tobool.not.i.i57 = icmp eq ptr %5, null
+  br i1 %tobool.not.i.i57, label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit63, label %if.end8.sink.split.i.i62
 
-if.else.i.i66:                                    ; preds = %invoke.cont17
-  %tobool.not.i.i65 = icmp eq ptr %5, null
-  br i1 %tobool.not.i.i65, label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit73, label %if.then4.i.i69
+if.end8.sink.split.i.i62:                         ; preds = %if.else.i.i58, %invoke.cont17
+  %.sink.i.i59 = phi i64 [ 4, %invoke.cont17 ], [ 5, %if.else.i.i58 ]
+  %vtable6.i.i60 = load ptr, ptr %5, align 8, !tbaa !15
+  %vfn7.i.i61 = getelementptr inbounds ptr, ptr %vtable6.i.i60, i64 %.sink.i.i59
+  %6 = load ptr, ptr %vfn7.i.i61, align 8
+  call void %6(ptr noundef nonnull align 8 dereferenceable(8) %5) #24
+  br label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit63
 
-if.then4.i.i69:                                   ; preds = %if.else.i.i66
-  %vtable6.i.i67 = load ptr, ptr %5, align 8, !tbaa !15
-  %vfn7.i.i68 = getelementptr inbounds ptr, ptr %vtable6.i.i67, i64 5
-  br label %if.end8.sink.split.i.i72
+_ZNSt3__18functionIFvPjS1_jEED2Ev.exit63:         ; preds = %if.else.i.i58, %if.end8.sink.split.i.i62
+  %7 = load ptr, ptr %__f_.i.i.i53, align 16, !tbaa !17
+  %cmp.i.i65 = icmp eq ptr %7, %agg.tmp10
+  br i1 %cmp.i.i65, label %if.end8.sink.split.i.i71, label %if.else.i.i67
 
-if.end8.sink.split.i.i72:                         ; preds = %if.then4.i.i69, %if.then.i.i64
-  %vfn7.sink.i.i70 = phi ptr [ %vfn7.i.i68, %if.then4.i.i69 ], [ %vfn.i.i63, %if.then.i.i64 ]
-  %.sink.i.i71 = phi ptr [ %5, %if.then4.i.i69 ], [ %agg.tmp12, %if.then.i.i64 ]
-  %6 = load ptr, ptr %vfn7.sink.i.i70, align 8
-  call void %6(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i71) #24
-  br label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit73
+if.else.i.i67:                                    ; preds = %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit63
+  %tobool.not.i.i66 = icmp eq ptr %7, null
+  br i1 %tobool.not.i.i66, label %invoke.cont29, label %if.end8.sink.split.i.i71
 
-_ZNSt3__18functionIFvPjS1_jEED2Ev.exit73:         ; preds = %if.else.i.i66, %if.end8.sink.split.i.i72
-  %7 = load ptr, ptr %__f_.i.i.i58, align 16, !tbaa !17
-  %cmp.i.i75 = icmp eq ptr %7, %agg.tmp10
-  br i1 %cmp.i.i75, label %if.then.i.i78, label %if.else.i.i80
-
-if.then.i.i78:                                    ; preds = %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit73
-  %vtable.i.i76 = load ptr, ptr %agg.tmp10, align 16, !tbaa !15
-  %vfn.i.i77 = getelementptr inbounds ptr, ptr %vtable.i.i76, i64 4
-  br label %if.end8.sink.split.i.i86
-
-if.else.i.i80:                                    ; preds = %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit73
-  %tobool.not.i.i79 = icmp eq ptr %7, null
-  br i1 %tobool.not.i.i79, label %invoke.cont29, label %if.then4.i.i83
-
-if.then4.i.i83:                                   ; preds = %if.else.i.i80
-  %vtable6.i.i81 = load ptr, ptr %7, align 8, !tbaa !15
-  %vfn7.i.i82 = getelementptr inbounds ptr, ptr %vtable6.i.i81, i64 5
-  br label %if.end8.sink.split.i.i86
-
-if.end8.sink.split.i.i86:                         ; preds = %if.then4.i.i83, %if.then.i.i78
-  %vfn7.sink.i.i84 = phi ptr [ %vfn7.i.i82, %if.then4.i.i83 ], [ %vfn.i.i77, %if.then.i.i78 ]
-  %.sink.i.i85 = phi ptr [ %7, %if.then4.i.i83 ], [ %agg.tmp10, %if.then.i.i78 ]
-  %8 = load ptr, ptr %vfn7.sink.i.i84, align 8
-  call void %8(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i85) #24
+if.end8.sink.split.i.i71:                         ; preds = %if.else.i.i67, %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit63
+  %.sink.i.i68 = phi i64 [ 4, %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit63 ], [ 5, %if.else.i.i67 ]
+  %vtable6.i.i69 = load ptr, ptr %7, align 8, !tbaa !15
+  %vfn7.i.i70 = getelementptr inbounds ptr, ptr %vtable6.i.i69, i64 %.sink.i.i68
+  %8 = load ptr, ptr %vfn7.i.i70, align 8
+  call void %8(ptr noundef nonnull align 8 dereferenceable(8) %7) #24
   br label %invoke.cont29
 
-invoke.cont29:                                    ; preds = %if.end8.sink.split.i.i86, %if.else.i.i80
-  %__f_.i.i.i88 = getelementptr inbounds %"class.std::__1::__function::__value_func", ptr %agg.tmp24, i64 0, i32 1
+invoke.cont29:                                    ; preds = %if.end8.sink.split.i.i71, %if.else.i.i67
+  %__f_.i.i.i73 = getelementptr inbounds %"class.std::__1::__function::__value_func", ptr %agg.tmp24, i64 0, i32 1
   store ptr getelementptr inbounds ({ [11 x ptr] }, ptr @"_ZTVNSt3__110__function6__funcIZ4mainE3$_4NS_9allocatorIS2_EEFvPjS5_jEEE", i64 0, inrange i32 0, i64 2), ptr %agg.tmp24, align 16, !tbaa !15
-  store ptr %agg.tmp24, ptr %__f_.i.i.i88, align 16, !tbaa !17
-  %__f_.i.i.i89 = getelementptr inbounds %"class.std::__1::__function::__value_func", ptr %agg.tmp26, i64 0, i32 1
+  store ptr %agg.tmp24, ptr %__f_.i.i.i73, align 16, !tbaa !17
+  %__f_.i.i.i74 = getelementptr inbounds %"class.std::__1::__function::__value_func", ptr %agg.tmp26, i64 0, i32 1
   store ptr getelementptr inbounds ({ [11 x ptr] }, ptr @"_ZTVNSt3__110__function6__funcIZ4mainE3$_5NS_9allocatorIS2_EEFvPjS5_jEEE", i64 0, inrange i32 0, i64 2), ptr %agg.tmp26, align 16, !tbaa !15
-  store ptr %agg.tmp26, ptr %__f_.i.i.i89, align 16, !tbaa !17
+  store ptr %agg.tmp26, ptr %__f_.i.i.i74, align 16, !tbaa !17
   invoke fastcc void @_ZL19checkVectorFunctionIjEvNSt3__18functionIFvPT_S3_jEEES5_PKc(ptr noundef nonnull %agg.tmp24, ptr noundef nonnull %agg.tmp26, ptr noundef nonnull @.str.2)
           to label %invoke.cont31 unwind label %lpad30
 
 invoke.cont31:                                    ; preds = %invoke.cont29
-  %9 = load ptr, ptr %__f_.i.i.i89, align 16, !tbaa !17
-  %cmp.i.i91 = icmp eq ptr %9, %agg.tmp26
-  br i1 %cmp.i.i91, label %if.then.i.i94, label %if.else.i.i96
+  %9 = load ptr, ptr %__f_.i.i.i74, align 16, !tbaa !17
+  %cmp.i.i76 = icmp eq ptr %9, %agg.tmp26
+  br i1 %cmp.i.i76, label %if.end8.sink.split.i.i82, label %if.else.i.i78
 
-if.then.i.i94:                                    ; preds = %invoke.cont31
-  %vtable.i.i92 = load ptr, ptr %agg.tmp26, align 16, !tbaa !15
-  %vfn.i.i93 = getelementptr inbounds ptr, ptr %vtable.i.i92, i64 4
-  br label %if.end8.sink.split.i.i102
+if.else.i.i78:                                    ; preds = %invoke.cont31
+  %tobool.not.i.i77 = icmp eq ptr %9, null
+  br i1 %tobool.not.i.i77, label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit83, label %if.end8.sink.split.i.i82
 
-if.else.i.i96:                                    ; preds = %invoke.cont31
-  %tobool.not.i.i95 = icmp eq ptr %9, null
-  br i1 %tobool.not.i.i95, label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit103, label %if.then4.i.i99
+if.end8.sink.split.i.i82:                         ; preds = %if.else.i.i78, %invoke.cont31
+  %.sink.i.i79 = phi i64 [ 4, %invoke.cont31 ], [ 5, %if.else.i.i78 ]
+  %vtable6.i.i80 = load ptr, ptr %9, align 8, !tbaa !15
+  %vfn7.i.i81 = getelementptr inbounds ptr, ptr %vtable6.i.i80, i64 %.sink.i.i79
+  %10 = load ptr, ptr %vfn7.i.i81, align 8
+  call void %10(ptr noundef nonnull align 8 dereferenceable(8) %9) #24
+  br label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit83
 
-if.then4.i.i99:                                   ; preds = %if.else.i.i96
-  %vtable6.i.i97 = load ptr, ptr %9, align 8, !tbaa !15
-  %vfn7.i.i98 = getelementptr inbounds ptr, ptr %vtable6.i.i97, i64 5
-  br label %if.end8.sink.split.i.i102
+_ZNSt3__18functionIFvPjS1_jEED2Ev.exit83:         ; preds = %if.else.i.i78, %if.end8.sink.split.i.i82
+  %11 = load ptr, ptr %__f_.i.i.i73, align 16, !tbaa !17
+  %cmp.i.i85 = icmp eq ptr %11, %agg.tmp24
+  br i1 %cmp.i.i85, label %if.end8.sink.split.i.i91, label %if.else.i.i87
 
-if.end8.sink.split.i.i102:                        ; preds = %if.then4.i.i99, %if.then.i.i94
-  %vfn7.sink.i.i100 = phi ptr [ %vfn7.i.i98, %if.then4.i.i99 ], [ %vfn.i.i93, %if.then.i.i94 ]
-  %.sink.i.i101 = phi ptr [ %9, %if.then4.i.i99 ], [ %agg.tmp26, %if.then.i.i94 ]
-  %10 = load ptr, ptr %vfn7.sink.i.i100, align 8
-  call void %10(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i101) #24
-  br label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit103
+if.else.i.i87:                                    ; preds = %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit83
+  %tobool.not.i.i86 = icmp eq ptr %11, null
+  br i1 %tobool.not.i.i86, label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit92, label %if.end8.sink.split.i.i91
 
-_ZNSt3__18functionIFvPjS1_jEED2Ev.exit103:        ; preds = %if.else.i.i96, %if.end8.sink.split.i.i102
-  %11 = load ptr, ptr %__f_.i.i.i88, align 16, !tbaa !17
-  %cmp.i.i105 = icmp eq ptr %11, %agg.tmp24
-  br i1 %cmp.i.i105, label %if.then.i.i108, label %if.else.i.i110
+if.end8.sink.split.i.i91:                         ; preds = %if.else.i.i87, %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit83
+  %.sink.i.i88 = phi i64 [ 4, %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit83 ], [ 5, %if.else.i.i87 ]
+  %vtable6.i.i89 = load ptr, ptr %11, align 8, !tbaa !15
+  %vfn7.i.i90 = getelementptr inbounds ptr, ptr %vtable6.i.i89, i64 %.sink.i.i88
+  %12 = load ptr, ptr %vfn7.i.i90, align 8
+  call void %12(ptr noundef nonnull align 8 dereferenceable(8) %11) #24
+  br label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit92
 
-if.then.i.i108:                                   ; preds = %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit103
-  %vtable.i.i106 = load ptr, ptr %agg.tmp24, align 16, !tbaa !15
-  %vfn.i.i107 = getelementptr inbounds ptr, ptr %vtable.i.i106, i64 4
-  br label %if.end8.sink.split.i.i116
-
-if.else.i.i110:                                   ; preds = %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit103
-  %tobool.not.i.i109 = icmp eq ptr %11, null
-  br i1 %tobool.not.i.i109, label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit117, label %if.then4.i.i113
-
-if.then4.i.i113:                                  ; preds = %if.else.i.i110
-  %vtable6.i.i111 = load ptr, ptr %11, align 8, !tbaa !15
-  %vfn7.i.i112 = getelementptr inbounds ptr, ptr %vtable6.i.i111, i64 5
-  br label %if.end8.sink.split.i.i116
-
-if.end8.sink.split.i.i116:                        ; preds = %if.then4.i.i113, %if.then.i.i108
-  %vfn7.sink.i.i114 = phi ptr [ %vfn7.i.i112, %if.then4.i.i113 ], [ %vfn.i.i107, %if.then.i.i108 ]
-  %.sink.i.i115 = phi ptr [ %11, %if.then4.i.i113 ], [ %agg.tmp24, %if.then.i.i108 ]
-  %12 = load ptr, ptr %vfn7.sink.i.i114, align 8
-  call void %12(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i115) #24
-  br label %_ZNSt3__18functionIFvPjS1_jEED2Ev.exit117
-
-_ZNSt3__18functionIFvPjS1_jEED2Ev.exit117:        ; preds = %if.else.i.i110, %if.end8.sink.split.i.i116
+_ZNSt3__18functionIFvPjS1_jEED2Ev.exit92:         ; preds = %if.else.i.i87, %if.end8.sink.split.i.i91
   ret i32 0
 
 lpad4:                                            ; preds = %invoke.cont
   %13 = landingpad { ptr, i32 }
           cleanup
   %14 = load ptr, ptr %__f_.i.i.i43, align 16, !tbaa !17
-  %cmp.i.i119 = icmp eq ptr %14, %agg.tmp2
-  br i1 %cmp.i.i119, label %if.then.i.i122, label %if.else.i.i124
+  %cmp.i.i94 = icmp eq ptr %14, %agg.tmp2
+  br i1 %cmp.i.i94, label %if.end8.sink.split.i.i100, label %if.else.i.i96
 
-if.then.i.i122:                                   ; preds = %lpad4
-  %vtable.i.i120 = load ptr, ptr %agg.tmp2, align 16, !tbaa !15
-  %vfn.i.i121 = getelementptr inbounds ptr, ptr %vtable.i.i120, i64 4
-  br label %if.end8.sink.split.i.i130
+if.else.i.i96:                                    ; preds = %lpad4
+  %tobool.not.i.i95 = icmp eq ptr %14, null
+  br i1 %tobool.not.i.i95, label %ehcleanup, label %if.end8.sink.split.i.i100
 
-if.else.i.i124:                                   ; preds = %lpad4
-  %tobool.not.i.i123 = icmp eq ptr %14, null
-  br i1 %tobool.not.i.i123, label %ehcleanup, label %if.then4.i.i127
-
-if.then4.i.i127:                                  ; preds = %if.else.i.i124
-  %vtable6.i.i125 = load ptr, ptr %14, align 8, !tbaa !15
-  %vfn7.i.i126 = getelementptr inbounds ptr, ptr %vtable6.i.i125, i64 5
-  br label %if.end8.sink.split.i.i130
-
-if.end8.sink.split.i.i130:                        ; preds = %if.then4.i.i127, %if.then.i.i122
-  %vfn7.sink.i.i128 = phi ptr [ %vfn7.i.i126, %if.then4.i.i127 ], [ %vfn.i.i121, %if.then.i.i122 ]
-  %.sink.i.i129 = phi ptr [ %14, %if.then4.i.i127 ], [ %agg.tmp2, %if.then.i.i122 ]
-  %15 = load ptr, ptr %vfn7.sink.i.i128, align 8
-  call void %15(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i129) #24
+if.end8.sink.split.i.i100:                        ; preds = %if.else.i.i96, %lpad4
+  %.sink.i.i97 = phi i64 [ 4, %lpad4 ], [ 5, %if.else.i.i96 ]
+  %vtable6.i.i98 = load ptr, ptr %14, align 8, !tbaa !15
+  %vfn7.i.i99 = getelementptr inbounds ptr, ptr %vtable6.i.i98, i64 %.sink.i.i97
+  %15 = load ptr, ptr %vfn7.i.i99, align 8
+  call void %15(ptr noundef nonnull align 8 dereferenceable(8) %14) #24
   br label %ehcleanup
 
-ehcleanup:                                        ; preds = %if.end8.sink.split.i.i130, %if.else.i.i124
+ehcleanup:                                        ; preds = %if.end8.sink.split.i.i100, %if.else.i.i96
   %16 = load ptr, ptr %__f_.i.i.i, align 16, !tbaa !17
-  %cmp.i.i133 = icmp eq ptr %16, %agg.tmp
-  br i1 %cmp.i.i133, label %if.then.i.i136, label %if.else.i.i138
+  %cmp.i.i103 = icmp eq ptr %16, %agg.tmp
+  br i1 %cmp.i.i103, label %eh.resume.sink.split, label %if.else.i.i105
 
-if.then.i.i136:                                   ; preds = %ehcleanup
-  %vtable.i.i134 = load ptr, ptr %agg.tmp, align 16, !tbaa !15
-  %vfn.i.i135 = getelementptr inbounds ptr, ptr %vtable.i.i134, i64 4
-  br label %eh.resume.sink.split
-
-if.else.i.i138:                                   ; preds = %ehcleanup
-  %tobool.not.i.i137 = icmp eq ptr %16, null
-  br i1 %tobool.not.i.i137, label %eh.resume, label %if.then4.i.i141
-
-if.then4.i.i141:                                  ; preds = %if.else.i.i138
-  %vtable6.i.i139 = load ptr, ptr %16, align 8, !tbaa !15
-  %vfn7.i.i140 = getelementptr inbounds ptr, ptr %vtable6.i.i139, i64 5
-  br label %eh.resume.sink.split
+if.else.i.i105:                                   ; preds = %ehcleanup
+  %tobool.not.i.i104 = icmp eq ptr %16, null
+  br i1 %tobool.not.i.i104, label %eh.resume, label %eh.resume.sink.split
 
 lpad16:                                           ; preds = %invoke.cont15
   %17 = landingpad { ptr, i32 }
           cleanup
-  %18 = load ptr, ptr %__f_.i.i.i59, align 16, !tbaa !17
-  %cmp.i.i147 = icmp eq ptr %18, %agg.tmp12
-  br i1 %cmp.i.i147, label %if.then.i.i150, label %if.else.i.i152
+  %18 = load ptr, ptr %__f_.i.i.i54, align 16, !tbaa !17
+  %cmp.i.i112 = icmp eq ptr %18, %agg.tmp12
+  br i1 %cmp.i.i112, label %if.end8.sink.split.i.i118, label %if.else.i.i114
 
-if.then.i.i150:                                   ; preds = %lpad16
-  %vtable.i.i148 = load ptr, ptr %agg.tmp12, align 16, !tbaa !15
-  %vfn.i.i149 = getelementptr inbounds ptr, ptr %vtable.i.i148, i64 4
-  br label %if.end8.sink.split.i.i158
+if.else.i.i114:                                   ; preds = %lpad16
+  %tobool.not.i.i113 = icmp eq ptr %18, null
+  br i1 %tobool.not.i.i113, label %ehcleanup19, label %if.end8.sink.split.i.i118
 
-if.else.i.i152:                                   ; preds = %lpad16
-  %tobool.not.i.i151 = icmp eq ptr %18, null
-  br i1 %tobool.not.i.i151, label %ehcleanup19, label %if.then4.i.i155
-
-if.then4.i.i155:                                  ; preds = %if.else.i.i152
-  %vtable6.i.i153 = load ptr, ptr %18, align 8, !tbaa !15
-  %vfn7.i.i154 = getelementptr inbounds ptr, ptr %vtable6.i.i153, i64 5
-  br label %if.end8.sink.split.i.i158
-
-if.end8.sink.split.i.i158:                        ; preds = %if.then4.i.i155, %if.then.i.i150
-  %vfn7.sink.i.i156 = phi ptr [ %vfn7.i.i154, %if.then4.i.i155 ], [ %vfn.i.i149, %if.then.i.i150 ]
-  %.sink.i.i157 = phi ptr [ %18, %if.then4.i.i155 ], [ %agg.tmp12, %if.then.i.i150 ]
-  %19 = load ptr, ptr %vfn7.sink.i.i156, align 8
-  call void %19(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i157) #24
+if.end8.sink.split.i.i118:                        ; preds = %if.else.i.i114, %lpad16
+  %.sink.i.i115 = phi i64 [ 4, %lpad16 ], [ 5, %if.else.i.i114 ]
+  %vtable6.i.i116 = load ptr, ptr %18, align 8, !tbaa !15
+  %vfn7.i.i117 = getelementptr inbounds ptr, ptr %vtable6.i.i116, i64 %.sink.i.i115
+  %19 = load ptr, ptr %vfn7.i.i117, align 8
+  call void %19(ptr noundef nonnull align 8 dereferenceable(8) %18) #24
   br label %ehcleanup19
 
-ehcleanup19:                                      ; preds = %if.end8.sink.split.i.i158, %if.else.i.i152
-  %20 = load ptr, ptr %__f_.i.i.i58, align 16, !tbaa !17
-  %cmp.i.i161 = icmp eq ptr %20, %agg.tmp10
-  br i1 %cmp.i.i161, label %if.then.i.i164, label %if.else.i.i166
+ehcleanup19:                                      ; preds = %if.end8.sink.split.i.i118, %if.else.i.i114
+  %20 = load ptr, ptr %__f_.i.i.i53, align 16, !tbaa !17
+  %cmp.i.i121 = icmp eq ptr %20, %agg.tmp10
+  br i1 %cmp.i.i121, label %eh.resume.sink.split, label %if.else.i.i123
 
-if.then.i.i164:                                   ; preds = %ehcleanup19
-  %vtable.i.i162 = load ptr, ptr %agg.tmp10, align 16, !tbaa !15
-  %vfn.i.i163 = getelementptr inbounds ptr, ptr %vtable.i.i162, i64 4
-  br label %eh.resume.sink.split
-
-if.else.i.i166:                                   ; preds = %ehcleanup19
-  %tobool.not.i.i165 = icmp eq ptr %20, null
-  br i1 %tobool.not.i.i165, label %eh.resume, label %if.then4.i.i169
-
-if.then4.i.i169:                                  ; preds = %if.else.i.i166
-  %vtable6.i.i167 = load ptr, ptr %20, align 8, !tbaa !15
-  %vfn7.i.i168 = getelementptr inbounds ptr, ptr %vtable6.i.i167, i64 5
-  br label %eh.resume.sink.split
+if.else.i.i123:                                   ; preds = %ehcleanup19
+  %tobool.not.i.i122 = icmp eq ptr %20, null
+  br i1 %tobool.not.i.i122, label %eh.resume, label %eh.resume.sink.split
 
 lpad30:                                           ; preds = %invoke.cont29
   %21 = landingpad { ptr, i32 }
           cleanup
-  %22 = load ptr, ptr %__f_.i.i.i89, align 16, !tbaa !17
-  %cmp.i.i175 = icmp eq ptr %22, %agg.tmp26
-  br i1 %cmp.i.i175, label %if.then.i.i178, label %if.else.i.i180
+  %22 = load ptr, ptr %__f_.i.i.i74, align 16, !tbaa !17
+  %cmp.i.i130 = icmp eq ptr %22, %agg.tmp26
+  br i1 %cmp.i.i130, label %if.end8.sink.split.i.i136, label %if.else.i.i132
 
-if.then.i.i178:                                   ; preds = %lpad30
-  %vtable.i.i176 = load ptr, ptr %agg.tmp26, align 16, !tbaa !15
-  %vfn.i.i177 = getelementptr inbounds ptr, ptr %vtable.i.i176, i64 4
-  br label %if.end8.sink.split.i.i186
+if.else.i.i132:                                   ; preds = %lpad30
+  %tobool.not.i.i131 = icmp eq ptr %22, null
+  br i1 %tobool.not.i.i131, label %ehcleanup33, label %if.end8.sink.split.i.i136
 
-if.else.i.i180:                                   ; preds = %lpad30
-  %tobool.not.i.i179 = icmp eq ptr %22, null
-  br i1 %tobool.not.i.i179, label %ehcleanup33, label %if.then4.i.i183
-
-if.then4.i.i183:                                  ; preds = %if.else.i.i180
-  %vtable6.i.i181 = load ptr, ptr %22, align 8, !tbaa !15
-  %vfn7.i.i182 = getelementptr inbounds ptr, ptr %vtable6.i.i181, i64 5
-  br label %if.end8.sink.split.i.i186
-
-if.end8.sink.split.i.i186:                        ; preds = %if.then4.i.i183, %if.then.i.i178
-  %vfn7.sink.i.i184 = phi ptr [ %vfn7.i.i182, %if.then4.i.i183 ], [ %vfn.i.i177, %if.then.i.i178 ]
-  %.sink.i.i185 = phi ptr [ %22, %if.then4.i.i183 ], [ %agg.tmp26, %if.then.i.i178 ]
-  %23 = load ptr, ptr %vfn7.sink.i.i184, align 8
-  call void %23(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i185) #24
+if.end8.sink.split.i.i136:                        ; preds = %if.else.i.i132, %lpad30
+  %.sink.i.i133 = phi i64 [ 4, %lpad30 ], [ 5, %if.else.i.i132 ]
+  %vtable6.i.i134 = load ptr, ptr %22, align 8, !tbaa !15
+  %vfn7.i.i135 = getelementptr inbounds ptr, ptr %vtable6.i.i134, i64 %.sink.i.i133
+  %23 = load ptr, ptr %vfn7.i.i135, align 8
+  call void %23(ptr noundef nonnull align 8 dereferenceable(8) %22) #24
   br label %ehcleanup33
 
-ehcleanup33:                                      ; preds = %if.end8.sink.split.i.i186, %if.else.i.i180
-  %24 = load ptr, ptr %__f_.i.i.i88, align 16, !tbaa !17
-  %cmp.i.i189 = icmp eq ptr %24, %agg.tmp24
-  br i1 %cmp.i.i189, label %if.then.i.i192, label %if.else.i.i194
+ehcleanup33:                                      ; preds = %if.end8.sink.split.i.i136, %if.else.i.i132
+  %24 = load ptr, ptr %__f_.i.i.i73, align 16, !tbaa !17
+  %cmp.i.i139 = icmp eq ptr %24, %agg.tmp24
+  br i1 %cmp.i.i139, label %eh.resume.sink.split, label %if.else.i.i141
 
-if.then.i.i192:                                   ; preds = %ehcleanup33
-  %vtable.i.i190 = load ptr, ptr %agg.tmp24, align 16, !tbaa !15
-  %vfn.i.i191 = getelementptr inbounds ptr, ptr %vtable.i.i190, i64 4
-  br label %eh.resume.sink.split
+if.else.i.i141:                                   ; preds = %ehcleanup33
+  %tobool.not.i.i140 = icmp eq ptr %24, null
+  br i1 %tobool.not.i.i140, label %eh.resume, label %eh.resume.sink.split
 
-if.else.i.i194:                                   ; preds = %ehcleanup33
-  %tobool.not.i.i193 = icmp eq ptr %24, null
-  br i1 %tobool.not.i.i193, label %eh.resume, label %if.then4.i.i197
-
-if.then4.i.i197:                                  ; preds = %if.else.i.i194
-  %vtable6.i.i195 = load ptr, ptr %24, align 8, !tbaa !15
-  %vfn7.i.i196 = getelementptr inbounds ptr, ptr %vtable6.i.i195, i64 5
-  br label %eh.resume.sink.split
-
-eh.resume.sink.split:                             ; preds = %if.then.i.i192, %if.then4.i.i197, %if.then.i.i164, %if.then4.i.i169, %if.then.i.i136, %if.then4.i.i141
-  %vfn7.sink.i.i198.sink = phi ptr [ %vfn7.i.i140, %if.then4.i.i141 ], [ %vfn.i.i135, %if.then.i.i136 ], [ %vfn7.i.i168, %if.then4.i.i169 ], [ %vfn.i.i163, %if.then.i.i164 ], [ %vfn7.i.i196, %if.then4.i.i197 ], [ %vfn.i.i191, %if.then.i.i192 ]
-  %.sink.i.i199.sink = phi ptr [ %16, %if.then4.i.i141 ], [ %agg.tmp, %if.then.i.i136 ], [ %20, %if.then4.i.i169 ], [ %agg.tmp10, %if.then.i.i164 ], [ %24, %if.then4.i.i197 ], [ %agg.tmp24, %if.then.i.i192 ]
-  %.pn40.pn.ph = phi { ptr, i32 } [ %13, %if.then4.i.i141 ], [ %13, %if.then.i.i136 ], [ %17, %if.then4.i.i169 ], [ %17, %if.then.i.i164 ], [ %21, %if.then4.i.i197 ], [ %21, %if.then.i.i192 ]
-  %25 = load ptr, ptr %vfn7.sink.i.i198.sink, align 8
-  call void %25(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i199.sink) #24
+eh.resume.sink.split:                             ; preds = %ehcleanup33, %if.else.i.i141, %ehcleanup19, %if.else.i.i123, %ehcleanup, %if.else.i.i105
+  %.sink148 = phi ptr [ %16, %if.else.i.i105 ], [ %16, %ehcleanup ], [ %20, %if.else.i.i123 ], [ %20, %ehcleanup19 ], [ %24, %if.else.i.i141 ], [ %24, %ehcleanup33 ]
+  %.sink.i.i142.sink = phi i64 [ 5, %if.else.i.i105 ], [ 4, %ehcleanup ], [ 5, %if.else.i.i123 ], [ 4, %ehcleanup19 ], [ 5, %if.else.i.i141 ], [ 4, %ehcleanup33 ]
+  %.pn40.pn.ph = phi { ptr, i32 } [ %13, %if.else.i.i105 ], [ %13, %ehcleanup ], [ %17, %if.else.i.i123 ], [ %17, %ehcleanup19 ], [ %21, %if.else.i.i141 ], [ %21, %ehcleanup33 ]
+  %vtable6.i.i143 = load ptr, ptr %.sink148, align 8, !tbaa !15
+  %vfn7.i.i144 = getelementptr inbounds ptr, ptr %vtable6.i.i143, i64 %.sink.i.i142.sink
+  %25 = load ptr, ptr %vfn7.i.i144, align 8
+  call void %25(ptr noundef nonnull align 8 dereferenceable(8) %.sink148) #24
   br label %eh.resume
 
-eh.resume:                                        ; preds = %eh.resume.sink.split, %if.else.i.i194, %if.else.i.i166, %if.else.i.i138
-  %.pn40.pn = phi { ptr, i32 } [ %13, %if.else.i.i138 ], [ %17, %if.else.i.i166 ], [ %21, %if.else.i.i194 ], [ %.pn40.pn.ph, %eh.resume.sink.split ]
+eh.resume:                                        ; preds = %eh.resume.sink.split, %if.else.i.i141, %if.else.i.i123, %if.else.i.i105
+  %.pn40.pn = phi { ptr, i32 } [ %13, %if.else.i.i105 ], [ %17, %if.else.i.i123 ], [ %21, %if.else.i.i141 ], [ %.pn40.pn.ph, %eh.resume.sink.split ]
   resume { ptr, i32 } %.pn40.pn
 }
 

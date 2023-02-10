@@ -583,9 +583,9 @@ if.end33:                                         ; preds = %if.end25
 
 while.body.preheader:                             ; preds = %if.end33
   %idx.ext48 = zext i32 %shl29 to i64
-  %add.ptr49 = getelementptr inbounds i8, ptr %14, i64 %idx.ext48
+  %add.ptr49 = getelementptr inbounds i8, ptr %15, i64 %idx.ext48
   %idx.ext43 = zext i32 %9 to i64
-  %add.ptr44 = getelementptr inbounds i8, ptr %14, i64 %idx.ext43
+  %add.ptr44 = getelementptr inbounds i8, ptr %15, i64 %idx.ext43
   br label %while.body
 
 while.body:                                       ; preds = %while.body.preheader, %while.body

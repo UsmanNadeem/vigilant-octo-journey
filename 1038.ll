@@ -2694,7 +2694,7 @@ if.end11920:                                      ; preds = %for.end11918, %Read
   %res.0 = phi ptr [ %retval.0.i, %ReadMacro.exit ], [ %call6136, %for.end11918 ]
   %link.112821 = load ptr, ptr %osucc1788, align 8, !tbaa !9
   %cmp11925.not12822 = icmp eq ptr %link.112821, %48
-  br i1 %cmp11925.not12822, label %if.then11941, label %for.body11927
+  br i1 %cmp11925.not12822, label %for.end11932, label %for.body11927
 
 for.body11927:                                    ; preds = %if.end11920, %for.body11927
   %link.112823 = phi ptr [ %link.1, %for.body11927 ], [ %link.112821, %if.end11920 ]
@@ -2702,16 +2702,20 @@ for.body11927:                                    ; preds = %if.end11920, %for.b
   %osucc11931 = getelementptr inbounds %struct.LIST, ptr %link.112823, i64 0, i32 1
   %link.1 = load ptr, ptr %osucc11931, align 8, !tbaa !9
   %cmp11925.not = icmp eq ptr %link.1, %48
-  br i1 %cmp11925.not, label %for.end11932, label %for.body11927, !llvm.loop !23
+  br i1 %cmp11925.not, label %for.end11932.loopexit, label %for.body11927, !llvm.loop !23
 
-for.end11932:                                     ; preds = %for.body11927
+for.end11932.loopexit:                            ; preds = %for.body11927
   %.pre12846 = load ptr, ptr %osucc1788, align 8, !tbaa !9
-  %cmp11936 = icmp ne ptr %.pre12846, %48
+  br label %for.end11932
+
+for.end11932:                                     ; preds = %for.end11932.loopexit, %if.end11920
+  %313 = phi ptr [ %.pre12846, %for.end11932.loopexit ], [ %link.112821, %if.end11920 ]
+  %cmp11936 = icmp ne ptr %313, %48
   %cmp11939.not = icmp eq ptr %curr_encl.2, %encl
   %or.cond12713 = select i1 %cmp11936, i1 %cmp11939.not, i1 false
   br i1 %or.cond12713, label %if.else11943, label %if.then11941
 
-if.then11941:                                     ; preds = %if.end11920, %for.end11932
+if.then11941:                                     ; preds = %for.end11932
   %call11942 = call i32 @DisposeObject(ptr noundef nonnull %48) #4
   br label %if.end11945
 
@@ -2722,12 +2726,12 @@ if.else11943:                                     ; preds = %for.end11932
 
 if.end11945:                                      ; preds = %if.else11943, %if.then11941
   call void @BodyParAllowed() #4
-  %313 = load ptr, ptr %t, align 8, !tbaa !5
-  %cmp11946 = icmp eq ptr %313, null
+  %314 = load ptr, ptr %t, align 8, !tbaa !5
+  %cmp11946 = icmp eq ptr %314, null
   br i1 %cmp11946, label %if.then11948, label %while.cond.backedge
 
 while.cond.backedge:                              ; preds = %if.end11945, %if.then11948, %ReadLangDef.exit, %if.then552, %if.then595
-  %.be = phi ptr [ %313, %if.end11945 ], [ %call11949, %if.then11948 ], [ %call540, %ReadLangDef.exit ], [ %call582, %if.then552 ], [ %call629, %if.then595 ]
+  %.be = phi ptr [ %314, %if.end11945 ], [ %call11949, %if.then11948 ], [ %call540, %ReadLangDef.exit ], [ %call582, %if.then552 ], [ %call629, %if.then595 ]
   br label %while.cond, !llvm.loop !24
 
 if.then11948:                                     ; preds = %if.end11945

@@ -108,7 +108,7 @@ if.then73:                                        ; preds = %if.end70
 
 if.end74:                                         ; preds = %if.end70
   %call75 = tail call ptr @strrchr(ptr noundef nonnull dereferenceable(1) %0, i32 noundef 111)
-  %cmp77.not = icmp eq ptr %call75, %call61
+  %cmp77.not = icmp eq ptr %call75, %add.ptr62
   br i1 %cmp77.not, label %if.end79, label %if.then78
 
 if.then78:                                        ; preds = %if.end74

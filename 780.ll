@@ -436,13 +436,22 @@ if.then25:                                        ; preds = %land.lhs.true19
   %left.i113 = getelementptr inbounds %struct.CHsplay_node, ptr %13, i64 0, i32 2
   %37 = load ptr, ptr %left.i113, align 8, !tbaa !18
   %cmp.i114 = icmp eq ptr %37, %12
-  br i1 %cmp.i114, label %if.end.i121, label %if.else.i125
+  br i1 %cmp.i114, label %if.then.i117, label %if.else.i125
 
-if.end.i121:                                      ; preds = %if.then25
-  store ptr %root.tr.i, ptr %left.i113, align 8, !tbaa !18
-  store ptr %13, ptr %father, align 8, !tbaa !19
+if.then.i117:                                     ; preds = %if.then25
+  store ptr %35, ptr %left.i113, align 8, !tbaa !18
+  %cmp4.not.i116 = icmp eq ptr %35, null
+  br i1 %cmp4.not.i116, label %if.end.i121, label %if.then5.i120
+
+if.then5.i120:                                    ; preds = %if.then.i117
+  %father8.i118 = getelementptr inbounds %struct.CHsplay_node, ptr %35, i64 0, i32 1
+  store ptr %13, ptr %father8.i118, align 8, !tbaa !19
   %.pre69.i119 = load ptr, ptr %father2, align 8, !tbaa !19
-  store ptr %.pre69.i119, ptr %right, align 8, !tbaa !17
+  br label %if.end.i121
+
+if.end.i121:                                      ; preds = %if.then5.i120, %if.then.i117
+  %38 = phi ptr [ %.pre69.i119, %if.then5.i120 ], [ %13, %if.then.i117 ]
+  store ptr %38, ptr %right, align 8, !tbaa !17
   br label %if.end23.i132
 
 if.else.i125:                                     ; preds = %if.then25
@@ -457,197 +466,197 @@ if.then16.i128:                                   ; preds = %if.else.i125
   br label %if.end20.i129
 
 if.end20.i129:                                    ; preds = %if.then16.i128, %if.else.i125
-  %38 = phi ptr [ %.pre.i127, %if.then16.i128 ], [ %13, %if.else.i125 ]
-  store ptr %38, ptr %left.i54, align 8, !tbaa !18
+  %39 = phi ptr [ %.pre.i127, %if.then16.i128 ], [ %13, %if.else.i125 ]
+  store ptr %39, ptr %left.i54, align 8, !tbaa !18
   br label %if.end23.i132
 
 if.end23.i132:                                    ; preds = %if.end20.i129, %if.end.i121
-  %39 = phi ptr [ %38, %if.end20.i129 ], [ %.pre69.i119, %if.end.i121 ]
-  %father25.i130 = getelementptr inbounds %struct.CHsplay_node, ptr %39, i64 0, i32 1
-  %40 = load ptr, ptr %father25.i130, align 8, !tbaa !19
+  %40 = phi ptr [ %39, %if.end20.i129 ], [ %38, %if.end.i121 ]
+  %father25.i130 = getelementptr inbounds %struct.CHsplay_node, ptr %40, i64 0, i32 1
+  %41 = load ptr, ptr %father25.i130, align 8, !tbaa !19
   store ptr %12, ptr %father25.i130, align 8, !tbaa !19
-  %cmp28.not.i131 = icmp eq ptr %40, null
+  %cmp28.not.i131 = icmp eq ptr %41, null
   br i1 %cmp28.not.i131, label %CHrotate.exit138, label %if.then29.i137
 
 if.then29.i137:                                   ; preds = %if.end23.i132
-  %left30.i133 = getelementptr inbounds %struct.CHsplay_node, ptr %40, i64 0, i32 2
-  %41 = load ptr, ptr %left30.i133, align 8, !tbaa !18
-  %42 = load ptr, ptr %father2, align 8, !tbaa !19
-  %cmp32.i134 = icmp eq ptr %41, %42
-  %right36.i135 = getelementptr inbounds %struct.CHsplay_node, ptr %40, i64 0, i32 3
+  %left30.i133 = getelementptr inbounds %struct.CHsplay_node, ptr %41, i64 0, i32 2
+  %42 = load ptr, ptr %left30.i133, align 8, !tbaa !18
+  %43 = load ptr, ptr %father2, align 8, !tbaa !19
+  %cmp32.i134 = icmp eq ptr %42, %43
+  %right36.i135 = getelementptr inbounds %struct.CHsplay_node, ptr %41, i64 0, i32 3
   %left30.sink.i136 = select i1 %cmp32.i134, ptr %left30.i133, ptr %right36.i135
   store ptr %12, ptr %left30.sink.i136, align 8, !tbaa !20
   br label %CHrotate.exit138
 
 CHrotate.exit138:                                 ; preds = %if.end23.i132, %if.then29.i137
-  store ptr %40, ptr %father2, align 8, !tbaa !19
-  %43 = load ptr, ptr %father, align 8, !tbaa !19
-  %left.i140 = getelementptr inbounds %struct.CHsplay_node, ptr %43, i64 0, i32 2
-  %44 = load ptr, ptr %left.i140, align 8, !tbaa !18
-  %cmp.i141 = icmp eq ptr %44, %root.tr.i
+  store ptr %41, ptr %father2, align 8, !tbaa !19
+  %44 = load ptr, ptr %father, align 8, !tbaa !19
+  %left.i140 = getelementptr inbounds %struct.CHsplay_node, ptr %44, i64 0, i32 2
+  %45 = load ptr, ptr %left.i140, align 8, !tbaa !18
+  %cmp.i141 = icmp eq ptr %45, %root.tr.i
   br i1 %cmp.i141, label %if.then.i144, label %if.else.i152
 
 if.then.i144:                                     ; preds = %CHrotate.exit138
-  %45 = load ptr, ptr %right.i169, align 8, !tbaa !17
-  store ptr %45, ptr %left.i140, align 8, !tbaa !18
-  %cmp4.not.i143 = icmp eq ptr %45, null
+  %46 = load ptr, ptr %right.i169, align 8, !tbaa !17
+  store ptr %46, ptr %left.i140, align 8, !tbaa !18
+  %cmp4.not.i143 = icmp eq ptr %46, null
   br i1 %cmp4.not.i143, label %if.end.i148, label %if.then5.i147
 
 if.then5.i147:                                    ; preds = %if.then.i144
-  %father8.i145 = getelementptr inbounds %struct.CHsplay_node, ptr %45, i64 0, i32 1
-  store ptr %43, ptr %father8.i145, align 8, !tbaa !19
+  %father8.i145 = getelementptr inbounds %struct.CHsplay_node, ptr %46, i64 0, i32 1
+  store ptr %44, ptr %father8.i145, align 8, !tbaa !19
   %.pre69.i146 = load ptr, ptr %father, align 8, !tbaa !19
   br label %if.end.i148
 
 if.end.i148:                                      ; preds = %if.then5.i147, %if.then.i144
-  %46 = phi ptr [ %.pre69.i146, %if.then5.i147 ], [ %43, %if.then.i144 ]
-  store ptr %46, ptr %right.i169, align 8, !tbaa !17
+  %47 = phi ptr [ %.pre69.i146, %if.then5.i147 ], [ %44, %if.then.i144 ]
+  store ptr %47, ptr %right.i169, align 8, !tbaa !17
   br label %if.end23.i159
 
 if.else.i152:                                     ; preds = %CHrotate.exit138
-  %47 = load ptr, ptr %left11.i176, align 8, !tbaa !18
-  %right13.i150 = getelementptr inbounds %struct.CHsplay_node, ptr %43, i64 0, i32 3
-  store ptr %47, ptr %right13.i150, align 8, !tbaa !17
-  %cmp15.not.i151 = icmp eq ptr %47, null
+  %48 = load ptr, ptr %left11.i176, align 8, !tbaa !18
+  %right13.i150 = getelementptr inbounds %struct.CHsplay_node, ptr %44, i64 0, i32 3
+  store ptr %48, ptr %right13.i150, align 8, !tbaa !17
+  %cmp15.not.i151 = icmp eq ptr %48, null
   br i1 %cmp15.not.i151, label %if.end20.i156, label %if.then16.i155
 
 if.then16.i155:                                   ; preds = %if.else.i152
-  %father19.i153 = getelementptr inbounds %struct.CHsplay_node, ptr %47, i64 0, i32 1
-  store ptr %43, ptr %father19.i153, align 8, !tbaa !19
+  %father19.i153 = getelementptr inbounds %struct.CHsplay_node, ptr %48, i64 0, i32 1
+  store ptr %44, ptr %father19.i153, align 8, !tbaa !19
   %.pre.i154 = load ptr, ptr %father, align 8, !tbaa !19
   br label %if.end20.i156
 
 if.end20.i156:                                    ; preds = %if.then16.i155, %if.else.i152
-  %48 = phi ptr [ %.pre.i154, %if.then16.i155 ], [ %43, %if.else.i152 ]
-  store ptr %48, ptr %left11.i176, align 8, !tbaa !18
+  %49 = phi ptr [ %.pre.i154, %if.then16.i155 ], [ %44, %if.else.i152 ]
+  store ptr %49, ptr %left11.i176, align 8, !tbaa !18
   br label %if.end23.i159
 
 if.end23.i159:                                    ; preds = %if.end20.i156, %if.end.i148
-  %49 = phi ptr [ %48, %if.end20.i156 ], [ %46, %if.end.i148 ]
-  %father25.i157 = getelementptr inbounds %struct.CHsplay_node, ptr %49, i64 0, i32 1
-  %50 = load ptr, ptr %father25.i157, align 8, !tbaa !19
+  %50 = phi ptr [ %49, %if.end20.i156 ], [ %47, %if.end.i148 ]
+  %father25.i157 = getelementptr inbounds %struct.CHsplay_node, ptr %50, i64 0, i32 1
+  %51 = load ptr, ptr %father25.i157, align 8, !tbaa !19
   store ptr %root.tr.i, ptr %father25.i157, align 8, !tbaa !19
-  %cmp28.not.i158 = icmp eq ptr %50, null
+  %cmp28.not.i158 = icmp eq ptr %51, null
   br i1 %cmp28.not.i158, label %if.end33, label %if.end33.sink.split
 
 if.else29:                                        ; preds = %land.lhs.true19, %if.else16
   br i1 %cmp.i55, label %if.then.i171, label %if.else.i179
 
 if.then.i171:                                     ; preds = %if.else29
-  %51 = load ptr, ptr %right.i169, align 8, !tbaa !17
-  store ptr %51, ptr %left.i54, align 8, !tbaa !18
-  %cmp4.not.i170 = icmp eq ptr %51, null
+  %52 = load ptr, ptr %right.i169, align 8, !tbaa !17
+  store ptr %52, ptr %left.i54, align 8, !tbaa !18
+  %cmp4.not.i170 = icmp eq ptr %52, null
   br i1 %cmp4.not.i170, label %if.end.i175, label %if.then5.i174
 
 if.then5.i174:                                    ; preds = %if.then.i171
-  %father8.i172 = getelementptr inbounds %struct.CHsplay_node, ptr %51, i64 0, i32 1
+  %father8.i172 = getelementptr inbounds %struct.CHsplay_node, ptr %52, i64 0, i32 1
   store ptr %12, ptr %father8.i172, align 8, !tbaa !19
   %.pre69.i173 = load ptr, ptr %father, align 8, !tbaa !19
   br label %if.end.i175
 
 if.end.i175:                                      ; preds = %if.then5.i174, %if.then.i171
-  %52 = phi ptr [ %.pre69.i173, %if.then5.i174 ], [ %12, %if.then.i171 ]
-  store ptr %52, ptr %right.i169, align 8, !tbaa !17
+  %53 = phi ptr [ %.pre69.i173, %if.then5.i174 ], [ %12, %if.then.i171 ]
+  store ptr %53, ptr %right.i169, align 8, !tbaa !17
   br label %if.end23.i186
 
 if.else.i179:                                     ; preds = %if.else29
-  %53 = load ptr, ptr %left11.i176, align 8, !tbaa !18
-  store ptr %53, ptr %right, align 8, !tbaa !17
-  %cmp15.not.i178 = icmp eq ptr %53, null
+  %54 = load ptr, ptr %left11.i176, align 8, !tbaa !18
+  store ptr %54, ptr %right, align 8, !tbaa !17
+  %cmp15.not.i178 = icmp eq ptr %54, null
   br i1 %cmp15.not.i178, label %if.end20.i183, label %if.then16.i182
 
 if.then16.i182:                                   ; preds = %if.else.i179
-  %father19.i180 = getelementptr inbounds %struct.CHsplay_node, ptr %53, i64 0, i32 1
+  %father19.i180 = getelementptr inbounds %struct.CHsplay_node, ptr %54, i64 0, i32 1
   store ptr %12, ptr %father19.i180, align 8, !tbaa !19
   %.pre.i181 = load ptr, ptr %father, align 8, !tbaa !19
   br label %if.end20.i183
 
 if.end20.i183:                                    ; preds = %if.then16.i182, %if.else.i179
-  %54 = phi ptr [ %.pre.i181, %if.then16.i182 ], [ %12, %if.else.i179 ]
-  store ptr %54, ptr %left11.i176, align 8, !tbaa !18
+  %55 = phi ptr [ %.pre.i181, %if.then16.i182 ], [ %12, %if.else.i179 ]
+  store ptr %55, ptr %left11.i176, align 8, !tbaa !18
   br label %if.end23.i186
 
 if.end23.i186:                                    ; preds = %if.end20.i183, %if.end.i175
-  %55 = phi ptr [ %54, %if.end20.i183 ], [ %52, %if.end.i175 ]
-  %father25.i184 = getelementptr inbounds %struct.CHsplay_node, ptr %55, i64 0, i32 1
-  %56 = load ptr, ptr %father25.i184, align 8, !tbaa !19
+  %56 = phi ptr [ %55, %if.end20.i183 ], [ %53, %if.end.i175 ]
+  %father25.i184 = getelementptr inbounds %struct.CHsplay_node, ptr %56, i64 0, i32 1
+  %57 = load ptr, ptr %father25.i184, align 8, !tbaa !19
   store ptr %root.tr.i, ptr %father25.i184, align 8, !tbaa !19
-  %cmp28.not.i185 = icmp eq ptr %56, null
+  %cmp28.not.i185 = icmp eq ptr %57, null
   br i1 %cmp28.not.i185, label %CHrotate.exit192, label %if.then29.i191
 
 if.then29.i191:                                   ; preds = %if.end23.i186
-  %left30.i187 = getelementptr inbounds %struct.CHsplay_node, ptr %56, i64 0, i32 2
-  %57 = load ptr, ptr %left30.i187, align 8, !tbaa !18
-  %58 = load ptr, ptr %father, align 8, !tbaa !19
-  %cmp32.i188 = icmp eq ptr %57, %58
-  %right36.i189 = getelementptr inbounds %struct.CHsplay_node, ptr %56, i64 0, i32 3
+  %left30.i187 = getelementptr inbounds %struct.CHsplay_node, ptr %57, i64 0, i32 2
+  %58 = load ptr, ptr %left30.i187, align 8, !tbaa !18
+  %59 = load ptr, ptr %father, align 8, !tbaa !19
+  %cmp32.i188 = icmp eq ptr %58, %59
+  %right36.i189 = getelementptr inbounds %struct.CHsplay_node, ptr %57, i64 0, i32 3
   %left30.sink.i190 = select i1 %cmp32.i188, ptr %left30.i187, ptr %right36.i189
   store ptr %root.tr.i, ptr %left30.sink.i190, align 8, !tbaa !20
   br label %CHrotate.exit192
 
 CHrotate.exit192:                                 ; preds = %if.end23.i186, %if.then29.i191
-  store ptr %56, ptr %father, align 8, !tbaa !19
-  %left.i194 = getelementptr inbounds %struct.CHsplay_node, ptr %56, i64 0, i32 2
-  %59 = load ptr, ptr %left.i194, align 8, !tbaa !18
-  %cmp.i195 = icmp eq ptr %59, %root.tr.i
+  store ptr %57, ptr %father, align 8, !tbaa !19
+  %left.i194 = getelementptr inbounds %struct.CHsplay_node, ptr %57, i64 0, i32 2
+  %60 = load ptr, ptr %left.i194, align 8, !tbaa !18
+  %cmp.i195 = icmp eq ptr %60, %root.tr.i
   br i1 %cmp.i195, label %if.then.i198, label %if.else.i206
 
 if.then.i198:                                     ; preds = %CHrotate.exit192
-  %60 = load ptr, ptr %right.i169, align 8, !tbaa !17
-  store ptr %60, ptr %left.i194, align 8, !tbaa !18
-  %cmp4.not.i197 = icmp eq ptr %60, null
+  %61 = load ptr, ptr %right.i169, align 8, !tbaa !17
+  store ptr %61, ptr %left.i194, align 8, !tbaa !18
+  %cmp4.not.i197 = icmp eq ptr %61, null
   br i1 %cmp4.not.i197, label %if.end.i202, label %if.then5.i201
 
 if.then5.i201:                                    ; preds = %if.then.i198
-  %father8.i199 = getelementptr inbounds %struct.CHsplay_node, ptr %60, i64 0, i32 1
-  store ptr %56, ptr %father8.i199, align 8, !tbaa !19
+  %father8.i199 = getelementptr inbounds %struct.CHsplay_node, ptr %61, i64 0, i32 1
+  store ptr %57, ptr %father8.i199, align 8, !tbaa !19
   %.pre69.i200 = load ptr, ptr %father, align 8, !tbaa !19
   br label %if.end.i202
 
 if.end.i202:                                      ; preds = %if.then5.i201, %if.then.i198
-  %61 = phi ptr [ %.pre69.i200, %if.then5.i201 ], [ %56, %if.then.i198 ]
-  store ptr %61, ptr %right.i169, align 8, !tbaa !17
+  %62 = phi ptr [ %.pre69.i200, %if.then5.i201 ], [ %57, %if.then.i198 ]
+  store ptr %62, ptr %right.i169, align 8, !tbaa !17
   br label %if.end23.i213
 
 if.else.i206:                                     ; preds = %CHrotate.exit192
-  %62 = load ptr, ptr %left11.i176, align 8, !tbaa !18
-  %right13.i204 = getelementptr inbounds %struct.CHsplay_node, ptr %56, i64 0, i32 3
-  store ptr %62, ptr %right13.i204, align 8, !tbaa !17
-  %cmp15.not.i205 = icmp eq ptr %62, null
+  %63 = load ptr, ptr %left11.i176, align 8, !tbaa !18
+  %right13.i204 = getelementptr inbounds %struct.CHsplay_node, ptr %57, i64 0, i32 3
+  store ptr %63, ptr %right13.i204, align 8, !tbaa !17
+  %cmp15.not.i205 = icmp eq ptr %63, null
   br i1 %cmp15.not.i205, label %if.end20.i210, label %if.then16.i209
 
 if.then16.i209:                                   ; preds = %if.else.i206
-  %father19.i207 = getelementptr inbounds %struct.CHsplay_node, ptr %62, i64 0, i32 1
-  store ptr %56, ptr %father19.i207, align 8, !tbaa !19
+  %father19.i207 = getelementptr inbounds %struct.CHsplay_node, ptr %63, i64 0, i32 1
+  store ptr %57, ptr %father19.i207, align 8, !tbaa !19
   %.pre.i208 = load ptr, ptr %father, align 8, !tbaa !19
   br label %if.end20.i210
 
 if.end20.i210:                                    ; preds = %if.then16.i209, %if.else.i206
-  %63 = phi ptr [ %.pre.i208, %if.then16.i209 ], [ %56, %if.else.i206 ]
-  store ptr %63, ptr %left11.i176, align 8, !tbaa !18
+  %64 = phi ptr [ %.pre.i208, %if.then16.i209 ], [ %57, %if.else.i206 ]
+  store ptr %64, ptr %left11.i176, align 8, !tbaa !18
   br label %if.end23.i213
 
 if.end23.i213:                                    ; preds = %if.end20.i210, %if.end.i202
-  %64 = phi ptr [ %63, %if.end20.i210 ], [ %61, %if.end.i202 ]
-  %father25.i211 = getelementptr inbounds %struct.CHsplay_node, ptr %64, i64 0, i32 1
-  %65 = load ptr, ptr %father25.i211, align 8, !tbaa !19
+  %65 = phi ptr [ %64, %if.end20.i210 ], [ %62, %if.end.i202 ]
+  %father25.i211 = getelementptr inbounds %struct.CHsplay_node, ptr %65, i64 0, i32 1
+  %66 = load ptr, ptr %father25.i211, align 8, !tbaa !19
   store ptr %root.tr.i, ptr %father25.i211, align 8, !tbaa !19
-  %cmp28.not.i212 = icmp eq ptr %65, null
+  %cmp28.not.i212 = icmp eq ptr %66, null
   br i1 %cmp28.not.i212, label %if.end33, label %if.end33.sink.split
 
 if.end33.sink.split:                              ; preds = %if.end23.i213, %if.end23.i159, %if.end23.i105, %if.end23.i
-  %.sink225 = phi ptr [ %20, %if.end23.i ], [ %34, %if.end23.i105 ], [ %50, %if.end23.i159 ], [ %65, %if.end23.i213 ]
+  %.sink225 = phi ptr [ %20, %if.end23.i ], [ %34, %if.end23.i105 ], [ %51, %if.end23.i159 ], [ %66, %if.end23.i213 ]
   %left30.i = getelementptr inbounds %struct.CHsplay_node, ptr %.sink225, i64 0, i32 2
-  %66 = load ptr, ptr %left30.i, align 8, !tbaa !18
-  %67 = load ptr, ptr %father, align 8, !tbaa !19
-  %cmp32.i215 = icmp eq ptr %66, %67
+  %67 = load ptr, ptr %left30.i, align 8, !tbaa !18
+  %68 = load ptr, ptr %father, align 8, !tbaa !19
+  %cmp32.i215 = icmp eq ptr %67, %68
   %right36.i216 = getelementptr inbounds %struct.CHsplay_node, ptr %.sink225, i64 0, i32 3
   %left30.sink.i217 = select i1 %cmp32.i215, ptr %left30.i, ptr %right36.i216
   store ptr %root.tr.i, ptr %left30.sink.i217, align 8, !tbaa !20
   br label %if.end33
 
 if.end33:                                         ; preds = %if.end33.sink.split, %if.end23.i213, %if.end23.i159, %if.end23.i105, %if.end23.i
-  %.sink = phi ptr [ %20, %if.end23.i ], [ %34, %if.end23.i105 ], [ %50, %if.end23.i159 ], [ %65, %if.end23.i213 ], [ %.sink225, %if.end33.sink.split ]
+  %.sink = phi ptr [ %20, %if.end23.i ], [ %34, %if.end23.i105 ], [ %51, %if.end23.i159 ], [ %66, %if.end23.i213 ], [ %.sink225, %if.end33.sink.split ]
   store ptr %.sink, ptr %father, align 8, !tbaa !19
   %cmp.not = icmp eq ptr %.sink, null
   br i1 %cmp.not, label %while.end, label %while.body, !llvm.loop !21

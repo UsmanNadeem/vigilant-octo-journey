@@ -2627,7 +2627,7 @@ if.then144.i:                                     ; preds = %if.then139.i
   %inc149.i = add nuw nsw i32 %67, 1
   store i32 %inc149.i, ptr %error_reductions.i, align 8, !tbaa !141
   %idxprom150.i = zext i32 %67 to i64
-  %arrayidx151.i = getelementptr inbounds ptr, ptr %e.i, i64 %idxprom150.i
+  %arrayidx151.i = getelementptr inbounds ptr, ptr %65, i64 %idxprom150.i
   store ptr %calloc.i, ptr %arrayidx151.i, align 8, !tbaa !16
   br label %do.end.i
 
@@ -3704,7 +3704,7 @@ if.then74.us.i:                                   ; preds = %if.then71.us.i
   %inc78.us.i = add nuw nsw i32 %11, 1
   store i32 %inc78.us.i, ptr %pns.i, align 8, !tbaa !210
   %idxprom79.us.i = zext i32 %11 to i64
-  %arrayidx80.us.i = getelementptr inbounds ptr, ptr %9, i64 %idxprom79.us.i
+  %arrayidx80.us.i = getelementptr inbounds ptr, ptr %10, i64 %idxprom79.us.i
   store ptr %parse_node75.us.i, ptr %arrayidx80.us.i, align 8, !tbaa !16
   br label %for.inc.us.i
 
@@ -3774,7 +3774,7 @@ if.then74.i:                                      ; preds = %if.then71.i
   %inc78.i = add nuw nsw i32 %18, 1
   store i32 %inc78.i, ptr %pns.i, align 8, !tbaa !210
   %idxprom79.i = zext i32 %18 to i64
-  %arrayidx80.i = getelementptr inbounds ptr, ptr %e.i, i64 %idxprom79.i
+  %arrayidx80.i = getelementptr inbounds ptr, ptr %16, i64 %idxprom79.i
   store ptr %parse_node75.i, ptr %arrayidx80.i, align 8, !tbaa !16
   br label %for.inc.i
 
@@ -4032,7 +4032,7 @@ if.then59.i.us:                                   ; preds = %if.then55.i.us
   %inc64.i.us = add nuw nsw i32 %63, 1
   store i32 %inc64.i.us, ptr %children, align 8, !tbaa !14
   %idxprom65.i.us = zext i32 %63 to i64
-  %arrayidx66.i.us = getelementptr inbounds ptr, ptr %e52.i, i64 %idxprom65.i.us
+  %arrayidx66.i.us = getelementptr inbounds ptr, ptr %62, i64 %idxprom65.i.us
   store ptr null, ptr %arrayidx66.i.us, align 8, !tbaa !16
   br label %for.inc86.i.us
 
@@ -4509,8 +4509,7 @@ while.cond6:                                      ; preds = %while.cond6, %while
   br i1 %cmp.not, label %while.end, label %while.cond6, !llvm.loop !246
 
 while.end:                                        ; preds = %while.cond6
-  %bucket_next9 = getelementptr inbounds %struct.SNode, ptr %sn.0176, i64 0, i32 8
-  %15 = load ptr, ptr %bucket_next9, align 8, !tbaa !51
+  %15 = load ptr, ptr %bucket_next, align 8, !tbaa !51
   store ptr %15, ptr %lsn.0, align 8, !tbaa !16
   %tobool.not = icmp eq ptr %13, null
   br i1 %tobool.not, label %while.end10, label %while.body, !llvm.loop !247
@@ -4654,8 +4653,7 @@ while.cond94:                                     ; preds = %while.cond94, %for.
   br i1 %cmp95.not, label %while.end99, label %while.cond94, !llvm.loop !250
 
 while.end99:                                      ; preds = %while.cond94
-  %bucket_next100 = getelementptr inbounds %struct.PNode, ptr %pn.0182, i64 0, i32 12
-  %48 = load ptr, ptr %bucket_next100, align 8, !tbaa !61
+  %48 = load ptr, ptr %bucket_next98, align 8, !tbaa !61
   store ptr %48, ptr %lpn.0, align 8, !tbaa !16
   %refcount102 = getelementptr inbounds %struct.PNode, ptr %pn.0182, i64 0, i32 6
   %49 = load i32, ptr %refcount102, align 8, !tbaa !64
@@ -5211,7 +5209,7 @@ if.then95.i:                                      ; preds = %if.then90.i
   %inc100.i = add nuw nsw i32 %67, 1
   store i32 %inc100.i, ptr %children69.i, align 8, !tbaa !14
   %idxprom101.i = zext i32 %67 to i64
-  %arrayidx102.i = getelementptr inbounds ptr, ptr %e86.i, i64 %idxprom101.i
+  %arrayidx102.i = getelementptr inbounds ptr, ptr %65, i64 %idxprom101.i
   store ptr %64, ptr %arrayidx102.i, align 8, !tbaa !16
   br label %do.body120.i
 
@@ -5721,7 +5719,7 @@ while.body53.us.i.i:                              ; preds = %while.body53.lr.ph.
   %149 = load ptr, ptr %incdec.ptr55.us.i.i, align 8, !tbaa !16
   call fastcc void @get_exp_all(ptr noundef %149, ptr noundef nonnull %isx.i)
   %150 = load ptr, ptr %psr.1.i.sroa.phi.i, align 8, !tbaa !276
-  %151 = load ptr, ptr %psx.i, align 8, !tbaa !278
+  %151 = load ptr, ptr %psr.1.i.i, align 8, !tbaa !278
   %cmp52.not.us.i.i = icmp eq ptr %150, %151
   br i1 %cmp52.not.us.i.i, label %get_unshared_priorities.exit.i, label %while.body53.us.i.i, !llvm.loop !281
 
@@ -7475,7 +7473,7 @@ if.then13.i96:                                    ; preds = %if.then10.i92
   %inc16.i93 = add nuw nsw i32 %13, 1
   store i32 %inc16.i93, ptr %v, align 8, !tbaa !210
   %idxprom17.i94 = zext i32 %13 to i64
-  %arrayidx18.i95 = getelementptr inbounds ptr, ptr %e7.i88, i64 %idxprom17.i94
+  %arrayidx18.i95 = getelementptr inbounds ptr, ptr %14, i64 %idxprom17.i94
   store ptr %12, ptr %arrayidx18.i95, align 8, !tbaa !16
   br label %for.inc.i
 
@@ -7559,7 +7557,7 @@ if.then13.i:                                      ; preds = %if.then10.i
   %inc16.i = add nuw nsw i32 %18, 1
   store i32 %inc16.i, ptr %v, align 8, !tbaa !210
   %idxprom17.i = zext i32 %18 to i64
-  %arrayidx18.i = getelementptr inbounds ptr, ptr %e7.i88, i64 %idxprom17.i
+  %arrayidx18.i = getelementptr inbounds ptr, ptr %19, i64 %idxprom17.i
   store ptr %z, ptr %arrayidx18.i, align 8, !tbaa !16
   br label %cleanup39
 
@@ -8139,7 +8137,7 @@ if.then25:                                        ; preds = %if.then22
   %inc34 = add nuw nsw i32 %7, 1
   store i32 %inc34, ptr %pv.0, align 8, !tbaa !210
   %idxprom35 = zext i32 %7 to i64
-  %arrayidx36 = getelementptr inbounds ptr, ptr %e19, i64 %idxprom35
+  %arrayidx36 = getelementptr inbounds ptr, ptr %1, i64 %idxprom35
   store ptr %11, ptr %arrayidx36, align 8, !tbaa !16
   br label %for.inc
 

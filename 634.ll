@@ -1219,10 +1219,17 @@ if.end.i.i:                                       ; preds = %if.end
   br i1 %cmp.i.i, label %if.then5.i.i, label %dfg__init_buffer.exit
 
 if.then5.i.i:                                     ; preds = %if.end.i.i
-  store i32 0, ptr @yy_n_chars, align 4
-  store ptr %call.i15, ptr @yy_c_buf_p, align 8
-  store ptr %call.i15, ptr @dfg_text, align 8
-  store i8 0, ptr @yy_hold_char, align 1
+  %yy_n_chars.i.i.i = getelementptr inbounds %struct.yy_buffer_state, ptr %2, i64 0, i32 4
+  %3 = load i32, ptr %yy_n_chars.i.i.i, align 4
+  store i32 %3, ptr @yy_n_chars, align 4
+  %yy_buf_pos.i.i.i = getelementptr inbounds %struct.yy_buffer_state, ptr %2, i64 0, i32 2
+  %4 = load ptr, ptr %yy_buf_pos.i.i.i, align 8
+  store ptr %4, ptr @yy_c_buf_p, align 8
+  store ptr %4, ptr @dfg_text, align 8
+  %5 = load ptr, ptr %2, align 8
+  store ptr %5, ptr @dfg_in, align 8
+  %6 = load i8, ptr %4, align 1
+  store i8 %6, ptr @yy_hold_char, align 1
   br label %dfg__init_buffer.exit
 
 dfg__init_buffer.exit:                            ; preds = %if.end.i.i, %if.then5.i.i
@@ -1374,14 +1381,17 @@ if.end.i:                                         ; preds = %entry
   br i1 %cmp.i, label %if.then5.i, label %dfg__flush_buffer.exit
 
 if.then5.i:                                       ; preds = %if.end.i
-  %4 = load i32, ptr %yy_n_chars.i, align 4
+  %yy_n_chars.i.i = getelementptr inbounds %struct.yy_buffer_state, ptr %3, i64 0, i32 4
+  %4 = load i32, ptr %yy_n_chars.i.i, align 4
   store i32 %4, ptr @yy_n_chars, align 4
-  store ptr %2, ptr @yy_c_buf_p, align 8
-  store ptr %2, ptr @dfg_text, align 8
-  %5 = load ptr, ptr %b, align 8
-  store ptr %5, ptr @dfg_in, align 8
-  %6 = load i8, ptr %2, align 1
-  store i8 %6, ptr @yy_hold_char, align 1
+  %yy_buf_pos.i.i = getelementptr inbounds %struct.yy_buffer_state, ptr %3, i64 0, i32 2
+  %5 = load ptr, ptr %yy_buf_pos.i.i, align 8
+  store ptr %5, ptr @yy_c_buf_p, align 8
+  store ptr %5, ptr @dfg_text, align 8
+  %6 = load ptr, ptr %3, align 8
+  store ptr %6, ptr @dfg_in, align 8
+  %7 = load i8, ptr %5, align 1
+  store i8 %7, ptr @yy_hold_char, align 1
   br label %dfg__flush_buffer.exit
 
 dfg__flush_buffer.exit:                           ; preds = %entry, %if.end.i, %if.then5.i
@@ -1496,14 +1506,17 @@ if.end:                                           ; preds = %entry
   br i1 %cmp, label %if.then5, label %if.end6
 
 if.then5:                                         ; preds = %if.end
-  %4 = load i32, ptr %yy_n_chars, align 4
+  %yy_n_chars.i = getelementptr inbounds %struct.yy_buffer_state, ptr %3, i64 0, i32 4
+  %4 = load i32, ptr %yy_n_chars.i, align 4
   store i32 %4, ptr @yy_n_chars, align 4
-  store ptr %2, ptr @yy_c_buf_p, align 8
-  store ptr %2, ptr @dfg_text, align 8
-  %5 = load ptr, ptr %b, align 8
-  store ptr %5, ptr @dfg_in, align 8
-  %6 = load i8, ptr %2, align 1
-  store i8 %6, ptr @yy_hold_char, align 1
+  %yy_buf_pos.i = getelementptr inbounds %struct.yy_buffer_state, ptr %3, i64 0, i32 2
+  %5 = load ptr, ptr %yy_buf_pos.i, align 8
+  store ptr %5, ptr @yy_c_buf_p, align 8
+  store ptr %5, ptr @dfg_text, align 8
+  %6 = load ptr, ptr %3, align 8
+  store ptr %6, ptr @dfg_in, align 8
+  %7 = load i8, ptr %5, align 1
+  store i8 %7, ptr @yy_hold_char, align 1
   br label %if.end6
 
 if.end6:                                          ; preds = %entry, %if.then5, %if.end

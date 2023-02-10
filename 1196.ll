@@ -326,7 +326,7 @@ for.cond.cleanup.loopexit.i:                      ; preds = %for.body.i194
   br label %for.cond.cleanup.i
 
 for.cond.cleanup.i:                               ; preds = %for.cond.cleanup.loopexit.i, %if.then.i
-  %26 = phi ptr [ %.pre.i, %for.cond.cleanup.loopexit.i ], [ %B, %if.then.i ]
+  %26 = phi ptr [ %.pre.i, %for.cond.cleanup.loopexit.i ], [ %25, %if.then.i ]
   %27 = load ptr, ptr %B, align 8, !tbaa !16
   store ptr %26, ptr %B, align 8, !tbaa !16
   store ptr %27, ptr %__next_.i.i.i, align 8, !tbaa !16
@@ -361,7 +361,7 @@ for.inc.i201:                                     ; preds = %for.body.i198
   br i1 %cmp.i.i.not.i200, label %invoke.cont35, label %for.body.i198, !llvm.loop !32
 
 invoke.cont35:                                    ; preds = %for.inc.i201, %for.body.i198, %_ZNSt3__14listIiNS_9allocatorIiEEE7reverseEv.exit
-  %__first.sroa.0.0.lcssa.i = phi ptr [ %B, %_ZNSt3__14listIiNS_9allocatorIiEEE7reverseEv.exit ], [ %B, %for.inc.i201 ], [ %__first.sroa.0.08.i, %for.body.i198 ]
+  %__first.sroa.0.0.lcssa.i = phi ptr [ %30, %_ZNSt3__14listIiNS_9allocatorIiEEE7reverseEv.exit ], [ %32, %for.inc.i201 ], [ %__first.sroa.0.08.i, %for.body.i198 ]
   %cmp.i202 = icmp eq ptr %__first.sroa.0.0.lcssa.i, %B
   %cond44 = select i1 %cmp.i202, ptr @.str.1, ptr @.str.2
   %call.i.i.i = select i1 %cmp.i202, i64 5, i64 4
@@ -424,7 +424,7 @@ for.inc.i215:                                     ; preds = %for.body.i212
   br i1 %cmp.i.i.not.i214, label %invoke.cont60, label %for.body.i212, !llvm.loop !32
 
 invoke.cont60:                                    ; preds = %for.inc.i215, %for.body.i212, %invoke.cont47
-  %__first.sroa.0.0.lcssa.i216 = phi ptr [ %B, %invoke.cont47 ], [ %B, %for.inc.i215 ], [ %__first.sroa.0.08.i209, %for.body.i212 ]
+  %__first.sroa.0.0.lcssa.i216 = phi ptr [ %35, %invoke.cont47 ], [ %37, %for.inc.i215 ], [ %__first.sroa.0.08.i209, %for.body.i212 ]
   %cmp.i218 = icmp eq ptr %__first.sroa.0.0.lcssa.i216, %B
   %cond69 = select i1 %cmp.i218, ptr @.str.1, ptr @.str.2
   %call.i.i.i219 = select i1 %cmp.i218, i64 5, i64 4

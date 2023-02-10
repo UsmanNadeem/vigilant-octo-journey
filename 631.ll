@@ -422,7 +422,7 @@ cleanup:                                          ; preds = %if.end6
 while.end:                                        ; preds = %cleanup, %if.else, %if.end6, %entry
   %TermL.addr.2.val111 = phi i32 [ %TermL.addr.0.val110153, %entry ], [ %TermL.addr.0.val110157, %if.end6 ], [ %TermL.addr.0.val110157, %if.else ], [ %TermL.addr.0.val110, %cleanup ]
   %TermL.addr.0.lcssa = phi ptr [ %TermL, %entry ], [ %TermL.addr.0155, %if.end6 ], [ %TermL.addr.0155, %if.else ], [ %3, %cleanup ]
-  %CtL.addr.3 = phi ptr [ %CtL, %entry ], [ %CtL.addr.1, %if.end6 ], [ %0, %if.else ], [ %4, %cleanup ]
+  %CtL.addr.3 = phi ptr [ %CtL, %entry ], [ %CtL.addr.1, %if.end6 ], [ %CtL.addr.0156, %if.else ], [ %4, %cleanup ]
   %TermR.addr.0.val109163 = load i32, ptr %TermR, align 8
   %cmp.i.i118164 = icmp slt i32 %TermR.addr.0.val109163, 1
   br i1 %cmp.i.i118164, label %while.end40, label %while.body17.lr.ph
@@ -461,7 +461,7 @@ cleanup37:                                        ; preds = %if.end28
 while.end40:                                      ; preds = %cleanup37, %if.else23, %if.end28, %while.end
   %TermR.addr.2.val = phi i32 [ %TermR.addr.0.val109163, %while.end ], [ %TermR.addr.0.val109167, %if.end28 ], [ %TermR.addr.0.val109167, %if.else23 ], [ %TermR.addr.0.val109, %cleanup37 ]
   %TermR.addr.0.lcssa = phi ptr [ %TermR, %while.end ], [ %TermR.addr.0165, %if.end28 ], [ %TermR.addr.0165, %if.else23 ], [ %8, %cleanup37 ]
-  %CtR.addr.3 = phi ptr [ %CtR, %while.end ], [ %CtR.addr.1, %if.end28 ], [ %5, %if.else23 ], [ %9, %cleanup37 ]
+  %CtR.addr.3 = phi ptr [ %CtR, %while.end ], [ %CtR.addr.1, %if.end28 ], [ %CtR.addr.0166, %if.else23 ], [ %9, %cleanup37 ]
   %cmp.i.i129.not = icmp eq i32 %TermL.addr.2.val111, %TermR.addr.2.val
   br i1 %cmp.i.i129.not, label %if.else44, label %return
 
@@ -1114,11 +1114,7 @@ while.body.i.preheader:                           ; preds = %land.rhs.i.preheade
   %cmp.i.not.i51 = icmp eq ptr %1, null
   br i1 %cmp.i.not.i51, label %cont_Deref.exit, label %cleanup.i
 
-land.rhs.i:                                       ; preds = %cleanup.i
-  %cmp.not.i = icmp eq ptr %4, %0
-  br i1 %cmp.not.i, label %cont_Deref.exit, label %while.body.i
-
-while.body.i:                                     ; preds = %land.rhs.i
+while.body.i:                                     ; preds = %cleanup.i
   %idxprom.i.i.i = zext i32 %Term.addr.0.val16.i to i64
   %term.i.i.i = getelementptr inbounds %struct.binding, ptr %4, i64 %idxprom.i.i.i, i32 2
   %2 = load ptr, ptr %term.i.i.i, align 8
@@ -1133,12 +1129,14 @@ cleanup.i:                                        ; preds = %while.body.i.prehea
   %4 = load ptr, ptr %context.i.i, align 8
   %Term.addr.0.val16.i = load i32, ptr %3, align 8
   %cmp.i.i.i = icmp slt i32 %Term.addr.0.val16.i, 1
-  br i1 %cmp.i.i.i, label %cont_Deref.exit, label %land.rhs.i
+  %cmp.not.i = icmp eq ptr %4, %0
+  %or.cond = select i1 %cmp.i.i.i, i1 true, i1 %cmp.not.i
+  br i1 %or.cond, label %cont_Deref.exit, label %while.body.i
 
-cont_Deref.exit:                                  ; preds = %land.rhs.i, %while.body.i, %cleanup.i, %while.body.i.preheader, %land.rhs.i.preheader, %entry
-  %call.val28 = phi i32 [ %Term.addr.0.val1621.i, %entry ], [ %Term.addr.0.val1621.i, %land.rhs.i.preheader ], [ %Term.addr.0.val1621.i, %while.body.i.preheader ], [ %Term.addr.0.val16.i, %cleanup.i ], [ %Term.addr.0.val16.i, %while.body.i ], [ %Term.addr.0.val16.i, %land.rhs.i ]
-  %Context.addr.1 = phi ptr [ %Context, %entry ], [ %Context, %land.rhs.i.preheader ], [ %Context, %while.body.i.preheader ], [ %4, %cleanup.i ], [ %4, %while.body.i ], [ %0, %land.rhs.i ]
-  %Term.addr.0.lcssa.i = phi ptr [ %Term, %entry ], [ %Term, %land.rhs.i.preheader ], [ %Term, %while.body.i.preheader ], [ %3, %cleanup.i ], [ %3, %while.body.i ], [ %3, %land.rhs.i ]
+cont_Deref.exit:                                  ; preds = %while.body.i, %cleanup.i, %while.body.i.preheader, %land.rhs.i.preheader, %entry
+  %call.val28 = phi i32 [ %Term.addr.0.val1621.i, %entry ], [ %Term.addr.0.val1621.i, %land.rhs.i.preheader ], [ %Term.addr.0.val1621.i, %while.body.i.preheader ], [ %Term.addr.0.val16.i, %cleanup.i ], [ %Term.addr.0.val16.i, %while.body.i ]
+  %Context.addr.1 = phi ptr [ %Context, %entry ], [ %Context, %land.rhs.i.preheader ], [ %Context, %while.body.i.preheader ], [ %4, %cleanup.i ], [ %4, %while.body.i ]
+  %Term.addr.0.lcssa.i = phi ptr [ %Term, %entry ], [ %Term, %land.rhs.i.preheader ], [ %Term, %while.body.i.preheader ], [ %3, %cleanup.i ], [ %3, %while.body.i ]
   %5 = add i32 %call.val28, -2001
   %6 = icmp ult i32 %5, -2000
   br i1 %6, label %if.else, label %if.end15

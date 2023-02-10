@@ -4696,7 +4696,7 @@ if.then9:                                         ; preds = %if.else6
   br i1 %cmp.i134, label %if.then9.invoke.cont_crit_edge, label %if.end.i140
 
 if.then9.invoke.cont_crit_edge:                   ; preds = %if.then9
-  %.pre = load ptr, ptr %base, align 8, !tbaa !61
+  %.pre = load ptr, ptr %ref.tmp, align 8, !tbaa !61
   br label %invoke.cont
 
 if.end.i140:                                      ; preds = %if.then9
@@ -4856,7 +4856,7 @@ if.else18:                                        ; preds = %if.else18.loopexit,
   br i1 %cmp.i191, label %if.else18.invoke.cont21_crit_edge, label %if.end.i197
 
 if.else18.invoke.cont21_crit_edge:                ; preds = %if.else18
-  %.pre305 = load ptr, ptr %dir, align 8, !tbaa !61
+  %.pre305 = load ptr, ptr %ref.tmp19, align 8, !tbaa !61
   br label %invoke.cont21
 
 if.end.i197:                                      ; preds = %if.else18

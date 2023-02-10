@@ -2435,7 +2435,7 @@ invoke.contthread-pre-split.i:                    ; preds = %call.i.i.i.i.noexc.
   br label %invoke.cont.i
 
 invoke.cont.i:                                    ; preds = %invoke.contthread-pre-split.i, %for.cond.cleanup
-  %5 = phi ptr [ %.pr.i, %invoke.contthread-pre-split.i ], [ %2, %for.cond.cleanup ]
+  %5 = phi ptr [ %.pr.i, %invoke.contthread-pre-split.i ], [ %3, %for.cond.cleanup ]
   %cmp.not.i.i.i.i = icmp eq ptr %5, null
   br i1 %cmp.not.i.i.i.i, label %_ZN5boost6spirit7grammarI9c_grammarNS0_14parser_contextINS0_5nil_tEEEED2Ev.exit, label %if.then.i.i.i.i
 
@@ -2549,7 +2549,7 @@ invoke.contthread-pre-split.i:                    ; preds = %call.i.i.i.i.noexc.
   br label %invoke.cont.i
 
 invoke.cont.i:                                    ; preds = %invoke.contthread-pre-split.i, %invoke.cont
-  %5 = phi ptr [ %.pr.i, %invoke.contthread-pre-split.i ], [ %2, %invoke.cont ]
+  %5 = phi ptr [ %.pr.i, %invoke.contthread-pre-split.i ], [ %3, %invoke.cont ]
   %cmp.not.i.i.i.i = icmp eq ptr %5, null
   br i1 %cmp.not.i.i.i.i, label %_ZN5boost6spirit7grammarI12skip_grammarNS0_14parser_contextINS0_5nil_tEEEED2Ev.exit, label %if.then.i.i.i.i
 
@@ -2614,7 +2614,7 @@ invoke.contthread-pre-split:                      ; preds = %call.i.i.i.i.noexc
   br label %invoke.cont
 
 invoke.cont:                                      ; preds = %invoke.contthread-pre-split, %entry
-  %3 = phi ptr [ %.pr, %invoke.contthread-pre-split ], [ %0, %entry ]
+  %3 = phi ptr [ %.pr, %invoke.contthread-pre-split ], [ %1, %entry ]
   %cmp.not.i.i.i = icmp eq ptr %3, null
   br i1 %cmp.not.i.i.i, label %_ZN5boost6spirit4impl19grammar_helper_listINS0_7grammarI9c_grammarNS0_14parser_contextINS0_5nil_tEEEEEED2Ev.exit, label %if.then.i.i.i
 
@@ -2683,8 +2683,10 @@ if.then.i.i.i.i.i:                                ; preds = %if.else.i.i.i
   unreachable
 
 _ZNKSt3__16vectorImNS_9allocatorImEEE11__recommendB7v170000Em.exit.i.i.i.i: ; preds = %if.else.i.i.i
-  %cmp3.not.i.i.i.i.i = icmp ult i64 %sub.ptr.sub.i.i.i.i.i, 9223372036854775800
-  %mul.i.i.i.i.i = lshr exact i64 %sub.ptr.sub.i.i.i.i.i, 2
+  %sub.ptr.lhs.cast.i.i.i.i.i.i = ptrtoint ptr %4 to i64
+  %sub.ptr.sub.i.i.i.i.i.i = sub i64 %sub.ptr.lhs.cast.i.i.i.i.i.i, %sub.ptr.rhs.cast.i.i.i.i.i
+  %cmp3.not.i.i.i.i.i = icmp ult i64 %sub.ptr.sub.i.i.i.i.i.i, 9223372036854775800
+  %mul.i.i.i.i.i = lshr exact i64 %sub.ptr.sub.i.i.i.i.i.i, 2
   %.sroa.speculated.i.i.i.i.i = tail call i64 @llvm.umax.i64(i64 %mul.i.i.i.i.i, i64 %add.i.i.i.i)
   %retval.0.i.i.i.i.i = select i1 %cmp3.not.i.i.i.i.i, i64 %.sroa.speculated.i.i.i.i.i, i64 2305843009213693951
   %cmp.i16.i.i.i.i = icmp eq i64 %retval.0.i.i.i.i.i, 0
@@ -2890,11 +2892,11 @@ _ZNSt3__114__split_bufferImRNS_9allocatorImEEE5clearB7v170000Ev.exit.i.i.i: ; pr
   store ptr %add.ptr.i.i.i, ptr %free_ids.i, align 8, !tbaa !14
   store ptr %add.ptr.i.i.i, ptr %__end_.i.i, align 8, !tbaa !14
   store ptr %add.ptr6.i.i.i, ptr %__end_cap_.i.i.i, align 8, !tbaa !14
-  %tobool.not.i.i.i = icmp eq ptr %6, null
+  %tobool.not.i.i.i = icmp eq ptr %7, null
   br i1 %tobool.not.i.i.i, label %if.end.i, label %if.then.i.i.i
 
 if.then.i.i.i:                                    ; preds = %_ZNSt3__114__split_bufferImRNS_9allocatorImEEE5clearB7v170000Ev.exit.i.i.i
-  tail call void @_ZdlPv(ptr noundef nonnull %6) #27
+  tail call void @_ZdlPv(ptr noundef nonnull %7) #27
   %.pre.i = load i64, ptr %5, align 8, !tbaa !46
   br label %if.end.i
 
@@ -3380,7 +3382,7 @@ invoke.contthread-pre-split:                      ; preds = %call.i.i.i.i.noexc
   br label %invoke.cont
 
 invoke.cont:                                      ; preds = %invoke.contthread-pre-split, %entry
-  %3 = phi ptr [ %.pr, %invoke.contthread-pre-split ], [ %0, %entry ]
+  %3 = phi ptr [ %.pr, %invoke.contthread-pre-split ], [ %1, %entry ]
   %cmp.not.i.i.i = icmp eq ptr %3, null
   br i1 %cmp.not.i.i.i, label %_ZN5boost6spirit4impl19grammar_helper_listINS0_7grammarI12skip_grammarNS0_14parser_contextINS0_5nil_tEEEEEED2Ev.exit, label %if.then.i.i.i
 
@@ -14775,8 +14777,10 @@ if.then.i.i.i:                                    ; preds = %if.else.i
   unreachable
 
 _ZNKSt3__16vectorIPN5boost6spirit4impl19grammar_helper_baseINS2_7grammarI9c_grammarNS2_14parser_contextINS2_5nil_tEEEEEEENS_9allocatorISC_EEE11__recommendB7v170000Em.exit.i.i: ; preds = %if.else.i
-  %cmp3.not.i.i.i = icmp ult i64 %sub.ptr.sub.i.i.i, 9223372036854775800
-  %mul.i.i.i = lshr exact i64 %sub.ptr.sub.i.i.i, 2
+  %sub.ptr.lhs.cast.i.i.i.i = ptrtoint ptr %1 to i64
+  %sub.ptr.sub.i.i.i.i = sub i64 %sub.ptr.lhs.cast.i.i.i.i, %sub.ptr.rhs.cast.i.i.i
+  %cmp3.not.i.i.i = icmp ult i64 %sub.ptr.sub.i.i.i.i, 9223372036854775800
+  %mul.i.i.i = lshr exact i64 %sub.ptr.sub.i.i.i.i, 2
   %.sroa.speculated.i.i.i = tail call i64 @llvm.umax.i64(i64 %mul.i.i.i, i64 %add.i.i)
   %retval.0.i.i.i = select i1 %cmp3.not.i.i.i, i64 %.sroa.speculated.i.i.i, i64 2305843009213693951
   %cmp.i16.i.i = icmp eq i64 %retval.0.i.i.i, 0
@@ -14874,7 +14878,7 @@ invoke.cont7.loopexit.i.i:                        ; preds = %while.body.i.i.i.i.
   br label %invoke.cont7.i.i
 
 invoke.cont7.i.i:                                 ; preds = %invoke.cont7.loopexit.i.i, %invoke.cont.i.i
-  %23 = phi ptr [ %0, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
+  %23 = phi ptr [ %2, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
   %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i = phi ptr [ %add.ptr.i.i.i, %invoke.cont.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i.i.i.i.lcssa, %invoke.cont7.loopexit.i.i ]
   store ptr %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i, ptr %this, align 8, !tbaa !14
   store ptr %incdec.ptr.i4.i, ptr %__end_.i, align 8, !tbaa !14
@@ -15050,7 +15054,7 @@ invoke.cont6.loopexit:                            ; preds = %while.body.i.i.i.i.
   br label %invoke.cont6
 
 invoke.cont6:                                     ; preds = %invoke.cont6.loopexit, %invoke.cont
-  %25 = phi ptr [ %1, %invoke.cont ], [ %.pre, %invoke.cont6.loopexit ]
+  %25 = phi ptr [ %3, %invoke.cont ], [ %.pre, %invoke.cont6.loopexit ]
   %agg.tmp416.sroa.4.0.i.i.i.i.i.i = phi ptr [ %add.ptr.i, %invoke.cont ], [ %incdec.ptr.i.i.i.i.i.i.i.i.lcssa, %invoke.cont6.loopexit ]
   store ptr %agg.tmp416.sroa.4.0.i.i.i.i.i.i, ptr %this, align 8, !tbaa !14
   store ptr %uglygep.i22, ptr %__end_, align 8, !tbaa !14
@@ -15692,7 +15696,7 @@ if.then57.i.i.i.i:                                ; preds = %while.end.i.i.i.i, 
 _ZN5boost6spirit5matchINS_17reference_wrapperIiEEED2Ev.exit: ; preds = %if.then22.i.i.i.i, %while.end.i.i.i.i
   %26 = phi ptr [ %21, %while.end.i.i.i.i ], [ %6, %if.then22.i.i.i.i ]
   %latest_len.4117.i.i.i.i = phi i64 [ %latest_len.3.i.i.i.i, %while.end.i.i.i.i ], [ %retval.sroa.9.0126.i.i.i.i, %if.then22.i.i.i.i ]
-  %latest.4116.i.i.i.i = phi ptr [ %latest.3.i.i.i.i, %while.end.i.i.i.i ], [ %7, %if.then22.i.i.i.i ]
+  %latest.4116.i.i.i.i = phi ptr [ %latest.3.i.i.i.i, %while.end.i.i.i.i ], [ %8, %if.then22.i.i.i.i ]
   store ptr %latest.4116.i.i.i.i, ptr %26, align 8, !tbaa !14, !noalias !255
   %memptr.tobool.not = icmp slt i64 %latest_len.4117.i.i.i.i, 0
   br i1 %memptr.tobool.not, label %return, label %if.then
@@ -16197,7 +16201,7 @@ _ZN5boost6spirit5matchIcED2Ev.exit.i.i:           ; preds = %if.then.i.i20.i
   %incdec.ptr.i.i.i.i.i21.i = getelementptr inbounds i8, ptr %12, i64 3
   store ptr %incdec.ptr.i.i.i.i.i21.i, ptr %9, align 8, !tbaa !14, !noalias !316
   %cmp.i.i.i.i2472.i.i = icmp eq ptr %incdec.ptr.i.i.i.i.i21.i, %10
-  br i1 %cmp.i.i.i.i2472.i.i, label %cleanup.i, label %if.then.i29.i.i.preheader
+  br i1 %cmp.i.i.i.i2472.i.i, label %if.then.i, label %if.then.i29.i.i.preheader
 
 if.then.i29.i.i.preheader:                        ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i
   %24 = add i64 %11, -2
@@ -16225,40 +16229,41 @@ cleanup.i22.i:                                    ; preds = %if.then.i29.i.i
 
 _ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit: ; preds = %if.then.i29.i.i, %cleanup.i22.i
   %retval.sroa.0.0.lcssa.i.i = phi i64 [ %25, %cleanup.i22.i ], [ %retval.sroa.0.073.i.i, %if.then.i29.i.i ]
-  %.lcssa.i.i = phi ptr [ %10, %cleanup.i22.i ], [ %26, %if.then.i29.i.i ]
+  %.lcssa.i.i = phi ptr [ %incdec.ptr.i.i.i.i30.i.i, %cleanup.i22.i ], [ %26, %if.then.i29.i.i ]
   store ptr %.lcssa.i.i, ptr %9, align 8, !tbaa !14
   %add.i.i.i10 = add nsw i64 %retval.sroa.0.0.lcssa.i.i, 2
   %memptr.tobool.not.i = icmp slt i64 %retval.sroa.0.0.lcssa.i.i, -2
   br i1 %memptr.tobool.not.i, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEEENS0_8optionalINS4_INS0_11alternativeIS3_S3_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISG_T_E4typeERKSX_.exit, label %if.then.i
 
-if.then.i:                                        ; preds = %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit
-  %cmp.i.i.i.i.i.i.i.i.i = icmp eq ptr %.lcssa.i.i, %10
+if.then.i:                                        ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i, %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit
+  %31 = phi ptr [ %.lcssa.i.i, %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit ], [ %incdec.ptr.i.i.i.i.i21.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i ]
+  %add.i.i.i1029 = phi i64 [ %add.i.i.i10, %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit ], [ 3, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i ]
+  %cmp.i.i.i.i.i.i.i.i.i = icmp eq ptr %31, %10
   br i1 %cmp.i.i.i.i.i.i.i.i.i, label %cleanup.i, label %if.then.i.i.i.i.i.i
 
 if.then.i.i.i.i.i.i:                              ; preds = %if.then.i
   %second_.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.182", ptr %s, i64 0, i32 1
-  %31 = load i8, ptr %.lcssa.i.i, align 1, !tbaa !137, !noalias !322
-  %32 = load ptr, ptr %call.i.i.i.i.i.i.i.i.i, align 8, !tbaa !14, !noalias !322
-  %idxprom.i.i.i.i.i.i.i.i.i.i = zext i8 %31 to i64
-  %arrayidx.i.i.i.i.i.i.i.i.i.i = getelementptr inbounds i32, ptr %32, i64 %idxprom.i.i.i.i.i.i.i.i.i.i
-  %33 = load i32, ptr %arrayidx.i.i.i.i.i.i.i.i.i.i, align 4, !tbaa !145, !noalias !322
-  %conv.i.i3.i.i.i.i.i.i.i.i.i = trunc i32 %33 to i8
-  %34 = load i8, ptr %second_.i.i.i.i, align 1, !tbaa !141, !noalias !322
-  %cmp.i.i.i.i.i.i.i = icmp eq i8 %34, %conv.i.i3.i.i.i.i.i.i.i.i.i
+  %32 = load i8, ptr %31, align 1, !tbaa !137, !noalias !322
+  %33 = load ptr, ptr %call.i.i.i.i.i.i.i.i.i, align 8, !tbaa !14, !noalias !322
+  %idxprom.i.i.i.i.i.i.i.i.i.i = zext i8 %32 to i64
+  %arrayidx.i.i.i.i.i.i.i.i.i.i = getelementptr inbounds i32, ptr %33, i64 %idxprom.i.i.i.i.i.i.i.i.i.i
+  %34 = load i32, ptr %arrayidx.i.i.i.i.i.i.i.i.i.i, align 4, !tbaa !145, !noalias !322
+  %conv.i.i3.i.i.i.i.i.i.i.i.i = trunc i32 %34 to i8
+  %35 = load i8, ptr %second_.i.i.i.i, align 1, !tbaa !141, !noalias !322
+  %cmp.i.i.i.i.i.i.i = icmp eq i8 %35, %conv.i.i3.i.i.i.i.i.i.i.i.i
   %second_.i.i.i.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.182", ptr %s, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %35 = load i8, ptr %second_.i.i.i.i.i.i.i.i, align 1
-  %cmp.i.i24.i.i.i.i.i = icmp eq i8 %35, %conv.i.i3.i.i.i.i.i.i.i.i.i
+  %36 = load i8, ptr %second_.i.i.i.i.i.i.i.i, align 1
+  %cmp.i.i24.i.i.i.i.i = icmp eq i8 %36, %conv.i.i3.i.i.i.i.i.i.i.i.i
   %or.cond.i.i.i.i = select i1 %cmp.i.i.i.i.i.i.i, i1 true, i1 %cmp.i.i24.i.i.i.i.i
   %spec.select.idx.i.i = zext i1 %or.cond.i.i.i.i to i64
-  %spec.select.i.i = getelementptr i8, ptr %.lcssa.i.i, i64 %spec.select.idx.i.i
+  %spec.select.i.i = getelementptr i8, ptr %31, i64 %spec.select.idx.i.i
   br label %cleanup.i
 
-cleanup.i:                                        ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i, %if.then.i.i.i.i.i.i, %if.then.i
-  %add.i.i.i102932 = phi i64 [ %add.i.i.i10, %if.then.i ], [ %add.i.i.i10, %if.then.i.i.i.i.i.i ], [ 3, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i ]
-  %storemerge.i.i = phi ptr [ %10, %if.then.i ], [ %spec.select.i.i, %if.then.i.i.i.i.i.i ], [ %10, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i ]
-  %retval.sroa.0.0.i.i = phi i64 [ 0, %if.then.i ], [ %spec.select.idx.i.i, %if.then.i.i.i.i.i.i ], [ 0, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i ]
+cleanup.i:                                        ; preds = %if.then.i.i.i.i.i.i, %if.then.i
+  %storemerge.i.i = phi ptr [ %31, %if.then.i ], [ %spec.select.i.i, %if.then.i.i.i.i.i.i ]
+  %retval.sroa.0.0.i.i = phi i64 [ 0, %if.then.i ], [ %spec.select.idx.i.i, %if.then.i.i.i.i.i.i ]
   store ptr %storemerge.i.i, ptr %9, align 8, !tbaa !14
-  %add.i.i.i = add nuw nsw i64 %retval.sroa.0.0.i.i, %add.i.i.i102932
+  %add.i.i.i = add nuw nsw i64 %retval.sroa.0.0.i.i, %add.i.i.i1029
   br label %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEEENS0_8optionalINS4_INS0_11alternativeIS3_S3_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISG_T_E4typeERKSX_.exit
 
 _ZNK5boost6spirit8sequenceINS1_INS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEEENS0_8optionalINS4_INS0_11alternativeIS3_S3_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISG_T_E4typeERKSX_.exit: ; preds = %if.then.i.i20.i, %if.then.i9, %if.then.i.i.i19.i.i, %if.then.i.i, %if.then.i.i.i, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit, %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit, %cleanup.i
@@ -16365,7 +16370,7 @@ _ZN5boost6spirit5matchIcED2Ev.exit.i.i.i:         ; preds = %if.then.i.i.i.i
   %incdec.ptr.i.i.i.i.i.i.i = getelementptr inbounds i8, ptr %12, i64 2
   store ptr %incdec.ptr.i.i.i.i.i.i.i, ptr %9, align 8, !tbaa !14, !noalias !331
   %cmp.i.i.i.i2471.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i.i.i.i, %10
-  br i1 %cmp.i.i.i.i2471.i.i.i, label %cleanup.i, label %if.then.i28.i.i.i.preheader
+  br i1 %cmp.i.i.i.i2471.i.i.i, label %if.then.i, label %if.then.i28.i.i.i.preheader
 
 if.then.i28.i.i.i.preheader:                      ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
   %20 = xor i64 %13, -1
@@ -16391,41 +16396,45 @@ cleanup.i16.i.i:                                  ; preds = %if.then.i28.i.i.i
 
 _ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i: ; preds = %cleanup.i16.i.i, %if.then.i28.i.i.i
   %retval.sroa.0.0.lcssa.i.i.i = phi i64 [ %21, %cleanup.i16.i.i ], [ %retval.sroa.0.072.i.i.i, %if.then.i28.i.i.i ]
-  %.lcssa.i.i.i = phi ptr [ %10, %cleanup.i16.i.i ], [ %22, %if.then.i28.i.i.i ]
+  %.lcssa.i.i.i = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i, %cleanup.i16.i.i ], [ %22, %if.then.i28.i.i.i ]
   store ptr %.lcssa.i.i.i, ptr %9, align 8, !tbaa !14
   %memptr.tobool.not.i = icmp slt i64 %retval.sroa.0.0.lcssa.i.i.i, -1
-  br i1 %memptr.tobool.not.i, label %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeIS3_S3_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSW_.exit, label %if.then.i
+  br i1 %memptr.tobool.not.i, label %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeIS3_S3_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSW_.exit, label %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.if.then_crit_edge.i
 
-if.then.i:                                        ; preds = %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i
+_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.if.then_crit_edge.i: ; preds = %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i
   %add.i.i.i.i = add nsw i64 %retval.sroa.0.0.lcssa.i.i.i, 1
-  %cmp.i.i.i.i.i.i.i.i.i = icmp eq ptr %.lcssa.i.i.i, %10
+  br label %if.then.i
+
+if.then.i:                                        ; preds = %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.if.then_crit_edge.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
+  %26 = phi ptr [ %.lcssa.i.i.i, %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.if.then_crit_edge.i ], [ %incdec.ptr.i.i.i.i.i.i.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+  %add.i.i.i32.i = phi i64 [ %add.i.i.i.i, %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.if.then_crit_edge.i ], [ 2, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+  %cmp.i.i.i.i.i.i.i.i.i = icmp eq ptr %26, %10
   br i1 %cmp.i.i.i.i.i.i.i.i.i, label %cleanup.i, label %if.then.i.i.i.i.i.i
 
 if.then.i.i.i.i.i.i:                              ; preds = %if.then.i
   %second_.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.216", ptr %s, i64 0, i32 1
-  %26 = load i8, ptr %.lcssa.i.i.i, align 1, !tbaa !137, !noalias !339
+  %27 = load i8, ptr %26, align 1, !tbaa !137, !noalias !339
   %call.i.i.i.i.i.i.i.i.i.i = tail call ptr @__ctype_tolower_loc() #32
-  %27 = load ptr, ptr %call.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !14, !noalias !339
-  %idxprom.i.i.i.i.i.i.i.i.i.i = zext i8 %26 to i64
-  %arrayidx.i.i.i.i.i.i.i.i.i.i = getelementptr inbounds i32, ptr %27, i64 %idxprom.i.i.i.i.i.i.i.i.i.i
-  %28 = load i32, ptr %arrayidx.i.i.i.i.i.i.i.i.i.i, align 4, !tbaa !145, !noalias !339
-  %conv.i.i3.i.i.i.i.i.i.i.i.i = trunc i32 %28 to i8
-  %29 = load i8, ptr %second_.i.i.i.i, align 1, !tbaa !141, !noalias !339
-  %cmp.i.i.i.i.i.i18.i = icmp eq i8 %29, %conv.i.i3.i.i.i.i.i.i.i.i.i
+  %28 = load ptr, ptr %call.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !14, !noalias !339
+  %idxprom.i.i.i.i.i.i.i.i.i.i = zext i8 %27 to i64
+  %arrayidx.i.i.i.i.i.i.i.i.i.i = getelementptr inbounds i32, ptr %28, i64 %idxprom.i.i.i.i.i.i.i.i.i.i
+  %29 = load i32, ptr %arrayidx.i.i.i.i.i.i.i.i.i.i, align 4, !tbaa !145, !noalias !339
+  %conv.i.i3.i.i.i.i.i.i.i.i.i = trunc i32 %29 to i8
+  %30 = load i8, ptr %second_.i.i.i.i, align 1, !tbaa !141, !noalias !339
+  %cmp.i.i.i.i.i.i18.i = icmp eq i8 %30, %conv.i.i3.i.i.i.i.i.i.i.i.i
   %second_.i.i.i.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.216", ptr %s, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %30 = load i8, ptr %second_.i.i.i.i.i.i.i.i, align 1
-  %cmp.i.i24.i.i.i.i.i = icmp eq i8 %30, %conv.i.i3.i.i.i.i.i.i.i.i.i
+  %31 = load i8, ptr %second_.i.i.i.i.i.i.i.i, align 1
+  %cmp.i.i24.i.i.i.i.i = icmp eq i8 %31, %conv.i.i3.i.i.i.i.i.i.i.i.i
   %or.cond.i.i.i.i = select i1 %cmp.i.i.i.i.i.i18.i, i1 true, i1 %cmp.i.i24.i.i.i.i.i
   %spec.select.idx.i.i = zext i1 %or.cond.i.i.i.i to i64
-  %spec.select.i.i = getelementptr i8, ptr %.lcssa.i.i.i, i64 %spec.select.idx.i.i
+  %spec.select.i.i = getelementptr i8, ptr %26, i64 %spec.select.idx.i.i
   br label %cleanup.i
 
-cleanup.i:                                        ; preds = %if.then.i.i.i.i.i.i, %if.then.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
-  %add.i.i.i3237.i = phi i64 [ %add.i.i.i.i, %if.then.i ], [ %add.i.i.i.i, %if.then.i.i.i.i.i.i ], [ 2, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
-  %storemerge.i.i = phi ptr [ %10, %if.then.i ], [ %spec.select.i.i, %if.then.i.i.i.i.i.i ], [ %10, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
-  %retval.sroa.0.0.i.i = phi i64 [ 0, %if.then.i ], [ %spec.select.idx.i.i, %if.then.i.i.i.i.i.i ], [ 0, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+cleanup.i:                                        ; preds = %if.then.i.i.i.i.i.i, %if.then.i
+  %storemerge.i.i = phi ptr [ %26, %if.then.i ], [ %spec.select.i.i, %if.then.i.i.i.i.i.i ]
+  %retval.sroa.0.0.i.i = phi i64 [ 0, %if.then.i ], [ %spec.select.idx.i.i, %if.then.i.i.i.i.i.i ]
   store ptr %storemerge.i.i, ptr %9, align 8, !tbaa !14
-  %add.i.i.i = add nuw nsw i64 %retval.sroa.0.0.i.i, %add.i.i.i3237.i
+  %add.i.i.i = add nuw nsw i64 %retval.sroa.0.0.i.i, %add.i.i.i32.i
   br label %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeIS3_S3_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSW_.exit
 
 _ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeIS3_S3_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSW_.exit: ; preds = %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit, %if.then.i.i.i, %if.then.i.i, %if.then.i.i.i.i, %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i, %cleanup.i
@@ -16513,7 +16522,7 @@ _ZN5boost6spirit5matchIcED2Ev.exit.i.i.i:         ; preds = %if.then.i.i.i.i
   %incdec.ptr.i.i.i.i.i.i.i = getelementptr inbounds i8, ptr %11, i64 1
   store ptr %incdec.ptr.i.i.i.i.i.i.i, ptr %8, align 8, !tbaa !14, !noalias !345
   %cmp.i.i.i.i2471.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i.i.i.i, %9
-  br i1 %cmp.i.i.i.i2471.i.i.i, label %cleanup.i.i, label %if.then.i28.i.i.preheader.i
+  br i1 %cmp.i.i.i.i2471.i.i.i, label %if.then.i.i, label %if.then.i28.i.i.preheader.i
 
 if.then.i28.i.i.preheader.i:                      ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
   %14 = sub i64 %10, %12
@@ -16526,45 +16535,51 @@ if.then.i28.i.i.i:                                ; preds = %cleanup.i.i.i, %if.
   %conv.i.i.i.i.i25.i.i.i = zext i8 %16 to i32
   %isdigittmp.i.i.i26.i.i.i = add nsw i32 %conv.i.i.i.i.i25.i.i.i, -48
   %isdigit.i.i.i27.i.i.i = icmp ult i32 %isdigittmp.i.i.i26.i.i.i, 10
-  br i1 %isdigit.i.i.i27.i.i.i, label %cleanup.i.i.i, label %if.then.i.i
+  br i1 %isdigit.i.i.i27.i.i.i, label %cleanup.i.i.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i
 
 cleanup.i.i.i:                                    ; preds = %if.then.i28.i.i.i
   %incdec.ptr.i.i.i.i29.i.i.i = getelementptr inbounds i8, ptr %15, i64 1
   store ptr %incdec.ptr.i.i.i.i29.i.i.i, ptr %8, align 8, !tbaa !14, !noalias !348
   %add.i.i.i.i.i = add nuw nsw i64 %retval.sroa.0.072.i.i.i, 1
   %cmp.i.i.i.i24.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i29.i.i.i, %9
-  br i1 %cmp.i.i.i.i24.i.i.i, label %cleanup.i.i, label %if.then.i28.i.i.i
+  br i1 %cmp.i.i.i.i24.i.i.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i, label %if.then.i28.i.i.i
 
-if.then.i.i:                                      ; preds = %if.then.i28.i.i.i
-  store ptr %15, ptr %8, align 8, !tbaa !14
-  %cmp.i.i.i.i.i.i.i.i.i.i = icmp eq ptr %15, %9
+_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i: ; preds = %cleanup.i.i.i, %if.then.i28.i.i.i
+  %retval.sroa.0.0.lcssa.i.i.i = phi i64 [ %14, %cleanup.i.i.i ], [ %retval.sroa.0.072.i.i.i, %if.then.i28.i.i.i ]
+  %.lcssa.i.i.i = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i, %cleanup.i.i.i ], [ %15, %if.then.i28.i.i.i ]
+  store ptr %.lcssa.i.i.i, ptr %8, align 8, !tbaa !14
+  br label %if.then.i.i
+
+if.then.i.i:                                      ; preds = %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
+  %17 = phi ptr [ %.lcssa.i.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+  %retval.sroa.0.0.lcssa.i30.i.i = phi i64 [ %retval.sroa.0.0.lcssa.i.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ 1, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+  %cmp.i.i.i.i.i.i.i.i.i.i = icmp eq ptr %17, %9
   br i1 %cmp.i.i.i.i.i.i.i.i.i.i, label %cleanup.i.i, label %if.then.i.i.i.i.i.i.i
 
 if.then.i.i.i.i.i.i.i:                            ; preds = %if.then.i.i
   %second_.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.234", ptr %this, i64 0, i32 1
-  %17 = load i8, ptr %15, align 1, !tbaa !137, !noalias !351
+  %18 = load i8, ptr %17, align 1, !tbaa !137, !noalias !351
   %call.i.i.i.i.i.i.i.i.i.i.i = tail call ptr @__ctype_tolower_loc() #32
-  %18 = load ptr, ptr %call.i.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !14, !noalias !351
-  %idxprom.i.i.i.i.i.i.i.i.i.i.i = zext i8 %17 to i64
-  %arrayidx.i.i.i.i.i.i.i.i.i.i.i = getelementptr inbounds i32, ptr %18, i64 %idxprom.i.i.i.i.i.i.i.i.i.i.i
-  %19 = load i32, ptr %arrayidx.i.i.i.i.i.i.i.i.i.i.i, align 4, !tbaa !145, !noalias !351
-  %conv.i.i3.i.i.i.i.i.i.i.i.i.i = trunc i32 %19 to i8
-  %20 = load i8, ptr %second_.i.i.i.i.i, align 1, !tbaa !141, !noalias !351
-  %cmp.i.i.i.i.i.i.i.i = icmp eq i8 %20, %conv.i.i3.i.i.i.i.i.i.i.i.i.i
+  %19 = load ptr, ptr %call.i.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !14, !noalias !351
+  %idxprom.i.i.i.i.i.i.i.i.i.i.i = zext i8 %18 to i64
+  %arrayidx.i.i.i.i.i.i.i.i.i.i.i = getelementptr inbounds i32, ptr %19, i64 %idxprom.i.i.i.i.i.i.i.i.i.i.i
+  %20 = load i32, ptr %arrayidx.i.i.i.i.i.i.i.i.i.i.i, align 4, !tbaa !145, !noalias !351
+  %conv.i.i3.i.i.i.i.i.i.i.i.i.i = trunc i32 %20 to i8
+  %21 = load i8, ptr %second_.i.i.i.i.i, align 1, !tbaa !141, !noalias !351
+  %cmp.i.i.i.i.i.i.i.i = icmp eq i8 %21, %conv.i.i3.i.i.i.i.i.i.i.i.i.i
   %second_.i.i.i.i.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.234", ptr %this, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %21 = load i8, ptr %second_.i.i.i.i.i.i.i.i.i, align 1
-  %cmp.i.i24.i.i.i.i.i.i = icmp eq i8 %21, %conv.i.i3.i.i.i.i.i.i.i.i.i.i
+  %22 = load i8, ptr %second_.i.i.i.i.i.i.i.i.i, align 1
+  %cmp.i.i24.i.i.i.i.i.i = icmp eq i8 %22, %conv.i.i3.i.i.i.i.i.i.i.i.i.i
   %or.cond.i.i.i.i.i = select i1 %cmp.i.i.i.i.i.i.i.i, i1 true, i1 %cmp.i.i24.i.i.i.i.i.i
   %spec.select.idx.i.i.i = zext i1 %or.cond.i.i.i.i.i to i64
-  %spec.select.i.i.i = getelementptr i8, ptr %15, i64 %spec.select.idx.i.i.i
+  %spec.select.i.i.i = getelementptr i8, ptr %17, i64 %spec.select.idx.i.i.i
   br label %cleanup.i.i
 
-cleanup.i.i:                                      ; preds = %cleanup.i.i.i, %if.then.i.i.i.i.i.i.i, %if.then.i.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
-  %retval.sroa.0.0.lcssa.i30.i16.i = phi i64 [ %retval.sroa.0.072.i.i.i, %if.then.i.i ], [ %retval.sroa.0.072.i.i.i, %if.then.i.i.i.i.i.i.i ], [ 1, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ], [ %14, %cleanup.i.i.i ]
-  %storemerge.i.i.i = phi ptr [ %9, %if.then.i.i ], [ %spec.select.i.i.i, %if.then.i.i.i.i.i.i.i ], [ %9, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ], [ %9, %cleanup.i.i.i ]
-  %retval.sroa.0.0.i.i.i = phi i64 [ 0, %if.then.i.i ], [ %spec.select.idx.i.i.i, %if.then.i.i.i.i.i.i.i ], [ 0, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ], [ 0, %cleanup.i.i.i ]
+cleanup.i.i:                                      ; preds = %if.then.i.i.i.i.i.i.i, %if.then.i.i
+  %storemerge.i.i.i = phi ptr [ %17, %if.then.i.i ], [ %spec.select.i.i.i, %if.then.i.i.i.i.i.i.i ]
+  %retval.sroa.0.0.i.i.i = phi i64 [ 0, %if.then.i.i ], [ %spec.select.idx.i.i.i, %if.then.i.i.i.i.i.i.i ]
   store ptr %storemerge.i.i.i, ptr %8, align 8, !tbaa !14
-  %add.i.i.i.i = add nsw i64 %retval.sroa.0.0.i.i.i, %retval.sroa.0.0.lcssa.i30.i16.i
+  %add.i.i.i.i = add nsw i64 %retval.sroa.0.0.i.i.i, %retval.sroa.0.0.lcssa.i30.i.i
   br label %_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS0_8positiveINS0_12digit_parserEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeINS0_5chlitIcEESE_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESP_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE.exit
 
 _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS0_8positiveINS0_12digit_parserEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeINS0_5chlitIcEESE_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESP_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE.exit: ; preds = %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i, %if.then.i.i.i.i, %cleanup.i.i
@@ -17114,7 +17129,7 @@ _ZN5boost6spirit5matchIcED2Ev.exit.i.i.i:         ; preds = %if.then.i.i.i.i
   %5 = load ptr, ptr %4, align 8, !tbaa !14
   %6 = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !414
   %cmp.i.i.i.i2471.i.i.i = icmp eq ptr %5, %6
-  br i1 %cmp.i.i.i.i2471.i.i.i, label %return, label %if.then.i28.i.i.i
+  br i1 %cmp.i.i.i.i2471.i.i.i, label %if.then.i.i, label %if.then.i28.i.i.i
 
 if.then.i28.i.i.i:                                ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i, %cleanup.i.i.i
   %7 = phi ptr [ %11, %cleanup.i.i.i ], [ %5, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
@@ -17124,7 +17139,7 @@ if.then.i28.i.i.i:                                ; preds = %_ZN5boost6spirit5ma
   %conv.i.i.i.i.i25.i.i.i = zext i8 %9 to i32
   %isdigittmp.i.i.i26.i.i.i = add nsw i32 %conv.i.i.i.i.i25.i.i.i, -48
   %isdigit.i.i.i27.i.i.i = icmp ult i32 %isdigittmp.i.i.i26.i.i.i, 10
-  br i1 %isdigit.i.i.i27.i.i.i, label %cleanup.i.i.i, label %if.then.i.i
+  br i1 %isdigit.i.i.i27.i.i.i, label %cleanup.i.i.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i
 
 cleanup.i.i.i:                                    ; preds = %if.then.i28.i.i.i
   %incdec.ptr.i.i.i.i29.i.i.i = getelementptr inbounds i8, ptr %7, i64 1
@@ -17134,9 +17149,9 @@ cleanup.i.i.i:                                    ; preds = %if.then.i28.i.i.i
   %11 = load ptr, ptr %10, align 8, !tbaa !14
   %12 = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !414
   %cmp.i.i.i.i24.i.i.i = icmp eq ptr %11, %12
-  br i1 %cmp.i.i.i.i24.i.i.i, label %if.then.i.i, label %if.then.i28.i.i.i
+  br i1 %cmp.i.i.i.i24.i.i.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i, label %if.then.i28.i.i.i
 
-if.then.i.i:                                      ; preds = %cleanup.i.i.i, %if.then.i28.i.i.i
+_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i: ; preds = %cleanup.i.i.i, %if.then.i28.i.i.i
   %13 = phi ptr [ %10, %cleanup.i.i.i ], [ %8, %if.then.i28.i.i.i ]
   %retval.sroa.0.0.lcssa.i.i.i = phi i64 [ %add.i.i.i.i.i, %cleanup.i.i.i ], [ %retval.sroa.0.072.i.i.i, %if.then.i28.i.i.i ]
   %.lcssa.i.i.i = phi ptr [ %11, %cleanup.i.i.i ], [ %7, %if.then.i28.i.i.i ]
@@ -17144,99 +17159,106 @@ if.then.i.i:                                      ; preds = %cleanup.i.i.i, %if.
   %.pre.i = load ptr, ptr %first.i.i.i.i.i.i.i, align 8, !tbaa !246
   %.pre32.i = load ptr, ptr %.pre.i, align 8, !tbaa !14
   %.pre33.i = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !417
-  %cmp.i.i.i.i.i18.i.i = icmp eq ptr %.pre32.i, %.pre33.i
+  br label %if.then.i.i
+
+if.then.i.i:                                      ; preds = %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
+  %14 = phi ptr [ %.pre33.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ %6, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+  %15 = phi ptr [ %.pre32.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ %5, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+  %16 = phi ptr [ %.pre.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ %4, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+  %retval.sroa.0.0.lcssa.i32.i.i = phi i64 [ %retval.sroa.0.0.lcssa.i.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ 1, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+  %cmp.i.i.i.i.i18.i.i = icmp eq ptr %15, %14
   br i1 %cmp.i.i.i.i.i18.i.i, label %return, label %if.then.i.i19.i.i
 
 if.then.i.i19.i.i:                                ; preds = %if.then.i.i
   %second_.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.326", ptr %this, i64 0, i32 1
-  %14 = load i8, ptr %.pre32.i, align 1, !tbaa !137, !noalias !417
-  %15 = load i8, ptr %second_.i.i.i.i.i, align 1, !tbaa !141, !noalias !417
-  %cmp.i.i.i.i.i = icmp eq i8 %15, %14
+  %17 = load i8, ptr %15, align 1, !tbaa !137, !noalias !417
+  %18 = load i8, ptr %second_.i.i.i.i.i, align 1, !tbaa !141, !noalias !417
+  %cmp.i.i.i.i.i = icmp eq i8 %18, %17
   %second_.i.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.326", ptr %this, i64 0, i32 1, i32 0, i32 0, i32 0, i32 1
-  %16 = load i8, ptr %second_.i.i.i.i.i.i, align 1
-  %cmp.i.i20.i.i.i = icmp eq i8 %16, %14
+  %19 = load i8, ptr %second_.i.i.i.i.i.i, align 1
+  %cmp.i.i20.i.i.i = icmp eq i8 %19, %17
   %or.cond.i.i = select i1 %cmp.i.i.i.i.i, i1 true, i1 %cmp.i.i20.i.i.i
   br i1 %or.cond.i.i, label %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSQ_.exit.i, label %return
 
 _ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSQ_.exit.i: ; preds = %if.then.i.i19.i.i
-  %incdec.ptr.i.i.i.i22.i.i.i = getelementptr inbounds i8, ptr %.pre32.i, i64 1
-  store ptr %incdec.ptr.i.i.i.i22.i.i.i, ptr %.pre.i, align 8, !tbaa !14, !noalias !25
-  %add.i.i.i.i = add nsw i64 %retval.sroa.0.0.lcssa.i.i.i, 1
-  %memptr.tobool.not.i = icmp slt i64 %retval.sroa.0.0.lcssa.i.i.i, -1
+  %incdec.ptr.i.i.i.i22.i.i.i = getelementptr inbounds i8, ptr %15, i64 1
+  store ptr %incdec.ptr.i.i.i.i22.i.i.i, ptr %16, align 8, !tbaa !14, !noalias !25
+  %add.i.i.i.i = add nsw i64 %retval.sroa.0.0.lcssa.i32.i.i, 1
+  %memptr.tobool.not.i = icmp slt i64 %retval.sroa.0.0.lcssa.i32.i.i, -1
   br i1 %memptr.tobool.not.i, label %return, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSQ_.exit.i
-  %17 = load ptr, ptr %first.i.i.i.i.i.i.i, align 8, !tbaa !246
-  %18 = load ptr, ptr %17, align 8, !tbaa !14
-  %19 = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !420
-  %cmp.i.i.i.i.i.i18.i = icmp eq ptr %18, %19
+  %20 = load ptr, ptr %first.i.i.i.i.i.i.i, align 8, !tbaa !246
+  %21 = load ptr, ptr %20, align 8, !tbaa !14
+  %22 = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !420
+  %cmp.i.i.i.i.i.i18.i = icmp eq ptr %21, %22
   br i1 %cmp.i.i.i.i.i.i18.i, label %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEEENS0_8optionalIS8_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit, label %if.then.i.i.i23.i
 
 if.then.i.i.i23.i:                                ; preds = %if.then.i
   %second_.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.321", ptr %this, i64 0, i32 1
-  %20 = load i8, ptr %18, align 1, !tbaa !137, !noalias !420
-  %21 = load i8, ptr %second_.i.i.i.i, align 1, !tbaa !141, !noalias !420
-  %cmp.i.i.i.i19.i = icmp eq i8 %21, %20
+  %23 = load i8, ptr %21, align 1, !tbaa !137, !noalias !420
+  %24 = load i8, ptr %second_.i.i.i.i, align 1, !tbaa !141, !noalias !420
+  %cmp.i.i.i.i19.i = icmp eq i8 %24, %23
   %second_.i.i.i.i.i20.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.321", ptr %this, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %22 = load i8, ptr %second_.i.i.i.i.i20.i, align 1
-  %cmp.i.i20.i.i21.i = icmp eq i8 %22, %20
+  %25 = load i8, ptr %second_.i.i.i.i.i20.i, align 1
+  %cmp.i.i20.i.i21.i = icmp eq i8 %25, %23
   %or.cond.i22.i = select i1 %cmp.i.i.i.i19.i, i1 true, i1 %cmp.i.i20.i.i21.i
   %spec.select.idx.i.i = zext i1 %or.cond.i22.i to i64
-  %spec.select.i.i = getelementptr i8, ptr %18, i64 %spec.select.idx.i.i
+  %spec.select.i.i = getelementptr i8, ptr %21, i64 %spec.select.idx.i.i
   br label %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEEENS0_8optionalIS8_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit
 
 _ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEEENS0_8optionalIS8_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit: ; preds = %if.then.i, %if.then.i.i.i23.i
-  %storemerge.i.i = phi ptr [ %18, %if.then.i ], [ %spec.select.i.i, %if.then.i.i.i23.i ]
+  %storemerge.i.i = phi ptr [ %21, %if.then.i ], [ %spec.select.i.i, %if.then.i.i.i23.i ]
   %retval.sroa.0.0.i.i = phi i64 [ 0, %if.then.i ], [ %spec.select.idx.i.i, %if.then.i.i.i23.i ]
-  store ptr %storemerge.i.i, ptr %17, align 8, !tbaa !14
+  store ptr %storemerge.i.i, ptr %20, align 8, !tbaa !14
   %add.i.i.i = add nuw nsw i64 %add.i.i.i.i, %retval.sroa.0.0.i.i
-  %23 = load ptr, ptr %first.i.i.i.i.i.i.i, align 8, !tbaa !246, !noalias !423
-  %24 = load ptr, ptr %23, align 8, !tbaa !14, !noalias !423
-  %25 = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !423
-  %cmp.i.i.i.i.i17 = icmp eq ptr %24, %25
+  %26 = load ptr, ptr %first.i.i.i.i.i.i.i, align 8, !tbaa !246, !noalias !423
+  %27 = load ptr, ptr %26, align 8, !tbaa !14, !noalias !423
+  %28 = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !423
+  %cmp.i.i.i.i.i17 = icmp eq ptr %27, %28
   br i1 %cmp.i.i.i.i.i17, label %return, label %if.then.i.i18
 
 if.then.i.i18:                                    ; preds = %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEEENS0_8optionalIS8_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit
-  %26 = load i8, ptr %24, align 1, !tbaa !137, !noalias !423
-  %conv.i.i.i.i.i.i = zext i8 %26 to i32
+  %29 = load i8, ptr %27, align 1, !tbaa !137, !noalias !423
+  %conv.i.i.i.i.i.i = zext i8 %29 to i32
   %isdigittmp.i.i.i.i = add nsw i32 %conv.i.i.i.i.i.i, -48
   %isdigit.i.i.i.i = icmp ult i32 %isdigittmp.i.i.i.i, 10
   br i1 %isdigit.i.i.i.i, label %_ZN5boost6spirit5matchIcED2Ev.exit.i, label %return
 
 _ZN5boost6spirit5matchIcED2Ev.exit.i:             ; preds = %if.then.i.i18
-  %incdec.ptr.i.i.i.i.i = getelementptr inbounds i8, ptr %24, i64 1
-  store ptr %incdec.ptr.i.i.i.i.i, ptr %23, align 8, !tbaa !14, !noalias !423
-  %27 = load ptr, ptr %first.i.i.i.i.i.i.i, align 8, !tbaa !246
-  %28 = load ptr, ptr %27, align 8, !tbaa !14
-  %29 = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !426
-  %cmp.i.i.i.i2471.i = icmp eq ptr %28, %29
+  %incdec.ptr.i.i.i.i.i = getelementptr inbounds i8, ptr %27, i64 1
+  store ptr %incdec.ptr.i.i.i.i.i, ptr %26, align 8, !tbaa !14, !noalias !423
+  %30 = load ptr, ptr %first.i.i.i.i.i.i.i, align 8, !tbaa !246
+  %31 = load ptr, ptr %30, align 8, !tbaa !14
+  %32 = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !426
+  %cmp.i.i.i.i2471.i = icmp eq ptr %31, %32
   br i1 %cmp.i.i.i.i2471.i, label %cleanup, label %if.then.i28.i
 
 if.then.i28.i:                                    ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i, %cleanup.i20
-  %30 = phi ptr [ %34, %cleanup.i20 ], [ %28, %_ZN5boost6spirit5matchIcED2Ev.exit.i ]
-  %31 = phi ptr [ %33, %cleanup.i20 ], [ %27, %_ZN5boost6spirit5matchIcED2Ev.exit.i ]
+  %33 = phi ptr [ %37, %cleanup.i20 ], [ %31, %_ZN5boost6spirit5matchIcED2Ev.exit.i ]
+  %34 = phi ptr [ %36, %cleanup.i20 ], [ %30, %_ZN5boost6spirit5matchIcED2Ev.exit.i ]
   %retval.sroa.0.072.i = phi i64 [ %add.i.i.i19, %cleanup.i20 ], [ 1, %_ZN5boost6spirit5matchIcED2Ev.exit.i ]
-  %32 = load i8, ptr %30, align 1, !tbaa !137, !noalias !426
-  %conv.i.i.i.i.i25.i = zext i8 %32 to i32
+  %35 = load i8, ptr %33, align 1, !tbaa !137, !noalias !426
+  %conv.i.i.i.i.i25.i = zext i8 %35 to i32
   %isdigittmp.i.i.i26.i = add nsw i32 %conv.i.i.i.i.i25.i, -48
   %isdigit.i.i.i27.i = icmp ult i32 %isdigittmp.i.i.i26.i, 10
   br i1 %isdigit.i.i.i27.i, label %cleanup.i20, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit
 
 cleanup.i20:                                      ; preds = %if.then.i28.i
-  %incdec.ptr.i.i.i.i29.i = getelementptr inbounds i8, ptr %30, i64 1
-  store ptr %incdec.ptr.i.i.i.i29.i, ptr %31, align 8, !tbaa !14, !noalias !426
+  %incdec.ptr.i.i.i.i29.i = getelementptr inbounds i8, ptr %33, i64 1
+  store ptr %incdec.ptr.i.i.i.i29.i, ptr %34, align 8, !tbaa !14, !noalias !426
   %add.i.i.i19 = add nuw nsw i64 %retval.sroa.0.072.i, 1
-  %33 = load ptr, ptr %first.i.i.i.i.i.i.i, align 8, !tbaa !246
-  %34 = load ptr, ptr %33, align 8, !tbaa !14
-  %35 = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !426
-  %cmp.i.i.i.i24.i = icmp eq ptr %34, %35
+  %36 = load ptr, ptr %first.i.i.i.i.i.i.i, align 8, !tbaa !246
+  %37 = load ptr, ptr %36, align 8, !tbaa !14
+  %38 = load ptr, ptr %last.i.i.i.i.i.i.i, align 8, !tbaa !85, !noalias !426
+  %cmp.i.i.i.i24.i = icmp eq ptr %37, %38
   br i1 %cmp.i.i.i.i24.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit, label %if.then.i28.i
 
 _ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit: ; preds = %if.then.i28.i, %cleanup.i20
-  %36 = phi ptr [ %33, %cleanup.i20 ], [ %31, %if.then.i28.i ]
+  %39 = phi ptr [ %36, %cleanup.i20 ], [ %34, %if.then.i28.i ]
   %retval.sroa.0.0.lcssa.i = phi i64 [ %add.i.i.i19, %cleanup.i20 ], [ %retval.sroa.0.072.i, %if.then.i28.i ]
-  %.lcssa.i = phi ptr [ %34, %cleanup.i20 ], [ %30, %if.then.i28.i ]
-  store ptr %.lcssa.i, ptr %36, align 8, !tbaa !14
+  %.lcssa.i = phi ptr [ %37, %cleanup.i20 ], [ %33, %if.then.i28.i ]
+  store ptr %.lcssa.i, ptr %39, align 8, !tbaa !14
   br label %cleanup
 
 cleanup:                                          ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit
@@ -17244,8 +17266,8 @@ cleanup:                                          ; preds = %_ZN5boost6spirit5ma
   %add.i.i = add nsw i64 %add.i.i.i, %retval.sroa.0.0.lcssa.i37
   br label %return
 
-return:                                           ; preds = %if.then.i.i18, %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEEENS0_8optionalIS8_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i, %if.then.i.i19.i.i, %if.then.i.i, %if.then.i.i.i.i, %entry, %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSQ_.exit.i, %cleanup
-  %retval.sroa.0.1 = phi i64 [ %add.i.i, %cleanup ], [ -1, %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSQ_.exit.i ], [ -1, %entry ], [ -1, %if.then.i.i.i.i ], [ -1, %if.then.i.i ], [ -1, %if.then.i.i19.i.i ], [ -1, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ], [ -1, %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEEENS0_8optionalIS8_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit ], [ -1, %if.then.i.i18 ]
+return:                                           ; preds = %if.then.i.i18, %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEEENS0_8optionalIS8_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit, %if.then.i.i19.i.i, %if.then.i.i, %if.then.i.i.i.i, %entry, %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSQ_.exit.i, %cleanup
+  %retval.sroa.0.1 = phi i64 [ %add.i.i, %cleanup ], [ -1, %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSQ_.exit.i ], [ -1, %entry ], [ -1, %if.then.i.i.i.i ], [ -1, %if.then.i.i ], [ -1, %if.then.i.i19.i.i ], [ -1, %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEEENS0_8optionalIS8_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit ], [ -1, %if.then.i.i18 ]
   ret i64 %retval.sroa.0.1
 }
 
@@ -17314,223 +17336,239 @@ _ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_po
   %10 = load ptr, ptr %last.i.i, align 8, !tbaa !81, !noalias !429
   %11 = ptrtoint ptr %10 to i64
   %12 = load ptr, ptr %9, align 8, !tbaa !14
+  %13 = ptrtoint ptr %12 to i64
   %cmp.i.i.i.i35.i.i.i = icmp eq ptr %12, %10
-  br i1 %cmp.i.i.i.i35.i.i.i, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i.i.i.i22
+  br i1 %cmp.i.i.i.i35.i.i.i, label %if.then.i.i30, label %if.then.i.i.i.i22.preheader
 
-if.then.i.i.i.i22:                                ; preds = %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit, %cleanup.i.i.i
-  %13 = phi ptr [ %incdec.ptr.i.i.i.i.i.i.i23, %cleanup.i.i.i ], [ %12, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit ]
-  %retval.sroa.0.036.i.i.i = phi i64 [ %add.i.i.i.i.i24, %cleanup.i.i.i ], [ 0, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit ]
-  %14 = load i8, ptr %13, align 1, !tbaa !137, !noalias !432
-  %conv.i.i.i.i.i.i.i.i19 = zext i8 %14 to i32
+if.then.i.i.i.i22.preheader:                      ; preds = %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit
+  %14 = sub i64 %11, %13
+  br label %if.then.i.i.i.i22
+
+if.then.i.i.i.i22:                                ; preds = %if.then.i.i.i.i22.preheader, %cleanup.i.i.i
+  %15 = phi ptr [ %incdec.ptr.i.i.i.i.i.i.i23, %cleanup.i.i.i ], [ %12, %if.then.i.i.i.i22.preheader ]
+  %retval.sroa.0.036.i.i.i = phi i64 [ %add.i.i.i.i.i24, %cleanup.i.i.i ], [ 0, %if.then.i.i.i.i22.preheader ]
+  %16 = load i8, ptr %15, align 1, !tbaa !137, !noalias !432
+  %conv.i.i.i.i.i.i.i.i19 = zext i8 %16 to i32
   %isdigittmp.i.i.i.i.i.i20 = add nsw i32 %conv.i.i.i.i.i.i.i.i19, -48
   %isdigit.i.i.i.i.i.i21 = icmp ult i32 %isdigittmp.i.i.i.i.i.i20, 10
-  br i1 %isdigit.i.i.i.i.i.i21, label %cleanup.i.i.i, label %if.then.i.i30
+  br i1 %isdigit.i.i.i.i.i.i21, label %cleanup.i.i.i, label %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i
 
 cleanup.i.i.i:                                    ; preds = %if.then.i.i.i.i22
-  %incdec.ptr.i.i.i.i.i.i.i23 = getelementptr inbounds i8, ptr %13, i64 1
+  %incdec.ptr.i.i.i.i.i.i.i23 = getelementptr inbounds i8, ptr %15, i64 1
   store ptr %incdec.ptr.i.i.i.i.i.i.i23, ptr %9, align 8, !tbaa !14, !noalias !432
   %add.i.i.i.i.i24 = add nuw nsw i64 %retval.sroa.0.036.i.i.i, 1
   %cmp.i.i.i.i.i.i.i25 = icmp eq ptr %incdec.ptr.i.i.i.i.i.i.i23, %10
-  br i1 %cmp.i.i.i.i.i.i.i25, label %if.then.i.i30.thread, label %if.then.i.i.i.i22
+  br i1 %cmp.i.i.i.i.i.i.i25, label %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i, label %if.then.i.i.i.i22
 
-if.then.i.i30.thread:                             ; preds = %cleanup.i.i.i
-  store ptr %10, ptr %9, align 8, !tbaa !14
-  br label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit
+_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i: ; preds = %cleanup.i.i.i, %if.then.i.i.i.i22
+  %retval.sroa.0.0.lcssa.i.i.i26 = phi i64 [ %14, %cleanup.i.i.i ], [ %retval.sroa.0.036.i.i.i, %if.then.i.i.i.i22 ]
+  %.lcssa.i.i.i27 = phi ptr [ %incdec.ptr.i.i.i.i.i.i.i23, %cleanup.i.i.i ], [ %15, %if.then.i.i.i.i22 ]
+  store ptr %.lcssa.i.i.i27, ptr %9, align 8, !tbaa !14
+  %.pre = ptrtoint ptr %.lcssa.i.i.i27 to i64
+  br label %if.then.i.i30
 
-if.then.i.i30:                                    ; preds = %if.then.i.i.i.i22
-  %.pre63 = ptrtoint ptr %13 to i64
-  store ptr %13, ptr %9, align 8, !tbaa !14
-  %cmp.i.i.i.i.i.i29 = icmp eq ptr %13, %10
+if.then.i.i30:                                    ; preds = %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit
+  %.pre-phi = phi i64 [ %.pre, %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ %13, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit ]
+  %17 = phi ptr [ %.lcssa.i.i.i27, %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ %12, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit ]
+  %retval.sroa.0.0.lcssa.i30.i.i = phi i64 [ %retval.sroa.0.0.lcssa.i.i.i26, %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ 0, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit ]
+  %cmp.i.i.i.i.i.i29 = icmp eq ptr %17, %10
   br i1 %cmp.i.i.i.i.i.i29, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i.i.i32
 
 if.then.i.i.i32:                                  ; preds = %if.then.i.i30
   %second_.i.i.i.i.i31 = getelementptr inbounds %"class.boost::details::compressed_pair_imp.352", ptr %s, i64 0, i32 1
-  %15 = load i8, ptr %13, align 1, !tbaa !137, !noalias !435
-  %16 = load i8, ptr %second_.i.i.i.i.i31, align 1, !tbaa !141, !noalias !435
-  %cmp.i.i.i.i = icmp eq i8 %16, %15
+  %18 = load i8, ptr %17, align 1, !tbaa !137, !noalias !435
+  %19 = load i8, ptr %second_.i.i.i.i.i31, align 1, !tbaa !141, !noalias !435
+  %cmp.i.i.i.i = icmp eq i8 %19, %18
   br i1 %cmp.i.i.i.i, label %_ZNK5boost6spirit8sequenceINS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit
 
 _ZNK5boost6spirit8sequenceINS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i: ; preds = %if.then.i.i.i32
-  %incdec.ptr.i.i.i.i.i.i = getelementptr inbounds i8, ptr %13, i64 1
+  %incdec.ptr.i.i.i.i.i.i = getelementptr inbounds i8, ptr %17, i64 1
   store ptr %incdec.ptr.i.i.i.i.i.i, ptr %9, align 8, !tbaa !14, !noalias !435
-  %add.i.i.i.i33 = add nuw nsw i64 %retval.sroa.0.036.i.i.i, 1
+  %add.i.i.i.i33 = add nsw i64 %retval.sroa.0.0.lcssa.i30.i.i, 1
+  %memptr.tobool.not.i34 = icmp slt i64 %retval.sroa.0.0.lcssa.i30.i.i, -1
   %cmp.i.i.i.i.i17.i = icmp eq ptr %incdec.ptr.i.i.i.i.i.i, %10
-  br i1 %cmp.i.i.i.i.i17.i, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i.i18.i
+  %or.cond = select i1 %memptr.tobool.not.i34, i1 true, i1 %cmp.i.i.i.i.i17.i
+  br i1 %or.cond, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i.i18.i
 
 if.then.i.i18.i:                                  ; preds = %_ZNK5boost6spirit8sequenceINS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i
-  %17 = load i8, ptr %incdec.ptr.i.i.i.i.i.i, align 1, !tbaa !137, !noalias !438
-  %conv.i.i.i.i.i.i.i = zext i8 %17 to i32
+  %20 = load i8, ptr %incdec.ptr.i.i.i.i.i.i, align 1, !tbaa !137, !noalias !438
+  %conv.i.i.i.i.i.i.i = zext i8 %20 to i32
   %isdigittmp.i.i.i.i.i = add nsw i32 %conv.i.i.i.i.i.i.i, -48
   %isdigit.i.i.i.i.i = icmp ult i32 %isdigittmp.i.i.i.i.i, 10
   br i1 %isdigit.i.i.i.i.i, label %_ZN5boost6spirit5matchIcED2Ev.exit.i.i, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit
 
 _ZN5boost6spirit5matchIcED2Ev.exit.i.i:           ; preds = %if.then.i.i18.i
-  %incdec.ptr.i.i.i.i.i19.i = getelementptr inbounds i8, ptr %13, i64 2
+  %incdec.ptr.i.i.i.i.i19.i = getelementptr inbounds i8, ptr %17, i64 2
   store ptr %incdec.ptr.i.i.i.i.i19.i, ptr %9, align 8, !tbaa !14, !noalias !438
   %cmp.i.i.i.i2471.i.i = icmp eq ptr %incdec.ptr.i.i.i.i.i19.i, %10
   br i1 %cmp.i.i.i.i2471.i.i, label %_ZNK5boost6spirit8sequenceINS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit, label %if.then.i28.i.i.preheader
 
 if.then.i28.i.i.preheader:                        ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i
-  %18 = xor i64 %.pre63, -1
-  %19 = add i64 %18, %11
+  %21 = xor i64 %.pre-phi, -1
+  %22 = add i64 %21, %11
   br label %if.then.i28.i.i
 
 if.then.i28.i.i:                                  ; preds = %if.then.i28.i.i.preheader, %cleanup.i21.i
-  %20 = phi ptr [ %incdec.ptr.i.i.i.i29.i.i, %cleanup.i21.i ], [ %incdec.ptr.i.i.i.i.i19.i, %if.then.i28.i.i.preheader ]
+  %23 = phi ptr [ %incdec.ptr.i.i.i.i29.i.i, %cleanup.i21.i ], [ %incdec.ptr.i.i.i.i.i19.i, %if.then.i28.i.i.preheader ]
   %retval.sroa.0.072.i.i = phi i64 [ %add.i.i.i20.i, %cleanup.i21.i ], [ 1, %if.then.i28.i.i.preheader ]
-  %21 = load i8, ptr %20, align 1, !tbaa !137, !noalias !441
-  %conv.i.i.i.i.i25.i.i = zext i8 %21 to i32
+  %24 = load i8, ptr %23, align 1, !tbaa !137, !noalias !441
+  %conv.i.i.i.i.i25.i.i = zext i8 %24 to i32
   %isdigittmp.i.i.i26.i.i = add nsw i32 %conv.i.i.i.i.i25.i.i, -48
   %isdigit.i.i.i27.i.i = icmp ult i32 %isdigittmp.i.i.i26.i.i, 10
   br i1 %isdigit.i.i.i27.i.i, label %cleanup.i21.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i
 
 cleanup.i21.i:                                    ; preds = %if.then.i28.i.i
-  %incdec.ptr.i.i.i.i29.i.i = getelementptr inbounds i8, ptr %20, i64 1
+  %incdec.ptr.i.i.i.i29.i.i = getelementptr inbounds i8, ptr %23, i64 1
   store ptr %incdec.ptr.i.i.i.i29.i.i, ptr %9, align 8, !tbaa !14, !noalias !441
   %add.i.i.i20.i = add nuw nsw i64 %retval.sroa.0.072.i.i, 1
   %cmp.i.i.i.i24.i.i = icmp eq ptr %incdec.ptr.i.i.i.i29.i.i, %10
   br i1 %cmp.i.i.i.i24.i.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i, label %if.then.i28.i.i
 
 _ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i: ; preds = %cleanup.i21.i, %if.then.i28.i.i
-  %retval.sroa.0.0.lcssa.i.i = phi i64 [ %19, %cleanup.i21.i ], [ %retval.sroa.0.072.i.i, %if.then.i28.i.i ]
-  %.lcssa.i.i = phi ptr [ %10, %cleanup.i21.i ], [ %20, %if.then.i28.i.i ]
+  %retval.sroa.0.0.lcssa.i.i = phi i64 [ %22, %cleanup.i21.i ], [ %retval.sroa.0.072.i.i, %if.then.i28.i.i ]
+  %.lcssa.i.i = phi ptr [ %incdec.ptr.i.i.i.i29.i.i, %cleanup.i21.i ], [ %23, %if.then.i28.i.i ]
   store ptr %.lcssa.i.i, ptr %9, align 8, !tbaa !14
   br label %_ZNK5boost6spirit8sequenceINS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit
 
 _ZNK5boost6spirit8sequenceINS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit: ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i
-  %22 = phi ptr [ %.lcssa.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i ], [ %10, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i ]
+  %25 = phi ptr [ %.lcssa.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i ], [ %incdec.ptr.i.i.i.i.i19.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i ]
   %retval.sroa.0.0.lcssa.i38.i = phi i64 [ %retval.sroa.0.0.lcssa.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i ], [ 1, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i ]
   %add.i.i.i36 = add nsw i64 %add.i.i.i.i33, %retval.sroa.0.0.lcssa.i38.i
   %memptr.tobool.not.i.i = icmp slt i64 %add.i.i.i36, 0
   br i1 %memptr.tobool.not.i.i, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i
 
 _ZNK5boost6spirit8sequenceINS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i: ; preds = %_ZNK5boost6spirit8sequenceINS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit
-  %cmp.i.i.i.i.i.i.i.i = icmp eq ptr %22, %10
+  %cmp.i.i.i.i.i.i.i.i = icmp eq ptr %25, %10
   br i1 %cmp.i.i.i.i.i.i.i.i, label %if.else.i, label %if.then.i.i.i.i.i
 
 if.then.i.i.i.i.i:                                ; preds = %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i
   %second_.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.342", ptr %s, i64 0, i32 1
-  %23 = load i8, ptr %22, align 1, !tbaa !137, !noalias !444
-  %24 = load i8, ptr %second_.i.i.i.i.i, align 1, !tbaa !141, !noalias !444
-  %cmp.i.i.i.i.i.i = icmp eq i8 %24, %23
+  %26 = load i8, ptr %25, align 1, !tbaa !137, !noalias !444
+  %27 = load i8, ptr %second_.i.i.i.i.i, align 1, !tbaa !141, !noalias !444
+  %cmp.i.i.i.i.i.i = icmp eq i8 %27, %26
   %second_.i.i.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.342", ptr %s, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %25 = load i8, ptr %second_.i.i.i.i.i.i.i, align 1
-  %cmp.i.i20.i.i.i.i = icmp eq i8 %25, %23
+  %28 = load i8, ptr %second_.i.i.i.i.i.i.i, align 1
+  %cmp.i.i20.i.i.i.i = icmp eq i8 %28, %26
   %or.cond.i.i.i = select i1 %cmp.i.i.i.i.i.i, i1 true, i1 %cmp.i.i20.i.i.i.i
   br i1 %or.cond.i.i.i, label %if.then.i.i.i, label %if.else.i
 
 if.then.i.i.i:                                    ; preds = %if.then.i.i.i.i.i
-  %incdec.ptr.i.i.i.i22.i.i.i.i = getelementptr inbounds i8, ptr %22, i64 1
+  %incdec.ptr.i.i.i.i22.i.i.i.i = getelementptr inbounds i8, ptr %25, i64 1
   store ptr %incdec.ptr.i.i.i.i22.i.i.i.i, ptr %9, align 8, !tbaa !14, !noalias !25
   %cmp.i.i.i.i.i.i.i.i.i10 = icmp eq ptr %incdec.ptr.i.i.i.i22.i.i.i.i, %10
-  br i1 %cmp.i.i.i.i.i.i.i.i.i10, label %if.else.i, label %if.then.i.i
+  br i1 %cmp.i.i.i.i.i.i.i.i.i10, label %if.then.i.i, label %_ZNK5boost6spirit8sequenceINS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i.i
 
-if.then.i.i:                                      ; preds = %if.then.i.i.i
+_ZNK5boost6spirit8sequenceINS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i.i: ; preds = %if.then.i.i.i
   %second_.i.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.342", ptr %s, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %26 = load i8, ptr %incdec.ptr.i.i.i.i22.i.i.i.i, align 1, !tbaa !137, !noalias !447
-  %27 = load i8, ptr %second_.i.i.i.i.i.i, align 1, !tbaa !141, !noalias !447
-  %cmp.i.i.i.i.i.i.i11 = icmp eq i8 %27, %26
+  %29 = load i8, ptr %incdec.ptr.i.i.i.i22.i.i.i.i, align 1, !tbaa !137, !noalias !447
+  %30 = load i8, ptr %second_.i.i.i.i.i.i, align 1, !tbaa !141, !noalias !447
+  %cmp.i.i.i.i.i.i.i11 = icmp eq i8 %30, %29
   %second_.i.i.i.i.i.i.i.i12 = getelementptr inbounds %"class.boost::details::compressed_pair_imp.342", ptr %s, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %28 = load i8, ptr %second_.i.i.i.i.i.i.i.i12, align 1
-  %cmp.i.i20.i.i.i.i.i = icmp eq i8 %28, %26
+  %31 = load i8, ptr %second_.i.i.i.i.i.i.i.i12, align 1
+  %cmp.i.i20.i.i.i.i.i = icmp eq i8 %31, %29
   %or.cond.i.i.i.i13 = select i1 %cmp.i.i.i.i.i.i.i11, i1 true, i1 %cmp.i.i20.i.i.i.i.i
   %spec.select.idx.i.i.i.i = zext i1 %or.cond.i.i.i.i13 to i64
   %spec.select.i.i.i.i = getelementptr i8, ptr %incdec.ptr.i.i.i.i22.i.i.i.i, i64 %spec.select.idx.i.i.i.i
-  %29 = select i1 %or.cond.i.i.i.i13, i64 2, i64 1
-  %.pre = ptrtoint ptr %spec.select.i.i.i.i to i64
-  store ptr %spec.select.i.i.i.i, ptr %9, align 8, !tbaa !14
-  %cmp.i.i.i.i.i17.i.i = icmp eq ptr %spec.select.i.i.i.i, %10
+  %32 = select i1 %or.cond.i.i.i.i13, i64 2, i64 1
+  br label %if.then.i.i
+
+if.then.i.i:                                      ; preds = %_ZNK5boost6spirit8sequenceINS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i.i, %if.then.i.i.i
+  %storemerge.i.i14 = phi ptr [ %spec.select.i.i.i.i, %_ZNK5boost6spirit8sequenceINS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i.i ], [ %incdec.ptr.i.i.i.i22.i.i.i.i, %if.then.i.i.i ]
+  %retval.sroa.0.0.i18.i31.i.i = phi i64 [ %32, %_ZNK5boost6spirit8sequenceINS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i.i ], [ 1, %if.then.i.i.i ]
+  %storemerge.i.i1461 = ptrtoint ptr %storemerge.i.i14 to i64
+  store ptr %storemerge.i.i14, ptr %9, align 8, !tbaa !14
+  %cmp.i.i.i.i.i17.i.i = icmp eq ptr %storemerge.i.i14, %10
   br i1 %cmp.i.i.i.i.i17.i.i, label %if.else.i, label %if.then.i.i.i.i
 
 if.then.i.i.i.i:                                  ; preds = %if.then.i.i
-  %30 = load i8, ptr %spec.select.i.i.i.i, align 1, !tbaa !137, !noalias !450
-  %conv.i.i.i.i.i.i.i.i = zext i8 %30 to i32
+  %33 = load i8, ptr %storemerge.i.i14, align 1, !tbaa !137, !noalias !450
+  %conv.i.i.i.i.i.i.i.i = zext i8 %33 to i32
   %isdigittmp.i.i.i.i.i.i = add nsw i32 %conv.i.i.i.i.i.i.i.i, -48
   %isdigit.i.i.i.i.i.i = icmp ult i32 %isdigittmp.i.i.i.i.i.i, 10
   br i1 %isdigit.i.i.i.i.i.i, label %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i, label %if.else.i
 
 _ZN5boost6spirit5matchIcED2Ev.exit.i.i.i:         ; preds = %if.then.i.i.i.i
-  %incdec.ptr.i.i.i.i.i.i.i = getelementptr inbounds i8, ptr %spec.select.i.i.i.i, i64 1
+  %incdec.ptr.i.i.i.i.i.i.i = getelementptr inbounds i8, ptr %storemerge.i.i14, i64 1
   store ptr %incdec.ptr.i.i.i.i.i.i.i, ptr %9, align 8, !tbaa !14, !noalias !450
   %cmp.i.i.i.i2471.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i.i.i.i, %10
   br i1 %cmp.i.i.i.i2471.i.i.i, label %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i, label %if.then.i28.i.i.i.preheader
 
 if.then.i28.i.i.i.preheader:                      ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
-  %31 = sub i64 %11, %.pre
+  %34 = sub i64 %11, %storemerge.i.i1461
   br label %if.then.i28.i.i.i
 
 if.then.i28.i.i.i:                                ; preds = %if.then.i28.i.i.i.preheader, %cleanup.i18.i.i
-  %32 = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i, %cleanup.i18.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i, %if.then.i28.i.i.i.preheader ]
+  %35 = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i, %cleanup.i18.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i, %if.then.i28.i.i.i.preheader ]
   %retval.sroa.0.072.i.i.i = phi i64 [ %add.i.i.i.i.i, %cleanup.i18.i.i ], [ 1, %if.then.i28.i.i.i.preheader ]
-  %33 = load i8, ptr %32, align 1, !tbaa !137, !noalias !453
-  %conv.i.i.i.i.i25.i.i.i = zext i8 %33 to i32
+  %36 = load i8, ptr %35, align 1, !tbaa !137, !noalias !453
+  %conv.i.i.i.i.i25.i.i.i = zext i8 %36 to i32
   %isdigittmp.i.i.i26.i.i.i = add nsw i32 %conv.i.i.i.i.i25.i.i.i, -48
   %isdigit.i.i.i27.i.i.i = icmp ult i32 %isdigittmp.i.i.i26.i.i.i, 10
   br i1 %isdigit.i.i.i27.i.i.i, label %cleanup.i18.i.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i
 
 cleanup.i18.i.i:                                  ; preds = %if.then.i28.i.i.i
-  %incdec.ptr.i.i.i.i29.i.i.i = getelementptr inbounds i8, ptr %32, i64 1
+  %incdec.ptr.i.i.i.i29.i.i.i = getelementptr inbounds i8, ptr %35, i64 1
   store ptr %incdec.ptr.i.i.i.i29.i.i.i, ptr %9, align 8, !tbaa !14, !noalias !453
   %add.i.i.i.i.i = add nuw nsw i64 %retval.sroa.0.072.i.i.i, 1
   %cmp.i.i.i.i24.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i29.i.i.i, %10
   br i1 %cmp.i.i.i.i24.i.i.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i, label %if.then.i28.i.i.i
 
 _ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i: ; preds = %cleanup.i18.i.i, %if.then.i28.i.i.i
-  %retval.sroa.0.0.lcssa.i.i.i = phi i64 [ %31, %cleanup.i18.i.i ], [ %retval.sroa.0.072.i.i.i, %if.then.i28.i.i.i ]
-  %.lcssa.i.i.i = phi ptr [ %10, %cleanup.i18.i.i ], [ %32, %if.then.i28.i.i.i ]
+  %retval.sroa.0.0.lcssa.i.i.i = phi i64 [ %34, %cleanup.i18.i.i ], [ %retval.sroa.0.072.i.i.i, %if.then.i28.i.i.i ]
+  %.lcssa.i.i.i = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i, %cleanup.i18.i.i ], [ %35, %if.then.i28.i.i.i ]
   store ptr %.lcssa.i.i.i, ptr %9, align 8, !tbaa !14
   br label %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i
 
 _ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i: ; preds = %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
-  %34 = phi ptr [ %.lcssa.i.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ %10, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+  %37 = phi ptr [ %.lcssa.i.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
   %retval.sroa.0.0.lcssa.i41.i.i = phi i64 [ %retval.sroa.0.0.lcssa.i.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ 1, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
-  %add.i.i.i.i15 = add nsw i64 %retval.sroa.0.0.lcssa.i41.i.i, %29
+  %add.i.i.i.i15 = add nsw i64 %retval.sroa.0.0.lcssa.i41.i.i, %retval.sroa.0.0.i18.i31.i.i
   %memptr.tobool.not.i16 = icmp slt i64 %add.i.i.i.i15, 0
-  br i1 %memptr.tobool.not.i16, label %if.else.i, label %35
+  br i1 %memptr.tobool.not.i16, label %if.else.i, label %38
 
-if.else.i:                                        ; preds = %if.then.i.i.i, %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i, %if.then.i.i.i.i, %if.then.i.i, %if.then.i.i.i.i.i, %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i
-  store ptr %22, ptr %9, align 8, !tbaa !14
-  br label %35
+if.else.i:                                        ; preds = %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i, %if.then.i.i.i.i, %if.then.i.i, %if.then.i.i.i.i.i, %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i
+  store ptr %25, ptr %9, align 8, !tbaa !14
+  br label %38
 
-35:                                               ; preds = %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i, %if.else.i
-  %36 = phi ptr [ %22, %if.else.i ], [ %34, %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i ]
+38:                                               ; preds = %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i, %if.else.i
+  %39 = phi ptr [ %25, %if.else.i ], [ %37, %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i ]
   %retval.sroa.0.0.i = phi i64 [ 0, %if.else.i ], [ %add.i.i.i.i15, %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i ]
   %add.i.i.i.i = add nsw i64 %retval.sroa.0.0.i, %add.i.i.i36
   %memptr.tobool.not.i = icmp slt i64 %add.i.i.i.i, 0
   br i1 %memptr.tobool.not.i, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i
 
-if.then.i:                                        ; preds = %35
-  %cmp.i.i.i.i.i.i.i.i.i = icmp eq ptr %36, %10
+if.then.i:                                        ; preds = %38
+  %cmp.i.i.i.i.i.i.i.i.i = icmp eq ptr %39, %10
   br i1 %cmp.i.i.i.i.i.i.i.i.i, label %cleanup.i, label %if.then.i.i.i.i.i.i
 
 if.then.i.i.i.i.i.i:                              ; preds = %if.then.i
   %second_.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.337", ptr %s, i64 0, i32 1
-  %37 = load i8, ptr %36, align 1, !tbaa !137, !noalias !456
+  %40 = load i8, ptr %39, align 1, !tbaa !137, !noalias !456
   %call.i.i.i.i.i.i.i.i.i.i = tail call ptr @__ctype_tolower_loc() #32
-  %38 = load ptr, ptr %call.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !14, !noalias !456
-  %idxprom.i.i.i.i.i.i.i.i.i.i = zext i8 %37 to i64
-  %arrayidx.i.i.i.i.i.i.i.i.i.i = getelementptr inbounds i32, ptr %38, i64 %idxprom.i.i.i.i.i.i.i.i.i.i
-  %39 = load i32, ptr %arrayidx.i.i.i.i.i.i.i.i.i.i, align 4, !tbaa !145, !noalias !456
-  %conv.i.i3.i.i.i.i.i.i.i.i.i = trunc i32 %39 to i8
-  %40 = load i8, ptr %second_.i.i.i.i, align 1, !tbaa !141, !noalias !456
-  %cmp.i.i.i.i.i.i.i = icmp eq i8 %40, %conv.i.i3.i.i.i.i.i.i.i.i.i
+  %41 = load ptr, ptr %call.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !14, !noalias !456
+  %idxprom.i.i.i.i.i.i.i.i.i.i = zext i8 %40 to i64
+  %arrayidx.i.i.i.i.i.i.i.i.i.i = getelementptr inbounds i32, ptr %41, i64 %idxprom.i.i.i.i.i.i.i.i.i.i
+  %42 = load i32, ptr %arrayidx.i.i.i.i.i.i.i.i.i.i, align 4, !tbaa !145, !noalias !456
+  %conv.i.i3.i.i.i.i.i.i.i.i.i = trunc i32 %42 to i8
+  %43 = load i8, ptr %second_.i.i.i.i, align 1, !tbaa !141, !noalias !456
+  %cmp.i.i.i.i.i.i.i = icmp eq i8 %43, %conv.i.i3.i.i.i.i.i.i.i.i.i
   %second_.i.i.i.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.337", ptr %s, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %41 = load i8, ptr %second_.i.i.i.i.i.i.i.i, align 1
-  %cmp.i.i24.i.i.i.i.i = icmp eq i8 %41, %conv.i.i3.i.i.i.i.i.i.i.i.i
+  %44 = load i8, ptr %second_.i.i.i.i.i.i.i.i, align 1
+  %cmp.i.i24.i.i.i.i.i = icmp eq i8 %44, %conv.i.i3.i.i.i.i.i.i.i.i.i
   %or.cond.i.i.i.i = select i1 %cmp.i.i.i.i.i.i.i, i1 true, i1 %cmp.i.i24.i.i.i.i.i
   %spec.select.idx.i.i = zext i1 %or.cond.i.i.i.i to i64
-  %spec.select.i17.i = getelementptr i8, ptr %36, i64 %spec.select.idx.i.i
+  %spec.select.i17.i = getelementptr i8, ptr %39, i64 %spec.select.idx.i.i
   br label %cleanup.i
 
 cleanup.i:                                        ; preds = %if.then.i.i.i.i.i.i, %if.then.i
-  %storemerge.i.i = phi ptr [ %10, %if.then.i ], [ %spec.select.i17.i, %if.then.i.i.i.i.i.i ]
+  %storemerge.i.i = phi ptr [ %39, %if.then.i ], [ %spec.select.i17.i, %if.then.i.i.i.i.i.i ]
   %retval.sroa.0.0.i.i = phi i64 [ 0, %if.then.i ], [ %spec.select.idx.i.i, %if.then.i.i.i.i.i.i ]
   store ptr %storemerge.i.i, ptr %9, align 8, !tbaa !14
   %add.i.i.i = add nuw nsw i64 %retval.sroa.0.0.i.i, %add.i.i.i.i
   br label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit
 
-_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit: ; preds = %if.then.i.i30.thread, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit, %if.then.i.i18.i, %if.then.i.i.i32, %if.then.i.i30, %_ZNK5boost6spirit8sequenceINS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i, %_ZNK5boost6spirit8sequenceINS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit, %35, %cleanup.i
-  %retval.sroa.0.1.i = phi i64 [ %add.i.i.i, %cleanup.i ], [ -1, %35 ], [ -1, %_ZNK5boost6spirit8sequenceINS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit ], [ -1, %_ZNK5boost6spirit8sequenceINS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i ], [ -1, %if.then.i.i30 ], [ -1, %if.then.i.i.i32 ], [ -1, %if.then.i.i18.i ], [ -1, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit ], [ -1, %if.then.i.i30.thread ]
+_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit: ; preds = %if.then.i.i18.i, %if.then.i.i.i32, %if.then.i.i30, %_ZNK5boost6spirit8sequenceINS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i, %_ZNK5boost6spirit8sequenceINS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit, %38, %cleanup.i
+  %retval.sroa.0.1.i = phi i64 [ %add.i.i.i, %cleanup.i ], [ -1, %38 ], [ -1, %_ZNK5boost6spirit8sequenceINS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit ], [ -1, %_ZNK5boost6spirit8sequenceINS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i ], [ -1, %if.then.i.i30 ], [ -1, %if.then.i.i.i32 ], [ -1, %if.then.i.i18.i ]
   ret i64 %retval.sroa.0.1.i
 }
 
@@ -17599,12 +17637,13 @@ _ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_po
   %10 = load ptr, ptr %last.i.i, align 8, !tbaa !81, !noalias !459
   %11 = ptrtoint ptr %10 to i64
   %12 = load ptr, ptr %9, align 8, !tbaa !14, !noalias !462
+  %13 = ptrtoint ptr %12 to i64
   %cmp.i.i.i.i.i.i.i18 = icmp eq ptr %12, %10
   br i1 %cmp.i.i.i.i.i.i.i18, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i.i.i.i22
 
 if.then.i.i.i.i22:                                ; preds = %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit
-  %13 = load i8, ptr %12, align 1, !tbaa !137, !noalias !462
-  %conv.i.i.i.i.i.i.i.i19 = zext i8 %13 to i32
+  %14 = load i8, ptr %12, align 1, !tbaa !137, !noalias !462
+  %conv.i.i.i.i.i.i.i.i19 = zext i8 %14 to i32
   %isdigittmp.i.i.i.i.i.i20 = add nsw i32 %conv.i.i.i.i.i.i.i.i19, -48
   %isdigit.i.i.i.i.i.i21 = icmp ult i32 %isdigittmp.i.i.i.i.i.i20, 10
   br i1 %isdigit.i.i.i.i.i.i21, label %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit
@@ -17613,209 +17652,225 @@ _ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25:       ; preds = %if.then.i.i.i.i22
   %incdec.ptr.i.i.i.i.i.i.i23 = getelementptr inbounds i8, ptr %12, i64 1
   store ptr %incdec.ptr.i.i.i.i.i.i.i23, ptr %9, align 8, !tbaa !14, !noalias !462
   %cmp.i.i.i.i2471.i.i.i24 = icmp eq ptr %incdec.ptr.i.i.i.i.i.i.i23, %10
-  br i1 %cmp.i.i.i.i2471.i.i.i24, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i28.i.i.i30
+  br i1 %cmp.i.i.i.i2471.i.i.i24, label %if.then.i.i39, label %if.then.i28.i.i.i30.preheader
 
-if.then.i28.i.i.i30:                              ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25, %cleanup.i.i.i
-  %14 = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i31, %cleanup.i.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i23, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25 ]
-  %retval.sroa.0.072.i.i.i26 = phi i64 [ %add.i.i.i.i.i32, %cleanup.i.i.i ], [ 1, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25 ]
-  %15 = load i8, ptr %14, align 1, !tbaa !137, !noalias !465
-  %conv.i.i.i.i.i25.i.i.i27 = zext i8 %15 to i32
+if.then.i28.i.i.i30.preheader:                    ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25
+  %15 = sub i64 %11, %13
+  br label %if.then.i28.i.i.i30
+
+if.then.i28.i.i.i30:                              ; preds = %if.then.i28.i.i.i30.preheader, %cleanup.i.i.i
+  %16 = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i31, %cleanup.i.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i23, %if.then.i28.i.i.i30.preheader ]
+  %retval.sroa.0.072.i.i.i26 = phi i64 [ %add.i.i.i.i.i32, %cleanup.i.i.i ], [ 1, %if.then.i28.i.i.i30.preheader ]
+  %17 = load i8, ptr %16, align 1, !tbaa !137, !noalias !465
+  %conv.i.i.i.i.i25.i.i.i27 = zext i8 %17 to i32
   %isdigittmp.i.i.i26.i.i.i28 = add nsw i32 %conv.i.i.i.i.i25.i.i.i27, -48
   %isdigit.i.i.i27.i.i.i29 = icmp ult i32 %isdigittmp.i.i.i26.i.i.i28, 10
-  br i1 %isdigit.i.i.i27.i.i.i29, label %cleanup.i.i.i, label %if.then.i.i38
+  br i1 %isdigit.i.i.i27.i.i.i29, label %cleanup.i.i.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i37
 
 cleanup.i.i.i:                                    ; preds = %if.then.i28.i.i.i30
-  %incdec.ptr.i.i.i.i29.i.i.i31 = getelementptr inbounds i8, ptr %14, i64 1
+  %incdec.ptr.i.i.i.i29.i.i.i31 = getelementptr inbounds i8, ptr %16, i64 1
   store ptr %incdec.ptr.i.i.i.i29.i.i.i31, ptr %9, align 8, !tbaa !14, !noalias !465
   %add.i.i.i.i.i32 = add nuw nsw i64 %retval.sroa.0.072.i.i.i26, 1
   %cmp.i.i.i.i24.i.i.i33 = icmp eq ptr %incdec.ptr.i.i.i.i29.i.i.i31, %10
-  br i1 %cmp.i.i.i.i24.i.i.i33, label %if.then.i.i38.thread, label %if.then.i28.i.i.i30
+  br i1 %cmp.i.i.i.i24.i.i.i33, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i37, label %if.then.i28.i.i.i30
 
-if.then.i.i38.thread:                             ; preds = %cleanup.i.i.i
-  store ptr %10, ptr %9, align 8, !tbaa !14
-  br label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit
+_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i37: ; preds = %cleanup.i.i.i, %if.then.i28.i.i.i30
+  %retval.sroa.0.0.lcssa.i.i.i34 = phi i64 [ %15, %cleanup.i.i.i ], [ %retval.sroa.0.072.i.i.i26, %if.then.i28.i.i.i30 ]
+  %.lcssa.i.i.i35 = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i31, %cleanup.i.i.i ], [ %16, %if.then.i28.i.i.i30 ]
+  store ptr %.lcssa.i.i.i35, ptr %9, align 8, !tbaa !14
+  br label %if.then.i.i39
 
-if.then.i.i38:                                    ; preds = %if.then.i28.i.i.i30
-  %.pre71 = ptrtoint ptr %14 to i64
-  store ptr %14, ptr %9, align 8, !tbaa !14
-  %cmp.i.i.i.i.i.i37 = icmp eq ptr %14, %10
-  br i1 %cmp.i.i.i.i.i.i37, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i.i.i40
+if.then.i.i39:                                    ; preds = %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i37, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25
+  %18 = phi ptr [ %.lcssa.i.i.i35, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i37 ], [ %incdec.ptr.i.i.i.i.i.i.i23, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25 ]
+  %retval.sroa.0.0.lcssa.i34.i.i = phi i64 [ %retval.sroa.0.0.lcssa.i.i.i34, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i37 ], [ 1, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25 ]
+  %19 = ptrtoint ptr %18 to i64
+  %cmp.i.i.i.i.i.i38 = icmp eq ptr %18, %10
+  br i1 %cmp.i.i.i.i.i.i38, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i.i.i41
 
-if.then.i.i.i40:                                  ; preds = %if.then.i.i38
-  %second_.i.i.i.i.i39 = getelementptr inbounds %"class.boost::details::compressed_pair_imp.391", ptr %s, i64 0, i32 1
-  %16 = load i8, ptr %14, align 1, !tbaa !137, !noalias !468
-  %17 = load i8, ptr %second_.i.i.i.i.i39, align 1, !tbaa !141, !noalias !468
-  %cmp.i.i.i.i = icmp eq i8 %17, %16
+if.then.i.i.i41:                                  ; preds = %if.then.i.i39
+  %second_.i.i.i.i.i40 = getelementptr inbounds %"class.boost::details::compressed_pair_imp.391", ptr %s, i64 0, i32 1
+  %20 = load i8, ptr %18, align 1, !tbaa !137, !noalias !468
+  %21 = load i8, ptr %second_.i.i.i.i.i40, align 1, !tbaa !141, !noalias !468
+  %cmp.i.i.i.i = icmp eq i8 %21, %20
   br i1 %cmp.i.i.i.i, label %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit
 
-_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i: ; preds = %if.then.i.i.i40
-  %incdec.ptr.i.i.i.i.i.i = getelementptr inbounds i8, ptr %14, i64 1
+_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i: ; preds = %if.then.i.i.i41
+  %incdec.ptr.i.i.i.i.i.i = getelementptr inbounds i8, ptr %18, i64 1
   store ptr %incdec.ptr.i.i.i.i.i.i, ptr %9, align 8, !tbaa !14, !noalias !468
-  %add.i.i.i.i41 = add nuw nsw i64 %retval.sroa.0.072.i.i.i26, 1
+  %add.i.i.i.i42 = add nsw i64 %retval.sroa.0.0.lcssa.i34.i.i, 1
+  %memptr.tobool.not.i43 = icmp slt i64 %retval.sroa.0.0.lcssa.i34.i.i, -1
+  br i1 %memptr.tobool.not.i43, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i44
+
+if.then.i44:                                      ; preds = %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i
   %cmp.i.i.i.i35.i.i = icmp eq ptr %incdec.ptr.i.i.i.i.i.i, %10
   br i1 %cmp.i.i.i.i35.i.i, label %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit, label %if.then.i.i17.i.preheader
 
-if.then.i.i17.i.preheader:                        ; preds = %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i
-  %18 = xor i64 %.pre71, -1
-  %19 = add i64 %18, %11
+if.then.i.i17.i.preheader:                        ; preds = %if.then.i44
+  %22 = xor i64 %19, -1
+  %23 = add i64 %22, %11
   br label %if.then.i.i17.i
 
 if.then.i.i17.i:                                  ; preds = %if.then.i.i17.i.preheader, %cleanup.i21.i
-  %20 = phi ptr [ %incdec.ptr.i.i.i.i.i18.i, %cleanup.i21.i ], [ %incdec.ptr.i.i.i.i.i.i, %if.then.i.i17.i.preheader ]
+  %24 = phi ptr [ %incdec.ptr.i.i.i.i.i18.i, %cleanup.i21.i ], [ %incdec.ptr.i.i.i.i.i.i, %if.then.i.i17.i.preheader ]
   %retval.sroa.0.036.i.i = phi i64 [ %add.i.i.i19.i, %cleanup.i21.i ], [ 0, %if.then.i.i17.i.preheader ]
-  %21 = load i8, ptr %20, align 1, !tbaa !137, !noalias !471
-  %conv.i.i.i.i.i.i.i = zext i8 %21 to i32
+  %25 = load i8, ptr %24, align 1, !tbaa !137, !noalias !471
+  %conv.i.i.i.i.i.i.i = zext i8 %25 to i32
   %isdigittmp.i.i.i.i.i = add nsw i32 %conv.i.i.i.i.i.i.i, -48
   %isdigit.i.i.i.i.i = icmp ult i32 %isdigittmp.i.i.i.i.i, 10
   br i1 %isdigit.i.i.i.i.i, label %cleanup.i21.i, label %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i
 
 cleanup.i21.i:                                    ; preds = %if.then.i.i17.i
-  %incdec.ptr.i.i.i.i.i18.i = getelementptr inbounds i8, ptr %20, i64 1
+  %incdec.ptr.i.i.i.i.i18.i = getelementptr inbounds i8, ptr %24, i64 1
   store ptr %incdec.ptr.i.i.i.i.i18.i, ptr %9, align 8, !tbaa !14, !noalias !471
   %add.i.i.i19.i = add nuw nsw i64 %retval.sroa.0.036.i.i, 1
   %cmp.i.i.i.i.i20.i = icmp eq ptr %incdec.ptr.i.i.i.i.i18.i, %10
   br i1 %cmp.i.i.i.i.i20.i, label %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i, label %if.then.i.i17.i
 
 _ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i: ; preds = %cleanup.i21.i, %if.then.i.i17.i
-  %retval.sroa.0.0.lcssa.i.i = phi i64 [ %19, %cleanup.i21.i ], [ %retval.sroa.0.036.i.i, %if.then.i.i17.i ]
-  %.lcssa.i.i = phi ptr [ %10, %cleanup.i21.i ], [ %20, %if.then.i.i17.i ]
+  %retval.sroa.0.0.lcssa.i.i = phi i64 [ %23, %cleanup.i21.i ], [ %retval.sroa.0.036.i.i, %if.then.i.i17.i ]
+  %.lcssa.i.i = phi ptr [ %incdec.ptr.i.i.i.i.i18.i, %cleanup.i21.i ], [ %24, %if.then.i.i17.i ]
   store ptr %.lcssa.i.i, ptr %9, align 8, !tbaa !14
   br label %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit
 
-_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit: ; preds = %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i, %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i
-  %22 = phi ptr [ %.lcssa.i.i, %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i ], [ %10, %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i ]
-  %retval.sroa.0.0.lcssa.i33.i = phi i64 [ %retval.sroa.0.0.lcssa.i.i, %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i ], [ 0, %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i ]
-  %add.i.i.i44 = add nsw i64 %add.i.i.i.i41, %retval.sroa.0.0.lcssa.i33.i
-  %memptr.tobool.not.i.i = icmp slt i64 %add.i.i.i44, 0
+_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit: ; preds = %if.then.i44, %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i
+  %26 = phi ptr [ %.lcssa.i.i, %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i ], [ %incdec.ptr.i.i.i.i.i.i, %if.then.i44 ]
+  %retval.sroa.0.0.lcssa.i33.i = phi i64 [ %retval.sroa.0.0.lcssa.i.i, %_ZNK5boost6spirit11kleene_starINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i ], [ 0, %if.then.i44 ]
+  %add.i.i.i45 = add nsw i64 %add.i.i.i.i42, %retval.sroa.0.0.lcssa.i33.i
+  %memptr.tobool.not.i.i = icmp slt i64 %add.i.i.i45, 0
   br i1 %memptr.tobool.not.i.i, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i
 
 _ZNK5boost6spirit8sequenceINS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i: ; preds = %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit
-  %cmp.i.i.i.i.i.i.i.i = icmp eq ptr %22, %10
+  %cmp.i.i.i.i.i.i.i.i = icmp eq ptr %26, %10
   br i1 %cmp.i.i.i.i.i.i.i.i, label %if.else.i, label %if.then.i.i.i.i.i
 
 if.then.i.i.i.i.i:                                ; preds = %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i
   %second_.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.381", ptr %s, i64 0, i32 1
-  %23 = load i8, ptr %22, align 1, !tbaa !137, !noalias !474
-  %24 = load i8, ptr %second_.i.i.i.i.i, align 1, !tbaa !141, !noalias !474
-  %cmp.i.i.i.i.i.i = icmp eq i8 %24, %23
+  %27 = load i8, ptr %26, align 1, !tbaa !137, !noalias !474
+  %28 = load i8, ptr %second_.i.i.i.i.i, align 1, !tbaa !141, !noalias !474
+  %cmp.i.i.i.i.i.i = icmp eq i8 %28, %27
   %second_.i.i.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.381", ptr %s, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %25 = load i8, ptr %second_.i.i.i.i.i.i.i, align 1
-  %cmp.i.i20.i.i.i.i = icmp eq i8 %25, %23
+  %29 = load i8, ptr %second_.i.i.i.i.i.i.i, align 1
+  %cmp.i.i20.i.i.i.i = icmp eq i8 %29, %27
   %or.cond.i.i.i = select i1 %cmp.i.i.i.i.i.i, i1 true, i1 %cmp.i.i20.i.i.i.i
   br i1 %or.cond.i.i.i, label %if.then.i.i.i, label %if.else.i
 
 if.then.i.i.i:                                    ; preds = %if.then.i.i.i.i.i
-  %incdec.ptr.i.i.i.i22.i.i.i.i = getelementptr inbounds i8, ptr %22, i64 1
+  %incdec.ptr.i.i.i.i22.i.i.i.i = getelementptr inbounds i8, ptr %26, i64 1
   store ptr %incdec.ptr.i.i.i.i22.i.i.i.i, ptr %9, align 8, !tbaa !14, !noalias !25
   %cmp.i.i.i.i.i.i.i.i.i10 = icmp eq ptr %incdec.ptr.i.i.i.i22.i.i.i.i, %10
-  br i1 %cmp.i.i.i.i.i.i.i.i.i10, label %if.else.i, label %if.then.i.i
+  br i1 %cmp.i.i.i.i.i.i.i.i.i10, label %if.then.i.i, label %_ZNK5boost6spirit8sequenceINS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i.i
 
-if.then.i.i:                                      ; preds = %if.then.i.i.i
+_ZNK5boost6spirit8sequenceINS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i.i: ; preds = %if.then.i.i.i
   %second_.i.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.381", ptr %s, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %26 = load i8, ptr %incdec.ptr.i.i.i.i22.i.i.i.i, align 1, !tbaa !137, !noalias !477
-  %27 = load i8, ptr %second_.i.i.i.i.i.i, align 1, !tbaa !141, !noalias !477
-  %cmp.i.i.i.i.i.i.i11 = icmp eq i8 %27, %26
+  %30 = load i8, ptr %incdec.ptr.i.i.i.i22.i.i.i.i, align 1, !tbaa !137, !noalias !477
+  %31 = load i8, ptr %second_.i.i.i.i.i.i, align 1, !tbaa !141, !noalias !477
+  %cmp.i.i.i.i.i.i.i11 = icmp eq i8 %31, %30
   %second_.i.i.i.i.i.i.i.i12 = getelementptr inbounds %"class.boost::details::compressed_pair_imp.381", ptr %s, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %28 = load i8, ptr %second_.i.i.i.i.i.i.i.i12, align 1
-  %cmp.i.i20.i.i.i.i.i = icmp eq i8 %28, %26
+  %32 = load i8, ptr %second_.i.i.i.i.i.i.i.i12, align 1
+  %cmp.i.i20.i.i.i.i.i = icmp eq i8 %32, %30
   %or.cond.i.i.i.i13 = select i1 %cmp.i.i.i.i.i.i.i11, i1 true, i1 %cmp.i.i20.i.i.i.i.i
   %spec.select.idx.i.i.i.i = zext i1 %or.cond.i.i.i.i13 to i64
   %spec.select.i.i.i.i = getelementptr i8, ptr %incdec.ptr.i.i.i.i22.i.i.i.i, i64 %spec.select.idx.i.i.i.i
-  %29 = select i1 %or.cond.i.i.i.i13, i64 2, i64 1
-  %.pre = ptrtoint ptr %spec.select.i.i.i.i to i64
-  store ptr %spec.select.i.i.i.i, ptr %9, align 8, !tbaa !14
-  %cmp.i.i.i.i.i17.i.i = icmp eq ptr %spec.select.i.i.i.i, %10
+  %33 = select i1 %or.cond.i.i.i.i13, i64 2, i64 1
+  br label %if.then.i.i
+
+if.then.i.i:                                      ; preds = %_ZNK5boost6spirit8sequenceINS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i.i, %if.then.i.i.i
+  %storemerge.i.i14 = phi ptr [ %spec.select.i.i.i.i, %_ZNK5boost6spirit8sequenceINS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i.i ], [ %incdec.ptr.i.i.i.i22.i.i.i.i, %if.then.i.i.i ]
+  %retval.sroa.0.0.i18.i31.i.i = phi i64 [ %33, %_ZNK5boost6spirit8sequenceINS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i.i ], [ 1, %if.then.i.i.i ]
+  %storemerge.i.i1470 = ptrtoint ptr %storemerge.i.i14 to i64
+  store ptr %storemerge.i.i14, ptr %9, align 8, !tbaa !14
+  %cmp.i.i.i.i.i17.i.i = icmp eq ptr %storemerge.i.i14, %10
   br i1 %cmp.i.i.i.i.i17.i.i, label %if.else.i, label %if.then.i.i.i.i
 
 if.then.i.i.i.i:                                  ; preds = %if.then.i.i
-  %30 = load i8, ptr %spec.select.i.i.i.i, align 1, !tbaa !137, !noalias !480
-  %conv.i.i.i.i.i.i.i.i = zext i8 %30 to i32
+  %34 = load i8, ptr %storemerge.i.i14, align 1, !tbaa !137, !noalias !480
+  %conv.i.i.i.i.i.i.i.i = zext i8 %34 to i32
   %isdigittmp.i.i.i.i.i.i = add nsw i32 %conv.i.i.i.i.i.i.i.i, -48
   %isdigit.i.i.i.i.i.i = icmp ult i32 %isdigittmp.i.i.i.i.i.i, 10
   br i1 %isdigit.i.i.i.i.i.i, label %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i, label %if.else.i
 
 _ZN5boost6spirit5matchIcED2Ev.exit.i.i.i:         ; preds = %if.then.i.i.i.i
-  %incdec.ptr.i.i.i.i.i.i.i = getelementptr inbounds i8, ptr %spec.select.i.i.i.i, i64 1
+  %incdec.ptr.i.i.i.i.i.i.i = getelementptr inbounds i8, ptr %storemerge.i.i14, i64 1
   store ptr %incdec.ptr.i.i.i.i.i.i.i, ptr %9, align 8, !tbaa !14, !noalias !480
   %cmp.i.i.i.i2471.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i.i.i.i, %10
   br i1 %cmp.i.i.i.i2471.i.i.i, label %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i, label %if.then.i28.i.i.i.preheader
 
 if.then.i28.i.i.i.preheader:                      ; preds = %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
-  %31 = sub i64 %11, %.pre
+  %35 = sub i64 %11, %storemerge.i.i1470
   br label %if.then.i28.i.i.i
 
 if.then.i28.i.i.i:                                ; preds = %if.then.i28.i.i.i.preheader, %cleanup.i18.i.i
-  %32 = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i, %cleanup.i18.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i, %if.then.i28.i.i.i.preheader ]
+  %36 = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i, %cleanup.i18.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i, %if.then.i28.i.i.i.preheader ]
   %retval.sroa.0.072.i.i.i = phi i64 [ %add.i.i.i.i.i, %cleanup.i18.i.i ], [ 1, %if.then.i28.i.i.i.preheader ]
-  %33 = load i8, ptr %32, align 1, !tbaa !137, !noalias !483
-  %conv.i.i.i.i.i25.i.i.i = zext i8 %33 to i32
+  %37 = load i8, ptr %36, align 1, !tbaa !137, !noalias !483
+  %conv.i.i.i.i.i25.i.i.i = zext i8 %37 to i32
   %isdigittmp.i.i.i26.i.i.i = add nsw i32 %conv.i.i.i.i.i25.i.i.i, -48
   %isdigit.i.i.i27.i.i.i = icmp ult i32 %isdigittmp.i.i.i26.i.i.i, 10
   br i1 %isdigit.i.i.i27.i.i.i, label %cleanup.i18.i.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i
 
 cleanup.i18.i.i:                                  ; preds = %if.then.i28.i.i.i
-  %incdec.ptr.i.i.i.i29.i.i.i = getelementptr inbounds i8, ptr %32, i64 1
+  %incdec.ptr.i.i.i.i29.i.i.i = getelementptr inbounds i8, ptr %36, i64 1
   store ptr %incdec.ptr.i.i.i.i29.i.i.i, ptr %9, align 8, !tbaa !14, !noalias !483
   %add.i.i.i.i.i = add nuw nsw i64 %retval.sroa.0.072.i.i.i, 1
   %cmp.i.i.i.i24.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i29.i.i.i, %10
   br i1 %cmp.i.i.i.i24.i.i.i, label %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i, label %if.then.i28.i.i.i
 
 _ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i: ; preds = %cleanup.i18.i.i, %if.then.i28.i.i.i
-  %retval.sroa.0.0.lcssa.i.i.i = phi i64 [ %31, %cleanup.i18.i.i ], [ %retval.sroa.0.072.i.i.i, %if.then.i28.i.i.i ]
-  %.lcssa.i.i.i = phi ptr [ %10, %cleanup.i18.i.i ], [ %32, %if.then.i28.i.i.i ]
+  %retval.sroa.0.0.lcssa.i.i.i = phi i64 [ %35, %cleanup.i18.i.i ], [ %retval.sroa.0.072.i.i.i, %if.then.i28.i.i.i ]
+  %.lcssa.i.i.i = phi ptr [ %incdec.ptr.i.i.i.i29.i.i.i, %cleanup.i18.i.i ], [ %36, %if.then.i28.i.i.i ]
   store ptr %.lcssa.i.i.i, ptr %9, align 8, !tbaa !14
   br label %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i
 
 _ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i: ; preds = %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
-  %34 = phi ptr [ %.lcssa.i.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ %10, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
+  %38 = phi ptr [ %.lcssa.i.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
   %retval.sroa.0.0.lcssa.i41.i.i = phi i64 [ %retval.sroa.0.0.lcssa.i.i.i, %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.i.i ], [ 1, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i ]
-  %add.i.i.i.i15 = add nsw i64 %retval.sroa.0.0.lcssa.i41.i.i, %29
+  %add.i.i.i.i15 = add nsw i64 %retval.sroa.0.0.lcssa.i41.i.i, %retval.sroa.0.0.i18.i31.i.i
   %memptr.tobool.not.i16 = icmp slt i64 %add.i.i.i.i15, 0
-  br i1 %memptr.tobool.not.i16, label %if.else.i, label %35
+  br i1 %memptr.tobool.not.i16, label %if.else.i, label %39
 
-if.else.i:                                        ; preds = %if.then.i.i.i, %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i, %if.then.i.i.i.i, %if.then.i.i, %if.then.i.i.i.i.i, %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i
-  store ptr %22, ptr %9, align 8, !tbaa !14
-  br label %35
+if.else.i:                                        ; preds = %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i, %if.then.i.i.i.i, %if.then.i.i, %if.then.i.i.i.i.i, %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i
+  store ptr %26, ptr %9, align 8, !tbaa !14
+  br label %39
 
-35:                                               ; preds = %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i, %if.else.i
-  %36 = phi ptr [ %22, %if.else.i ], [ %34, %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i ]
+39:                                               ; preds = %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i, %if.else.i
+  %40 = phi ptr [ %26, %if.else.i ], [ %38, %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i ]
   %retval.sroa.0.0.i = phi i64 [ 0, %if.else.i ], [ %add.i.i.i.i15, %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i ]
-  %add.i.i.i.i = add nsw i64 %retval.sroa.0.0.i, %add.i.i.i44
+  %add.i.i.i.i = add nsw i64 %retval.sroa.0.0.i, %add.i.i.i45
   %memptr.tobool.not.i = icmp slt i64 %add.i.i.i.i, 0
   br i1 %memptr.tobool.not.i, label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit, label %if.then.i
 
-if.then.i:                                        ; preds = %35
-  %cmp.i.i.i.i.i.i.i.i.i = icmp eq ptr %36, %10
+if.then.i:                                        ; preds = %39
+  %cmp.i.i.i.i.i.i.i.i.i = icmp eq ptr %40, %10
   br i1 %cmp.i.i.i.i.i.i.i.i.i, label %cleanup.i, label %if.then.i.i.i.i.i.i
 
 if.then.i.i.i.i.i.i:                              ; preds = %if.then.i
   %second_.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.376", ptr %s, i64 0, i32 1
-  %37 = load i8, ptr %36, align 1, !tbaa !137, !noalias !486
+  %41 = load i8, ptr %40, align 1, !tbaa !137, !noalias !486
   %call.i.i.i.i.i.i.i.i.i.i = tail call ptr @__ctype_tolower_loc() #32
-  %38 = load ptr, ptr %call.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !14, !noalias !486
-  %idxprom.i.i.i.i.i.i.i.i.i.i = zext i8 %37 to i64
-  %arrayidx.i.i.i.i.i.i.i.i.i.i = getelementptr inbounds i32, ptr %38, i64 %idxprom.i.i.i.i.i.i.i.i.i.i
-  %39 = load i32, ptr %arrayidx.i.i.i.i.i.i.i.i.i.i, align 4, !tbaa !145, !noalias !486
-  %conv.i.i3.i.i.i.i.i.i.i.i.i = trunc i32 %39 to i8
-  %40 = load i8, ptr %second_.i.i.i.i, align 1, !tbaa !141, !noalias !486
-  %cmp.i.i.i.i.i.i.i = icmp eq i8 %40, %conv.i.i3.i.i.i.i.i.i.i.i.i
+  %42 = load ptr, ptr %call.i.i.i.i.i.i.i.i.i.i, align 8, !tbaa !14, !noalias !486
+  %idxprom.i.i.i.i.i.i.i.i.i.i = zext i8 %41 to i64
+  %arrayidx.i.i.i.i.i.i.i.i.i.i = getelementptr inbounds i32, ptr %42, i64 %idxprom.i.i.i.i.i.i.i.i.i.i
+  %43 = load i32, ptr %arrayidx.i.i.i.i.i.i.i.i.i.i, align 4, !tbaa !145, !noalias !486
+  %conv.i.i3.i.i.i.i.i.i.i.i.i = trunc i32 %43 to i8
+  %44 = load i8, ptr %second_.i.i.i.i, align 1, !tbaa !141, !noalias !486
+  %cmp.i.i.i.i.i.i.i = icmp eq i8 %44, %conv.i.i3.i.i.i.i.i.i.i.i.i
   %second_.i.i.i.i.i.i.i.i = getelementptr inbounds %"class.boost::details::compressed_pair_imp.376", ptr %s, i64 0, i32 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 1
-  %41 = load i8, ptr %second_.i.i.i.i.i.i.i.i, align 1
-  %cmp.i.i24.i.i.i.i.i = icmp eq i8 %41, %conv.i.i3.i.i.i.i.i.i.i.i.i
+  %45 = load i8, ptr %second_.i.i.i.i.i.i.i.i, align 1
+  %cmp.i.i24.i.i.i.i.i = icmp eq i8 %45, %conv.i.i3.i.i.i.i.i.i.i.i.i
   %or.cond.i.i.i.i = select i1 %cmp.i.i.i.i.i.i.i, i1 true, i1 %cmp.i.i24.i.i.i.i.i
   %spec.select.idx.i.i = zext i1 %or.cond.i.i.i.i to i64
-  %spec.select.i17.i = getelementptr i8, ptr %36, i64 %spec.select.idx.i.i
+  %spec.select.i17.i = getelementptr i8, ptr %40, i64 %spec.select.idx.i.i
   br label %cleanup.i
 
 cleanup.i:                                        ; preds = %if.then.i.i.i.i.i.i, %if.then.i
-  %storemerge.i.i = phi ptr [ %10, %if.then.i ], [ %spec.select.i17.i, %if.then.i.i.i.i.i.i ]
+  %storemerge.i.i = phi ptr [ %40, %if.then.i ], [ %spec.select.i17.i, %if.then.i.i.i.i.i.i ]
   %retval.sroa.0.0.i.i = phi i64 [ 0, %if.then.i ], [ %spec.select.idx.i.i, %if.then.i.i.i.i.i.i ]
   store ptr %storemerge.i.i, ptr %9, align 8, !tbaa !14
   %add.i.i.i = add nuw nsw i64 %retval.sroa.0.0.i.i, %add.i.i.i.i
   br label %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit
 
-_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit: ; preds = %if.then.i.i38.thread, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25, %if.then.i.i.i40, %if.then.i.i38, %if.then.i.i.i.i22, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit, %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit, %35, %cleanup.i
-  %retval.sroa.0.1.i = phi i64 [ %add.i.i.i, %cleanup.i ], [ -1, %35 ], [ -1, %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit ], [ -1, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit ], [ -1, %if.then.i.i.i.i22 ], [ -1, %if.then.i.i38 ], [ -1, %if.then.i.i.i40 ], [ -1, %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i25 ], [ -1, %if.then.i.i38.thread ]
+_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEEENSB_INS0_12inhibit_caseISD_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS13_.exit: ; preds = %if.then.i.i.i41, %if.then.i.i39, %if.then.i.i.i.i22, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit, %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i, %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit, %39, %cleanup.i
+  %retval.sroa.0.1.i = phi i64 [ %add.i.i.i, %cleanup.i ], [ -1, %39 ], [ -1, %_ZNK5boost6spirit8sequenceINS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit ], [ -1, %_ZNK5boost6spirit8sequenceINS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSO_.exit.i ], [ -1, %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit ], [ -1, %if.then.i.i.i.i22 ], [ -1, %if.then.i.i39 ], [ -1, %if.then.i.i.i41 ]
   ret i64 %retval.sroa.0.1.i
 }
 
@@ -25582,8 +25637,10 @@ if.then.i.i.i:                                    ; preds = %if.else.i
   unreachable
 
 _ZNKSt3__16vectorIPN5boost6spirit4impl19grammar_helper_baseINS2_7grammarI12skip_grammarNS2_14parser_contextINS2_5nil_tEEEEEEENS_9allocatorISC_EEE11__recommendB7v170000Em.exit.i.i: ; preds = %if.else.i
-  %cmp3.not.i.i.i = icmp ult i64 %sub.ptr.sub.i.i.i, 9223372036854775800
-  %mul.i.i.i = lshr exact i64 %sub.ptr.sub.i.i.i, 2
+  %sub.ptr.lhs.cast.i.i.i.i = ptrtoint ptr %1 to i64
+  %sub.ptr.sub.i.i.i.i = sub i64 %sub.ptr.lhs.cast.i.i.i.i, %sub.ptr.rhs.cast.i.i.i
+  %cmp3.not.i.i.i = icmp ult i64 %sub.ptr.sub.i.i.i.i, 9223372036854775800
+  %mul.i.i.i = lshr exact i64 %sub.ptr.sub.i.i.i.i, 2
   %.sroa.speculated.i.i.i = tail call i64 @llvm.umax.i64(i64 %mul.i.i.i, i64 %add.i.i)
   %retval.0.i.i.i = select i1 %cmp3.not.i.i.i, i64 %.sroa.speculated.i.i.i, i64 2305843009213693951
   %cmp.i16.i.i = icmp eq i64 %retval.0.i.i.i, 0
@@ -25681,7 +25738,7 @@ invoke.cont7.loopexit.i.i:                        ; preds = %while.body.i.i.i.i.
   br label %invoke.cont7.i.i
 
 invoke.cont7.i.i:                                 ; preds = %invoke.cont7.loopexit.i.i, %invoke.cont.i.i
-  %23 = phi ptr [ %0, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
+  %23 = phi ptr [ %2, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
   %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i = phi ptr [ %add.ptr.i.i.i, %invoke.cont.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i.i.i.i.lcssa, %invoke.cont7.loopexit.i.i ]
   store ptr %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i, ptr %this, align 8, !tbaa !14
   store ptr %incdec.ptr.i4.i, ptr %__end_.i, align 8, !tbaa !14
@@ -25868,7 +25925,7 @@ invoke.cont6.loopexit:                            ; preds = %while.body.i.i.i.i.
   br label %invoke.cont6
 
 invoke.cont6:                                     ; preds = %invoke.cont6.loopexit, %invoke.cont
-  %25 = phi ptr [ %1, %invoke.cont ], [ %.pre, %invoke.cont6.loopexit ]
+  %25 = phi ptr [ %3, %invoke.cont ], [ %.pre, %invoke.cont6.loopexit ]
   %agg.tmp416.sroa.4.0.i.i.i.i.i.i = phi ptr [ %add.ptr.i, %invoke.cont ], [ %incdec.ptr.i.i.i.i.i.i.i.i.lcssa, %invoke.cont6.loopexit ]
   store ptr %agg.tmp416.sroa.4.0.i.i.i.i.i.i, ptr %this, align 8, !tbaa !14
   store ptr %uglygep.i22, ptr %__end_, align 8, !tbaa !14

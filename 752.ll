@@ -358,7 +358,7 @@ lor.lhs.false8:                                   ; preds = %if.then2
 
 if.then12:                                        ; preds = %lor.lhs.false8, %if.then2
   %idx.ext = zext i32 %mul to i64
-  %add.ptr = getelementptr inbounds i8, ptr %cobj, i64 %idx.ext
+  %add.ptr = getelementptr inbounds i8, ptr %7, i64 %idx.ext
   store ptr %add.ptr, ptr getelementptr inbounds (%struct.alloc_state_s, ptr @as_current, i64 0, i32 0, i32 2), align 8, !tbaa !19
   br label %cleanup87
 
@@ -532,7 +532,7 @@ if.then5:                                         ; preds = %if.then3
   %sub = sub i32 %mul1, %mul
   %conv = zext i32 %sub to i64
   %2 = load ptr, ptr getelementptr inbounds (%struct.alloc_state_s, ptr @as_current, i64 0, i32 0, i32 1), align 8, !tbaa !16
-  %sub.ptr.lhs.cast = ptrtoint ptr %obj to i64
+  %sub.ptr.lhs.cast = ptrtoint ptr %1 to i64
   %sub.ptr.rhs.cast = ptrtoint ptr %2 to i64
   %sub.ptr.sub = sub i64 %sub.ptr.lhs.cast, %sub.ptr.rhs.cast
   %cmp9.not = icmp slt i64 %sub.ptr.sub, %conv
@@ -540,7 +540,7 @@ if.then5:                                         ; preds = %if.then3
 
 cleanup:                                          ; preds = %if.then5
   %idx.neg = sub nsw i64 0, %conv
-  %add.ptr = getelementptr inbounds i8, ptr %obj, i64 %idx.neg
+  %add.ptr = getelementptr inbounds i8, ptr %1, i64 %idx.neg
   store ptr %add.ptr, ptr getelementptr inbounds (%struct.alloc_state_s, ptr @as_current, i64 0, i32 0, i32 2), align 8, !tbaa !19
   %conv16 = zext i32 %mul to i64
   tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %add.ptr, ptr align 1 %obj, i64 %conv16, i1 false)

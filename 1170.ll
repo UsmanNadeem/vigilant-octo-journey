@@ -16369,7 +16369,7 @@ if.then.i.us.us:                                  ; preds = %if.then163.us.us
   br label %addlocalhom2_e.exit.us.us
 
 addlocalhom2_e.exit.us.us:                        ; preds = %if.then.i.us.us, %if.then163.us.us
-  %call.sink.i.us.us = phi ptr [ %call.i.us.us, %if.then.i.us.us ], [ %arrayidx167.us.us, %if.then163.us.us ]
+  %call.sink.i.us.us = phi ptr [ %call.i.us.us, %if.then.i.us.us ], [ %66, %if.then163.us.us ]
   store ptr %call.sink.i.us.us, ptr %last.us.us, align 8
   %73 = load i32, ptr %arrayidx167.us.us, align 8, !tbaa !448
   %inc.i.us.us = add nsw i32 %73, 1
@@ -16411,7 +16411,7 @@ if.then.i414.us.us:                               ; preds = %addlocalhom2_e.exit
   br label %addlocalhom2_e.exit424.us.us
 
 addlocalhom2_e.exit424.us.us:                     ; preds = %if.then.i414.us.us, %addlocalhom2_e.exit.us.us
-  %call.sink.i415.us.us = phi ptr [ %call.i412.us.us, %if.then.i414.us.us ], [ %arrayidx207.us.us, %addlocalhom2_e.exit.us.us ]
+  %call.sink.i415.us.us = phi ptr [ %call.i412.us.us, %if.then.i414.us.us ], [ %75, %addlocalhom2_e.exit.us.us ]
   store ptr %call.sink.i415.us.us, ptr %last208.us.us, align 8
   %81 = load i32, ptr %arrayidx207.us.us, align 8, !tbaa !448
   %inc.i416.us.us = add nsw i32 %81, 1

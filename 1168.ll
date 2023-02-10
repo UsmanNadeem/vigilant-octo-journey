@@ -8757,18 +8757,14 @@ tabtospace.exit.i.us:                             ; preds = %while.body.i.i.us, 
 while.body.i.us:                                  ; preds = %tabtospace.exit.i.us, %if.end15.i.us
   %4 = phi i8 [ %.pr.i.us, %if.end15.i.us ], [ %3, %tabtospace.exit.i.us ]
   %val.029.i.us = phi ptr [ %val.1.ph.i.us, %if.end15.i.us ], [ %add.ptr.us, %tabtospace.exit.i.us ]
-  %str.addr.028.i.us = phi ptr [ %str.addr.1.ph.i.us, %if.end15.i.us ], [ %add.ptr.us, %tabtospace.exit.i.us ]
+  %str.addr.028.i.us = phi ptr [ %incdec.ptr8.i.us, %if.end15.i.us ], [ %add.ptr.us, %tabtospace.exit.i.us ]
   %cmp.i.us = icmp eq ptr %val.029.i.us, %str.addr.028.i.us
   %cmp1.i.us = icmp eq i8 %4, 32
   %or.cond.i.us = select i1 %cmp.i.us, i1 %cmp1.i.us, i1 false
   br i1 %or.cond.i.us, label %if.then.i.us, label %if.else.i.us
 
 if.else.i.us:                                     ; preds = %while.body.i.us
-  br i1 %cmp1.i.us, label %if.end15.thread.i.us, label %if.then7.i.us
-
-if.then7.i.us:                                    ; preds = %if.else.i.us
-  %incdec.ptr8.i.us = getelementptr inbounds i8, ptr %str.addr.028.i.us, i64 1
-  br label %if.end15.i.us
+  br i1 %cmp1.i.us, label %if.end15.thread.i.us, label %if.end15.i.us
 
 if.end15.thread.i.us:                             ; preds = %if.else.i.us
   store i8 0, ptr %str.addr.028.i.us, align 1, !tbaa !17
@@ -8778,10 +8774,10 @@ if.then.i.us:                                     ; preds = %while.body.i.us
   %incdec.ptr.i.us = getelementptr inbounds i8, ptr %val.029.i.us, i64 1
   br label %if.end15.i.us
 
-if.end15.i.us:                                    ; preds = %if.then.i.us, %if.then7.i.us
-  %str.addr.1.ph.i.us = phi ptr [ %incdec.ptr8.i.us, %if.then7.i.us ], [ %incdec.ptr.i.us, %if.then.i.us ]
-  %val.1.ph.i.us = phi ptr [ %val.029.i.us, %if.then7.i.us ], [ %incdec.ptr.i.us, %if.then.i.us ]
-  %.pr.i.us = load i8, ptr %str.addr.1.ph.i.us, align 1, !tbaa !17
+if.end15.i.us:                                    ; preds = %if.then.i.us, %if.else.i.us
+  %val.1.ph.i.us = phi ptr [ %incdec.ptr.i.us, %if.then.i.us ], [ %val.029.i.us, %if.else.i.us ]
+  %incdec.ptr8.i.us = getelementptr inbounds i8, ptr %str.addr.028.i.us, i64 1
+  %.pr.i.us = load i8, ptr %incdec.ptr8.i.us, align 1, !tbaa !17
   %tobool.not.i.us = icmp eq i8 %.pr.i.us, 0
   br i1 %tobool.not.i.us, label %extractfirstword.exit.us, label %while.body.i.us, !llvm.loop !213
 

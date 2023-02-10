@@ -471,16 +471,16 @@ if.end59:                                         ; preds = %if.then49, %if.else
 if.else61:                                        ; preds = %if.else33
   %23 = load ptr, ptr %root, align 8, !tbaa !5
   %cmp62 = icmp eq ptr %14, %23
-  %son164 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 2
-  %24 = load ptr, ptr %son164, align 8, !tbaa !18
-  %cmp65 = icmp eq ptr %24, %r.tr24.i
   br i1 %cmp62, label %if.then63, label %if.else86
 
 if.then63:                                        ; preds = %if.else61
+  %son164 = getelementptr inbounds %struct.tnode, ptr %23, i64 0, i32 2
+  %24 = load ptr, ptr %son164, align 8, !tbaa !18
+  %cmp65 = icmp eq ptr %24, %r.tr24.i
   br i1 %cmp65, label %if.then66, label %if.end80
 
 if.then66:                                        ; preds = %if.then63
-  %son267 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 3
+  %son267 = getelementptr inbounds %struct.tnode, ptr %23, i64 0, i32 3
   %25 = load ptr, ptr %son267, align 8, !tbaa !19
   br label %if.end80
 
@@ -489,8 +489,8 @@ if.end80:                                         ; preds = %if.then63, %if.then
   %.sink.in = getelementptr inbounds %struct.tnode, ptr %.sink697.in, i64 0, i32 9
   %.sink = load ptr, ptr %.sink.in, align 8, !tbaa !26
   %.sink697 = load i32, ptr %.sink697.in, align 8, !tbaa !12
-  store i32 %.sink697, ptr %14, align 8
-  %26 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 9
+  store i32 %.sink697, ptr %23, align 8
+  %26 = getelementptr inbounds %struct.tnode, ptr %23, i64 0, i32 9
   store ptr %.sink, ptr %26, align 8
   %27 = load ptr, ptr %root, align 8, !tbaa !5
   %son181 = getelementptr inbounds %struct.tnode, ptr %27, i64 0, i32 2
@@ -512,31 +512,34 @@ if.end80:                                         ; preds = %if.then63, %if.then
   br label %if.end371
 
 if.else86:                                        ; preds = %if.else61
-  br i1 %cmp65, label %if.then89, label %if.end93
+  %son187 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 2
+  %34 = load ptr, ptr %son187, align 8, !tbaa !18
+  %cmp88 = icmp eq ptr %34, %r.tr24.i
+  br i1 %cmp88, label %if.then89, label %if.end93
 
 if.then89:                                        ; preds = %if.else86
   %son290 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 3
-  %34 = load ptr, ptr %son290, align 8, !tbaa !19
+  %35 = load ptr, ptr %son290, align 8, !tbaa !19
   br label %if.end93
 
 if.end93:                                         ; preds = %if.else86, %if.then89
-  %s.0 = phi ptr [ %34, %if.then89 ], [ %24, %if.else86 ]
+  %s.0 = phi ptr [ %35, %if.then89 ], [ %34, %if.else86 ]
   %father94 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 6
-  %35 = load ptr, ptr %father94, align 8, !tbaa !17
-  %son195 = getelementptr inbounds %struct.tnode, ptr %35, i64 0, i32 2
-  %36 = load ptr, ptr %son195, align 8, !tbaa !18
-  %cmp96 = icmp eq ptr %36, %14
-  %son299 = getelementptr inbounds %struct.tnode, ptr %35, i64 0, i32 3
-  %37 = load ptr, ptr %son299, align 8, !tbaa !19
+  %36 = load ptr, ptr %father94, align 8, !tbaa !17
+  %son195 = getelementptr inbounds %struct.tnode, ptr %36, i64 0, i32 2
+  %37 = load ptr, ptr %son195, align 8, !tbaa !18
+  %cmp96 = icmp eq ptr %37, %14
+  %son299 = getelementptr inbounds %struct.tnode, ptr %36, i64 0, i32 3
+  %38 = load ptr, ptr %son299, align 8, !tbaa !19
   br i1 %cmp96, label %if.then97, label %if.else224
 
 if.then97:                                        ; preds = %if.end93
-  %nsons101 = getelementptr inbounds %struct.tnode, ptr %35, i64 0, i32 1
-  %38 = load i32, ptr %nsons101, align 4, !tbaa !9
-  %cmp102 = icmp eq i32 %38, 2
-  %nsons104 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 1
-  %39 = load i32, ptr %nsons104, align 4, !tbaa !9
-  %cmp105 = icmp eq i32 %39, 2
+  %nsons101 = getelementptr inbounds %struct.tnode, ptr %36, i64 0, i32 1
+  %39 = load i32, ptr %nsons101, align 4, !tbaa !9
+  %cmp102 = icmp eq i32 %39, 2
+  %nsons104 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 1
+  %40 = load i32, ptr %nsons104, align 4, !tbaa !9
+  %cmp105 = icmp eq i32 %40, 2
   br i1 %cmp102, label %if.then103, label %if.else146
 
 if.then103:                                       ; preds = %if.then97
@@ -544,58 +547,58 @@ if.then103:                                       ; preds = %if.then97
 
 if.then106:                                       ; preds = %if.then103
   store i32 3, ptr %nsons104, align 4, !tbaa !9
-  %son2108 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 3
-  %son1110 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 2
-  %40 = load <2 x ptr>, ptr %son1110, align 8, !tbaa !5
-  store <2 x ptr> %40, ptr %son2108, align 8, !tbaa !5
+  %son2108 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 3
+  %son1110 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 2
+  %41 = load <2 x ptr>, ptr %son1110, align 8, !tbaa !5
+  store <2 x ptr> %41, ptr %son2108, align 8, !tbaa !5
   store ptr %s.0, ptr %son1110, align 8, !tbaa !18
   %father113 = getelementptr inbounds %struct.tnode, ptr %s.0, i64 0, i32 6
-  store ptr %37, ptr %father113, align 8, !tbaa !17
+  store ptr %38, ptr %father113, align 8, !tbaa !17
   tail call void @free(ptr noundef nonnull %r.tr24.i) #16
-  %41 = load i32, ptr %s.0, align 8, !tbaa !12
-  %Lval115 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 7
-  store i32 %41, ptr %Lval115, align 8, !tbaa !21
-  %42 = load ptr, ptr %son2108, align 8, !tbaa !19
-  %43 = load i32, ptr %42, align 8, !tbaa !12
-  %Mval118 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 8
-  store i32 %43, ptr %Mval118, align 4, !tbaa !22
+  %42 = load i32, ptr %s.0, align 8, !tbaa !12
+  %Lval115 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 7
+  store i32 %42, ptr %Lval115, align 8, !tbaa !21
+  %43 = load ptr, ptr %son2108, align 8, !tbaa !19
+  %44 = load i32, ptr %43, align 8, !tbaa !12
+  %Mval118 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 8
+  store i32 %44, ptr %Mval118, align 4, !tbaa !22
   tail call void @tsubson(ptr noundef nonnull %root, ptr noundef nonnull %14)
   br label %if.end371
 
 if.else119:                                       ; preds = %if.then103
   store i32 2, ptr %nsons104, align 4, !tbaa !9
-  store ptr %s.0, ptr %son164, align 8, !tbaa !18
-  %son1122 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 2
-  %44 = load ptr, ptr %son1122, align 8, !tbaa !18
+  store ptr %s.0, ptr %son187, align 8, !tbaa !18
+  %son1122 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 2
+  %45 = load ptr, ptr %son1122, align 8, !tbaa !18
   %son2123 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 3
-  store ptr %44, ptr %son2123, align 8, !tbaa !19
-  %son2124 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 3
-  %45 = load ptr, ptr %son2124, align 8, !tbaa !19
-  store ptr %45, ptr %son1122, align 8, !tbaa !18
-  %son3126 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 4
-  %46 = load ptr, ptr %son3126, align 8, !tbaa !20
-  store ptr %46, ptr %son2124, align 8, !tbaa !19
-  %47 = load ptr, ptr %son2123, align 8, !tbaa !19
-  %father129 = getelementptr inbounds %struct.tnode, ptr %47, i64 0, i32 6
+  store ptr %45, ptr %son2123, align 8, !tbaa !19
+  %son2124 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 3
+  %46 = load ptr, ptr %son2124, align 8, !tbaa !19
+  store ptr %46, ptr %son1122, align 8, !tbaa !18
+  %son3126 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 4
+  %47 = load ptr, ptr %son3126, align 8, !tbaa !20
+  store ptr %47, ptr %son2124, align 8, !tbaa !19
+  %48 = load ptr, ptr %son2123, align 8, !tbaa !19
+  %father129 = getelementptr inbounds %struct.tnode, ptr %48, i64 0, i32 6
   store ptr %14, ptr %father129, align 8, !tbaa !17
   store ptr null, ptr %son3126, align 8, !tbaa !20
-  %48 = load i32, ptr %s.0, align 8, !tbaa !12
+  %49 = load i32, ptr %s.0, align 8, !tbaa !12
   %Lval132 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 7
-  store i32 %48, ptr %Lval132, align 8, !tbaa !21
-  %49 = load i32, ptr %47, align 8, !tbaa !12
+  store i32 %49, ptr %Lval132, align 8, !tbaa !21
+  %50 = load i32, ptr %48, align 8, !tbaa !12
   %Mval135 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 8
-  store i32 %49, ptr %Mval135, align 4, !tbaa !22
-  %50 = load i32, ptr %45, align 8, !tbaa !12
-  %Lval138 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 7
-  store i32 %50, ptr %Lval138, align 8, !tbaa !21
+  store i32 %50, ptr %Mval135, align 4, !tbaa !22
   %51 = load i32, ptr %46, align 8, !tbaa !12
-  %Mval141 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 8
-  store i32 %51, ptr %Mval141, align 4, !tbaa !22
-  %52 = load i32, ptr %Mval135, align 4, !tbaa !22
-  %father143 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 6
-  %53 = load ptr, ptr %father143, align 8, !tbaa !17
-  %Lval144 = getelementptr inbounds %struct.tnode, ptr %53, i64 0, i32 7
-  store i32 %52, ptr %Lval144, align 8, !tbaa !21
+  %Lval138 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 7
+  store i32 %51, ptr %Lval138, align 8, !tbaa !21
+  %52 = load i32, ptr %47, align 8, !tbaa !12
+  %Mval141 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 8
+  store i32 %52, ptr %Mval141, align 4, !tbaa !22
+  %53 = load i32, ptr %Mval135, align 4, !tbaa !22
+  %father143 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 6
+  %54 = load ptr, ptr %father143, align 8, !tbaa !17
+  %Lval144 = getelementptr inbounds %struct.tnode, ptr %54, i64 0, i32 7
+  store i32 %53, ptr %Lval144, align 8, !tbaa !21
   tail call void @free(ptr noundef nonnull %r.tr24.i) #16
   br label %if.end371
 
@@ -604,52 +607,52 @@ if.else146:                                       ; preds = %if.then97
 
 if.then149:                                       ; preds = %if.else146
   store i32 3, ptr %nsons104, align 4, !tbaa !9
-  %son2151 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 3
-  %son1153 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 2
-  %54 = load <2 x ptr>, ptr %son1153, align 8, !tbaa !5
-  store <2 x ptr> %54, ptr %son2151, align 8, !tbaa !5
+  %son2151 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 3
+  %son1153 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 2
+  %55 = load <2 x ptr>, ptr %son1153, align 8, !tbaa !5
+  store <2 x ptr> %55, ptr %son2151, align 8, !tbaa !5
   store ptr %s.0, ptr %son1153, align 8, !tbaa !18
   %father156 = getelementptr inbounds %struct.tnode, ptr %s.0, i64 0, i32 6
-  store ptr %37, ptr %father156, align 8, !tbaa !17
+  store ptr %38, ptr %father156, align 8, !tbaa !17
   tail call void @free(ptr noundef nonnull %r.tr24.i) #16
-  %55 = load i32, ptr %s.0, align 8, !tbaa !12
-  %Lval158 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 7
-  store i32 %55, ptr %Lval158, align 8, !tbaa !21
-  %56 = load ptr, ptr %son2151, align 8, !tbaa !19
-  %57 = load i32, ptr %56, align 8, !tbaa !12
-  %Mval161 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 8
-  store i32 %57, ptr %Mval161, align 4, !tbaa !22
-  %58 = load ptr, ptr %father94, align 8, !tbaa !17
-  %son2163 = getelementptr inbounds %struct.tnode, ptr %58, i64 0, i32 3
-  %59 = load ptr, ptr %son2163, align 8, !tbaa !19
-  %son1165 = getelementptr inbounds %struct.tnode, ptr %58, i64 0, i32 2
-  store ptr %59, ptr %son1165, align 8, !tbaa !18
-  %son3167 = getelementptr inbounds %struct.tnode, ptr %58, i64 0, i32 4
-  %60 = load ptr, ptr %son3167, align 8, !tbaa !20
-  store ptr %60, ptr %son2163, align 8, !tbaa !19
+  %56 = load i32, ptr %s.0, align 8, !tbaa !12
+  %Lval158 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 7
+  store i32 %56, ptr %Lval158, align 8, !tbaa !21
+  %57 = load ptr, ptr %son2151, align 8, !tbaa !19
+  %58 = load i32, ptr %57, align 8, !tbaa !12
+  %Mval161 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 8
+  store i32 %58, ptr %Mval161, align 4, !tbaa !22
+  %59 = load ptr, ptr %father94, align 8, !tbaa !17
+  %son2163 = getelementptr inbounds %struct.tnode, ptr %59, i64 0, i32 3
+  %60 = load ptr, ptr %son2163, align 8, !tbaa !19
+  %son1165 = getelementptr inbounds %struct.tnode, ptr %59, i64 0, i32 2
+  store ptr %60, ptr %son1165, align 8, !tbaa !18
+  %son3167 = getelementptr inbounds %struct.tnode, ptr %59, i64 0, i32 4
+  %61 = load ptr, ptr %son3167, align 8, !tbaa !20
+  store ptr %61, ptr %son2163, align 8, !tbaa !19
   store ptr null, ptr %son3167, align 8, !tbaa !20
-  %nsons173 = getelementptr inbounds %struct.tnode, ptr %58, i64 0, i32 1
+  %nsons173 = getelementptr inbounds %struct.tnode, ptr %59, i64 0, i32 1
   store i32 2, ptr %nsons173, align 4, !tbaa !9
-  %Mval175 = getelementptr inbounds %struct.tnode, ptr %58, i64 0, i32 8
-  %61 = load i32, ptr %Mval175, align 4, !tbaa !22
-  %Lval177 = getelementptr inbounds %struct.tnode, ptr %58, i64 0, i32 7
-  store i32 %61, ptr %Lval177, align 8, !tbaa !21
-  %nsons180 = getelementptr inbounds %struct.tnode, ptr %60, i64 0, i32 1
-  %62 = load i32, ptr %nsons180, align 4, !tbaa !9
-  %cmp181 = icmp eq i32 %62, 2
+  %Mval175 = getelementptr inbounds %struct.tnode, ptr %59, i64 0, i32 8
+  %62 = load i32, ptr %Mval175, align 4, !tbaa !22
+  %Lval177 = getelementptr inbounds %struct.tnode, ptr %59, i64 0, i32 7
+  store i32 %62, ptr %Lval177, align 8, !tbaa !21
+  %nsons180 = getelementptr inbounds %struct.tnode, ptr %61, i64 0, i32 1
+  %63 = load i32, ptr %nsons180, align 4, !tbaa !9
+  %cmp181 = icmp eq i32 %63, 2
   br i1 %cmp181, label %if.then182, label %if.else188
 
 if.then182:                                       ; preds = %if.then149
-  %Mval185 = getelementptr inbounds %struct.tnode, ptr %60, i64 0, i32 8
+  %Mval185 = getelementptr inbounds %struct.tnode, ptr %61, i64 0, i32 8
   br label %if.end195
 
 if.else188:                                       ; preds = %if.then149
-  %son3191 = getelementptr inbounds %struct.tnode, ptr %60, i64 0, i32 4
-  %63 = load ptr, ptr %son3191, align 8, !tbaa !20
+  %son3191 = getelementptr inbounds %struct.tnode, ptr %61, i64 0, i32 4
+  %64 = load ptr, ptr %son3191, align 8, !tbaa !20
   br label %if.end195
 
 if.end195:                                        ; preds = %if.else188, %if.then182
-  %storemerge.in = phi ptr [ %63, %if.else188 ], [ %Mval185, %if.then182 ]
+  %storemerge.in = phi ptr [ %64, %if.else188 ], [ %Mval185, %if.then182 ]
   %storemerge = load i32, ptr %storemerge.in, align 4, !tbaa !25
   store i32 %storemerge, ptr %Mval175, align 4, !tbaa !22
   tail call void @free(ptr noundef nonnull %14) #16
@@ -657,227 +660,227 @@ if.end195:                                        ; preds = %if.else188, %if.the
 
 if.else196:                                       ; preds = %if.else146
   store i32 2, ptr %nsons104, align 4, !tbaa !9
-  store ptr %s.0, ptr %son164, align 8, !tbaa !18
-  %son1199 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 2
-  %64 = load ptr, ptr %son1199, align 8, !tbaa !18
+  store ptr %s.0, ptr %son187, align 8, !tbaa !18
+  %son1199 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 2
+  %65 = load ptr, ptr %son1199, align 8, !tbaa !18
   %son2200 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 3
-  store ptr %64, ptr %son2200, align 8, !tbaa !19
-  %son2201 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 3
-  %65 = load ptr, ptr %son2201, align 8, !tbaa !19
-  store ptr %65, ptr %son1199, align 8, !tbaa !18
-  %son3203 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 4
-  %66 = load ptr, ptr %son3203, align 8, !tbaa !20
-  store ptr %66, ptr %son2201, align 8, !tbaa !19
-  %67 = load ptr, ptr %son2200, align 8, !tbaa !19
-  %father206 = getelementptr inbounds %struct.tnode, ptr %67, i64 0, i32 6
+  store ptr %65, ptr %son2200, align 8, !tbaa !19
+  %son2201 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 3
+  %66 = load ptr, ptr %son2201, align 8, !tbaa !19
+  store ptr %66, ptr %son1199, align 8, !tbaa !18
+  %son3203 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 4
+  %67 = load ptr, ptr %son3203, align 8, !tbaa !20
+  store ptr %67, ptr %son2201, align 8, !tbaa !19
+  %68 = load ptr, ptr %son2200, align 8, !tbaa !19
+  %father206 = getelementptr inbounds %struct.tnode, ptr %68, i64 0, i32 6
   store ptr %14, ptr %father206, align 8, !tbaa !17
   store ptr null, ptr %son3203, align 8, !tbaa !20
-  %68 = load i32, ptr %s.0, align 8, !tbaa !12
+  %69 = load i32, ptr %s.0, align 8, !tbaa !12
   %Lval209 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 7
-  store i32 %68, ptr %Lval209, align 8, !tbaa !21
-  %69 = load i32, ptr %67, align 8, !tbaa !12
+  store i32 %69, ptr %Lval209, align 8, !tbaa !21
+  %70 = load i32, ptr %68, align 8, !tbaa !12
   %Mval212 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 8
-  store i32 %69, ptr %Mval212, align 4, !tbaa !22
-  %70 = load i32, ptr %65, align 8, !tbaa !12
-  %Lval215 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 7
-  store i32 %70, ptr %Lval215, align 8, !tbaa !21
+  store i32 %70, ptr %Mval212, align 4, !tbaa !22
   %71 = load i32, ptr %66, align 8, !tbaa !12
-  %Mval218 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 8
-  store i32 %71, ptr %Mval218, align 4, !tbaa !22
-  %72 = load i32, ptr %Mval212, align 4, !tbaa !22
-  %father220 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 6
-  %73 = load ptr, ptr %father220, align 8, !tbaa !17
-  %Lval221 = getelementptr inbounds %struct.tnode, ptr %73, i64 0, i32 7
-  store i32 %72, ptr %Lval221, align 8, !tbaa !21
+  %Lval215 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 7
+  store i32 %71, ptr %Lval215, align 8, !tbaa !21
+  %72 = load i32, ptr %67, align 8, !tbaa !12
+  %Mval218 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 8
+  store i32 %72, ptr %Mval218, align 4, !tbaa !22
+  %73 = load i32, ptr %Mval212, align 4, !tbaa !22
+  %father220 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 6
+  %74 = load ptr, ptr %father220, align 8, !tbaa !17
+  %Lval221 = getelementptr inbounds %struct.tnode, ptr %74, i64 0, i32 7
+  store i32 %73, ptr %Lval221, align 8, !tbaa !21
   tail call void @free(ptr noundef nonnull %r.tr24.i) #16
   br label %if.end371
 
 if.else224:                                       ; preds = %if.end93
-  %cmp227 = icmp eq ptr %37, %14
+  %cmp227 = icmp eq ptr %38, %14
   br i1 %cmp227, label %if.then228, label %if.else325
 
 if.then228:                                       ; preds = %if.else224
-  %nsons230 = getelementptr inbounds %struct.tnode, ptr %35, i64 0, i32 1
-  %74 = load i32, ptr %nsons230, align 4, !tbaa !9
-  %cmp231 = icmp eq i32 %74, 2
+  %nsons230 = getelementptr inbounds %struct.tnode, ptr %36, i64 0, i32 1
+  %75 = load i32, ptr %nsons230, align 4, !tbaa !9
+  %cmp231 = icmp eq i32 %75, 2
   br i1 %cmp231, label %if.then232, label %if.else266
 
 if.then232:                                       ; preds = %if.then228
-  %nsons235 = getelementptr inbounds %struct.tnode, ptr %36, i64 0, i32 1
-  %75 = load i32, ptr %nsons235, align 4, !tbaa !9
-  %cmp236 = icmp eq i32 %75, 2
-  %son3239 = getelementptr inbounds %struct.tnode, ptr %36, i64 0, i32 4
+  %nsons235 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 1
+  %76 = load i32, ptr %nsons235, align 4, !tbaa !9
+  %cmp236 = icmp eq i32 %76, 2
+  %son3239 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 4
   br i1 %cmp236, label %if.then237, label %if.else244
 
 if.then237:                                       ; preds = %if.then232
   store i32 3, ptr %nsons235, align 4, !tbaa !9
   store ptr %s.0, ptr %son3239, align 8, !tbaa !20
   %father240 = getelementptr inbounds %struct.tnode, ptr %s.0, i64 0, i32 6
-  store ptr %36, ptr %father240, align 8, !tbaa !17
+  store ptr %37, ptr %father240, align 8, !tbaa !17
   tail call void @free(ptr noundef nonnull %r.tr24.i) #16
-  %76 = load i32, ptr %s.0, align 8, !tbaa !12
-  %77 = load ptr, ptr %father94, align 8, !tbaa !17
-  %Lval243 = getelementptr inbounds %struct.tnode, ptr %77, i64 0, i32 7
-  store i32 %76, ptr %Lval243, align 8, !tbaa !21
+  %77 = load i32, ptr %s.0, align 8, !tbaa !12
+  %78 = load ptr, ptr %father94, align 8, !tbaa !17
+  %Lval243 = getelementptr inbounds %struct.tnode, ptr %78, i64 0, i32 7
+  store i32 %77, ptr %Lval243, align 8, !tbaa !21
   tail call void @tsubson(ptr noundef nonnull %root, ptr noundef nonnull %14)
   br label %if.end371
 
 if.else244:                                       ; preds = %if.then232
   store i32 2, ptr %nsons235, align 4, !tbaa !9
-  %78 = load ptr, ptr %son3239, align 8, !tbaa !20
-  store ptr %78, ptr %son164, align 8, !tbaa !18
+  %79 = load ptr, ptr %son3239, align 8, !tbaa !20
+  store ptr %79, ptr %son187, align 8, !tbaa !18
   %son2248 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 3
   store ptr %s.0, ptr %son2248, align 8, !tbaa !19
-  %father250 = getelementptr inbounds %struct.tnode, ptr %78, i64 0, i32 6
+  %father250 = getelementptr inbounds %struct.tnode, ptr %79, i64 0, i32 6
   store ptr %14, ptr %father250, align 8, !tbaa !17
   store ptr null, ptr %son3239, align 8, !tbaa !20
-  %79 = load i32, ptr %78, align 8, !tbaa !12
+  %80 = load i32, ptr %79, align 8, !tbaa !12
   %Lval254 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 7
-  store i32 %79, ptr %Lval254, align 8, !tbaa !21
-  %80 = load i32, ptr %s.0, align 8, !tbaa !12
+  store i32 %80, ptr %Lval254, align 8, !tbaa !21
+  %81 = load i32, ptr %s.0, align 8, !tbaa !12
   %Mval256 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 8
-  store i32 %80, ptr %Mval256, align 4, !tbaa !22
-  %Mval257 = getelementptr inbounds %struct.tnode, ptr %36, i64 0, i32 8
-  %81 = load i32, ptr %Mval257, align 4, !tbaa !22
-  %82 = load ptr, ptr %father94, align 8, !tbaa !17
-  %Lval259 = getelementptr inbounds %struct.tnode, ptr %82, i64 0, i32 7
-  store i32 %81, ptr %Lval259, align 8, !tbaa !21
-  %Mval262 = getelementptr inbounds %struct.tnode, ptr %82, i64 0, i32 8
-  store i32 %80, ptr %Mval262, align 4, !tbaa !22
-  %83 = load i32, ptr %Mval256, align 4, !tbaa !22
-  tail call void @tpatch(ptr noundef %82, i32 noundef %83)
+  store i32 %81, ptr %Mval256, align 4, !tbaa !22
+  %Mval257 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 8
+  %82 = load i32, ptr %Mval257, align 4, !tbaa !22
+  %83 = load ptr, ptr %father94, align 8, !tbaa !17
+  %Lval259 = getelementptr inbounds %struct.tnode, ptr %83, i64 0, i32 7
+  store i32 %82, ptr %Lval259, align 8, !tbaa !21
+  %Mval262 = getelementptr inbounds %struct.tnode, ptr %83, i64 0, i32 8
+  store i32 %81, ptr %Mval262, align 4, !tbaa !22
+  %84 = load i32, ptr %Mval256, align 4, !tbaa !22
+  tail call void @tpatch(ptr noundef %83, i32 noundef %84)
   tail call void @free(ptr noundef nonnull %r.tr24.i) #16
   br label %if.end371
 
 if.else266:                                       ; preds = %if.then228
-  %son3268 = getelementptr inbounds %struct.tnode, ptr %35, i64 0, i32 4
-  %84 = load ptr, ptr %son3268, align 8, !tbaa !20
-  %nsons269 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 1
-  %85 = load i32, ptr %nsons269, align 4, !tbaa !9
-  %cmp270 = icmp eq i32 %85, 2
+  %son3268 = getelementptr inbounds %struct.tnode, ptr %36, i64 0, i32 4
+  %85 = load ptr, ptr %son3268, align 8, !tbaa !20
+  %nsons269 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 1
+  %86 = load i32, ptr %nsons269, align 4, !tbaa !9
+  %cmp270 = icmp eq i32 %86, 2
   br i1 %cmp270, label %if.then271, label %if.else296
 
 if.then271:                                       ; preds = %if.else266
   store i32 3, ptr %nsons269, align 4, !tbaa !9
-  %son2273 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 3
-  %son3274 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 4
-  %son1275 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 2
-  %86 = load <2 x ptr>, ptr %son1275, align 8, !tbaa !5
-  store <2 x ptr> %86, ptr %son2273, align 8, !tbaa !5
+  %son2273 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 3
+  %son3274 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 4
+  %son1275 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 2
+  %87 = load <2 x ptr>, ptr %son1275, align 8, !tbaa !5
+  store <2 x ptr> %87, ptr %son2273, align 8, !tbaa !5
   store ptr %s.0, ptr %son1275, align 8, !tbaa !18
   %father278 = getelementptr inbounds %struct.tnode, ptr %s.0, i64 0, i32 6
-  store ptr %84, ptr %father278, align 8, !tbaa !17
+  store ptr %85, ptr %father278, align 8, !tbaa !17
   tail call void @free(ptr noundef nonnull %r.tr24.i) #16
-  %87 = load i32, ptr %s.0, align 8, !tbaa !12
-  %Lval280 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 7
-  store i32 %87, ptr %Lval280, align 8, !tbaa !21
-  %88 = load ptr, ptr %son2273, align 8, !tbaa !19
-  %89 = load i32, ptr %88, align 8, !tbaa !12
-  %Mval283 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 8
-  store i32 %89, ptr %Mval283, align 4, !tbaa !22
-  %90 = load ptr, ptr %son3274, align 8, !tbaa !20
-  %91 = load i32, ptr %90, align 8, !tbaa !12
-  %father286 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 6
-  %92 = load ptr, ptr %father286, align 8, !tbaa !17
-  %Mval287 = getelementptr inbounds %struct.tnode, ptr %92, i64 0, i32 8
-  store i32 %91, ptr %Mval287, align 4, !tbaa !22
-  tail call void @free(ptr noundef nonnull %14) #16
+  %88 = load i32, ptr %s.0, align 8, !tbaa !12
+  %Lval280 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 7
+  store i32 %88, ptr %Lval280, align 8, !tbaa !21
+  %89 = load ptr, ptr %son2273, align 8, !tbaa !19
+  %90 = load i32, ptr %89, align 8, !tbaa !12
+  %Mval283 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 8
+  store i32 %90, ptr %Mval283, align 4, !tbaa !22
+  %91 = load ptr, ptr %son3274, align 8, !tbaa !20
+  %92 = load i32, ptr %91, align 8, !tbaa !12
+  %father286 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 6
   %93 = load ptr, ptr %father286, align 8, !tbaa !17
-  %son3289 = getelementptr inbounds %struct.tnode, ptr %93, i64 0, i32 4
-  %94 = load ptr, ptr %son3289, align 8, !tbaa !20
-  %son2291 = getelementptr inbounds %struct.tnode, ptr %93, i64 0, i32 3
-  store ptr %94, ptr %son2291, align 8, !tbaa !19
+  %Mval287 = getelementptr inbounds %struct.tnode, ptr %93, i64 0, i32 8
+  store i32 %92, ptr %Mval287, align 4, !tbaa !22
+  tail call void @free(ptr noundef nonnull %14) #16
+  %94 = load ptr, ptr %father286, align 8, !tbaa !17
+  %son3289 = getelementptr inbounds %struct.tnode, ptr %94, i64 0, i32 4
+  %95 = load ptr, ptr %son3289, align 8, !tbaa !20
+  %son2291 = getelementptr inbounds %struct.tnode, ptr %94, i64 0, i32 3
+  store ptr %95, ptr %son2291, align 8, !tbaa !19
   store ptr null, ptr %son3289, align 8, !tbaa !20
-  %nsons295 = getelementptr inbounds %struct.tnode, ptr %93, i64 0, i32 1
+  %nsons295 = getelementptr inbounds %struct.tnode, ptr %94, i64 0, i32 1
   store i32 2, ptr %nsons295, align 4, !tbaa !9
   br label %if.end371
 
 if.else296:                                       ; preds = %if.else266
   store i32 2, ptr %nsons269, align 4, !tbaa !9
-  store ptr %s.0, ptr %son164, align 8, !tbaa !18
-  %son1299 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 2
-  %95 = load ptr, ptr %son1299, align 8, !tbaa !18
+  store ptr %s.0, ptr %son187, align 8, !tbaa !18
+  %son1299 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 2
+  %96 = load ptr, ptr %son1299, align 8, !tbaa !18
   %son2300 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 3
-  store ptr %95, ptr %son2300, align 8, !tbaa !19
-  %father302 = getelementptr inbounds %struct.tnode, ptr %95, i64 0, i32 6
+  store ptr %96, ptr %son2300, align 8, !tbaa !19
+  %father302 = getelementptr inbounds %struct.tnode, ptr %96, i64 0, i32 6
   store ptr %14, ptr %father302, align 8, !tbaa !17
-  %son2303 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 3
-  %96 = load ptr, ptr %son2303, align 8, !tbaa !19
-  store ptr %96, ptr %son1299, align 8, !tbaa !18
-  %son3305 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 4
-  %97 = load ptr, ptr %son3305, align 8, !tbaa !20
-  store ptr %97, ptr %son2303, align 8, !tbaa !19
+  %son2303 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 3
+  %97 = load ptr, ptr %son2303, align 8, !tbaa !19
+  store ptr %97, ptr %son1299, align 8, !tbaa !18
+  %son3305 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 4
+  %98 = load ptr, ptr %son3305, align 8, !tbaa !20
+  store ptr %98, ptr %son2303, align 8, !tbaa !19
   store ptr null, ptr %son3305, align 8, !tbaa !20
-  %98 = load i32, ptr %96, align 8, !tbaa !12
-  %Lval310 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 7
-  store i32 %98, ptr %Lval310, align 8, !tbaa !21
   %99 = load i32, ptr %97, align 8, !tbaa !12
-  %Mval313 = getelementptr inbounds %struct.tnode, ptr %84, i64 0, i32 8
-  store i32 %99, ptr %Mval313, align 4, !tbaa !22
-  %100 = load ptr, ptr %son164, align 8, !tbaa !18
-  %101 = load i32, ptr %100, align 8, !tbaa !12
+  %Lval310 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 7
+  store i32 %99, ptr %Lval310, align 8, !tbaa !21
+  %100 = load i32, ptr %98, align 8, !tbaa !12
+  %Mval313 = getelementptr inbounds %struct.tnode, ptr %85, i64 0, i32 8
+  store i32 %100, ptr %Mval313, align 4, !tbaa !22
+  %101 = load ptr, ptr %son187, align 8, !tbaa !18
+  %102 = load i32, ptr %101, align 8, !tbaa !12
   %Lval316 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 7
-  store i32 %101, ptr %Lval316, align 8, !tbaa !21
-  %102 = load ptr, ptr %son2300, align 8, !tbaa !19
-  %103 = load i32, ptr %102, align 8, !tbaa !12
+  store i32 %102, ptr %Lval316, align 8, !tbaa !21
+  %103 = load ptr, ptr %son2300, align 8, !tbaa !19
+  %104 = load i32, ptr %103, align 8, !tbaa !12
   %Mval319 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 8
-  store i32 %103, ptr %Mval319, align 4, !tbaa !22
-  %104 = load ptr, ptr %father94, align 8, !tbaa !17
-  %Mval322 = getelementptr inbounds %struct.tnode, ptr %104, i64 0, i32 8
-  store i32 %103, ptr %Mval322, align 4, !tbaa !22
+  store i32 %104, ptr %Mval319, align 4, !tbaa !22
+  %105 = load ptr, ptr %father94, align 8, !tbaa !17
+  %Mval322 = getelementptr inbounds %struct.tnode, ptr %105, i64 0, i32 8
+  store i32 %104, ptr %Mval322, align 4, !tbaa !22
   tail call void @free(ptr noundef nonnull %r.tr24.i) #16
   br label %if.end371
 
 if.else325:                                       ; preds = %if.else224
-  %nsons328 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 1
-  %105 = load i32, ptr %nsons328, align 4, !tbaa !9
-  %cmp329 = icmp eq i32 %105, 2
-  %son3332 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 4
+  %nsons328 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 1
+  %106 = load i32, ptr %nsons328, align 4, !tbaa !9
+  %cmp329 = icmp eq i32 %106, 2
+  %son3332 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 4
   br i1 %cmp329, label %if.then330, label %if.else343
 
 if.then330:                                       ; preds = %if.else325
   store i32 3, ptr %nsons328, align 4, !tbaa !9
   store ptr %s.0, ptr %son3332, align 8, !tbaa !20
   %father333 = getelementptr inbounds %struct.tnode, ptr %s.0, i64 0, i32 6
-  store ptr %37, ptr %father333, align 8, !tbaa !17
+  store ptr %38, ptr %father333, align 8, !tbaa !17
   tail call void @free(ptr noundef nonnull %r.tr24.i) #16
-  %106 = load i32, ptr %s.0, align 8, !tbaa !12
-  %father335 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 6
-  %107 = load ptr, ptr %father335, align 8, !tbaa !17
-  %Mval336 = getelementptr inbounds %struct.tnode, ptr %107, i64 0, i32 8
-  store i32 %106, ptr %Mval336, align 4, !tbaa !22
-  tail call void @tpatch(ptr noundef %107, i32 noundef %106)
+  %107 = load i32, ptr %s.0, align 8, !tbaa !12
+  %father335 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 6
   %108 = load ptr, ptr %father335, align 8, !tbaa !17
-  %son3340 = getelementptr inbounds %struct.tnode, ptr %108, i64 0, i32 4
+  %Mval336 = getelementptr inbounds %struct.tnode, ptr %108, i64 0, i32 8
+  store i32 %107, ptr %Mval336, align 4, !tbaa !22
+  tail call void @tpatch(ptr noundef %108, i32 noundef %107)
+  %109 = load ptr, ptr %father335, align 8, !tbaa !17
+  %son3340 = getelementptr inbounds %struct.tnode, ptr %109, i64 0, i32 4
   store ptr null, ptr %son3340, align 8, !tbaa !20
-  %nsons342 = getelementptr inbounds %struct.tnode, ptr %108, i64 0, i32 1
+  %nsons342 = getelementptr inbounds %struct.tnode, ptr %109, i64 0, i32 1
   store i32 2, ptr %nsons342, align 4, !tbaa !9
   tail call void @free(ptr noundef nonnull %14) #16
   br label %if.end371
 
 if.else343:                                       ; preds = %if.else325
   store i32 2, ptr %nsons328, align 4, !tbaa !9
-  %109 = load ptr, ptr %son3332, align 8, !tbaa !20
-  store ptr %109, ptr %son164, align 8, !tbaa !18
+  %110 = load ptr, ptr %son3332, align 8, !tbaa !20
+  store ptr %110, ptr %son187, align 8, !tbaa !18
   %son2347 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 3
   store ptr %s.0, ptr %son2347, align 8, !tbaa !19
-  %father349 = getelementptr inbounds %struct.tnode, ptr %109, i64 0, i32 6
+  %father349 = getelementptr inbounds %struct.tnode, ptr %110, i64 0, i32 6
   store ptr %14, ptr %father349, align 8, !tbaa !17
   store ptr null, ptr %son3332, align 8, !tbaa !20
-  %110 = load i32, ptr %109, align 8, !tbaa !12
+  %111 = load i32, ptr %110, align 8, !tbaa !12
   %Lval353 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 7
-  store i32 %110, ptr %Lval353, align 8, !tbaa !21
-  %111 = load i32, ptr %s.0, align 8, !tbaa !12
+  store i32 %111, ptr %Lval353, align 8, !tbaa !21
+  %112 = load i32, ptr %s.0, align 8, !tbaa !12
   %Mval355 = getelementptr inbounds %struct.tnode, ptr %14, i64 0, i32 8
-  store i32 %111, ptr %Mval355, align 4, !tbaa !22
-  %Mval356 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 8
-  %112 = load i32, ptr %Mval356, align 4, !tbaa !22
-  %father357 = getelementptr inbounds %struct.tnode, ptr %37, i64 0, i32 6
-  %113 = load ptr, ptr %father357, align 8, !tbaa !17
-  %Mval358 = getelementptr inbounds %struct.tnode, ptr %113, i64 0, i32 8
-  store i32 %112, ptr %Mval358, align 4, !tbaa !22
-  %114 = load ptr, ptr %father94, align 8, !tbaa !17
-  tail call void @tpatch(ptr noundef %114, i32 noundef %111)
+  store i32 %112, ptr %Mval355, align 4, !tbaa !22
+  %Mval356 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 8
+  %113 = load i32, ptr %Mval356, align 4, !tbaa !22
+  %father357 = getelementptr inbounds %struct.tnode, ptr %38, i64 0, i32 6
+  %114 = load ptr, ptr %father357, align 8, !tbaa !17
+  %Mval358 = getelementptr inbounds %struct.tnode, ptr %114, i64 0, i32 8
+  store i32 %113, ptr %Mval358, align 4, !tbaa !22
+  %115 = load ptr, ptr %father94, align 8, !tbaa !17
+  tail call void @tpatch(ptr noundef %115, i32 noundef %112)
   tail call void @free(ptr noundef nonnull %r.tr24.i) #16
   br label %if.end371
 
@@ -1732,7 +1735,7 @@ entry:
 
 if.then:                                          ; preds = %tailrecurse.backedge, %entry
   %l.tr.lcssa = phi ptr [ %l, %entry ], [ %5, %tailrecurse.backedge ]
-  %.lcssa552 = phi ptr [ %0, %entry ], [ %15, %tailrecurse.backedge ]
+  %.lcssa552 = phi ptr [ %1, %entry ], [ %16, %tailrecurse.backedge ]
   %son1 = getelementptr inbounds %struct.tnode, ptr %.lcssa552, i64 0, i32 2
   %2 = load ptr, ptr %son1, align 8, !tbaa !18
   %cmp1 = icmp eq ptr %2, %l.tr.lcssa

@@ -9836,7 +9836,7 @@ cond.end255:                                      ; preds = %cond.end225, %cond.
   br i1 %cmp191.not, label %while.end287, label %while.body193, !llvm.loop !57
 
 while.end287:                                     ; preds = %cond.end255, %while.cond187.preheader
-  %.lcssa = phi ptr [ %13, %while.cond187.preheader ], [ %45, %cond.end255 ]
+  %.lcssa = phi ptr [ %14, %while.cond187.preheader ], [ %45, %cond.end255 ]
   store ptr %.lcssa, ptr @zz_hold, align 8, !tbaa !8
   %ou1288 = getelementptr inbounds %struct.word_type, ptr %.lcssa, i64 0, i32 1
   %47 = load i8, ptr %ou1288, align 8, !tbaa !5

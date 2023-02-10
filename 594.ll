@@ -1442,7 +1442,7 @@ FoundWatch:                                       ; preds = %while.body77, %midd
 
 for.end85:                                        ; preds = %FoundWatch, %while.body
   %j.0.lcssa = phi ptr [ %5, %while.body ], [ %j.2, %FoundWatch ]
-  %i.0.lcssa = phi ptr [ %5, %while.body ], [ %add.ptr, %FoundWatch ]
+  %i.0.lcssa = phi ptr [ %5, %while.body ], [ %i.2, %FoundWatch ]
   %confl.1.lcssa = phi ptr [ %confl.0197, %while.body ], [ %confl.2, %FoundWatch ]
   %sub.ptr.lhs.cast = ptrtoint ptr %i.0.lcssa to i64
   %sub.ptr.rhs.cast = ptrtoint ptr %j.0.lcssa to i64

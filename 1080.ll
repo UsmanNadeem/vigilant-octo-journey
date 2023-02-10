@@ -811,6 +811,7 @@ while.body.i.prol:                                ; preds = %while.body.i.prehea
   br i1 %prol.iter.cmp.not, label %while.body.i.prol.loopexit, label %while.body.i.prol, !llvm.loop !26
 
 while.body.i.prol.loopexit:                       ; preds = %while.body.i.prol, %while.body.i.preheader
+  %incdec.ptr5.i.lcssa.unr = phi ptr [ undef, %while.body.i.preheader ], [ %incdec.ptr5.i.prol, %while.body.i.prol ]
   %incdec.ptr6.i.lcssa.unr = phi ptr [ undef, %while.body.i.preheader ], [ %incdec.ptr6.i.prol, %while.body.i.prol ]
   %tok.addr.07.i.unr = phi ptr [ %tok.addr.07.i.ph, %while.body.i.preheader ], [ %incdec.ptr5.i.prol, %while.body.i.prol ]
   %p.16.i.unr = phi ptr [ %p.16.i.ph, %while.body.i.preheader ], [ %incdec.ptr6.i.prol, %while.body.i.prol ]
@@ -857,7 +858,7 @@ while.body.i:                                     ; preds = %while.body.i.prol.l
 
 while.end.i:                                      ; preds = %while.body.i.prol.loopexit, %while.body.i, %middle.block, %for.end.i
   %p.1.lcssa.i = phi ptr [ %p.0.lcssa.i, %for.end.i ], [ %ind.end407, %middle.block ], [ %incdec.ptr6.i.lcssa.unr, %while.body.i.prol.loopexit ], [ %incdec.ptr6.i.7, %while.body.i ]
-  %tok.addr.0.lcssa.i = phi ptr [ %ctok, %for.end.i ], [ %uglygep20.i, %middle.block ], [ %uglygep20.i, %while.body.i ], [ %uglygep20.i, %while.body.i.prol.loopexit ]
+  %tok.addr.0.lcssa.i = phi ptr [ %ctok, %for.end.i ], [ %ind.end, %middle.block ], [ %incdec.ptr5.i.lcssa.unr, %while.body.i.prol.loopexit ], [ %incdec.ptr5.i.7, %while.body.i ]
   store ptr %p.1.lcssa.i, ptr %curchar, align 8, !tbaa !5
   %70 = load i8, ptr %tok.addr.0.lcssa.i, align 1, !tbaa !13
   %tobool.not.i = icmp eq i8 %70, 0
@@ -1036,6 +1037,7 @@ while.body.i355.prol:                             ; preds = %while.body.i355.pre
   br i1 %prol.iter442.cmp.not, label %while.body.i355.prol.loopexit, label %while.body.i355.prol, !llvm.loop !31
 
 while.body.i355.prol.loopexit:                    ; preds = %while.body.i355.prol, %while.body.i355.preheader
+  %incdec.ptr5.i352.lcssa.unr = phi ptr [ undef, %while.body.i355.preheader ], [ %incdec.ptr5.i352.prol, %while.body.i355.prol ]
   %incdec.ptr6.i353.lcssa.unr = phi ptr [ undef, %while.body.i355.preheader ], [ %incdec.ptr6.i353.prol, %while.body.i355.prol ]
   %tok.addr.07.i350.unr = phi ptr [ %tok.addr.07.i350.ph, %while.body.i355.preheader ], [ %incdec.ptr5.i352.prol, %while.body.i355.prol ]
   %p.16.i351.unr = phi ptr [ %p.16.i351.ph, %while.body.i355.preheader ], [ %incdec.ptr6.i353.prol, %while.body.i355.prol ]
@@ -1082,7 +1084,7 @@ while.body.i355:                                  ; preds = %while.body.i355.pro
 
 while.end.i359:                                   ; preds = %while.body.i355.prol.loopexit, %while.body.i355, %middle.block416, %for.end.i346
   %p.1.lcssa.i356 = phi ptr [ %p.0.lcssa.i339, %for.end.i346 ], [ %ind.end424, %middle.block416 ], [ %incdec.ptr6.i353.lcssa.unr, %while.body.i355.prol.loopexit ], [ %incdec.ptr6.i353.7, %while.body.i355 ]
-  %tok.addr.0.lcssa.i357 = phi ptr [ %ctok, %for.end.i346 ], [ %uglygep20.i348, %middle.block416 ], [ %uglygep20.i348, %while.body.i355 ], [ %uglygep20.i348, %while.body.i355.prol.loopexit ]
+  %tok.addr.0.lcssa.i357 = phi ptr [ %ctok, %for.end.i346 ], [ %ind.end422, %middle.block416 ], [ %incdec.ptr5.i352.lcssa.unr, %while.body.i355.prol.loopexit ], [ %incdec.ptr5.i352.7, %while.body.i355 ]
   store ptr %p.1.lcssa.i356, ptr %curchar, align 8, !tbaa !5
   %100 = load i8, ptr %tok.addr.0.lcssa.i357, align 1, !tbaa !13
   %tobool.not.i358 = icmp eq i8 %100, 0
@@ -1475,7 +1477,7 @@ for.body6.i:                                      ; preds = %for.body6.lr.ph.i, 
   br i1 %tobool.not.i55, label %if.end.i, label %for.inc.i
 
 if.end.i:                                         ; preds = %for.body6.i
-  store i8 %10, ptr %newword.i53, align 16, !tbaa !13
+  store i8 %10, ptr %r.078.i, align 1, !tbaa !13
   %call16.i = call i32 @good(ptr noundef nonnull %newword.i53, i32 noundef 0, i32 noundef 1, i32 noundef 0, i32 noundef 0) #13
   %tobool17.not.i = icmp eq i32 %call16.i, 0
   br i1 %tobool17.not.i, label %for.inc.i, label %if.then18.i
@@ -2390,11 +2392,15 @@ declare void @lowcase(ptr noundef) local_unnamed_addr #2
 define internal fastcc ptr @getline_ispell(ptr noundef writeonly %s) unnamed_addr #0 {
 entry:
   %s71 = ptrtoint ptr %s to i64
+  br label %for.cond.outer
+
+for.cond.outer:                                   ; preds = %for.cond.outer.backedge, %entry
+  %p.0.ph = phi ptr [ %s, %entry ], [ %p.0.ph.be, %for.cond.outer.backedge ]
+  %cmp29.not68 = icmp eq ptr %p.0.ph, %s
+  %cmp20.not = icmp eq ptr %p.0.ph, %s
   br label %for.cond
 
-for.cond:                                         ; preds = %for.cond.backedge, %entry
-  %p.0 = phi ptr [ %s, %entry ], [ %p.0.be, %for.cond.backedge ]
-  %p.072 = ptrtoint ptr %p.0 to i64
+for.cond:                                         ; preds = %for.cond.backedge, %for.cond.outer
   %0 = load ptr, ptr @stdout, align 8, !tbaa !5
   %call = tail call i32 @fflush(ptr noundef %0)
   %1 = load ptr, ptr @stdin, align 8, !tbaa !5
@@ -2419,12 +2425,16 @@ if.then:                                          ; preds = %for.cond
   %5 = load ptr, ptr @stdout, align 8, !tbaa !5
   %call.i63 = tail call i32 @_IO_putc(i32 noundef %and5, ptr noundef %5)
   %conv = trunc i32 %and5 to i8
-  %incdec.ptr = getelementptr inbounds i8, ptr %p.0, i64 1
-  store i8 %conv, ptr %p.0, align 1, !tbaa !13
-  br label %for.cond.backedge
+  %incdec.ptr = getelementptr inbounds i8, ptr %p.0.ph, i64 1
+  store i8 %conv, ptr %p.0.ph, align 1, !tbaa !13
+  br label %for.cond.outer.backedge
+
+for.cond.outer.backedge:                          ; preds = %if.then, %if.then22, %if.else33, %if.end41.loopexit
+  %p.0.ph.be = phi ptr [ %uglygep73, %if.end41.loopexit ], [ %incdec.ptr35, %if.else33 ], [ %incdec.ptr23, %if.then22 ], [ %incdec.ptr, %if.then ]
+  br label %for.cond.outer
 
 if.then15:                                        ; preds = %for.cond, %for.cond
-  store i8 0, ptr %p.0, align 1, !tbaa !13
+  store i8 0, ptr %p.0.ph, align 1, !tbaa !13
   br label %cleanup
 
 if.else16:                                        ; preds = %for.cond
@@ -2433,16 +2443,15 @@ if.else16:                                        ; preds = %for.cond
   br i1 %cmp17, label %if.then19, label %if.else25
 
 if.then19:                                        ; preds = %if.else16
-  %cmp20.not = icmp eq ptr %p.0, %s
   br i1 %cmp20.not, label %for.cond.backedge, label %if.then22
 
 if.then22:                                        ; preds = %if.then19
-  %incdec.ptr23 = getelementptr inbounds i8, ptr %p.0, i64 -1
+  %incdec.ptr23 = getelementptr inbounds i8, ptr %p.0.ph, i64 -1
   tail call void @backup() #13
   %7 = load ptr, ptr @stdout, align 8, !tbaa !5
   %call.i64 = tail call i32 @_IO_putc(i32 noundef 32, ptr noundef %7)
   tail call void @backup() #13
-  br label %for.cond.backedge
+  br label %for.cond.outer.backedge
 
 if.else25:                                        ; preds = %if.else16
   %8 = load i32, ptr @ukillchar, align 4, !tbaa !11
@@ -2450,15 +2459,18 @@ if.else25:                                        ; preds = %if.else16
   br i1 %cmp26, label %while.cond.preheader, label %if.else33
 
 while.cond.preheader:                             ; preds = %if.else25
-  %cmp29.not68 = icmp eq ptr %p.0, %s
   br i1 %cmp29.not68, label %for.cond.backedge, label %while.body.preheader
 
+for.cond.backedge:                                ; preds = %while.cond.preheader, %if.then19
+  br label %for.cond
+
 while.body.preheader:                             ; preds = %while.cond.preheader
-  %9 = sub i64 0, %p.072
+  %p.072.le = ptrtoint ptr %p.0.ph to i64
+  %9 = sub i64 0, %p.072.le
   br label %while.body
 
 while.body:                                       ; preds = %while.body.preheader, %while.body
-  %p.169 = phi ptr [ %incdec.ptr31, %while.body ], [ %p.0, %while.body.preheader ]
+  %p.169 = phi ptr [ %incdec.ptr31, %while.body ], [ %p.0.ph, %while.body.preheader ]
   %incdec.ptr31 = getelementptr inbounds i8, ptr %p.169, i64 -1
   tail call void @backup() #13
   %10 = load ptr, ptr @stdout, align 8, !tbaa !5
@@ -2469,20 +2481,16 @@ while.body:                                       ; preds = %while.body.preheade
 
 if.else33:                                        ; preds = %if.else25
   %conv34 = trunc i32 %and to i8
-  %incdec.ptr35 = getelementptr inbounds i8, ptr %p.0, i64 1
-  store i8 %conv34, ptr %p.0, align 1, !tbaa !13
+  %incdec.ptr35 = getelementptr inbounds i8, ptr %p.0.ph, i64 1
+  store i8 %conv34, ptr %p.0.ph, align 1, !tbaa !13
   %11 = load ptr, ptr @stdout, align 8, !tbaa !5
   %call.i66 = tail call i32 @_IO_putc(i32 noundef %and, ptr noundef %11)
-  br label %for.cond.backedge
+  br label %for.cond.outer.backedge
 
 if.end41.loopexit:                                ; preds = %while.body
-  %uglygep = getelementptr i8, ptr %p.0, i64 %s71
+  %uglygep = getelementptr i8, ptr %p.0.ph, i64 %s71
   %uglygep73 = getelementptr i8, ptr %uglygep, i64 %9
-  br label %for.cond.backedge
-
-for.cond.backedge:                                ; preds = %if.end41.loopexit, %while.cond.preheader, %if.then22, %if.then19, %if.else33, %if.then
-  %p.0.be = phi ptr [ %incdec.ptr, %if.then ], [ %incdec.ptr23, %if.then22 ], [ %s, %if.then19 ], [ %incdec.ptr35, %if.else33 ], [ %s, %while.cond.preheader ], [ %uglygep73, %if.end41.loopexit ]
-  br label %for.cond
+  br label %for.cond.outer.backedge
 
 cleanup:                                          ; preds = %for.cond, %if.then15
   %retval.0 = phi ptr [ %s, %if.then15 ], [ null, %for.cond ]

@@ -1268,7 +1268,7 @@ while.cond8.preheader:                            ; preds = %land.rhs
   br i1 %cmp.i48.not58, label %cleanup, label %while.body11
 
 while.body:                                       ; preds = %land.rhs
-  tail call void %Free(ptr noundef %Element) #8
+  tail call void %Free(ptr noundef %List.addr.0.val41) #8
   %1 = load ptr, ptr getelementptr ([0 x ptr], ptr @memory_ARRAY, i64 0, i64 16), align 8
   %total_size.i.i = getelementptr inbounds %struct.MEMORY_RESOURCEHELP, ptr %1, i64 0, i32 4
   %2 = load i32, ptr %total_size.i.i, align 8

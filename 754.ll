@@ -203,7 +203,6 @@ do.body:                                          ; preds = %do.cond, %sw.epilog
   %11 = lshr i16 %10, 1
   %12 = load ptr, ptr %contents, align 8, !tbaa !5
   %idx.ext53 = zext i16 %11 to i64
-  %add.ptr54 = getelementptr inbounds %struct.pair_s, ptr %12, i64 %idx.ext53
   %add.ptr124 = getelementptr inbounds %struct.pair_s, ptr %12, i64 2
   %shr23 = zext i16 %11 to i32
   %sub = add nsw i32 %shr23, -1
@@ -234,10 +233,14 @@ if.else:                                          ; preds = %for.cond
 
 if.then43:                                        ; preds = %if.else
   %cmp44 = icmp eq ptr %incdec.ptr, %12
-  br i1 %cmp44, label %for.cond.1, label %for.end
+  br i1 %cmp44, label %if.end52, label %for.end
 
-for.cond.1:                                       ; preds = %if.then43, %for.cond.backedge.1
-  %pp.0.1 = phi ptr [ %incdec.ptr.1, %for.cond.backedge.1 ], [ %add.ptr54, %if.then43 ]
+if.end52:                                         ; preds = %if.then43
+  %add.ptr54 = getelementptr inbounds %struct.pair_s, ptr %incdec.ptr, i64 %idx.ext53
+  br label %for.cond.1
+
+for.cond.1:                                       ; preds = %for.cond.backedge.1, %if.end52
+  %pp.0.1 = phi ptr [ %add.ptr54, %if.end52 ], [ %incdec.ptr.1, %for.cond.backedge.1 ]
   %incdec.ptr.1 = getelementptr inbounds %struct.pair_s, ptr %pp.0.1, i64 -1
   %type_attrs27.1 = getelementptr %struct.pair_s, ptr %pp.0.1, i64 -1, i32 0, i32 1
   %17 = load i16, ptr %type_attrs27.1, align 8, !tbaa !17

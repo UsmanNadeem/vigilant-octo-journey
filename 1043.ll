@@ -590,7 +590,7 @@ entry:
   %osucc = getelementptr inbounds %struct.LIST, ptr %x, i64 0, i32 1
   %link.0789 = load ptr, ptr %osucc, align 8, !tbaa !5
   %cmp.not790 = icmp eq ptr %link.0789, %x
-  br i1 %cmp.not790, label %if.then311, label %for.cond3.preheader
+  br i1 %cmp.not790, label %for.end308, label %for.cond3.preheader
 
 for.cond3.preheader:                              ; preds = %entry, %for.inc304
   %link.0791 = phi ptr [ %link.0, %for.inc304 ], [ %link.0789, %entry ]
@@ -720,13 +720,14 @@ for.inc304:                                       ; preds = %for.cond3, %land.lh
   %osucc307 = getelementptr inbounds %struct.LIST, ptr %link.0791, i64 0, i32 1
   %link.0 = load ptr, ptr %osucc307, align 8, !tbaa !5
   %cmp.not = icmp eq ptr %link.0, %x
-  br i1 %cmp.not, label %if.then311, label %for.cond3.preheader, !llvm.loop !15
+  br i1 %cmp.not, label %for.end308, label %for.cond3.preheader, !llvm.loop !15
 
-for.end308:                                       ; preds = %for.cond21, %if.end188
-  %cmp309 = icmp eq ptr %link.0791, %x
+for.end308:                                       ; preds = %for.inc304, %for.cond21, %entry, %if.end188
+  %link.0788 = phi ptr [ %link.0791, %if.end188 ], [ %link.0789, %entry ], [ %link.0791, %for.cond21 ], [ %link.0, %for.inc304 ]
+  %cmp309 = icmp eq ptr %link.0788, %x
   br i1 %cmp309, label %if.then311, label %if.end696
 
-if.then311:                                       ; preds = %for.inc304, %entry, %cond.end264, %if.then299, %for.end308
+if.then311:                                       ; preds = %cond.end264, %if.then299, %for.end308
   %oactual312 = getelementptr inbounds %struct.closure_type, ptr %x, i64 0, i32 5
   %20 = load ptr, ptr %oactual312, align 8, !tbaa !5
   %link.2.in792 = getelementptr inbounds %struct.LIST, ptr %20, i64 0, i32 1
@@ -977,7 +978,7 @@ sw.epilog.sink.split:                             ; preds = %cond.end503, %if.th
   br label %sw.epilog
 
 sw.epilog:                                        ; preds = %for.inc587, %for.cond568, %for.cond527, %sw.epilog.sink.split, %for.cond561.preheader, %sw.bb511, %land.lhs.true544, %cond.end503
-  %link.4 = phi ptr [ %link.2795, %cond.end503 ], [ %51, %land.lhs.true544 ], [ %x, %sw.bb511 ], [ %x, %for.cond561.preheader ], [ %56, %sw.epilog.sink.split ], [ %51, %for.cond527 ], [ %link.3798, %for.cond568 ], [ %x, %for.inc587 ]
+  %link.4 = phi ptr [ %link.2795, %cond.end503 ], [ %51, %land.lhs.true544 ], [ %51, %sw.bb511 ], [ %link.3796, %for.cond561.preheader ], [ %56, %sw.epilog.sink.split ], [ %51, %for.cond527 ], [ %link.3798, %for.cond568 ], [ %link.3, %for.inc587 ]
   %57 = load i8, ptr @zz_lengths, align 1, !tbaa !5
   %conv592 = zext i8 %57 to i32
   store i32 %conv592, ptr @zz_size, align 4, !tbaa !8
@@ -1114,7 +1115,7 @@ if.then14:                                        ; preds = %if.end
   br label %for.cond.preheader
 
 for.cond.preheader:                               ; preds = %if.then14, %if.end
-  %.pn.ph = phi ptr [ %4, %if.end ], [ %.pre, %if.then14 ]
+  %.pn.ph = phi ptr [ %5, %if.end ], [ %.pre, %if.then14 ]
   br label %for.cond
 
 for.cond:                                         ; preds = %for.cond.preheader, %for.cond
@@ -3677,7 +3678,7 @@ for.inc2954:                                      ; preds = %for.cond2490, %for.
   br i1 %cmp2484.not, label %for.end2958, label %for.cond2490.preheader, !llvm.loop !43
 
 for.end2958:                                      ; preds = %for.inc2954, %if.end2477
-  %.lcssa = phi ptr [ %230, %if.end2477 ], [ %link.3, %for.inc2954 ]
+  %.lcssa = phi ptr [ %230, %if.end2477 ], [ %267, %for.inc2954 ]
   %osucc2961 = getelementptr inbounds %struct.LIST, ptr %11, i64 0, i32 1
   %268 = load ptr, ptr %osucc2961, align 8, !tbaa !5
   %cmp2962.not = icmp eq ptr %268, %11
@@ -3719,11 +3720,11 @@ if.end3169:                                       ; preds = %for.cond2982, %for.
   br i1 %cmp3184, label %if.then3186, label %if.end3188
 
 if.then3186.loopexit:                             ; preds = %for.cond2982
-  %ou12983.le3806 = getelementptr inbounds %struct.word_type, ptr %tag.3, i64 0, i32 1
+  %ou12983.le3807 = getelementptr inbounds %struct.word_type, ptr %tag.3, i64 0, i32 1
   br label %if.then3186
 
 if.then3186:                                      ; preds = %if.then3186.loopexit, %if.end3169
-  %ou129833794 = phi ptr [ %ou12983.le3806, %if.then3186.loopexit ], [ %ou12983.le, %if.end3169 ]
+  %ou129833794 = phi ptr [ %ou12983.le3807, %if.then3186.loopexit ], [ %ou12983.le, %if.end3169 ]
   %273 = load ptr, ptr @no_fpos, align 8, !tbaa !10
   %call3187 = tail call ptr (i32, i32, ptr, i32, ptr, ...) @Error(i32 noundef 1, i32 noundef 2, ptr noundef nonnull @.str.4, i32 noundef 0, ptr noundef %273, ptr noundef nonnull @.str.47) #9
   br label %if.end3188

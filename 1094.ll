@@ -1546,7 +1546,7 @@ invoke.cont8:                                     ; preds = %if.then4
   br i1 %cmp.i, label %invoke.cont8.invoke.cont10_crit_edge, label %if.end.i
 
 invoke.cont8.invoke.cont10_crit_edge:             ; preds = %invoke.cont8
-  %.pre95 = load ptr, ptr %postString, align 8, !tbaa !27
+  %.pre95 = load ptr, ptr %ref.tmp, align 8, !tbaa !27
   br label %invoke.cont10
 
 if.end.i:                                         ; preds = %invoke.cont8

@@ -230,29 +230,25 @@ if.then:                                          ; preds = %lor.lhs.false47, %l
 if.end:                                           ; preds = %while.body, %lor.lhs.false47, %if.then
   %temp.1 = phi ptr [ %4, %if.then ], [ %1, %lor.lhs.false47 ], [ %1, %while.body ]
   %cmp.not = icmp eq ptr %temp.1, %PL
-  br i1 %cmp.not, label %if.end.while.end.loopexit_crit_edge, label %land.rhs, !llvm.loop !18
+  br i1 %cmp.not, label %while.end, label %land.rhs, !llvm.loop !18
 
-if.end.while.end.loopexit_crit_edge:              ; preds = %if.end
-  %.pre.pre = load ptr, ptr %next, align 8, !tbaa !15
-  br label %while.end
-
-while.end:                                        ; preds = %land.rhs, %if.end.while.end.loopexit_crit_edge, %entry
-  %6 = phi ptr [ %PL, %entry ], [ %.pre.pre, %if.end.while.end.loopexit_crit_edge ], [ %temp.0254, %land.rhs ]
-  %temp.0.lcssa = phi ptr [ %PL, %entry ], [ %PL, %if.end.while.end.loopexit_crit_edge ], [ %temp.0254, %land.rhs ]
+while.end:                                        ; preds = %land.rhs, %if.end, %entry
+  %temp.0.lcssa = phi ptr [ %0, %entry ], [ %temp.1, %if.end ], [ %temp.0254, %land.rhs ]
   %prev71 = getelementptr inbounds %struct.CHpoints, ptr %temp.0.lcssa, i64 0, i32 4
-  %7 = load ptr, ptr %prev71, align 8, !tbaa !16
-  %node72 = getelementptr inbounds %struct.CHpoints, ptr %7, i64 0, i32 1
+  %6 = load ptr, ptr %prev71, align 8, !tbaa !16
+  %node72 = getelementptr inbounds %struct.CHpoints, ptr %6, i64 0, i32 1
   %a.sroa.0.0.copyload207 = load i32, ptr %node72, align 4, !tbaa.struct !5
-  %a.sroa.18.0.node72.sroa_idx = getelementptr inbounds %struct.CHpoints, ptr %7, i64 0, i32 1, i32 1
+  %a.sroa.18.0.node72.sroa_idx = getelementptr inbounds %struct.CHpoints, ptr %6, i64 0, i32 1, i32 1
   %a.sroa.18.0.copyload208 = load i32, ptr %a.sroa.18.0.node72.sroa_idx, align 4, !tbaa.struct !17
   %node73 = getelementptr inbounds %struct.CHpoints, ptr %temp.0.lcssa, i64 0, i32 1
   %b.sroa.0.0.copyload165 = load i32, ptr %node73, align 4, !tbaa.struct !5
   %b.sroa.20.0.node73.sroa_idx = getelementptr inbounds %struct.CHpoints, ptr %temp.0.lcssa, i64 0, i32 1, i32 1
   %b.sroa.20.0.copyload166 = load i32, ptr %b.sroa.20.0.node73.sroa_idx, align 4, !tbaa.struct !17
   %next74 = getelementptr inbounds %struct.CHpoints, ptr %temp.0.lcssa, i64 0, i32 3
-  %node75 = getelementptr inbounds %struct.CHpoints, ptr %6, i64 0, i32 1
+  %7 = load ptr, ptr %next74, align 8, !tbaa !15
+  %node75 = getelementptr inbounds %struct.CHpoints, ptr %7, i64 0, i32 1
   %c.sroa.0.0.copyload187 = load i32, ptr %node75, align 4, !tbaa.struct !5
-  %c.sroa.14.0.node75.sroa_idx = getelementptr inbounds %struct.CHpoints, ptr %6, i64 0, i32 1, i32 1
+  %c.sroa.14.0.node75.sroa_idx = getelementptr inbounds %struct.CHpoints, ptr %7, i64 0, i32 1, i32 1
   %c.sroa.14.0.copyload188 = load i32, ptr %c.sroa.14.0.node75.sroa_idx, align 4, !tbaa.struct !17
   %sub78 = sub nsw i32 %b.sroa.20.0.copyload166, %c.sroa.14.0.copyload188
   %sub81 = sub nsw i32 %b.sroa.0.0.copyload165, %a.sroa.0.0.copyload207
@@ -293,11 +289,11 @@ lor.lhs.false124:                                 ; preds = %lor.lhs.false108
   br i1 %or.cond252, label %if.then140, label %if.end149
 
 if.then140:                                       ; preds = %lor.lhs.false124, %lor.lhs.false108, %lor.lhs.false100, %land.lhs.true92
-  %prev143 = getelementptr inbounds %struct.CHpoints, ptr %6, i64 0, i32 4
-  store ptr %7, ptr %prev143, align 8, !tbaa !16
+  %prev143 = getelementptr inbounds %struct.CHpoints, ptr %7, i64 0, i32 4
+  store ptr %6, ptr %prev143, align 8, !tbaa !16
   %8 = load ptr, ptr %prev71, align 8, !tbaa !16
   %next146 = getelementptr inbounds %struct.CHpoints, ptr %8, i64 0, i32 3
-  store ptr %6, ptr %next146, align 8, !tbaa !15
+  store ptr %7, ptr %next146, align 8, !tbaa !15
   %9 = load ptr, ptr %next74, align 8, !tbaa !15
   tail call void @free(ptr noundef nonnull %temp.0.lcssa) #11
   %10 = load i32, ptr @CHno, align 4, !tbaa !6

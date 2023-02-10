@@ -203,7 +203,7 @@ if.then78:                                        ; preds = %if.end73
   br label %if.end79
 
 if.end79:                                         ; preds = %if.then78, %if.end73
-  %send.1 = phi ptr [ %incdec.ptr, %if.then78 ], [ %scommand, %if.end73 ]
+  %send.1 = phi ptr [ %incdec.ptr, %if.then78 ], [ %add.ptr, %if.end73 ]
   %16 = load i32, ptr @debug, align 4, !tbaa !9
   %cmp80 = icmp eq i32 %16, 1
   %cond82 = select i1 %cmp80, ptr @.str.10, ptr @.str

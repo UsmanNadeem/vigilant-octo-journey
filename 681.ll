@@ -144,7 +144,7 @@ while.cond324.preheader:                          ; preds = %for.cond
 while.body328.preheader:                          ; preds = %while.cond324.preheader
   %10 = zext i32 %_state.sroa.130.0 to i64
   %tobool330.not = icmp eq i32 %_state.sroa.265.0, 0
-  br i1 %tobool330.not, label %if.then331.split.loop.exit4158, label %if.end342
+  br i1 %tobool330.not, label %if.then331.split.loop.exit4186, label %if.end342
 
 while.cond99.preheader:                           ; preds = %for.cond
   %cmp1013235 = icmp ult i32 %_state.sroa.130.0, 16
@@ -153,7 +153,7 @@ while.cond99.preheader:                           ; preds = %for.cond
 while.body103.preheader:                          ; preds = %while.cond99.preheader
   %11 = zext i32 %_state.sroa.130.0 to i64
   %tobool105.not = icmp eq i32 %_state.sroa.265.0, 0
-  br i1 %tobool105.not, label %if.then106.split.loop.exit4163, label %if.end117
+  br i1 %tobool105.not, label %if.then106.split.loop.exit4191, label %if.end117
 
 while.cond.preheader:                             ; preds = %for.cond
   %cmp103243 = icmp ult i32 %_state.sroa.130.0, 3
@@ -200,24 +200,24 @@ cond.end.peel.i:                                  ; preds = %cond.false.peel.i, 
 
 if.then.peel.i:                                   ; preds = %cond.end.peel.i
   %18 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i = icmp eq ptr %18, %add.ptr13.peel.i
+  %cmp19.peel.i = icmp eq ptr %18, %17
   br i1 %cmp19.peel.i, label %again.i.sink.split, label %again.i.preheader
 
 again.i.sink.split:                               ; preds = %if.then.peel.i, %if.then21.i
   %.ph = phi ptr [ %add.ptr.i, %if.then21.i ], [ %add.ptr.peel.i, %if.then.peel.i ]
-  %.ph3728 = phi ptr [ %add.ptr13.i, %if.then21.i ], [ %add.ptr13.peel.i, %if.then.peel.i ]
+  %.ph3728 = phi ptr [ %24, %if.then21.i ], [ %17, %if.then.peel.i ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i.preheader
 
 again.i.preheader:                                ; preds = %if.then.peel.i, %again.i.sink.split
   %.ph3761 = phi ptr [ %.ph, %again.i.sink.split ], [ %add.ptr.peel.i, %if.then.peel.i ]
-  %.ph3762 = phi ptr [ %.ph3728, %again.i.sink.split ], [ %add.ptr13.peel.i, %if.then.peel.i ]
+  %.ph3762 = phi ptr [ %.ph3728, %again.i.sink.split ], [ %17, %if.then.peel.i ]
   %.ph3763 = phi ptr [ %window.i2885, %again.i.sink.split ], [ %18, %if.then.peel.i ]
   br label %again.i
 
 again.i:                                          ; preds = %again.i.preheader, %if.then.i
   %19 = phi ptr [ %add.ptr.i, %if.then.i ], [ %.ph3761, %again.i.preheader ]
-  %20 = phi ptr [ %add.ptr13.i, %if.then.i ], [ %.ph3762, %again.i.preheader ]
+  %20 = phi ptr [ %24, %if.then.i ], [ %.ph3762, %again.i.preheader ]
   %21 = phi ptr [ %25, %if.then.i ], [ %.ph3763, %again.i.preheader ]
   %cmp.not.i = icmp ugt ptr %window.i2885, %21
   %spec.select.i = select i1 %cmp.not.i, ptr %20, ptr %21
@@ -240,7 +240,7 @@ again.i:                                          ; preds = %again.i.preheader, 
 
 if.then.i:                                        ; preds = %again.i
   %25 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i = icmp eq ptr %25, %add.ptr13.i
+  %cmp19.i = icmp eq ptr %25, %24
   br i1 %cmp19.i, label %if.then21.i, label %again.i, !llvm.loop !26
 
 if.then21.i:                                      ; preds = %if.then.i
@@ -376,14 +376,14 @@ sw.bb95:                                          ; preds = %while.end
   store i32 11, ptr %blocks, align 8, !tbaa !19
   br label %for.cond.backedge
 
-if.then106.split.loop.exit4163:                   ; preds = %while.body103.preheader
+if.then106.split.loop.exit4191:                   ; preds = %while.body103.preheader
   %33 = zext i32 %_state.sroa.130.0 to i64
   br label %if.then106
 
-if.then106:                                       ; preds = %while.body103.1, %if.then106.split.loop.exit4163
-  %indvars.iv3396.lcssa = phi i64 [ %33, %if.then106.split.loop.exit4163 ], [ %indvars.iv.next3397, %while.body103.1 ]
-  %_state.sroa.561588.23239.lcssa = phi i64 [ %_state.sroa.561588.0, %if.then106.split.loop.exit4163 ], [ %or127, %while.body103.1 ]
-  %_state.sroa.2191703.23237.lcssa = phi ptr [ %_state.sroa.2191703.0, %if.then106.split.loop.exit4163 ], [ %incdec.ptr121, %while.body103.1 ]
+if.then106:                                       ; preds = %while.body103.1, %if.then106.split.loop.exit4191
+  %indvars.iv3396.lcssa = phi i64 [ %33, %if.then106.split.loop.exit4191 ], [ %indvars.iv.next3397, %while.body103.1 ]
+  %_state.sroa.561588.23239.lcssa = phi i64 [ %_state.sroa.561588.0, %if.then106.split.loop.exit4191 ], [ %or127, %while.body103.1 ]
+  %_state.sroa.2191703.23237.lcssa = phi ptr [ %_state.sroa.2191703.0, %if.then106.split.loop.exit4191 ], [ %incdec.ptr121, %while.body103.1 ]
   %34 = trunc i64 %indvars.iv3396.lcssa to i32
   store i64 %_state.sroa.561588.23239.lcssa, ptr %bitb, align 8, !tbaa !14
   store i32 %34, ptr %bitk, align 4, !tbaa !15
@@ -421,25 +421,25 @@ cond.end.peel.i2254:                              ; preds = %cond.false.peel.i22
 
 if.then.peel.i2256:                               ; preds = %cond.end.peel.i2254
   %41 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2255 = icmp eq ptr %41, %add.ptr13.peel.i2252
+  %cmp19.peel.i2255 = icmp eq ptr %41, %40
   br i1 %cmp19.peel.i2255, label %again.i2271.sink.split, label %again.i2271.preheader
 
 again.i2271.sink.split:                           ; preds = %if.then.peel.i2256, %if.then21.i2274
   %.ph3729 = phi ptr [ %add.ptr.i2268, %if.then21.i2274 ], [ %add.ptr.peel.i2251, %if.then.peel.i2256 ]
-  %.ph3730 = phi ptr [ %add.ptr13.i2269, %if.then21.i2274 ], [ %add.ptr13.peel.i2252, %if.then.peel.i2256 ]
+  %.ph3730 = phi ptr [ %47, %if.then21.i2274 ], [ %40, %if.then.peel.i2256 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2271.preheader
 
 again.i2271.preheader:                            ; preds = %if.then.peel.i2256, %again.i2271.sink.split
-  %.ph3766 = phi ptr [ %.ph3729, %again.i2271.sink.split ], [ %add.ptr.peel.i2251, %if.then.peel.i2256 ]
-  %.ph3767 = phi ptr [ %.ph3730, %again.i2271.sink.split ], [ %add.ptr13.peel.i2252, %if.then.peel.i2256 ]
-  %.ph3768 = phi ptr [ %window.i2885, %again.i2271.sink.split ], [ %41, %if.then.peel.i2256 ]
+  %.ph3767 = phi ptr [ %.ph3729, %again.i2271.sink.split ], [ %add.ptr.peel.i2251, %if.then.peel.i2256 ]
+  %.ph3768 = phi ptr [ %.ph3730, %again.i2271.sink.split ], [ %40, %if.then.peel.i2256 ]
+  %.ph3769 = phi ptr [ %window.i2885, %again.i2271.sink.split ], [ %41, %if.then.peel.i2256 ]
   br label %again.i2271
 
 again.i2271:                                      ; preds = %again.i2271.preheader, %if.then.i2273
-  %42 = phi ptr [ %add.ptr.i2268, %if.then.i2273 ], [ %.ph3766, %again.i2271.preheader ]
-  %43 = phi ptr [ %add.ptr13.i2269, %if.then.i2273 ], [ %.ph3767, %again.i2271.preheader ]
-  %44 = phi ptr [ %48, %if.then.i2273 ], [ %.ph3768, %again.i2271.preheader ]
+  %42 = phi ptr [ %add.ptr.i2268, %if.then.i2273 ], [ %.ph3767, %again.i2271.preheader ]
+  %43 = phi ptr [ %47, %if.then.i2273 ], [ %.ph3768, %again.i2271.preheader ]
+  %44 = phi ptr [ %48, %if.then.i2273 ], [ %.ph3769, %again.i2271.preheader ]
   %cmp.not.i2260 = icmp ugt ptr %window.i2885, %44
   %spec.select.i2261 = select i1 %cmp.not.i2260, ptr %43, ptr %44
   %sub.ptr.lhs.cast.i2262 = ptrtoint ptr %spec.select.i2261 to i64
@@ -461,7 +461,7 @@ again.i2271:                                      ; preds = %again.i2271.prehead
 
 if.then.i2273:                                    ; preds = %again.i2271
   %48 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2272 = icmp eq ptr %48, %add.ptr13.i2269
+  %cmp19.i2272 = icmp eq ptr %48, %47
   br i1 %cmp19.i2272, label %if.then21.i2274, label %again.i2271, !llvm.loop !26
 
 if.then21.i2274:                                  ; preds = %if.then.i2273
@@ -556,25 +556,25 @@ cond.end.peel.i2297:                              ; preds = %cond.false.peel.i22
 
 if.then.peel.i2299:                               ; preds = %cond.end.peel.i2297
   %58 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2298 = icmp eq ptr %58, %add.ptr13.peel.i2295
+  %cmp19.peel.i2298 = icmp eq ptr %58, %57
   br i1 %cmp19.peel.i2298, label %again.i2314.sink.split, label %again.i2314.preheader
 
 again.i2314.sink.split:                           ; preds = %if.then.peel.i2299, %if.then21.i2317
   %.ph3731 = phi ptr [ %add.ptr.i2311, %if.then21.i2317 ], [ %add.ptr.peel.i2294, %if.then.peel.i2299 ]
-  %.ph3732 = phi ptr [ %add.ptr13.i2312, %if.then21.i2317 ], [ %add.ptr13.peel.i2295, %if.then.peel.i2299 ]
+  %.ph3732 = phi ptr [ %64, %if.then21.i2317 ], [ %57, %if.then.peel.i2299 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2314.preheader
 
 again.i2314.preheader:                            ; preds = %if.then.peel.i2299, %again.i2314.sink.split
-  %.ph3771 = phi ptr [ %.ph3731, %again.i2314.sink.split ], [ %add.ptr.peel.i2294, %if.then.peel.i2299 ]
-  %.ph3772 = phi ptr [ %.ph3732, %again.i2314.sink.split ], [ %add.ptr13.peel.i2295, %if.then.peel.i2299 ]
-  %.ph3773 = phi ptr [ %window.i2885, %again.i2314.sink.split ], [ %58, %if.then.peel.i2299 ]
+  %.ph3773 = phi ptr [ %.ph3731, %again.i2314.sink.split ], [ %add.ptr.peel.i2294, %if.then.peel.i2299 ]
+  %.ph3774 = phi ptr [ %.ph3732, %again.i2314.sink.split ], [ %57, %if.then.peel.i2299 ]
+  %.ph3775 = phi ptr [ %window.i2885, %again.i2314.sink.split ], [ %58, %if.then.peel.i2299 ]
   br label %again.i2314
 
 again.i2314:                                      ; preds = %again.i2314.preheader, %if.then.i2316
-  %59 = phi ptr [ %add.ptr.i2311, %if.then.i2316 ], [ %.ph3771, %again.i2314.preheader ]
-  %60 = phi ptr [ %add.ptr13.i2312, %if.then.i2316 ], [ %.ph3772, %again.i2314.preheader ]
-  %61 = phi ptr [ %65, %if.then.i2316 ], [ %.ph3773, %again.i2314.preheader ]
+  %59 = phi ptr [ %add.ptr.i2311, %if.then.i2316 ], [ %.ph3773, %again.i2314.preheader ]
+  %60 = phi ptr [ %64, %if.then.i2316 ], [ %.ph3774, %again.i2314.preheader ]
+  %61 = phi ptr [ %65, %if.then.i2316 ], [ %.ph3775, %again.i2314.preheader ]
   %cmp.not.i2303 = icmp ugt ptr %window.i2885, %61
   %spec.select.i2304 = select i1 %cmp.not.i2303, ptr %60, ptr %61
   %sub.ptr.lhs.cast.i2305 = ptrtoint ptr %spec.select.i2304 to i64
@@ -596,7 +596,7 @@ again.i2314:                                      ; preds = %again.i2314.prehead
 
 if.then.i2316:                                    ; preds = %again.i2314
   %65 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2315 = icmp eq ptr %65, %add.ptr13.i2312
+  %cmp19.i2315 = icmp eq ptr %65, %64
   br i1 %cmp19.i2315, label %if.then21.i2317, label %again.i2314, !llvm.loop !26
 
 if.then21.i2317:                                  ; preds = %if.then.i2316
@@ -625,7 +625,7 @@ if.end197:                                        ; preds = %land.lhs.true
   %cmp178 = icmp ult ptr %window.i2885, %67
   %sub.ptr.lhs.cast183 = ptrtoint ptr %67 to i64
   %sub186 = add i64 %sub.ptr.lhs.cast183, %8
-  %sub.ptr.lhs.cast190 = ptrtoint ptr %_state.sroa.3231780.0 to i64
+  %sub.ptr.lhs.cast190 = ptrtoint ptr %66 to i64
   %sub.ptr.sub192 = sub i64 %sub.ptr.lhs.cast190, %sub.ptr.rhs.cast.i2903
   %cond194 = select i1 %cmp178, i64 %sub186, i64 %sub.ptr.sub192
   %conv195 = trunc i64 %cond194 to i32
@@ -706,7 +706,7 @@ if.end279:                                        ; preds = %if.end197, %cond.en
 for.cond.backedge:                                ; preds = %if.end279, %if.then319, %cleanup486, %if.end1476, %sw.bb40, %if.end83, %sw.bb95, %if.end1415, %while.end1291, %if.then1045, %if.then1030, %if.then896, %if.then880, %if.then867, %if.then857, %cond.end142
   %_state.sroa.265.0.be = phi i32 [ %_state.sroa.265.22, %if.end1476 ], [ %_state.sroa.265.0, %if.end1415 ], [ %_state.sroa.265.21, %while.end1291 ], [ %_state.sroa.265.19.lcssa, %if.then1030 ], [ %_state.sroa.265.19.lcssa, %if.then1045 ], [ %_state.sroa.265.16.lcssa, %if.then857 ], [ %_state.sroa.265.16.lcssa, %if.then867 ], [ %_state.sroa.265.16.lcssa, %if.then880 ], [ %_state.sroa.265.16.lcssa, %if.then896 ], [ %_state.sroa.265.6.lcssa, %cleanup486 ], [ %_state.sroa.265.2.lcssa, %cond.end142 ], [ %_state.sroa.265.1.lcssa, %sw.bb95 ], [ %_state.sroa.265.1.lcssa, %if.end83 ], [ %_state.sroa.265.1.lcssa, %sw.bb40 ], [ %sub307, %if.then319 ], [ %sub307, %if.end279 ]
   %_state.sroa.2191703.0.be = phi ptr [ %_state.sroa.2191703.22, %if.end1476 ], [ %_state.sroa.2191703.0, %if.end1415 ], [ %_state.sroa.2191703.21, %while.end1291 ], [ %_state.sroa.2191703.19.lcssa, %if.then1030 ], [ %_state.sroa.2191703.19.lcssa, %if.then1045 ], [ %_state.sroa.2191703.16.lcssa, %if.then857 ], [ %_state.sroa.2191703.16.lcssa, %if.then867 ], [ %_state.sroa.2191703.16.lcssa, %if.then880 ], [ %_state.sroa.2191703.16.lcssa, %if.then896 ], [ %_state.sroa.2191703.6.lcssa, %cleanup486 ], [ %_state.sroa.2191703.2.lcssa, %cond.end142 ], [ %_state.sroa.2191703.1.lcssa, %sw.bb95 ], [ %_state.sroa.2191703.1.lcssa, %if.end83 ], [ %_state.sroa.2191703.1.lcssa, %sw.bb40 ], [ %add.ptr, %if.then319 ], [ %add.ptr, %if.end279 ]
-  %_state.sroa.3231780.0.be = phi ptr [ %add.ptr13.lcssa.i2921, %if.end1476 ], [ %incdec.ptr1419, %if.end1415 ], [ %_state.sroa.3231780.5.lcssa, %while.end1291 ], [ %_state.sroa.3231780.0, %if.then1030 ], [ %_state.sroa.3231780.0, %if.then1045 ], [ %_state.sroa.3231780.0, %if.then857 ], [ %_state.sroa.3231780.0, %if.then867 ], [ %_state.sroa.3231780.0, %if.then880 ], [ %_state.sroa.3231780.0, %if.then896 ], [ %_state.sroa.3231780.0, %cleanup486 ], [ %_state.sroa.3231780.0, %cond.end142 ], [ %_state.sroa.3231780.0, %sw.bb95 ], [ %_state.sroa.3231780.0, %if.end83 ], [ %_state.sroa.3231780.0, %sw.bb40 ], [ %add.ptr311, %if.then319 ], [ %add.ptr311, %if.end279 ]
+  %_state.sroa.3231780.0.be = phi ptr [ %373, %if.end1476 ], [ %incdec.ptr1419, %if.end1415 ], [ %_state.sroa.3231780.5.lcssa, %while.end1291 ], [ %_state.sroa.3231780.0, %if.then1030 ], [ %_state.sroa.3231780.0, %if.then1045 ], [ %_state.sroa.3231780.0, %if.then857 ], [ %_state.sroa.3231780.0, %if.then867 ], [ %_state.sroa.3231780.0, %if.then880 ], [ %_state.sroa.3231780.0, %if.then896 ], [ %_state.sroa.3231780.0, %cleanup486 ], [ %_state.sroa.3231780.0, %cond.end142 ], [ %_state.sroa.3231780.0, %sw.bb95 ], [ %_state.sroa.3231780.0, %if.end83 ], [ %_state.sroa.3231780.0, %sw.bb40 ], [ %add.ptr311, %if.then319 ], [ %add.ptr311, %if.end279 ]
   %_state.sroa.130.0.be = phi i32 [ %_state.sroa.130.21, %if.end1476 ], [ %_state.sroa.130.0, %if.end1415 ], [ %_state.sroa.130.20, %while.end1291 ], [ %sub1021, %if.then1030 ], [ %sub1021, %if.then1045 ], [ %sub850, %if.then857 ], [ %sub850, %if.then867 ], [ %sub850, %if.then880 ], [ %sub850, %if.then896 ], [ %_state.sroa.130.5.lcssa, %cleanup486 ], [ 0, %cond.end142 ], [ %sub33, %sw.bb95 ], [ %sub33, %if.end83 ], [ %sub49, %sw.bb40 ], [ %_state.sroa.130.0, %if.then319 ], [ %_state.sroa.130.0, %if.end279 ]
   %_state.sroa.561588.0.be = phi i64 [ %_state.sroa.561588.0, %if.end1476 ], [ %_state.sroa.561588.0, %if.end1415 ], [ %_state.sroa.561588.20, %while.end1291 ], [ %shr1015, %if.then1030 ], [ %shr1015, %if.then1045 ], [ %shr844, %if.then857 ], [ %shr844, %if.then867 ], [ %shr844, %if.then880 ], [ %shr844, %if.then896 ], [ %_state.sroa.561588.5.lcssa, %cleanup486 ], [ 0, %cond.end142 ], [ %shr, %sw.bb95 ], [ %shr, %if.end83 ], [ %shr45, %sw.bb40 ], [ %_state.sroa.561588.0, %if.then319 ], [ %_state.sroa.561588.0, %if.end279 ]
   %_state.sroa.407.0.be = phi i32 [ %conv1459, %if.end1476 ], [ %dec1421, %if.end1415 ], [ %_state.sroa.407.5.lcssa, %while.end1291 ], [ %_state.sroa.407.0, %if.then1030 ], [ %_state.sroa.407.0, %if.then1045 ], [ %_state.sroa.407.0, %if.then857 ], [ %_state.sroa.407.0, %if.then867 ], [ %_state.sroa.407.0, %if.then880 ], [ %_state.sroa.407.0, %if.then896 ], [ %_state.sroa.407.0, %cleanup486 ], [ %_state.sroa.407.0, %cond.end142 ], [ %_state.sroa.407.0, %sw.bb95 ], [ %_state.sroa.407.0, %if.end83 ], [ %_state.sroa.407.0, %sw.bb40 ], [ %sub314, %if.then319 ], [ %sub314, %if.end279 ]
@@ -717,14 +717,14 @@ if.then319:                                       ; preds = %if.end279
   store i32 %75, ptr %blocks, align 8, !tbaa !19
   br label %for.cond.backedge
 
-if.then331.split.loop.exit4158:                   ; preds = %while.body328.preheader
+if.then331.split.loop.exit4186:                   ; preds = %while.body328.preheader
   %76 = zext i32 %_state.sroa.130.0 to i64
   br label %if.then331
 
-if.then331:                                       ; preds = %while.body328.1, %if.then331.split.loop.exit4158
-  %indvars.iv.lcssa = phi i64 [ %76, %if.then331.split.loop.exit4158 ], [ %indvars.iv.next, %while.body328.1 ]
-  %_state.sroa.561588.33168.lcssa = phi i64 [ %_state.sroa.561588.0, %if.then331.split.loop.exit4158 ], [ %or352, %while.body328.1 ]
-  %_state.sroa.2191703.43166.lcssa = phi ptr [ %_state.sroa.2191703.0, %if.then331.split.loop.exit4158 ], [ %incdec.ptr346, %while.body328.1 ]
+if.then331:                                       ; preds = %while.body328.1, %if.then331.split.loop.exit4186
+  %indvars.iv.lcssa = phi i64 [ %76, %if.then331.split.loop.exit4186 ], [ %indvars.iv.next, %while.body328.1 ]
+  %_state.sroa.561588.33168.lcssa = phi i64 [ %_state.sroa.561588.0, %if.then331.split.loop.exit4186 ], [ %or352, %while.body328.1 ]
+  %_state.sroa.2191703.43166.lcssa = phi ptr [ %_state.sroa.2191703.0, %if.then331.split.loop.exit4186 ], [ %incdec.ptr346, %while.body328.1 ]
   %77 = trunc i64 %indvars.iv.lcssa to i32
   store i64 %_state.sroa.561588.33168.lcssa, ptr %bitb, align 8, !tbaa !14
   store i32 %77, ptr %bitk, align 4, !tbaa !15
@@ -762,25 +762,25 @@ cond.end.peel.i2340:                              ; preds = %cond.false.peel.i23
 
 if.then.peel.i2342:                               ; preds = %cond.end.peel.i2340
   %84 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2341 = icmp eq ptr %84, %add.ptr13.peel.i2338
+  %cmp19.peel.i2341 = icmp eq ptr %84, %83
   br i1 %cmp19.peel.i2341, label %again.i2357.sink.split, label %again.i2357.preheader
 
 again.i2357.sink.split:                           ; preds = %if.then.peel.i2342, %if.then21.i2360
   %.ph3733 = phi ptr [ %add.ptr.i2354, %if.then21.i2360 ], [ %add.ptr.peel.i2337, %if.then.peel.i2342 ]
-  %.ph3734 = phi ptr [ %add.ptr13.i2355, %if.then21.i2360 ], [ %add.ptr13.peel.i2338, %if.then.peel.i2342 ]
+  %.ph3734 = phi ptr [ %90, %if.then21.i2360 ], [ %83, %if.then.peel.i2342 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2357.preheader
 
 again.i2357.preheader:                            ; preds = %if.then.peel.i2342, %again.i2357.sink.split
-  %.ph3776 = phi ptr [ %.ph3733, %again.i2357.sink.split ], [ %add.ptr.peel.i2337, %if.then.peel.i2342 ]
-  %.ph3777 = phi ptr [ %.ph3734, %again.i2357.sink.split ], [ %add.ptr13.peel.i2338, %if.then.peel.i2342 ]
-  %.ph3778 = phi ptr [ %window.i2885, %again.i2357.sink.split ], [ %84, %if.then.peel.i2342 ]
+  %.ph3779 = phi ptr [ %.ph3733, %again.i2357.sink.split ], [ %add.ptr.peel.i2337, %if.then.peel.i2342 ]
+  %.ph3780 = phi ptr [ %.ph3734, %again.i2357.sink.split ], [ %83, %if.then.peel.i2342 ]
+  %.ph3781 = phi ptr [ %window.i2885, %again.i2357.sink.split ], [ %84, %if.then.peel.i2342 ]
   br label %again.i2357
 
 again.i2357:                                      ; preds = %again.i2357.preheader, %if.then.i2359
-  %85 = phi ptr [ %add.ptr.i2354, %if.then.i2359 ], [ %.ph3776, %again.i2357.preheader ]
-  %86 = phi ptr [ %add.ptr13.i2355, %if.then.i2359 ], [ %.ph3777, %again.i2357.preheader ]
-  %87 = phi ptr [ %91, %if.then.i2359 ], [ %.ph3778, %again.i2357.preheader ]
+  %85 = phi ptr [ %add.ptr.i2354, %if.then.i2359 ], [ %.ph3779, %again.i2357.preheader ]
+  %86 = phi ptr [ %90, %if.then.i2359 ], [ %.ph3780, %again.i2357.preheader ]
+  %87 = phi ptr [ %91, %if.then.i2359 ], [ %.ph3781, %again.i2357.preheader ]
   %cmp.not.i2346 = icmp ugt ptr %window.i2885, %87
   %spec.select.i2347 = select i1 %cmp.not.i2346, ptr %86, ptr %87
   %sub.ptr.lhs.cast.i2348 = ptrtoint ptr %spec.select.i2347 to i64
@@ -802,7 +802,7 @@ again.i2357:                                      ; preds = %again.i2357.prehead
 
 if.then.i2359:                                    ; preds = %again.i2357
   %91 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2358 = icmp eq ptr %91, %add.ptr13.i2355
+  %cmp19.i2358 = icmp eq ptr %91, %90
   br i1 %cmp19.i2358, label %if.then21.i2360, label %again.i2357, !llvm.loop !26
 
 if.then21.i2360:                                  ; preds = %if.then.i2359
@@ -887,7 +887,7 @@ sw.bb389:                                         ; preds = %for.cond
   br i1 %cmp3973184, label %while.cond400.preheader.preheader, label %while.cond449.preheader
 
 while.cond400.preheader.preheader:                ; preds = %sw.bb389.thread, %sw.bb389
-  %.ph3834 = phi i32 [ %.pre3409, %sw.bb389 ], [ 0, %sw.bb389.thread ]
+  %.ph3848 = phi i32 [ %.pre3409, %sw.bb389 ], [ 0, %sw.bb389.thread ]
   %_state.sroa.561588.53188.ph = phi i64 [ %_state.sroa.561588.0, %sw.bb389 ], [ %shr384, %sw.bb389.thread ]
   %_state.sroa.130.53187.ph = phi i32 [ %_state.sroa.130.0, %sw.bb389 ], [ %sub386, %sw.bb389.thread ]
   %_state.sroa.2191703.63186.ph = phi ptr [ %_state.sroa.2191703.0, %sw.bb389 ], [ %_state.sroa.2191703.4.lcssa, %sw.bb389.thread ]
@@ -904,7 +904,7 @@ while.cond449.preheader:                          ; preds = %while.end431, %sw.b
   br i1 %cmp4523195, label %while.body454, label %while.end465
 
 while.cond400.preheader:                          ; preds = %while.cond400.preheader.preheader, %while.end431
-  %96 = phi i32 [ %113, %while.end431 ], [ %.ph3834, %while.cond400.preheader.preheader ]
+  %96 = phi i32 [ %113, %while.end431 ], [ %.ph3848, %while.cond400.preheader.preheader ]
   %_state.sroa.561588.53188 = phi i64 [ %shr445, %while.end431 ], [ %_state.sroa.561588.53188.ph, %while.cond400.preheader.preheader ]
   %_state.sroa.130.53187 = phi i32 [ %sub447, %while.end431 ], [ %_state.sroa.130.53187.ph, %while.cond400.preheader.preheader ]
   %_state.sroa.2191703.63186 = phi ptr [ %_state.sroa.2191703.7.lcssa, %while.end431 ], [ %_state.sroa.2191703.63186.ph, %while.cond400.preheader.preheader ]
@@ -953,25 +953,25 @@ cond.end.peel.i2383:                              ; preds = %cond.false.peel.i23
 
 if.then.peel.i2385:                               ; preds = %cond.end.peel.i2383
   %103 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2384 = icmp eq ptr %103, %add.ptr13.peel.i2381
+  %cmp19.peel.i2384 = icmp eq ptr %103, %102
   br i1 %cmp19.peel.i2384, label %again.i2400.sink.split, label %again.i2400.preheader
 
 again.i2400.sink.split:                           ; preds = %if.then.peel.i2385, %if.then21.i2403
   %.ph3735 = phi ptr [ %add.ptr.i2397, %if.then21.i2403 ], [ %add.ptr.peel.i2380, %if.then.peel.i2385 ]
-  %.ph3736 = phi ptr [ %add.ptr13.i2398, %if.then21.i2403 ], [ %add.ptr13.peel.i2381, %if.then.peel.i2385 ]
+  %.ph3736 = phi ptr [ %109, %if.then21.i2403 ], [ %102, %if.then.peel.i2385 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2400.preheader
 
 again.i2400.preheader:                            ; preds = %if.then.peel.i2385, %again.i2400.sink.split
-  %.ph3781 = phi ptr [ %.ph3735, %again.i2400.sink.split ], [ %add.ptr.peel.i2380, %if.then.peel.i2385 ]
-  %.ph3782 = phi ptr [ %.ph3736, %again.i2400.sink.split ], [ %add.ptr13.peel.i2381, %if.then.peel.i2385 ]
-  %.ph3783 = phi ptr [ %window.i2885, %again.i2400.sink.split ], [ %103, %if.then.peel.i2385 ]
+  %.ph3785 = phi ptr [ %.ph3735, %again.i2400.sink.split ], [ %add.ptr.peel.i2380, %if.then.peel.i2385 ]
+  %.ph3786 = phi ptr [ %.ph3736, %again.i2400.sink.split ], [ %102, %if.then.peel.i2385 ]
+  %.ph3787 = phi ptr [ %window.i2885, %again.i2400.sink.split ], [ %103, %if.then.peel.i2385 ]
   br label %again.i2400
 
 again.i2400:                                      ; preds = %again.i2400.preheader, %if.then.i2402
-  %104 = phi ptr [ %add.ptr.i2397, %if.then.i2402 ], [ %.ph3781, %again.i2400.preheader ]
-  %105 = phi ptr [ %add.ptr13.i2398, %if.then.i2402 ], [ %.ph3782, %again.i2400.preheader ]
-  %106 = phi ptr [ %110, %if.then.i2402 ], [ %.ph3783, %again.i2400.preheader ]
+  %104 = phi ptr [ %add.ptr.i2397, %if.then.i2402 ], [ %.ph3785, %again.i2400.preheader ]
+  %105 = phi ptr [ %109, %if.then.i2402 ], [ %.ph3786, %again.i2400.preheader ]
+  %106 = phi ptr [ %110, %if.then.i2402 ], [ %.ph3787, %again.i2400.preheader ]
   %cmp.not.i2389 = icmp ugt ptr %window.i2885, %106
   %spec.select.i2390 = select i1 %cmp.not.i2389, ptr %105, ptr %106
   %sub.ptr.lhs.cast.i2391 = ptrtoint ptr %spec.select.i2390 to i64
@@ -993,7 +993,7 @@ again.i2400:                                      ; preds = %again.i2400.prehead
 
 if.then.i2402:                                    ; preds = %again.i2400
   %110 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2401 = icmp eq ptr %110, %add.ptr13.i2398
+  %cmp19.i2401 = icmp eq ptr %110, %109
   br i1 %cmp19.i2401, label %if.then21.i2403, label %again.i2400, !llvm.loop !26
 
 if.then21.i2403:                                  ; preds = %if.then.i2402
@@ -1151,25 +1151,25 @@ cond.end.peel.i2426:                              ; preds = %cond.false.peel.i24
 
 if.then.peel.i2428:                               ; preds = %cond.end.peel.i2426
   %130 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2427 = icmp eq ptr %130, %add.ptr13.peel.i2424
+  %cmp19.peel.i2427 = icmp eq ptr %130, %129
   br i1 %cmp19.peel.i2427, label %again.i2443.sink.split, label %again.i2443.preheader
 
 again.i2443.sink.split:                           ; preds = %if.then.peel.i2428, %if.then21.i2446
   %.ph3737 = phi ptr [ %add.ptr.i2440, %if.then21.i2446 ], [ %add.ptr.peel.i2423, %if.then.peel.i2428 ]
-  %.ph3738 = phi ptr [ %add.ptr13.i2441, %if.then21.i2446 ], [ %add.ptr13.peel.i2424, %if.then.peel.i2428 ]
+  %.ph3738 = phi ptr [ %136, %if.then21.i2446 ], [ %129, %if.then.peel.i2428 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2443.preheader
 
 again.i2443.preheader:                            ; preds = %if.then.peel.i2428, %again.i2443.sink.split
-  %.ph3786 = phi ptr [ %.ph3737, %again.i2443.sink.split ], [ %add.ptr.peel.i2423, %if.then.peel.i2428 ]
-  %.ph3787 = phi ptr [ %.ph3738, %again.i2443.sink.split ], [ %add.ptr13.peel.i2424, %if.then.peel.i2428 ]
-  %.ph3788 = phi ptr [ %window.i2885, %again.i2443.sink.split ], [ %130, %if.then.peel.i2428 ]
+  %.ph3791 = phi ptr [ %.ph3737, %again.i2443.sink.split ], [ %add.ptr.peel.i2423, %if.then.peel.i2428 ]
+  %.ph3792 = phi ptr [ %.ph3738, %again.i2443.sink.split ], [ %129, %if.then.peel.i2428 ]
+  %.ph3793 = phi ptr [ %window.i2885, %again.i2443.sink.split ], [ %130, %if.then.peel.i2428 ]
   br label %again.i2443
 
 again.i2443:                                      ; preds = %again.i2443.preheader, %if.then.i2445
-  %131 = phi ptr [ %add.ptr.i2440, %if.then.i2445 ], [ %.ph3786, %again.i2443.preheader ]
-  %132 = phi ptr [ %add.ptr13.i2441, %if.then.i2445 ], [ %.ph3787, %again.i2443.preheader ]
-  %133 = phi ptr [ %137, %if.then.i2445 ], [ %.ph3788, %again.i2443.preheader ]
+  %131 = phi ptr [ %add.ptr.i2440, %if.then.i2445 ], [ %.ph3791, %again.i2443.preheader ]
+  %132 = phi ptr [ %136, %if.then.i2445 ], [ %.ph3792, %again.i2443.preheader ]
+  %133 = phi ptr [ %137, %if.then.i2445 ], [ %.ph3793, %again.i2443.preheader ]
   %cmp.not.i2432 = icmp ugt ptr %window.i2885, %133
   %spec.select.i2433 = select i1 %cmp.not.i2432, ptr %132, ptr %133
   %sub.ptr.lhs.cast.i2434 = ptrtoint ptr %spec.select.i2433 to i64
@@ -1191,7 +1191,7 @@ again.i2443:                                      ; preds = %again.i2443.prehead
 
 if.then.i2445:                                    ; preds = %again.i2443
   %137 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2444 = icmp eq ptr %137, %add.ptr13.i2441
+  %cmp19.i2444 = icmp eq ptr %137, %136
   br i1 %cmp19.i2444, label %if.then21.i2446, label %again.i2443, !llvm.loop !26
 
 if.then21.i2446:                                  ; preds = %if.then.i2445
@@ -1308,25 +1308,25 @@ cond.end.peel.i2469:                              ; preds = %cond.false.peel.i24
 
 if.then.peel.i2471:                               ; preds = %cond.end.peel.i2469
   %154 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2470 = icmp eq ptr %154, %add.ptr13.peel.i2467
+  %cmp19.peel.i2470 = icmp eq ptr %154, %153
   br i1 %cmp19.peel.i2470, label %again.i2486.sink.split, label %again.i2486.preheader
 
 again.i2486.sink.split:                           ; preds = %if.then.peel.i2471, %if.then21.i2489
   %.ph3739 = phi ptr [ %add.ptr.i2483, %if.then21.i2489 ], [ %add.ptr.peel.i2466, %if.then.peel.i2471 ]
-  %.ph3740 = phi ptr [ %add.ptr13.i2484, %if.then21.i2489 ], [ %add.ptr13.peel.i2467, %if.then.peel.i2471 ]
+  %.ph3740 = phi ptr [ %160, %if.then21.i2489 ], [ %153, %if.then.peel.i2471 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2486.preheader
 
 again.i2486.preheader:                            ; preds = %if.then.peel.i2471, %again.i2486.sink.split
-  %.ph3801 = phi ptr [ %.ph3739, %again.i2486.sink.split ], [ %add.ptr.peel.i2466, %if.then.peel.i2471 ]
-  %.ph3802 = phi ptr [ %.ph3740, %again.i2486.sink.split ], [ %add.ptr13.peel.i2467, %if.then.peel.i2471 ]
-  %.ph3803 = phi ptr [ %window.i2885, %again.i2486.sink.split ], [ %154, %if.then.peel.i2471 ]
+  %.ph3809 = phi ptr [ %.ph3739, %again.i2486.sink.split ], [ %add.ptr.peel.i2466, %if.then.peel.i2471 ]
+  %.ph3810 = phi ptr [ %.ph3740, %again.i2486.sink.split ], [ %153, %if.then.peel.i2471 ]
+  %.ph3811 = phi ptr [ %window.i2885, %again.i2486.sink.split ], [ %154, %if.then.peel.i2471 ]
   br label %again.i2486
 
 again.i2486:                                      ; preds = %again.i2486.preheader, %if.then.i2488
-  %155 = phi ptr [ %add.ptr.i2483, %if.then.i2488 ], [ %.ph3801, %again.i2486.preheader ]
-  %156 = phi ptr [ %add.ptr13.i2484, %if.then.i2488 ], [ %.ph3802, %again.i2486.preheader ]
-  %157 = phi ptr [ %161, %if.then.i2488 ], [ %.ph3803, %again.i2486.preheader ]
+  %155 = phi ptr [ %add.ptr.i2483, %if.then.i2488 ], [ %.ph3809, %again.i2486.preheader ]
+  %156 = phi ptr [ %160, %if.then.i2488 ], [ %.ph3810, %again.i2486.preheader ]
+  %157 = phi ptr [ %161, %if.then.i2488 ], [ %.ph3811, %again.i2486.preheader ]
   %cmp.not.i2475 = icmp ugt ptr %window.i2885, %157
   %spec.select.i2476 = select i1 %cmp.not.i2475, ptr %156, ptr %157
   %sub.ptr.lhs.cast.i2477 = ptrtoint ptr %spec.select.i2476 to i64
@@ -1348,7 +1348,7 @@ again.i2486:                                      ; preds = %again.i2486.prehead
 
 if.then.i2488:                                    ; preds = %again.i2486
   %161 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2487 = icmp eq ptr %161, %add.ptr13.i2484
+  %cmp19.i2487 = icmp eq ptr %161, %160
   br i1 %cmp19.i2487, label %if.then21.i2489, label %again.i2486, !llvm.loop !26
 
 if.then21.i2489:                                  ; preds = %if.then.i2488
@@ -1438,25 +1438,25 @@ cond.end.peel.i2512:                              ; preds = %cond.false.peel.i25
 
 if.then.peel.i2514:                               ; preds = %cond.end.peel.i2512
   %171 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2513 = icmp eq ptr %171, %add.ptr13.peel.i2510
+  %cmp19.peel.i2513 = icmp eq ptr %171, %170
   br i1 %cmp19.peel.i2513, label %again.i2529.sink.split, label %again.i2529.preheader
 
 again.i2529.sink.split:                           ; preds = %if.then.peel.i2514, %if.then21.i2532
   %.ph3741 = phi ptr [ %add.ptr.i2526, %if.then21.i2532 ], [ %add.ptr.peel.i2509, %if.then.peel.i2514 ]
-  %.ph3742 = phi ptr [ %add.ptr13.i2527, %if.then21.i2532 ], [ %add.ptr13.peel.i2510, %if.then.peel.i2514 ]
+  %.ph3742 = phi ptr [ %177, %if.then21.i2532 ], [ %170, %if.then.peel.i2514 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2529.preheader
 
 again.i2529.preheader:                            ; preds = %if.then.peel.i2514, %again.i2529.sink.split
-  %.ph3806 = phi ptr [ %.ph3741, %again.i2529.sink.split ], [ %add.ptr.peel.i2509, %if.then.peel.i2514 ]
-  %.ph3807 = phi ptr [ %.ph3742, %again.i2529.sink.split ], [ %add.ptr13.peel.i2510, %if.then.peel.i2514 ]
-  %.ph3808 = phi ptr [ %window.i2885, %again.i2529.sink.split ], [ %171, %if.then.peel.i2514 ]
+  %.ph3815 = phi ptr [ %.ph3741, %again.i2529.sink.split ], [ %add.ptr.peel.i2509, %if.then.peel.i2514 ]
+  %.ph3816 = phi ptr [ %.ph3742, %again.i2529.sink.split ], [ %170, %if.then.peel.i2514 ]
+  %.ph3817 = phi ptr [ %window.i2885, %again.i2529.sink.split ], [ %171, %if.then.peel.i2514 ]
   br label %again.i2529
 
 again.i2529:                                      ; preds = %again.i2529.preheader, %if.then.i2531
-  %172 = phi ptr [ %add.ptr.i2526, %if.then.i2531 ], [ %.ph3806, %again.i2529.preheader ]
-  %173 = phi ptr [ %add.ptr13.i2527, %if.then.i2531 ], [ %.ph3807, %again.i2529.preheader ]
-  %174 = phi ptr [ %178, %if.then.i2531 ], [ %.ph3808, %again.i2529.preheader ]
+  %172 = phi ptr [ %add.ptr.i2526, %if.then.i2531 ], [ %.ph3815, %again.i2529.preheader ]
+  %173 = phi ptr [ %177, %if.then.i2531 ], [ %.ph3816, %again.i2529.preheader ]
+  %174 = phi ptr [ %178, %if.then.i2531 ], [ %.ph3817, %again.i2529.preheader ]
   %cmp.not.i2518 = icmp ugt ptr %window.i2885, %174
   %spec.select.i2519 = select i1 %cmp.not.i2518, ptr %173, ptr %174
   %sub.ptr.lhs.cast.i2520 = ptrtoint ptr %spec.select.i2519 to i64
@@ -1478,7 +1478,7 @@ again.i2529:                                      ; preds = %again.i2529.prehead
 
 if.then.i2531:                                    ; preds = %again.i2529
   %178 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2530 = icmp eq ptr %178, %add.ptr13.i2527
+  %cmp19.i2530 = icmp eq ptr %178, %177
   br i1 %cmp19.i2530, label %if.then21.i2532, label %again.i2529, !llvm.loop !26
 
 if.then21.i2532:                                  ; preds = %if.then.i2531
@@ -1559,7 +1559,7 @@ do.body.prol:                                     ; preds = %do.body.preheader, 
   br i1 %prol.iter.cmp.not, label %do.body.prol.loopexit, label %do.body.prol, !llvm.loop !46
 
 do.body.prol.loopexit:                            ; preds = %do.body.prol, %do.body.preheader
-  %inc682.lcssa3866.unr = phi i32 [ undef, %do.body.preheader ], [ %inc682.prol, %do.body.prol ]
+  %inc682.lcssa3880.unr = phi i32 [ undef, %do.body.preheader ], [ %inc682.prol, %do.body.prol ]
   %i.1.unr = phi i32 [ %i.1.ph, %do.body.preheader ], [ %inc682.prol, %do.body.prol ]
   %j.1.unr = phi i32 [ %j.1.ph, %do.body.preheader ], [ %dec685.prol, %do.body.prol ]
   %189 = icmp ult i32 %188, 3
@@ -1589,7 +1589,7 @@ do.body:                                          ; preds = %do.body.prol.loopex
   br i1 %tobool686.not.3, label %do.end, label %do.body, !llvm.loop !48
 
 do.end:                                           ; preds = %do.body.prol.loopexit, %do.body, %middle.block
-  %inc682.lcssa = phi i32 [ %ind.end, %middle.block ], [ %inc682.lcssa3866.unr, %do.body.prol.loopexit ], [ %inc682.3, %do.body ]
+  %inc682.lcssa = phi i32 [ %ind.end, %middle.block ], [ %inc682.lcssa3880.unr, %do.body.prol.loopexit ], [ %inc682.3, %do.body ]
   store i32 %inc682.lcssa, ptr %index, align 4, !tbaa !20
   br label %cleanup690
 
@@ -1677,25 +1677,25 @@ cond.end.peel.i2555:                              ; preds = %cond.false.peel.i25
 
 if.then.peel.i2557:                               ; preds = %cond.end.peel.i2555
   %199 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2556 = icmp eq ptr %199, %add.ptr13.peel.i2553
+  %cmp19.peel.i2556 = icmp eq ptr %199, %198
   br i1 %cmp19.peel.i2556, label %again.i2572.sink.split, label %again.i2572.preheader
 
 again.i2572.sink.split:                           ; preds = %if.then.peel.i2557, %if.then21.i2575
   %.ph3743 = phi ptr [ %add.ptr.i2569, %if.then21.i2575 ], [ %add.ptr.peel.i2552, %if.then.peel.i2557 ]
-  %.ph3744 = phi ptr [ %add.ptr13.i2570, %if.then21.i2575 ], [ %add.ptr13.peel.i2553, %if.then.peel.i2557 ]
+  %.ph3744 = phi ptr [ %205, %if.then21.i2575 ], [ %198, %if.then.peel.i2557 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2572.preheader
 
 again.i2572.preheader:                            ; preds = %if.then.peel.i2557, %again.i2572.sink.split
-  %.ph3791 = phi ptr [ %.ph3743, %again.i2572.sink.split ], [ %add.ptr.peel.i2552, %if.then.peel.i2557 ]
-  %.ph3792 = phi ptr [ %.ph3744, %again.i2572.sink.split ], [ %add.ptr13.peel.i2553, %if.then.peel.i2557 ]
-  %.ph3793 = phi ptr [ %window.i2885, %again.i2572.sink.split ], [ %199, %if.then.peel.i2557 ]
+  %.ph3797 = phi ptr [ %.ph3743, %again.i2572.sink.split ], [ %add.ptr.peel.i2552, %if.then.peel.i2557 ]
+  %.ph3798 = phi ptr [ %.ph3744, %again.i2572.sink.split ], [ %198, %if.then.peel.i2557 ]
+  %.ph3799 = phi ptr [ %window.i2885, %again.i2572.sink.split ], [ %199, %if.then.peel.i2557 ]
   br label %again.i2572
 
 again.i2572:                                      ; preds = %again.i2572.preheader, %if.then.i2574
-  %200 = phi ptr [ %add.ptr.i2569, %if.then.i2574 ], [ %.ph3791, %again.i2572.preheader ]
-  %201 = phi ptr [ %add.ptr13.i2570, %if.then.i2574 ], [ %.ph3792, %again.i2572.preheader ]
-  %202 = phi ptr [ %206, %if.then.i2574 ], [ %.ph3793, %again.i2572.preheader ]
+  %200 = phi ptr [ %add.ptr.i2569, %if.then.i2574 ], [ %.ph3797, %again.i2572.preheader ]
+  %201 = phi ptr [ %205, %if.then.i2574 ], [ %.ph3798, %again.i2572.preheader ]
+  %202 = phi ptr [ %206, %if.then.i2574 ], [ %.ph3799, %again.i2572.preheader ]
   %cmp.not.i2561 = icmp ugt ptr %window.i2885, %202
   %spec.select.i2562 = select i1 %cmp.not.i2561, ptr %201, ptr %202
   %sub.ptr.lhs.cast.i2563 = ptrtoint ptr %spec.select.i2562 to i64
@@ -1717,7 +1717,7 @@ again.i2572:                                      ; preds = %again.i2572.prehead
 
 if.then.i2574:                                    ; preds = %again.i2572
   %206 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2573 = icmp eq ptr %206, %add.ptr13.i2570
+  %cmp19.i2573 = icmp eq ptr %206, %205
   br i1 %cmp19.i2573, label %if.then21.i2575, label %again.i2572, !llvm.loop !26
 
 if.then21.i2575:                                  ; preds = %if.then.i2574
@@ -1820,25 +1820,25 @@ cond.end.peel.i2598:                              ; preds = %cond.false.peel.i25
 
 if.then.peel.i2600:                               ; preds = %cond.end.peel.i2598
   %221 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2599 = icmp eq ptr %221, %add.ptr13.peel.i2596
+  %cmp19.peel.i2599 = icmp eq ptr %221, %220
   br i1 %cmp19.peel.i2599, label %again.i2615.sink.split, label %again.i2615.preheader
 
 again.i2615.sink.split:                           ; preds = %if.then.peel.i2600, %if.then21.i2618
   %.ph3745 = phi ptr [ %add.ptr.i2612, %if.then21.i2618 ], [ %add.ptr.peel.i2595, %if.then.peel.i2600 ]
-  %.ph3746 = phi ptr [ %add.ptr13.i2613, %if.then21.i2618 ], [ %add.ptr13.peel.i2596, %if.then.peel.i2600 ]
+  %.ph3746 = phi ptr [ %227, %if.then21.i2618 ], [ %220, %if.then.peel.i2600 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2615.preheader
 
 again.i2615.preheader:                            ; preds = %if.then.peel.i2600, %again.i2615.sink.split
-  %.ph3796 = phi ptr [ %.ph3745, %again.i2615.sink.split ], [ %add.ptr.peel.i2595, %if.then.peel.i2600 ]
-  %.ph3797 = phi ptr [ %.ph3746, %again.i2615.sink.split ], [ %add.ptr13.peel.i2596, %if.then.peel.i2600 ]
-  %.ph3798 = phi ptr [ %window.i2885, %again.i2615.sink.split ], [ %221, %if.then.peel.i2600 ]
+  %.ph3803 = phi ptr [ %.ph3745, %again.i2615.sink.split ], [ %add.ptr.peel.i2595, %if.then.peel.i2600 ]
+  %.ph3804 = phi ptr [ %.ph3746, %again.i2615.sink.split ], [ %220, %if.then.peel.i2600 ]
+  %.ph3805 = phi ptr [ %window.i2885, %again.i2615.sink.split ], [ %221, %if.then.peel.i2600 ]
   br label %again.i2615
 
 again.i2615:                                      ; preds = %again.i2615.preheader, %if.then.i2617
-  %222 = phi ptr [ %add.ptr.i2612, %if.then.i2617 ], [ %.ph3796, %again.i2615.preheader ]
-  %223 = phi ptr [ %add.ptr13.i2613, %if.then.i2617 ], [ %.ph3797, %again.i2615.preheader ]
-  %224 = phi ptr [ %228, %if.then.i2617 ], [ %.ph3798, %again.i2615.preheader ]
+  %222 = phi ptr [ %add.ptr.i2612, %if.then.i2617 ], [ %.ph3803, %again.i2615.preheader ]
+  %223 = phi ptr [ %227, %if.then.i2617 ], [ %.ph3804, %again.i2615.preheader ]
+  %224 = phi ptr [ %228, %if.then.i2617 ], [ %.ph3805, %again.i2615.preheader ]
   %cmp.not.i2604 = icmp ugt ptr %window.i2885, %224
   %spec.select.i2605 = select i1 %cmp.not.i2604, ptr %223, ptr %224
   %sub.ptr.lhs.cast.i2606 = ptrtoint ptr %spec.select.i2605 to i64
@@ -1860,7 +1860,7 @@ again.i2615:                                      ; preds = %again.i2615.prehead
 
 if.then.i2617:                                    ; preds = %again.i2615
   %228 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2616 = icmp eq ptr %228, %add.ptr13.i2613
+  %cmp19.i2616 = icmp eq ptr %228, %227
   br i1 %cmp19.i2616, label %if.then21.i2618, label %again.i2615, !llvm.loop !26
 
 if.then21.i2618:                                  ; preds = %if.then.i2617
@@ -2006,25 +2006,25 @@ cond.end.peel.i2641:                              ; preds = %cond.false.peel.i26
 
 if.then.peel.i2643:                               ; preds = %cond.end.peel.i2641
   %247 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2642 = icmp eq ptr %247, %add.ptr13.peel.i2639
+  %cmp19.peel.i2642 = icmp eq ptr %247, %246
   br i1 %cmp19.peel.i2642, label %again.i2658.sink.split, label %again.i2658.preheader
 
 again.i2658.sink.split:                           ; preds = %if.then.peel.i2643, %if.then21.i2661
   %.ph3747 = phi ptr [ %add.ptr.i2655, %if.then21.i2661 ], [ %add.ptr.peel.i2638, %if.then.peel.i2643 ]
-  %.ph3748 = phi ptr [ %add.ptr13.i2656, %if.then21.i2661 ], [ %add.ptr13.peel.i2639, %if.then.peel.i2643 ]
+  %.ph3748 = phi ptr [ %253, %if.then21.i2661 ], [ %246, %if.then.peel.i2643 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2658.preheader
 
 again.i2658.preheader:                            ; preds = %if.then.peel.i2643, %again.i2658.sink.split
-  %.ph3811 = phi ptr [ %.ph3747, %again.i2658.sink.split ], [ %add.ptr.peel.i2638, %if.then.peel.i2643 ]
-  %.ph3812 = phi ptr [ %.ph3748, %again.i2658.sink.split ], [ %add.ptr13.peel.i2639, %if.then.peel.i2643 ]
-  %.ph3813 = phi ptr [ %window.i2885, %again.i2658.sink.split ], [ %247, %if.then.peel.i2643 ]
+  %.ph3821 = phi ptr [ %.ph3747, %again.i2658.sink.split ], [ %add.ptr.peel.i2638, %if.then.peel.i2643 ]
+  %.ph3822 = phi ptr [ %.ph3748, %again.i2658.sink.split ], [ %246, %if.then.peel.i2643 ]
+  %.ph3823 = phi ptr [ %window.i2885, %again.i2658.sink.split ], [ %247, %if.then.peel.i2643 ]
   br label %again.i2658
 
 again.i2658:                                      ; preds = %again.i2658.preheader, %if.then.i2660
-  %248 = phi ptr [ %add.ptr.i2655, %if.then.i2660 ], [ %.ph3811, %again.i2658.preheader ]
-  %249 = phi ptr [ %add.ptr13.i2656, %if.then.i2660 ], [ %.ph3812, %again.i2658.preheader ]
-  %250 = phi ptr [ %254, %if.then.i2660 ], [ %.ph3813, %again.i2658.preheader ]
+  %248 = phi ptr [ %add.ptr.i2655, %if.then.i2660 ], [ %.ph3821, %again.i2658.preheader ]
+  %249 = phi ptr [ %253, %if.then.i2660 ], [ %.ph3822, %again.i2658.preheader ]
+  %250 = phi ptr [ %254, %if.then.i2660 ], [ %.ph3823, %again.i2658.preheader ]
   %cmp.not.i2647 = icmp ugt ptr %window.i2885, %250
   %spec.select.i2648 = select i1 %cmp.not.i2647, ptr %249, ptr %250
   %sub.ptr.lhs.cast.i2649 = ptrtoint ptr %spec.select.i2648 to i64
@@ -2046,7 +2046,7 @@ again.i2658:                                      ; preds = %again.i2658.prehead
 
 if.then.i2660:                                    ; preds = %again.i2658
   %254 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2659 = icmp eq ptr %254, %add.ptr13.i2656
+  %cmp19.i2659 = icmp eq ptr %254, %253
   br i1 %cmp19.i2659, label %if.then21.i2661, label %again.i2658, !llvm.loop !26
 
 if.then21.i2661:                                  ; preds = %if.then.i2660
@@ -2151,25 +2151,25 @@ cond.end.peel.i2684:                              ; preds = %cond.false.peel.i26
 
 if.then.peel.i2686:                               ; preds = %cond.end.peel.i2684
   %270 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2685 = icmp eq ptr %270, %add.ptr13.peel.i2682
+  %cmp19.peel.i2685 = icmp eq ptr %270, %269
   br i1 %cmp19.peel.i2685, label %again.i2701.sink.split, label %again.i2701.preheader
 
 again.i2701.sink.split:                           ; preds = %if.then.peel.i2686, %if.then21.i2704
   %.ph3749 = phi ptr [ %add.ptr.i2698, %if.then21.i2704 ], [ %add.ptr.peel.i2681, %if.then.peel.i2686 ]
-  %.ph3750 = phi ptr [ %add.ptr13.i2699, %if.then21.i2704 ], [ %add.ptr13.peel.i2682, %if.then.peel.i2686 ]
+  %.ph3750 = phi ptr [ %276, %if.then21.i2704 ], [ %269, %if.then.peel.i2686 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2701.preheader
 
 again.i2701.preheader:                            ; preds = %if.then.peel.i2686, %again.i2701.sink.split
-  %.ph3816 = phi ptr [ %.ph3749, %again.i2701.sink.split ], [ %add.ptr.peel.i2681, %if.then.peel.i2686 ]
-  %.ph3817 = phi ptr [ %.ph3750, %again.i2701.sink.split ], [ %add.ptr13.peel.i2682, %if.then.peel.i2686 ]
-  %.ph3818 = phi ptr [ %window.i2885, %again.i2701.sink.split ], [ %270, %if.then.peel.i2686 ]
+  %.ph3827 = phi ptr [ %.ph3749, %again.i2701.sink.split ], [ %add.ptr.peel.i2681, %if.then.peel.i2686 ]
+  %.ph3828 = phi ptr [ %.ph3750, %again.i2701.sink.split ], [ %269, %if.then.peel.i2686 ]
+  %.ph3829 = phi ptr [ %window.i2885, %again.i2701.sink.split ], [ %270, %if.then.peel.i2686 ]
   br label %again.i2701
 
 again.i2701:                                      ; preds = %again.i2701.preheader, %if.then.i2703
-  %271 = phi ptr [ %add.ptr.i2698, %if.then.i2703 ], [ %.ph3816, %again.i2701.preheader ]
-  %272 = phi ptr [ %add.ptr13.i2699, %if.then.i2703 ], [ %.ph3817, %again.i2701.preheader ]
-  %273 = phi ptr [ %277, %if.then.i2703 ], [ %.ph3818, %again.i2701.preheader ]
+  %271 = phi ptr [ %add.ptr.i2698, %if.then.i2703 ], [ %.ph3827, %again.i2701.preheader ]
+  %272 = phi ptr [ %276, %if.then.i2703 ], [ %.ph3828, %again.i2701.preheader ]
+  %273 = phi ptr [ %277, %if.then.i2703 ], [ %.ph3829, %again.i2701.preheader ]
   %cmp.not.i2690 = icmp ugt ptr %window.i2885, %273
   %spec.select.i2691 = select i1 %cmp.not.i2690, ptr %272, ptr %273
   %sub.ptr.lhs.cast.i2692 = ptrtoint ptr %spec.select.i2691 to i64
@@ -2191,7 +2191,7 @@ again.i2701:                                      ; preds = %again.i2701.prehead
 
 if.then.i2703:                                    ; preds = %again.i2701
   %277 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2702 = icmp eq ptr %277, %add.ptr13.i2699
+  %cmp19.i2702 = icmp eq ptr %277, %276
   br i1 %cmp19.i2702, label %if.then21.i2704, label %again.i2701, !llvm.loop !26
 
 if.then21.i2704:                                  ; preds = %if.then.i2703
@@ -2316,25 +2316,25 @@ cond.end.peel.i2727:                              ; preds = %cond.false.peel.i27
 
 if.then.peel.i2729:                               ; preds = %cond.end.peel.i2727
   %295 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2728 = icmp eq ptr %295, %add.ptr13.peel.i2725
+  %cmp19.peel.i2728 = icmp eq ptr %295, %294
   br i1 %cmp19.peel.i2728, label %again.i2744.sink.split, label %again.i2744.preheader
 
 again.i2744.sink.split:                           ; preds = %if.then.peel.i2729, %if.then21.i2747
   %.ph3751 = phi ptr [ %add.ptr.i2741, %if.then21.i2747 ], [ %add.ptr.peel.i2724, %if.then.peel.i2729 ]
-  %.ph3752 = phi ptr [ %add.ptr13.i2742, %if.then21.i2747 ], [ %add.ptr13.peel.i2725, %if.then.peel.i2729 ]
+  %.ph3752 = phi ptr [ %301, %if.then21.i2747 ], [ %294, %if.then.peel.i2729 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2744.preheader
 
 again.i2744.preheader:                            ; preds = %if.then.peel.i2729, %again.i2744.sink.split
-  %.ph3821 = phi ptr [ %.ph3751, %again.i2744.sink.split ], [ %add.ptr.peel.i2724, %if.then.peel.i2729 ]
-  %.ph3822 = phi ptr [ %.ph3752, %again.i2744.sink.split ], [ %add.ptr13.peel.i2725, %if.then.peel.i2729 ]
-  %.ph3823 = phi ptr [ %window.i2885, %again.i2744.sink.split ], [ %295, %if.then.peel.i2729 ]
+  %.ph3833 = phi ptr [ %.ph3751, %again.i2744.sink.split ], [ %add.ptr.peel.i2724, %if.then.peel.i2729 ]
+  %.ph3834 = phi ptr [ %.ph3752, %again.i2744.sink.split ], [ %294, %if.then.peel.i2729 ]
+  %.ph3835 = phi ptr [ %window.i2885, %again.i2744.sink.split ], [ %295, %if.then.peel.i2729 ]
   br label %again.i2744
 
 again.i2744:                                      ; preds = %again.i2744.preheader, %if.then.i2746
-  %296 = phi ptr [ %add.ptr.i2741, %if.then.i2746 ], [ %.ph3821, %again.i2744.preheader ]
-  %297 = phi ptr [ %add.ptr13.i2742, %if.then.i2746 ], [ %.ph3822, %again.i2744.preheader ]
-  %298 = phi ptr [ %302, %if.then.i2746 ], [ %.ph3823, %again.i2744.preheader ]
+  %296 = phi ptr [ %add.ptr.i2741, %if.then.i2746 ], [ %.ph3833, %again.i2744.preheader ]
+  %297 = phi ptr [ %301, %if.then.i2746 ], [ %.ph3834, %again.i2744.preheader ]
+  %298 = phi ptr [ %302, %if.then.i2746 ], [ %.ph3835, %again.i2744.preheader ]
   %cmp.not.i2733 = icmp ugt ptr %window.i2885, %298
   %spec.select.i2734 = select i1 %cmp.not.i2733, ptr %297, ptr %298
   %sub.ptr.lhs.cast.i2735 = ptrtoint ptr %spec.select.i2734 to i64
@@ -2356,7 +2356,7 @@ again.i2744:                                      ; preds = %again.i2744.prehead
 
 if.then.i2746:                                    ; preds = %again.i2744
   %302 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2745 = icmp eq ptr %302, %add.ptr13.i2742
+  %cmp19.i2745 = icmp eq ptr %302, %301
   br i1 %cmp19.i2745, label %if.then21.i2747, label %again.i2744, !llvm.loop !26
 
 if.then21.i2747:                                  ; preds = %if.then.i2746
@@ -2436,128 +2436,121 @@ while.body1151:                                   ; preds = %while.body1151.preh
 
 if.then1155:                                      ; preds = %while.body1151
   %308 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp1158 = icmp eq ptr %_state.sroa.3231780.53141, %308
+  %cmp1158 = icmp ne ptr %_state.sroa.3231780.53141, %308
   %309 = load ptr, ptr %read, align 8, !tbaa !17
-  br i1 %cmp1158, label %land.lhs.true1160, label %if.then1155.if.then1195_crit_edge
-
-if.then1155.if.then1195_crit_edge:                ; preds = %if.then1155
-  %.pre3418 = ptrtoint ptr %309 to i64
-  br label %if.then1195
-
-land.lhs.true1160:                                ; preds = %if.then1155
   %cmp1164.not = icmp eq ptr %309, %window.i2885
-  br i1 %cmp1164.not, label %if.then1195, label %if.end1191
+  %or.cond3583 = select i1 %cmp1158, i1 true, i1 %cmp1164.not
+  br i1 %or.cond3583, label %if.then1195, label %if.end1191
 
-if.end1191:                                       ; preds = %land.lhs.true1160
+if.end1191:                                       ; preds = %if.then1155
   %cmp1172 = icmp ult ptr %window.i2885, %309
   %sub.ptr.lhs.cast1177 = ptrtoint ptr %309 to i64
   %sub1180 = add i64 %sub.ptr.lhs.cast1177, %8
-  %sub.ptr.lhs.cast1184 = ptrtoint ptr %_state.sroa.3231780.53141 to i64
+  %sub.ptr.lhs.cast1184 = ptrtoint ptr %308 to i64
   %sub.ptr.sub1186 = sub i64 %sub.ptr.lhs.cast1184, %sub.ptr.rhs.cast.i2903
   %cond1188 = select i1 %cmp1172, i64 %sub1180, i64 %sub.ptr.sub1186
   %conv1189 = trunc i64 %cond1188 to i32
   %cmp1193 = icmp eq i32 %conv1189, 0
   br i1 %cmp1193, label %if.then1195, label %if.end1273
 
-if.then1195:                                      ; preds = %if.then1155.if.then1195_crit_edge, %land.lhs.true1160, %if.end1191
-  %sub.ptr.rhs.cast.peel.i2761.pre-phi = phi i64 [ %.pre3418, %if.then1155.if.then1195_crit_edge ], [ %sub.ptr.rhs.cast.i2903, %land.lhs.true1160 ], [ %sub.ptr.lhs.cast1177, %if.end1191 ]
-  %310 = phi ptr [ %309, %if.then1155.if.then1195_crit_edge ], [ %window.i2885, %land.lhs.true1160 ], [ %309, %if.end1191 ]
-  %_state.sroa.3231780.62950 = phi ptr [ %_state.sroa.3231780.53141, %if.then1155.if.then1195_crit_edge ], [ %_state.sroa.3231780.53141, %land.lhs.true1160 ], [ %window.i2885, %if.end1191 ]
+if.then1195:                                      ; preds = %if.then1155, %if.end1191
+  %_state.sroa.3231780.62950 = phi ptr [ %window.i2885, %if.end1191 ], [ %_state.sroa.3231780.53141, %if.then1155 ]
   store ptr %_state.sroa.3231780.62950, ptr %write, align 8, !tbaa !16
-  %cmp.not.peel.i2757 = icmp ugt ptr %310, %_state.sroa.3231780.62950
+  %cmp.not.peel.i2757 = icmp ugt ptr %309, %_state.sroa.3231780.62950
   %spec.select2955 = select i1 %cmp.not.peel.i2757, ptr %308, ptr %_state.sroa.3231780.62950
   %sub.ptr.lhs.cast.peel.i2760 = ptrtoint ptr %spec.select2955 to i64
-  %sub.ptr.sub.peel.i2762 = sub i64 %sub.ptr.lhs.cast.peel.i2760, %sub.ptr.rhs.cast.peel.i2761.pre-phi
+  %sub.ptr.rhs.cast.peel.i2761 = ptrtoint ptr %309 to i64
+  %sub.ptr.sub.peel.i2762 = sub i64 %sub.ptr.lhs.cast.peel.i2760, %sub.ptr.rhs.cast.peel.i2761
   %conv.peel.i2763 = trunc i64 %sub.ptr.sub.peel.i2762 to i32
-  %311 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
-  %conv..peel.i2764 = tail call i32 @llvm.umin.i32(i32 %311, i32 %conv.peel.i2763)
-  %sub.peel.i2765 = sub i32 %311, %conv..peel.i2764
+  %310 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
+  %conv..peel.i2764 = tail call i32 @llvm.umin.i32(i32 %310, i32 %conv.peel.i2763)
+  %sub.peel.i2765 = sub i32 %310, %conv..peel.i2764
   store i32 %sub.peel.i2765, ptr %avail_out.i2882, align 8, !tbaa !24
-  %312 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %311 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
   %conv10.peel.i2766 = zext i32 %conv..peel.i2764 to i64
-  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %312, ptr align 1 %310, i64 %conv10.peel.i2766, i1 false)
-  %313 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr.peel.i2767 = getelementptr inbounds i8, ptr %313, i64 %conv10.peel.i2766
+  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %311, ptr align 1 %309, i64 %conv10.peel.i2766, i1 false)
+  %312 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %add.ptr.peel.i2767 = getelementptr inbounds i8, ptr %312, i64 %conv10.peel.i2766
   store ptr %add.ptr.peel.i2767, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr13.peel.i2768 = getelementptr inbounds i8, ptr %310, i64 %conv10.peel.i2766
-  %314 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp15.peel.i2769 = icmp eq ptr %add.ptr13.peel.i2768, %314
+  %add.ptr13.peel.i2768 = getelementptr inbounds i8, ptr %309, i64 %conv10.peel.i2766
+  %313 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %cmp15.peel.i2769 = icmp eq ptr %add.ptr13.peel.i2768, %313
   br i1 %cmp15.peel.i2769, label %if.then.peel.i2772, label %inflate_flush.exit2793
 
 if.then.peel.i2772:                               ; preds = %if.then1195
-  %315 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2771 = icmp eq ptr %315, %add.ptr13.peel.i2768
+  %314 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp19.peel.i2771 = icmp eq ptr %314, %313
   br i1 %cmp19.peel.i2771, label %again.i2787.sink.split, label %again.i2787.preheader
 
 again.i2787.sink.split:                           ; preds = %if.then.peel.i2772, %if.then21.i2790
   %.ph3753 = phi ptr [ %add.ptr.i2784, %if.then21.i2790 ], [ %add.ptr.peel.i2767, %if.then.peel.i2772 ]
-  %.ph3754 = phi ptr [ %add.ptr13.i2785, %if.then21.i2790 ], [ %add.ptr13.peel.i2768, %if.then.peel.i2772 ]
+  %.ph3754 = phi ptr [ %320, %if.then21.i2790 ], [ %313, %if.then.peel.i2772 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2787.preheader
 
 again.i2787.preheader:                            ; preds = %if.then.peel.i2772, %again.i2787.sink.split
-  %.ph3831 = phi ptr [ %.ph3753, %again.i2787.sink.split ], [ %add.ptr.peel.i2767, %if.then.peel.i2772 ]
-  %.ph3832 = phi ptr [ %.ph3754, %again.i2787.sink.split ], [ %add.ptr13.peel.i2768, %if.then.peel.i2772 ]
-  %.ph3833 = phi ptr [ %window.i2885, %again.i2787.sink.split ], [ %315, %if.then.peel.i2772 ]
+  %.ph3845 = phi ptr [ %.ph3753, %again.i2787.sink.split ], [ %add.ptr.peel.i2767, %if.then.peel.i2772 ]
+  %.ph3846 = phi ptr [ %.ph3754, %again.i2787.sink.split ], [ %313, %if.then.peel.i2772 ]
+  %.ph3847 = phi ptr [ %window.i2885, %again.i2787.sink.split ], [ %314, %if.then.peel.i2772 ]
   br label %again.i2787
 
 again.i2787:                                      ; preds = %again.i2787.preheader, %if.then.i2789
-  %316 = phi ptr [ %add.ptr.i2784, %if.then.i2789 ], [ %.ph3831, %again.i2787.preheader ]
-  %317 = phi ptr [ %add.ptr13.i2785, %if.then.i2789 ], [ %.ph3832, %again.i2787.preheader ]
-  %318 = phi ptr [ %322, %if.then.i2789 ], [ %.ph3833, %again.i2787.preheader ]
-  %cmp.not.i2776 = icmp ugt ptr %window.i2885, %318
-  %spec.select.i2777 = select i1 %cmp.not.i2776, ptr %317, ptr %318
+  %315 = phi ptr [ %add.ptr.i2784, %if.then.i2789 ], [ %.ph3845, %again.i2787.preheader ]
+  %316 = phi ptr [ %320, %if.then.i2789 ], [ %.ph3846, %again.i2787.preheader ]
+  %317 = phi ptr [ %321, %if.then.i2789 ], [ %.ph3847, %again.i2787.preheader ]
+  %cmp.not.i2776 = icmp ugt ptr %window.i2885, %317
+  %spec.select.i2777 = select i1 %cmp.not.i2776, ptr %316, ptr %317
   %sub.ptr.lhs.cast.i2778 = ptrtoint ptr %spec.select.i2777 to i64
   %sub.ptr.sub.i2779 = sub i64 %sub.ptr.lhs.cast.i2778, %sub.ptr.rhs.cast.i2903
   %conv.i2780 = trunc i64 %sub.ptr.sub.i2779 to i32
-  %319 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
-  %conv..i2781 = tail call i32 @llvm.umin.i32(i32 %319, i32 %conv.i2780)
-  %sub.i2782 = sub i32 %319, %conv..i2781
+  %318 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
+  %conv..i2781 = tail call i32 @llvm.umin.i32(i32 %318, i32 %conv.i2780)
+  %sub.i2782 = sub i32 %318, %conv..i2781
   store i32 %sub.i2782, ptr %avail_out.i2882, align 8, !tbaa !24
   %conv10.i2783 = zext i32 %conv..i2781 to i64
-  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %316, ptr nonnull align 1 %window.i2885, i64 %conv10.i2783, i1 false)
-  %320 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr.i2784 = getelementptr inbounds i8, ptr %320, i64 %conv10.i2783
+  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %315, ptr nonnull align 1 %window.i2885, i64 %conv10.i2783, i1 false)
+  %319 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %add.ptr.i2784 = getelementptr inbounds i8, ptr %319, i64 %conv10.i2783
   store ptr %add.ptr.i2784, ptr %next_out.i2883, align 8, !tbaa !25
   %add.ptr13.i2785 = getelementptr inbounds i8, ptr %window.i2885, i64 %conv10.i2783
-  %321 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp15.i2786 = icmp eq ptr %add.ptr13.i2785, %321
+  %320 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %cmp15.i2786 = icmp eq ptr %add.ptr13.i2785, %320
   br i1 %cmp15.i2786, label %if.then.i2789, label %inflate_flush.exit2793
 
 if.then.i2789:                                    ; preds = %again.i2787
-  %322 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2788 = icmp eq ptr %322, %add.ptr13.i2785
+  %321 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp19.i2788 = icmp eq ptr %321, %320
   br i1 %cmp19.i2788, label %if.then21.i2790, label %again.i2787, !llvm.loop !26
 
 if.then21.i2790:                                  ; preds = %if.then.i2789
   br label %again.i2787.sink.split, !llvm.loop !26
 
 inflate_flush.exit2793:                           ; preds = %again.i2787, %if.then1195
-  %323 = phi ptr [ %add.ptr.peel.i2767, %if.then1195 ], [ %add.ptr.i2784, %again.i2787 ]
-  %324 = phi ptr [ %314, %if.then1195 ], [ %321, %again.i2787 ]
+  %322 = phi ptr [ %add.ptr.peel.i2767, %if.then1195 ], [ %add.ptr.i2784, %again.i2787 ]
+  %323 = phi ptr [ %313, %if.then1195 ], [ %320, %again.i2787 ]
   %add.ptr13.lcssa.i2792 = phi ptr [ %add.ptr13.peel.i2768, %if.then1195 ], [ %add.ptr13.i2785, %again.i2787 ]
   store ptr %add.ptr13.lcssa.i2792, ptr %read, align 8, !tbaa !17
-  %325 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp1202 = icmp ult ptr %325, %add.ptr13.lcssa.i2792
-  %sub.ptr.rhs.cast1208 = ptrtoint ptr %325 to i64
-  %sub.ptr.lhs.cast1214 = ptrtoint ptr %324 to i64
+  %324 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp1202 = icmp ult ptr %324, %add.ptr13.lcssa.i2792
+  %sub.ptr.rhs.cast1208 = ptrtoint ptr %324 to i64
+  %sub.ptr.lhs.cast1214 = ptrtoint ptr %323 to i64
   %sub.ptr.sub1216 = sub i64 %sub.ptr.lhs.cast1214, %sub.ptr.rhs.cast1208
-  %.pre3419 = ptrtoint ptr %add.ptr13.lcssa.i2792 to i64
+  %.pre3418 = ptrtoint ptr %add.ptr13.lcssa.i2792 to i64
   %sub.ptr.lhs.cast1207 = ptrtoint ptr %add.ptr13.lcssa.i2792 to i64
-  %326 = xor i64 %sub.ptr.rhs.cast1208, -1
-  %sub1210 = add i64 %326, %sub.ptr.lhs.cast1207
-  %.pre3420 = ptrtoint ptr %324 to i64
-  %sub.ptr.lhs.cast1249.pre-phi = select i1 %cmp1202, i64 %.pre3420, i64 %sub.ptr.lhs.cast1214
-  %sub.ptr.lhs.cast1242.pre-phi = select i1 %cmp1202, i64 %sub.ptr.lhs.cast1207, i64 %.pre3419
+  %325 = xor i64 %sub.ptr.rhs.cast1208, -1
+  %sub1210 = add i64 %325, %sub.ptr.lhs.cast1207
+  %.pre3419 = ptrtoint ptr %323 to i64
+  %sub.ptr.lhs.cast1249.pre-phi = select i1 %cmp1202, i64 %.pre3419, i64 %sub.ptr.lhs.cast1214
+  %sub.ptr.lhs.cast1242.pre-phi = select i1 %cmp1202, i64 %sub.ptr.lhs.cast1207, i64 %.pre3418
   %cond1218 = select i1 %cmp1202, i64 %sub1210, i64 %sub.ptr.sub1216
-  %cmp1223 = icmp ne ptr %325, %324
+  %cmp1223 = icmp ne ptr %324, %323
   %cmp1229.not = icmp eq ptr %add.ptr13.lcssa.i2792, %window.i2885
   %or.cond2956 = select i1 %cmp1223, i1 true, i1 %cmp1229.not
   %cmp1237 = icmp ult ptr %window.i2885, %add.ptr13.lcssa.i2792
   %sub1245 = add i64 %sub.ptr.lhs.cast1242.pre-phi, %8
   %sub.ptr.sub1251 = sub i64 %sub.ptr.lhs.cast1249.pre-phi, %sub.ptr.rhs.cast.i2903
   %cond1253 = select i1 %cmp1237, i64 %sub1245, i64 %sub.ptr.sub1251
-  %_state.sroa.3231780.7 = select i1 %or.cond2956, ptr %325, ptr %window.i2885
+  %_state.sroa.3231780.7 = select i1 %or.cond2956, ptr %324, ptr %window.i2885
   %_state.sroa.407.7.in = select i1 %or.cond2956, i64 %cond1218, i64 %cond1253
   %_state.sroa.407.7 = trunc i64 %_state.sroa.407.7.in to i32
   %cmp1258 = icmp eq i32 %_state.sroa.407.7, 0
@@ -2570,67 +2563,67 @@ if.then1260:                                      ; preds = %inflate_flush.exit2
   store ptr %_state.sroa.2191703.21, ptr %z, align 8, !tbaa !5
   store ptr %_state.sroa.3231780.7, ptr %write, align 8, !tbaa !16
   %cmp.not.peel.i2800 = icmp ugt ptr %add.ptr13.lcssa.i2792, %_state.sroa.3231780.7
-  %spec.select2957 = select i1 %cmp.not.peel.i2800, ptr %324, ptr %_state.sroa.3231780.7
+  %spec.select2957 = select i1 %cmp.not.peel.i2800, ptr %323, ptr %_state.sroa.3231780.7
   %sub.ptr.lhs.cast.peel.i2803 = ptrtoint ptr %spec.select2957 to i64
   %sub.ptr.sub.peel.i2805 = sub i64 %sub.ptr.lhs.cast.peel.i2803, %sub.ptr.lhs.cast1242.pre-phi
   %conv.peel.i2806 = trunc i64 %sub.ptr.sub.peel.i2805 to i32
-  %327 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
-  %conv..peel.i2807 = tail call i32 @llvm.umin.i32(i32 %327, i32 %conv.peel.i2806)
-  %sub.peel.i2808 = sub i32 %327, %conv..peel.i2807
+  %326 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
+  %conv..peel.i2807 = tail call i32 @llvm.umin.i32(i32 %326, i32 %conv.peel.i2806)
+  %sub.peel.i2808 = sub i32 %326, %conv..peel.i2807
   store i32 %sub.peel.i2808, ptr %avail_out.i2882, align 8, !tbaa !24
   %conv10.peel.i2809 = zext i32 %conv..peel.i2807 to i64
-  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %323, ptr align 1 %add.ptr13.lcssa.i2792, i64 %conv10.peel.i2809, i1 false)
-  %328 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr.peel.i2810 = getelementptr inbounds i8, ptr %328, i64 %conv10.peel.i2809
+  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %322, ptr align 1 %add.ptr13.lcssa.i2792, i64 %conv10.peel.i2809, i1 false)
+  %327 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %add.ptr.peel.i2810 = getelementptr inbounds i8, ptr %327, i64 %conv10.peel.i2809
   store ptr %add.ptr.peel.i2810, ptr %next_out.i2883, align 8, !tbaa !25
   %add.ptr13.peel.i2811 = getelementptr inbounds i8, ptr %add.ptr13.lcssa.i2792, i64 %conv10.peel.i2809
-  %329 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp15.peel.i2812 = icmp eq ptr %add.ptr13.peel.i2811, %329
+  %328 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %cmp15.peel.i2812 = icmp eq ptr %add.ptr13.peel.i2811, %328
   br i1 %cmp15.peel.i2812, label %if.then.peel.i2815, label %inflate_flush.exit2836
 
 if.then.peel.i2815:                               ; preds = %if.then1260
-  %330 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2814 = icmp eq ptr %330, %add.ptr13.peel.i2811
+  %329 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp19.peel.i2814 = icmp eq ptr %329, %328
   br i1 %cmp19.peel.i2814, label %again.i2830.sink.split, label %again.i2830.preheader
 
 again.i2830.sink.split:                           ; preds = %if.then.peel.i2815, %if.then21.i2833
   %.ph3755 = phi ptr [ %add.ptr.i2827, %if.then21.i2833 ], [ %add.ptr.peel.i2810, %if.then.peel.i2815 ]
-  %.ph3756 = phi ptr [ %add.ptr13.i2828, %if.then21.i2833 ], [ %add.ptr13.peel.i2811, %if.then.peel.i2815 ]
+  %.ph3756 = phi ptr [ %335, %if.then21.i2833 ], [ %328, %if.then.peel.i2815 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2830.preheader
 
 again.i2830.preheader:                            ; preds = %if.then.peel.i2815, %again.i2830.sink.split
-  %.ph3826 = phi ptr [ %.ph3755, %again.i2830.sink.split ], [ %add.ptr.peel.i2810, %if.then.peel.i2815 ]
-  %.ph3827 = phi ptr [ %.ph3756, %again.i2830.sink.split ], [ %add.ptr13.peel.i2811, %if.then.peel.i2815 ]
-  %.ph3828 = phi ptr [ %window.i2885, %again.i2830.sink.split ], [ %330, %if.then.peel.i2815 ]
+  %.ph3839 = phi ptr [ %.ph3755, %again.i2830.sink.split ], [ %add.ptr.peel.i2810, %if.then.peel.i2815 ]
+  %.ph3840 = phi ptr [ %.ph3756, %again.i2830.sink.split ], [ %328, %if.then.peel.i2815 ]
+  %.ph3841 = phi ptr [ %window.i2885, %again.i2830.sink.split ], [ %329, %if.then.peel.i2815 ]
   br label %again.i2830
 
 again.i2830:                                      ; preds = %again.i2830.preheader, %if.then.i2832
-  %331 = phi ptr [ %add.ptr.i2827, %if.then.i2832 ], [ %.ph3826, %again.i2830.preheader ]
-  %332 = phi ptr [ %add.ptr13.i2828, %if.then.i2832 ], [ %.ph3827, %again.i2830.preheader ]
-  %333 = phi ptr [ %337, %if.then.i2832 ], [ %.ph3828, %again.i2830.preheader ]
-  %cmp.not.i2819 = icmp ugt ptr %window.i2885, %333
-  %spec.select.i2820 = select i1 %cmp.not.i2819, ptr %332, ptr %333
+  %330 = phi ptr [ %add.ptr.i2827, %if.then.i2832 ], [ %.ph3839, %again.i2830.preheader ]
+  %331 = phi ptr [ %335, %if.then.i2832 ], [ %.ph3840, %again.i2830.preheader ]
+  %332 = phi ptr [ %336, %if.then.i2832 ], [ %.ph3841, %again.i2830.preheader ]
+  %cmp.not.i2819 = icmp ugt ptr %window.i2885, %332
+  %spec.select.i2820 = select i1 %cmp.not.i2819, ptr %331, ptr %332
   %sub.ptr.lhs.cast.i2821 = ptrtoint ptr %spec.select.i2820 to i64
   %sub.ptr.sub.i2822 = sub i64 %sub.ptr.lhs.cast.i2821, %sub.ptr.rhs.cast.i2903
   %conv.i2823 = trunc i64 %sub.ptr.sub.i2822 to i32
-  %334 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
-  %conv..i2824 = tail call i32 @llvm.umin.i32(i32 %334, i32 %conv.i2823)
-  %sub.i2825 = sub i32 %334, %conv..i2824
+  %333 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
+  %conv..i2824 = tail call i32 @llvm.umin.i32(i32 %333, i32 %conv.i2823)
+  %sub.i2825 = sub i32 %333, %conv..i2824
   store i32 %sub.i2825, ptr %avail_out.i2882, align 8, !tbaa !24
   %conv10.i2826 = zext i32 %conv..i2824 to i64
-  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %331, ptr nonnull align 1 %window.i2885, i64 %conv10.i2826, i1 false)
-  %335 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr.i2827 = getelementptr inbounds i8, ptr %335, i64 %conv10.i2826
+  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %330, ptr nonnull align 1 %window.i2885, i64 %conv10.i2826, i1 false)
+  %334 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %add.ptr.i2827 = getelementptr inbounds i8, ptr %334, i64 %conv10.i2826
   store ptr %add.ptr.i2827, ptr %next_out.i2883, align 8, !tbaa !25
   %add.ptr13.i2828 = getelementptr inbounds i8, ptr %window.i2885, i64 %conv10.i2826
-  %336 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp15.i2829 = icmp eq ptr %add.ptr13.i2828, %336
+  %335 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %cmp15.i2829 = icmp eq ptr %add.ptr13.i2828, %335
   br i1 %cmp15.i2829, label %if.then.i2832, label %inflate_flush.exit2836
 
 if.then.i2832:                                    ; preds = %again.i2830
-  %337 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2831 = icmp eq ptr %337, %add.ptr13.i2828
+  %336 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp19.i2831 = icmp eq ptr %336, %335
   br i1 %cmp19.i2831, label %if.then21.i2833, label %again.i2830, !llvm.loop !26
 
 if.then21.i2833:                                  ; preds = %if.then.i2832
@@ -2645,15 +2638,15 @@ if.end1273:                                       ; preds = %if.end1191, %inflat
   %_state.sroa.3231780.8 = phi ptr [ %_state.sroa.3231780.7, %inflate_flush.exit2793 ], [ %window.i2885, %if.end1191 ], [ %_state.sroa.3231780.53141, %while.body1151 ]
   %_state.sroa.407.8 = phi i32 [ %_state.sroa.407.7, %inflate_flush.exit2793 ], [ %conv1189, %if.end1191 ], [ %_state.sroa.407.53142, %while.body1151 ]
   %incdec.ptr1275 = getelementptr inbounds i8, ptr %_state.sroa.4621885.03143, i64 1
-  %338 = load i8, ptr %_state.sroa.4621885.03143, align 1, !tbaa !20
+  %337 = load i8, ptr %_state.sroa.4621885.03143, align 1, !tbaa !20
   %incdec.ptr1277 = getelementptr inbounds i8, ptr %_state.sroa.3231780.8, i64 1
-  store i8 %338, ptr %_state.sroa.3231780.8, align 1, !tbaa !20
+  store i8 %337, ptr %_state.sroa.3231780.8, align 1, !tbaa !20
   %dec1279 = add i32 %_state.sroa.407.8, -1
-  %339 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp1282 = icmp eq ptr %incdec.ptr1275, %339
+  %338 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %cmp1282 = icmp eq ptr %incdec.ptr1275, %338
   %spec.select2234 = select i1 %cmp1282, ptr %window.i2885, ptr %incdec.ptr1275
-  %340 = load i32, ptr %sub, align 8, !tbaa !51
-  %dec1290 = add i32 %340, -1
+  %339 = load i32, ptr %sub, align 8, !tbaa !51
+  %dec1290 = add i32 %339, -1
   store i32 %dec1290, ptr %sub, align 8, !tbaa !51
   %tobool1150.not = icmp eq i32 %dec1290, 0
   br i1 %tobool1150.not, label %while.end1291, label %while.body1151, !llvm.loop !57
@@ -2669,128 +2662,121 @@ sw.bb1293:                                        ; preds = %for.cond
   br i1 %cmp1295, label %if.then1297, label %if.end1415
 
 if.then1297:                                      ; preds = %sw.bb1293
-  %341 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp1300 = icmp eq ptr %_state.sroa.3231780.0, %341
-  %342 = load ptr, ptr %read, align 8, !tbaa !17
-  br i1 %cmp1300, label %land.lhs.true1302, label %if.then1297.if.then1337_crit_edge
+  %340 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %cmp1300 = icmp ne ptr %_state.sroa.3231780.0, %340
+  %341 = load ptr, ptr %read, align 8, !tbaa !17
+  %cmp1306.not = icmp eq ptr %341, %window.i2885
+  %or.cond3584 = select i1 %cmp1300, i1 true, i1 %cmp1306.not
+  br i1 %or.cond3584, label %if.then1337, label %if.end1333
 
-if.then1297.if.then1337_crit_edge:                ; preds = %if.then1297
-  %.pre3421 = ptrtoint ptr %342 to i64
-  br label %if.then1337
-
-land.lhs.true1302:                                ; preds = %if.then1297
-  %cmp1306.not = icmp eq ptr %342, %window.i2885
-  br i1 %cmp1306.not, label %if.then1337, label %if.end1333
-
-if.end1333:                                       ; preds = %land.lhs.true1302
-  %cmp1314 = icmp ult ptr %window.i2885, %342
-  %sub.ptr.lhs.cast1319 = ptrtoint ptr %342 to i64
+if.end1333:                                       ; preds = %if.then1297
+  %cmp1314 = icmp ult ptr %window.i2885, %341
+  %sub.ptr.lhs.cast1319 = ptrtoint ptr %341 to i64
   %sub1322 = add i64 %sub.ptr.lhs.cast1319, %8
-  %sub.ptr.lhs.cast1326 = ptrtoint ptr %_state.sroa.3231780.0 to i64
+  %sub.ptr.lhs.cast1326 = ptrtoint ptr %340 to i64
   %sub.ptr.sub1328 = sub i64 %sub.ptr.lhs.cast1326, %sub.ptr.rhs.cast.i2903
   %cond1330 = select i1 %cmp1314, i64 %sub1322, i64 %sub.ptr.sub1328
   %conv1331 = trunc i64 %cond1330 to i32
   %cmp1335 = icmp eq i32 %conv1331, 0
   br i1 %cmp1335, label %if.then1337, label %if.end1415
 
-if.then1337:                                      ; preds = %if.then1297.if.then1337_crit_edge, %land.lhs.true1302, %if.end1333
-  %sub.ptr.rhs.cast.peel.i2847.pre-phi = phi i64 [ %.pre3421, %if.then1297.if.then1337_crit_edge ], [ %sub.ptr.rhs.cast.i2903, %land.lhs.true1302 ], [ %sub.ptr.lhs.cast1319, %if.end1333 ]
-  %343 = phi ptr [ %342, %if.then1297.if.then1337_crit_edge ], [ %window.i2885, %land.lhs.true1302 ], [ %342, %if.end1333 ]
-  %_state.sroa.3231780.92954 = phi ptr [ %_state.sroa.3231780.0, %if.then1297.if.then1337_crit_edge ], [ %_state.sroa.3231780.0, %land.lhs.true1302 ], [ %window.i2885, %if.end1333 ]
+if.then1337:                                      ; preds = %if.then1297, %if.end1333
+  %_state.sroa.3231780.92954 = phi ptr [ %window.i2885, %if.end1333 ], [ %_state.sroa.3231780.0, %if.then1297 ]
   store ptr %_state.sroa.3231780.92954, ptr %write, align 8, !tbaa !16
-  %cmp.not.peel.i2843 = icmp ugt ptr %343, %_state.sroa.3231780.92954
-  %spec.select2958 = select i1 %cmp.not.peel.i2843, ptr %341, ptr %_state.sroa.3231780.92954
+  %cmp.not.peel.i2843 = icmp ugt ptr %341, %_state.sroa.3231780.92954
+  %spec.select2958 = select i1 %cmp.not.peel.i2843, ptr %340, ptr %_state.sroa.3231780.92954
   %sub.ptr.lhs.cast.peel.i2846 = ptrtoint ptr %spec.select2958 to i64
-  %sub.ptr.sub.peel.i2848 = sub i64 %sub.ptr.lhs.cast.peel.i2846, %sub.ptr.rhs.cast.peel.i2847.pre-phi
+  %sub.ptr.rhs.cast.peel.i2847 = ptrtoint ptr %341 to i64
+  %sub.ptr.sub.peel.i2848 = sub i64 %sub.ptr.lhs.cast.peel.i2846, %sub.ptr.rhs.cast.peel.i2847
   %conv.peel.i2849 = trunc i64 %sub.ptr.sub.peel.i2848 to i32
-  %344 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
-  %conv..peel.i2850 = tail call i32 @llvm.umin.i32(i32 %344, i32 %conv.peel.i2849)
-  %sub.peel.i2851 = sub i32 %344, %conv..peel.i2850
+  %342 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
+  %conv..peel.i2850 = tail call i32 @llvm.umin.i32(i32 %342, i32 %conv.peel.i2849)
+  %sub.peel.i2851 = sub i32 %342, %conv..peel.i2850
   store i32 %sub.peel.i2851, ptr %avail_out.i2882, align 8, !tbaa !24
-  %345 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %343 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
   %conv10.peel.i2852 = zext i32 %conv..peel.i2850 to i64
-  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %345, ptr align 1 %343, i64 %conv10.peel.i2852, i1 false)
-  %346 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr.peel.i2853 = getelementptr inbounds i8, ptr %346, i64 %conv10.peel.i2852
+  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %343, ptr align 1 %341, i64 %conv10.peel.i2852, i1 false)
+  %344 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %add.ptr.peel.i2853 = getelementptr inbounds i8, ptr %344, i64 %conv10.peel.i2852
   store ptr %add.ptr.peel.i2853, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr13.peel.i2854 = getelementptr inbounds i8, ptr %343, i64 %conv10.peel.i2852
-  %347 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp15.peel.i2855 = icmp eq ptr %add.ptr13.peel.i2854, %347
+  %add.ptr13.peel.i2854 = getelementptr inbounds i8, ptr %341, i64 %conv10.peel.i2852
+  %345 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %cmp15.peel.i2855 = icmp eq ptr %add.ptr13.peel.i2854, %345
   br i1 %cmp15.peel.i2855, label %if.then.peel.i2858, label %inflate_flush.exit2879
 
 if.then.peel.i2858:                               ; preds = %if.then1337
-  %348 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2857 = icmp eq ptr %348, %add.ptr13.peel.i2854
+  %346 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp19.peel.i2857 = icmp eq ptr %346, %345
   br i1 %cmp19.peel.i2857, label %again.i2873.sink.split, label %again.i2873.preheader
 
 again.i2873.sink.split:                           ; preds = %if.then.peel.i2858, %if.then21.i2876
   %.ph3757 = phi ptr [ %add.ptr.i2870, %if.then21.i2876 ], [ %add.ptr.peel.i2853, %if.then.peel.i2858 ]
-  %.ph3758 = phi ptr [ %add.ptr13.i2871, %if.then21.i2876 ], [ %add.ptr13.peel.i2854, %if.then.peel.i2858 ]
+  %.ph3758 = phi ptr [ %352, %if.then21.i2876 ], [ %345, %if.then.peel.i2858 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2873.preheader
 
 again.i2873.preheader:                            ; preds = %if.then.peel.i2858, %again.i2873.sink.split
-  %.ph3835 = phi ptr [ %.ph3757, %again.i2873.sink.split ], [ %add.ptr.peel.i2853, %if.then.peel.i2858 ]
-  %.ph3836 = phi ptr [ %.ph3758, %again.i2873.sink.split ], [ %add.ptr13.peel.i2854, %if.then.peel.i2858 ]
-  %.ph3837 = phi ptr [ %window.i2885, %again.i2873.sink.split ], [ %348, %if.then.peel.i2858 ]
+  %.ph3849 = phi ptr [ %.ph3757, %again.i2873.sink.split ], [ %add.ptr.peel.i2853, %if.then.peel.i2858 ]
+  %.ph3850 = phi ptr [ %.ph3758, %again.i2873.sink.split ], [ %345, %if.then.peel.i2858 ]
+  %.ph3851 = phi ptr [ %window.i2885, %again.i2873.sink.split ], [ %346, %if.then.peel.i2858 ]
   br label %again.i2873
 
 again.i2873:                                      ; preds = %again.i2873.preheader, %if.then.i2875
-  %349 = phi ptr [ %add.ptr.i2870, %if.then.i2875 ], [ %.ph3835, %again.i2873.preheader ]
-  %350 = phi ptr [ %add.ptr13.i2871, %if.then.i2875 ], [ %.ph3836, %again.i2873.preheader ]
-  %351 = phi ptr [ %355, %if.then.i2875 ], [ %.ph3837, %again.i2873.preheader ]
-  %cmp.not.i2862 = icmp ugt ptr %window.i2885, %351
-  %spec.select.i2863 = select i1 %cmp.not.i2862, ptr %350, ptr %351
+  %347 = phi ptr [ %add.ptr.i2870, %if.then.i2875 ], [ %.ph3849, %again.i2873.preheader ]
+  %348 = phi ptr [ %352, %if.then.i2875 ], [ %.ph3850, %again.i2873.preheader ]
+  %349 = phi ptr [ %353, %if.then.i2875 ], [ %.ph3851, %again.i2873.preheader ]
+  %cmp.not.i2862 = icmp ugt ptr %window.i2885, %349
+  %spec.select.i2863 = select i1 %cmp.not.i2862, ptr %348, ptr %349
   %sub.ptr.lhs.cast.i2864 = ptrtoint ptr %spec.select.i2863 to i64
   %sub.ptr.sub.i2865 = sub i64 %sub.ptr.lhs.cast.i2864, %sub.ptr.rhs.cast.i2903
   %conv.i2866 = trunc i64 %sub.ptr.sub.i2865 to i32
-  %352 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
-  %conv..i2867 = tail call i32 @llvm.umin.i32(i32 %352, i32 %conv.i2866)
-  %sub.i2868 = sub i32 %352, %conv..i2867
+  %350 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
+  %conv..i2867 = tail call i32 @llvm.umin.i32(i32 %350, i32 %conv.i2866)
+  %sub.i2868 = sub i32 %350, %conv..i2867
   store i32 %sub.i2868, ptr %avail_out.i2882, align 8, !tbaa !24
   %conv10.i2869 = zext i32 %conv..i2867 to i64
-  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %349, ptr nonnull align 1 %window.i2885, i64 %conv10.i2869, i1 false)
-  %353 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr.i2870 = getelementptr inbounds i8, ptr %353, i64 %conv10.i2869
+  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %347, ptr nonnull align 1 %window.i2885, i64 %conv10.i2869, i1 false)
+  %351 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %add.ptr.i2870 = getelementptr inbounds i8, ptr %351, i64 %conv10.i2869
   store ptr %add.ptr.i2870, ptr %next_out.i2883, align 8, !tbaa !25
   %add.ptr13.i2871 = getelementptr inbounds i8, ptr %window.i2885, i64 %conv10.i2869
-  %354 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp15.i2872 = icmp eq ptr %add.ptr13.i2871, %354
+  %352 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %cmp15.i2872 = icmp eq ptr %add.ptr13.i2871, %352
   br i1 %cmp15.i2872, label %if.then.i2875, label %inflate_flush.exit2879
 
 if.then.i2875:                                    ; preds = %again.i2873
-  %355 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2874 = icmp eq ptr %355, %add.ptr13.i2871
+  %353 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp19.i2874 = icmp eq ptr %353, %352
   br i1 %cmp19.i2874, label %if.then21.i2876, label %again.i2873, !llvm.loop !26
 
 if.then21.i2876:                                  ; preds = %if.then.i2875
   br label %again.i2873.sink.split, !llvm.loop !26
 
 inflate_flush.exit2879:                           ; preds = %again.i2873, %if.then1337
-  %356 = phi ptr [ %347, %if.then1337 ], [ %354, %again.i2873 ]
+  %354 = phi ptr [ %345, %if.then1337 ], [ %352, %again.i2873 ]
   %add.ptr13.lcssa.i2878 = phi ptr [ %add.ptr13.peel.i2854, %if.then1337 ], [ %add.ptr13.i2871, %again.i2873 ]
   store ptr %add.ptr13.lcssa.i2878, ptr %read, align 8, !tbaa !17
-  %357 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp1344 = icmp ult ptr %357, %add.ptr13.lcssa.i2878
-  %sub.ptr.rhs.cast1350 = ptrtoint ptr %357 to i64
-  %sub.ptr.lhs.cast1356 = ptrtoint ptr %356 to i64
+  %355 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp1344 = icmp ult ptr %355, %add.ptr13.lcssa.i2878
+  %sub.ptr.rhs.cast1350 = ptrtoint ptr %355 to i64
+  %sub.ptr.lhs.cast1356 = ptrtoint ptr %354 to i64
   %sub.ptr.sub1358 = sub i64 %sub.ptr.lhs.cast1356, %sub.ptr.rhs.cast1350
-  %.pre3422 = ptrtoint ptr %add.ptr13.lcssa.i2878 to i64
+  %.pre3420 = ptrtoint ptr %add.ptr13.lcssa.i2878 to i64
   %sub.ptr.lhs.cast1349 = ptrtoint ptr %add.ptr13.lcssa.i2878 to i64
-  %358 = xor i64 %sub.ptr.rhs.cast1350, -1
-  %sub1352 = add i64 %358, %sub.ptr.lhs.cast1349
-  %.pre3423 = ptrtoint ptr %356 to i64
-  %sub.ptr.lhs.cast1391.pre-phi = select i1 %cmp1344, i64 %.pre3423, i64 %sub.ptr.lhs.cast1356
-  %sub.ptr.lhs.cast1384.pre-phi = select i1 %cmp1344, i64 %sub.ptr.lhs.cast1349, i64 %.pre3422
+  %356 = xor i64 %sub.ptr.rhs.cast1350, -1
+  %sub1352 = add i64 %356, %sub.ptr.lhs.cast1349
+  %.pre3421 = ptrtoint ptr %354 to i64
+  %sub.ptr.lhs.cast1391.pre-phi = select i1 %cmp1344, i64 %.pre3421, i64 %sub.ptr.lhs.cast1356
+  %sub.ptr.lhs.cast1384.pre-phi = select i1 %cmp1344, i64 %sub.ptr.lhs.cast1349, i64 %.pre3420
   %cond1360 = select i1 %cmp1344, i64 %sub1352, i64 %sub.ptr.sub1358
-  %cmp1365 = icmp ne ptr %357, %356
+  %cmp1365 = icmp ne ptr %355, %354
   %cmp1371.not = icmp eq ptr %add.ptr13.lcssa.i2878, %window.i2885
   %or.cond2959 = select i1 %cmp1365, i1 true, i1 %cmp1371.not
   %cmp1379 = icmp ult ptr %window.i2885, %add.ptr13.lcssa.i2878
   %sub1387 = add i64 %sub.ptr.lhs.cast1384.pre-phi, %8
   %sub.ptr.sub1393 = sub i64 %sub.ptr.lhs.cast1391.pre-phi, %sub.ptr.rhs.cast.i2903
   %cond1395 = select i1 %cmp1379, i64 %sub1387, i64 %sub.ptr.sub1393
-  %_state.sroa.3231780.10 = select i1 %or.cond2959, ptr %357, ptr %window.i2885
+  %_state.sroa.3231780.10 = select i1 %or.cond2959, ptr %355, ptr %window.i2885
   %_state.sroa.407.10.in = select i1 %or.cond2959, i64 %cond1360, i64 %cond1395
   %_state.sroa.407.10 = trunc i64 %_state.sroa.407.10.in to i32
   %cmp1400 = icmp eq i32 %_state.sroa.407.10, 0
@@ -2808,8 +2794,8 @@ if.then1402:                                      ; preds = %inflate_flush.exit2
 if.end1415:                                       ; preds = %if.end1333, %inflate_flush.exit2879, %sw.bb1293
   %_state.sroa.3231780.11 = phi ptr [ %_state.sroa.3231780.10, %inflate_flush.exit2879 ], [ %window.i2885, %if.end1333 ], [ %_state.sroa.3231780.0, %sw.bb1293 ]
   %_state.sroa.407.11 = phi i32 [ %_state.sroa.407.10, %inflate_flush.exit2879 ], [ %conv1331, %if.end1333 ], [ %_state.sroa.407.0, %sw.bb1293 ]
-  %359 = load i32, ptr %sub1416, align 8, !tbaa !20
-  %conv1417 = trunc i32 %359 to i8
+  %357 = load i32, ptr %sub1416, align 8, !tbaa !20
+  %conv1417 = trunc i32 %357 to i8
   %incdec.ptr1419 = getelementptr inbounds i8, ptr %_state.sroa.3231780.11, i64 1
   store i8 %conv1417, ptr %_state.sroa.3231780.11, align 1, !tbaa !20
   %dec1421 = add i32 %_state.sroa.407.11, -1
@@ -2831,89 +2817,89 @@ sw.bb1435:                                        ; preds = %sw.bb1423, %if.then
   %_state.sroa.2191703.22 = phi ptr [ %_state.sroa.2191703.0, %for.cond ], [ %incdec.ptr1433, %if.then1427 ], [ %_state.sroa.2191703.0, %sw.bb1423 ]
   %_state.sroa.130.21 = phi i32 [ %_state.sroa.130.0, %for.cond ], [ %sub1429, %if.then1427 ], [ %_state.sroa.130.0, %sw.bb1423 ]
   store ptr %_state.sroa.3231780.0, ptr %write, align 8, !tbaa !16
-  %360 = load ptr, ptr %read, align 8, !tbaa !17
-  %cmp.not.peel.i2886 = icmp ugt ptr %360, %_state.sroa.3231780.0
+  %358 = load ptr, ptr %read, align 8, !tbaa !17
+  %cmp.not.peel.i2886 = icmp ugt ptr %358, %_state.sroa.3231780.0
   br i1 %cmp.not.peel.i2886, label %cond.false.peel.i2887, label %cond.end.peel.i2899
 
 cond.false.peel.i2887:                            ; preds = %sw.bb1435
-  %361 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %359 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
   br label %cond.end.peel.i2899
 
 cond.end.peel.i2899:                              ; preds = %cond.false.peel.i2887, %sw.bb1435
-  %cond.peel.i2888 = phi ptr [ %361, %cond.false.peel.i2887 ], [ %_state.sroa.3231780.0, %sw.bb1435 ]
+  %cond.peel.i2888 = phi ptr [ %359, %cond.false.peel.i2887 ], [ %_state.sroa.3231780.0, %sw.bb1435 ]
   %sub.ptr.lhs.cast.peel.i2889 = ptrtoint ptr %cond.peel.i2888 to i64
-  %sub.ptr.rhs.cast.peel.i2890 = ptrtoint ptr %360 to i64
+  %sub.ptr.rhs.cast.peel.i2890 = ptrtoint ptr %358 to i64
   %sub.ptr.sub.peel.i2891 = sub i64 %sub.ptr.lhs.cast.peel.i2889, %sub.ptr.rhs.cast.peel.i2890
   %conv.peel.i2892 = trunc i64 %sub.ptr.sub.peel.i2891 to i32
-  %362 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
-  %conv..peel.i2893 = tail call i32 @llvm.umin.i32(i32 %362, i32 %conv.peel.i2892)
-  %sub.peel.i2894 = sub i32 %362, %conv..peel.i2893
+  %360 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
+  %conv..peel.i2893 = tail call i32 @llvm.umin.i32(i32 %360, i32 %conv.peel.i2892)
+  %sub.peel.i2894 = sub i32 %360, %conv..peel.i2893
   store i32 %sub.peel.i2894, ptr %avail_out.i2882, align 8, !tbaa !24
-  %363 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %361 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
   %conv10.peel.i2895 = zext i32 %conv..peel.i2893 to i64
-  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %363, ptr align 1 %360, i64 %conv10.peel.i2895, i1 false)
-  %364 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr.peel.i2896 = getelementptr inbounds i8, ptr %364, i64 %conv10.peel.i2895
+  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %361, ptr align 1 %358, i64 %conv10.peel.i2895, i1 false)
+  %362 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %add.ptr.peel.i2896 = getelementptr inbounds i8, ptr %362, i64 %conv10.peel.i2895
   store ptr %add.ptr.peel.i2896, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr13.peel.i2897 = getelementptr inbounds i8, ptr %360, i64 %conv10.peel.i2895
-  %365 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp15.peel.i2898 = icmp eq ptr %add.ptr13.peel.i2897, %365
+  %add.ptr13.peel.i2897 = getelementptr inbounds i8, ptr %358, i64 %conv10.peel.i2895
+  %363 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %cmp15.peel.i2898 = icmp eq ptr %add.ptr13.peel.i2897, %363
   br i1 %cmp15.peel.i2898, label %if.then.peel.i2901, label %inflate_flush.exit2922
 
 if.then.peel.i2901:                               ; preds = %cond.end.peel.i2899
-  %366 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel.i2900 = icmp eq ptr %366, %add.ptr13.peel.i2897
+  %364 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp19.peel.i2900 = icmp eq ptr %364, %363
   br i1 %cmp19.peel.i2900, label %again.i2916.sink.split, label %again.i2916.preheader
 
 again.i2916.sink.split:                           ; preds = %if.then.peel.i2901, %if.then21.i2919
   %.ph3759 = phi ptr [ %add.ptr.i2913, %if.then21.i2919 ], [ %add.ptr.peel.i2896, %if.then.peel.i2901 ]
-  %.ph3760 = phi ptr [ %add.ptr13.i2914, %if.then21.i2919 ], [ %add.ptr13.peel.i2897, %if.then.peel.i2901 ]
+  %.ph3760 = phi ptr [ %370, %if.then21.i2919 ], [ %363, %if.then.peel.i2901 ]
   store ptr %window.i2885, ptr %write, align 8, !tbaa !16
   br label %again.i2916.preheader
 
 again.i2916.preheader:                            ; preds = %if.then.peel.i2901, %again.i2916.sink.split
-  %.ph3838 = phi ptr [ %.ph3759, %again.i2916.sink.split ], [ %add.ptr.peel.i2896, %if.then.peel.i2901 ]
-  %.ph3839 = phi ptr [ %.ph3760, %again.i2916.sink.split ], [ %add.ptr13.peel.i2897, %if.then.peel.i2901 ]
-  %.ph3840 = phi ptr [ %window.i2885, %again.i2916.sink.split ], [ %366, %if.then.peel.i2901 ]
+  %.ph3852 = phi ptr [ %.ph3759, %again.i2916.sink.split ], [ %add.ptr.peel.i2896, %if.then.peel.i2901 ]
+  %.ph3853 = phi ptr [ %.ph3760, %again.i2916.sink.split ], [ %363, %if.then.peel.i2901 ]
+  %.ph3854 = phi ptr [ %window.i2885, %again.i2916.sink.split ], [ %364, %if.then.peel.i2901 ]
   br label %again.i2916
 
 again.i2916:                                      ; preds = %again.i2916.preheader, %if.then.i2918
-  %367 = phi ptr [ %add.ptr.i2913, %if.then.i2918 ], [ %.ph3838, %again.i2916.preheader ]
-  %368 = phi ptr [ %add.ptr13.i2914, %if.then.i2918 ], [ %.ph3839, %again.i2916.preheader ]
-  %369 = phi ptr [ %373, %if.then.i2918 ], [ %.ph3840, %again.i2916.preheader ]
-  %cmp.not.i2905 = icmp ugt ptr %window.i2885, %369
-  %spec.select.i2906 = select i1 %cmp.not.i2905, ptr %368, ptr %369
+  %365 = phi ptr [ %add.ptr.i2913, %if.then.i2918 ], [ %.ph3852, %again.i2916.preheader ]
+  %366 = phi ptr [ %370, %if.then.i2918 ], [ %.ph3853, %again.i2916.preheader ]
+  %367 = phi ptr [ %371, %if.then.i2918 ], [ %.ph3854, %again.i2916.preheader ]
+  %cmp.not.i2905 = icmp ugt ptr %window.i2885, %367
+  %spec.select.i2906 = select i1 %cmp.not.i2905, ptr %366, ptr %367
   %sub.ptr.lhs.cast.i2907 = ptrtoint ptr %spec.select.i2906 to i64
   %sub.ptr.sub.i2908 = sub i64 %sub.ptr.lhs.cast.i2907, %sub.ptr.rhs.cast.i2903
   %conv.i2909 = trunc i64 %sub.ptr.sub.i2908 to i32
-  %370 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
-  %conv..i2910 = tail call i32 @llvm.umin.i32(i32 %370, i32 %conv.i2909)
-  %sub.i2911 = sub i32 %370, %conv..i2910
+  %368 = load i32, ptr %avail_out.i2882, align 8, !tbaa !24
+  %conv..i2910 = tail call i32 @llvm.umin.i32(i32 %368, i32 %conv.i2909)
+  %sub.i2911 = sub i32 %368, %conv..i2910
   store i32 %sub.i2911, ptr %avail_out.i2882, align 8, !tbaa !24
   %conv10.i2912 = zext i32 %conv..i2910 to i64
-  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %367, ptr nonnull align 1 %window.i2885, i64 %conv10.i2912, i1 false)
-  %371 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
-  %add.ptr.i2913 = getelementptr inbounds i8, ptr %371, i64 %conv10.i2912
+  tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %365, ptr nonnull align 1 %window.i2885, i64 %conv10.i2912, i1 false)
+  %369 = load ptr, ptr %next_out.i2883, align 8, !tbaa !25
+  %add.ptr.i2913 = getelementptr inbounds i8, ptr %369, i64 %conv10.i2912
   store ptr %add.ptr.i2913, ptr %next_out.i2883, align 8, !tbaa !25
   %add.ptr13.i2914 = getelementptr inbounds i8, ptr %window.i2885, i64 %conv10.i2912
-  %372 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
-  %cmp15.i2915 = icmp eq ptr %add.ptr13.i2914, %372
+  %370 = load ptr, ptr %end14.i2884, align 8, !tbaa !18
+  %cmp15.i2915 = icmp eq ptr %add.ptr13.i2914, %370
   br i1 %cmp15.i2915, label %if.then.i2918, label %inflate_flush.exit2922
 
 if.then.i2918:                                    ; preds = %again.i2916
-  %373 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.i2917 = icmp eq ptr %373, %add.ptr13.i2914
+  %371 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp19.i2917 = icmp eq ptr %371, %370
   br i1 %cmp19.i2917, label %if.then21.i2919, label %again.i2916, !llvm.loop !26
 
 if.then21.i2919:                                  ; preds = %if.then.i2918
   br label %again.i2916.sink.split, !llvm.loop !26
 
 inflate_flush.exit2922:                           ; preds = %again.i2916, %cond.end.peel.i2899
-  %374 = phi ptr [ %365, %cond.end.peel.i2899 ], [ %372, %again.i2916 ]
+  %372 = phi ptr [ %363, %cond.end.peel.i2899 ], [ %370, %again.i2916 ]
   %add.ptr13.lcssa.i2921 = phi ptr [ %add.ptr13.peel.i2897, %cond.end.peel.i2899 ], [ %add.ptr13.i2914, %again.i2916 ]
   store ptr %add.ptr13.lcssa.i2921, ptr %read, align 8, !tbaa !17
-  %375 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp1463.not = icmp eq ptr %375, %add.ptr13.lcssa.i2921
+  %373 = load ptr, ptr %write, align 8, !tbaa !16
+  %cmp1463.not = icmp eq ptr %373, %add.ptr13.lcssa.i2921
   br i1 %cmp1463.not, label %if.end1476, label %if.then1465
 
 if.then1465:                                      ; preds = %inflate_flush.exit2922
@@ -2925,13 +2911,13 @@ if.then1465:                                      ; preds = %inflate_flush.exit2
   br label %cleanup1511
 
 if.end1476:                                       ; preds = %inflate_flush.exit2922
-  %sub.ptr.lhs.cast1454 = ptrtoint ptr %374 to i64
-  %sub.ptr.rhs.cast1448 = ptrtoint ptr %375 to i64
+  %sub.ptr.lhs.cast1454 = ptrtoint ptr %372 to i64
+  %sub.ptr.rhs.cast1448 = ptrtoint ptr %373 to i64
   %sub.ptr.sub1456 = sub i64 %sub.ptr.lhs.cast1454, %sub.ptr.rhs.cast1448
   %conv1459 = trunc i64 %sub.ptr.sub1456 to i32
-  %376 = load i32, ptr %last1482, align 8, !tbaa !28
-  store i32 %376, ptr %blocks, align 8, !tbaa !19
-  %cmp1485 = icmp eq i32 %376, 8
+  %374 = load i32, ptr %last1482, align 8, !tbaa !28
+  store i32 %374, ptr %blocks, align 8, !tbaa !19
+  %cmp1485 = icmp eq i32 %374, 8
   br i1 %cmp1485, label %for.cond.backedge, label %if.end1488
 
 if.end1488:                                       ; preds = %if.end1476
@@ -3008,7 +2994,7 @@ cond.end.peel:                                    ; preds = %cond.false.peel, %e
 
 if.then.peel:                                     ; preds = %cond.end.peel
   %7 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19.peel = icmp eq ptr %7, %add.ptr13.peel
+  %cmp19.peel = icmp eq ptr %7, %6
   br i1 %cmp19.peel, label %if.then21.peel, label %if.end.peel
 
 if.then21.peel:                                   ; preds = %if.then.peel
@@ -3022,7 +3008,7 @@ if.end.peel:                                      ; preds = %if.then21.peel, %if
 
 again:                                            ; preds = %again.backedge, %if.end.peel
   %9 = phi ptr [ %add.ptr.peel, %if.end.peel ], [ %add.ptr, %again.backedge ]
-  %10 = phi ptr [ %add.ptr13.peel, %if.end.peel ], [ %add.ptr13, %again.backedge ]
+  %10 = phi ptr [ %6, %if.end.peel ], [ %14, %again.backedge ]
   %11 = phi ptr [ %8, %if.end.peel ], [ %.be, %again.backedge ]
   %cmp.not = icmp ugt ptr %window, %11
   %spec.select = select i1 %cmp.not, ptr %10, ptr %11
@@ -3045,7 +3031,7 @@ again:                                            ; preds = %again.backedge, %if
 
 if.then:                                          ; preds = %again
   %15 = load ptr, ptr %write, align 8, !tbaa !16
-  %cmp19 = icmp eq ptr %15, %add.ptr13
+  %cmp19 = icmp eq ptr %15, %14
   br i1 %cmp19, label %if.then21, label %again.backedge
 
 if.then21:                                        ; preds = %if.then

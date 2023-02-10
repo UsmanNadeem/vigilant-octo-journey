@@ -5249,7 +5249,7 @@ if.then136:                                       ; preds = %for.cond.cleanup115
   br label %if.end138
 
 if.end138:                                        ; preds = %if.then136, %for.cond.cleanup115, %for.cond112.preheader
-  %int_part_ptr.1 = phi ptr [ %incdec.ptr137, %if.then136 ], [ %int_part_ptr.0253, %for.cond.cleanup115 ], [ %call109, %for.cond112.preheader ]
+  %int_part_ptr.1 = phi ptr [ %incdec.ptr137, %if.then136 ], [ %int_part_ptr.0253, %for.cond.cleanup115 ], [ %int_part_ptr.0253, %for.cond112.preheader ]
   %inc140 = add nuw nsw i32 %i.0255, 1
   %exitcond = icmp eq i32 %inc140, %sub70
   br i1 %exitcond, label %for.cond.cleanup, label %for.cond112.preheader

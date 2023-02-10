@@ -334,7 +334,7 @@ while.body7:                                      ; preds = %while.body, %while.
   br i1 %cmp6.not, label %while.end, label %while.body7, !llvm.loop !24
 
 while.end:                                        ; preds = %while.body7, %while.body
-  %p.1.lcssa = phi ptr [ %p.023, %while.body ], [ %cond, %while.body7 ]
+  %p.1.lcssa = phi ptr [ %p.023, %while.body ], [ %incdec.ptr, %while.body7 ]
   %2 = load ptr, ptr @stdout, align 8, !tbaa !17
   %call.i = tail call i32 @_IO_putc(i32 noundef 10, ptr noundef %2)
   %cmp1.not = icmp eq ptr %p.1.lcssa, %to

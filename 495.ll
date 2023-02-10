@@ -192,7 +192,8 @@ if.then.i77:                                      ; preds = %if.then.i70
   %add.ptr.i.i73 = getelementptr inbounds i64, ptr %call.i.i.i.i.i8.i72, i64 %conv
   store ptr %add.ptr.i.i73, ptr %__end_cap_.i68, align 8, !tbaa !28
   tail call void @llvm.memset.p0.i64(ptr nonnull align 8 %call.i.i.i.i.i8.i72, i8 0, i64 %mul.i.i.i.i71, i1 false), !tbaa !38
-  store ptr %add.ptr.i.i73, ptr %__end_.i67, align 8, !tbaa !40
+  %uglygep = getelementptr i8, ptr %call.i.i.i.i.i8.i72, i64 %mul.i.i.i.i71
+  store ptr %uglygep, ptr %__end_.i67, align 8, !tbaa !40
   %mean = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 4
   %__end_.i74 = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 4, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %mean, i8 0, i64 24, i1 false)
@@ -221,7 +222,7 @@ if.then.i8.i:                                     ; preds = %if.then.i77
   br label %ehcleanup45
 
 if.then.i90:                                      ; preds = %for.inc.i.i83
-  store ptr %add.ptr.i.i79, ptr %__end_.i74, align 8, !tbaa !42
+  store ptr %incdec.ptr.i.i81, ptr %__end_.i74, align 8, !tbaa !42
   %std_dev = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 5
   %__end_.i87 = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 5, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %std_dev, i8 0, i64 24, i1 false)
@@ -249,7 +250,7 @@ if.then.i8.i101:                                  ; preds = %if.then.i90
   br label %ehcleanup44
 
 if.then.i109:                                     ; preds = %for.inc.i.i98
-  store ptr %add.ptr.i.i93, ptr %__end_.i87, align 8, !tbaa !42
+  store ptr %incdec.ptr.i.i96, ptr %__end_.i87, align 8, !tbaa !42
   %min = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 6
   %__end_.i106 = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 6, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %min, i8 0, i64 24, i1 false)
@@ -277,7 +278,7 @@ if.then.i8.i120:                                  ; preds = %if.then.i109
   br label %ehcleanup43
 
 if.then.i128:                                     ; preds = %for.inc.i.i117
-  store ptr %add.ptr.i.i112, ptr %__end_.i106, align 8, !tbaa !42
+  store ptr %incdec.ptr.i.i115, ptr %__end_.i106, align 8, !tbaa !42
   %max = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 7
   %__end_.i125 = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 7, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %max, i8 0, i64 24, i1 false)
@@ -305,7 +306,7 @@ if.then.i8.i139:                                  ; preds = %if.then.i128
   br label %ehcleanup42
 
 if.then.i147:                                     ; preds = %for.inc.i.i136
-  store ptr %add.ptr.i.i131, ptr %__end_.i125, align 8, !tbaa !42
+  store ptr %incdec.ptr.i.i134, ptr %__end_.i125, align 8, !tbaa !42
   %harm_mean = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 8
   %__end_.i144 = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 8, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %harm_mean, i8 0, i64 24, i1 false)
@@ -333,7 +334,7 @@ if.then.i8.i158:                                  ; preds = %if.then.i147
   br label %ehcleanup41
 
 if.then.i166:                                     ; preds = %for.inc.i.i155
-  store ptr %add.ptr.i.i150, ptr %__end_.i144, align 8, !tbaa !42
+  store ptr %incdec.ptr.i.i153, ptr %__end_.i144, align 8, !tbaa !42
   %meanrel2ref = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 9
   %__end_.i163 = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 9, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %meanrel2ref, i8 0, i64 24, i1 false)
@@ -361,7 +362,7 @@ if.then.i8.i177:                                  ; preds = %if.then.i166
   br label %ehcleanup40
 
 if.then.i185:                                     ; preds = %for.inc.i.i174
-  store ptr %add.ptr.i.i169, ptr %__end_.i163, align 8, !tbaa !42
+  store ptr %incdec.ptr.i.i172, ptr %__end_.i163, align 8, !tbaa !42
   %loop_length = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 10
   %__end_.i182 = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 10, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %loop_length, i8 0, i64 24, i1 false)
@@ -380,7 +381,8 @@ if.then.i201:                                     ; preds = %if.then.i185
   %add.ptr.i.i188 = getelementptr inbounds i32, ptr %call.i.i.i.i.i8.i187, i64 %conv
   store ptr %add.ptr.i.i188, ptr %__end_cap_.i183, align 8, !tbaa !28
   tail call void @llvm.memset.p0.i64(ptr nonnull align 4 %call.i.i.i.i.i8.i187, i8 0, i64 %mul.i.i.i.i186, i1 false), !tbaa !12
-  store ptr %add.ptr.i.i188, ptr %__end_.i182, align 8, !tbaa !47
+  %uglygep639 = getelementptr i8, ptr %call.i.i.i.i.i8.i187, i64 %mul.i.i.i.i186
+  store ptr %uglygep639, ptr %__end_.i182, align 8, !tbaa !47
   %samples_per_pass = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 11
   %__end_.i198 = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 11, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %samples_per_pass, i8 0, i64 24, i1 false)
@@ -404,7 +406,8 @@ if.then.i220:                                     ; preds = %if.then.i201
   %add.ptr.i.i204 = getelementptr inbounds i32, ptr %call.i.i.i.i.i8.i203, i64 %conv
   store ptr %add.ptr.i.i204, ptr %__end_cap_.i199, align 8, !tbaa !28
   tail call void @llvm.memset.p0.i64(ptr nonnull align 4 %call.i.i.i.i.i8.i203, i8 0, i64 %mul.i.i.i.i186, i1 false), !tbaa !12
-  store ptr %add.ptr.i.i204, ptr %__end_.i198, align 8, !tbaa !47
+  %uglygep640 = getelementptr i8, ptr %call.i.i.i.i.i8.i203, i64 %mul.i.i.i.i186
+  store ptr %uglygep640, ptr %__end_.i198, align 8, !tbaa !47
   %loop_chksum = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 12
   %__end_.i217 = getelementptr inbounds %class.LoopStat, ptr %this, i64 0, i32 12, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(24) %loop_chksum, i8 0, i64 24, i1 false)
@@ -427,7 +430,7 @@ for.inc.i.i228:                                   ; preds = %for.inc.i.i228, %in
   br i1 %cmp.not.i.i227, label %_ZNSt3__16vectorIeNS_9allocatorIeEEE18__construct_at_endEmRKe.exit.i229, label %for.inc.i.i228, !llvm.loop !45
 
 _ZNSt3__16vectorIeNS_9allocatorIeEEE18__construct_at_endEmRKe.exit.i229: ; preds = %for.inc.i.i228
-  store ptr %add.ptr.i.i223, ptr %__end_.i217, align 8, !tbaa !42
+  store ptr %incdec.ptr.i.i226, ptr %__end_.i217, align 8, !tbaa !42
   br label %invoke.cont38
 
 invoke.cont38:                                    ; preds = %_ZNSt3__16vectorIeNS_9allocatorIeEEE18__construct_at_endEmRKe.exit.i229, %invoke.cont34.thread
@@ -443,14 +446,14 @@ ehcleanup:                                        ; preds = %if.then.i220
   br i1 %cmp.not.i.i237, label %ehcleanup39, label %if.then.i.i239
 
 if.then.i.i239:                                   ; preds = %ehcleanup.thread, %ehcleanup
-  %.pn641 = phi { ptr, i32 } [ %13, %ehcleanup.thread ], [ %14, %ehcleanup ]
+  %.pn643 = phi { ptr, i32 } [ %13, %ehcleanup.thread ], [ %14, %ehcleanup ]
   %15 = phi ptr [ %call.i.i.i.i.i8.i187, %ehcleanup.thread ], [ %.pre, %ehcleanup ]
   store ptr %15, ptr %__end_.i182, align 8, !tbaa !47
   tail call void @_ZdlPv(ptr noundef nonnull %15) #17
   br label %ehcleanup39
 
 ehcleanup39:                                      ; preds = %if.then.i9.i195, %if.then.i.i239, %ehcleanup
-  %.pn.pn = phi { ptr, i32 } [ %12, %if.then.i9.i195 ], [ %14, %ehcleanup ], [ %.pn641, %if.then.i.i239 ]
+  %.pn.pn = phi { ptr, i32 } [ %12, %if.then.i9.i195 ], [ %14, %ehcleanup ], [ %.pn643, %if.then.i.i239 ]
   %16 = load ptr, ptr %meanrel2ref, align 8, !tbaa !41
   %cmp.not.i.i241 = icmp eq ptr %16, null
   br i1 %cmp.not.i.i241, label %ehcleanup40, label %if.then.i.i243
@@ -2105,8 +2108,10 @@ if.then.i.i.i:                                    ; preds = %if.else.i.2, %if.el
   unreachable
 
 _ZNKSt3__16vectorIeNS_9allocatorIeEEE11__recommendB7v170000Em.exit.i.i: ; preds = %if.else.i
-  %cmp3.not.i.i.i = icmp ult i64 %sub.ptr.sub.i.i.i, 9223372036854775792
-  %mul.i.i.i = lshr exact i64 %sub.ptr.sub.i.i.i, 3
+  %sub.ptr.lhs.cast.i.i.i.i = ptrtoint ptr %219 to i64
+  %sub.ptr.sub.i.i.i.i = sub i64 %sub.ptr.lhs.cast.i.i.i.i, %sub.ptr.rhs.cast.i.i.i
+  %cmp3.not.i.i.i = icmp ult i64 %sub.ptr.sub.i.i.i.i, 9223372036854775792
+  %mul.i.i.i = lshr exact i64 %sub.ptr.sub.i.i.i.i, 3
   %.sroa.speculated.i.i.i = call i64 @llvm.umax.i64(i64 %mul.i.i.i, i64 %add.i.i)
   %retval.0.i.i.i = select i1 %cmp3.not.i.i.i, i64 %.sroa.speculated.i.i.i, i64 1152921504606846975
   %cmp.i16.i.i = icmp eq i64 %retval.0.i.i.i, 0
@@ -2203,8 +2208,10 @@ if.else.i.1:                                      ; preds = %for.inc39
   br i1 %cmp.i.i.i103.1, label %if.then.i.i.i, label %_ZNKSt3__16vectorIeNS_9allocatorIeEEE11__recommendB7v170000Em.exit.i.i.1
 
 _ZNKSt3__16vectorIeNS_9allocatorIeEEE11__recommendB7v170000Em.exit.i.i.1: ; preds = %if.else.i.1
-  %cmp3.not.i.i.i.1 = icmp ult i64 %sub.ptr.sub.i.i.i.1, 9223372036854775792
-  %mul.i.i.i.1 = lshr exact i64 %sub.ptr.sub.i.i.i.1, 3
+  %sub.ptr.lhs.cast.i.i.i.i.1 = ptrtoint ptr %233 to i64
+  %sub.ptr.sub.i.i.i.i.1 = sub i64 %sub.ptr.lhs.cast.i.i.i.i.1, %sub.ptr.rhs.cast.i.i.i.1
+  %cmp3.not.i.i.i.1 = icmp ult i64 %sub.ptr.sub.i.i.i.i.1, 9223372036854775792
+  %mul.i.i.i.1 = lshr exact i64 %sub.ptr.sub.i.i.i.i.1, 3
   %.sroa.speculated.i.i.i.1 = call i64 @llvm.umax.i64(i64 %mul.i.i.i.1, i64 %add.i.i.1)
   %retval.0.i.i.i.1 = select i1 %cmp3.not.i.i.i.1, i64 %.sroa.speculated.i.i.i.1, i64 1152921504606846975
   %cmp.i16.i.i.1 = icmp eq i64 %retval.0.i.i.i.1, 0
@@ -2296,8 +2303,10 @@ if.else.i.2:                                      ; preds = %for.inc39.1
   br i1 %cmp.i.i.i103.2, label %if.then.i.i.i, label %_ZNKSt3__16vectorIeNS_9allocatorIeEEE11__recommendB7v170000Em.exit.i.i.2
 
 _ZNKSt3__16vectorIeNS_9allocatorIeEEE11__recommendB7v170000Em.exit.i.i.2: ; preds = %if.else.i.2
-  %cmp3.not.i.i.i.2 = icmp ult i64 %sub.ptr.sub.i.i.i.2, 9223372036854775792
-  %mul.i.i.i.2 = lshr exact i64 %sub.ptr.sub.i.i.i.2, 3
+  %sub.ptr.lhs.cast.i.i.i.i.2 = ptrtoint ptr %246 to i64
+  %sub.ptr.sub.i.i.i.i.2 = sub i64 %sub.ptr.lhs.cast.i.i.i.i.2, %sub.ptr.rhs.cast.i.i.i.2
+  %cmp3.not.i.i.i.2 = icmp ult i64 %sub.ptr.sub.i.i.i.i.2, 9223372036854775792
+  %mul.i.i.i.2 = lshr exact i64 %sub.ptr.sub.i.i.i.i.2, 3
   %.sroa.speculated.i.i.i.2 = call i64 @llvm.umax.i64(i64 %mul.i.i.i.2, i64 %add.i.i.2)
   %retval.0.i.i.i.2 = select i1 %cmp3.not.i.i.i.2, i64 %.sroa.speculated.i.i.i.2, i64 1152921504606846975
   %cmp.i16.i.i.2 = icmp eq i64 %retval.0.i.i.i.2, 0

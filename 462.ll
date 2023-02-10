@@ -3761,7 +3761,7 @@ _ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit: ; 
   br label %if.end
 
 if.end:                                           ; preds = %_ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit, %if.else
-  %12 = phi ptr [ %0, %if.else ], [ %.pre177, %_ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit ]
+  %12 = phi ptr [ %3, %if.else ], [ %.pre177, %_ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit ]
   %13 = phi ptr [ %2, %if.else ], [ %.pre176, %_ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit ]
   %14 = phi ptr [ %0, %if.else ], [ %7, %_ZNSt3__118__tree_left_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit ]
   %__is_black_24 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %14, i64 0, i32 3
@@ -3805,14 +3805,13 @@ land.lhs.true32:                                  ; preds = %if.else28
   br i1 %tobool34.not, label %if.end56, label %if.else43
 
 if.else43:                                        ; preds = %land.lhs.true32, %if.else28
-  %__parent_.i.le = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %__x.addr.0169, i64 0, i32 2
-  %__parent_.i103.le188 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %0, i64 0, i32 2
+  %__parent_.i103.le187 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %0, i64 0, i32 2
   %20 = load ptr, ptr %0, align 8, !tbaa !46
   %cmp.i129 = icmp eq ptr %20, %__x.addr.0169
   br i1 %cmp.i129, label %if.then45, label %if.end47
 
 if.then45:                                        ; preds = %if.else43
-  %__right_.i132 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %__x.addr.0169, i64 0, i32 1
+  %__right_.i132 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %20, i64 0, i32 1
   %21 = load ptr, ptr %__right_.i132, align 8, !tbaa !48
   store ptr %21, ptr %0, align 8, !tbaa !46
   %cmp5.not.i133 = icmp eq ptr %21, null
@@ -3821,26 +3820,27 @@ if.then45:                                        ; preds = %if.else43
 if.then.i135:                                     ; preds = %if.then45
   %__parent_.i.i134 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %21, i64 0, i32 2
   store ptr %0, ptr %__parent_.i.i134, align 8, !tbaa !43
-  %.pre = load ptr, ptr %__parent_.i103.le188, align 8, !tbaa !43
+  %.pre = load ptr, ptr %__parent_.i103.le187, align 8, !tbaa !43
   br label %_ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit141
 
 _ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit141: ; preds = %if.then45, %if.then.i135
   %22 = phi ptr [ %2, %if.then45 ], [ %.pre, %if.then.i135 ]
-  store ptr %22, ptr %__parent_.i.le, align 8, !tbaa !43
-  %23 = load ptr, ptr %__parent_.i103.le188, align 8, !tbaa !43
+  %__parent_7.i137 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %20, i64 0, i32 2
+  store ptr %22, ptr %__parent_7.i137, align 8, !tbaa !43
+  %23 = load ptr, ptr %__parent_.i103.le187, align 8, !tbaa !43
   %24 = load ptr, ptr %23, align 8, !tbaa !46
   %cmp.i.i138 = icmp eq ptr %24, %0
   %__right_12.i139 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %23, i64 0, i32 1
   %__right_12.sink.i140 = select i1 %cmp.i.i138, ptr %23, ptr %__right_12.i139
-  store ptr %__x.addr.0169, ptr %__right_12.sink.i140, align 8, !tbaa !23
+  store ptr %20, ptr %__right_12.sink.i140, align 8, !tbaa !23
   store ptr %0, ptr %__right_.i132, align 8, !tbaa !48
-  store ptr %__x.addr.0169, ptr %__parent_.i103.le188, align 8, !tbaa !43
-  %.pre174 = load ptr, ptr %__parent_.i.le, align 8, !tbaa !43
+  store ptr %20, ptr %__parent_.i103.le187, align 8, !tbaa !43
+  %.pre174 = load ptr, ptr %__parent_7.i137, align 8, !tbaa !43
   br label %if.end47
 
 if.end47:                                         ; preds = %_ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit141, %if.else43
   %25 = phi ptr [ %.pre174, %_ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit141 ], [ %2, %if.else43 ]
-  %26 = phi ptr [ %__x.addr.0169, %_ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit141 ], [ %0, %if.else43 ]
+  %26 = phi ptr [ %20, %_ZNSt3__119__tree_right_rotateB7v170000IPNS_16__tree_node_baseIPvEEEEvT_.exit141 ], [ %0, %if.else43 ]
   %__is_black_49 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %26, i64 0, i32 3
   store i8 1, ptr %__is_black_49, align 8, !tbaa !55
   %__is_black_51 = getelementptr inbounds %"class.std::__1::__tree_node_base", ptr %25, i64 0, i32 3
@@ -5193,8 +5193,8 @@ entry:
   invoke void @_ZN9benchmark8internal9BenchmarkC2EPKc(ptr noundef nonnull align 8 dereferenceable(208) %call.i1, ptr noundef nonnull @.str.6)
           to label %__cxx_global_var_init.5.exit unwind label %lpad.i
 
-common.resume:                                    ; preds = %_ZNSt3__18functionIFvRK7ResultsEED2Ev.exit15.i, %cleanup.done.i2151, %cleanup.done.i1901, %cleanup.done.i1390, %cleanup.done.i879, %cleanup.done.i558, %cleanup.done.i73, %cleanup.done.i, %lpad.i
-  %common.resume.op = phi { ptr, i32 } [ %0, %lpad.i ], [ %.pn.pn.pn.pn.pn.i, %cleanup.done.i ], [ %.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.i, %cleanup.done.i73 ], [ %.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.i544, %cleanup.done.i558 ], [ %.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.i, %cleanup.done.i879 ], [ %.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.i1376, %cleanup.done.i1390 ], [ %.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.i1887, %cleanup.done.i1901 ], [ %.pn.pn.pn.pn.pn.i2137, %cleanup.done.i2151 ], [ %1052, %_ZNSt3__18functionIFvRK7ResultsEED2Ev.exit15.i ]
+common.resume:                                    ; preds = %_ZNSt3__18functionIFvRK7ResultsEED2Ev.exit10.i, %cleanup.done.i2151, %cleanup.done.i1901, %cleanup.done.i1390, %cleanup.done.i879, %cleanup.done.i558, %cleanup.done.i73, %cleanup.done.i, %lpad.i
+  %common.resume.op = phi { ptr, i32 } [ %0, %lpad.i ], [ %.pn.pn.pn.pn.pn.i, %cleanup.done.i ], [ %.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.i, %cleanup.done.i73 ], [ %.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.i544, %cleanup.done.i558 ], [ %.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.i, %cleanup.done.i879 ], [ %.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.i1376, %cleanup.done.i1390 ], [ %.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.pn.i1887, %cleanup.done.i1901 ], [ %.pn.pn.pn.pn.pn.i2137, %cleanup.done.i2151 ], [ %1052, %_ZNSt3__18functionIFvRK7ResultsEED2Ev.exit10.i ]
   resume { ptr, i32 } %common.resume.op
 
 lpad.i:                                           ; preds = %entry
@@ -5632,233 +5632,233 @@ lpad21.i:                                         ; preds = %call.i.i.i.i.i.i.no
 lpad23.i:                                         ; preds = %invoke.cont22.i
   %41 = landingpad { ptr, i32 }
           cleanup
-  %__cntrl_.i.i2251 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 4, i32 3, i32 1
-  %42 = load ptr, ptr %__cntrl_.i.i2251, align 8, !tbaa !98
-  %tobool.not.i.i2252 = icmp eq ptr %42, null
-  br i1 %tobool.not.i.i2252, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2263, label %if.then.i.i2255
+  %__cntrl_.i.i2250 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 4, i32 3, i32 1
+  %42 = load ptr, ptr %__cntrl_.i.i2250, align 8, !tbaa !98
+  %tobool.not.i.i2251 = icmp eq ptr %42, null
+  br i1 %tobool.not.i.i2251, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2262, label %if.then.i.i2254
 
-if.then.i.i2255:                                  ; preds = %lpad23.i
-  %__shared_owners_.i.i.i.i2253 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %42, i64 0, i32 1
-  %43 = atomicrmw add ptr %__shared_owners_.i.i.i.i2253, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2254 = icmp eq i64 %43, 0
-  br i1 %cmp.i.i.i.i2254, label %if.then.i.i.i2258, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2263
+if.then.i.i2254:                                  ; preds = %lpad23.i
+  %__shared_owners_.i.i.i.i2252 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %42, i64 0, i32 1
+  %43 = atomicrmw add ptr %__shared_owners_.i.i.i.i2252, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2253 = icmp eq i64 %43, 0
+  br i1 %cmp.i.i.i.i2253, label %if.then.i.i.i2257, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2262
 
-if.then.i.i.i2258:                                ; preds = %if.then.i.i2255
-  %vtable.i.i.i.i2256 = load ptr, ptr %42, align 8, !tbaa !24
-  %vfn.i.i.i.i2257 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2256, i64 2
-  %44 = load ptr, ptr %vfn.i.i.i.i2257, align 8
+if.then.i.i.i2257:                                ; preds = %if.then.i.i2254
+  %vtable.i.i.i.i2255 = load ptr, ptr %42, align 8, !tbaa !24
+  %vfn.i.i.i.i2256 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2255, i64 2
+  %44 = load ptr, ptr %vfn.i.i.i.i2256, align 8
   call void %44(ptr noundef nonnull align 8 dereferenceable(16) %42) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %42) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2263
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2262
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2263: ; preds = %if.then.i.i.i2258, %if.then.i.i2255, %lpad23.i
-  %substituted_regex.i2259 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 4, i32 2
-  %bf.load.i.i.i2260 = load i8, ptr %substituted_regex.i2259, align 8
-  %bf.clear.i.i.i2261 = and i8 %bf.load.i.i.i2260, 1
-  %tobool.i.not.i.i2262 = icmp eq i8 %bf.clear.i.i.i2261, 0
-  br i1 %tobool.i.not.i.i2262, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2269, label %if.then.i2.i2265
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2262: ; preds = %if.then.i.i.i2257, %if.then.i.i2254, %lpad23.i
+  %substituted_regex.i2258 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 4, i32 2
+  %bf.load.i.i.i2259 = load i8, ptr %substituted_regex.i2258, align 8
+  %bf.clear.i.i.i2260 = and i8 %bf.load.i.i.i2259, 1
+  %tobool.i.not.i.i2261 = icmp eq i8 %bf.clear.i.i.i2260, 0
+  br i1 %tobool.i.not.i.i2261, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2268, label %if.then.i2.i2264
 
-if.then.i2.i2265:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2263
-  %__data_.i.i.i2264 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %45 = load ptr, ptr %__data_.i.i.i2264, align 8, !tbaa !5
+if.then.i2.i2264:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2262
+  %__data_.i.i.i2263 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %45 = load ptr, ptr %__data_.i.i.i2263, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %45) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2269
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2268
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2269: ; preds = %if.then.i2.i2265, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2263
-  %bf.load.i.i3.i2266 = load i8, ptr %arrayinit.element18.i, align 8
-  %bf.clear.i.i4.i2267 = and i8 %bf.load.i.i3.i2266, 1
-  %tobool.i.not.i5.i2268 = icmp eq i8 %bf.clear.i.i4.i2267, 0
-  br i1 %tobool.i.not.i5.i2268, label %_ZN8TestCaseD2Ev.exit2272, label %if.then.i7.i2271
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2268: ; preds = %if.then.i2.i2264, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2262
+  %bf.load.i.i3.i2265 = load i8, ptr %arrayinit.element18.i, align 8
+  %bf.clear.i.i4.i2266 = and i8 %bf.load.i.i3.i2265, 1
+  %tobool.i.not.i5.i2267 = icmp eq i8 %bf.clear.i.i4.i2266, 0
+  br i1 %tobool.i.not.i5.i2267, label %_ZN8TestCaseD2Ev.exit2271, label %if.then.i7.i2270
 
-if.then.i7.i2271:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2269
-  %__data_.i.i6.i2270 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %46 = load ptr, ptr %__data_.i.i6.i2270, align 8, !tbaa !5
+if.then.i7.i2270:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2268
+  %__data_.i.i6.i2269 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %46 = load ptr, ptr %__data_.i.i6.i2269, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %46) #25
-  br label %_ZN8TestCaseD2Ev.exit2272
+  br label %_ZN8TestCaseD2Ev.exit2271
 
-_ZN8TestCaseD2Ev.exit2272:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2269, %if.then.i7.i2271
-  %__cntrl_.i.i2229 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 3, i32 3, i32 1
-  %47 = load ptr, ptr %__cntrl_.i.i2229, align 8, !tbaa !98
-  %tobool.not.i.i2230 = icmp eq ptr %47, null
-  br i1 %tobool.not.i.i2230, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2241, label %if.then.i.i2233
+_ZN8TestCaseD2Ev.exit2271:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2268, %if.then.i7.i2270
+  %__cntrl_.i.i2228 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 3, i32 3, i32 1
+  %47 = load ptr, ptr %__cntrl_.i.i2228, align 8, !tbaa !98
+  %tobool.not.i.i2229 = icmp eq ptr %47, null
+  br i1 %tobool.not.i.i2229, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2240, label %if.then.i.i2232
 
-if.then.i.i2233:                                  ; preds = %_ZN8TestCaseD2Ev.exit2272
-  %__shared_owners_.i.i.i.i2231 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %47, i64 0, i32 1
-  %48 = atomicrmw add ptr %__shared_owners_.i.i.i.i2231, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2232 = icmp eq i64 %48, 0
-  br i1 %cmp.i.i.i.i2232, label %if.then.i.i.i2236, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2241
+if.then.i.i2232:                                  ; preds = %_ZN8TestCaseD2Ev.exit2271
+  %__shared_owners_.i.i.i.i2230 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %47, i64 0, i32 1
+  %48 = atomicrmw add ptr %__shared_owners_.i.i.i.i2230, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2231 = icmp eq i64 %48, 0
+  br i1 %cmp.i.i.i.i2231, label %if.then.i.i.i2235, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2240
 
-if.then.i.i.i2236:                                ; preds = %if.then.i.i2233
-  %vtable.i.i.i.i2234 = load ptr, ptr %47, align 8, !tbaa !24
-  %vfn.i.i.i.i2235 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2234, i64 2
-  %49 = load ptr, ptr %vfn.i.i.i.i2235, align 8
+if.then.i.i.i2235:                                ; preds = %if.then.i.i2232
+  %vtable.i.i.i.i2233 = load ptr, ptr %47, align 8, !tbaa !24
+  %vfn.i.i.i.i2234 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2233, i64 2
+  %49 = load ptr, ptr %vfn.i.i.i.i2234, align 8
   call void %49(ptr noundef nonnull align 8 dereferenceable(16) %47) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %47) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2241
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2240
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2241: ; preds = %if.then.i.i.i2236, %if.then.i.i2233, %_ZN8TestCaseD2Ev.exit2272
-  %substituted_regex.i2237 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 3, i32 2
-  %bf.load.i.i.i2238 = load i8, ptr %substituted_regex.i2237, align 8
-  %bf.clear.i.i.i2239 = and i8 %bf.load.i.i.i2238, 1
-  %tobool.i.not.i.i2240 = icmp eq i8 %bf.clear.i.i.i2239, 0
-  br i1 %tobool.i.not.i.i2240, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2247, label %if.then.i2.i2243
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2240: ; preds = %if.then.i.i.i2235, %if.then.i.i2232, %_ZN8TestCaseD2Ev.exit2271
+  %substituted_regex.i2236 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 3, i32 2
+  %bf.load.i.i.i2237 = load i8, ptr %substituted_regex.i2236, align 8
+  %bf.clear.i.i.i2238 = and i8 %bf.load.i.i.i2237, 1
+  %tobool.i.not.i.i2239 = icmp eq i8 %bf.clear.i.i.i2238, 0
+  br i1 %tobool.i.not.i.i2239, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2246, label %if.then.i2.i2242
 
-if.then.i2.i2243:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2241
-  %__data_.i.i.i2242 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %50 = load ptr, ptr %__data_.i.i.i2242, align 8, !tbaa !5
+if.then.i2.i2242:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2240
+  %__data_.i.i.i2241 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %50 = load ptr, ptr %__data_.i.i.i2241, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %50) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2247
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2246
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2247: ; preds = %if.then.i2.i2243, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2241
-  %bf.load.i.i3.i2244 = load i8, ptr %arrayinit.element13.i, align 8
-  %bf.clear.i.i4.i2245 = and i8 %bf.load.i.i3.i2244, 1
-  %tobool.i.not.i5.i2246 = icmp eq i8 %bf.clear.i.i4.i2245, 0
-  br i1 %tobool.i.not.i5.i2246, label %_ZN8TestCaseD2Ev.exit2250, label %if.then.i7.i2249
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2246: ; preds = %if.then.i2.i2242, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2240
+  %bf.load.i.i3.i2243 = load i8, ptr %arrayinit.element13.i, align 8
+  %bf.clear.i.i4.i2244 = and i8 %bf.load.i.i3.i2243, 1
+  %tobool.i.not.i5.i2245 = icmp eq i8 %bf.clear.i.i4.i2244, 0
+  br i1 %tobool.i.not.i5.i2245, label %_ZN8TestCaseD2Ev.exit2249, label %if.then.i7.i2248
 
-if.then.i7.i2249:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2247
-  %__data_.i.i6.i2248 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %51 = load ptr, ptr %__data_.i.i6.i2248, align 8, !tbaa !5
+if.then.i7.i2248:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2246
+  %__data_.i.i6.i2247 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %51 = load ptr, ptr %__data_.i.i6.i2247, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %51) #25
-  br label %_ZN8TestCaseD2Ev.exit2250
+  br label %_ZN8TestCaseD2Ev.exit2249
 
-_ZN8TestCaseD2Ev.exit2250:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2247, %if.then.i7.i2249
-  %__cntrl_.i.i2207 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 2, i32 3, i32 1
-  %52 = load ptr, ptr %__cntrl_.i.i2207, align 8, !tbaa !98
-  %tobool.not.i.i2208 = icmp eq ptr %52, null
-  br i1 %tobool.not.i.i2208, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2219, label %if.then.i.i2211
+_ZN8TestCaseD2Ev.exit2249:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2246, %if.then.i7.i2248
+  %__cntrl_.i.i2206 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 2, i32 3, i32 1
+  %52 = load ptr, ptr %__cntrl_.i.i2206, align 8, !tbaa !98
+  %tobool.not.i.i2207 = icmp eq ptr %52, null
+  br i1 %tobool.not.i.i2207, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2218, label %if.then.i.i2210
 
-if.then.i.i2211:                                  ; preds = %_ZN8TestCaseD2Ev.exit2250
-  %__shared_owners_.i.i.i.i2209 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %52, i64 0, i32 1
-  %53 = atomicrmw add ptr %__shared_owners_.i.i.i.i2209, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2210 = icmp eq i64 %53, 0
-  br i1 %cmp.i.i.i.i2210, label %if.then.i.i.i2214, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2219
+if.then.i.i2210:                                  ; preds = %_ZN8TestCaseD2Ev.exit2249
+  %__shared_owners_.i.i.i.i2208 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %52, i64 0, i32 1
+  %53 = atomicrmw add ptr %__shared_owners_.i.i.i.i2208, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2209 = icmp eq i64 %53, 0
+  br i1 %cmp.i.i.i.i2209, label %if.then.i.i.i2213, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2218
 
-if.then.i.i.i2214:                                ; preds = %if.then.i.i2211
-  %vtable.i.i.i.i2212 = load ptr, ptr %52, align 8, !tbaa !24
-  %vfn.i.i.i.i2213 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2212, i64 2
-  %54 = load ptr, ptr %vfn.i.i.i.i2213, align 8
+if.then.i.i.i2213:                                ; preds = %if.then.i.i2210
+  %vtable.i.i.i.i2211 = load ptr, ptr %52, align 8, !tbaa !24
+  %vfn.i.i.i.i2212 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2211, i64 2
+  %54 = load ptr, ptr %vfn.i.i.i.i2212, align 8
   call void %54(ptr noundef nonnull align 8 dereferenceable(16) %52) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %52) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2219
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2218
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2219: ; preds = %if.then.i.i.i2214, %if.then.i.i2211, %_ZN8TestCaseD2Ev.exit2250
-  %substituted_regex.i2215 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 2, i32 2
-  %bf.load.i.i.i2216 = load i8, ptr %substituted_regex.i2215, align 8
-  %bf.clear.i.i.i2217 = and i8 %bf.load.i.i.i2216, 1
-  %tobool.i.not.i.i2218 = icmp eq i8 %bf.clear.i.i.i2217, 0
-  br i1 %tobool.i.not.i.i2218, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2225, label %if.then.i2.i2221
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2218: ; preds = %if.then.i.i.i2213, %if.then.i.i2210, %_ZN8TestCaseD2Ev.exit2249
+  %substituted_regex.i2214 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 2, i32 2
+  %bf.load.i.i.i2215 = load i8, ptr %substituted_regex.i2214, align 8
+  %bf.clear.i.i.i2216 = and i8 %bf.load.i.i.i2215, 1
+  %tobool.i.not.i.i2217 = icmp eq i8 %bf.clear.i.i.i2216, 0
+  br i1 %tobool.i.not.i.i2217, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2224, label %if.then.i2.i2220
 
-if.then.i2.i2221:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2219
-  %__data_.i.i.i2220 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %55 = load ptr, ptr %__data_.i.i.i2220, align 8, !tbaa !5
+if.then.i2.i2220:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2218
+  %__data_.i.i.i2219 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %55 = load ptr, ptr %__data_.i.i.i2219, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %55) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2225
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2224
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2225: ; preds = %if.then.i2.i2221, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2219
-  %bf.load.i.i3.i2222 = load i8, ptr %arrayinit.element8.i, align 8
-  %bf.clear.i.i4.i2223 = and i8 %bf.load.i.i3.i2222, 1
-  %tobool.i.not.i5.i2224 = icmp eq i8 %bf.clear.i.i4.i2223, 0
-  br i1 %tobool.i.not.i5.i2224, label %_ZN8TestCaseD2Ev.exit2228, label %if.then.i7.i2227
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2224: ; preds = %if.then.i2.i2220, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2218
+  %bf.load.i.i3.i2221 = load i8, ptr %arrayinit.element8.i, align 8
+  %bf.clear.i.i4.i2222 = and i8 %bf.load.i.i3.i2221, 1
+  %tobool.i.not.i5.i2223 = icmp eq i8 %bf.clear.i.i4.i2222, 0
+  br i1 %tobool.i.not.i5.i2223, label %_ZN8TestCaseD2Ev.exit2227, label %if.then.i7.i2226
 
-if.then.i7.i2227:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2225
-  %__data_.i.i6.i2226 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %56 = load ptr, ptr %__data_.i.i6.i2226, align 8, !tbaa !5
+if.then.i7.i2226:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2224
+  %__data_.i.i6.i2225 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %56 = load ptr, ptr %__data_.i.i6.i2225, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %56) #25
-  br label %_ZN8TestCaseD2Ev.exit2228
+  br label %_ZN8TestCaseD2Ev.exit2227
 
-_ZN8TestCaseD2Ev.exit2228:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2225, %if.then.i7.i2227
-  %__cntrl_.i.i2185 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 1, i32 3, i32 1
-  %57 = load ptr, ptr %__cntrl_.i.i2185, align 8, !tbaa !98
-  %tobool.not.i.i2186 = icmp eq ptr %57, null
-  br i1 %tobool.not.i.i2186, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2197, label %if.then.i.i2189
+_ZN8TestCaseD2Ev.exit2227:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2224, %if.then.i7.i2226
+  %__cntrl_.i.i2184 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 1, i32 3, i32 1
+  %57 = load ptr, ptr %__cntrl_.i.i2184, align 8, !tbaa !98
+  %tobool.not.i.i2185 = icmp eq ptr %57, null
+  br i1 %tobool.not.i.i2185, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2196, label %if.then.i.i2188
 
-if.then.i.i2189:                                  ; preds = %_ZN8TestCaseD2Ev.exit2228
-  %__shared_owners_.i.i.i.i2187 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %57, i64 0, i32 1
-  %58 = atomicrmw add ptr %__shared_owners_.i.i.i.i2187, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2188 = icmp eq i64 %58, 0
-  br i1 %cmp.i.i.i.i2188, label %if.then.i.i.i2192, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2197
+if.then.i.i2188:                                  ; preds = %_ZN8TestCaseD2Ev.exit2227
+  %__shared_owners_.i.i.i.i2186 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %57, i64 0, i32 1
+  %58 = atomicrmw add ptr %__shared_owners_.i.i.i.i2186, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2187 = icmp eq i64 %58, 0
+  br i1 %cmp.i.i.i.i2187, label %if.then.i.i.i2191, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2196
 
-if.then.i.i.i2192:                                ; preds = %if.then.i.i2189
-  %vtable.i.i.i.i2190 = load ptr, ptr %57, align 8, !tbaa !24
-  %vfn.i.i.i.i2191 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2190, i64 2
-  %59 = load ptr, ptr %vfn.i.i.i.i2191, align 8
+if.then.i.i.i2191:                                ; preds = %if.then.i.i2188
+  %vtable.i.i.i.i2189 = load ptr, ptr %57, align 8, !tbaa !24
+  %vfn.i.i.i.i2190 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2189, i64 2
+  %59 = load ptr, ptr %vfn.i.i.i.i2190, align 8
   call void %59(ptr noundef nonnull align 8 dereferenceable(16) %57) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %57) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2197
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2196
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2197: ; preds = %if.then.i.i.i2192, %if.then.i.i2189, %_ZN8TestCaseD2Ev.exit2228
-  %substituted_regex.i2193 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 1, i32 2
-  %bf.load.i.i.i2194 = load i8, ptr %substituted_regex.i2193, align 8
-  %bf.clear.i.i.i2195 = and i8 %bf.load.i.i.i2194, 1
-  %tobool.i.not.i.i2196 = icmp eq i8 %bf.clear.i.i.i2195, 0
-  br i1 %tobool.i.not.i.i2196, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2203, label %if.then.i2.i2199
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2196: ; preds = %if.then.i.i.i2191, %if.then.i.i2188, %_ZN8TestCaseD2Ev.exit2227
+  %substituted_regex.i2192 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 1, i32 2
+  %bf.load.i.i.i2193 = load i8, ptr %substituted_regex.i2192, align 8
+  %bf.clear.i.i.i2194 = and i8 %bf.load.i.i.i2193, 1
+  %tobool.i.not.i.i2195 = icmp eq i8 %bf.clear.i.i.i2194, 0
+  br i1 %tobool.i.not.i.i2195, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2202, label %if.then.i2.i2198
 
-if.then.i2.i2199:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2197
-  %__data_.i.i.i2198 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %60 = load ptr, ptr %__data_.i.i.i2198, align 8, !tbaa !5
+if.then.i2.i2198:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2196
+  %__data_.i.i.i2197 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %60 = load ptr, ptr %__data_.i.i.i2197, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %60) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2203
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2202
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2203: ; preds = %if.then.i2.i2199, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2197
-  %bf.load.i.i3.i2200 = load i8, ptr %arrayinit.element.i, align 8
-  %bf.clear.i.i4.i2201 = and i8 %bf.load.i.i3.i2200, 1
-  %tobool.i.not.i5.i2202 = icmp eq i8 %bf.clear.i.i4.i2201, 0
-  br i1 %tobool.i.not.i5.i2202, label %_ZN8TestCaseD2Ev.exit2206, label %if.then.i7.i2205
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2202: ; preds = %if.then.i2.i2198, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2196
+  %bf.load.i.i3.i2199 = load i8, ptr %arrayinit.element.i, align 8
+  %bf.clear.i.i4.i2200 = and i8 %bf.load.i.i3.i2199, 1
+  %tobool.i.not.i5.i2201 = icmp eq i8 %bf.clear.i.i4.i2200, 0
+  br i1 %tobool.i.not.i5.i2201, label %_ZN8TestCaseD2Ev.exit2205, label %if.then.i7.i2204
 
-if.then.i7.i2205:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2203
-  %__data_.i.i6.i2204 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %61 = load ptr, ptr %__data_.i.i6.i2204, align 8, !tbaa !5
+if.then.i7.i2204:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2202
+  %__data_.i.i6.i2203 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %61 = load ptr, ptr %__data_.i.i6.i2203, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %61) #25
-  br label %_ZN8TestCaseD2Ev.exit2206
+  br label %_ZN8TestCaseD2Ev.exit2205
 
-_ZN8TestCaseD2Ev.exit2206:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2203, %if.then.i7.i2205
-  %__cntrl_.i.i2163 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 0, i32 3, i32 1
-  %62 = load ptr, ptr %__cntrl_.i.i2163, align 8, !tbaa !98
-  %tobool.not.i.i2164 = icmp eq ptr %62, null
-  br i1 %tobool.not.i.i2164, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2175, label %if.then.i.i2167
+_ZN8TestCaseD2Ev.exit2205:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2202, %if.then.i7.i2204
+  %__cntrl_.i.i2162 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 0, i32 3, i32 1
+  %62 = load ptr, ptr %__cntrl_.i.i2162, align 8, !tbaa !98
+  %tobool.not.i.i2163 = icmp eq ptr %62, null
+  br i1 %tobool.not.i.i2163, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2174, label %if.then.i.i2166
 
-if.then.i.i2167:                                  ; preds = %_ZN8TestCaseD2Ev.exit2206
-  %__shared_owners_.i.i.i.i2165 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %62, i64 0, i32 1
-  %63 = atomicrmw add ptr %__shared_owners_.i.i.i.i2165, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2166 = icmp eq i64 %63, 0
-  br i1 %cmp.i.i.i.i2166, label %if.then.i.i.i2170, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2175
+if.then.i.i2166:                                  ; preds = %_ZN8TestCaseD2Ev.exit2205
+  %__shared_owners_.i.i.i.i2164 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %62, i64 0, i32 1
+  %63 = atomicrmw add ptr %__shared_owners_.i.i.i.i2164, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2165 = icmp eq i64 %63, 0
+  br i1 %cmp.i.i.i.i2165, label %if.then.i.i.i2169, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2174
 
-if.then.i.i.i2170:                                ; preds = %if.then.i.i2167
-  %vtable.i.i.i.i2168 = load ptr, ptr %62, align 8, !tbaa !24
-  %vfn.i.i.i.i2169 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2168, i64 2
-  %64 = load ptr, ptr %vfn.i.i.i.i2169, align 8
+if.then.i.i.i2169:                                ; preds = %if.then.i.i2166
+  %vtable.i.i.i.i2167 = load ptr, ptr %62, align 8, !tbaa !24
+  %vfn.i.i.i.i2168 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2167, i64 2
+  %64 = load ptr, ptr %vfn.i.i.i.i2168, align 8
   call void %64(ptr noundef nonnull align 8 dereferenceable(16) %62) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %62) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2175
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2174
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2175: ; preds = %if.then.i.i.i2170, %if.then.i.i2167, %_ZN8TestCaseD2Ev.exit2206
-  %substituted_regex.i2171 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 0, i32 2
-  %bf.load.i.i.i2172 = load i8, ptr %substituted_regex.i2171, align 8
-  %bf.clear.i.i.i2173 = and i8 %bf.load.i.i.i2172, 1
-  %tobool.i.not.i.i2174 = icmp eq i8 %bf.clear.i.i.i2173, 0
-  br i1 %tobool.i.not.i.i2174, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2181, label %if.then.i2.i2177
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2174: ; preds = %if.then.i.i.i2169, %if.then.i.i2166, %_ZN8TestCaseD2Ev.exit2205
+  %substituted_regex.i2170 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 0, i32 2
+  %bf.load.i.i.i2171 = load i8, ptr %substituted_regex.i2170, align 8
+  %bf.clear.i.i.i2172 = and i8 %bf.load.i.i.i2171, 1
+  %tobool.i.not.i.i2173 = icmp eq i8 %bf.clear.i.i.i2172, 0
+  br i1 %tobool.i.not.i.i2173, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2180, label %if.then.i2.i2176
 
-if.then.i2.i2177:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2175
-  %__data_.i.i.i2176 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %65 = load ptr, ptr %__data_.i.i.i2176, align 8, !tbaa !5
+if.then.i2.i2176:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2174
+  %__data_.i.i.i2175 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %65 = load ptr, ptr %__data_.i.i.i2175, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %65) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2181
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2180
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2181: ; preds = %if.then.i2.i2177, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2175
-  %bf.load.i.i3.i2178 = load i8, ptr %ref.tmp.i, align 8
-  %bf.clear.i.i4.i2179 = and i8 %bf.load.i.i3.i2178, 1
-  %tobool.i.not.i5.i2180 = icmp eq i8 %bf.clear.i.i4.i2179, 0
-  br i1 %tobool.i.not.i5.i2180, label %ehcleanup.i, label %if.then.i7.i2183
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2180: ; preds = %if.then.i2.i2176, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2174
+  %bf.load.i.i3.i2177 = load i8, ptr %ref.tmp.i, align 8
+  %bf.clear.i.i4.i2178 = and i8 %bf.load.i.i3.i2177, 1
+  %tobool.i.not.i5.i2179 = icmp eq i8 %bf.clear.i.i4.i2178, 0
+  br i1 %tobool.i.not.i5.i2179, label %ehcleanup.i, label %if.then.i7.i2182
 
-if.then.i7.i2183:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2181
-  %__data_.i.i6.i2182 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i, i64 0, i32 2
-  %66 = load ptr, ptr %__data_.i.i6.i2182, align 8, !tbaa !5
+if.then.i7.i2182:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2180
+  %__data_.i.i6.i2181 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i, i64 0, i32 2
+  %66 = load ptr, ptr %__data_.i.i6.i2181, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %66) #25
   br label %ehcleanup.i
 
-ehcleanup.i:                                      ; preds = %if.then.i7.i2183, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2181, %lpad21.i
-  %.pn.i = phi { ptr, i32 } [ %40, %lpad21.i ], [ %41, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2181 ], [ %41, %if.then.i7.i2183 ]
-  %cleanup.isactive.0.i = phi i1 [ true, %lpad21.i ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2181 ], [ false, %if.then.i7.i2183 ]
+ehcleanup.i:                                      ; preds = %if.then.i7.i2182, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2180, %lpad21.i
+  %.pn.i = phi { ptr, i32 } [ %40, %lpad21.i ], [ %41, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2180 ], [ %41, %if.then.i7.i2182 ]
+  %cleanup.isactive.0.i = phi i1 [ true, %lpad21.i ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2180 ], [ false, %if.then.i7.i2182 ]
   %bf.load.i.i169.i = load i8, ptr %agg.tmp19.i, align 8
   %bf.clear.i.i170.i = and i8 %bf.load.i.i169.i, 1
   %tobool.i.not.i171.i = icmp eq i8 %bf.clear.i.i170.i, 0
@@ -5942,9 +5942,9 @@ if.then.i.i2156:                                  ; preds = %arraydestroy.body37
   %__shared_owners_.i.i.i.i = getelementptr inbounds %"class.std::__1::__shared_count", ptr %72, i64 0, i32 1
   %73 = atomicrmw add ptr %__shared_owners_.i.i.i.i, i64 -1 acq_rel, align 8
   %cmp.i.i.i.i = icmp eq i64 %73, 0
-  br i1 %cmp.i.i.i.i, label %if.then.i.i.i2157, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i
+  br i1 %cmp.i.i.i.i, label %if.then.i.i.i, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i
 
-if.then.i.i.i2157:                                ; preds = %if.then.i.i2156
+if.then.i.i.i:                                    ; preds = %if.then.i.i2156
   %vtable.i.i.i.i = load ptr, ptr %72, align 8, !tbaa !24
   %vfn.i.i.i.i = getelementptr inbounds ptr, ptr %vtable.i.i.i.i, i64 2
   %74 = load ptr, ptr %vfn.i.i.i.i, align 8
@@ -5952,32 +5952,32 @@ if.then.i.i.i2157:                                ; preds = %if.then.i.i2156
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %72) #24
   br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i: ; preds = %if.then.i.i.i2157, %if.then.i.i2156, %arraydestroy.body37.i
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i: ; preds = %if.then.i.i.i, %if.then.i.i2156, %arraydestroy.body37.i
   %substituted_regex.i = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i, i64 -1, i32 2
-  %bf.load.i.i.i2158 = load i8, ptr %substituted_regex.i, align 8
-  %bf.clear.i.i.i2159 = and i8 %bf.load.i.i.i2158, 1
-  %tobool.i.not.i.i2160 = icmp eq i8 %bf.clear.i.i.i2159, 0
-  br i1 %tobool.i.not.i.i2160, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2162, label %if.then.i2.i
+  %bf.load.i.i.i2157 = load i8, ptr %substituted_regex.i, align 8
+  %bf.clear.i.i.i2158 = and i8 %bf.load.i.i.i2157, 1
+  %tobool.i.not.i.i2159 = icmp eq i8 %bf.clear.i.i.i2158, 0
+  br i1 %tobool.i.not.i.i2159, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2161, label %if.then.i2.i
 
 if.then.i2.i:                                     ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i
-  %__data_.i.i.i2161 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %75 = load ptr, ptr %__data_.i.i.i2161, align 8, !tbaa !5
+  %__data_.i.i.i2160 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %75 = load ptr, ptr %__data_.i.i.i2160, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %75) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2162
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2161
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2162: ; preds = %if.then.i2.i, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2161: ; preds = %if.then.i2.i, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i
   %bf.load.i.i3.i = load i8, ptr %arraydestroy.element39.i, align 8
   %bf.clear.i.i4.i = and i8 %bf.load.i.i3.i, 1
   %tobool.i.not.i5.i = icmp eq i8 %bf.clear.i.i4.i, 0
   br i1 %tobool.i.not.i5.i, label %_ZN8TestCaseD2Ev.exit, label %if.then.i7.i
 
-if.then.i7.i:                                     ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2162
+if.then.i7.i:                                     ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2161
   %__data_.i.i6.i = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
   %76 = load ptr, ptr %__data_.i.i6.i, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %76) #25
   br label %_ZN8TestCaseD2Ev.exit
 
-_ZN8TestCaseD2Ev.exit:                            ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2162, %if.then.i7.i
+_ZN8TestCaseD2Ev.exit:                            ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2161, %if.then.i7.i
   %arraydestroy.done40.i = icmp eq ptr %arraydestroy.element39.i, %ref.tmp.i
   br i1 %arraydestroy.done40.i, label %cleanup.done.i, label %arraydestroy.body37.i
 
@@ -6696,818 +6696,818 @@ lpad86.i:                                         ; preds = %invoke.cont82.i
 lpad88.i:                                         ; preds = %invoke.cont87.i
   %137 = landingpad { ptr, i32 }
           cleanup
-  %__cntrl_.i.i2669 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 17, i32 3, i32 1
-  %138 = load ptr, ptr %__cntrl_.i.i2669, align 8, !tbaa !98
-  %tobool.not.i.i2670 = icmp eq ptr %138, null
-  br i1 %tobool.not.i.i2670, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2681, label %if.then.i.i2673
+  %__cntrl_.i.i2668 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 17, i32 3, i32 1
+  %138 = load ptr, ptr %__cntrl_.i.i2668, align 8, !tbaa !98
+  %tobool.not.i.i2669 = icmp eq ptr %138, null
+  br i1 %tobool.not.i.i2669, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2680, label %if.then.i.i2672
 
-if.then.i.i2673:                                  ; preds = %lpad88.i
-  %__shared_owners_.i.i.i.i2671 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %138, i64 0, i32 1
-  %139 = atomicrmw add ptr %__shared_owners_.i.i.i.i2671, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2672 = icmp eq i64 %139, 0
-  br i1 %cmp.i.i.i.i2672, label %if.then.i.i.i2676, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2681
+if.then.i.i2672:                                  ; preds = %lpad88.i
+  %__shared_owners_.i.i.i.i2670 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %138, i64 0, i32 1
+  %139 = atomicrmw add ptr %__shared_owners_.i.i.i.i2670, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2671 = icmp eq i64 %139, 0
+  br i1 %cmp.i.i.i.i2671, label %if.then.i.i.i2675, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2680
 
-if.then.i.i.i2676:                                ; preds = %if.then.i.i2673
-  %vtable.i.i.i.i2674 = load ptr, ptr %138, align 8, !tbaa !24
-  %vfn.i.i.i.i2675 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2674, i64 2
-  %140 = load ptr, ptr %vfn.i.i.i.i2675, align 8
+if.then.i.i.i2675:                                ; preds = %if.then.i.i2672
+  %vtable.i.i.i.i2673 = load ptr, ptr %138, align 8, !tbaa !24
+  %vfn.i.i.i.i2674 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2673, i64 2
+  %140 = load ptr, ptr %vfn.i.i.i.i2674, align 8
   call void %140(ptr noundef nonnull align 8 dereferenceable(16) %138) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %138) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2681
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2680
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2681: ; preds = %if.then.i.i.i2676, %if.then.i.i2673, %lpad88.i
-  %substituted_regex.i2677 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 17, i32 2
-  %bf.load.i.i.i2678 = load i8, ptr %substituted_regex.i2677, align 8
-  %bf.clear.i.i.i2679 = and i8 %bf.load.i.i.i2678, 1
-  %tobool.i.not.i.i2680 = icmp eq i8 %bf.clear.i.i.i2679, 0
-  br i1 %tobool.i.not.i.i2680, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2687, label %if.then.i2.i2683
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2680: ; preds = %if.then.i.i.i2675, %if.then.i.i2672, %lpad88.i
+  %substituted_regex.i2676 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 17, i32 2
+  %bf.load.i.i.i2677 = load i8, ptr %substituted_regex.i2676, align 8
+  %bf.clear.i.i.i2678 = and i8 %bf.load.i.i.i2677, 1
+  %tobool.i.not.i.i2679 = icmp eq i8 %bf.clear.i.i.i2678, 0
+  br i1 %tobool.i.not.i.i2679, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2686, label %if.then.i2.i2682
 
-if.then.i2.i2683:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2681
-  %__data_.i.i.i2682 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 17, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %141 = load ptr, ptr %__data_.i.i.i2682, align 8, !tbaa !5
+if.then.i2.i2682:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2680
+  %__data_.i.i.i2681 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 17, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %141 = load ptr, ptr %__data_.i.i.i2681, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %141) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2687
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2686
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2687: ; preds = %if.then.i2.i2683, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2681
-  %bf.load.i.i3.i2684 = load i8, ptr %arrayinit.element83.i, align 8
-  %bf.clear.i.i4.i2685 = and i8 %bf.load.i.i3.i2684, 1
-  %tobool.i.not.i5.i2686 = icmp eq i8 %bf.clear.i.i4.i2685, 0
-  br i1 %tobool.i.not.i5.i2686, label %_ZN8TestCaseD2Ev.exit2690, label %if.then.i7.i2689
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2686: ; preds = %if.then.i2.i2682, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2680
+  %bf.load.i.i3.i2683 = load i8, ptr %arrayinit.element83.i, align 8
+  %bf.clear.i.i4.i2684 = and i8 %bf.load.i.i3.i2683, 1
+  %tobool.i.not.i5.i2685 = icmp eq i8 %bf.clear.i.i4.i2684, 0
+  br i1 %tobool.i.not.i5.i2685, label %_ZN8TestCaseD2Ev.exit2689, label %if.then.i7.i2688
 
-if.then.i7.i2689:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2687
-  %__data_.i.i6.i2688 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 17, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %142 = load ptr, ptr %__data_.i.i6.i2688, align 8, !tbaa !5
+if.then.i7.i2688:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2686
+  %__data_.i.i6.i2687 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 17, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %142 = load ptr, ptr %__data_.i.i6.i2687, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %142) #25
-  br label %_ZN8TestCaseD2Ev.exit2690
+  br label %_ZN8TestCaseD2Ev.exit2689
 
-_ZN8TestCaseD2Ev.exit2690:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2687, %if.then.i7.i2689
-  %__cntrl_.i.i2647 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 16, i32 3, i32 1
-  %143 = load ptr, ptr %__cntrl_.i.i2647, align 8, !tbaa !98
-  %tobool.not.i.i2648 = icmp eq ptr %143, null
-  br i1 %tobool.not.i.i2648, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2659, label %if.then.i.i2651
+_ZN8TestCaseD2Ev.exit2689:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2686, %if.then.i7.i2688
+  %__cntrl_.i.i2646 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 16, i32 3, i32 1
+  %143 = load ptr, ptr %__cntrl_.i.i2646, align 8, !tbaa !98
+  %tobool.not.i.i2647 = icmp eq ptr %143, null
+  br i1 %tobool.not.i.i2647, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2658, label %if.then.i.i2650
 
-if.then.i.i2651:                                  ; preds = %_ZN8TestCaseD2Ev.exit2690
-  %__shared_owners_.i.i.i.i2649 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %143, i64 0, i32 1
-  %144 = atomicrmw add ptr %__shared_owners_.i.i.i.i2649, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2650 = icmp eq i64 %144, 0
-  br i1 %cmp.i.i.i.i2650, label %if.then.i.i.i2654, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2659
+if.then.i.i2650:                                  ; preds = %_ZN8TestCaseD2Ev.exit2689
+  %__shared_owners_.i.i.i.i2648 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %143, i64 0, i32 1
+  %144 = atomicrmw add ptr %__shared_owners_.i.i.i.i2648, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2649 = icmp eq i64 %144, 0
+  br i1 %cmp.i.i.i.i2649, label %if.then.i.i.i2653, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2658
 
-if.then.i.i.i2654:                                ; preds = %if.then.i.i2651
-  %vtable.i.i.i.i2652 = load ptr, ptr %143, align 8, !tbaa !24
-  %vfn.i.i.i.i2653 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2652, i64 2
-  %145 = load ptr, ptr %vfn.i.i.i.i2653, align 8
+if.then.i.i.i2653:                                ; preds = %if.then.i.i2650
+  %vtable.i.i.i.i2651 = load ptr, ptr %143, align 8, !tbaa !24
+  %vfn.i.i.i.i2652 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2651, i64 2
+  %145 = load ptr, ptr %vfn.i.i.i.i2652, align 8
   call void %145(ptr noundef nonnull align 8 dereferenceable(16) %143) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %143) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2659
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2658
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2659: ; preds = %if.then.i.i.i2654, %if.then.i.i2651, %_ZN8TestCaseD2Ev.exit2690
-  %substituted_regex.i2655 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 16, i32 2
-  %bf.load.i.i.i2656 = load i8, ptr %substituted_regex.i2655, align 8
-  %bf.clear.i.i.i2657 = and i8 %bf.load.i.i.i2656, 1
-  %tobool.i.not.i.i2658 = icmp eq i8 %bf.clear.i.i.i2657, 0
-  br i1 %tobool.i.not.i.i2658, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2665, label %if.then.i2.i2661
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2658: ; preds = %if.then.i.i.i2653, %if.then.i.i2650, %_ZN8TestCaseD2Ev.exit2689
+  %substituted_regex.i2654 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 16, i32 2
+  %bf.load.i.i.i2655 = load i8, ptr %substituted_regex.i2654, align 8
+  %bf.clear.i.i.i2656 = and i8 %bf.load.i.i.i2655, 1
+  %tobool.i.not.i.i2657 = icmp eq i8 %bf.clear.i.i.i2656, 0
+  br i1 %tobool.i.not.i.i2657, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2664, label %if.then.i2.i2660
 
-if.then.i2.i2661:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2659
-  %__data_.i.i.i2660 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 16, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %146 = load ptr, ptr %__data_.i.i.i2660, align 8, !tbaa !5
+if.then.i2.i2660:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2658
+  %__data_.i.i.i2659 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 16, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %146 = load ptr, ptr %__data_.i.i.i2659, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %146) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2665
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2664
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2665: ; preds = %if.then.i2.i2661, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2659
-  %bf.load.i.i3.i2662 = load i8, ptr %arrayinit.element78.i, align 8
-  %bf.clear.i.i4.i2663 = and i8 %bf.load.i.i3.i2662, 1
-  %tobool.i.not.i5.i2664 = icmp eq i8 %bf.clear.i.i4.i2663, 0
-  br i1 %tobool.i.not.i5.i2664, label %_ZN8TestCaseD2Ev.exit2668, label %if.then.i7.i2667
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2664: ; preds = %if.then.i2.i2660, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2658
+  %bf.load.i.i3.i2661 = load i8, ptr %arrayinit.element78.i, align 8
+  %bf.clear.i.i4.i2662 = and i8 %bf.load.i.i3.i2661, 1
+  %tobool.i.not.i5.i2663 = icmp eq i8 %bf.clear.i.i4.i2662, 0
+  br i1 %tobool.i.not.i5.i2663, label %_ZN8TestCaseD2Ev.exit2667, label %if.then.i7.i2666
 
-if.then.i7.i2667:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2665
-  %__data_.i.i6.i2666 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 16, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %147 = load ptr, ptr %__data_.i.i6.i2666, align 8, !tbaa !5
+if.then.i7.i2666:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2664
+  %__data_.i.i6.i2665 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 16, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %147 = load ptr, ptr %__data_.i.i6.i2665, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %147) #25
-  br label %_ZN8TestCaseD2Ev.exit2668
+  br label %_ZN8TestCaseD2Ev.exit2667
 
-_ZN8TestCaseD2Ev.exit2668:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2665, %if.then.i7.i2667
-  %__cntrl_.i.i2625 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 15, i32 3, i32 1
-  %148 = load ptr, ptr %__cntrl_.i.i2625, align 8, !tbaa !98
-  %tobool.not.i.i2626 = icmp eq ptr %148, null
-  br i1 %tobool.not.i.i2626, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2637, label %if.then.i.i2629
+_ZN8TestCaseD2Ev.exit2667:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2664, %if.then.i7.i2666
+  %__cntrl_.i.i2624 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 15, i32 3, i32 1
+  %148 = load ptr, ptr %__cntrl_.i.i2624, align 8, !tbaa !98
+  %tobool.not.i.i2625 = icmp eq ptr %148, null
+  br i1 %tobool.not.i.i2625, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2636, label %if.then.i.i2628
 
-if.then.i.i2629:                                  ; preds = %_ZN8TestCaseD2Ev.exit2668
-  %__shared_owners_.i.i.i.i2627 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %148, i64 0, i32 1
-  %149 = atomicrmw add ptr %__shared_owners_.i.i.i.i2627, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2628 = icmp eq i64 %149, 0
-  br i1 %cmp.i.i.i.i2628, label %if.then.i.i.i2632, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2637
+if.then.i.i2628:                                  ; preds = %_ZN8TestCaseD2Ev.exit2667
+  %__shared_owners_.i.i.i.i2626 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %148, i64 0, i32 1
+  %149 = atomicrmw add ptr %__shared_owners_.i.i.i.i2626, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2627 = icmp eq i64 %149, 0
+  br i1 %cmp.i.i.i.i2627, label %if.then.i.i.i2631, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2636
 
-if.then.i.i.i2632:                                ; preds = %if.then.i.i2629
-  %vtable.i.i.i.i2630 = load ptr, ptr %148, align 8, !tbaa !24
-  %vfn.i.i.i.i2631 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2630, i64 2
-  %150 = load ptr, ptr %vfn.i.i.i.i2631, align 8
+if.then.i.i.i2631:                                ; preds = %if.then.i.i2628
+  %vtable.i.i.i.i2629 = load ptr, ptr %148, align 8, !tbaa !24
+  %vfn.i.i.i.i2630 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2629, i64 2
+  %150 = load ptr, ptr %vfn.i.i.i.i2630, align 8
   call void %150(ptr noundef nonnull align 8 dereferenceable(16) %148) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %148) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2637
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2636
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2637: ; preds = %if.then.i.i.i2632, %if.then.i.i2629, %_ZN8TestCaseD2Ev.exit2668
-  %substituted_regex.i2633 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 15, i32 2
-  %bf.load.i.i.i2634 = load i8, ptr %substituted_regex.i2633, align 8
-  %bf.clear.i.i.i2635 = and i8 %bf.load.i.i.i2634, 1
-  %tobool.i.not.i.i2636 = icmp eq i8 %bf.clear.i.i.i2635, 0
-  br i1 %tobool.i.not.i.i2636, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2643, label %if.then.i2.i2639
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2636: ; preds = %if.then.i.i.i2631, %if.then.i.i2628, %_ZN8TestCaseD2Ev.exit2667
+  %substituted_regex.i2632 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 15, i32 2
+  %bf.load.i.i.i2633 = load i8, ptr %substituted_regex.i2632, align 8
+  %bf.clear.i.i.i2634 = and i8 %bf.load.i.i.i2633, 1
+  %tobool.i.not.i.i2635 = icmp eq i8 %bf.clear.i.i.i2634, 0
+  br i1 %tobool.i.not.i.i2635, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2642, label %if.then.i2.i2638
 
-if.then.i2.i2639:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2637
-  %__data_.i.i.i2638 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 15, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %151 = load ptr, ptr %__data_.i.i.i2638, align 8, !tbaa !5
+if.then.i2.i2638:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2636
+  %__data_.i.i.i2637 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 15, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %151 = load ptr, ptr %__data_.i.i.i2637, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %151) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2643
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2642
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2643: ; preds = %if.then.i2.i2639, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2637
-  %bf.load.i.i3.i2640 = load i8, ptr %arrayinit.element73.i, align 8
-  %bf.clear.i.i4.i2641 = and i8 %bf.load.i.i3.i2640, 1
-  %tobool.i.not.i5.i2642 = icmp eq i8 %bf.clear.i.i4.i2641, 0
-  br i1 %tobool.i.not.i5.i2642, label %_ZN8TestCaseD2Ev.exit2646, label %if.then.i7.i2645
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2642: ; preds = %if.then.i2.i2638, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2636
+  %bf.load.i.i3.i2639 = load i8, ptr %arrayinit.element73.i, align 8
+  %bf.clear.i.i4.i2640 = and i8 %bf.load.i.i3.i2639, 1
+  %tobool.i.not.i5.i2641 = icmp eq i8 %bf.clear.i.i4.i2640, 0
+  br i1 %tobool.i.not.i5.i2641, label %_ZN8TestCaseD2Ev.exit2645, label %if.then.i7.i2644
 
-if.then.i7.i2645:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2643
-  %__data_.i.i6.i2644 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 15, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %152 = load ptr, ptr %__data_.i.i6.i2644, align 8, !tbaa !5
+if.then.i7.i2644:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2642
+  %__data_.i.i6.i2643 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 15, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %152 = load ptr, ptr %__data_.i.i6.i2643, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %152) #25
-  br label %_ZN8TestCaseD2Ev.exit2646
+  br label %_ZN8TestCaseD2Ev.exit2645
 
-_ZN8TestCaseD2Ev.exit2646:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2643, %if.then.i7.i2645
-  %__cntrl_.i.i2603 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 14, i32 3, i32 1
-  %153 = load ptr, ptr %__cntrl_.i.i2603, align 8, !tbaa !98
-  %tobool.not.i.i2604 = icmp eq ptr %153, null
-  br i1 %tobool.not.i.i2604, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2615, label %if.then.i.i2607
+_ZN8TestCaseD2Ev.exit2645:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2642, %if.then.i7.i2644
+  %__cntrl_.i.i2602 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 14, i32 3, i32 1
+  %153 = load ptr, ptr %__cntrl_.i.i2602, align 8, !tbaa !98
+  %tobool.not.i.i2603 = icmp eq ptr %153, null
+  br i1 %tobool.not.i.i2603, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2614, label %if.then.i.i2606
 
-if.then.i.i2607:                                  ; preds = %_ZN8TestCaseD2Ev.exit2646
-  %__shared_owners_.i.i.i.i2605 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %153, i64 0, i32 1
-  %154 = atomicrmw add ptr %__shared_owners_.i.i.i.i2605, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2606 = icmp eq i64 %154, 0
-  br i1 %cmp.i.i.i.i2606, label %if.then.i.i.i2610, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2615
+if.then.i.i2606:                                  ; preds = %_ZN8TestCaseD2Ev.exit2645
+  %__shared_owners_.i.i.i.i2604 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %153, i64 0, i32 1
+  %154 = atomicrmw add ptr %__shared_owners_.i.i.i.i2604, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2605 = icmp eq i64 %154, 0
+  br i1 %cmp.i.i.i.i2605, label %if.then.i.i.i2609, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2614
 
-if.then.i.i.i2610:                                ; preds = %if.then.i.i2607
-  %vtable.i.i.i.i2608 = load ptr, ptr %153, align 8, !tbaa !24
-  %vfn.i.i.i.i2609 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2608, i64 2
-  %155 = load ptr, ptr %vfn.i.i.i.i2609, align 8
+if.then.i.i.i2609:                                ; preds = %if.then.i.i2606
+  %vtable.i.i.i.i2607 = load ptr, ptr %153, align 8, !tbaa !24
+  %vfn.i.i.i.i2608 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2607, i64 2
+  %155 = load ptr, ptr %vfn.i.i.i.i2608, align 8
   call void %155(ptr noundef nonnull align 8 dereferenceable(16) %153) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %153) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2615
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2614
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2615: ; preds = %if.then.i.i.i2610, %if.then.i.i2607, %_ZN8TestCaseD2Ev.exit2646
-  %substituted_regex.i2611 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 14, i32 2
-  %bf.load.i.i.i2612 = load i8, ptr %substituted_regex.i2611, align 8
-  %bf.clear.i.i.i2613 = and i8 %bf.load.i.i.i2612, 1
-  %tobool.i.not.i.i2614 = icmp eq i8 %bf.clear.i.i.i2613, 0
-  br i1 %tobool.i.not.i.i2614, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2621, label %if.then.i2.i2617
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2614: ; preds = %if.then.i.i.i2609, %if.then.i.i2606, %_ZN8TestCaseD2Ev.exit2645
+  %substituted_regex.i2610 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 14, i32 2
+  %bf.load.i.i.i2611 = load i8, ptr %substituted_regex.i2610, align 8
+  %bf.clear.i.i.i2612 = and i8 %bf.load.i.i.i2611, 1
+  %tobool.i.not.i.i2613 = icmp eq i8 %bf.clear.i.i.i2612, 0
+  br i1 %tobool.i.not.i.i2613, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2620, label %if.then.i2.i2616
 
-if.then.i2.i2617:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2615
-  %__data_.i.i.i2616 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 14, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %156 = load ptr, ptr %__data_.i.i.i2616, align 8, !tbaa !5
+if.then.i2.i2616:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2614
+  %__data_.i.i.i2615 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 14, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %156 = load ptr, ptr %__data_.i.i.i2615, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %156) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2621
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2620
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2621: ; preds = %if.then.i2.i2617, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2615
-  %bf.load.i.i3.i2618 = load i8, ptr %arrayinit.element68.i, align 8
-  %bf.clear.i.i4.i2619 = and i8 %bf.load.i.i3.i2618, 1
-  %tobool.i.not.i5.i2620 = icmp eq i8 %bf.clear.i.i4.i2619, 0
-  br i1 %tobool.i.not.i5.i2620, label %_ZN8TestCaseD2Ev.exit2624, label %if.then.i7.i2623
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2620: ; preds = %if.then.i2.i2616, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2614
+  %bf.load.i.i3.i2617 = load i8, ptr %arrayinit.element68.i, align 8
+  %bf.clear.i.i4.i2618 = and i8 %bf.load.i.i3.i2617, 1
+  %tobool.i.not.i5.i2619 = icmp eq i8 %bf.clear.i.i4.i2618, 0
+  br i1 %tobool.i.not.i5.i2619, label %_ZN8TestCaseD2Ev.exit2623, label %if.then.i7.i2622
 
-if.then.i7.i2623:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2621
-  %__data_.i.i6.i2622 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 14, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %157 = load ptr, ptr %__data_.i.i6.i2622, align 8, !tbaa !5
+if.then.i7.i2622:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2620
+  %__data_.i.i6.i2621 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 14, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %157 = load ptr, ptr %__data_.i.i6.i2621, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %157) #25
-  br label %_ZN8TestCaseD2Ev.exit2624
+  br label %_ZN8TestCaseD2Ev.exit2623
 
-_ZN8TestCaseD2Ev.exit2624:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2621, %if.then.i7.i2623
-  %__cntrl_.i.i2581 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 13, i32 3, i32 1
-  %158 = load ptr, ptr %__cntrl_.i.i2581, align 8, !tbaa !98
-  %tobool.not.i.i2582 = icmp eq ptr %158, null
-  br i1 %tobool.not.i.i2582, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2593, label %if.then.i.i2585
+_ZN8TestCaseD2Ev.exit2623:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2620, %if.then.i7.i2622
+  %__cntrl_.i.i2580 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 13, i32 3, i32 1
+  %158 = load ptr, ptr %__cntrl_.i.i2580, align 8, !tbaa !98
+  %tobool.not.i.i2581 = icmp eq ptr %158, null
+  br i1 %tobool.not.i.i2581, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2592, label %if.then.i.i2584
 
-if.then.i.i2585:                                  ; preds = %_ZN8TestCaseD2Ev.exit2624
-  %__shared_owners_.i.i.i.i2583 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %158, i64 0, i32 1
-  %159 = atomicrmw add ptr %__shared_owners_.i.i.i.i2583, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2584 = icmp eq i64 %159, 0
-  br i1 %cmp.i.i.i.i2584, label %if.then.i.i.i2588, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2593
+if.then.i.i2584:                                  ; preds = %_ZN8TestCaseD2Ev.exit2623
+  %__shared_owners_.i.i.i.i2582 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %158, i64 0, i32 1
+  %159 = atomicrmw add ptr %__shared_owners_.i.i.i.i2582, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2583 = icmp eq i64 %159, 0
+  br i1 %cmp.i.i.i.i2583, label %if.then.i.i.i2587, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2592
 
-if.then.i.i.i2588:                                ; preds = %if.then.i.i2585
-  %vtable.i.i.i.i2586 = load ptr, ptr %158, align 8, !tbaa !24
-  %vfn.i.i.i.i2587 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2586, i64 2
-  %160 = load ptr, ptr %vfn.i.i.i.i2587, align 8
+if.then.i.i.i2587:                                ; preds = %if.then.i.i2584
+  %vtable.i.i.i.i2585 = load ptr, ptr %158, align 8, !tbaa !24
+  %vfn.i.i.i.i2586 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2585, i64 2
+  %160 = load ptr, ptr %vfn.i.i.i.i2586, align 8
   call void %160(ptr noundef nonnull align 8 dereferenceable(16) %158) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %158) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2593
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2592
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2593: ; preds = %if.then.i.i.i2588, %if.then.i.i2585, %_ZN8TestCaseD2Ev.exit2624
-  %substituted_regex.i2589 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 13, i32 2
-  %bf.load.i.i.i2590 = load i8, ptr %substituted_regex.i2589, align 8
-  %bf.clear.i.i.i2591 = and i8 %bf.load.i.i.i2590, 1
-  %tobool.i.not.i.i2592 = icmp eq i8 %bf.clear.i.i.i2591, 0
-  br i1 %tobool.i.not.i.i2592, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2599, label %if.then.i2.i2595
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2592: ; preds = %if.then.i.i.i2587, %if.then.i.i2584, %_ZN8TestCaseD2Ev.exit2623
+  %substituted_regex.i2588 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 13, i32 2
+  %bf.load.i.i.i2589 = load i8, ptr %substituted_regex.i2588, align 8
+  %bf.clear.i.i.i2590 = and i8 %bf.load.i.i.i2589, 1
+  %tobool.i.not.i.i2591 = icmp eq i8 %bf.clear.i.i.i2590, 0
+  br i1 %tobool.i.not.i.i2591, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2598, label %if.then.i2.i2594
 
-if.then.i2.i2595:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2593
-  %__data_.i.i.i2594 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 13, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %161 = load ptr, ptr %__data_.i.i.i2594, align 8, !tbaa !5
+if.then.i2.i2594:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2592
+  %__data_.i.i.i2593 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 13, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %161 = load ptr, ptr %__data_.i.i.i2593, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %161) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2599
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2598
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2599: ; preds = %if.then.i2.i2595, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2593
-  %bf.load.i.i3.i2596 = load i8, ptr %arrayinit.element63.i, align 8
-  %bf.clear.i.i4.i2597 = and i8 %bf.load.i.i3.i2596, 1
-  %tobool.i.not.i5.i2598 = icmp eq i8 %bf.clear.i.i4.i2597, 0
-  br i1 %tobool.i.not.i5.i2598, label %_ZN8TestCaseD2Ev.exit2602, label %if.then.i7.i2601
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2598: ; preds = %if.then.i2.i2594, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2592
+  %bf.load.i.i3.i2595 = load i8, ptr %arrayinit.element63.i, align 8
+  %bf.clear.i.i4.i2596 = and i8 %bf.load.i.i3.i2595, 1
+  %tobool.i.not.i5.i2597 = icmp eq i8 %bf.clear.i.i4.i2596, 0
+  br i1 %tobool.i.not.i5.i2597, label %_ZN8TestCaseD2Ev.exit2601, label %if.then.i7.i2600
 
-if.then.i7.i2601:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2599
-  %__data_.i.i6.i2600 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 13, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %162 = load ptr, ptr %__data_.i.i6.i2600, align 8, !tbaa !5
+if.then.i7.i2600:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2598
+  %__data_.i.i6.i2599 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 13, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %162 = load ptr, ptr %__data_.i.i6.i2599, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %162) #25
-  br label %_ZN8TestCaseD2Ev.exit2602
+  br label %_ZN8TestCaseD2Ev.exit2601
 
-_ZN8TestCaseD2Ev.exit2602:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2599, %if.then.i7.i2601
-  %__cntrl_.i.i2559 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 12, i32 3, i32 1
-  %163 = load ptr, ptr %__cntrl_.i.i2559, align 8, !tbaa !98
-  %tobool.not.i.i2560 = icmp eq ptr %163, null
-  br i1 %tobool.not.i.i2560, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2571, label %if.then.i.i2563
+_ZN8TestCaseD2Ev.exit2601:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2598, %if.then.i7.i2600
+  %__cntrl_.i.i2558 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 12, i32 3, i32 1
+  %163 = load ptr, ptr %__cntrl_.i.i2558, align 8, !tbaa !98
+  %tobool.not.i.i2559 = icmp eq ptr %163, null
+  br i1 %tobool.not.i.i2559, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2570, label %if.then.i.i2562
 
-if.then.i.i2563:                                  ; preds = %_ZN8TestCaseD2Ev.exit2602
-  %__shared_owners_.i.i.i.i2561 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %163, i64 0, i32 1
-  %164 = atomicrmw add ptr %__shared_owners_.i.i.i.i2561, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2562 = icmp eq i64 %164, 0
-  br i1 %cmp.i.i.i.i2562, label %if.then.i.i.i2566, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2571
+if.then.i.i2562:                                  ; preds = %_ZN8TestCaseD2Ev.exit2601
+  %__shared_owners_.i.i.i.i2560 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %163, i64 0, i32 1
+  %164 = atomicrmw add ptr %__shared_owners_.i.i.i.i2560, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2561 = icmp eq i64 %164, 0
+  br i1 %cmp.i.i.i.i2561, label %if.then.i.i.i2565, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2570
 
-if.then.i.i.i2566:                                ; preds = %if.then.i.i2563
-  %vtable.i.i.i.i2564 = load ptr, ptr %163, align 8, !tbaa !24
-  %vfn.i.i.i.i2565 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2564, i64 2
-  %165 = load ptr, ptr %vfn.i.i.i.i2565, align 8
+if.then.i.i.i2565:                                ; preds = %if.then.i.i2562
+  %vtable.i.i.i.i2563 = load ptr, ptr %163, align 8, !tbaa !24
+  %vfn.i.i.i.i2564 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2563, i64 2
+  %165 = load ptr, ptr %vfn.i.i.i.i2564, align 8
   call void %165(ptr noundef nonnull align 8 dereferenceable(16) %163) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %163) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2571
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2570
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2571: ; preds = %if.then.i.i.i2566, %if.then.i.i2563, %_ZN8TestCaseD2Ev.exit2602
-  %substituted_regex.i2567 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 12, i32 2
-  %bf.load.i.i.i2568 = load i8, ptr %substituted_regex.i2567, align 8
-  %bf.clear.i.i.i2569 = and i8 %bf.load.i.i.i2568, 1
-  %tobool.i.not.i.i2570 = icmp eq i8 %bf.clear.i.i.i2569, 0
-  br i1 %tobool.i.not.i.i2570, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2577, label %if.then.i2.i2573
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2570: ; preds = %if.then.i.i.i2565, %if.then.i.i2562, %_ZN8TestCaseD2Ev.exit2601
+  %substituted_regex.i2566 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 12, i32 2
+  %bf.load.i.i.i2567 = load i8, ptr %substituted_regex.i2566, align 8
+  %bf.clear.i.i.i2568 = and i8 %bf.load.i.i.i2567, 1
+  %tobool.i.not.i.i2569 = icmp eq i8 %bf.clear.i.i.i2568, 0
+  br i1 %tobool.i.not.i.i2569, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2576, label %if.then.i2.i2572
 
-if.then.i2.i2573:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2571
-  %__data_.i.i.i2572 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 12, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %166 = load ptr, ptr %__data_.i.i.i2572, align 8, !tbaa !5
+if.then.i2.i2572:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2570
+  %__data_.i.i.i2571 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 12, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %166 = load ptr, ptr %__data_.i.i.i2571, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %166) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2577
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2576
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2577: ; preds = %if.then.i2.i2573, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2571
-  %bf.load.i.i3.i2574 = load i8, ptr %arrayinit.element58.i, align 8
-  %bf.clear.i.i4.i2575 = and i8 %bf.load.i.i3.i2574, 1
-  %tobool.i.not.i5.i2576 = icmp eq i8 %bf.clear.i.i4.i2575, 0
-  br i1 %tobool.i.not.i5.i2576, label %_ZN8TestCaseD2Ev.exit2580, label %if.then.i7.i2579
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2576: ; preds = %if.then.i2.i2572, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2570
+  %bf.load.i.i3.i2573 = load i8, ptr %arrayinit.element58.i, align 8
+  %bf.clear.i.i4.i2574 = and i8 %bf.load.i.i3.i2573, 1
+  %tobool.i.not.i5.i2575 = icmp eq i8 %bf.clear.i.i4.i2574, 0
+  br i1 %tobool.i.not.i5.i2575, label %_ZN8TestCaseD2Ev.exit2579, label %if.then.i7.i2578
 
-if.then.i7.i2579:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2577
-  %__data_.i.i6.i2578 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 12, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %167 = load ptr, ptr %__data_.i.i6.i2578, align 8, !tbaa !5
+if.then.i7.i2578:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2576
+  %__data_.i.i6.i2577 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 12, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %167 = load ptr, ptr %__data_.i.i6.i2577, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %167) #25
-  br label %_ZN8TestCaseD2Ev.exit2580
+  br label %_ZN8TestCaseD2Ev.exit2579
 
-_ZN8TestCaseD2Ev.exit2580:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2577, %if.then.i7.i2579
-  %__cntrl_.i.i2537 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 11, i32 3, i32 1
-  %168 = load ptr, ptr %__cntrl_.i.i2537, align 8, !tbaa !98
-  %tobool.not.i.i2538 = icmp eq ptr %168, null
-  br i1 %tobool.not.i.i2538, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2549, label %if.then.i.i2541
+_ZN8TestCaseD2Ev.exit2579:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2576, %if.then.i7.i2578
+  %__cntrl_.i.i2536 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 11, i32 3, i32 1
+  %168 = load ptr, ptr %__cntrl_.i.i2536, align 8, !tbaa !98
+  %tobool.not.i.i2537 = icmp eq ptr %168, null
+  br i1 %tobool.not.i.i2537, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2548, label %if.then.i.i2540
 
-if.then.i.i2541:                                  ; preds = %_ZN8TestCaseD2Ev.exit2580
-  %__shared_owners_.i.i.i.i2539 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %168, i64 0, i32 1
-  %169 = atomicrmw add ptr %__shared_owners_.i.i.i.i2539, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2540 = icmp eq i64 %169, 0
-  br i1 %cmp.i.i.i.i2540, label %if.then.i.i.i2544, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2549
+if.then.i.i2540:                                  ; preds = %_ZN8TestCaseD2Ev.exit2579
+  %__shared_owners_.i.i.i.i2538 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %168, i64 0, i32 1
+  %169 = atomicrmw add ptr %__shared_owners_.i.i.i.i2538, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2539 = icmp eq i64 %169, 0
+  br i1 %cmp.i.i.i.i2539, label %if.then.i.i.i2543, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2548
 
-if.then.i.i.i2544:                                ; preds = %if.then.i.i2541
-  %vtable.i.i.i.i2542 = load ptr, ptr %168, align 8, !tbaa !24
-  %vfn.i.i.i.i2543 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2542, i64 2
-  %170 = load ptr, ptr %vfn.i.i.i.i2543, align 8
+if.then.i.i.i2543:                                ; preds = %if.then.i.i2540
+  %vtable.i.i.i.i2541 = load ptr, ptr %168, align 8, !tbaa !24
+  %vfn.i.i.i.i2542 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2541, i64 2
+  %170 = load ptr, ptr %vfn.i.i.i.i2542, align 8
   call void %170(ptr noundef nonnull align 8 dereferenceable(16) %168) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %168) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2549
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2548
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2549: ; preds = %if.then.i.i.i2544, %if.then.i.i2541, %_ZN8TestCaseD2Ev.exit2580
-  %substituted_regex.i2545 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 11, i32 2
-  %bf.load.i.i.i2546 = load i8, ptr %substituted_regex.i2545, align 8
-  %bf.clear.i.i.i2547 = and i8 %bf.load.i.i.i2546, 1
-  %tobool.i.not.i.i2548 = icmp eq i8 %bf.clear.i.i.i2547, 0
-  br i1 %tobool.i.not.i.i2548, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2555, label %if.then.i2.i2551
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2548: ; preds = %if.then.i.i.i2543, %if.then.i.i2540, %_ZN8TestCaseD2Ev.exit2579
+  %substituted_regex.i2544 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 11, i32 2
+  %bf.load.i.i.i2545 = load i8, ptr %substituted_regex.i2544, align 8
+  %bf.clear.i.i.i2546 = and i8 %bf.load.i.i.i2545, 1
+  %tobool.i.not.i.i2547 = icmp eq i8 %bf.clear.i.i.i2546, 0
+  br i1 %tobool.i.not.i.i2547, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2554, label %if.then.i2.i2550
 
-if.then.i2.i2551:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2549
-  %__data_.i.i.i2550 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 11, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %171 = load ptr, ptr %__data_.i.i.i2550, align 8, !tbaa !5
+if.then.i2.i2550:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2548
+  %__data_.i.i.i2549 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 11, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %171 = load ptr, ptr %__data_.i.i.i2549, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %171) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2555
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2554
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2555: ; preds = %if.then.i2.i2551, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2549
-  %bf.load.i.i3.i2552 = load i8, ptr %arrayinit.element53.i, align 8
-  %bf.clear.i.i4.i2553 = and i8 %bf.load.i.i3.i2552, 1
-  %tobool.i.not.i5.i2554 = icmp eq i8 %bf.clear.i.i4.i2553, 0
-  br i1 %tobool.i.not.i5.i2554, label %_ZN8TestCaseD2Ev.exit2558, label %if.then.i7.i2557
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2554: ; preds = %if.then.i2.i2550, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2548
+  %bf.load.i.i3.i2551 = load i8, ptr %arrayinit.element53.i, align 8
+  %bf.clear.i.i4.i2552 = and i8 %bf.load.i.i3.i2551, 1
+  %tobool.i.not.i5.i2553 = icmp eq i8 %bf.clear.i.i4.i2552, 0
+  br i1 %tobool.i.not.i5.i2553, label %_ZN8TestCaseD2Ev.exit2557, label %if.then.i7.i2556
 
-if.then.i7.i2557:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2555
-  %__data_.i.i6.i2556 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 11, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %172 = load ptr, ptr %__data_.i.i6.i2556, align 8, !tbaa !5
+if.then.i7.i2556:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2554
+  %__data_.i.i6.i2555 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 11, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %172 = load ptr, ptr %__data_.i.i6.i2555, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %172) #25
-  br label %_ZN8TestCaseD2Ev.exit2558
+  br label %_ZN8TestCaseD2Ev.exit2557
 
-_ZN8TestCaseD2Ev.exit2558:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2555, %if.then.i7.i2557
-  %__cntrl_.i.i2515 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 10, i32 3, i32 1
-  %173 = load ptr, ptr %__cntrl_.i.i2515, align 8, !tbaa !98
-  %tobool.not.i.i2516 = icmp eq ptr %173, null
-  br i1 %tobool.not.i.i2516, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2527, label %if.then.i.i2519
+_ZN8TestCaseD2Ev.exit2557:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2554, %if.then.i7.i2556
+  %__cntrl_.i.i2514 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 10, i32 3, i32 1
+  %173 = load ptr, ptr %__cntrl_.i.i2514, align 8, !tbaa !98
+  %tobool.not.i.i2515 = icmp eq ptr %173, null
+  br i1 %tobool.not.i.i2515, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2526, label %if.then.i.i2518
 
-if.then.i.i2519:                                  ; preds = %_ZN8TestCaseD2Ev.exit2558
-  %__shared_owners_.i.i.i.i2517 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %173, i64 0, i32 1
-  %174 = atomicrmw add ptr %__shared_owners_.i.i.i.i2517, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2518 = icmp eq i64 %174, 0
-  br i1 %cmp.i.i.i.i2518, label %if.then.i.i.i2522, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2527
+if.then.i.i2518:                                  ; preds = %_ZN8TestCaseD2Ev.exit2557
+  %__shared_owners_.i.i.i.i2516 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %173, i64 0, i32 1
+  %174 = atomicrmw add ptr %__shared_owners_.i.i.i.i2516, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2517 = icmp eq i64 %174, 0
+  br i1 %cmp.i.i.i.i2517, label %if.then.i.i.i2521, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2526
 
-if.then.i.i.i2522:                                ; preds = %if.then.i.i2519
-  %vtable.i.i.i.i2520 = load ptr, ptr %173, align 8, !tbaa !24
-  %vfn.i.i.i.i2521 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2520, i64 2
-  %175 = load ptr, ptr %vfn.i.i.i.i2521, align 8
+if.then.i.i.i2521:                                ; preds = %if.then.i.i2518
+  %vtable.i.i.i.i2519 = load ptr, ptr %173, align 8, !tbaa !24
+  %vfn.i.i.i.i2520 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2519, i64 2
+  %175 = load ptr, ptr %vfn.i.i.i.i2520, align 8
   call void %175(ptr noundef nonnull align 8 dereferenceable(16) %173) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %173) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2527
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2526
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2527: ; preds = %if.then.i.i.i2522, %if.then.i.i2519, %_ZN8TestCaseD2Ev.exit2558
-  %substituted_regex.i2523 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 10, i32 2
-  %bf.load.i.i.i2524 = load i8, ptr %substituted_regex.i2523, align 8
-  %bf.clear.i.i.i2525 = and i8 %bf.load.i.i.i2524, 1
-  %tobool.i.not.i.i2526 = icmp eq i8 %bf.clear.i.i.i2525, 0
-  br i1 %tobool.i.not.i.i2526, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2533, label %if.then.i2.i2529
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2526: ; preds = %if.then.i.i.i2521, %if.then.i.i2518, %_ZN8TestCaseD2Ev.exit2557
+  %substituted_regex.i2522 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 10, i32 2
+  %bf.load.i.i.i2523 = load i8, ptr %substituted_regex.i2522, align 8
+  %bf.clear.i.i.i2524 = and i8 %bf.load.i.i.i2523, 1
+  %tobool.i.not.i.i2525 = icmp eq i8 %bf.clear.i.i.i2524, 0
+  br i1 %tobool.i.not.i.i2525, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2532, label %if.then.i2.i2528
 
-if.then.i2.i2529:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2527
-  %__data_.i.i.i2528 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 10, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %176 = load ptr, ptr %__data_.i.i.i2528, align 8, !tbaa !5
+if.then.i2.i2528:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2526
+  %__data_.i.i.i2527 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 10, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %176 = load ptr, ptr %__data_.i.i.i2527, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %176) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2533
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2532
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2533: ; preds = %if.then.i2.i2529, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2527
-  %bf.load.i.i3.i2530 = load i8, ptr %arrayinit.element48.i, align 8
-  %bf.clear.i.i4.i2531 = and i8 %bf.load.i.i3.i2530, 1
-  %tobool.i.not.i5.i2532 = icmp eq i8 %bf.clear.i.i4.i2531, 0
-  br i1 %tobool.i.not.i5.i2532, label %_ZN8TestCaseD2Ev.exit2536, label %if.then.i7.i2535
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2532: ; preds = %if.then.i2.i2528, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2526
+  %bf.load.i.i3.i2529 = load i8, ptr %arrayinit.element48.i, align 8
+  %bf.clear.i.i4.i2530 = and i8 %bf.load.i.i3.i2529, 1
+  %tobool.i.not.i5.i2531 = icmp eq i8 %bf.clear.i.i4.i2530, 0
+  br i1 %tobool.i.not.i5.i2531, label %_ZN8TestCaseD2Ev.exit2535, label %if.then.i7.i2534
 
-if.then.i7.i2535:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2533
-  %__data_.i.i6.i2534 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 10, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %177 = load ptr, ptr %__data_.i.i6.i2534, align 8, !tbaa !5
+if.then.i7.i2534:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2532
+  %__data_.i.i6.i2533 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 10, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %177 = load ptr, ptr %__data_.i.i6.i2533, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %177) #25
-  br label %_ZN8TestCaseD2Ev.exit2536
+  br label %_ZN8TestCaseD2Ev.exit2535
 
-_ZN8TestCaseD2Ev.exit2536:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2533, %if.then.i7.i2535
-  %__cntrl_.i.i2493 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 9, i32 3, i32 1
-  %178 = load ptr, ptr %__cntrl_.i.i2493, align 8, !tbaa !98
-  %tobool.not.i.i2494 = icmp eq ptr %178, null
-  br i1 %tobool.not.i.i2494, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2505, label %if.then.i.i2497
+_ZN8TestCaseD2Ev.exit2535:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2532, %if.then.i7.i2534
+  %__cntrl_.i.i2492 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 9, i32 3, i32 1
+  %178 = load ptr, ptr %__cntrl_.i.i2492, align 8, !tbaa !98
+  %tobool.not.i.i2493 = icmp eq ptr %178, null
+  br i1 %tobool.not.i.i2493, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2504, label %if.then.i.i2496
 
-if.then.i.i2497:                                  ; preds = %_ZN8TestCaseD2Ev.exit2536
-  %__shared_owners_.i.i.i.i2495 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %178, i64 0, i32 1
-  %179 = atomicrmw add ptr %__shared_owners_.i.i.i.i2495, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2496 = icmp eq i64 %179, 0
-  br i1 %cmp.i.i.i.i2496, label %if.then.i.i.i2500, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2505
+if.then.i.i2496:                                  ; preds = %_ZN8TestCaseD2Ev.exit2535
+  %__shared_owners_.i.i.i.i2494 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %178, i64 0, i32 1
+  %179 = atomicrmw add ptr %__shared_owners_.i.i.i.i2494, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2495 = icmp eq i64 %179, 0
+  br i1 %cmp.i.i.i.i2495, label %if.then.i.i.i2499, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2504
 
-if.then.i.i.i2500:                                ; preds = %if.then.i.i2497
-  %vtable.i.i.i.i2498 = load ptr, ptr %178, align 8, !tbaa !24
-  %vfn.i.i.i.i2499 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2498, i64 2
-  %180 = load ptr, ptr %vfn.i.i.i.i2499, align 8
+if.then.i.i.i2499:                                ; preds = %if.then.i.i2496
+  %vtable.i.i.i.i2497 = load ptr, ptr %178, align 8, !tbaa !24
+  %vfn.i.i.i.i2498 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2497, i64 2
+  %180 = load ptr, ptr %vfn.i.i.i.i2498, align 8
   call void %180(ptr noundef nonnull align 8 dereferenceable(16) %178) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %178) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2505
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2504
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2505: ; preds = %if.then.i.i.i2500, %if.then.i.i2497, %_ZN8TestCaseD2Ev.exit2536
-  %substituted_regex.i2501 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 9, i32 2
-  %bf.load.i.i.i2502 = load i8, ptr %substituted_regex.i2501, align 8
-  %bf.clear.i.i.i2503 = and i8 %bf.load.i.i.i2502, 1
-  %tobool.i.not.i.i2504 = icmp eq i8 %bf.clear.i.i.i2503, 0
-  br i1 %tobool.i.not.i.i2504, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2511, label %if.then.i2.i2507
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2504: ; preds = %if.then.i.i.i2499, %if.then.i.i2496, %_ZN8TestCaseD2Ev.exit2535
+  %substituted_regex.i2500 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 9, i32 2
+  %bf.load.i.i.i2501 = load i8, ptr %substituted_regex.i2500, align 8
+  %bf.clear.i.i.i2502 = and i8 %bf.load.i.i.i2501, 1
+  %tobool.i.not.i.i2503 = icmp eq i8 %bf.clear.i.i.i2502, 0
+  br i1 %tobool.i.not.i.i2503, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2510, label %if.then.i2.i2506
 
-if.then.i2.i2507:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2505
-  %__data_.i.i.i2506 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 9, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %181 = load ptr, ptr %__data_.i.i.i2506, align 8, !tbaa !5
+if.then.i2.i2506:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2504
+  %__data_.i.i.i2505 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 9, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %181 = load ptr, ptr %__data_.i.i.i2505, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %181) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2511
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2510
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2511: ; preds = %if.then.i2.i2507, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2505
-  %bf.load.i.i3.i2508 = load i8, ptr %arrayinit.element43.i, align 8
-  %bf.clear.i.i4.i2509 = and i8 %bf.load.i.i3.i2508, 1
-  %tobool.i.not.i5.i2510 = icmp eq i8 %bf.clear.i.i4.i2509, 0
-  br i1 %tobool.i.not.i5.i2510, label %_ZN8TestCaseD2Ev.exit2514, label %if.then.i7.i2513
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2510: ; preds = %if.then.i2.i2506, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2504
+  %bf.load.i.i3.i2507 = load i8, ptr %arrayinit.element43.i, align 8
+  %bf.clear.i.i4.i2508 = and i8 %bf.load.i.i3.i2507, 1
+  %tobool.i.not.i5.i2509 = icmp eq i8 %bf.clear.i.i4.i2508, 0
+  br i1 %tobool.i.not.i5.i2509, label %_ZN8TestCaseD2Ev.exit2513, label %if.then.i7.i2512
 
-if.then.i7.i2513:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2511
-  %__data_.i.i6.i2512 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %182 = load ptr, ptr %__data_.i.i6.i2512, align 8, !tbaa !5
+if.then.i7.i2512:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2510
+  %__data_.i.i6.i2511 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %182 = load ptr, ptr %__data_.i.i6.i2511, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %182) #25
-  br label %_ZN8TestCaseD2Ev.exit2514
+  br label %_ZN8TestCaseD2Ev.exit2513
 
-_ZN8TestCaseD2Ev.exit2514:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2511, %if.then.i7.i2513
-  %__cntrl_.i.i2471 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 8, i32 3, i32 1
-  %183 = load ptr, ptr %__cntrl_.i.i2471, align 8, !tbaa !98
-  %tobool.not.i.i2472 = icmp eq ptr %183, null
-  br i1 %tobool.not.i.i2472, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2483, label %if.then.i.i2475
+_ZN8TestCaseD2Ev.exit2513:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2510, %if.then.i7.i2512
+  %__cntrl_.i.i2470 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 8, i32 3, i32 1
+  %183 = load ptr, ptr %__cntrl_.i.i2470, align 8, !tbaa !98
+  %tobool.not.i.i2471 = icmp eq ptr %183, null
+  br i1 %tobool.not.i.i2471, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2482, label %if.then.i.i2474
 
-if.then.i.i2475:                                  ; preds = %_ZN8TestCaseD2Ev.exit2514
-  %__shared_owners_.i.i.i.i2473 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %183, i64 0, i32 1
-  %184 = atomicrmw add ptr %__shared_owners_.i.i.i.i2473, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2474 = icmp eq i64 %184, 0
-  br i1 %cmp.i.i.i.i2474, label %if.then.i.i.i2478, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2483
+if.then.i.i2474:                                  ; preds = %_ZN8TestCaseD2Ev.exit2513
+  %__shared_owners_.i.i.i.i2472 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %183, i64 0, i32 1
+  %184 = atomicrmw add ptr %__shared_owners_.i.i.i.i2472, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2473 = icmp eq i64 %184, 0
+  br i1 %cmp.i.i.i.i2473, label %if.then.i.i.i2477, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2482
 
-if.then.i.i.i2478:                                ; preds = %if.then.i.i2475
-  %vtable.i.i.i.i2476 = load ptr, ptr %183, align 8, !tbaa !24
-  %vfn.i.i.i.i2477 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2476, i64 2
-  %185 = load ptr, ptr %vfn.i.i.i.i2477, align 8
+if.then.i.i.i2477:                                ; preds = %if.then.i.i2474
+  %vtable.i.i.i.i2475 = load ptr, ptr %183, align 8, !tbaa !24
+  %vfn.i.i.i.i2476 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2475, i64 2
+  %185 = load ptr, ptr %vfn.i.i.i.i2476, align 8
   call void %185(ptr noundef nonnull align 8 dereferenceable(16) %183) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %183) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2483
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2482
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2483: ; preds = %if.then.i.i.i2478, %if.then.i.i2475, %_ZN8TestCaseD2Ev.exit2514
-  %substituted_regex.i2479 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 8, i32 2
-  %bf.load.i.i.i2480 = load i8, ptr %substituted_regex.i2479, align 8
-  %bf.clear.i.i.i2481 = and i8 %bf.load.i.i.i2480, 1
-  %tobool.i.not.i.i2482 = icmp eq i8 %bf.clear.i.i.i2481, 0
-  br i1 %tobool.i.not.i.i2482, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2489, label %if.then.i2.i2485
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2482: ; preds = %if.then.i.i.i2477, %if.then.i.i2474, %_ZN8TestCaseD2Ev.exit2513
+  %substituted_regex.i2478 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 8, i32 2
+  %bf.load.i.i.i2479 = load i8, ptr %substituted_regex.i2478, align 8
+  %bf.clear.i.i.i2480 = and i8 %bf.load.i.i.i2479, 1
+  %tobool.i.not.i.i2481 = icmp eq i8 %bf.clear.i.i.i2480, 0
+  br i1 %tobool.i.not.i.i2481, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2488, label %if.then.i2.i2484
 
-if.then.i2.i2485:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2483
-  %__data_.i.i.i2484 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 8, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %186 = load ptr, ptr %__data_.i.i.i2484, align 8, !tbaa !5
+if.then.i2.i2484:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2482
+  %__data_.i.i.i2483 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 8, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %186 = load ptr, ptr %__data_.i.i.i2483, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %186) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2489
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2488
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2489: ; preds = %if.then.i2.i2485, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2483
-  %bf.load.i.i3.i2486 = load i8, ptr %arrayinit.element38.i, align 8
-  %bf.clear.i.i4.i2487 = and i8 %bf.load.i.i3.i2486, 1
-  %tobool.i.not.i5.i2488 = icmp eq i8 %bf.clear.i.i4.i2487, 0
-  br i1 %tobool.i.not.i5.i2488, label %_ZN8TestCaseD2Ev.exit2492, label %if.then.i7.i2491
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2488: ; preds = %if.then.i2.i2484, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2482
+  %bf.load.i.i3.i2485 = load i8, ptr %arrayinit.element38.i, align 8
+  %bf.clear.i.i4.i2486 = and i8 %bf.load.i.i3.i2485, 1
+  %tobool.i.not.i5.i2487 = icmp eq i8 %bf.clear.i.i4.i2486, 0
+  br i1 %tobool.i.not.i5.i2487, label %_ZN8TestCaseD2Ev.exit2491, label %if.then.i7.i2490
 
-if.then.i7.i2491:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2489
-  %__data_.i.i6.i2490 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 8, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %187 = load ptr, ptr %__data_.i.i6.i2490, align 8, !tbaa !5
+if.then.i7.i2490:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2488
+  %__data_.i.i6.i2489 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 8, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %187 = load ptr, ptr %__data_.i.i6.i2489, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %187) #25
-  br label %_ZN8TestCaseD2Ev.exit2492
+  br label %_ZN8TestCaseD2Ev.exit2491
 
-_ZN8TestCaseD2Ev.exit2492:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2489, %if.then.i7.i2491
-  %__cntrl_.i.i2449 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 7, i32 3, i32 1
-  %188 = load ptr, ptr %__cntrl_.i.i2449, align 8, !tbaa !98
-  %tobool.not.i.i2450 = icmp eq ptr %188, null
-  br i1 %tobool.not.i.i2450, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2461, label %if.then.i.i2453
+_ZN8TestCaseD2Ev.exit2491:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2488, %if.then.i7.i2490
+  %__cntrl_.i.i2448 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 7, i32 3, i32 1
+  %188 = load ptr, ptr %__cntrl_.i.i2448, align 8, !tbaa !98
+  %tobool.not.i.i2449 = icmp eq ptr %188, null
+  br i1 %tobool.not.i.i2449, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2460, label %if.then.i.i2452
 
-if.then.i.i2453:                                  ; preds = %_ZN8TestCaseD2Ev.exit2492
-  %__shared_owners_.i.i.i.i2451 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %188, i64 0, i32 1
-  %189 = atomicrmw add ptr %__shared_owners_.i.i.i.i2451, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2452 = icmp eq i64 %189, 0
-  br i1 %cmp.i.i.i.i2452, label %if.then.i.i.i2456, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2461
+if.then.i.i2452:                                  ; preds = %_ZN8TestCaseD2Ev.exit2491
+  %__shared_owners_.i.i.i.i2450 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %188, i64 0, i32 1
+  %189 = atomicrmw add ptr %__shared_owners_.i.i.i.i2450, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2451 = icmp eq i64 %189, 0
+  br i1 %cmp.i.i.i.i2451, label %if.then.i.i.i2455, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2460
 
-if.then.i.i.i2456:                                ; preds = %if.then.i.i2453
-  %vtable.i.i.i.i2454 = load ptr, ptr %188, align 8, !tbaa !24
-  %vfn.i.i.i.i2455 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2454, i64 2
-  %190 = load ptr, ptr %vfn.i.i.i.i2455, align 8
+if.then.i.i.i2455:                                ; preds = %if.then.i.i2452
+  %vtable.i.i.i.i2453 = load ptr, ptr %188, align 8, !tbaa !24
+  %vfn.i.i.i.i2454 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2453, i64 2
+  %190 = load ptr, ptr %vfn.i.i.i.i2454, align 8
   call void %190(ptr noundef nonnull align 8 dereferenceable(16) %188) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %188) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2461
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2460
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2461: ; preds = %if.then.i.i.i2456, %if.then.i.i2453, %_ZN8TestCaseD2Ev.exit2492
-  %substituted_regex.i2457 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 7, i32 2
-  %bf.load.i.i.i2458 = load i8, ptr %substituted_regex.i2457, align 8
-  %bf.clear.i.i.i2459 = and i8 %bf.load.i.i.i2458, 1
-  %tobool.i.not.i.i2460 = icmp eq i8 %bf.clear.i.i.i2459, 0
-  br i1 %tobool.i.not.i.i2460, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2467, label %if.then.i2.i2463
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2460: ; preds = %if.then.i.i.i2455, %if.then.i.i2452, %_ZN8TestCaseD2Ev.exit2491
+  %substituted_regex.i2456 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 7, i32 2
+  %bf.load.i.i.i2457 = load i8, ptr %substituted_regex.i2456, align 8
+  %bf.clear.i.i.i2458 = and i8 %bf.load.i.i.i2457, 1
+  %tobool.i.not.i.i2459 = icmp eq i8 %bf.clear.i.i.i2458, 0
+  br i1 %tobool.i.not.i.i2459, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2466, label %if.then.i2.i2462
 
-if.then.i2.i2463:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2461
-  %__data_.i.i.i2462 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 7, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %191 = load ptr, ptr %__data_.i.i.i2462, align 8, !tbaa !5
+if.then.i2.i2462:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2460
+  %__data_.i.i.i2461 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 7, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %191 = load ptr, ptr %__data_.i.i.i2461, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %191) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2467
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2466
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2467: ; preds = %if.then.i2.i2463, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2461
-  %bf.load.i.i3.i2464 = load i8, ptr %arrayinit.element33.i, align 8
-  %bf.clear.i.i4.i2465 = and i8 %bf.load.i.i3.i2464, 1
-  %tobool.i.not.i5.i2466 = icmp eq i8 %bf.clear.i.i4.i2465, 0
-  br i1 %tobool.i.not.i5.i2466, label %_ZN8TestCaseD2Ev.exit2470, label %if.then.i7.i2469
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2466: ; preds = %if.then.i2.i2462, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2460
+  %bf.load.i.i3.i2463 = load i8, ptr %arrayinit.element33.i, align 8
+  %bf.clear.i.i4.i2464 = and i8 %bf.load.i.i3.i2463, 1
+  %tobool.i.not.i5.i2465 = icmp eq i8 %bf.clear.i.i4.i2464, 0
+  br i1 %tobool.i.not.i5.i2465, label %_ZN8TestCaseD2Ev.exit2469, label %if.then.i7.i2468
 
-if.then.i7.i2469:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2467
-  %__data_.i.i6.i2468 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 7, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %192 = load ptr, ptr %__data_.i.i6.i2468, align 8, !tbaa !5
+if.then.i7.i2468:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2466
+  %__data_.i.i6.i2467 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 7, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %192 = load ptr, ptr %__data_.i.i6.i2467, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %192) #25
-  br label %_ZN8TestCaseD2Ev.exit2470
+  br label %_ZN8TestCaseD2Ev.exit2469
 
-_ZN8TestCaseD2Ev.exit2470:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2467, %if.then.i7.i2469
-  %__cntrl_.i.i2427 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 6, i32 3, i32 1
-  %193 = load ptr, ptr %__cntrl_.i.i2427, align 8, !tbaa !98
-  %tobool.not.i.i2428 = icmp eq ptr %193, null
-  br i1 %tobool.not.i.i2428, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2439, label %if.then.i.i2431
+_ZN8TestCaseD2Ev.exit2469:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2466, %if.then.i7.i2468
+  %__cntrl_.i.i2426 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 6, i32 3, i32 1
+  %193 = load ptr, ptr %__cntrl_.i.i2426, align 8, !tbaa !98
+  %tobool.not.i.i2427 = icmp eq ptr %193, null
+  br i1 %tobool.not.i.i2427, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2438, label %if.then.i.i2430
 
-if.then.i.i2431:                                  ; preds = %_ZN8TestCaseD2Ev.exit2470
-  %__shared_owners_.i.i.i.i2429 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %193, i64 0, i32 1
-  %194 = atomicrmw add ptr %__shared_owners_.i.i.i.i2429, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2430 = icmp eq i64 %194, 0
-  br i1 %cmp.i.i.i.i2430, label %if.then.i.i.i2434, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2439
+if.then.i.i2430:                                  ; preds = %_ZN8TestCaseD2Ev.exit2469
+  %__shared_owners_.i.i.i.i2428 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %193, i64 0, i32 1
+  %194 = atomicrmw add ptr %__shared_owners_.i.i.i.i2428, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2429 = icmp eq i64 %194, 0
+  br i1 %cmp.i.i.i.i2429, label %if.then.i.i.i2433, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2438
 
-if.then.i.i.i2434:                                ; preds = %if.then.i.i2431
-  %vtable.i.i.i.i2432 = load ptr, ptr %193, align 8, !tbaa !24
-  %vfn.i.i.i.i2433 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2432, i64 2
-  %195 = load ptr, ptr %vfn.i.i.i.i2433, align 8
+if.then.i.i.i2433:                                ; preds = %if.then.i.i2430
+  %vtable.i.i.i.i2431 = load ptr, ptr %193, align 8, !tbaa !24
+  %vfn.i.i.i.i2432 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2431, i64 2
+  %195 = load ptr, ptr %vfn.i.i.i.i2432, align 8
   call void %195(ptr noundef nonnull align 8 dereferenceable(16) %193) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %193) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2439
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2438
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2439: ; preds = %if.then.i.i.i2434, %if.then.i.i2431, %_ZN8TestCaseD2Ev.exit2470
-  %substituted_regex.i2435 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 6, i32 2
-  %bf.load.i.i.i2436 = load i8, ptr %substituted_regex.i2435, align 8
-  %bf.clear.i.i.i2437 = and i8 %bf.load.i.i.i2436, 1
-  %tobool.i.not.i.i2438 = icmp eq i8 %bf.clear.i.i.i2437, 0
-  br i1 %tobool.i.not.i.i2438, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2445, label %if.then.i2.i2441
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2438: ; preds = %if.then.i.i.i2433, %if.then.i.i2430, %_ZN8TestCaseD2Ev.exit2469
+  %substituted_regex.i2434 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 6, i32 2
+  %bf.load.i.i.i2435 = load i8, ptr %substituted_regex.i2434, align 8
+  %bf.clear.i.i.i2436 = and i8 %bf.load.i.i.i2435, 1
+  %tobool.i.not.i.i2437 = icmp eq i8 %bf.clear.i.i.i2436, 0
+  br i1 %tobool.i.not.i.i2437, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2444, label %if.then.i2.i2440
 
-if.then.i2.i2441:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2439
-  %__data_.i.i.i2440 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 6, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %196 = load ptr, ptr %__data_.i.i.i2440, align 8, !tbaa !5
+if.then.i2.i2440:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2438
+  %__data_.i.i.i2439 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 6, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %196 = load ptr, ptr %__data_.i.i.i2439, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %196) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2445
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2444
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2445: ; preds = %if.then.i2.i2441, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2439
-  %bf.load.i.i3.i2442 = load i8, ptr %arrayinit.element28.i, align 8
-  %bf.clear.i.i4.i2443 = and i8 %bf.load.i.i3.i2442, 1
-  %tobool.i.not.i5.i2444 = icmp eq i8 %bf.clear.i.i4.i2443, 0
-  br i1 %tobool.i.not.i5.i2444, label %_ZN8TestCaseD2Ev.exit2448, label %if.then.i7.i2447
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2444: ; preds = %if.then.i2.i2440, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2438
+  %bf.load.i.i3.i2441 = load i8, ptr %arrayinit.element28.i, align 8
+  %bf.clear.i.i4.i2442 = and i8 %bf.load.i.i3.i2441, 1
+  %tobool.i.not.i5.i2443 = icmp eq i8 %bf.clear.i.i4.i2442, 0
+  br i1 %tobool.i.not.i5.i2443, label %_ZN8TestCaseD2Ev.exit2447, label %if.then.i7.i2446
 
-if.then.i7.i2447:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2445
-  %__data_.i.i6.i2446 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 6, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %197 = load ptr, ptr %__data_.i.i6.i2446, align 8, !tbaa !5
+if.then.i7.i2446:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2444
+  %__data_.i.i6.i2445 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 6, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %197 = load ptr, ptr %__data_.i.i6.i2445, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %197) #25
-  br label %_ZN8TestCaseD2Ev.exit2448
+  br label %_ZN8TestCaseD2Ev.exit2447
 
-_ZN8TestCaseD2Ev.exit2448:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2445, %if.then.i7.i2447
-  %__cntrl_.i.i2405 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 5, i32 3, i32 1
-  %198 = load ptr, ptr %__cntrl_.i.i2405, align 8, !tbaa !98
-  %tobool.not.i.i2406 = icmp eq ptr %198, null
-  br i1 %tobool.not.i.i2406, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2417, label %if.then.i.i2409
+_ZN8TestCaseD2Ev.exit2447:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2444, %if.then.i7.i2446
+  %__cntrl_.i.i2404 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 5, i32 3, i32 1
+  %198 = load ptr, ptr %__cntrl_.i.i2404, align 8, !tbaa !98
+  %tobool.not.i.i2405 = icmp eq ptr %198, null
+  br i1 %tobool.not.i.i2405, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2416, label %if.then.i.i2408
 
-if.then.i.i2409:                                  ; preds = %_ZN8TestCaseD2Ev.exit2448
-  %__shared_owners_.i.i.i.i2407 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %198, i64 0, i32 1
-  %199 = atomicrmw add ptr %__shared_owners_.i.i.i.i2407, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2408 = icmp eq i64 %199, 0
-  br i1 %cmp.i.i.i.i2408, label %if.then.i.i.i2412, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2417
+if.then.i.i2408:                                  ; preds = %_ZN8TestCaseD2Ev.exit2447
+  %__shared_owners_.i.i.i.i2406 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %198, i64 0, i32 1
+  %199 = atomicrmw add ptr %__shared_owners_.i.i.i.i2406, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2407 = icmp eq i64 %199, 0
+  br i1 %cmp.i.i.i.i2407, label %if.then.i.i.i2411, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2416
 
-if.then.i.i.i2412:                                ; preds = %if.then.i.i2409
-  %vtable.i.i.i.i2410 = load ptr, ptr %198, align 8, !tbaa !24
-  %vfn.i.i.i.i2411 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2410, i64 2
-  %200 = load ptr, ptr %vfn.i.i.i.i2411, align 8
+if.then.i.i.i2411:                                ; preds = %if.then.i.i2408
+  %vtable.i.i.i.i2409 = load ptr, ptr %198, align 8, !tbaa !24
+  %vfn.i.i.i.i2410 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2409, i64 2
+  %200 = load ptr, ptr %vfn.i.i.i.i2410, align 8
   call void %200(ptr noundef nonnull align 8 dereferenceable(16) %198) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %198) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2417
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2416
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2417: ; preds = %if.then.i.i.i2412, %if.then.i.i2409, %_ZN8TestCaseD2Ev.exit2448
-  %substituted_regex.i2413 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 5, i32 2
-  %bf.load.i.i.i2414 = load i8, ptr %substituted_regex.i2413, align 8
-  %bf.clear.i.i.i2415 = and i8 %bf.load.i.i.i2414, 1
-  %tobool.i.not.i.i2416 = icmp eq i8 %bf.clear.i.i.i2415, 0
-  br i1 %tobool.i.not.i.i2416, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2423, label %if.then.i2.i2419
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2416: ; preds = %if.then.i.i.i2411, %if.then.i.i2408, %_ZN8TestCaseD2Ev.exit2447
+  %substituted_regex.i2412 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 5, i32 2
+  %bf.load.i.i.i2413 = load i8, ptr %substituted_regex.i2412, align 8
+  %bf.clear.i.i.i2414 = and i8 %bf.load.i.i.i2413, 1
+  %tobool.i.not.i.i2415 = icmp eq i8 %bf.clear.i.i.i2414, 0
+  br i1 %tobool.i.not.i.i2415, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2422, label %if.then.i2.i2418
 
-if.then.i2.i2419:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2417
-  %__data_.i.i.i2418 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 5, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %201 = load ptr, ptr %__data_.i.i.i2418, align 8, !tbaa !5
+if.then.i2.i2418:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2416
+  %__data_.i.i.i2417 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 5, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %201 = load ptr, ptr %__data_.i.i.i2417, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %201) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2423
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2422
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2423: ; preds = %if.then.i2.i2419, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2417
-  %bf.load.i.i3.i2420 = load i8, ptr %arrayinit.element23.i, align 8
-  %bf.clear.i.i4.i2421 = and i8 %bf.load.i.i3.i2420, 1
-  %tobool.i.not.i5.i2422 = icmp eq i8 %bf.clear.i.i4.i2421, 0
-  br i1 %tobool.i.not.i5.i2422, label %_ZN8TestCaseD2Ev.exit2426, label %if.then.i7.i2425
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2422: ; preds = %if.then.i2.i2418, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2416
+  %bf.load.i.i3.i2419 = load i8, ptr %arrayinit.element23.i, align 8
+  %bf.clear.i.i4.i2420 = and i8 %bf.load.i.i3.i2419, 1
+  %tobool.i.not.i5.i2421 = icmp eq i8 %bf.clear.i.i4.i2420, 0
+  br i1 %tobool.i.not.i5.i2421, label %_ZN8TestCaseD2Ev.exit2425, label %if.then.i7.i2424
 
-if.then.i7.i2425:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2423
-  %__data_.i.i6.i2424 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 5, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %202 = load ptr, ptr %__data_.i.i6.i2424, align 8, !tbaa !5
+if.then.i7.i2424:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2422
+  %__data_.i.i6.i2423 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 5, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %202 = load ptr, ptr %__data_.i.i6.i2423, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %202) #25
-  br label %_ZN8TestCaseD2Ev.exit2426
+  br label %_ZN8TestCaseD2Ev.exit2425
 
-_ZN8TestCaseD2Ev.exit2426:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2423, %if.then.i7.i2425
-  %__cntrl_.i.i2383 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 4, i32 3, i32 1
-  %203 = load ptr, ptr %__cntrl_.i.i2383, align 8, !tbaa !98
-  %tobool.not.i.i2384 = icmp eq ptr %203, null
-  br i1 %tobool.not.i.i2384, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2395, label %if.then.i.i2387
+_ZN8TestCaseD2Ev.exit2425:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2422, %if.then.i7.i2424
+  %__cntrl_.i.i2382 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 4, i32 3, i32 1
+  %203 = load ptr, ptr %__cntrl_.i.i2382, align 8, !tbaa !98
+  %tobool.not.i.i2383 = icmp eq ptr %203, null
+  br i1 %tobool.not.i.i2383, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2394, label %if.then.i.i2386
 
-if.then.i.i2387:                                  ; preds = %_ZN8TestCaseD2Ev.exit2426
-  %__shared_owners_.i.i.i.i2385 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %203, i64 0, i32 1
-  %204 = atomicrmw add ptr %__shared_owners_.i.i.i.i2385, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2386 = icmp eq i64 %204, 0
-  br i1 %cmp.i.i.i.i2386, label %if.then.i.i.i2390, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2395
+if.then.i.i2386:                                  ; preds = %_ZN8TestCaseD2Ev.exit2425
+  %__shared_owners_.i.i.i.i2384 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %203, i64 0, i32 1
+  %204 = atomicrmw add ptr %__shared_owners_.i.i.i.i2384, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2385 = icmp eq i64 %204, 0
+  br i1 %cmp.i.i.i.i2385, label %if.then.i.i.i2389, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2394
 
-if.then.i.i.i2390:                                ; preds = %if.then.i.i2387
-  %vtable.i.i.i.i2388 = load ptr, ptr %203, align 8, !tbaa !24
-  %vfn.i.i.i.i2389 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2388, i64 2
-  %205 = load ptr, ptr %vfn.i.i.i.i2389, align 8
+if.then.i.i.i2389:                                ; preds = %if.then.i.i2386
+  %vtable.i.i.i.i2387 = load ptr, ptr %203, align 8, !tbaa !24
+  %vfn.i.i.i.i2388 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2387, i64 2
+  %205 = load ptr, ptr %vfn.i.i.i.i2388, align 8
   call void %205(ptr noundef nonnull align 8 dereferenceable(16) %203) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %203) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2395
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2394
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2395: ; preds = %if.then.i.i.i2390, %if.then.i.i2387, %_ZN8TestCaseD2Ev.exit2426
-  %substituted_regex.i2391 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 4, i32 2
-  %bf.load.i.i.i2392 = load i8, ptr %substituted_regex.i2391, align 8
-  %bf.clear.i.i.i2393 = and i8 %bf.load.i.i.i2392, 1
-  %tobool.i.not.i.i2394 = icmp eq i8 %bf.clear.i.i.i2393, 0
-  br i1 %tobool.i.not.i.i2394, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2401, label %if.then.i2.i2397
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2394: ; preds = %if.then.i.i.i2389, %if.then.i.i2386, %_ZN8TestCaseD2Ev.exit2425
+  %substituted_regex.i2390 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 4, i32 2
+  %bf.load.i.i.i2391 = load i8, ptr %substituted_regex.i2390, align 8
+  %bf.clear.i.i.i2392 = and i8 %bf.load.i.i.i2391, 1
+  %tobool.i.not.i.i2393 = icmp eq i8 %bf.clear.i.i.i2392, 0
+  br i1 %tobool.i.not.i.i2393, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2400, label %if.then.i2.i2396
 
-if.then.i2.i2397:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2395
-  %__data_.i.i.i2396 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %206 = load ptr, ptr %__data_.i.i.i2396, align 8, !tbaa !5
+if.then.i2.i2396:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2394
+  %__data_.i.i.i2395 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %206 = load ptr, ptr %__data_.i.i.i2395, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %206) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2401
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2400
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2401: ; preds = %if.then.i2.i2397, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2395
-  %bf.load.i.i3.i2398 = load i8, ptr %arrayinit.element18.i21, align 8
-  %bf.clear.i.i4.i2399 = and i8 %bf.load.i.i3.i2398, 1
-  %tobool.i.not.i5.i2400 = icmp eq i8 %bf.clear.i.i4.i2399, 0
-  br i1 %tobool.i.not.i5.i2400, label %_ZN8TestCaseD2Ev.exit2404, label %if.then.i7.i2403
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2400: ; preds = %if.then.i2.i2396, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2394
+  %bf.load.i.i3.i2397 = load i8, ptr %arrayinit.element18.i21, align 8
+  %bf.clear.i.i4.i2398 = and i8 %bf.load.i.i3.i2397, 1
+  %tobool.i.not.i5.i2399 = icmp eq i8 %bf.clear.i.i4.i2398, 0
+  br i1 %tobool.i.not.i5.i2399, label %_ZN8TestCaseD2Ev.exit2403, label %if.then.i7.i2402
 
-if.then.i7.i2403:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2401
-  %__data_.i.i6.i2402 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %207 = load ptr, ptr %__data_.i.i6.i2402, align 8, !tbaa !5
+if.then.i7.i2402:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2400
+  %__data_.i.i6.i2401 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %207 = load ptr, ptr %__data_.i.i6.i2401, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %207) #25
-  br label %_ZN8TestCaseD2Ev.exit2404
+  br label %_ZN8TestCaseD2Ev.exit2403
 
-_ZN8TestCaseD2Ev.exit2404:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2401, %if.then.i7.i2403
-  %__cntrl_.i.i2361 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 3, i32 3, i32 1
-  %208 = load ptr, ptr %__cntrl_.i.i2361, align 8, !tbaa !98
-  %tobool.not.i.i2362 = icmp eq ptr %208, null
-  br i1 %tobool.not.i.i2362, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2373, label %if.then.i.i2365
+_ZN8TestCaseD2Ev.exit2403:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2400, %if.then.i7.i2402
+  %__cntrl_.i.i2360 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 3, i32 3, i32 1
+  %208 = load ptr, ptr %__cntrl_.i.i2360, align 8, !tbaa !98
+  %tobool.not.i.i2361 = icmp eq ptr %208, null
+  br i1 %tobool.not.i.i2361, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2372, label %if.then.i.i2364
 
-if.then.i.i2365:                                  ; preds = %_ZN8TestCaseD2Ev.exit2404
-  %__shared_owners_.i.i.i.i2363 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %208, i64 0, i32 1
-  %209 = atomicrmw add ptr %__shared_owners_.i.i.i.i2363, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2364 = icmp eq i64 %209, 0
-  br i1 %cmp.i.i.i.i2364, label %if.then.i.i.i2368, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2373
+if.then.i.i2364:                                  ; preds = %_ZN8TestCaseD2Ev.exit2403
+  %__shared_owners_.i.i.i.i2362 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %208, i64 0, i32 1
+  %209 = atomicrmw add ptr %__shared_owners_.i.i.i.i2362, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2363 = icmp eq i64 %209, 0
+  br i1 %cmp.i.i.i.i2363, label %if.then.i.i.i2367, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2372
 
-if.then.i.i.i2368:                                ; preds = %if.then.i.i2365
-  %vtable.i.i.i.i2366 = load ptr, ptr %208, align 8, !tbaa !24
-  %vfn.i.i.i.i2367 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2366, i64 2
-  %210 = load ptr, ptr %vfn.i.i.i.i2367, align 8
+if.then.i.i.i2367:                                ; preds = %if.then.i.i2364
+  %vtable.i.i.i.i2365 = load ptr, ptr %208, align 8, !tbaa !24
+  %vfn.i.i.i.i2366 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2365, i64 2
+  %210 = load ptr, ptr %vfn.i.i.i.i2366, align 8
   call void %210(ptr noundef nonnull align 8 dereferenceable(16) %208) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %208) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2373
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2372
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2373: ; preds = %if.then.i.i.i2368, %if.then.i.i2365, %_ZN8TestCaseD2Ev.exit2404
-  %substituted_regex.i2369 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 3, i32 2
-  %bf.load.i.i.i2370 = load i8, ptr %substituted_regex.i2369, align 8
-  %bf.clear.i.i.i2371 = and i8 %bf.load.i.i.i2370, 1
-  %tobool.i.not.i.i2372 = icmp eq i8 %bf.clear.i.i.i2371, 0
-  br i1 %tobool.i.not.i.i2372, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2379, label %if.then.i2.i2375
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2372: ; preds = %if.then.i.i.i2367, %if.then.i.i2364, %_ZN8TestCaseD2Ev.exit2403
+  %substituted_regex.i2368 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 3, i32 2
+  %bf.load.i.i.i2369 = load i8, ptr %substituted_regex.i2368, align 8
+  %bf.clear.i.i.i2370 = and i8 %bf.load.i.i.i2369, 1
+  %tobool.i.not.i.i2371 = icmp eq i8 %bf.clear.i.i.i2370, 0
+  br i1 %tobool.i.not.i.i2371, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2378, label %if.then.i2.i2374
 
-if.then.i2.i2375:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2373
-  %__data_.i.i.i2374 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %211 = load ptr, ptr %__data_.i.i.i2374, align 8, !tbaa !5
+if.then.i2.i2374:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2372
+  %__data_.i.i.i2373 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %211 = load ptr, ptr %__data_.i.i.i2373, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %211) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2379
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2378
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2379: ; preds = %if.then.i2.i2375, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2373
-  %bf.load.i.i3.i2376 = load i8, ptr %arrayinit.element13.i19, align 8
-  %bf.clear.i.i4.i2377 = and i8 %bf.load.i.i3.i2376, 1
-  %tobool.i.not.i5.i2378 = icmp eq i8 %bf.clear.i.i4.i2377, 0
-  br i1 %tobool.i.not.i5.i2378, label %_ZN8TestCaseD2Ev.exit2382, label %if.then.i7.i2381
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2378: ; preds = %if.then.i2.i2374, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2372
+  %bf.load.i.i3.i2375 = load i8, ptr %arrayinit.element13.i19, align 8
+  %bf.clear.i.i4.i2376 = and i8 %bf.load.i.i3.i2375, 1
+  %tobool.i.not.i5.i2377 = icmp eq i8 %bf.clear.i.i4.i2376, 0
+  br i1 %tobool.i.not.i5.i2377, label %_ZN8TestCaseD2Ev.exit2381, label %if.then.i7.i2380
 
-if.then.i7.i2381:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2379
-  %__data_.i.i6.i2380 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %212 = load ptr, ptr %__data_.i.i6.i2380, align 8, !tbaa !5
+if.then.i7.i2380:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2378
+  %__data_.i.i6.i2379 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %212 = load ptr, ptr %__data_.i.i6.i2379, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %212) #25
-  br label %_ZN8TestCaseD2Ev.exit2382
+  br label %_ZN8TestCaseD2Ev.exit2381
 
-_ZN8TestCaseD2Ev.exit2382:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2379, %if.then.i7.i2381
-  %__cntrl_.i.i2339 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 2, i32 3, i32 1
-  %213 = load ptr, ptr %__cntrl_.i.i2339, align 8, !tbaa !98
-  %tobool.not.i.i2340 = icmp eq ptr %213, null
-  br i1 %tobool.not.i.i2340, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2351, label %if.then.i.i2343
+_ZN8TestCaseD2Ev.exit2381:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2378, %if.then.i7.i2380
+  %__cntrl_.i.i2338 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 2, i32 3, i32 1
+  %213 = load ptr, ptr %__cntrl_.i.i2338, align 8, !tbaa !98
+  %tobool.not.i.i2339 = icmp eq ptr %213, null
+  br i1 %tobool.not.i.i2339, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2350, label %if.then.i.i2342
 
-if.then.i.i2343:                                  ; preds = %_ZN8TestCaseD2Ev.exit2382
-  %__shared_owners_.i.i.i.i2341 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %213, i64 0, i32 1
-  %214 = atomicrmw add ptr %__shared_owners_.i.i.i.i2341, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2342 = icmp eq i64 %214, 0
-  br i1 %cmp.i.i.i.i2342, label %if.then.i.i.i2346, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2351
+if.then.i.i2342:                                  ; preds = %_ZN8TestCaseD2Ev.exit2381
+  %__shared_owners_.i.i.i.i2340 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %213, i64 0, i32 1
+  %214 = atomicrmw add ptr %__shared_owners_.i.i.i.i2340, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2341 = icmp eq i64 %214, 0
+  br i1 %cmp.i.i.i.i2341, label %if.then.i.i.i2345, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2350
 
-if.then.i.i.i2346:                                ; preds = %if.then.i.i2343
-  %vtable.i.i.i.i2344 = load ptr, ptr %213, align 8, !tbaa !24
-  %vfn.i.i.i.i2345 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2344, i64 2
-  %215 = load ptr, ptr %vfn.i.i.i.i2345, align 8
+if.then.i.i.i2345:                                ; preds = %if.then.i.i2342
+  %vtable.i.i.i.i2343 = load ptr, ptr %213, align 8, !tbaa !24
+  %vfn.i.i.i.i2344 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2343, i64 2
+  %215 = load ptr, ptr %vfn.i.i.i.i2344, align 8
   call void %215(ptr noundef nonnull align 8 dereferenceable(16) %213) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %213) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2351
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2350
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2351: ; preds = %if.then.i.i.i2346, %if.then.i.i2343, %_ZN8TestCaseD2Ev.exit2382
-  %substituted_regex.i2347 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 2, i32 2
-  %bf.load.i.i.i2348 = load i8, ptr %substituted_regex.i2347, align 8
-  %bf.clear.i.i.i2349 = and i8 %bf.load.i.i.i2348, 1
-  %tobool.i.not.i.i2350 = icmp eq i8 %bf.clear.i.i.i2349, 0
-  br i1 %tobool.i.not.i.i2350, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2357, label %if.then.i2.i2353
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2350: ; preds = %if.then.i.i.i2345, %if.then.i.i2342, %_ZN8TestCaseD2Ev.exit2381
+  %substituted_regex.i2346 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 2, i32 2
+  %bf.load.i.i.i2347 = load i8, ptr %substituted_regex.i2346, align 8
+  %bf.clear.i.i.i2348 = and i8 %bf.load.i.i.i2347, 1
+  %tobool.i.not.i.i2349 = icmp eq i8 %bf.clear.i.i.i2348, 0
+  br i1 %tobool.i.not.i.i2349, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2356, label %if.then.i2.i2352
 
-if.then.i2.i2353:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2351
-  %__data_.i.i.i2352 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %216 = load ptr, ptr %__data_.i.i.i2352, align 8, !tbaa !5
+if.then.i2.i2352:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2350
+  %__data_.i.i.i2351 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %216 = load ptr, ptr %__data_.i.i.i2351, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %216) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2357
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2356
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2357: ; preds = %if.then.i2.i2353, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2351
-  %bf.load.i.i3.i2354 = load i8, ptr %arrayinit.element8.i17, align 8
-  %bf.clear.i.i4.i2355 = and i8 %bf.load.i.i3.i2354, 1
-  %tobool.i.not.i5.i2356 = icmp eq i8 %bf.clear.i.i4.i2355, 0
-  br i1 %tobool.i.not.i5.i2356, label %_ZN8TestCaseD2Ev.exit2360, label %if.then.i7.i2359
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2356: ; preds = %if.then.i2.i2352, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2350
+  %bf.load.i.i3.i2353 = load i8, ptr %arrayinit.element8.i17, align 8
+  %bf.clear.i.i4.i2354 = and i8 %bf.load.i.i3.i2353, 1
+  %tobool.i.not.i5.i2355 = icmp eq i8 %bf.clear.i.i4.i2354, 0
+  br i1 %tobool.i.not.i5.i2355, label %_ZN8TestCaseD2Ev.exit2359, label %if.then.i7.i2358
 
-if.then.i7.i2359:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2357
-  %__data_.i.i6.i2358 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %217 = load ptr, ptr %__data_.i.i6.i2358, align 8, !tbaa !5
+if.then.i7.i2358:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2356
+  %__data_.i.i6.i2357 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %217 = load ptr, ptr %__data_.i.i6.i2357, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %217) #25
-  br label %_ZN8TestCaseD2Ev.exit2360
+  br label %_ZN8TestCaseD2Ev.exit2359
 
-_ZN8TestCaseD2Ev.exit2360:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2357, %if.then.i7.i2359
-  %__cntrl_.i.i2317 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 1, i32 3, i32 1
-  %218 = load ptr, ptr %__cntrl_.i.i2317, align 8, !tbaa !98
-  %tobool.not.i.i2318 = icmp eq ptr %218, null
-  br i1 %tobool.not.i.i2318, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2329, label %if.then.i.i2321
+_ZN8TestCaseD2Ev.exit2359:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2356, %if.then.i7.i2358
+  %__cntrl_.i.i2316 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 1, i32 3, i32 1
+  %218 = load ptr, ptr %__cntrl_.i.i2316, align 8, !tbaa !98
+  %tobool.not.i.i2317 = icmp eq ptr %218, null
+  br i1 %tobool.not.i.i2317, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2328, label %if.then.i.i2320
 
-if.then.i.i2321:                                  ; preds = %_ZN8TestCaseD2Ev.exit2360
-  %__shared_owners_.i.i.i.i2319 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %218, i64 0, i32 1
-  %219 = atomicrmw add ptr %__shared_owners_.i.i.i.i2319, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2320 = icmp eq i64 %219, 0
-  br i1 %cmp.i.i.i.i2320, label %if.then.i.i.i2324, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2329
+if.then.i.i2320:                                  ; preds = %_ZN8TestCaseD2Ev.exit2359
+  %__shared_owners_.i.i.i.i2318 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %218, i64 0, i32 1
+  %219 = atomicrmw add ptr %__shared_owners_.i.i.i.i2318, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2319 = icmp eq i64 %219, 0
+  br i1 %cmp.i.i.i.i2319, label %if.then.i.i.i2323, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2328
 
-if.then.i.i.i2324:                                ; preds = %if.then.i.i2321
-  %vtable.i.i.i.i2322 = load ptr, ptr %218, align 8, !tbaa !24
-  %vfn.i.i.i.i2323 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2322, i64 2
-  %220 = load ptr, ptr %vfn.i.i.i.i2323, align 8
+if.then.i.i.i2323:                                ; preds = %if.then.i.i2320
+  %vtable.i.i.i.i2321 = load ptr, ptr %218, align 8, !tbaa !24
+  %vfn.i.i.i.i2322 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2321, i64 2
+  %220 = load ptr, ptr %vfn.i.i.i.i2322, align 8
   call void %220(ptr noundef nonnull align 8 dereferenceable(16) %218) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %218) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2329
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2328
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2329: ; preds = %if.then.i.i.i2324, %if.then.i.i2321, %_ZN8TestCaseD2Ev.exit2360
-  %substituted_regex.i2325 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 1, i32 2
-  %bf.load.i.i.i2326 = load i8, ptr %substituted_regex.i2325, align 8
-  %bf.clear.i.i.i2327 = and i8 %bf.load.i.i.i2326, 1
-  %tobool.i.not.i.i2328 = icmp eq i8 %bf.clear.i.i.i2327, 0
-  br i1 %tobool.i.not.i.i2328, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2335, label %if.then.i2.i2331
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2328: ; preds = %if.then.i.i.i2323, %if.then.i.i2320, %_ZN8TestCaseD2Ev.exit2359
+  %substituted_regex.i2324 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 1, i32 2
+  %bf.load.i.i.i2325 = load i8, ptr %substituted_regex.i2324, align 8
+  %bf.clear.i.i.i2326 = and i8 %bf.load.i.i.i2325, 1
+  %tobool.i.not.i.i2327 = icmp eq i8 %bf.clear.i.i.i2326, 0
+  br i1 %tobool.i.not.i.i2327, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2334, label %if.then.i2.i2330
 
-if.then.i2.i2331:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2329
-  %__data_.i.i.i2330 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %221 = load ptr, ptr %__data_.i.i.i2330, align 8, !tbaa !5
+if.then.i2.i2330:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2328
+  %__data_.i.i.i2329 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %221 = load ptr, ptr %__data_.i.i.i2329, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %221) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2335
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2334
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2335: ; preds = %if.then.i2.i2331, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2329
-  %bf.load.i.i3.i2332 = load i8, ptr %arrayinit.element.i15, align 8
-  %bf.clear.i.i4.i2333 = and i8 %bf.load.i.i3.i2332, 1
-  %tobool.i.not.i5.i2334 = icmp eq i8 %bf.clear.i.i4.i2333, 0
-  br i1 %tobool.i.not.i5.i2334, label %_ZN8TestCaseD2Ev.exit2338, label %if.then.i7.i2337
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2334: ; preds = %if.then.i2.i2330, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2328
+  %bf.load.i.i3.i2331 = load i8, ptr %arrayinit.element.i15, align 8
+  %bf.clear.i.i4.i2332 = and i8 %bf.load.i.i3.i2331, 1
+  %tobool.i.not.i5.i2333 = icmp eq i8 %bf.clear.i.i4.i2332, 0
+  br i1 %tobool.i.not.i5.i2333, label %_ZN8TestCaseD2Ev.exit2337, label %if.then.i7.i2336
 
-if.then.i7.i2337:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2335
-  %__data_.i.i6.i2336 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %222 = load ptr, ptr %__data_.i.i6.i2336, align 8, !tbaa !5
+if.then.i7.i2336:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2334
+  %__data_.i.i6.i2335 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %222 = load ptr, ptr %__data_.i.i6.i2335, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %222) #25
-  br label %_ZN8TestCaseD2Ev.exit2338
+  br label %_ZN8TestCaseD2Ev.exit2337
 
-_ZN8TestCaseD2Ev.exit2338:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2335, %if.then.i7.i2337
-  %__cntrl_.i.i2295 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 0, i32 3, i32 1
-  %223 = load ptr, ptr %__cntrl_.i.i2295, align 8, !tbaa !98
-  %tobool.not.i.i2296 = icmp eq ptr %223, null
-  br i1 %tobool.not.i.i2296, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2307, label %if.then.i.i2299
+_ZN8TestCaseD2Ev.exit2337:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2334, %if.then.i7.i2336
+  %__cntrl_.i.i2294 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 0, i32 3, i32 1
+  %223 = load ptr, ptr %__cntrl_.i.i2294, align 8, !tbaa !98
+  %tobool.not.i.i2295 = icmp eq ptr %223, null
+  br i1 %tobool.not.i.i2295, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2306, label %if.then.i.i2298
 
-if.then.i.i2299:                                  ; preds = %_ZN8TestCaseD2Ev.exit2338
-  %__shared_owners_.i.i.i.i2297 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %223, i64 0, i32 1
-  %224 = atomicrmw add ptr %__shared_owners_.i.i.i.i2297, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2298 = icmp eq i64 %224, 0
-  br i1 %cmp.i.i.i.i2298, label %if.then.i.i.i2302, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2307
+if.then.i.i2298:                                  ; preds = %_ZN8TestCaseD2Ev.exit2337
+  %__shared_owners_.i.i.i.i2296 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %223, i64 0, i32 1
+  %224 = atomicrmw add ptr %__shared_owners_.i.i.i.i2296, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2297 = icmp eq i64 %224, 0
+  br i1 %cmp.i.i.i.i2297, label %if.then.i.i.i2301, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2306
 
-if.then.i.i.i2302:                                ; preds = %if.then.i.i2299
-  %vtable.i.i.i.i2300 = load ptr, ptr %223, align 8, !tbaa !24
-  %vfn.i.i.i.i2301 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2300, i64 2
-  %225 = load ptr, ptr %vfn.i.i.i.i2301, align 8
+if.then.i.i.i2301:                                ; preds = %if.then.i.i2298
+  %vtable.i.i.i.i2299 = load ptr, ptr %223, align 8, !tbaa !24
+  %vfn.i.i.i.i2300 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2299, i64 2
+  %225 = load ptr, ptr %vfn.i.i.i.i2300, align 8
   call void %225(ptr noundef nonnull align 8 dereferenceable(16) %223) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %223) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2307
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2306
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2307: ; preds = %if.then.i.i.i2302, %if.then.i.i2299, %_ZN8TestCaseD2Ev.exit2338
-  %substituted_regex.i2303 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 0, i32 2
-  %bf.load.i.i.i2304 = load i8, ptr %substituted_regex.i2303, align 8
-  %bf.clear.i.i.i2305 = and i8 %bf.load.i.i.i2304, 1
-  %tobool.i.not.i.i2306 = icmp eq i8 %bf.clear.i.i.i2305, 0
-  br i1 %tobool.i.not.i.i2306, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2313, label %if.then.i2.i2309
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2306: ; preds = %if.then.i.i.i2301, %if.then.i.i2298, %_ZN8TestCaseD2Ev.exit2337
+  %substituted_regex.i2302 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 0, i32 2
+  %bf.load.i.i.i2303 = load i8, ptr %substituted_regex.i2302, align 8
+  %bf.clear.i.i.i2304 = and i8 %bf.load.i.i.i2303, 1
+  %tobool.i.not.i.i2305 = icmp eq i8 %bf.clear.i.i.i2304, 0
+  br i1 %tobool.i.not.i.i2305, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2312, label %if.then.i2.i2308
 
-if.then.i2.i2309:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2307
-  %__data_.i.i.i2308 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %226 = load ptr, ptr %__data_.i.i.i2308, align 8, !tbaa !5
+if.then.i2.i2308:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2306
+  %__data_.i.i.i2307 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i3, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %226 = load ptr, ptr %__data_.i.i.i2307, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %226) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2313
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2312
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2313: ; preds = %if.then.i2.i2309, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2307
-  %bf.load.i.i3.i2310 = load i8, ptr %ref.tmp.i3, align 8
-  %bf.clear.i.i4.i2311 = and i8 %bf.load.i.i3.i2310, 1
-  %tobool.i.not.i5.i2312 = icmp eq i8 %bf.clear.i.i4.i2311, 0
-  br i1 %tobool.i.not.i5.i2312, label %ehcleanup.i62, label %if.then.i7.i2315
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2312: ; preds = %if.then.i2.i2308, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2306
+  %bf.load.i.i3.i2309 = load i8, ptr %ref.tmp.i3, align 8
+  %bf.clear.i.i4.i2310 = and i8 %bf.load.i.i3.i2309, 1
+  %tobool.i.not.i5.i2311 = icmp eq i8 %bf.clear.i.i4.i2310, 0
+  br i1 %tobool.i.not.i5.i2311, label %ehcleanup.i62, label %if.then.i7.i2314
 
-if.then.i7.i2315:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2313
-  %__data_.i.i6.i2314 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i3, i64 0, i32 2
-  %227 = load ptr, ptr %__data_.i.i6.i2314, align 8, !tbaa !5
+if.then.i7.i2314:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2312
+  %__data_.i.i6.i2313 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i3, i64 0, i32 2
+  %227 = load ptr, ptr %__data_.i.i6.i2313, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %227) #25
   br label %ehcleanup.i62
 
-ehcleanup.i62:                                    ; preds = %if.then.i7.i2315, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2313, %lpad86.i
-  %.pn.i60 = phi { ptr, i32 } [ %136, %lpad86.i ], [ %137, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2313 ], [ %137, %if.then.i7.i2315 ]
-  %cleanup.isactive.0.i61 = phi i1 [ true, %lpad86.i ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2313 ], [ false, %if.then.i7.i2315 ]
+ehcleanup.i62:                                    ; preds = %if.then.i7.i2314, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2312, %lpad86.i
+  %.pn.i60 = phi { ptr, i32 } [ %136, %lpad86.i ], [ %137, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2312 ], [ %137, %if.then.i7.i2314 ]
+  %cleanup.isactive.0.i61 = phi i1 [ true, %lpad86.i ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2312 ], [ false, %if.then.i7.i2314 ]
   %bf.load.i.i637.i = load i8, ptr %agg.tmp84.i, align 8
   %bf.clear.i.i638.i = and i8 %bf.load.i.i637.i, 1
   %tobool.i.not.i639.i = icmp eq i8 %bf.clear.i.i638.i, 0
@@ -7769,58 +7769,58 @@ ehcleanup114.i:                                   ; preds = %if.then.i743.i, %eh
   %or.cond.not.i72 = select i1 %cleanup.isactive.17.i, i1 %arraydestroy.isempty.i71, i1 false
   br i1 %or.cond.not.i72, label %arraydestroy.body115.i, label %cleanup.done.i73
 
-arraydestroy.body115.i:                           ; preds = %ehcleanup114.i, %_ZN8TestCaseD2Ev.exit2294
-  %arraydestroy.elementPast116.i = phi ptr [ %arraydestroy.element117.i, %_ZN8TestCaseD2Ev.exit2294 ], [ %arrayinit.endOfInit.33.i, %ehcleanup114.i ]
+arraydestroy.body115.i:                           ; preds = %ehcleanup114.i, %_ZN8TestCaseD2Ev.exit2293
+  %arraydestroy.elementPast116.i = phi ptr [ %arraydestroy.element117.i, %_ZN8TestCaseD2Ev.exit2293 ], [ %arrayinit.endOfInit.33.i, %ehcleanup114.i ]
   %arraydestroy.element117.i = getelementptr inbounds %struct.TestCase, ptr %arraydestroy.elementPast116.i, i64 -1
-  %__cntrl_.i.i2273 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i, i64 -1, i32 3, i32 1
-  %246 = load ptr, ptr %__cntrl_.i.i2273, align 8, !tbaa !98
-  %tobool.not.i.i2274 = icmp eq ptr %246, null
-  br i1 %tobool.not.i.i2274, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2285, label %if.then.i.i2277
+  %__cntrl_.i.i2272 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i, i64 -1, i32 3, i32 1
+  %246 = load ptr, ptr %__cntrl_.i.i2272, align 8, !tbaa !98
+  %tobool.not.i.i2273 = icmp eq ptr %246, null
+  br i1 %tobool.not.i.i2273, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2284, label %if.then.i.i2276
 
-if.then.i.i2277:                                  ; preds = %arraydestroy.body115.i
-  %__shared_owners_.i.i.i.i2275 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %246, i64 0, i32 1
-  %247 = atomicrmw add ptr %__shared_owners_.i.i.i.i2275, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2276 = icmp eq i64 %247, 0
-  br i1 %cmp.i.i.i.i2276, label %if.then.i.i.i2280, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2285
+if.then.i.i2276:                                  ; preds = %arraydestroy.body115.i
+  %__shared_owners_.i.i.i.i2274 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %246, i64 0, i32 1
+  %247 = atomicrmw add ptr %__shared_owners_.i.i.i.i2274, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2275 = icmp eq i64 %247, 0
+  br i1 %cmp.i.i.i.i2275, label %if.then.i.i.i2279, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2284
 
-if.then.i.i.i2280:                                ; preds = %if.then.i.i2277
-  %vtable.i.i.i.i2278 = load ptr, ptr %246, align 8, !tbaa !24
-  %vfn.i.i.i.i2279 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2278, i64 2
-  %248 = load ptr, ptr %vfn.i.i.i.i2279, align 8
+if.then.i.i.i2279:                                ; preds = %if.then.i.i2276
+  %vtable.i.i.i.i2277 = load ptr, ptr %246, align 8, !tbaa !24
+  %vfn.i.i.i.i2278 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2277, i64 2
+  %248 = load ptr, ptr %vfn.i.i.i.i2278, align 8
   call void %248(ptr noundef nonnull align 8 dereferenceable(16) %246) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %246) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2285
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2284
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2285: ; preds = %if.then.i.i.i2280, %if.then.i.i2277, %arraydestroy.body115.i
-  %substituted_regex.i2281 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i, i64 -1, i32 2
-  %bf.load.i.i.i2282 = load i8, ptr %substituted_regex.i2281, align 8
-  %bf.clear.i.i.i2283 = and i8 %bf.load.i.i.i2282, 1
-  %tobool.i.not.i.i2284 = icmp eq i8 %bf.clear.i.i.i2283, 0
-  br i1 %tobool.i.not.i.i2284, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2291, label %if.then.i2.i2287
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2284: ; preds = %if.then.i.i.i2279, %if.then.i.i2276, %arraydestroy.body115.i
+  %substituted_regex.i2280 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i, i64 -1, i32 2
+  %bf.load.i.i.i2281 = load i8, ptr %substituted_regex.i2280, align 8
+  %bf.clear.i.i.i2282 = and i8 %bf.load.i.i.i2281, 1
+  %tobool.i.not.i.i2283 = icmp eq i8 %bf.clear.i.i.i2282, 0
+  br i1 %tobool.i.not.i.i2283, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2290, label %if.then.i2.i2286
 
-if.then.i2.i2287:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2285
-  %__data_.i.i.i2286 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %249 = load ptr, ptr %__data_.i.i.i2286, align 8, !tbaa !5
+if.then.i2.i2286:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2284
+  %__data_.i.i.i2285 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %249 = load ptr, ptr %__data_.i.i.i2285, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %249) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2291
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2290
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2291: ; preds = %if.then.i2.i2287, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2285
-  %bf.load.i.i3.i2288 = load i8, ptr %arraydestroy.element117.i, align 8
-  %bf.clear.i.i4.i2289 = and i8 %bf.load.i.i3.i2288, 1
-  %tobool.i.not.i5.i2290 = icmp eq i8 %bf.clear.i.i4.i2289, 0
-  br i1 %tobool.i.not.i5.i2290, label %_ZN8TestCaseD2Ev.exit2294, label %if.then.i7.i2293
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2290: ; preds = %if.then.i2.i2286, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2284
+  %bf.load.i.i3.i2287 = load i8, ptr %arraydestroy.element117.i, align 8
+  %bf.clear.i.i4.i2288 = and i8 %bf.load.i.i3.i2287, 1
+  %tobool.i.not.i5.i2289 = icmp eq i8 %bf.clear.i.i4.i2288, 0
+  br i1 %tobool.i.not.i5.i2289, label %_ZN8TestCaseD2Ev.exit2293, label %if.then.i7.i2292
 
-if.then.i7.i2293:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2291
-  %__data_.i.i6.i2292 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %250 = load ptr, ptr %__data_.i.i6.i2292, align 8, !tbaa !5
+if.then.i7.i2292:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2290
+  %__data_.i.i6.i2291 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %250 = load ptr, ptr %__data_.i.i6.i2291, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %250) #25
-  br label %_ZN8TestCaseD2Ev.exit2294
+  br label %_ZN8TestCaseD2Ev.exit2293
 
-_ZN8TestCaseD2Ev.exit2294:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2291, %if.then.i7.i2293
+_ZN8TestCaseD2Ev.exit2293:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2290, %if.then.i7.i2292
   %arraydestroy.done118.i = icmp eq ptr %arraydestroy.element117.i, %ref.tmp.i3
   br i1 %arraydestroy.done118.i, label %cleanup.done.i73, label %arraydestroy.body115.i
 
-cleanup.done.i73:                                 ; preds = %_ZN8TestCaseD2Ev.exit2294, %ehcleanup114.i
+cleanup.done.i73:                                 ; preds = %_ZN8TestCaseD2Ev.exit2293, %ehcleanup114.i
   call void @llvm.lifetime.end.p0(i64 1296, ptr nonnull %ref.tmp.i3) #24
   br label %common.resume
 
@@ -8548,818 +8548,818 @@ lpad86.i381:                                      ; preds = %invoke.cont82.i227
 lpad88.i399:                                      ; preds = %invoke.cont87.i229
   %311 = landingpad { ptr, i32 }
           cleanup
-  %__cntrl_.i.i3087 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 17, i32 3, i32 1
-  %312 = load ptr, ptr %__cntrl_.i.i3087, align 8, !tbaa !98
-  %tobool.not.i.i3088 = icmp eq ptr %312, null
-  br i1 %tobool.not.i.i3088, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3099, label %if.then.i.i3091
+  %__cntrl_.i.i3086 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 17, i32 3, i32 1
+  %312 = load ptr, ptr %__cntrl_.i.i3086, align 8, !tbaa !98
+  %tobool.not.i.i3087 = icmp eq ptr %312, null
+  br i1 %tobool.not.i.i3087, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3098, label %if.then.i.i3090
 
-if.then.i.i3091:                                  ; preds = %lpad88.i399
-  %__shared_owners_.i.i.i.i3089 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %312, i64 0, i32 1
-  %313 = atomicrmw add ptr %__shared_owners_.i.i.i.i3089, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3090 = icmp eq i64 %313, 0
-  br i1 %cmp.i.i.i.i3090, label %if.then.i.i.i3094, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3099
+if.then.i.i3090:                                  ; preds = %lpad88.i399
+  %__shared_owners_.i.i.i.i3088 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %312, i64 0, i32 1
+  %313 = atomicrmw add ptr %__shared_owners_.i.i.i.i3088, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3089 = icmp eq i64 %313, 0
+  br i1 %cmp.i.i.i.i3089, label %if.then.i.i.i3093, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3098
 
-if.then.i.i.i3094:                                ; preds = %if.then.i.i3091
-  %vtable.i.i.i.i3092 = load ptr, ptr %312, align 8, !tbaa !24
-  %vfn.i.i.i.i3093 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3092, i64 2
-  %314 = load ptr, ptr %vfn.i.i.i.i3093, align 8
+if.then.i.i.i3093:                                ; preds = %if.then.i.i3090
+  %vtable.i.i.i.i3091 = load ptr, ptr %312, align 8, !tbaa !24
+  %vfn.i.i.i.i3092 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3091, i64 2
+  %314 = load ptr, ptr %vfn.i.i.i.i3092, align 8
   call void %314(ptr noundef nonnull align 8 dereferenceable(16) %312) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %312) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3099
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3098
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3099: ; preds = %if.then.i.i.i3094, %if.then.i.i3091, %lpad88.i399
-  %substituted_regex.i3095 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 17, i32 2
-  %bf.load.i.i.i3096 = load i8, ptr %substituted_regex.i3095, align 8
-  %bf.clear.i.i.i3097 = and i8 %bf.load.i.i.i3096, 1
-  %tobool.i.not.i.i3098 = icmp eq i8 %bf.clear.i.i.i3097, 0
-  br i1 %tobool.i.not.i.i3098, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3105, label %if.then.i2.i3101
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3098: ; preds = %if.then.i.i.i3093, %if.then.i.i3090, %lpad88.i399
+  %substituted_regex.i3094 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 17, i32 2
+  %bf.load.i.i.i3095 = load i8, ptr %substituted_regex.i3094, align 8
+  %bf.clear.i.i.i3096 = and i8 %bf.load.i.i.i3095, 1
+  %tobool.i.not.i.i3097 = icmp eq i8 %bf.clear.i.i.i3096, 0
+  br i1 %tobool.i.not.i.i3097, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3104, label %if.then.i2.i3100
 
-if.then.i2.i3101:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3099
-  %__data_.i.i.i3100 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 17, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %315 = load ptr, ptr %__data_.i.i.i3100, align 8, !tbaa !5
+if.then.i2.i3100:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3098
+  %__data_.i.i.i3099 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 17, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %315 = load ptr, ptr %__data_.i.i.i3099, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %315) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3105
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3104
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3105: ; preds = %if.then.i2.i3101, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3099
-  %bf.load.i.i3.i3102 = load i8, ptr %arrayinit.element83.i222, align 8
-  %bf.clear.i.i4.i3103 = and i8 %bf.load.i.i3.i3102, 1
-  %tobool.i.not.i5.i3104 = icmp eq i8 %bf.clear.i.i4.i3103, 0
-  br i1 %tobool.i.not.i5.i3104, label %_ZN8TestCaseD2Ev.exit3108, label %if.then.i7.i3107
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3104: ; preds = %if.then.i2.i3100, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3098
+  %bf.load.i.i3.i3101 = load i8, ptr %arrayinit.element83.i222, align 8
+  %bf.clear.i.i4.i3102 = and i8 %bf.load.i.i3.i3101, 1
+  %tobool.i.not.i5.i3103 = icmp eq i8 %bf.clear.i.i4.i3102, 0
+  br i1 %tobool.i.not.i5.i3103, label %_ZN8TestCaseD2Ev.exit3107, label %if.then.i7.i3106
 
-if.then.i7.i3107:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3105
-  %__data_.i.i6.i3106 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 17, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %316 = load ptr, ptr %__data_.i.i6.i3106, align 8, !tbaa !5
+if.then.i7.i3106:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3104
+  %__data_.i.i6.i3105 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 17, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %316 = load ptr, ptr %__data_.i.i6.i3105, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %316) #25
-  br label %_ZN8TestCaseD2Ev.exit3108
+  br label %_ZN8TestCaseD2Ev.exit3107
 
-_ZN8TestCaseD2Ev.exit3108:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3105, %if.then.i7.i3107
-  %__cntrl_.i.i3065 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 16, i32 3, i32 1
-  %317 = load ptr, ptr %__cntrl_.i.i3065, align 8, !tbaa !98
-  %tobool.not.i.i3066 = icmp eq ptr %317, null
-  br i1 %tobool.not.i.i3066, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3077, label %if.then.i.i3069
+_ZN8TestCaseD2Ev.exit3107:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3104, %if.then.i7.i3106
+  %__cntrl_.i.i3064 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 16, i32 3, i32 1
+  %317 = load ptr, ptr %__cntrl_.i.i3064, align 8, !tbaa !98
+  %tobool.not.i.i3065 = icmp eq ptr %317, null
+  br i1 %tobool.not.i.i3065, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3076, label %if.then.i.i3068
 
-if.then.i.i3069:                                  ; preds = %_ZN8TestCaseD2Ev.exit3108
-  %__shared_owners_.i.i.i.i3067 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %317, i64 0, i32 1
-  %318 = atomicrmw add ptr %__shared_owners_.i.i.i.i3067, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3068 = icmp eq i64 %318, 0
-  br i1 %cmp.i.i.i.i3068, label %if.then.i.i.i3072, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3077
+if.then.i.i3068:                                  ; preds = %_ZN8TestCaseD2Ev.exit3107
+  %__shared_owners_.i.i.i.i3066 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %317, i64 0, i32 1
+  %318 = atomicrmw add ptr %__shared_owners_.i.i.i.i3066, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3067 = icmp eq i64 %318, 0
+  br i1 %cmp.i.i.i.i3067, label %if.then.i.i.i3071, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3076
 
-if.then.i.i.i3072:                                ; preds = %if.then.i.i3069
-  %vtable.i.i.i.i3070 = load ptr, ptr %317, align 8, !tbaa !24
-  %vfn.i.i.i.i3071 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3070, i64 2
-  %319 = load ptr, ptr %vfn.i.i.i.i3071, align 8
+if.then.i.i.i3071:                                ; preds = %if.then.i.i3068
+  %vtable.i.i.i.i3069 = load ptr, ptr %317, align 8, !tbaa !24
+  %vfn.i.i.i.i3070 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3069, i64 2
+  %319 = load ptr, ptr %vfn.i.i.i.i3070, align 8
   call void %319(ptr noundef nonnull align 8 dereferenceable(16) %317) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %317) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3077
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3076
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3077: ; preds = %if.then.i.i.i3072, %if.then.i.i3069, %_ZN8TestCaseD2Ev.exit3108
-  %substituted_regex.i3073 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 16, i32 2
-  %bf.load.i.i.i3074 = load i8, ptr %substituted_regex.i3073, align 8
-  %bf.clear.i.i.i3075 = and i8 %bf.load.i.i.i3074, 1
-  %tobool.i.not.i.i3076 = icmp eq i8 %bf.clear.i.i.i3075, 0
-  br i1 %tobool.i.not.i.i3076, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3083, label %if.then.i2.i3079
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3076: ; preds = %if.then.i.i.i3071, %if.then.i.i3068, %_ZN8TestCaseD2Ev.exit3107
+  %substituted_regex.i3072 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 16, i32 2
+  %bf.load.i.i.i3073 = load i8, ptr %substituted_regex.i3072, align 8
+  %bf.clear.i.i.i3074 = and i8 %bf.load.i.i.i3073, 1
+  %tobool.i.not.i.i3075 = icmp eq i8 %bf.clear.i.i.i3074, 0
+  br i1 %tobool.i.not.i.i3075, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3082, label %if.then.i2.i3078
 
-if.then.i2.i3079:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3077
-  %__data_.i.i.i3078 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 16, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %320 = load ptr, ptr %__data_.i.i.i3078, align 8, !tbaa !5
+if.then.i2.i3078:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3076
+  %__data_.i.i.i3077 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 16, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %320 = load ptr, ptr %__data_.i.i.i3077, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %320) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3083
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3082
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3083: ; preds = %if.then.i2.i3079, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3077
-  %bf.load.i.i3.i3080 = load i8, ptr %arrayinit.element78.i213, align 8
-  %bf.clear.i.i4.i3081 = and i8 %bf.load.i.i3.i3080, 1
-  %tobool.i.not.i5.i3082 = icmp eq i8 %bf.clear.i.i4.i3081, 0
-  br i1 %tobool.i.not.i5.i3082, label %_ZN8TestCaseD2Ev.exit3086, label %if.then.i7.i3085
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3082: ; preds = %if.then.i2.i3078, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3076
+  %bf.load.i.i3.i3079 = load i8, ptr %arrayinit.element78.i213, align 8
+  %bf.clear.i.i4.i3080 = and i8 %bf.load.i.i3.i3079, 1
+  %tobool.i.not.i5.i3081 = icmp eq i8 %bf.clear.i.i4.i3080, 0
+  br i1 %tobool.i.not.i5.i3081, label %_ZN8TestCaseD2Ev.exit3085, label %if.then.i7.i3084
 
-if.then.i7.i3085:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3083
-  %__data_.i.i6.i3084 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 16, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %321 = load ptr, ptr %__data_.i.i6.i3084, align 8, !tbaa !5
+if.then.i7.i3084:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3082
+  %__data_.i.i6.i3083 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 16, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %321 = load ptr, ptr %__data_.i.i6.i3083, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %321) #25
-  br label %_ZN8TestCaseD2Ev.exit3086
+  br label %_ZN8TestCaseD2Ev.exit3085
 
-_ZN8TestCaseD2Ev.exit3086:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3083, %if.then.i7.i3085
-  %__cntrl_.i.i3043 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 15, i32 3, i32 1
-  %322 = load ptr, ptr %__cntrl_.i.i3043, align 8, !tbaa !98
-  %tobool.not.i.i3044 = icmp eq ptr %322, null
-  br i1 %tobool.not.i.i3044, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3055, label %if.then.i.i3047
+_ZN8TestCaseD2Ev.exit3085:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3082, %if.then.i7.i3084
+  %__cntrl_.i.i3042 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 15, i32 3, i32 1
+  %322 = load ptr, ptr %__cntrl_.i.i3042, align 8, !tbaa !98
+  %tobool.not.i.i3043 = icmp eq ptr %322, null
+  br i1 %tobool.not.i.i3043, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3054, label %if.then.i.i3046
 
-if.then.i.i3047:                                  ; preds = %_ZN8TestCaseD2Ev.exit3086
-  %__shared_owners_.i.i.i.i3045 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %322, i64 0, i32 1
-  %323 = atomicrmw add ptr %__shared_owners_.i.i.i.i3045, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3046 = icmp eq i64 %323, 0
-  br i1 %cmp.i.i.i.i3046, label %if.then.i.i.i3050, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3055
+if.then.i.i3046:                                  ; preds = %_ZN8TestCaseD2Ev.exit3085
+  %__shared_owners_.i.i.i.i3044 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %322, i64 0, i32 1
+  %323 = atomicrmw add ptr %__shared_owners_.i.i.i.i3044, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3045 = icmp eq i64 %323, 0
+  br i1 %cmp.i.i.i.i3045, label %if.then.i.i.i3049, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3054
 
-if.then.i.i.i3050:                                ; preds = %if.then.i.i3047
-  %vtable.i.i.i.i3048 = load ptr, ptr %322, align 8, !tbaa !24
-  %vfn.i.i.i.i3049 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3048, i64 2
-  %324 = load ptr, ptr %vfn.i.i.i.i3049, align 8
+if.then.i.i.i3049:                                ; preds = %if.then.i.i3046
+  %vtable.i.i.i.i3047 = load ptr, ptr %322, align 8, !tbaa !24
+  %vfn.i.i.i.i3048 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3047, i64 2
+  %324 = load ptr, ptr %vfn.i.i.i.i3048, align 8
   call void %324(ptr noundef nonnull align 8 dereferenceable(16) %322) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %322) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3055
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3054
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3055: ; preds = %if.then.i.i.i3050, %if.then.i.i3047, %_ZN8TestCaseD2Ev.exit3086
-  %substituted_regex.i3051 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 15, i32 2
-  %bf.load.i.i.i3052 = load i8, ptr %substituted_regex.i3051, align 8
-  %bf.clear.i.i.i3053 = and i8 %bf.load.i.i.i3052, 1
-  %tobool.i.not.i.i3054 = icmp eq i8 %bf.clear.i.i.i3053, 0
-  br i1 %tobool.i.not.i.i3054, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3061, label %if.then.i2.i3057
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3054: ; preds = %if.then.i.i.i3049, %if.then.i.i3046, %_ZN8TestCaseD2Ev.exit3085
+  %substituted_regex.i3050 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 15, i32 2
+  %bf.load.i.i.i3051 = load i8, ptr %substituted_regex.i3050, align 8
+  %bf.clear.i.i.i3052 = and i8 %bf.load.i.i.i3051, 1
+  %tobool.i.not.i.i3053 = icmp eq i8 %bf.clear.i.i.i3052, 0
+  br i1 %tobool.i.not.i.i3053, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3060, label %if.then.i2.i3056
 
-if.then.i2.i3057:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3055
-  %__data_.i.i.i3056 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 15, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %325 = load ptr, ptr %__data_.i.i.i3056, align 8, !tbaa !5
+if.then.i2.i3056:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3054
+  %__data_.i.i.i3055 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 15, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %325 = load ptr, ptr %__data_.i.i.i3055, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %325) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3061
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3060
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3061: ; preds = %if.then.i2.i3057, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3055
-  %bf.load.i.i3.i3058 = load i8, ptr %arrayinit.element73.i204, align 8
-  %bf.clear.i.i4.i3059 = and i8 %bf.load.i.i3.i3058, 1
-  %tobool.i.not.i5.i3060 = icmp eq i8 %bf.clear.i.i4.i3059, 0
-  br i1 %tobool.i.not.i5.i3060, label %_ZN8TestCaseD2Ev.exit3064, label %if.then.i7.i3063
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3060: ; preds = %if.then.i2.i3056, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3054
+  %bf.load.i.i3.i3057 = load i8, ptr %arrayinit.element73.i204, align 8
+  %bf.clear.i.i4.i3058 = and i8 %bf.load.i.i3.i3057, 1
+  %tobool.i.not.i5.i3059 = icmp eq i8 %bf.clear.i.i4.i3058, 0
+  br i1 %tobool.i.not.i5.i3059, label %_ZN8TestCaseD2Ev.exit3063, label %if.then.i7.i3062
 
-if.then.i7.i3063:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3061
-  %__data_.i.i6.i3062 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 15, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %326 = load ptr, ptr %__data_.i.i6.i3062, align 8, !tbaa !5
+if.then.i7.i3062:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3060
+  %__data_.i.i6.i3061 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 15, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %326 = load ptr, ptr %__data_.i.i6.i3061, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %326) #25
-  br label %_ZN8TestCaseD2Ev.exit3064
+  br label %_ZN8TestCaseD2Ev.exit3063
 
-_ZN8TestCaseD2Ev.exit3064:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3061, %if.then.i7.i3063
-  %__cntrl_.i.i3021 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 14, i32 3, i32 1
-  %327 = load ptr, ptr %__cntrl_.i.i3021, align 8, !tbaa !98
-  %tobool.not.i.i3022 = icmp eq ptr %327, null
-  br i1 %tobool.not.i.i3022, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3033, label %if.then.i.i3025
+_ZN8TestCaseD2Ev.exit3063:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3060, %if.then.i7.i3062
+  %__cntrl_.i.i3020 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 14, i32 3, i32 1
+  %327 = load ptr, ptr %__cntrl_.i.i3020, align 8, !tbaa !98
+  %tobool.not.i.i3021 = icmp eq ptr %327, null
+  br i1 %tobool.not.i.i3021, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3032, label %if.then.i.i3024
 
-if.then.i.i3025:                                  ; preds = %_ZN8TestCaseD2Ev.exit3064
-  %__shared_owners_.i.i.i.i3023 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %327, i64 0, i32 1
-  %328 = atomicrmw add ptr %__shared_owners_.i.i.i.i3023, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3024 = icmp eq i64 %328, 0
-  br i1 %cmp.i.i.i.i3024, label %if.then.i.i.i3028, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3033
+if.then.i.i3024:                                  ; preds = %_ZN8TestCaseD2Ev.exit3063
+  %__shared_owners_.i.i.i.i3022 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %327, i64 0, i32 1
+  %328 = atomicrmw add ptr %__shared_owners_.i.i.i.i3022, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3023 = icmp eq i64 %328, 0
+  br i1 %cmp.i.i.i.i3023, label %if.then.i.i.i3027, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3032
 
-if.then.i.i.i3028:                                ; preds = %if.then.i.i3025
-  %vtable.i.i.i.i3026 = load ptr, ptr %327, align 8, !tbaa !24
-  %vfn.i.i.i.i3027 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3026, i64 2
-  %329 = load ptr, ptr %vfn.i.i.i.i3027, align 8
+if.then.i.i.i3027:                                ; preds = %if.then.i.i3024
+  %vtable.i.i.i.i3025 = load ptr, ptr %327, align 8, !tbaa !24
+  %vfn.i.i.i.i3026 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3025, i64 2
+  %329 = load ptr, ptr %vfn.i.i.i.i3026, align 8
   call void %329(ptr noundef nonnull align 8 dereferenceable(16) %327) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %327) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3033
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3032
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3033: ; preds = %if.then.i.i.i3028, %if.then.i.i3025, %_ZN8TestCaseD2Ev.exit3064
-  %substituted_regex.i3029 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 14, i32 2
-  %bf.load.i.i.i3030 = load i8, ptr %substituted_regex.i3029, align 8
-  %bf.clear.i.i.i3031 = and i8 %bf.load.i.i.i3030, 1
-  %tobool.i.not.i.i3032 = icmp eq i8 %bf.clear.i.i.i3031, 0
-  br i1 %tobool.i.not.i.i3032, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3039, label %if.then.i2.i3035
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3032: ; preds = %if.then.i.i.i3027, %if.then.i.i3024, %_ZN8TestCaseD2Ev.exit3063
+  %substituted_regex.i3028 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 14, i32 2
+  %bf.load.i.i.i3029 = load i8, ptr %substituted_regex.i3028, align 8
+  %bf.clear.i.i.i3030 = and i8 %bf.load.i.i.i3029, 1
+  %tobool.i.not.i.i3031 = icmp eq i8 %bf.clear.i.i.i3030, 0
+  br i1 %tobool.i.not.i.i3031, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3038, label %if.then.i2.i3034
 
-if.then.i2.i3035:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3033
-  %__data_.i.i.i3034 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 14, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %330 = load ptr, ptr %__data_.i.i.i3034, align 8, !tbaa !5
+if.then.i2.i3034:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3032
+  %__data_.i.i.i3033 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 14, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %330 = load ptr, ptr %__data_.i.i.i3033, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %330) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3039
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3038
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3039: ; preds = %if.then.i2.i3035, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3033
-  %bf.load.i.i3.i3036 = load i8, ptr %arrayinit.element68.i195, align 8
-  %bf.clear.i.i4.i3037 = and i8 %bf.load.i.i3.i3036, 1
-  %tobool.i.not.i5.i3038 = icmp eq i8 %bf.clear.i.i4.i3037, 0
-  br i1 %tobool.i.not.i5.i3038, label %_ZN8TestCaseD2Ev.exit3042, label %if.then.i7.i3041
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3038: ; preds = %if.then.i2.i3034, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3032
+  %bf.load.i.i3.i3035 = load i8, ptr %arrayinit.element68.i195, align 8
+  %bf.clear.i.i4.i3036 = and i8 %bf.load.i.i3.i3035, 1
+  %tobool.i.not.i5.i3037 = icmp eq i8 %bf.clear.i.i4.i3036, 0
+  br i1 %tobool.i.not.i5.i3037, label %_ZN8TestCaseD2Ev.exit3041, label %if.then.i7.i3040
 
-if.then.i7.i3041:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3039
-  %__data_.i.i6.i3040 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 14, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %331 = load ptr, ptr %__data_.i.i6.i3040, align 8, !tbaa !5
+if.then.i7.i3040:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3038
+  %__data_.i.i6.i3039 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 14, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %331 = load ptr, ptr %__data_.i.i6.i3039, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %331) #25
-  br label %_ZN8TestCaseD2Ev.exit3042
+  br label %_ZN8TestCaseD2Ev.exit3041
 
-_ZN8TestCaseD2Ev.exit3042:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3039, %if.then.i7.i3041
-  %__cntrl_.i.i2999 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 13, i32 3, i32 1
-  %332 = load ptr, ptr %__cntrl_.i.i2999, align 8, !tbaa !98
-  %tobool.not.i.i3000 = icmp eq ptr %332, null
-  br i1 %tobool.not.i.i3000, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3011, label %if.then.i.i3003
+_ZN8TestCaseD2Ev.exit3041:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3038, %if.then.i7.i3040
+  %__cntrl_.i.i2998 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 13, i32 3, i32 1
+  %332 = load ptr, ptr %__cntrl_.i.i2998, align 8, !tbaa !98
+  %tobool.not.i.i2999 = icmp eq ptr %332, null
+  br i1 %tobool.not.i.i2999, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3010, label %if.then.i.i3002
 
-if.then.i.i3003:                                  ; preds = %_ZN8TestCaseD2Ev.exit3042
-  %__shared_owners_.i.i.i.i3001 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %332, i64 0, i32 1
-  %333 = atomicrmw add ptr %__shared_owners_.i.i.i.i3001, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3002 = icmp eq i64 %333, 0
-  br i1 %cmp.i.i.i.i3002, label %if.then.i.i.i3006, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3011
+if.then.i.i3002:                                  ; preds = %_ZN8TestCaseD2Ev.exit3041
+  %__shared_owners_.i.i.i.i3000 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %332, i64 0, i32 1
+  %333 = atomicrmw add ptr %__shared_owners_.i.i.i.i3000, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3001 = icmp eq i64 %333, 0
+  br i1 %cmp.i.i.i.i3001, label %if.then.i.i.i3005, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3010
 
-if.then.i.i.i3006:                                ; preds = %if.then.i.i3003
-  %vtable.i.i.i.i3004 = load ptr, ptr %332, align 8, !tbaa !24
-  %vfn.i.i.i.i3005 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3004, i64 2
-  %334 = load ptr, ptr %vfn.i.i.i.i3005, align 8
+if.then.i.i.i3005:                                ; preds = %if.then.i.i3002
+  %vtable.i.i.i.i3003 = load ptr, ptr %332, align 8, !tbaa !24
+  %vfn.i.i.i.i3004 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3003, i64 2
+  %334 = load ptr, ptr %vfn.i.i.i.i3004, align 8
   call void %334(ptr noundef nonnull align 8 dereferenceable(16) %332) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %332) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3011
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3010
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3011: ; preds = %if.then.i.i.i3006, %if.then.i.i3003, %_ZN8TestCaseD2Ev.exit3042
-  %substituted_regex.i3007 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 13, i32 2
-  %bf.load.i.i.i3008 = load i8, ptr %substituted_regex.i3007, align 8
-  %bf.clear.i.i.i3009 = and i8 %bf.load.i.i.i3008, 1
-  %tobool.i.not.i.i3010 = icmp eq i8 %bf.clear.i.i.i3009, 0
-  br i1 %tobool.i.not.i.i3010, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3017, label %if.then.i2.i3013
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3010: ; preds = %if.then.i.i.i3005, %if.then.i.i3002, %_ZN8TestCaseD2Ev.exit3041
+  %substituted_regex.i3006 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 13, i32 2
+  %bf.load.i.i.i3007 = load i8, ptr %substituted_regex.i3006, align 8
+  %bf.clear.i.i.i3008 = and i8 %bf.load.i.i.i3007, 1
+  %tobool.i.not.i.i3009 = icmp eq i8 %bf.clear.i.i.i3008, 0
+  br i1 %tobool.i.not.i.i3009, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3016, label %if.then.i2.i3012
 
-if.then.i2.i3013:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3011
-  %__data_.i.i.i3012 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 13, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %335 = load ptr, ptr %__data_.i.i.i3012, align 8, !tbaa !5
+if.then.i2.i3012:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3010
+  %__data_.i.i.i3011 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 13, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %335 = load ptr, ptr %__data_.i.i.i3011, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %335) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3017
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3016
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3017: ; preds = %if.then.i2.i3013, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3011
-  %bf.load.i.i3.i3014 = load i8, ptr %arrayinit.element63.i186, align 8
-  %bf.clear.i.i4.i3015 = and i8 %bf.load.i.i3.i3014, 1
-  %tobool.i.not.i5.i3016 = icmp eq i8 %bf.clear.i.i4.i3015, 0
-  br i1 %tobool.i.not.i5.i3016, label %_ZN8TestCaseD2Ev.exit3020, label %if.then.i7.i3019
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3016: ; preds = %if.then.i2.i3012, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3010
+  %bf.load.i.i3.i3013 = load i8, ptr %arrayinit.element63.i186, align 8
+  %bf.clear.i.i4.i3014 = and i8 %bf.load.i.i3.i3013, 1
+  %tobool.i.not.i5.i3015 = icmp eq i8 %bf.clear.i.i4.i3014, 0
+  br i1 %tobool.i.not.i5.i3015, label %_ZN8TestCaseD2Ev.exit3019, label %if.then.i7.i3018
 
-if.then.i7.i3019:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3017
-  %__data_.i.i6.i3018 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 13, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %336 = load ptr, ptr %__data_.i.i6.i3018, align 8, !tbaa !5
+if.then.i7.i3018:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3016
+  %__data_.i.i6.i3017 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 13, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %336 = load ptr, ptr %__data_.i.i6.i3017, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %336) #25
-  br label %_ZN8TestCaseD2Ev.exit3020
+  br label %_ZN8TestCaseD2Ev.exit3019
 
-_ZN8TestCaseD2Ev.exit3020:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3017, %if.then.i7.i3019
-  %__cntrl_.i.i2977 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 12, i32 3, i32 1
-  %337 = load ptr, ptr %__cntrl_.i.i2977, align 8, !tbaa !98
-  %tobool.not.i.i2978 = icmp eq ptr %337, null
-  br i1 %tobool.not.i.i2978, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2989, label %if.then.i.i2981
+_ZN8TestCaseD2Ev.exit3019:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3016, %if.then.i7.i3018
+  %__cntrl_.i.i2976 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 12, i32 3, i32 1
+  %337 = load ptr, ptr %__cntrl_.i.i2976, align 8, !tbaa !98
+  %tobool.not.i.i2977 = icmp eq ptr %337, null
+  br i1 %tobool.not.i.i2977, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2988, label %if.then.i.i2980
 
-if.then.i.i2981:                                  ; preds = %_ZN8TestCaseD2Ev.exit3020
-  %__shared_owners_.i.i.i.i2979 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %337, i64 0, i32 1
-  %338 = atomicrmw add ptr %__shared_owners_.i.i.i.i2979, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2980 = icmp eq i64 %338, 0
-  br i1 %cmp.i.i.i.i2980, label %if.then.i.i.i2984, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2989
+if.then.i.i2980:                                  ; preds = %_ZN8TestCaseD2Ev.exit3019
+  %__shared_owners_.i.i.i.i2978 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %337, i64 0, i32 1
+  %338 = atomicrmw add ptr %__shared_owners_.i.i.i.i2978, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2979 = icmp eq i64 %338, 0
+  br i1 %cmp.i.i.i.i2979, label %if.then.i.i.i2983, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2988
 
-if.then.i.i.i2984:                                ; preds = %if.then.i.i2981
-  %vtable.i.i.i.i2982 = load ptr, ptr %337, align 8, !tbaa !24
-  %vfn.i.i.i.i2983 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2982, i64 2
-  %339 = load ptr, ptr %vfn.i.i.i.i2983, align 8
+if.then.i.i.i2983:                                ; preds = %if.then.i.i2980
+  %vtable.i.i.i.i2981 = load ptr, ptr %337, align 8, !tbaa !24
+  %vfn.i.i.i.i2982 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2981, i64 2
+  %339 = load ptr, ptr %vfn.i.i.i.i2982, align 8
   call void %339(ptr noundef nonnull align 8 dereferenceable(16) %337) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %337) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2989
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2988
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2989: ; preds = %if.then.i.i.i2984, %if.then.i.i2981, %_ZN8TestCaseD2Ev.exit3020
-  %substituted_regex.i2985 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 12, i32 2
-  %bf.load.i.i.i2986 = load i8, ptr %substituted_regex.i2985, align 8
-  %bf.clear.i.i.i2987 = and i8 %bf.load.i.i.i2986, 1
-  %tobool.i.not.i.i2988 = icmp eq i8 %bf.clear.i.i.i2987, 0
-  br i1 %tobool.i.not.i.i2988, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2995, label %if.then.i2.i2991
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2988: ; preds = %if.then.i.i.i2983, %if.then.i.i2980, %_ZN8TestCaseD2Ev.exit3019
+  %substituted_regex.i2984 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 12, i32 2
+  %bf.load.i.i.i2985 = load i8, ptr %substituted_regex.i2984, align 8
+  %bf.clear.i.i.i2986 = and i8 %bf.load.i.i.i2985, 1
+  %tobool.i.not.i.i2987 = icmp eq i8 %bf.clear.i.i.i2986, 0
+  br i1 %tobool.i.not.i.i2987, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2994, label %if.then.i2.i2990
 
-if.then.i2.i2991:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2989
-  %__data_.i.i.i2990 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 12, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %340 = load ptr, ptr %__data_.i.i.i2990, align 8, !tbaa !5
+if.then.i2.i2990:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2988
+  %__data_.i.i.i2989 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 12, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %340 = load ptr, ptr %__data_.i.i.i2989, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %340) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2995
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2994
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2995: ; preds = %if.then.i2.i2991, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2989
-  %bf.load.i.i3.i2992 = load i8, ptr %arrayinit.element58.i177, align 8
-  %bf.clear.i.i4.i2993 = and i8 %bf.load.i.i3.i2992, 1
-  %tobool.i.not.i5.i2994 = icmp eq i8 %bf.clear.i.i4.i2993, 0
-  br i1 %tobool.i.not.i5.i2994, label %_ZN8TestCaseD2Ev.exit2998, label %if.then.i7.i2997
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2994: ; preds = %if.then.i2.i2990, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2988
+  %bf.load.i.i3.i2991 = load i8, ptr %arrayinit.element58.i177, align 8
+  %bf.clear.i.i4.i2992 = and i8 %bf.load.i.i3.i2991, 1
+  %tobool.i.not.i5.i2993 = icmp eq i8 %bf.clear.i.i4.i2992, 0
+  br i1 %tobool.i.not.i5.i2993, label %_ZN8TestCaseD2Ev.exit2997, label %if.then.i7.i2996
 
-if.then.i7.i2997:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2995
-  %__data_.i.i6.i2996 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 12, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %341 = load ptr, ptr %__data_.i.i6.i2996, align 8, !tbaa !5
+if.then.i7.i2996:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2994
+  %__data_.i.i6.i2995 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 12, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %341 = load ptr, ptr %__data_.i.i6.i2995, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %341) #25
-  br label %_ZN8TestCaseD2Ev.exit2998
+  br label %_ZN8TestCaseD2Ev.exit2997
 
-_ZN8TestCaseD2Ev.exit2998:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2995, %if.then.i7.i2997
-  %__cntrl_.i.i2955 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 11, i32 3, i32 1
-  %342 = load ptr, ptr %__cntrl_.i.i2955, align 8, !tbaa !98
-  %tobool.not.i.i2956 = icmp eq ptr %342, null
-  br i1 %tobool.not.i.i2956, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2967, label %if.then.i.i2959
+_ZN8TestCaseD2Ev.exit2997:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2994, %if.then.i7.i2996
+  %__cntrl_.i.i2954 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 11, i32 3, i32 1
+  %342 = load ptr, ptr %__cntrl_.i.i2954, align 8, !tbaa !98
+  %tobool.not.i.i2955 = icmp eq ptr %342, null
+  br i1 %tobool.not.i.i2955, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2966, label %if.then.i.i2958
 
-if.then.i.i2959:                                  ; preds = %_ZN8TestCaseD2Ev.exit2998
-  %__shared_owners_.i.i.i.i2957 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %342, i64 0, i32 1
-  %343 = atomicrmw add ptr %__shared_owners_.i.i.i.i2957, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2958 = icmp eq i64 %343, 0
-  br i1 %cmp.i.i.i.i2958, label %if.then.i.i.i2962, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2967
+if.then.i.i2958:                                  ; preds = %_ZN8TestCaseD2Ev.exit2997
+  %__shared_owners_.i.i.i.i2956 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %342, i64 0, i32 1
+  %343 = atomicrmw add ptr %__shared_owners_.i.i.i.i2956, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2957 = icmp eq i64 %343, 0
+  br i1 %cmp.i.i.i.i2957, label %if.then.i.i.i2961, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2966
 
-if.then.i.i.i2962:                                ; preds = %if.then.i.i2959
-  %vtable.i.i.i.i2960 = load ptr, ptr %342, align 8, !tbaa !24
-  %vfn.i.i.i.i2961 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2960, i64 2
-  %344 = load ptr, ptr %vfn.i.i.i.i2961, align 8
+if.then.i.i.i2961:                                ; preds = %if.then.i.i2958
+  %vtable.i.i.i.i2959 = load ptr, ptr %342, align 8, !tbaa !24
+  %vfn.i.i.i.i2960 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2959, i64 2
+  %344 = load ptr, ptr %vfn.i.i.i.i2960, align 8
   call void %344(ptr noundef nonnull align 8 dereferenceable(16) %342) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %342) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2967
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2966
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2967: ; preds = %if.then.i.i.i2962, %if.then.i.i2959, %_ZN8TestCaseD2Ev.exit2998
-  %substituted_regex.i2963 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 11, i32 2
-  %bf.load.i.i.i2964 = load i8, ptr %substituted_regex.i2963, align 8
-  %bf.clear.i.i.i2965 = and i8 %bf.load.i.i.i2964, 1
-  %tobool.i.not.i.i2966 = icmp eq i8 %bf.clear.i.i.i2965, 0
-  br i1 %tobool.i.not.i.i2966, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2973, label %if.then.i2.i2969
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2966: ; preds = %if.then.i.i.i2961, %if.then.i.i2958, %_ZN8TestCaseD2Ev.exit2997
+  %substituted_regex.i2962 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 11, i32 2
+  %bf.load.i.i.i2963 = load i8, ptr %substituted_regex.i2962, align 8
+  %bf.clear.i.i.i2964 = and i8 %bf.load.i.i.i2963, 1
+  %tobool.i.not.i.i2965 = icmp eq i8 %bf.clear.i.i.i2964, 0
+  br i1 %tobool.i.not.i.i2965, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2972, label %if.then.i2.i2968
 
-if.then.i2.i2969:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2967
-  %__data_.i.i.i2968 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 11, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %345 = load ptr, ptr %__data_.i.i.i2968, align 8, !tbaa !5
+if.then.i2.i2968:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2966
+  %__data_.i.i.i2967 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 11, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %345 = load ptr, ptr %__data_.i.i.i2967, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %345) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2973
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2972
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2973: ; preds = %if.then.i2.i2969, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2967
-  %bf.load.i.i3.i2970 = load i8, ptr %arrayinit.element53.i171, align 8
-  %bf.clear.i.i4.i2971 = and i8 %bf.load.i.i3.i2970, 1
-  %tobool.i.not.i5.i2972 = icmp eq i8 %bf.clear.i.i4.i2971, 0
-  br i1 %tobool.i.not.i5.i2972, label %_ZN8TestCaseD2Ev.exit2976, label %if.then.i7.i2975
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2972: ; preds = %if.then.i2.i2968, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2966
+  %bf.load.i.i3.i2969 = load i8, ptr %arrayinit.element53.i171, align 8
+  %bf.clear.i.i4.i2970 = and i8 %bf.load.i.i3.i2969, 1
+  %tobool.i.not.i5.i2971 = icmp eq i8 %bf.clear.i.i4.i2970, 0
+  br i1 %tobool.i.not.i5.i2971, label %_ZN8TestCaseD2Ev.exit2975, label %if.then.i7.i2974
 
-if.then.i7.i2975:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2973
-  %__data_.i.i6.i2974 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 11, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %346 = load ptr, ptr %__data_.i.i6.i2974, align 8, !tbaa !5
+if.then.i7.i2974:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2972
+  %__data_.i.i6.i2973 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 11, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %346 = load ptr, ptr %__data_.i.i6.i2973, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %346) #25
-  br label %_ZN8TestCaseD2Ev.exit2976
+  br label %_ZN8TestCaseD2Ev.exit2975
 
-_ZN8TestCaseD2Ev.exit2976:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2973, %if.then.i7.i2975
-  %__cntrl_.i.i2933 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 10, i32 3, i32 1
-  %347 = load ptr, ptr %__cntrl_.i.i2933, align 8, !tbaa !98
-  %tobool.not.i.i2934 = icmp eq ptr %347, null
-  br i1 %tobool.not.i.i2934, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2945, label %if.then.i.i2937
+_ZN8TestCaseD2Ev.exit2975:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2972, %if.then.i7.i2974
+  %__cntrl_.i.i2932 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 10, i32 3, i32 1
+  %347 = load ptr, ptr %__cntrl_.i.i2932, align 8, !tbaa !98
+  %tobool.not.i.i2933 = icmp eq ptr %347, null
+  br i1 %tobool.not.i.i2933, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2944, label %if.then.i.i2936
 
-if.then.i.i2937:                                  ; preds = %_ZN8TestCaseD2Ev.exit2976
-  %__shared_owners_.i.i.i.i2935 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %347, i64 0, i32 1
-  %348 = atomicrmw add ptr %__shared_owners_.i.i.i.i2935, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2936 = icmp eq i64 %348, 0
-  br i1 %cmp.i.i.i.i2936, label %if.then.i.i.i2940, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2945
+if.then.i.i2936:                                  ; preds = %_ZN8TestCaseD2Ev.exit2975
+  %__shared_owners_.i.i.i.i2934 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %347, i64 0, i32 1
+  %348 = atomicrmw add ptr %__shared_owners_.i.i.i.i2934, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2935 = icmp eq i64 %348, 0
+  br i1 %cmp.i.i.i.i2935, label %if.then.i.i.i2939, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2944
 
-if.then.i.i.i2940:                                ; preds = %if.then.i.i2937
-  %vtable.i.i.i.i2938 = load ptr, ptr %347, align 8, !tbaa !24
-  %vfn.i.i.i.i2939 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2938, i64 2
-  %349 = load ptr, ptr %vfn.i.i.i.i2939, align 8
+if.then.i.i.i2939:                                ; preds = %if.then.i.i2936
+  %vtable.i.i.i.i2937 = load ptr, ptr %347, align 8, !tbaa !24
+  %vfn.i.i.i.i2938 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2937, i64 2
+  %349 = load ptr, ptr %vfn.i.i.i.i2938, align 8
   call void %349(ptr noundef nonnull align 8 dereferenceable(16) %347) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %347) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2945
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2944
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2945: ; preds = %if.then.i.i.i2940, %if.then.i.i2937, %_ZN8TestCaseD2Ev.exit2976
-  %substituted_regex.i2941 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 10, i32 2
-  %bf.load.i.i.i2942 = load i8, ptr %substituted_regex.i2941, align 8
-  %bf.clear.i.i.i2943 = and i8 %bf.load.i.i.i2942, 1
-  %tobool.i.not.i.i2944 = icmp eq i8 %bf.clear.i.i.i2943, 0
-  br i1 %tobool.i.not.i.i2944, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2951, label %if.then.i2.i2947
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2944: ; preds = %if.then.i.i.i2939, %if.then.i.i2936, %_ZN8TestCaseD2Ev.exit2975
+  %substituted_regex.i2940 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 10, i32 2
+  %bf.load.i.i.i2941 = load i8, ptr %substituted_regex.i2940, align 8
+  %bf.clear.i.i.i2942 = and i8 %bf.load.i.i.i2941, 1
+  %tobool.i.not.i.i2943 = icmp eq i8 %bf.clear.i.i.i2942, 0
+  br i1 %tobool.i.not.i.i2943, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2950, label %if.then.i2.i2946
 
-if.then.i2.i2947:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2945
-  %__data_.i.i.i2946 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 10, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %350 = load ptr, ptr %__data_.i.i.i2946, align 8, !tbaa !5
+if.then.i2.i2946:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2944
+  %__data_.i.i.i2945 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 10, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %350 = load ptr, ptr %__data_.i.i.i2945, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %350) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2951
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2950
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2951: ; preds = %if.then.i2.i2947, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2945
-  %bf.load.i.i3.i2948 = load i8, ptr %arrayinit.element48.i165, align 8
-  %bf.clear.i.i4.i2949 = and i8 %bf.load.i.i3.i2948, 1
-  %tobool.i.not.i5.i2950 = icmp eq i8 %bf.clear.i.i4.i2949, 0
-  br i1 %tobool.i.not.i5.i2950, label %_ZN8TestCaseD2Ev.exit2954, label %if.then.i7.i2953
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2950: ; preds = %if.then.i2.i2946, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2944
+  %bf.load.i.i3.i2947 = load i8, ptr %arrayinit.element48.i165, align 8
+  %bf.clear.i.i4.i2948 = and i8 %bf.load.i.i3.i2947, 1
+  %tobool.i.not.i5.i2949 = icmp eq i8 %bf.clear.i.i4.i2948, 0
+  br i1 %tobool.i.not.i5.i2949, label %_ZN8TestCaseD2Ev.exit2953, label %if.then.i7.i2952
 
-if.then.i7.i2953:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2951
-  %__data_.i.i6.i2952 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 10, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %351 = load ptr, ptr %__data_.i.i6.i2952, align 8, !tbaa !5
+if.then.i7.i2952:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2950
+  %__data_.i.i6.i2951 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 10, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %351 = load ptr, ptr %__data_.i.i6.i2951, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %351) #25
-  br label %_ZN8TestCaseD2Ev.exit2954
+  br label %_ZN8TestCaseD2Ev.exit2953
 
-_ZN8TestCaseD2Ev.exit2954:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2951, %if.then.i7.i2953
-  %__cntrl_.i.i2911 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 9, i32 3, i32 1
-  %352 = load ptr, ptr %__cntrl_.i.i2911, align 8, !tbaa !98
-  %tobool.not.i.i2912 = icmp eq ptr %352, null
-  br i1 %tobool.not.i.i2912, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2923, label %if.then.i.i2915
+_ZN8TestCaseD2Ev.exit2953:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2950, %if.then.i7.i2952
+  %__cntrl_.i.i2910 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 9, i32 3, i32 1
+  %352 = load ptr, ptr %__cntrl_.i.i2910, align 8, !tbaa !98
+  %tobool.not.i.i2911 = icmp eq ptr %352, null
+  br i1 %tobool.not.i.i2911, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2922, label %if.then.i.i2914
 
-if.then.i.i2915:                                  ; preds = %_ZN8TestCaseD2Ev.exit2954
-  %__shared_owners_.i.i.i.i2913 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %352, i64 0, i32 1
-  %353 = atomicrmw add ptr %__shared_owners_.i.i.i.i2913, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2914 = icmp eq i64 %353, 0
-  br i1 %cmp.i.i.i.i2914, label %if.then.i.i.i2918, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2923
+if.then.i.i2914:                                  ; preds = %_ZN8TestCaseD2Ev.exit2953
+  %__shared_owners_.i.i.i.i2912 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %352, i64 0, i32 1
+  %353 = atomicrmw add ptr %__shared_owners_.i.i.i.i2912, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2913 = icmp eq i64 %353, 0
+  br i1 %cmp.i.i.i.i2913, label %if.then.i.i.i2917, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2922
 
-if.then.i.i.i2918:                                ; preds = %if.then.i.i2915
-  %vtable.i.i.i.i2916 = load ptr, ptr %352, align 8, !tbaa !24
-  %vfn.i.i.i.i2917 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2916, i64 2
-  %354 = load ptr, ptr %vfn.i.i.i.i2917, align 8
+if.then.i.i.i2917:                                ; preds = %if.then.i.i2914
+  %vtable.i.i.i.i2915 = load ptr, ptr %352, align 8, !tbaa !24
+  %vfn.i.i.i.i2916 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2915, i64 2
+  %354 = load ptr, ptr %vfn.i.i.i.i2916, align 8
   call void %354(ptr noundef nonnull align 8 dereferenceable(16) %352) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %352) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2923
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2922
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2923: ; preds = %if.then.i.i.i2918, %if.then.i.i2915, %_ZN8TestCaseD2Ev.exit2954
-  %substituted_regex.i2919 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 9, i32 2
-  %bf.load.i.i.i2920 = load i8, ptr %substituted_regex.i2919, align 8
-  %bf.clear.i.i.i2921 = and i8 %bf.load.i.i.i2920, 1
-  %tobool.i.not.i.i2922 = icmp eq i8 %bf.clear.i.i.i2921, 0
-  br i1 %tobool.i.not.i.i2922, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2929, label %if.then.i2.i2925
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2922: ; preds = %if.then.i.i.i2917, %if.then.i.i2914, %_ZN8TestCaseD2Ev.exit2953
+  %substituted_regex.i2918 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 9, i32 2
+  %bf.load.i.i.i2919 = load i8, ptr %substituted_regex.i2918, align 8
+  %bf.clear.i.i.i2920 = and i8 %bf.load.i.i.i2919, 1
+  %tobool.i.not.i.i2921 = icmp eq i8 %bf.clear.i.i.i2920, 0
+  br i1 %tobool.i.not.i.i2921, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2928, label %if.then.i2.i2924
 
-if.then.i2.i2925:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2923
-  %__data_.i.i.i2924 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 9, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %355 = load ptr, ptr %__data_.i.i.i2924, align 8, !tbaa !5
+if.then.i2.i2924:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2922
+  %__data_.i.i.i2923 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 9, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %355 = load ptr, ptr %__data_.i.i.i2923, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %355) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2929
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2928
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2929: ; preds = %if.then.i2.i2925, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2923
-  %bf.load.i.i3.i2926 = load i8, ptr %arrayinit.element43.i159, align 8
-  %bf.clear.i.i4.i2927 = and i8 %bf.load.i.i3.i2926, 1
-  %tobool.i.not.i5.i2928 = icmp eq i8 %bf.clear.i.i4.i2927, 0
-  br i1 %tobool.i.not.i5.i2928, label %_ZN8TestCaseD2Ev.exit2932, label %if.then.i7.i2931
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2928: ; preds = %if.then.i2.i2924, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2922
+  %bf.load.i.i3.i2925 = load i8, ptr %arrayinit.element43.i159, align 8
+  %bf.clear.i.i4.i2926 = and i8 %bf.load.i.i3.i2925, 1
+  %tobool.i.not.i5.i2927 = icmp eq i8 %bf.clear.i.i4.i2926, 0
+  br i1 %tobool.i.not.i5.i2927, label %_ZN8TestCaseD2Ev.exit2931, label %if.then.i7.i2930
 
-if.then.i7.i2931:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2929
-  %__data_.i.i6.i2930 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %356 = load ptr, ptr %__data_.i.i6.i2930, align 8, !tbaa !5
+if.then.i7.i2930:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2928
+  %__data_.i.i6.i2929 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %356 = load ptr, ptr %__data_.i.i6.i2929, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %356) #25
-  br label %_ZN8TestCaseD2Ev.exit2932
+  br label %_ZN8TestCaseD2Ev.exit2931
 
-_ZN8TestCaseD2Ev.exit2932:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2929, %if.then.i7.i2931
-  %__cntrl_.i.i2889 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 8, i32 3, i32 1
-  %357 = load ptr, ptr %__cntrl_.i.i2889, align 8, !tbaa !98
-  %tobool.not.i.i2890 = icmp eq ptr %357, null
-  br i1 %tobool.not.i.i2890, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2901, label %if.then.i.i2893
+_ZN8TestCaseD2Ev.exit2931:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2928, %if.then.i7.i2930
+  %__cntrl_.i.i2888 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 8, i32 3, i32 1
+  %357 = load ptr, ptr %__cntrl_.i.i2888, align 8, !tbaa !98
+  %tobool.not.i.i2889 = icmp eq ptr %357, null
+  br i1 %tobool.not.i.i2889, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2900, label %if.then.i.i2892
 
-if.then.i.i2893:                                  ; preds = %_ZN8TestCaseD2Ev.exit2932
-  %__shared_owners_.i.i.i.i2891 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %357, i64 0, i32 1
-  %358 = atomicrmw add ptr %__shared_owners_.i.i.i.i2891, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2892 = icmp eq i64 %358, 0
-  br i1 %cmp.i.i.i.i2892, label %if.then.i.i.i2896, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2901
+if.then.i.i2892:                                  ; preds = %_ZN8TestCaseD2Ev.exit2931
+  %__shared_owners_.i.i.i.i2890 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %357, i64 0, i32 1
+  %358 = atomicrmw add ptr %__shared_owners_.i.i.i.i2890, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2891 = icmp eq i64 %358, 0
+  br i1 %cmp.i.i.i.i2891, label %if.then.i.i.i2895, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2900
 
-if.then.i.i.i2896:                                ; preds = %if.then.i.i2893
-  %vtable.i.i.i.i2894 = load ptr, ptr %357, align 8, !tbaa !24
-  %vfn.i.i.i.i2895 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2894, i64 2
-  %359 = load ptr, ptr %vfn.i.i.i.i2895, align 8
+if.then.i.i.i2895:                                ; preds = %if.then.i.i2892
+  %vtable.i.i.i.i2893 = load ptr, ptr %357, align 8, !tbaa !24
+  %vfn.i.i.i.i2894 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2893, i64 2
+  %359 = load ptr, ptr %vfn.i.i.i.i2894, align 8
   call void %359(ptr noundef nonnull align 8 dereferenceable(16) %357) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %357) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2901
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2900
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2901: ; preds = %if.then.i.i.i2896, %if.then.i.i2893, %_ZN8TestCaseD2Ev.exit2932
-  %substituted_regex.i2897 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 8, i32 2
-  %bf.load.i.i.i2898 = load i8, ptr %substituted_regex.i2897, align 8
-  %bf.clear.i.i.i2899 = and i8 %bf.load.i.i.i2898, 1
-  %tobool.i.not.i.i2900 = icmp eq i8 %bf.clear.i.i.i2899, 0
-  br i1 %tobool.i.not.i.i2900, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2907, label %if.then.i2.i2903
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2900: ; preds = %if.then.i.i.i2895, %if.then.i.i2892, %_ZN8TestCaseD2Ev.exit2931
+  %substituted_regex.i2896 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 8, i32 2
+  %bf.load.i.i.i2897 = load i8, ptr %substituted_regex.i2896, align 8
+  %bf.clear.i.i.i2898 = and i8 %bf.load.i.i.i2897, 1
+  %tobool.i.not.i.i2899 = icmp eq i8 %bf.clear.i.i.i2898, 0
+  br i1 %tobool.i.not.i.i2899, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2906, label %if.then.i2.i2902
 
-if.then.i2.i2903:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2901
-  %__data_.i.i.i2902 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 8, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %360 = load ptr, ptr %__data_.i.i.i2902, align 8, !tbaa !5
+if.then.i2.i2902:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2900
+  %__data_.i.i.i2901 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 8, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %360 = load ptr, ptr %__data_.i.i.i2901, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %360) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2907
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2906
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2907: ; preds = %if.then.i2.i2903, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2901
-  %bf.load.i.i3.i2904 = load i8, ptr %arrayinit.element38.i153, align 8
-  %bf.clear.i.i4.i2905 = and i8 %bf.load.i.i3.i2904, 1
-  %tobool.i.not.i5.i2906 = icmp eq i8 %bf.clear.i.i4.i2905, 0
-  br i1 %tobool.i.not.i5.i2906, label %_ZN8TestCaseD2Ev.exit2910, label %if.then.i7.i2909
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2906: ; preds = %if.then.i2.i2902, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2900
+  %bf.load.i.i3.i2903 = load i8, ptr %arrayinit.element38.i153, align 8
+  %bf.clear.i.i4.i2904 = and i8 %bf.load.i.i3.i2903, 1
+  %tobool.i.not.i5.i2905 = icmp eq i8 %bf.clear.i.i4.i2904, 0
+  br i1 %tobool.i.not.i5.i2905, label %_ZN8TestCaseD2Ev.exit2909, label %if.then.i7.i2908
 
-if.then.i7.i2909:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2907
-  %__data_.i.i6.i2908 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 8, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %361 = load ptr, ptr %__data_.i.i6.i2908, align 8, !tbaa !5
+if.then.i7.i2908:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2906
+  %__data_.i.i6.i2907 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 8, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %361 = load ptr, ptr %__data_.i.i6.i2907, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %361) #25
-  br label %_ZN8TestCaseD2Ev.exit2910
+  br label %_ZN8TestCaseD2Ev.exit2909
 
-_ZN8TestCaseD2Ev.exit2910:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2907, %if.then.i7.i2909
-  %__cntrl_.i.i2867 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 7, i32 3, i32 1
-  %362 = load ptr, ptr %__cntrl_.i.i2867, align 8, !tbaa !98
-  %tobool.not.i.i2868 = icmp eq ptr %362, null
-  br i1 %tobool.not.i.i2868, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2879, label %if.then.i.i2871
+_ZN8TestCaseD2Ev.exit2909:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2906, %if.then.i7.i2908
+  %__cntrl_.i.i2866 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 7, i32 3, i32 1
+  %362 = load ptr, ptr %__cntrl_.i.i2866, align 8, !tbaa !98
+  %tobool.not.i.i2867 = icmp eq ptr %362, null
+  br i1 %tobool.not.i.i2867, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2878, label %if.then.i.i2870
 
-if.then.i.i2871:                                  ; preds = %_ZN8TestCaseD2Ev.exit2910
-  %__shared_owners_.i.i.i.i2869 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %362, i64 0, i32 1
-  %363 = atomicrmw add ptr %__shared_owners_.i.i.i.i2869, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2870 = icmp eq i64 %363, 0
-  br i1 %cmp.i.i.i.i2870, label %if.then.i.i.i2874, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2879
+if.then.i.i2870:                                  ; preds = %_ZN8TestCaseD2Ev.exit2909
+  %__shared_owners_.i.i.i.i2868 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %362, i64 0, i32 1
+  %363 = atomicrmw add ptr %__shared_owners_.i.i.i.i2868, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2869 = icmp eq i64 %363, 0
+  br i1 %cmp.i.i.i.i2869, label %if.then.i.i.i2873, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2878
 
-if.then.i.i.i2874:                                ; preds = %if.then.i.i2871
-  %vtable.i.i.i.i2872 = load ptr, ptr %362, align 8, !tbaa !24
-  %vfn.i.i.i.i2873 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2872, i64 2
-  %364 = load ptr, ptr %vfn.i.i.i.i2873, align 8
+if.then.i.i.i2873:                                ; preds = %if.then.i.i2870
+  %vtable.i.i.i.i2871 = load ptr, ptr %362, align 8, !tbaa !24
+  %vfn.i.i.i.i2872 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2871, i64 2
+  %364 = load ptr, ptr %vfn.i.i.i.i2872, align 8
   call void %364(ptr noundef nonnull align 8 dereferenceable(16) %362) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %362) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2879
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2878
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2879: ; preds = %if.then.i.i.i2874, %if.then.i.i2871, %_ZN8TestCaseD2Ev.exit2910
-  %substituted_regex.i2875 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 7, i32 2
-  %bf.load.i.i.i2876 = load i8, ptr %substituted_regex.i2875, align 8
-  %bf.clear.i.i.i2877 = and i8 %bf.load.i.i.i2876, 1
-  %tobool.i.not.i.i2878 = icmp eq i8 %bf.clear.i.i.i2877, 0
-  br i1 %tobool.i.not.i.i2878, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2885, label %if.then.i2.i2881
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2878: ; preds = %if.then.i.i.i2873, %if.then.i.i2870, %_ZN8TestCaseD2Ev.exit2909
+  %substituted_regex.i2874 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 7, i32 2
+  %bf.load.i.i.i2875 = load i8, ptr %substituted_regex.i2874, align 8
+  %bf.clear.i.i.i2876 = and i8 %bf.load.i.i.i2875, 1
+  %tobool.i.not.i.i2877 = icmp eq i8 %bf.clear.i.i.i2876, 0
+  br i1 %tobool.i.not.i.i2877, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2884, label %if.then.i2.i2880
 
-if.then.i2.i2881:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2879
-  %__data_.i.i.i2880 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 7, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %365 = load ptr, ptr %__data_.i.i.i2880, align 8, !tbaa !5
+if.then.i2.i2880:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2878
+  %__data_.i.i.i2879 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 7, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %365 = load ptr, ptr %__data_.i.i.i2879, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %365) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2885
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2884
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2885: ; preds = %if.then.i2.i2881, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2879
-  %bf.load.i.i3.i2882 = load i8, ptr %arrayinit.element33.i147, align 8
-  %bf.clear.i.i4.i2883 = and i8 %bf.load.i.i3.i2882, 1
-  %tobool.i.not.i5.i2884 = icmp eq i8 %bf.clear.i.i4.i2883, 0
-  br i1 %tobool.i.not.i5.i2884, label %_ZN8TestCaseD2Ev.exit2888, label %if.then.i7.i2887
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2884: ; preds = %if.then.i2.i2880, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2878
+  %bf.load.i.i3.i2881 = load i8, ptr %arrayinit.element33.i147, align 8
+  %bf.clear.i.i4.i2882 = and i8 %bf.load.i.i3.i2881, 1
+  %tobool.i.not.i5.i2883 = icmp eq i8 %bf.clear.i.i4.i2882, 0
+  br i1 %tobool.i.not.i5.i2883, label %_ZN8TestCaseD2Ev.exit2887, label %if.then.i7.i2886
 
-if.then.i7.i2887:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2885
-  %__data_.i.i6.i2886 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 7, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %366 = load ptr, ptr %__data_.i.i6.i2886, align 8, !tbaa !5
+if.then.i7.i2886:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2884
+  %__data_.i.i6.i2885 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 7, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %366 = load ptr, ptr %__data_.i.i6.i2885, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %366) #25
-  br label %_ZN8TestCaseD2Ev.exit2888
+  br label %_ZN8TestCaseD2Ev.exit2887
 
-_ZN8TestCaseD2Ev.exit2888:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2885, %if.then.i7.i2887
-  %__cntrl_.i.i2845 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 6, i32 3, i32 1
-  %367 = load ptr, ptr %__cntrl_.i.i2845, align 8, !tbaa !98
-  %tobool.not.i.i2846 = icmp eq ptr %367, null
-  br i1 %tobool.not.i.i2846, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2857, label %if.then.i.i2849
+_ZN8TestCaseD2Ev.exit2887:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2884, %if.then.i7.i2886
+  %__cntrl_.i.i2844 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 6, i32 3, i32 1
+  %367 = load ptr, ptr %__cntrl_.i.i2844, align 8, !tbaa !98
+  %tobool.not.i.i2845 = icmp eq ptr %367, null
+  br i1 %tobool.not.i.i2845, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2856, label %if.then.i.i2848
 
-if.then.i.i2849:                                  ; preds = %_ZN8TestCaseD2Ev.exit2888
-  %__shared_owners_.i.i.i.i2847 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %367, i64 0, i32 1
-  %368 = atomicrmw add ptr %__shared_owners_.i.i.i.i2847, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2848 = icmp eq i64 %368, 0
-  br i1 %cmp.i.i.i.i2848, label %if.then.i.i.i2852, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2857
+if.then.i.i2848:                                  ; preds = %_ZN8TestCaseD2Ev.exit2887
+  %__shared_owners_.i.i.i.i2846 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %367, i64 0, i32 1
+  %368 = atomicrmw add ptr %__shared_owners_.i.i.i.i2846, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2847 = icmp eq i64 %368, 0
+  br i1 %cmp.i.i.i.i2847, label %if.then.i.i.i2851, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2856
 
-if.then.i.i.i2852:                                ; preds = %if.then.i.i2849
-  %vtable.i.i.i.i2850 = load ptr, ptr %367, align 8, !tbaa !24
-  %vfn.i.i.i.i2851 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2850, i64 2
-  %369 = load ptr, ptr %vfn.i.i.i.i2851, align 8
+if.then.i.i.i2851:                                ; preds = %if.then.i.i2848
+  %vtable.i.i.i.i2849 = load ptr, ptr %367, align 8, !tbaa !24
+  %vfn.i.i.i.i2850 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2849, i64 2
+  %369 = load ptr, ptr %vfn.i.i.i.i2850, align 8
   call void %369(ptr noundef nonnull align 8 dereferenceable(16) %367) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %367) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2857
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2856
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2857: ; preds = %if.then.i.i.i2852, %if.then.i.i2849, %_ZN8TestCaseD2Ev.exit2888
-  %substituted_regex.i2853 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 6, i32 2
-  %bf.load.i.i.i2854 = load i8, ptr %substituted_regex.i2853, align 8
-  %bf.clear.i.i.i2855 = and i8 %bf.load.i.i.i2854, 1
-  %tobool.i.not.i.i2856 = icmp eq i8 %bf.clear.i.i.i2855, 0
-  br i1 %tobool.i.not.i.i2856, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2863, label %if.then.i2.i2859
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2856: ; preds = %if.then.i.i.i2851, %if.then.i.i2848, %_ZN8TestCaseD2Ev.exit2887
+  %substituted_regex.i2852 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 6, i32 2
+  %bf.load.i.i.i2853 = load i8, ptr %substituted_regex.i2852, align 8
+  %bf.clear.i.i.i2854 = and i8 %bf.load.i.i.i2853, 1
+  %tobool.i.not.i.i2855 = icmp eq i8 %bf.clear.i.i.i2854, 0
+  br i1 %tobool.i.not.i.i2855, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2862, label %if.then.i2.i2858
 
-if.then.i2.i2859:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2857
-  %__data_.i.i.i2858 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 6, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %370 = load ptr, ptr %__data_.i.i.i2858, align 8, !tbaa !5
+if.then.i2.i2858:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2856
+  %__data_.i.i.i2857 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 6, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %370 = load ptr, ptr %__data_.i.i.i2857, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %370) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2863
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2862
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2863: ; preds = %if.then.i2.i2859, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2857
-  %bf.load.i.i3.i2860 = load i8, ptr %arrayinit.element28.i138, align 8
-  %bf.clear.i.i4.i2861 = and i8 %bf.load.i.i3.i2860, 1
-  %tobool.i.not.i5.i2862 = icmp eq i8 %bf.clear.i.i4.i2861, 0
-  br i1 %tobool.i.not.i5.i2862, label %_ZN8TestCaseD2Ev.exit2866, label %if.then.i7.i2865
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2862: ; preds = %if.then.i2.i2858, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2856
+  %bf.load.i.i3.i2859 = load i8, ptr %arrayinit.element28.i138, align 8
+  %bf.clear.i.i4.i2860 = and i8 %bf.load.i.i3.i2859, 1
+  %tobool.i.not.i5.i2861 = icmp eq i8 %bf.clear.i.i4.i2860, 0
+  br i1 %tobool.i.not.i5.i2861, label %_ZN8TestCaseD2Ev.exit2865, label %if.then.i7.i2864
 
-if.then.i7.i2865:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2863
-  %__data_.i.i6.i2864 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 6, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %371 = load ptr, ptr %__data_.i.i6.i2864, align 8, !tbaa !5
+if.then.i7.i2864:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2862
+  %__data_.i.i6.i2863 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 6, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %371 = load ptr, ptr %__data_.i.i6.i2863, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %371) #25
-  br label %_ZN8TestCaseD2Ev.exit2866
+  br label %_ZN8TestCaseD2Ev.exit2865
 
-_ZN8TestCaseD2Ev.exit2866:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2863, %if.then.i7.i2865
-  %__cntrl_.i.i2823 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 5, i32 3, i32 1
-  %372 = load ptr, ptr %__cntrl_.i.i2823, align 8, !tbaa !98
-  %tobool.not.i.i2824 = icmp eq ptr %372, null
-  br i1 %tobool.not.i.i2824, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2835, label %if.then.i.i2827
+_ZN8TestCaseD2Ev.exit2865:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2862, %if.then.i7.i2864
+  %__cntrl_.i.i2822 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 5, i32 3, i32 1
+  %372 = load ptr, ptr %__cntrl_.i.i2822, align 8, !tbaa !98
+  %tobool.not.i.i2823 = icmp eq ptr %372, null
+  br i1 %tobool.not.i.i2823, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2834, label %if.then.i.i2826
 
-if.then.i.i2827:                                  ; preds = %_ZN8TestCaseD2Ev.exit2866
-  %__shared_owners_.i.i.i.i2825 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %372, i64 0, i32 1
-  %373 = atomicrmw add ptr %__shared_owners_.i.i.i.i2825, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2826 = icmp eq i64 %373, 0
-  br i1 %cmp.i.i.i.i2826, label %if.then.i.i.i2830, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2835
+if.then.i.i2826:                                  ; preds = %_ZN8TestCaseD2Ev.exit2865
+  %__shared_owners_.i.i.i.i2824 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %372, i64 0, i32 1
+  %373 = atomicrmw add ptr %__shared_owners_.i.i.i.i2824, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2825 = icmp eq i64 %373, 0
+  br i1 %cmp.i.i.i.i2825, label %if.then.i.i.i2829, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2834
 
-if.then.i.i.i2830:                                ; preds = %if.then.i.i2827
-  %vtable.i.i.i.i2828 = load ptr, ptr %372, align 8, !tbaa !24
-  %vfn.i.i.i.i2829 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2828, i64 2
-  %374 = load ptr, ptr %vfn.i.i.i.i2829, align 8
+if.then.i.i.i2829:                                ; preds = %if.then.i.i2826
+  %vtable.i.i.i.i2827 = load ptr, ptr %372, align 8, !tbaa !24
+  %vfn.i.i.i.i2828 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2827, i64 2
+  %374 = load ptr, ptr %vfn.i.i.i.i2828, align 8
   call void %374(ptr noundef nonnull align 8 dereferenceable(16) %372) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %372) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2835
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2834
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2835: ; preds = %if.then.i.i.i2830, %if.then.i.i2827, %_ZN8TestCaseD2Ev.exit2866
-  %substituted_regex.i2831 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 5, i32 2
-  %bf.load.i.i.i2832 = load i8, ptr %substituted_regex.i2831, align 8
-  %bf.clear.i.i.i2833 = and i8 %bf.load.i.i.i2832, 1
-  %tobool.i.not.i.i2834 = icmp eq i8 %bf.clear.i.i.i2833, 0
-  br i1 %tobool.i.not.i.i2834, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2841, label %if.then.i2.i2837
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2834: ; preds = %if.then.i.i.i2829, %if.then.i.i2826, %_ZN8TestCaseD2Ev.exit2865
+  %substituted_regex.i2830 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 5, i32 2
+  %bf.load.i.i.i2831 = load i8, ptr %substituted_regex.i2830, align 8
+  %bf.clear.i.i.i2832 = and i8 %bf.load.i.i.i2831, 1
+  %tobool.i.not.i.i2833 = icmp eq i8 %bf.clear.i.i.i2832, 0
+  br i1 %tobool.i.not.i.i2833, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2840, label %if.then.i2.i2836
 
-if.then.i2.i2837:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2835
-  %__data_.i.i.i2836 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 5, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %375 = load ptr, ptr %__data_.i.i.i2836, align 8, !tbaa !5
+if.then.i2.i2836:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2834
+  %__data_.i.i.i2835 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 5, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %375 = load ptr, ptr %__data_.i.i.i2835, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %375) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2841
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2840
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2841: ; preds = %if.then.i2.i2837, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2835
-  %bf.load.i.i3.i2838 = load i8, ptr %arrayinit.element23.i132, align 8
-  %bf.clear.i.i4.i2839 = and i8 %bf.load.i.i3.i2838, 1
-  %tobool.i.not.i5.i2840 = icmp eq i8 %bf.clear.i.i4.i2839, 0
-  br i1 %tobool.i.not.i5.i2840, label %_ZN8TestCaseD2Ev.exit2844, label %if.then.i7.i2843
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2840: ; preds = %if.then.i2.i2836, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2834
+  %bf.load.i.i3.i2837 = load i8, ptr %arrayinit.element23.i132, align 8
+  %bf.clear.i.i4.i2838 = and i8 %bf.load.i.i3.i2837, 1
+  %tobool.i.not.i5.i2839 = icmp eq i8 %bf.clear.i.i4.i2838, 0
+  br i1 %tobool.i.not.i5.i2839, label %_ZN8TestCaseD2Ev.exit2843, label %if.then.i7.i2842
 
-if.then.i7.i2843:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2841
-  %__data_.i.i6.i2842 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 5, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %376 = load ptr, ptr %__data_.i.i6.i2842, align 8, !tbaa !5
+if.then.i7.i2842:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2840
+  %__data_.i.i6.i2841 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 5, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %376 = load ptr, ptr %__data_.i.i6.i2841, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %376) #25
-  br label %_ZN8TestCaseD2Ev.exit2844
+  br label %_ZN8TestCaseD2Ev.exit2843
 
-_ZN8TestCaseD2Ev.exit2844:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2841, %if.then.i7.i2843
-  %__cntrl_.i.i2801 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 4, i32 3, i32 1
-  %377 = load ptr, ptr %__cntrl_.i.i2801, align 8, !tbaa !98
-  %tobool.not.i.i2802 = icmp eq ptr %377, null
-  br i1 %tobool.not.i.i2802, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2813, label %if.then.i.i2805
+_ZN8TestCaseD2Ev.exit2843:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2840, %if.then.i7.i2842
+  %__cntrl_.i.i2800 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 4, i32 3, i32 1
+  %377 = load ptr, ptr %__cntrl_.i.i2800, align 8, !tbaa !98
+  %tobool.not.i.i2801 = icmp eq ptr %377, null
+  br i1 %tobool.not.i.i2801, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2812, label %if.then.i.i2804
 
-if.then.i.i2805:                                  ; preds = %_ZN8TestCaseD2Ev.exit2844
-  %__shared_owners_.i.i.i.i2803 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %377, i64 0, i32 1
-  %378 = atomicrmw add ptr %__shared_owners_.i.i.i.i2803, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2804 = icmp eq i64 %378, 0
-  br i1 %cmp.i.i.i.i2804, label %if.then.i.i.i2808, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2813
+if.then.i.i2804:                                  ; preds = %_ZN8TestCaseD2Ev.exit2843
+  %__shared_owners_.i.i.i.i2802 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %377, i64 0, i32 1
+  %378 = atomicrmw add ptr %__shared_owners_.i.i.i.i2802, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2803 = icmp eq i64 %378, 0
+  br i1 %cmp.i.i.i.i2803, label %if.then.i.i.i2807, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2812
 
-if.then.i.i.i2808:                                ; preds = %if.then.i.i2805
-  %vtable.i.i.i.i2806 = load ptr, ptr %377, align 8, !tbaa !24
-  %vfn.i.i.i.i2807 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2806, i64 2
-  %379 = load ptr, ptr %vfn.i.i.i.i2807, align 8
+if.then.i.i.i2807:                                ; preds = %if.then.i.i2804
+  %vtable.i.i.i.i2805 = load ptr, ptr %377, align 8, !tbaa !24
+  %vfn.i.i.i.i2806 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2805, i64 2
+  %379 = load ptr, ptr %vfn.i.i.i.i2806, align 8
   call void %379(ptr noundef nonnull align 8 dereferenceable(16) %377) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %377) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2813
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2812
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2813: ; preds = %if.then.i.i.i2808, %if.then.i.i2805, %_ZN8TestCaseD2Ev.exit2844
-  %substituted_regex.i2809 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 4, i32 2
-  %bf.load.i.i.i2810 = load i8, ptr %substituted_regex.i2809, align 8
-  %bf.clear.i.i.i2811 = and i8 %bf.load.i.i.i2810, 1
-  %tobool.i.not.i.i2812 = icmp eq i8 %bf.clear.i.i.i2811, 0
-  br i1 %tobool.i.not.i.i2812, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2819, label %if.then.i2.i2815
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2812: ; preds = %if.then.i.i.i2807, %if.then.i.i2804, %_ZN8TestCaseD2Ev.exit2843
+  %substituted_regex.i2808 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 4, i32 2
+  %bf.load.i.i.i2809 = load i8, ptr %substituted_regex.i2808, align 8
+  %bf.clear.i.i.i2810 = and i8 %bf.load.i.i.i2809, 1
+  %tobool.i.not.i.i2811 = icmp eq i8 %bf.clear.i.i.i2810, 0
+  br i1 %tobool.i.not.i.i2811, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2818, label %if.then.i2.i2814
 
-if.then.i2.i2815:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2813
-  %__data_.i.i.i2814 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %380 = load ptr, ptr %__data_.i.i.i2814, align 8, !tbaa !5
+if.then.i2.i2814:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2812
+  %__data_.i.i.i2813 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %380 = load ptr, ptr %__data_.i.i.i2813, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %380) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2819
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2818
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2819: ; preds = %if.then.i2.i2815, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2813
-  %bf.load.i.i3.i2816 = load i8, ptr %arrayinit.element18.i123, align 8
-  %bf.clear.i.i4.i2817 = and i8 %bf.load.i.i3.i2816, 1
-  %tobool.i.not.i5.i2818 = icmp eq i8 %bf.clear.i.i4.i2817, 0
-  br i1 %tobool.i.not.i5.i2818, label %_ZN8TestCaseD2Ev.exit2822, label %if.then.i7.i2821
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2818: ; preds = %if.then.i2.i2814, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2812
+  %bf.load.i.i3.i2815 = load i8, ptr %arrayinit.element18.i123, align 8
+  %bf.clear.i.i4.i2816 = and i8 %bf.load.i.i3.i2815, 1
+  %tobool.i.not.i5.i2817 = icmp eq i8 %bf.clear.i.i4.i2816, 0
+  br i1 %tobool.i.not.i5.i2817, label %_ZN8TestCaseD2Ev.exit2821, label %if.then.i7.i2820
 
-if.then.i7.i2821:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2819
-  %__data_.i.i6.i2820 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %381 = load ptr, ptr %__data_.i.i6.i2820, align 8, !tbaa !5
+if.then.i7.i2820:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2818
+  %__data_.i.i6.i2819 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %381 = load ptr, ptr %__data_.i.i6.i2819, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %381) #25
-  br label %_ZN8TestCaseD2Ev.exit2822
+  br label %_ZN8TestCaseD2Ev.exit2821
 
-_ZN8TestCaseD2Ev.exit2822:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2819, %if.then.i7.i2821
-  %__cntrl_.i.i2779 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 3, i32 3, i32 1
-  %382 = load ptr, ptr %__cntrl_.i.i2779, align 8, !tbaa !98
-  %tobool.not.i.i2780 = icmp eq ptr %382, null
-  br i1 %tobool.not.i.i2780, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2791, label %if.then.i.i2783
+_ZN8TestCaseD2Ev.exit2821:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2818, %if.then.i7.i2820
+  %__cntrl_.i.i2778 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 3, i32 3, i32 1
+  %382 = load ptr, ptr %__cntrl_.i.i2778, align 8, !tbaa !98
+  %tobool.not.i.i2779 = icmp eq ptr %382, null
+  br i1 %tobool.not.i.i2779, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2790, label %if.then.i.i2782
 
-if.then.i.i2783:                                  ; preds = %_ZN8TestCaseD2Ev.exit2822
-  %__shared_owners_.i.i.i.i2781 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %382, i64 0, i32 1
-  %383 = atomicrmw add ptr %__shared_owners_.i.i.i.i2781, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2782 = icmp eq i64 %383, 0
-  br i1 %cmp.i.i.i.i2782, label %if.then.i.i.i2786, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2791
+if.then.i.i2782:                                  ; preds = %_ZN8TestCaseD2Ev.exit2821
+  %__shared_owners_.i.i.i.i2780 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %382, i64 0, i32 1
+  %383 = atomicrmw add ptr %__shared_owners_.i.i.i.i2780, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2781 = icmp eq i64 %383, 0
+  br i1 %cmp.i.i.i.i2781, label %if.then.i.i.i2785, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2790
 
-if.then.i.i.i2786:                                ; preds = %if.then.i.i2783
-  %vtable.i.i.i.i2784 = load ptr, ptr %382, align 8, !tbaa !24
-  %vfn.i.i.i.i2785 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2784, i64 2
-  %384 = load ptr, ptr %vfn.i.i.i.i2785, align 8
+if.then.i.i.i2785:                                ; preds = %if.then.i.i2782
+  %vtable.i.i.i.i2783 = load ptr, ptr %382, align 8, !tbaa !24
+  %vfn.i.i.i.i2784 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2783, i64 2
+  %384 = load ptr, ptr %vfn.i.i.i.i2784, align 8
   call void %384(ptr noundef nonnull align 8 dereferenceable(16) %382) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %382) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2791
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2790
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2791: ; preds = %if.then.i.i.i2786, %if.then.i.i2783, %_ZN8TestCaseD2Ev.exit2822
-  %substituted_regex.i2787 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 3, i32 2
-  %bf.load.i.i.i2788 = load i8, ptr %substituted_regex.i2787, align 8
-  %bf.clear.i.i.i2789 = and i8 %bf.load.i.i.i2788, 1
-  %tobool.i.not.i.i2790 = icmp eq i8 %bf.clear.i.i.i2789, 0
-  br i1 %tobool.i.not.i.i2790, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2797, label %if.then.i2.i2793
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2790: ; preds = %if.then.i.i.i2785, %if.then.i.i2782, %_ZN8TestCaseD2Ev.exit2821
+  %substituted_regex.i2786 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 3, i32 2
+  %bf.load.i.i.i2787 = load i8, ptr %substituted_regex.i2786, align 8
+  %bf.clear.i.i.i2788 = and i8 %bf.load.i.i.i2787, 1
+  %tobool.i.not.i.i2789 = icmp eq i8 %bf.clear.i.i.i2788, 0
+  br i1 %tobool.i.not.i.i2789, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2796, label %if.then.i2.i2792
 
-if.then.i2.i2793:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2791
-  %__data_.i.i.i2792 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %385 = load ptr, ptr %__data_.i.i.i2792, align 8, !tbaa !5
+if.then.i2.i2792:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2790
+  %__data_.i.i.i2791 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %385 = load ptr, ptr %__data_.i.i.i2791, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %385) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2797
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2796
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2797: ; preds = %if.then.i2.i2793, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2791
-  %bf.load.i.i3.i2794 = load i8, ptr %arrayinit.element13.i114, align 8
-  %bf.clear.i.i4.i2795 = and i8 %bf.load.i.i3.i2794, 1
-  %tobool.i.not.i5.i2796 = icmp eq i8 %bf.clear.i.i4.i2795, 0
-  br i1 %tobool.i.not.i5.i2796, label %_ZN8TestCaseD2Ev.exit2800, label %if.then.i7.i2799
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2796: ; preds = %if.then.i2.i2792, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2790
+  %bf.load.i.i3.i2793 = load i8, ptr %arrayinit.element13.i114, align 8
+  %bf.clear.i.i4.i2794 = and i8 %bf.load.i.i3.i2793, 1
+  %tobool.i.not.i5.i2795 = icmp eq i8 %bf.clear.i.i4.i2794, 0
+  br i1 %tobool.i.not.i5.i2795, label %_ZN8TestCaseD2Ev.exit2799, label %if.then.i7.i2798
 
-if.then.i7.i2799:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2797
-  %__data_.i.i6.i2798 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %386 = load ptr, ptr %__data_.i.i6.i2798, align 8, !tbaa !5
+if.then.i7.i2798:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2796
+  %__data_.i.i6.i2797 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %386 = load ptr, ptr %__data_.i.i6.i2797, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %386) #25
-  br label %_ZN8TestCaseD2Ev.exit2800
+  br label %_ZN8TestCaseD2Ev.exit2799
 
-_ZN8TestCaseD2Ev.exit2800:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2797, %if.then.i7.i2799
-  %__cntrl_.i.i2757 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 2, i32 3, i32 1
-  %387 = load ptr, ptr %__cntrl_.i.i2757, align 8, !tbaa !98
-  %tobool.not.i.i2758 = icmp eq ptr %387, null
-  br i1 %tobool.not.i.i2758, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2769, label %if.then.i.i2761
+_ZN8TestCaseD2Ev.exit2799:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2796, %if.then.i7.i2798
+  %__cntrl_.i.i2756 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 2, i32 3, i32 1
+  %387 = load ptr, ptr %__cntrl_.i.i2756, align 8, !tbaa !98
+  %tobool.not.i.i2757 = icmp eq ptr %387, null
+  br i1 %tobool.not.i.i2757, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2768, label %if.then.i.i2760
 
-if.then.i.i2761:                                  ; preds = %_ZN8TestCaseD2Ev.exit2800
-  %__shared_owners_.i.i.i.i2759 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %387, i64 0, i32 1
-  %388 = atomicrmw add ptr %__shared_owners_.i.i.i.i2759, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2760 = icmp eq i64 %388, 0
-  br i1 %cmp.i.i.i.i2760, label %if.then.i.i.i2764, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2769
+if.then.i.i2760:                                  ; preds = %_ZN8TestCaseD2Ev.exit2799
+  %__shared_owners_.i.i.i.i2758 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %387, i64 0, i32 1
+  %388 = atomicrmw add ptr %__shared_owners_.i.i.i.i2758, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2759 = icmp eq i64 %388, 0
+  br i1 %cmp.i.i.i.i2759, label %if.then.i.i.i2763, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2768
 
-if.then.i.i.i2764:                                ; preds = %if.then.i.i2761
-  %vtable.i.i.i.i2762 = load ptr, ptr %387, align 8, !tbaa !24
-  %vfn.i.i.i.i2763 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2762, i64 2
-  %389 = load ptr, ptr %vfn.i.i.i.i2763, align 8
+if.then.i.i.i2763:                                ; preds = %if.then.i.i2760
+  %vtable.i.i.i.i2761 = load ptr, ptr %387, align 8, !tbaa !24
+  %vfn.i.i.i.i2762 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2761, i64 2
+  %389 = load ptr, ptr %vfn.i.i.i.i2762, align 8
   call void %389(ptr noundef nonnull align 8 dereferenceable(16) %387) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %387) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2769
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2768
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2769: ; preds = %if.then.i.i.i2764, %if.then.i.i2761, %_ZN8TestCaseD2Ev.exit2800
-  %substituted_regex.i2765 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 2, i32 2
-  %bf.load.i.i.i2766 = load i8, ptr %substituted_regex.i2765, align 8
-  %bf.clear.i.i.i2767 = and i8 %bf.load.i.i.i2766, 1
-  %tobool.i.not.i.i2768 = icmp eq i8 %bf.clear.i.i.i2767, 0
-  br i1 %tobool.i.not.i.i2768, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2775, label %if.then.i2.i2771
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2768: ; preds = %if.then.i.i.i2763, %if.then.i.i2760, %_ZN8TestCaseD2Ev.exit2799
+  %substituted_regex.i2764 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 2, i32 2
+  %bf.load.i.i.i2765 = load i8, ptr %substituted_regex.i2764, align 8
+  %bf.clear.i.i.i2766 = and i8 %bf.load.i.i.i2765, 1
+  %tobool.i.not.i.i2767 = icmp eq i8 %bf.clear.i.i.i2766, 0
+  br i1 %tobool.i.not.i.i2767, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2774, label %if.then.i2.i2770
 
-if.then.i2.i2771:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2769
-  %__data_.i.i.i2770 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %390 = load ptr, ptr %__data_.i.i.i2770, align 8, !tbaa !5
+if.then.i2.i2770:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2768
+  %__data_.i.i.i2769 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %390 = load ptr, ptr %__data_.i.i.i2769, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %390) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2775
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2774
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2775: ; preds = %if.then.i2.i2771, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2769
-  %bf.load.i.i3.i2772 = load i8, ptr %arrayinit.element8.i105, align 8
-  %bf.clear.i.i4.i2773 = and i8 %bf.load.i.i3.i2772, 1
-  %tobool.i.not.i5.i2774 = icmp eq i8 %bf.clear.i.i4.i2773, 0
-  br i1 %tobool.i.not.i5.i2774, label %_ZN8TestCaseD2Ev.exit2778, label %if.then.i7.i2777
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2774: ; preds = %if.then.i2.i2770, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2768
+  %bf.load.i.i3.i2771 = load i8, ptr %arrayinit.element8.i105, align 8
+  %bf.clear.i.i4.i2772 = and i8 %bf.load.i.i3.i2771, 1
+  %tobool.i.not.i5.i2773 = icmp eq i8 %bf.clear.i.i4.i2772, 0
+  br i1 %tobool.i.not.i5.i2773, label %_ZN8TestCaseD2Ev.exit2777, label %if.then.i7.i2776
 
-if.then.i7.i2777:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2775
-  %__data_.i.i6.i2776 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %391 = load ptr, ptr %__data_.i.i6.i2776, align 8, !tbaa !5
+if.then.i7.i2776:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2774
+  %__data_.i.i6.i2775 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %391 = load ptr, ptr %__data_.i.i6.i2775, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %391) #25
-  br label %_ZN8TestCaseD2Ev.exit2778
+  br label %_ZN8TestCaseD2Ev.exit2777
 
-_ZN8TestCaseD2Ev.exit2778:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2775, %if.then.i7.i2777
-  %__cntrl_.i.i2735 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 1, i32 3, i32 1
-  %392 = load ptr, ptr %__cntrl_.i.i2735, align 8, !tbaa !98
-  %tobool.not.i.i2736 = icmp eq ptr %392, null
-  br i1 %tobool.not.i.i2736, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2747, label %if.then.i.i2739
+_ZN8TestCaseD2Ev.exit2777:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2774, %if.then.i7.i2776
+  %__cntrl_.i.i2734 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 1, i32 3, i32 1
+  %392 = load ptr, ptr %__cntrl_.i.i2734, align 8, !tbaa !98
+  %tobool.not.i.i2735 = icmp eq ptr %392, null
+  br i1 %tobool.not.i.i2735, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2746, label %if.then.i.i2738
 
-if.then.i.i2739:                                  ; preds = %_ZN8TestCaseD2Ev.exit2778
-  %__shared_owners_.i.i.i.i2737 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %392, i64 0, i32 1
-  %393 = atomicrmw add ptr %__shared_owners_.i.i.i.i2737, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2738 = icmp eq i64 %393, 0
-  br i1 %cmp.i.i.i.i2738, label %if.then.i.i.i2742, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2747
+if.then.i.i2738:                                  ; preds = %_ZN8TestCaseD2Ev.exit2777
+  %__shared_owners_.i.i.i.i2736 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %392, i64 0, i32 1
+  %393 = atomicrmw add ptr %__shared_owners_.i.i.i.i2736, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2737 = icmp eq i64 %393, 0
+  br i1 %cmp.i.i.i.i2737, label %if.then.i.i.i2741, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2746
 
-if.then.i.i.i2742:                                ; preds = %if.then.i.i2739
-  %vtable.i.i.i.i2740 = load ptr, ptr %392, align 8, !tbaa !24
-  %vfn.i.i.i.i2741 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2740, i64 2
-  %394 = load ptr, ptr %vfn.i.i.i.i2741, align 8
+if.then.i.i.i2741:                                ; preds = %if.then.i.i2738
+  %vtable.i.i.i.i2739 = load ptr, ptr %392, align 8, !tbaa !24
+  %vfn.i.i.i.i2740 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2739, i64 2
+  %394 = load ptr, ptr %vfn.i.i.i.i2740, align 8
   call void %394(ptr noundef nonnull align 8 dereferenceable(16) %392) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %392) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2747
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2746
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2747: ; preds = %if.then.i.i.i2742, %if.then.i.i2739, %_ZN8TestCaseD2Ev.exit2778
-  %substituted_regex.i2743 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 1, i32 2
-  %bf.load.i.i.i2744 = load i8, ptr %substituted_regex.i2743, align 8
-  %bf.clear.i.i.i2745 = and i8 %bf.load.i.i.i2744, 1
-  %tobool.i.not.i.i2746 = icmp eq i8 %bf.clear.i.i.i2745, 0
-  br i1 %tobool.i.not.i.i2746, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2753, label %if.then.i2.i2749
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2746: ; preds = %if.then.i.i.i2741, %if.then.i.i2738, %_ZN8TestCaseD2Ev.exit2777
+  %substituted_regex.i2742 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 1, i32 2
+  %bf.load.i.i.i2743 = load i8, ptr %substituted_regex.i2742, align 8
+  %bf.clear.i.i.i2744 = and i8 %bf.load.i.i.i2743, 1
+  %tobool.i.not.i.i2745 = icmp eq i8 %bf.clear.i.i.i2744, 0
+  br i1 %tobool.i.not.i.i2745, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2752, label %if.then.i2.i2748
 
-if.then.i2.i2749:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2747
-  %__data_.i.i.i2748 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %395 = load ptr, ptr %__data_.i.i.i2748, align 8, !tbaa !5
+if.then.i2.i2748:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2746
+  %__data_.i.i.i2747 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %395 = load ptr, ptr %__data_.i.i.i2747, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %395) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2753
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2752
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2753: ; preds = %if.then.i2.i2749, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2747
-  %bf.load.i.i3.i2750 = load i8, ptr %arrayinit.element.i99, align 8
-  %bf.clear.i.i4.i2751 = and i8 %bf.load.i.i3.i2750, 1
-  %tobool.i.not.i5.i2752 = icmp eq i8 %bf.clear.i.i4.i2751, 0
-  br i1 %tobool.i.not.i5.i2752, label %_ZN8TestCaseD2Ev.exit2756, label %if.then.i7.i2755
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2752: ; preds = %if.then.i2.i2748, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2746
+  %bf.load.i.i3.i2749 = load i8, ptr %arrayinit.element.i99, align 8
+  %bf.clear.i.i4.i2750 = and i8 %bf.load.i.i3.i2749, 1
+  %tobool.i.not.i5.i2751 = icmp eq i8 %bf.clear.i.i4.i2750, 0
+  br i1 %tobool.i.not.i5.i2751, label %_ZN8TestCaseD2Ev.exit2755, label %if.then.i7.i2754
 
-if.then.i7.i2755:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2753
-  %__data_.i.i6.i2754 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %396 = load ptr, ptr %__data_.i.i6.i2754, align 8, !tbaa !5
+if.then.i7.i2754:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2752
+  %__data_.i.i6.i2753 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %396 = load ptr, ptr %__data_.i.i6.i2753, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %396) #25
-  br label %_ZN8TestCaseD2Ev.exit2756
+  br label %_ZN8TestCaseD2Ev.exit2755
 
-_ZN8TestCaseD2Ev.exit2756:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2753, %if.then.i7.i2755
-  %__cntrl_.i.i2713 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 0, i32 3, i32 1
-  %397 = load ptr, ptr %__cntrl_.i.i2713, align 8, !tbaa !98
-  %tobool.not.i.i2714 = icmp eq ptr %397, null
-  br i1 %tobool.not.i.i2714, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2725, label %if.then.i.i2717
+_ZN8TestCaseD2Ev.exit2755:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2752, %if.then.i7.i2754
+  %__cntrl_.i.i2712 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 0, i32 3, i32 1
+  %397 = load ptr, ptr %__cntrl_.i.i2712, align 8, !tbaa !98
+  %tobool.not.i.i2713 = icmp eq ptr %397, null
+  br i1 %tobool.not.i.i2713, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2724, label %if.then.i.i2716
 
-if.then.i.i2717:                                  ; preds = %_ZN8TestCaseD2Ev.exit2756
-  %__shared_owners_.i.i.i.i2715 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %397, i64 0, i32 1
-  %398 = atomicrmw add ptr %__shared_owners_.i.i.i.i2715, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2716 = icmp eq i64 %398, 0
-  br i1 %cmp.i.i.i.i2716, label %if.then.i.i.i2720, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2725
+if.then.i.i2716:                                  ; preds = %_ZN8TestCaseD2Ev.exit2755
+  %__shared_owners_.i.i.i.i2714 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %397, i64 0, i32 1
+  %398 = atomicrmw add ptr %__shared_owners_.i.i.i.i2714, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2715 = icmp eq i64 %398, 0
+  br i1 %cmp.i.i.i.i2715, label %if.then.i.i.i2719, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2724
 
-if.then.i.i.i2720:                                ; preds = %if.then.i.i2717
-  %vtable.i.i.i.i2718 = load ptr, ptr %397, align 8, !tbaa !24
-  %vfn.i.i.i.i2719 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2718, i64 2
-  %399 = load ptr, ptr %vfn.i.i.i.i2719, align 8
+if.then.i.i.i2719:                                ; preds = %if.then.i.i2716
+  %vtable.i.i.i.i2717 = load ptr, ptr %397, align 8, !tbaa !24
+  %vfn.i.i.i.i2718 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2717, i64 2
+  %399 = load ptr, ptr %vfn.i.i.i.i2718, align 8
   call void %399(ptr noundef nonnull align 8 dereferenceable(16) %397) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %397) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2725
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2724
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2725: ; preds = %if.then.i.i.i2720, %if.then.i.i2717, %_ZN8TestCaseD2Ev.exit2756
-  %substituted_regex.i2721 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 0, i32 2
-  %bf.load.i.i.i2722 = load i8, ptr %substituted_regex.i2721, align 8
-  %bf.clear.i.i.i2723 = and i8 %bf.load.i.i.i2722, 1
-  %tobool.i.not.i.i2724 = icmp eq i8 %bf.clear.i.i.i2723, 0
-  br i1 %tobool.i.not.i.i2724, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2731, label %if.then.i2.i2727
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2724: ; preds = %if.then.i.i.i2719, %if.then.i.i2716, %_ZN8TestCaseD2Ev.exit2755
+  %substituted_regex.i2720 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 0, i32 2
+  %bf.load.i.i.i2721 = load i8, ptr %substituted_regex.i2720, align 8
+  %bf.clear.i.i.i2722 = and i8 %bf.load.i.i.i2721, 1
+  %tobool.i.not.i.i2723 = icmp eq i8 %bf.clear.i.i.i2722, 0
+  br i1 %tobool.i.not.i.i2723, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2730, label %if.then.i2.i2726
 
-if.then.i2.i2727:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2725
-  %__data_.i.i.i2726 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %400 = load ptr, ptr %__data_.i.i.i2726, align 8, !tbaa !5
+if.then.i2.i2726:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2724
+  %__data_.i.i.i2725 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i74, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %400 = load ptr, ptr %__data_.i.i.i2725, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %400) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2731
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2730
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2731: ; preds = %if.then.i2.i2727, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2725
-  %bf.load.i.i3.i2728 = load i8, ptr %ref.tmp.i74, align 8
-  %bf.clear.i.i4.i2729 = and i8 %bf.load.i.i3.i2728, 1
-  %tobool.i.not.i5.i2730 = icmp eq i8 %bf.clear.i.i4.i2729, 0
-  br i1 %tobool.i.not.i5.i2730, label %ehcleanup.i405, label %if.then.i7.i2733
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2730: ; preds = %if.then.i2.i2726, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2724
+  %bf.load.i.i3.i2727 = load i8, ptr %ref.tmp.i74, align 8
+  %bf.clear.i.i4.i2728 = and i8 %bf.load.i.i3.i2727, 1
+  %tobool.i.not.i5.i2729 = icmp eq i8 %bf.clear.i.i4.i2728, 0
+  br i1 %tobool.i.not.i5.i2729, label %ehcleanup.i405, label %if.then.i7.i2732
 
-if.then.i7.i2733:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2731
-  %__data_.i.i6.i2732 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i74, i64 0, i32 2
-  %401 = load ptr, ptr %__data_.i.i6.i2732, align 8, !tbaa !5
+if.then.i7.i2732:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2730
+  %__data_.i.i6.i2731 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i74, i64 0, i32 2
+  %401 = load ptr, ptr %__data_.i.i6.i2731, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %401) #25
   br label %ehcleanup.i405
 
-ehcleanup.i405:                                   ; preds = %if.then.i7.i2733, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2731, %lpad86.i381
-  %.pn.i400 = phi { ptr, i32 } [ %310, %lpad86.i381 ], [ %311, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2731 ], [ %311, %if.then.i7.i2733 ]
-  %cleanup.isactive.0.i401 = phi i1 [ true, %lpad86.i381 ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2731 ], [ false, %if.then.i7.i2733 ]
+ehcleanup.i405:                                   ; preds = %if.then.i7.i2732, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2730, %lpad86.i381
+  %.pn.i400 = phi { ptr, i32 } [ %310, %lpad86.i381 ], [ %311, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2730 ], [ %311, %if.then.i7.i2732 ]
+  %cleanup.isactive.0.i401 = phi i1 [ true, %lpad86.i381 ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2730 ], [ false, %if.then.i7.i2732 ]
   %bf.load.i.i637.i402 = load i8, ptr %agg.tmp84.i92, align 8
   %bf.clear.i.i638.i403 = and i8 %bf.load.i.i637.i402, 1
   %tobool.i.not.i639.i404 = icmp eq i8 %bf.clear.i.i638.i403, 0
@@ -9621,58 +9621,58 @@ ehcleanup114.i553:                                ; preds = %if.then.i743.i550, 
   %or.cond.not.i552 = select i1 %cleanup.isactive.17.i545, i1 %arraydestroy.isempty.i551, i1 false
   br i1 %or.cond.not.i552, label %arraydestroy.body115.i557, label %cleanup.done.i558
 
-arraydestroy.body115.i557:                        ; preds = %ehcleanup114.i553, %_ZN8TestCaseD2Ev.exit2712
-  %arraydestroy.elementPast116.i554 = phi ptr [ %arraydestroy.element117.i555, %_ZN8TestCaseD2Ev.exit2712 ], [ %arrayinit.endOfInit.33.i543, %ehcleanup114.i553 ]
+arraydestroy.body115.i557:                        ; preds = %ehcleanup114.i553, %_ZN8TestCaseD2Ev.exit2711
+  %arraydestroy.elementPast116.i554 = phi ptr [ %arraydestroy.element117.i555, %_ZN8TestCaseD2Ev.exit2711 ], [ %arrayinit.endOfInit.33.i543, %ehcleanup114.i553 ]
   %arraydestroy.element117.i555 = getelementptr inbounds %struct.TestCase, ptr %arraydestroy.elementPast116.i554, i64 -1
-  %__cntrl_.i.i2691 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i554, i64 -1, i32 3, i32 1
-  %420 = load ptr, ptr %__cntrl_.i.i2691, align 8, !tbaa !98
-  %tobool.not.i.i2692 = icmp eq ptr %420, null
-  br i1 %tobool.not.i.i2692, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2703, label %if.then.i.i2695
+  %__cntrl_.i.i2690 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i554, i64 -1, i32 3, i32 1
+  %420 = load ptr, ptr %__cntrl_.i.i2690, align 8, !tbaa !98
+  %tobool.not.i.i2691 = icmp eq ptr %420, null
+  br i1 %tobool.not.i.i2691, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2702, label %if.then.i.i2694
 
-if.then.i.i2695:                                  ; preds = %arraydestroy.body115.i557
-  %__shared_owners_.i.i.i.i2693 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %420, i64 0, i32 1
-  %421 = atomicrmw add ptr %__shared_owners_.i.i.i.i2693, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i2694 = icmp eq i64 %421, 0
-  br i1 %cmp.i.i.i.i2694, label %if.then.i.i.i2698, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2703
+if.then.i.i2694:                                  ; preds = %arraydestroy.body115.i557
+  %__shared_owners_.i.i.i.i2692 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %420, i64 0, i32 1
+  %421 = atomicrmw add ptr %__shared_owners_.i.i.i.i2692, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i2693 = icmp eq i64 %421, 0
+  br i1 %cmp.i.i.i.i2693, label %if.then.i.i.i2697, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2702
 
-if.then.i.i.i2698:                                ; preds = %if.then.i.i2695
-  %vtable.i.i.i.i2696 = load ptr, ptr %420, align 8, !tbaa !24
-  %vfn.i.i.i.i2697 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2696, i64 2
-  %422 = load ptr, ptr %vfn.i.i.i.i2697, align 8
+if.then.i.i.i2697:                                ; preds = %if.then.i.i2694
+  %vtable.i.i.i.i2695 = load ptr, ptr %420, align 8, !tbaa !24
+  %vfn.i.i.i.i2696 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i2695, i64 2
+  %422 = load ptr, ptr %vfn.i.i.i.i2696, align 8
   call void %422(ptr noundef nonnull align 8 dereferenceable(16) %420) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %420) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2703
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2702
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2703: ; preds = %if.then.i.i.i2698, %if.then.i.i2695, %arraydestroy.body115.i557
-  %substituted_regex.i2699 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i554, i64 -1, i32 2
-  %bf.load.i.i.i2700 = load i8, ptr %substituted_regex.i2699, align 8
-  %bf.clear.i.i.i2701 = and i8 %bf.load.i.i.i2700, 1
-  %tobool.i.not.i.i2702 = icmp eq i8 %bf.clear.i.i.i2701, 0
-  br i1 %tobool.i.not.i.i2702, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2709, label %if.then.i2.i2705
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2702: ; preds = %if.then.i.i.i2697, %if.then.i.i2694, %arraydestroy.body115.i557
+  %substituted_regex.i2698 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i554, i64 -1, i32 2
+  %bf.load.i.i.i2699 = load i8, ptr %substituted_regex.i2698, align 8
+  %bf.clear.i.i.i2700 = and i8 %bf.load.i.i.i2699, 1
+  %tobool.i.not.i.i2701 = icmp eq i8 %bf.clear.i.i.i2700, 0
+  br i1 %tobool.i.not.i.i2701, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2708, label %if.then.i2.i2704
 
-if.then.i2.i2705:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2703
-  %__data_.i.i.i2704 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i554, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %423 = load ptr, ptr %__data_.i.i.i2704, align 8, !tbaa !5
+if.then.i2.i2704:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2702
+  %__data_.i.i.i2703 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i554, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %423 = load ptr, ptr %__data_.i.i.i2703, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %423) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2709
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2708
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2709: ; preds = %if.then.i2.i2705, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2703
-  %bf.load.i.i3.i2706 = load i8, ptr %arraydestroy.element117.i555, align 8
-  %bf.clear.i.i4.i2707 = and i8 %bf.load.i.i3.i2706, 1
-  %tobool.i.not.i5.i2708 = icmp eq i8 %bf.clear.i.i4.i2707, 0
-  br i1 %tobool.i.not.i5.i2708, label %_ZN8TestCaseD2Ev.exit2712, label %if.then.i7.i2711
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2708: ; preds = %if.then.i2.i2704, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i2702
+  %bf.load.i.i3.i2705 = load i8, ptr %arraydestroy.element117.i555, align 8
+  %bf.clear.i.i4.i2706 = and i8 %bf.load.i.i3.i2705, 1
+  %tobool.i.not.i5.i2707 = icmp eq i8 %bf.clear.i.i4.i2706, 0
+  br i1 %tobool.i.not.i5.i2707, label %_ZN8TestCaseD2Ev.exit2711, label %if.then.i7.i2710
 
-if.then.i7.i2711:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2709
-  %__data_.i.i6.i2710 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i554, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %424 = load ptr, ptr %__data_.i.i6.i2710, align 8, !tbaa !5
+if.then.i7.i2710:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2708
+  %__data_.i.i6.i2709 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast116.i554, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %424 = load ptr, ptr %__data_.i.i6.i2709, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %424) #25
-  br label %_ZN8TestCaseD2Ev.exit2712
+  br label %_ZN8TestCaseD2Ev.exit2711
 
-_ZN8TestCaseD2Ev.exit2712:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2709, %if.then.i7.i2711
+_ZN8TestCaseD2Ev.exit2711:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i2708, %if.then.i7.i2710
   %arraydestroy.done118.i556 = icmp eq ptr %arraydestroy.element117.i555, %ref.tmp.i74
   br i1 %arraydestroy.done118.i556, label %cleanup.done.i558, label %arraydestroy.body115.i557
 
-cleanup.done.i558:                                ; preds = %_ZN8TestCaseD2Ev.exit2712, %ehcleanup114.i553
+cleanup.done.i558:                                ; preds = %_ZN8TestCaseD2Ev.exit2711, %ehcleanup114.i553
   call void @llvm.lifetime.end.p0(i64 1296, ptr nonnull %ref.tmp.i74) #24
   br label %common.resume
 
@@ -10439,863 +10439,863 @@ lpad91.i:                                         ; preds = %invoke.cont87.i617
 lpad93.i:                                         ; preds = %invoke.cont92.i
   %488 = landingpad { ptr, i32 }
           cleanup
-  %__cntrl_.i.i3527 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 18, i32 3, i32 1
-  %489 = load ptr, ptr %__cntrl_.i.i3527, align 8, !tbaa !98
-  %tobool.not.i.i3528 = icmp eq ptr %489, null
-  br i1 %tobool.not.i.i3528, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3539, label %if.then.i.i3531
+  %__cntrl_.i.i3526 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 18, i32 3, i32 1
+  %489 = load ptr, ptr %__cntrl_.i.i3526, align 8, !tbaa !98
+  %tobool.not.i.i3527 = icmp eq ptr %489, null
+  br i1 %tobool.not.i.i3527, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3538, label %if.then.i.i3530
 
-if.then.i.i3531:                                  ; preds = %lpad93.i
-  %__shared_owners_.i.i.i.i3529 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %489, i64 0, i32 1
-  %490 = atomicrmw add ptr %__shared_owners_.i.i.i.i3529, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3530 = icmp eq i64 %490, 0
-  br i1 %cmp.i.i.i.i3530, label %if.then.i.i.i3534, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3539
+if.then.i.i3530:                                  ; preds = %lpad93.i
+  %__shared_owners_.i.i.i.i3528 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %489, i64 0, i32 1
+  %490 = atomicrmw add ptr %__shared_owners_.i.i.i.i3528, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3529 = icmp eq i64 %490, 0
+  br i1 %cmp.i.i.i.i3529, label %if.then.i.i.i3533, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3538
 
-if.then.i.i.i3534:                                ; preds = %if.then.i.i3531
-  %vtable.i.i.i.i3532 = load ptr, ptr %489, align 8, !tbaa !24
-  %vfn.i.i.i.i3533 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3532, i64 2
-  %491 = load ptr, ptr %vfn.i.i.i.i3533, align 8
+if.then.i.i.i3533:                                ; preds = %if.then.i.i3530
+  %vtable.i.i.i.i3531 = load ptr, ptr %489, align 8, !tbaa !24
+  %vfn.i.i.i.i3532 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3531, i64 2
+  %491 = load ptr, ptr %vfn.i.i.i.i3532, align 8
   call void %491(ptr noundef nonnull align 8 dereferenceable(16) %489) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %489) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3539
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3538
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3539: ; preds = %if.then.i.i.i3534, %if.then.i.i3531, %lpad93.i
-  %substituted_regex.i3535 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 18, i32 2
-  %bf.load.i.i.i3536 = load i8, ptr %substituted_regex.i3535, align 8
-  %bf.clear.i.i.i3537 = and i8 %bf.load.i.i.i3536, 1
-  %tobool.i.not.i.i3538 = icmp eq i8 %bf.clear.i.i.i3537, 0
-  br i1 %tobool.i.not.i.i3538, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3545, label %if.then.i2.i3541
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3538: ; preds = %if.then.i.i.i3533, %if.then.i.i3530, %lpad93.i
+  %substituted_regex.i3534 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 18, i32 2
+  %bf.load.i.i.i3535 = load i8, ptr %substituted_regex.i3534, align 8
+  %bf.clear.i.i.i3536 = and i8 %bf.load.i.i.i3535, 1
+  %tobool.i.not.i.i3537 = icmp eq i8 %bf.clear.i.i.i3536, 0
+  br i1 %tobool.i.not.i.i3537, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3544, label %if.then.i2.i3540
 
-if.then.i2.i3541:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3539
-  %__data_.i.i.i3540 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 18, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %492 = load ptr, ptr %__data_.i.i.i3540, align 8, !tbaa !5
+if.then.i2.i3540:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3538
+  %__data_.i.i.i3539 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 18, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %492 = load ptr, ptr %__data_.i.i.i3539, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %492) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3545
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3544
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3545: ; preds = %if.then.i2.i3541, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3539
-  %bf.load.i.i3.i3542 = load i8, ptr %arrayinit.element88.i, align 8
-  %bf.clear.i.i4.i3543 = and i8 %bf.load.i.i3.i3542, 1
-  %tobool.i.not.i5.i3544 = icmp eq i8 %bf.clear.i.i4.i3543, 0
-  br i1 %tobool.i.not.i5.i3544, label %_ZN8TestCaseD2Ev.exit3548, label %if.then.i7.i3547
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3544: ; preds = %if.then.i2.i3540, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3538
+  %bf.load.i.i3.i3541 = load i8, ptr %arrayinit.element88.i, align 8
+  %bf.clear.i.i4.i3542 = and i8 %bf.load.i.i3.i3541, 1
+  %tobool.i.not.i5.i3543 = icmp eq i8 %bf.clear.i.i4.i3542, 0
+  br i1 %tobool.i.not.i5.i3543, label %_ZN8TestCaseD2Ev.exit3547, label %if.then.i7.i3546
 
-if.then.i7.i3547:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3545
-  %__data_.i.i6.i3546 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 18, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %493 = load ptr, ptr %__data_.i.i6.i3546, align 8, !tbaa !5
+if.then.i7.i3546:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3544
+  %__data_.i.i6.i3545 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 18, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %493 = load ptr, ptr %__data_.i.i6.i3545, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %493) #25
-  br label %_ZN8TestCaseD2Ev.exit3548
+  br label %_ZN8TestCaseD2Ev.exit3547
 
-_ZN8TestCaseD2Ev.exit3548:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3545, %if.then.i7.i3547
-  %__cntrl_.i.i3505 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 17, i32 3, i32 1
-  %494 = load ptr, ptr %__cntrl_.i.i3505, align 8, !tbaa !98
-  %tobool.not.i.i3506 = icmp eq ptr %494, null
-  br i1 %tobool.not.i.i3506, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3517, label %if.then.i.i3509
+_ZN8TestCaseD2Ev.exit3547:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3544, %if.then.i7.i3546
+  %__cntrl_.i.i3504 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 17, i32 3, i32 1
+  %494 = load ptr, ptr %__cntrl_.i.i3504, align 8, !tbaa !98
+  %tobool.not.i.i3505 = icmp eq ptr %494, null
+  br i1 %tobool.not.i.i3505, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3516, label %if.then.i.i3508
 
-if.then.i.i3509:                                  ; preds = %_ZN8TestCaseD2Ev.exit3548
-  %__shared_owners_.i.i.i.i3507 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %494, i64 0, i32 1
-  %495 = atomicrmw add ptr %__shared_owners_.i.i.i.i3507, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3508 = icmp eq i64 %495, 0
-  br i1 %cmp.i.i.i.i3508, label %if.then.i.i.i3512, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3517
+if.then.i.i3508:                                  ; preds = %_ZN8TestCaseD2Ev.exit3547
+  %__shared_owners_.i.i.i.i3506 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %494, i64 0, i32 1
+  %495 = atomicrmw add ptr %__shared_owners_.i.i.i.i3506, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3507 = icmp eq i64 %495, 0
+  br i1 %cmp.i.i.i.i3507, label %if.then.i.i.i3511, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3516
 
-if.then.i.i.i3512:                                ; preds = %if.then.i.i3509
-  %vtable.i.i.i.i3510 = load ptr, ptr %494, align 8, !tbaa !24
-  %vfn.i.i.i.i3511 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3510, i64 2
-  %496 = load ptr, ptr %vfn.i.i.i.i3511, align 8
+if.then.i.i.i3511:                                ; preds = %if.then.i.i3508
+  %vtable.i.i.i.i3509 = load ptr, ptr %494, align 8, !tbaa !24
+  %vfn.i.i.i.i3510 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3509, i64 2
+  %496 = load ptr, ptr %vfn.i.i.i.i3510, align 8
   call void %496(ptr noundef nonnull align 8 dereferenceable(16) %494) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %494) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3517
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3516
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3517: ; preds = %if.then.i.i.i3512, %if.then.i.i3509, %_ZN8TestCaseD2Ev.exit3548
-  %substituted_regex.i3513 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 17, i32 2
-  %bf.load.i.i.i3514 = load i8, ptr %substituted_regex.i3513, align 8
-  %bf.clear.i.i.i3515 = and i8 %bf.load.i.i.i3514, 1
-  %tobool.i.not.i.i3516 = icmp eq i8 %bf.clear.i.i.i3515, 0
-  br i1 %tobool.i.not.i.i3516, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3523, label %if.then.i2.i3519
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3516: ; preds = %if.then.i.i.i3511, %if.then.i.i3508, %_ZN8TestCaseD2Ev.exit3547
+  %substituted_regex.i3512 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 17, i32 2
+  %bf.load.i.i.i3513 = load i8, ptr %substituted_regex.i3512, align 8
+  %bf.clear.i.i.i3514 = and i8 %bf.load.i.i.i3513, 1
+  %tobool.i.not.i.i3515 = icmp eq i8 %bf.clear.i.i.i3514, 0
+  br i1 %tobool.i.not.i.i3515, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3522, label %if.then.i2.i3518
 
-if.then.i2.i3519:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3517
-  %__data_.i.i.i3518 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 17, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %497 = load ptr, ptr %__data_.i.i.i3518, align 8, !tbaa !5
+if.then.i2.i3518:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3516
+  %__data_.i.i.i3517 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 17, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %497 = load ptr, ptr %__data_.i.i.i3517, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %497) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3523
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3522
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3523: ; preds = %if.then.i2.i3519, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3517
-  %bf.load.i.i3.i3520 = load i8, ptr %arrayinit.element83.i615, align 8
-  %bf.clear.i.i4.i3521 = and i8 %bf.load.i.i3.i3520, 1
-  %tobool.i.not.i5.i3522 = icmp eq i8 %bf.clear.i.i4.i3521, 0
-  br i1 %tobool.i.not.i5.i3522, label %_ZN8TestCaseD2Ev.exit3526, label %if.then.i7.i3525
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3522: ; preds = %if.then.i2.i3518, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3516
+  %bf.load.i.i3.i3519 = load i8, ptr %arrayinit.element83.i615, align 8
+  %bf.clear.i.i4.i3520 = and i8 %bf.load.i.i3.i3519, 1
+  %tobool.i.not.i5.i3521 = icmp eq i8 %bf.clear.i.i4.i3520, 0
+  br i1 %tobool.i.not.i5.i3521, label %_ZN8TestCaseD2Ev.exit3525, label %if.then.i7.i3524
 
-if.then.i7.i3525:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3523
-  %__data_.i.i6.i3524 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 17, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %498 = load ptr, ptr %__data_.i.i6.i3524, align 8, !tbaa !5
+if.then.i7.i3524:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3522
+  %__data_.i.i6.i3523 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 17, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %498 = load ptr, ptr %__data_.i.i6.i3523, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %498) #25
-  br label %_ZN8TestCaseD2Ev.exit3526
+  br label %_ZN8TestCaseD2Ev.exit3525
 
-_ZN8TestCaseD2Ev.exit3526:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3523, %if.then.i7.i3525
-  %__cntrl_.i.i3483 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 16, i32 3, i32 1
-  %499 = load ptr, ptr %__cntrl_.i.i3483, align 8, !tbaa !98
-  %tobool.not.i.i3484 = icmp eq ptr %499, null
-  br i1 %tobool.not.i.i3484, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3495, label %if.then.i.i3487
+_ZN8TestCaseD2Ev.exit3525:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3522, %if.then.i7.i3524
+  %__cntrl_.i.i3482 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 16, i32 3, i32 1
+  %499 = load ptr, ptr %__cntrl_.i.i3482, align 8, !tbaa !98
+  %tobool.not.i.i3483 = icmp eq ptr %499, null
+  br i1 %tobool.not.i.i3483, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3494, label %if.then.i.i3486
 
-if.then.i.i3487:                                  ; preds = %_ZN8TestCaseD2Ev.exit3526
-  %__shared_owners_.i.i.i.i3485 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %499, i64 0, i32 1
-  %500 = atomicrmw add ptr %__shared_owners_.i.i.i.i3485, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3486 = icmp eq i64 %500, 0
-  br i1 %cmp.i.i.i.i3486, label %if.then.i.i.i3490, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3495
+if.then.i.i3486:                                  ; preds = %_ZN8TestCaseD2Ev.exit3525
+  %__shared_owners_.i.i.i.i3484 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %499, i64 0, i32 1
+  %500 = atomicrmw add ptr %__shared_owners_.i.i.i.i3484, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3485 = icmp eq i64 %500, 0
+  br i1 %cmp.i.i.i.i3485, label %if.then.i.i.i3489, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3494
 
-if.then.i.i.i3490:                                ; preds = %if.then.i.i3487
-  %vtable.i.i.i.i3488 = load ptr, ptr %499, align 8, !tbaa !24
-  %vfn.i.i.i.i3489 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3488, i64 2
-  %501 = load ptr, ptr %vfn.i.i.i.i3489, align 8
+if.then.i.i.i3489:                                ; preds = %if.then.i.i3486
+  %vtable.i.i.i.i3487 = load ptr, ptr %499, align 8, !tbaa !24
+  %vfn.i.i.i.i3488 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3487, i64 2
+  %501 = load ptr, ptr %vfn.i.i.i.i3488, align 8
   call void %501(ptr noundef nonnull align 8 dereferenceable(16) %499) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %499) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3495
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3494
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3495: ; preds = %if.then.i.i.i3490, %if.then.i.i3487, %_ZN8TestCaseD2Ev.exit3526
-  %substituted_regex.i3491 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 16, i32 2
-  %bf.load.i.i.i3492 = load i8, ptr %substituted_regex.i3491, align 8
-  %bf.clear.i.i.i3493 = and i8 %bf.load.i.i.i3492, 1
-  %tobool.i.not.i.i3494 = icmp eq i8 %bf.clear.i.i.i3493, 0
-  br i1 %tobool.i.not.i.i3494, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3501, label %if.then.i2.i3497
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3494: ; preds = %if.then.i.i.i3489, %if.then.i.i3486, %_ZN8TestCaseD2Ev.exit3525
+  %substituted_regex.i3490 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 16, i32 2
+  %bf.load.i.i.i3491 = load i8, ptr %substituted_regex.i3490, align 8
+  %bf.clear.i.i.i3492 = and i8 %bf.load.i.i.i3491, 1
+  %tobool.i.not.i.i3493 = icmp eq i8 %bf.clear.i.i.i3492, 0
+  br i1 %tobool.i.not.i.i3493, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3500, label %if.then.i2.i3496
 
-if.then.i2.i3497:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3495
-  %__data_.i.i.i3496 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 16, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %502 = load ptr, ptr %__data_.i.i.i3496, align 8, !tbaa !5
+if.then.i2.i3496:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3494
+  %__data_.i.i.i3495 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 16, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %502 = load ptr, ptr %__data_.i.i.i3495, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %502) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3501
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3500
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3501: ; preds = %if.then.i2.i3497, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3495
-  %bf.load.i.i3.i3498 = load i8, ptr %arrayinit.element78.i613, align 8
-  %bf.clear.i.i4.i3499 = and i8 %bf.load.i.i3.i3498, 1
-  %tobool.i.not.i5.i3500 = icmp eq i8 %bf.clear.i.i4.i3499, 0
-  br i1 %tobool.i.not.i5.i3500, label %_ZN8TestCaseD2Ev.exit3504, label %if.then.i7.i3503
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3500: ; preds = %if.then.i2.i3496, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3494
+  %bf.load.i.i3.i3497 = load i8, ptr %arrayinit.element78.i613, align 8
+  %bf.clear.i.i4.i3498 = and i8 %bf.load.i.i3.i3497, 1
+  %tobool.i.not.i5.i3499 = icmp eq i8 %bf.clear.i.i4.i3498, 0
+  br i1 %tobool.i.not.i5.i3499, label %_ZN8TestCaseD2Ev.exit3503, label %if.then.i7.i3502
 
-if.then.i7.i3503:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3501
-  %__data_.i.i6.i3502 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 16, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %503 = load ptr, ptr %__data_.i.i6.i3502, align 8, !tbaa !5
+if.then.i7.i3502:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3500
+  %__data_.i.i6.i3501 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 16, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %503 = load ptr, ptr %__data_.i.i6.i3501, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %503) #25
-  br label %_ZN8TestCaseD2Ev.exit3504
+  br label %_ZN8TestCaseD2Ev.exit3503
 
-_ZN8TestCaseD2Ev.exit3504:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3501, %if.then.i7.i3503
-  %__cntrl_.i.i3461 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 15, i32 3, i32 1
-  %504 = load ptr, ptr %__cntrl_.i.i3461, align 8, !tbaa !98
-  %tobool.not.i.i3462 = icmp eq ptr %504, null
-  br i1 %tobool.not.i.i3462, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3473, label %if.then.i.i3465
+_ZN8TestCaseD2Ev.exit3503:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3500, %if.then.i7.i3502
+  %__cntrl_.i.i3460 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 15, i32 3, i32 1
+  %504 = load ptr, ptr %__cntrl_.i.i3460, align 8, !tbaa !98
+  %tobool.not.i.i3461 = icmp eq ptr %504, null
+  br i1 %tobool.not.i.i3461, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3472, label %if.then.i.i3464
 
-if.then.i.i3465:                                  ; preds = %_ZN8TestCaseD2Ev.exit3504
-  %__shared_owners_.i.i.i.i3463 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %504, i64 0, i32 1
-  %505 = atomicrmw add ptr %__shared_owners_.i.i.i.i3463, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3464 = icmp eq i64 %505, 0
-  br i1 %cmp.i.i.i.i3464, label %if.then.i.i.i3468, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3473
+if.then.i.i3464:                                  ; preds = %_ZN8TestCaseD2Ev.exit3503
+  %__shared_owners_.i.i.i.i3462 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %504, i64 0, i32 1
+  %505 = atomicrmw add ptr %__shared_owners_.i.i.i.i3462, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3463 = icmp eq i64 %505, 0
+  br i1 %cmp.i.i.i.i3463, label %if.then.i.i.i3467, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3472
 
-if.then.i.i.i3468:                                ; preds = %if.then.i.i3465
-  %vtable.i.i.i.i3466 = load ptr, ptr %504, align 8, !tbaa !24
-  %vfn.i.i.i.i3467 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3466, i64 2
-  %506 = load ptr, ptr %vfn.i.i.i.i3467, align 8
+if.then.i.i.i3467:                                ; preds = %if.then.i.i3464
+  %vtable.i.i.i.i3465 = load ptr, ptr %504, align 8, !tbaa !24
+  %vfn.i.i.i.i3466 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3465, i64 2
+  %506 = load ptr, ptr %vfn.i.i.i.i3466, align 8
   call void %506(ptr noundef nonnull align 8 dereferenceable(16) %504) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %504) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3473
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3472
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3473: ; preds = %if.then.i.i.i3468, %if.then.i.i3465, %_ZN8TestCaseD2Ev.exit3504
-  %substituted_regex.i3469 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 15, i32 2
-  %bf.load.i.i.i3470 = load i8, ptr %substituted_regex.i3469, align 8
-  %bf.clear.i.i.i3471 = and i8 %bf.load.i.i.i3470, 1
-  %tobool.i.not.i.i3472 = icmp eq i8 %bf.clear.i.i.i3471, 0
-  br i1 %tobool.i.not.i.i3472, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3479, label %if.then.i2.i3475
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3472: ; preds = %if.then.i.i.i3467, %if.then.i.i3464, %_ZN8TestCaseD2Ev.exit3503
+  %substituted_regex.i3468 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 15, i32 2
+  %bf.load.i.i.i3469 = load i8, ptr %substituted_regex.i3468, align 8
+  %bf.clear.i.i.i3470 = and i8 %bf.load.i.i.i3469, 1
+  %tobool.i.not.i.i3471 = icmp eq i8 %bf.clear.i.i.i3470, 0
+  br i1 %tobool.i.not.i.i3471, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3478, label %if.then.i2.i3474
 
-if.then.i2.i3475:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3473
-  %__data_.i.i.i3474 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 15, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %507 = load ptr, ptr %__data_.i.i.i3474, align 8, !tbaa !5
+if.then.i2.i3474:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3472
+  %__data_.i.i.i3473 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 15, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %507 = load ptr, ptr %__data_.i.i.i3473, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %507) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3479
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3478
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3479: ; preds = %if.then.i2.i3475, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3473
-  %bf.load.i.i3.i3476 = load i8, ptr %arrayinit.element73.i611, align 8
-  %bf.clear.i.i4.i3477 = and i8 %bf.load.i.i3.i3476, 1
-  %tobool.i.not.i5.i3478 = icmp eq i8 %bf.clear.i.i4.i3477, 0
-  br i1 %tobool.i.not.i5.i3478, label %_ZN8TestCaseD2Ev.exit3482, label %if.then.i7.i3481
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3478: ; preds = %if.then.i2.i3474, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3472
+  %bf.load.i.i3.i3475 = load i8, ptr %arrayinit.element73.i611, align 8
+  %bf.clear.i.i4.i3476 = and i8 %bf.load.i.i3.i3475, 1
+  %tobool.i.not.i5.i3477 = icmp eq i8 %bf.clear.i.i4.i3476, 0
+  br i1 %tobool.i.not.i5.i3477, label %_ZN8TestCaseD2Ev.exit3481, label %if.then.i7.i3480
 
-if.then.i7.i3481:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3479
-  %__data_.i.i6.i3480 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 15, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %508 = load ptr, ptr %__data_.i.i6.i3480, align 8, !tbaa !5
+if.then.i7.i3480:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3478
+  %__data_.i.i6.i3479 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 15, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %508 = load ptr, ptr %__data_.i.i6.i3479, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %508) #25
-  br label %_ZN8TestCaseD2Ev.exit3482
+  br label %_ZN8TestCaseD2Ev.exit3481
 
-_ZN8TestCaseD2Ev.exit3482:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3479, %if.then.i7.i3481
-  %__cntrl_.i.i3439 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 14, i32 3, i32 1
-  %509 = load ptr, ptr %__cntrl_.i.i3439, align 8, !tbaa !98
-  %tobool.not.i.i3440 = icmp eq ptr %509, null
-  br i1 %tobool.not.i.i3440, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3451, label %if.then.i.i3443
+_ZN8TestCaseD2Ev.exit3481:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3478, %if.then.i7.i3480
+  %__cntrl_.i.i3438 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 14, i32 3, i32 1
+  %509 = load ptr, ptr %__cntrl_.i.i3438, align 8, !tbaa !98
+  %tobool.not.i.i3439 = icmp eq ptr %509, null
+  br i1 %tobool.not.i.i3439, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3450, label %if.then.i.i3442
 
-if.then.i.i3443:                                  ; preds = %_ZN8TestCaseD2Ev.exit3482
-  %__shared_owners_.i.i.i.i3441 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %509, i64 0, i32 1
-  %510 = atomicrmw add ptr %__shared_owners_.i.i.i.i3441, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3442 = icmp eq i64 %510, 0
-  br i1 %cmp.i.i.i.i3442, label %if.then.i.i.i3446, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3451
+if.then.i.i3442:                                  ; preds = %_ZN8TestCaseD2Ev.exit3481
+  %__shared_owners_.i.i.i.i3440 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %509, i64 0, i32 1
+  %510 = atomicrmw add ptr %__shared_owners_.i.i.i.i3440, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3441 = icmp eq i64 %510, 0
+  br i1 %cmp.i.i.i.i3441, label %if.then.i.i.i3445, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3450
 
-if.then.i.i.i3446:                                ; preds = %if.then.i.i3443
-  %vtable.i.i.i.i3444 = load ptr, ptr %509, align 8, !tbaa !24
-  %vfn.i.i.i.i3445 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3444, i64 2
-  %511 = load ptr, ptr %vfn.i.i.i.i3445, align 8
+if.then.i.i.i3445:                                ; preds = %if.then.i.i3442
+  %vtable.i.i.i.i3443 = load ptr, ptr %509, align 8, !tbaa !24
+  %vfn.i.i.i.i3444 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3443, i64 2
+  %511 = load ptr, ptr %vfn.i.i.i.i3444, align 8
   call void %511(ptr noundef nonnull align 8 dereferenceable(16) %509) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %509) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3451
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3450
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3451: ; preds = %if.then.i.i.i3446, %if.then.i.i3443, %_ZN8TestCaseD2Ev.exit3482
-  %substituted_regex.i3447 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 14, i32 2
-  %bf.load.i.i.i3448 = load i8, ptr %substituted_regex.i3447, align 8
-  %bf.clear.i.i.i3449 = and i8 %bf.load.i.i.i3448, 1
-  %tobool.i.not.i.i3450 = icmp eq i8 %bf.clear.i.i.i3449, 0
-  br i1 %tobool.i.not.i.i3450, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3457, label %if.then.i2.i3453
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3450: ; preds = %if.then.i.i.i3445, %if.then.i.i3442, %_ZN8TestCaseD2Ev.exit3481
+  %substituted_regex.i3446 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 14, i32 2
+  %bf.load.i.i.i3447 = load i8, ptr %substituted_regex.i3446, align 8
+  %bf.clear.i.i.i3448 = and i8 %bf.load.i.i.i3447, 1
+  %tobool.i.not.i.i3449 = icmp eq i8 %bf.clear.i.i.i3448, 0
+  br i1 %tobool.i.not.i.i3449, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3456, label %if.then.i2.i3452
 
-if.then.i2.i3453:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3451
-  %__data_.i.i.i3452 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 14, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %512 = load ptr, ptr %__data_.i.i.i3452, align 8, !tbaa !5
+if.then.i2.i3452:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3450
+  %__data_.i.i.i3451 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 14, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %512 = load ptr, ptr %__data_.i.i.i3451, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %512) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3457
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3456
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3457: ; preds = %if.then.i2.i3453, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3451
-  %bf.load.i.i3.i3454 = load i8, ptr %arrayinit.element68.i609, align 8
-  %bf.clear.i.i4.i3455 = and i8 %bf.load.i.i3.i3454, 1
-  %tobool.i.not.i5.i3456 = icmp eq i8 %bf.clear.i.i4.i3455, 0
-  br i1 %tobool.i.not.i5.i3456, label %_ZN8TestCaseD2Ev.exit3460, label %if.then.i7.i3459
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3456: ; preds = %if.then.i2.i3452, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3450
+  %bf.load.i.i3.i3453 = load i8, ptr %arrayinit.element68.i609, align 8
+  %bf.clear.i.i4.i3454 = and i8 %bf.load.i.i3.i3453, 1
+  %tobool.i.not.i5.i3455 = icmp eq i8 %bf.clear.i.i4.i3454, 0
+  br i1 %tobool.i.not.i5.i3455, label %_ZN8TestCaseD2Ev.exit3459, label %if.then.i7.i3458
 
-if.then.i7.i3459:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3457
-  %__data_.i.i6.i3458 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 14, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %513 = load ptr, ptr %__data_.i.i6.i3458, align 8, !tbaa !5
+if.then.i7.i3458:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3456
+  %__data_.i.i6.i3457 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 14, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %513 = load ptr, ptr %__data_.i.i6.i3457, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %513) #25
-  br label %_ZN8TestCaseD2Ev.exit3460
+  br label %_ZN8TestCaseD2Ev.exit3459
 
-_ZN8TestCaseD2Ev.exit3460:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3457, %if.then.i7.i3459
-  %__cntrl_.i.i3417 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 13, i32 3, i32 1
-  %514 = load ptr, ptr %__cntrl_.i.i3417, align 8, !tbaa !98
-  %tobool.not.i.i3418 = icmp eq ptr %514, null
-  br i1 %tobool.not.i.i3418, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3429, label %if.then.i.i3421
+_ZN8TestCaseD2Ev.exit3459:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3456, %if.then.i7.i3458
+  %__cntrl_.i.i3416 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 13, i32 3, i32 1
+  %514 = load ptr, ptr %__cntrl_.i.i3416, align 8, !tbaa !98
+  %tobool.not.i.i3417 = icmp eq ptr %514, null
+  br i1 %tobool.not.i.i3417, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3428, label %if.then.i.i3420
 
-if.then.i.i3421:                                  ; preds = %_ZN8TestCaseD2Ev.exit3460
-  %__shared_owners_.i.i.i.i3419 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %514, i64 0, i32 1
-  %515 = atomicrmw add ptr %__shared_owners_.i.i.i.i3419, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3420 = icmp eq i64 %515, 0
-  br i1 %cmp.i.i.i.i3420, label %if.then.i.i.i3424, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3429
+if.then.i.i3420:                                  ; preds = %_ZN8TestCaseD2Ev.exit3459
+  %__shared_owners_.i.i.i.i3418 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %514, i64 0, i32 1
+  %515 = atomicrmw add ptr %__shared_owners_.i.i.i.i3418, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3419 = icmp eq i64 %515, 0
+  br i1 %cmp.i.i.i.i3419, label %if.then.i.i.i3423, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3428
 
-if.then.i.i.i3424:                                ; preds = %if.then.i.i3421
-  %vtable.i.i.i.i3422 = load ptr, ptr %514, align 8, !tbaa !24
-  %vfn.i.i.i.i3423 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3422, i64 2
-  %516 = load ptr, ptr %vfn.i.i.i.i3423, align 8
+if.then.i.i.i3423:                                ; preds = %if.then.i.i3420
+  %vtable.i.i.i.i3421 = load ptr, ptr %514, align 8, !tbaa !24
+  %vfn.i.i.i.i3422 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3421, i64 2
+  %516 = load ptr, ptr %vfn.i.i.i.i3422, align 8
   call void %516(ptr noundef nonnull align 8 dereferenceable(16) %514) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %514) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3429
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3428
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3429: ; preds = %if.then.i.i.i3424, %if.then.i.i3421, %_ZN8TestCaseD2Ev.exit3460
-  %substituted_regex.i3425 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 13, i32 2
-  %bf.load.i.i.i3426 = load i8, ptr %substituted_regex.i3425, align 8
-  %bf.clear.i.i.i3427 = and i8 %bf.load.i.i.i3426, 1
-  %tobool.i.not.i.i3428 = icmp eq i8 %bf.clear.i.i.i3427, 0
-  br i1 %tobool.i.not.i.i3428, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3435, label %if.then.i2.i3431
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3428: ; preds = %if.then.i.i.i3423, %if.then.i.i3420, %_ZN8TestCaseD2Ev.exit3459
+  %substituted_regex.i3424 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 13, i32 2
+  %bf.load.i.i.i3425 = load i8, ptr %substituted_regex.i3424, align 8
+  %bf.clear.i.i.i3426 = and i8 %bf.load.i.i.i3425, 1
+  %tobool.i.not.i.i3427 = icmp eq i8 %bf.clear.i.i.i3426, 0
+  br i1 %tobool.i.not.i.i3427, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3434, label %if.then.i2.i3430
 
-if.then.i2.i3431:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3429
-  %__data_.i.i.i3430 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 13, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %517 = load ptr, ptr %__data_.i.i.i3430, align 8, !tbaa !5
+if.then.i2.i3430:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3428
+  %__data_.i.i.i3429 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 13, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %517 = load ptr, ptr %__data_.i.i.i3429, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %517) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3435
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3434
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3435: ; preds = %if.then.i2.i3431, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3429
-  %bf.load.i.i3.i3432 = load i8, ptr %arrayinit.element63.i607, align 8
-  %bf.clear.i.i4.i3433 = and i8 %bf.load.i.i3.i3432, 1
-  %tobool.i.not.i5.i3434 = icmp eq i8 %bf.clear.i.i4.i3433, 0
-  br i1 %tobool.i.not.i5.i3434, label %_ZN8TestCaseD2Ev.exit3438, label %if.then.i7.i3437
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3434: ; preds = %if.then.i2.i3430, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3428
+  %bf.load.i.i3.i3431 = load i8, ptr %arrayinit.element63.i607, align 8
+  %bf.clear.i.i4.i3432 = and i8 %bf.load.i.i3.i3431, 1
+  %tobool.i.not.i5.i3433 = icmp eq i8 %bf.clear.i.i4.i3432, 0
+  br i1 %tobool.i.not.i5.i3433, label %_ZN8TestCaseD2Ev.exit3437, label %if.then.i7.i3436
 
-if.then.i7.i3437:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3435
-  %__data_.i.i6.i3436 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 13, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %518 = load ptr, ptr %__data_.i.i6.i3436, align 8, !tbaa !5
+if.then.i7.i3436:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3434
+  %__data_.i.i6.i3435 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 13, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %518 = load ptr, ptr %__data_.i.i6.i3435, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %518) #25
-  br label %_ZN8TestCaseD2Ev.exit3438
+  br label %_ZN8TestCaseD2Ev.exit3437
 
-_ZN8TestCaseD2Ev.exit3438:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3435, %if.then.i7.i3437
-  %__cntrl_.i.i3395 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 12, i32 3, i32 1
-  %519 = load ptr, ptr %__cntrl_.i.i3395, align 8, !tbaa !98
-  %tobool.not.i.i3396 = icmp eq ptr %519, null
-  br i1 %tobool.not.i.i3396, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3407, label %if.then.i.i3399
+_ZN8TestCaseD2Ev.exit3437:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3434, %if.then.i7.i3436
+  %__cntrl_.i.i3394 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 12, i32 3, i32 1
+  %519 = load ptr, ptr %__cntrl_.i.i3394, align 8, !tbaa !98
+  %tobool.not.i.i3395 = icmp eq ptr %519, null
+  br i1 %tobool.not.i.i3395, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3406, label %if.then.i.i3398
 
-if.then.i.i3399:                                  ; preds = %_ZN8TestCaseD2Ev.exit3438
-  %__shared_owners_.i.i.i.i3397 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %519, i64 0, i32 1
-  %520 = atomicrmw add ptr %__shared_owners_.i.i.i.i3397, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3398 = icmp eq i64 %520, 0
-  br i1 %cmp.i.i.i.i3398, label %if.then.i.i.i3402, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3407
+if.then.i.i3398:                                  ; preds = %_ZN8TestCaseD2Ev.exit3437
+  %__shared_owners_.i.i.i.i3396 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %519, i64 0, i32 1
+  %520 = atomicrmw add ptr %__shared_owners_.i.i.i.i3396, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3397 = icmp eq i64 %520, 0
+  br i1 %cmp.i.i.i.i3397, label %if.then.i.i.i3401, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3406
 
-if.then.i.i.i3402:                                ; preds = %if.then.i.i3399
-  %vtable.i.i.i.i3400 = load ptr, ptr %519, align 8, !tbaa !24
-  %vfn.i.i.i.i3401 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3400, i64 2
-  %521 = load ptr, ptr %vfn.i.i.i.i3401, align 8
+if.then.i.i.i3401:                                ; preds = %if.then.i.i3398
+  %vtable.i.i.i.i3399 = load ptr, ptr %519, align 8, !tbaa !24
+  %vfn.i.i.i.i3400 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3399, i64 2
+  %521 = load ptr, ptr %vfn.i.i.i.i3400, align 8
   call void %521(ptr noundef nonnull align 8 dereferenceable(16) %519) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %519) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3407
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3406
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3407: ; preds = %if.then.i.i.i3402, %if.then.i.i3399, %_ZN8TestCaseD2Ev.exit3438
-  %substituted_regex.i3403 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 12, i32 2
-  %bf.load.i.i.i3404 = load i8, ptr %substituted_regex.i3403, align 8
-  %bf.clear.i.i.i3405 = and i8 %bf.load.i.i.i3404, 1
-  %tobool.i.not.i.i3406 = icmp eq i8 %bf.clear.i.i.i3405, 0
-  br i1 %tobool.i.not.i.i3406, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3413, label %if.then.i2.i3409
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3406: ; preds = %if.then.i.i.i3401, %if.then.i.i3398, %_ZN8TestCaseD2Ev.exit3437
+  %substituted_regex.i3402 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 12, i32 2
+  %bf.load.i.i.i3403 = load i8, ptr %substituted_regex.i3402, align 8
+  %bf.clear.i.i.i3404 = and i8 %bf.load.i.i.i3403, 1
+  %tobool.i.not.i.i3405 = icmp eq i8 %bf.clear.i.i.i3404, 0
+  br i1 %tobool.i.not.i.i3405, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3412, label %if.then.i2.i3408
 
-if.then.i2.i3409:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3407
-  %__data_.i.i.i3408 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 12, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %522 = load ptr, ptr %__data_.i.i.i3408, align 8, !tbaa !5
+if.then.i2.i3408:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3406
+  %__data_.i.i.i3407 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 12, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %522 = load ptr, ptr %__data_.i.i.i3407, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %522) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3413
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3412
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3413: ; preds = %if.then.i2.i3409, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3407
-  %bf.load.i.i3.i3410 = load i8, ptr %arrayinit.element58.i605, align 8
-  %bf.clear.i.i4.i3411 = and i8 %bf.load.i.i3.i3410, 1
-  %tobool.i.not.i5.i3412 = icmp eq i8 %bf.clear.i.i4.i3411, 0
-  br i1 %tobool.i.not.i5.i3412, label %_ZN8TestCaseD2Ev.exit3416, label %if.then.i7.i3415
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3412: ; preds = %if.then.i2.i3408, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3406
+  %bf.load.i.i3.i3409 = load i8, ptr %arrayinit.element58.i605, align 8
+  %bf.clear.i.i4.i3410 = and i8 %bf.load.i.i3.i3409, 1
+  %tobool.i.not.i5.i3411 = icmp eq i8 %bf.clear.i.i4.i3410, 0
+  br i1 %tobool.i.not.i5.i3411, label %_ZN8TestCaseD2Ev.exit3415, label %if.then.i7.i3414
 
-if.then.i7.i3415:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3413
-  %__data_.i.i6.i3414 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 12, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %523 = load ptr, ptr %__data_.i.i6.i3414, align 8, !tbaa !5
+if.then.i7.i3414:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3412
+  %__data_.i.i6.i3413 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 12, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %523 = load ptr, ptr %__data_.i.i6.i3413, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %523) #25
-  br label %_ZN8TestCaseD2Ev.exit3416
+  br label %_ZN8TestCaseD2Ev.exit3415
 
-_ZN8TestCaseD2Ev.exit3416:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3413, %if.then.i7.i3415
-  %__cntrl_.i.i3373 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 11, i32 3, i32 1
-  %524 = load ptr, ptr %__cntrl_.i.i3373, align 8, !tbaa !98
-  %tobool.not.i.i3374 = icmp eq ptr %524, null
-  br i1 %tobool.not.i.i3374, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3385, label %if.then.i.i3377
+_ZN8TestCaseD2Ev.exit3415:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3412, %if.then.i7.i3414
+  %__cntrl_.i.i3372 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 11, i32 3, i32 1
+  %524 = load ptr, ptr %__cntrl_.i.i3372, align 8, !tbaa !98
+  %tobool.not.i.i3373 = icmp eq ptr %524, null
+  br i1 %tobool.not.i.i3373, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3384, label %if.then.i.i3376
 
-if.then.i.i3377:                                  ; preds = %_ZN8TestCaseD2Ev.exit3416
-  %__shared_owners_.i.i.i.i3375 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %524, i64 0, i32 1
-  %525 = atomicrmw add ptr %__shared_owners_.i.i.i.i3375, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3376 = icmp eq i64 %525, 0
-  br i1 %cmp.i.i.i.i3376, label %if.then.i.i.i3380, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3385
+if.then.i.i3376:                                  ; preds = %_ZN8TestCaseD2Ev.exit3415
+  %__shared_owners_.i.i.i.i3374 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %524, i64 0, i32 1
+  %525 = atomicrmw add ptr %__shared_owners_.i.i.i.i3374, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3375 = icmp eq i64 %525, 0
+  br i1 %cmp.i.i.i.i3375, label %if.then.i.i.i3379, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3384
 
-if.then.i.i.i3380:                                ; preds = %if.then.i.i3377
-  %vtable.i.i.i.i3378 = load ptr, ptr %524, align 8, !tbaa !24
-  %vfn.i.i.i.i3379 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3378, i64 2
-  %526 = load ptr, ptr %vfn.i.i.i.i3379, align 8
+if.then.i.i.i3379:                                ; preds = %if.then.i.i3376
+  %vtable.i.i.i.i3377 = load ptr, ptr %524, align 8, !tbaa !24
+  %vfn.i.i.i.i3378 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3377, i64 2
+  %526 = load ptr, ptr %vfn.i.i.i.i3378, align 8
   call void %526(ptr noundef nonnull align 8 dereferenceable(16) %524) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %524) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3385
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3384
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3385: ; preds = %if.then.i.i.i3380, %if.then.i.i3377, %_ZN8TestCaseD2Ev.exit3416
-  %substituted_regex.i3381 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 11, i32 2
-  %bf.load.i.i.i3382 = load i8, ptr %substituted_regex.i3381, align 8
-  %bf.clear.i.i.i3383 = and i8 %bf.load.i.i.i3382, 1
-  %tobool.i.not.i.i3384 = icmp eq i8 %bf.clear.i.i.i3383, 0
-  br i1 %tobool.i.not.i.i3384, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3391, label %if.then.i2.i3387
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3384: ; preds = %if.then.i.i.i3379, %if.then.i.i3376, %_ZN8TestCaseD2Ev.exit3415
+  %substituted_regex.i3380 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 11, i32 2
+  %bf.load.i.i.i3381 = load i8, ptr %substituted_regex.i3380, align 8
+  %bf.clear.i.i.i3382 = and i8 %bf.load.i.i.i3381, 1
+  %tobool.i.not.i.i3383 = icmp eq i8 %bf.clear.i.i.i3382, 0
+  br i1 %tobool.i.not.i.i3383, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3390, label %if.then.i2.i3386
 
-if.then.i2.i3387:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3385
-  %__data_.i.i.i3386 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 11, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %527 = load ptr, ptr %__data_.i.i.i3386, align 8, !tbaa !5
+if.then.i2.i3386:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3384
+  %__data_.i.i.i3385 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 11, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %527 = load ptr, ptr %__data_.i.i.i3385, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %527) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3391
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3390
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3391: ; preds = %if.then.i2.i3387, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3385
-  %bf.load.i.i3.i3388 = load i8, ptr %arrayinit.element53.i603, align 8
-  %bf.clear.i.i4.i3389 = and i8 %bf.load.i.i3.i3388, 1
-  %tobool.i.not.i5.i3390 = icmp eq i8 %bf.clear.i.i4.i3389, 0
-  br i1 %tobool.i.not.i5.i3390, label %_ZN8TestCaseD2Ev.exit3394, label %if.then.i7.i3393
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3390: ; preds = %if.then.i2.i3386, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3384
+  %bf.load.i.i3.i3387 = load i8, ptr %arrayinit.element53.i603, align 8
+  %bf.clear.i.i4.i3388 = and i8 %bf.load.i.i3.i3387, 1
+  %tobool.i.not.i5.i3389 = icmp eq i8 %bf.clear.i.i4.i3388, 0
+  br i1 %tobool.i.not.i5.i3389, label %_ZN8TestCaseD2Ev.exit3393, label %if.then.i7.i3392
 
-if.then.i7.i3393:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3391
-  %__data_.i.i6.i3392 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 11, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %528 = load ptr, ptr %__data_.i.i6.i3392, align 8, !tbaa !5
+if.then.i7.i3392:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3390
+  %__data_.i.i6.i3391 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 11, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %528 = load ptr, ptr %__data_.i.i6.i3391, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %528) #25
-  br label %_ZN8TestCaseD2Ev.exit3394
+  br label %_ZN8TestCaseD2Ev.exit3393
 
-_ZN8TestCaseD2Ev.exit3394:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3391, %if.then.i7.i3393
-  %__cntrl_.i.i3351 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 10, i32 3, i32 1
-  %529 = load ptr, ptr %__cntrl_.i.i3351, align 8, !tbaa !98
-  %tobool.not.i.i3352 = icmp eq ptr %529, null
-  br i1 %tobool.not.i.i3352, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3363, label %if.then.i.i3355
+_ZN8TestCaseD2Ev.exit3393:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3390, %if.then.i7.i3392
+  %__cntrl_.i.i3350 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 10, i32 3, i32 1
+  %529 = load ptr, ptr %__cntrl_.i.i3350, align 8, !tbaa !98
+  %tobool.not.i.i3351 = icmp eq ptr %529, null
+  br i1 %tobool.not.i.i3351, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3362, label %if.then.i.i3354
 
-if.then.i.i3355:                                  ; preds = %_ZN8TestCaseD2Ev.exit3394
-  %__shared_owners_.i.i.i.i3353 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %529, i64 0, i32 1
-  %530 = atomicrmw add ptr %__shared_owners_.i.i.i.i3353, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3354 = icmp eq i64 %530, 0
-  br i1 %cmp.i.i.i.i3354, label %if.then.i.i.i3358, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3363
+if.then.i.i3354:                                  ; preds = %_ZN8TestCaseD2Ev.exit3393
+  %__shared_owners_.i.i.i.i3352 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %529, i64 0, i32 1
+  %530 = atomicrmw add ptr %__shared_owners_.i.i.i.i3352, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3353 = icmp eq i64 %530, 0
+  br i1 %cmp.i.i.i.i3353, label %if.then.i.i.i3357, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3362
 
-if.then.i.i.i3358:                                ; preds = %if.then.i.i3355
-  %vtable.i.i.i.i3356 = load ptr, ptr %529, align 8, !tbaa !24
-  %vfn.i.i.i.i3357 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3356, i64 2
-  %531 = load ptr, ptr %vfn.i.i.i.i3357, align 8
+if.then.i.i.i3357:                                ; preds = %if.then.i.i3354
+  %vtable.i.i.i.i3355 = load ptr, ptr %529, align 8, !tbaa !24
+  %vfn.i.i.i.i3356 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3355, i64 2
+  %531 = load ptr, ptr %vfn.i.i.i.i3356, align 8
   call void %531(ptr noundef nonnull align 8 dereferenceable(16) %529) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %529) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3363
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3362
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3363: ; preds = %if.then.i.i.i3358, %if.then.i.i3355, %_ZN8TestCaseD2Ev.exit3394
-  %substituted_regex.i3359 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 10, i32 2
-  %bf.load.i.i.i3360 = load i8, ptr %substituted_regex.i3359, align 8
-  %bf.clear.i.i.i3361 = and i8 %bf.load.i.i.i3360, 1
-  %tobool.i.not.i.i3362 = icmp eq i8 %bf.clear.i.i.i3361, 0
-  br i1 %tobool.i.not.i.i3362, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3369, label %if.then.i2.i3365
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3362: ; preds = %if.then.i.i.i3357, %if.then.i.i3354, %_ZN8TestCaseD2Ev.exit3393
+  %substituted_regex.i3358 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 10, i32 2
+  %bf.load.i.i.i3359 = load i8, ptr %substituted_regex.i3358, align 8
+  %bf.clear.i.i.i3360 = and i8 %bf.load.i.i.i3359, 1
+  %tobool.i.not.i.i3361 = icmp eq i8 %bf.clear.i.i.i3360, 0
+  br i1 %tobool.i.not.i.i3361, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3368, label %if.then.i2.i3364
 
-if.then.i2.i3365:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3363
-  %__data_.i.i.i3364 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 10, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %532 = load ptr, ptr %__data_.i.i.i3364, align 8, !tbaa !5
+if.then.i2.i3364:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3362
+  %__data_.i.i.i3363 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 10, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %532 = load ptr, ptr %__data_.i.i.i3363, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %532) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3369
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3368
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3369: ; preds = %if.then.i2.i3365, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3363
-  %bf.load.i.i3.i3366 = load i8, ptr %arrayinit.element48.i601, align 8
-  %bf.clear.i.i4.i3367 = and i8 %bf.load.i.i3.i3366, 1
-  %tobool.i.not.i5.i3368 = icmp eq i8 %bf.clear.i.i4.i3367, 0
-  br i1 %tobool.i.not.i5.i3368, label %_ZN8TestCaseD2Ev.exit3372, label %if.then.i7.i3371
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3368: ; preds = %if.then.i2.i3364, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3362
+  %bf.load.i.i3.i3365 = load i8, ptr %arrayinit.element48.i601, align 8
+  %bf.clear.i.i4.i3366 = and i8 %bf.load.i.i3.i3365, 1
+  %tobool.i.not.i5.i3367 = icmp eq i8 %bf.clear.i.i4.i3366, 0
+  br i1 %tobool.i.not.i5.i3367, label %_ZN8TestCaseD2Ev.exit3371, label %if.then.i7.i3370
 
-if.then.i7.i3371:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3369
-  %__data_.i.i6.i3370 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 10, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %533 = load ptr, ptr %__data_.i.i6.i3370, align 8, !tbaa !5
+if.then.i7.i3370:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3368
+  %__data_.i.i6.i3369 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 10, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %533 = load ptr, ptr %__data_.i.i6.i3369, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %533) #25
-  br label %_ZN8TestCaseD2Ev.exit3372
+  br label %_ZN8TestCaseD2Ev.exit3371
 
-_ZN8TestCaseD2Ev.exit3372:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3369, %if.then.i7.i3371
-  %__cntrl_.i.i3329 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 9, i32 3, i32 1
-  %534 = load ptr, ptr %__cntrl_.i.i3329, align 8, !tbaa !98
-  %tobool.not.i.i3330 = icmp eq ptr %534, null
-  br i1 %tobool.not.i.i3330, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3341, label %if.then.i.i3333
+_ZN8TestCaseD2Ev.exit3371:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3368, %if.then.i7.i3370
+  %__cntrl_.i.i3328 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 9, i32 3, i32 1
+  %534 = load ptr, ptr %__cntrl_.i.i3328, align 8, !tbaa !98
+  %tobool.not.i.i3329 = icmp eq ptr %534, null
+  br i1 %tobool.not.i.i3329, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3340, label %if.then.i.i3332
 
-if.then.i.i3333:                                  ; preds = %_ZN8TestCaseD2Ev.exit3372
-  %__shared_owners_.i.i.i.i3331 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %534, i64 0, i32 1
-  %535 = atomicrmw add ptr %__shared_owners_.i.i.i.i3331, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3332 = icmp eq i64 %535, 0
-  br i1 %cmp.i.i.i.i3332, label %if.then.i.i.i3336, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3341
+if.then.i.i3332:                                  ; preds = %_ZN8TestCaseD2Ev.exit3371
+  %__shared_owners_.i.i.i.i3330 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %534, i64 0, i32 1
+  %535 = atomicrmw add ptr %__shared_owners_.i.i.i.i3330, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3331 = icmp eq i64 %535, 0
+  br i1 %cmp.i.i.i.i3331, label %if.then.i.i.i3335, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3340
 
-if.then.i.i.i3336:                                ; preds = %if.then.i.i3333
-  %vtable.i.i.i.i3334 = load ptr, ptr %534, align 8, !tbaa !24
-  %vfn.i.i.i.i3335 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3334, i64 2
-  %536 = load ptr, ptr %vfn.i.i.i.i3335, align 8
+if.then.i.i.i3335:                                ; preds = %if.then.i.i3332
+  %vtable.i.i.i.i3333 = load ptr, ptr %534, align 8, !tbaa !24
+  %vfn.i.i.i.i3334 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3333, i64 2
+  %536 = load ptr, ptr %vfn.i.i.i.i3334, align 8
   call void %536(ptr noundef nonnull align 8 dereferenceable(16) %534) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %534) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3341
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3340
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3341: ; preds = %if.then.i.i.i3336, %if.then.i.i3333, %_ZN8TestCaseD2Ev.exit3372
-  %substituted_regex.i3337 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 9, i32 2
-  %bf.load.i.i.i3338 = load i8, ptr %substituted_regex.i3337, align 8
-  %bf.clear.i.i.i3339 = and i8 %bf.load.i.i.i3338, 1
-  %tobool.i.not.i.i3340 = icmp eq i8 %bf.clear.i.i.i3339, 0
-  br i1 %tobool.i.not.i.i3340, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3347, label %if.then.i2.i3343
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3340: ; preds = %if.then.i.i.i3335, %if.then.i.i3332, %_ZN8TestCaseD2Ev.exit3371
+  %substituted_regex.i3336 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 9, i32 2
+  %bf.load.i.i.i3337 = load i8, ptr %substituted_regex.i3336, align 8
+  %bf.clear.i.i.i3338 = and i8 %bf.load.i.i.i3337, 1
+  %tobool.i.not.i.i3339 = icmp eq i8 %bf.clear.i.i.i3338, 0
+  br i1 %tobool.i.not.i.i3339, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3346, label %if.then.i2.i3342
 
-if.then.i2.i3343:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3341
-  %__data_.i.i.i3342 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 9, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %537 = load ptr, ptr %__data_.i.i.i3342, align 8, !tbaa !5
+if.then.i2.i3342:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3340
+  %__data_.i.i.i3341 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 9, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %537 = load ptr, ptr %__data_.i.i.i3341, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %537) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3347
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3346
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3347: ; preds = %if.then.i2.i3343, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3341
-  %bf.load.i.i3.i3344 = load i8, ptr %arrayinit.element43.i599, align 8
-  %bf.clear.i.i4.i3345 = and i8 %bf.load.i.i3.i3344, 1
-  %tobool.i.not.i5.i3346 = icmp eq i8 %bf.clear.i.i4.i3345, 0
-  br i1 %tobool.i.not.i5.i3346, label %_ZN8TestCaseD2Ev.exit3350, label %if.then.i7.i3349
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3346: ; preds = %if.then.i2.i3342, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3340
+  %bf.load.i.i3.i3343 = load i8, ptr %arrayinit.element43.i599, align 8
+  %bf.clear.i.i4.i3344 = and i8 %bf.load.i.i3.i3343, 1
+  %tobool.i.not.i5.i3345 = icmp eq i8 %bf.clear.i.i4.i3344, 0
+  br i1 %tobool.i.not.i5.i3345, label %_ZN8TestCaseD2Ev.exit3349, label %if.then.i7.i3348
 
-if.then.i7.i3349:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3347
-  %__data_.i.i6.i3348 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %538 = load ptr, ptr %__data_.i.i6.i3348, align 8, !tbaa !5
+if.then.i7.i3348:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3346
+  %__data_.i.i6.i3347 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %538 = load ptr, ptr %__data_.i.i6.i3347, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %538) #25
-  br label %_ZN8TestCaseD2Ev.exit3350
+  br label %_ZN8TestCaseD2Ev.exit3349
 
-_ZN8TestCaseD2Ev.exit3350:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3347, %if.then.i7.i3349
-  %__cntrl_.i.i3307 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 8, i32 3, i32 1
-  %539 = load ptr, ptr %__cntrl_.i.i3307, align 8, !tbaa !98
-  %tobool.not.i.i3308 = icmp eq ptr %539, null
-  br i1 %tobool.not.i.i3308, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3319, label %if.then.i.i3311
+_ZN8TestCaseD2Ev.exit3349:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3346, %if.then.i7.i3348
+  %__cntrl_.i.i3306 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 8, i32 3, i32 1
+  %539 = load ptr, ptr %__cntrl_.i.i3306, align 8, !tbaa !98
+  %tobool.not.i.i3307 = icmp eq ptr %539, null
+  br i1 %tobool.not.i.i3307, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3318, label %if.then.i.i3310
 
-if.then.i.i3311:                                  ; preds = %_ZN8TestCaseD2Ev.exit3350
-  %__shared_owners_.i.i.i.i3309 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %539, i64 0, i32 1
-  %540 = atomicrmw add ptr %__shared_owners_.i.i.i.i3309, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3310 = icmp eq i64 %540, 0
-  br i1 %cmp.i.i.i.i3310, label %if.then.i.i.i3314, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3319
+if.then.i.i3310:                                  ; preds = %_ZN8TestCaseD2Ev.exit3349
+  %__shared_owners_.i.i.i.i3308 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %539, i64 0, i32 1
+  %540 = atomicrmw add ptr %__shared_owners_.i.i.i.i3308, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3309 = icmp eq i64 %540, 0
+  br i1 %cmp.i.i.i.i3309, label %if.then.i.i.i3313, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3318
 
-if.then.i.i.i3314:                                ; preds = %if.then.i.i3311
-  %vtable.i.i.i.i3312 = load ptr, ptr %539, align 8, !tbaa !24
-  %vfn.i.i.i.i3313 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3312, i64 2
-  %541 = load ptr, ptr %vfn.i.i.i.i3313, align 8
+if.then.i.i.i3313:                                ; preds = %if.then.i.i3310
+  %vtable.i.i.i.i3311 = load ptr, ptr %539, align 8, !tbaa !24
+  %vfn.i.i.i.i3312 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3311, i64 2
+  %541 = load ptr, ptr %vfn.i.i.i.i3312, align 8
   call void %541(ptr noundef nonnull align 8 dereferenceable(16) %539) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %539) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3319
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3318
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3319: ; preds = %if.then.i.i.i3314, %if.then.i.i3311, %_ZN8TestCaseD2Ev.exit3350
-  %substituted_regex.i3315 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 8, i32 2
-  %bf.load.i.i.i3316 = load i8, ptr %substituted_regex.i3315, align 8
-  %bf.clear.i.i.i3317 = and i8 %bf.load.i.i.i3316, 1
-  %tobool.i.not.i.i3318 = icmp eq i8 %bf.clear.i.i.i3317, 0
-  br i1 %tobool.i.not.i.i3318, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3325, label %if.then.i2.i3321
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3318: ; preds = %if.then.i.i.i3313, %if.then.i.i3310, %_ZN8TestCaseD2Ev.exit3349
+  %substituted_regex.i3314 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 8, i32 2
+  %bf.load.i.i.i3315 = load i8, ptr %substituted_regex.i3314, align 8
+  %bf.clear.i.i.i3316 = and i8 %bf.load.i.i.i3315, 1
+  %tobool.i.not.i.i3317 = icmp eq i8 %bf.clear.i.i.i3316, 0
+  br i1 %tobool.i.not.i.i3317, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3324, label %if.then.i2.i3320
 
-if.then.i2.i3321:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3319
-  %__data_.i.i.i3320 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 8, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %542 = load ptr, ptr %__data_.i.i.i3320, align 8, !tbaa !5
+if.then.i2.i3320:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3318
+  %__data_.i.i.i3319 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 8, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %542 = load ptr, ptr %__data_.i.i.i3319, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %542) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3325
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3324
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3325: ; preds = %if.then.i2.i3321, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3319
-  %bf.load.i.i3.i3322 = load i8, ptr %arrayinit.element38.i597, align 8
-  %bf.clear.i.i4.i3323 = and i8 %bf.load.i.i3.i3322, 1
-  %tobool.i.not.i5.i3324 = icmp eq i8 %bf.clear.i.i4.i3323, 0
-  br i1 %tobool.i.not.i5.i3324, label %_ZN8TestCaseD2Ev.exit3328, label %if.then.i7.i3327
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3324: ; preds = %if.then.i2.i3320, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3318
+  %bf.load.i.i3.i3321 = load i8, ptr %arrayinit.element38.i597, align 8
+  %bf.clear.i.i4.i3322 = and i8 %bf.load.i.i3.i3321, 1
+  %tobool.i.not.i5.i3323 = icmp eq i8 %bf.clear.i.i4.i3322, 0
+  br i1 %tobool.i.not.i5.i3323, label %_ZN8TestCaseD2Ev.exit3327, label %if.then.i7.i3326
 
-if.then.i7.i3327:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3325
-  %__data_.i.i6.i3326 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 8, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %543 = load ptr, ptr %__data_.i.i6.i3326, align 8, !tbaa !5
+if.then.i7.i3326:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3324
+  %__data_.i.i6.i3325 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 8, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %543 = load ptr, ptr %__data_.i.i6.i3325, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %543) #25
-  br label %_ZN8TestCaseD2Ev.exit3328
+  br label %_ZN8TestCaseD2Ev.exit3327
 
-_ZN8TestCaseD2Ev.exit3328:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3325, %if.then.i7.i3327
-  %__cntrl_.i.i3285 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 7, i32 3, i32 1
-  %544 = load ptr, ptr %__cntrl_.i.i3285, align 8, !tbaa !98
-  %tobool.not.i.i3286 = icmp eq ptr %544, null
-  br i1 %tobool.not.i.i3286, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3297, label %if.then.i.i3289
+_ZN8TestCaseD2Ev.exit3327:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3324, %if.then.i7.i3326
+  %__cntrl_.i.i3284 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 7, i32 3, i32 1
+  %544 = load ptr, ptr %__cntrl_.i.i3284, align 8, !tbaa !98
+  %tobool.not.i.i3285 = icmp eq ptr %544, null
+  br i1 %tobool.not.i.i3285, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3296, label %if.then.i.i3288
 
-if.then.i.i3289:                                  ; preds = %_ZN8TestCaseD2Ev.exit3328
-  %__shared_owners_.i.i.i.i3287 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %544, i64 0, i32 1
-  %545 = atomicrmw add ptr %__shared_owners_.i.i.i.i3287, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3288 = icmp eq i64 %545, 0
-  br i1 %cmp.i.i.i.i3288, label %if.then.i.i.i3292, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3297
+if.then.i.i3288:                                  ; preds = %_ZN8TestCaseD2Ev.exit3327
+  %__shared_owners_.i.i.i.i3286 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %544, i64 0, i32 1
+  %545 = atomicrmw add ptr %__shared_owners_.i.i.i.i3286, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3287 = icmp eq i64 %545, 0
+  br i1 %cmp.i.i.i.i3287, label %if.then.i.i.i3291, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3296
 
-if.then.i.i.i3292:                                ; preds = %if.then.i.i3289
-  %vtable.i.i.i.i3290 = load ptr, ptr %544, align 8, !tbaa !24
-  %vfn.i.i.i.i3291 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3290, i64 2
-  %546 = load ptr, ptr %vfn.i.i.i.i3291, align 8
+if.then.i.i.i3291:                                ; preds = %if.then.i.i3288
+  %vtable.i.i.i.i3289 = load ptr, ptr %544, align 8, !tbaa !24
+  %vfn.i.i.i.i3290 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3289, i64 2
+  %546 = load ptr, ptr %vfn.i.i.i.i3290, align 8
   call void %546(ptr noundef nonnull align 8 dereferenceable(16) %544) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %544) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3297
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3296
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3297: ; preds = %if.then.i.i.i3292, %if.then.i.i3289, %_ZN8TestCaseD2Ev.exit3328
-  %substituted_regex.i3293 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 7, i32 2
-  %bf.load.i.i.i3294 = load i8, ptr %substituted_regex.i3293, align 8
-  %bf.clear.i.i.i3295 = and i8 %bf.load.i.i.i3294, 1
-  %tobool.i.not.i.i3296 = icmp eq i8 %bf.clear.i.i.i3295, 0
-  br i1 %tobool.i.not.i.i3296, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3303, label %if.then.i2.i3299
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3296: ; preds = %if.then.i.i.i3291, %if.then.i.i3288, %_ZN8TestCaseD2Ev.exit3327
+  %substituted_regex.i3292 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 7, i32 2
+  %bf.load.i.i.i3293 = load i8, ptr %substituted_regex.i3292, align 8
+  %bf.clear.i.i.i3294 = and i8 %bf.load.i.i.i3293, 1
+  %tobool.i.not.i.i3295 = icmp eq i8 %bf.clear.i.i.i3294, 0
+  br i1 %tobool.i.not.i.i3295, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3302, label %if.then.i2.i3298
 
-if.then.i2.i3299:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3297
-  %__data_.i.i.i3298 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 7, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %547 = load ptr, ptr %__data_.i.i.i3298, align 8, !tbaa !5
+if.then.i2.i3298:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3296
+  %__data_.i.i.i3297 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 7, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %547 = load ptr, ptr %__data_.i.i.i3297, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %547) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3303
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3302
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3303: ; preds = %if.then.i2.i3299, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3297
-  %bf.load.i.i3.i3300 = load i8, ptr %arrayinit.element33.i595, align 8
-  %bf.clear.i.i4.i3301 = and i8 %bf.load.i.i3.i3300, 1
-  %tobool.i.not.i5.i3302 = icmp eq i8 %bf.clear.i.i4.i3301, 0
-  br i1 %tobool.i.not.i5.i3302, label %_ZN8TestCaseD2Ev.exit3306, label %if.then.i7.i3305
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3302: ; preds = %if.then.i2.i3298, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3296
+  %bf.load.i.i3.i3299 = load i8, ptr %arrayinit.element33.i595, align 8
+  %bf.clear.i.i4.i3300 = and i8 %bf.load.i.i3.i3299, 1
+  %tobool.i.not.i5.i3301 = icmp eq i8 %bf.clear.i.i4.i3300, 0
+  br i1 %tobool.i.not.i5.i3301, label %_ZN8TestCaseD2Ev.exit3305, label %if.then.i7.i3304
 
-if.then.i7.i3305:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3303
-  %__data_.i.i6.i3304 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 7, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %548 = load ptr, ptr %__data_.i.i6.i3304, align 8, !tbaa !5
+if.then.i7.i3304:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3302
+  %__data_.i.i6.i3303 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 7, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %548 = load ptr, ptr %__data_.i.i6.i3303, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %548) #25
-  br label %_ZN8TestCaseD2Ev.exit3306
+  br label %_ZN8TestCaseD2Ev.exit3305
 
-_ZN8TestCaseD2Ev.exit3306:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3303, %if.then.i7.i3305
-  %__cntrl_.i.i3263 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 6, i32 3, i32 1
-  %549 = load ptr, ptr %__cntrl_.i.i3263, align 8, !tbaa !98
-  %tobool.not.i.i3264 = icmp eq ptr %549, null
-  br i1 %tobool.not.i.i3264, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3275, label %if.then.i.i3267
+_ZN8TestCaseD2Ev.exit3305:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3302, %if.then.i7.i3304
+  %__cntrl_.i.i3262 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 6, i32 3, i32 1
+  %549 = load ptr, ptr %__cntrl_.i.i3262, align 8, !tbaa !98
+  %tobool.not.i.i3263 = icmp eq ptr %549, null
+  br i1 %tobool.not.i.i3263, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3274, label %if.then.i.i3266
 
-if.then.i.i3267:                                  ; preds = %_ZN8TestCaseD2Ev.exit3306
-  %__shared_owners_.i.i.i.i3265 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %549, i64 0, i32 1
-  %550 = atomicrmw add ptr %__shared_owners_.i.i.i.i3265, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3266 = icmp eq i64 %550, 0
-  br i1 %cmp.i.i.i.i3266, label %if.then.i.i.i3270, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3275
+if.then.i.i3266:                                  ; preds = %_ZN8TestCaseD2Ev.exit3305
+  %__shared_owners_.i.i.i.i3264 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %549, i64 0, i32 1
+  %550 = atomicrmw add ptr %__shared_owners_.i.i.i.i3264, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3265 = icmp eq i64 %550, 0
+  br i1 %cmp.i.i.i.i3265, label %if.then.i.i.i3269, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3274
 
-if.then.i.i.i3270:                                ; preds = %if.then.i.i3267
-  %vtable.i.i.i.i3268 = load ptr, ptr %549, align 8, !tbaa !24
-  %vfn.i.i.i.i3269 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3268, i64 2
-  %551 = load ptr, ptr %vfn.i.i.i.i3269, align 8
+if.then.i.i.i3269:                                ; preds = %if.then.i.i3266
+  %vtable.i.i.i.i3267 = load ptr, ptr %549, align 8, !tbaa !24
+  %vfn.i.i.i.i3268 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3267, i64 2
+  %551 = load ptr, ptr %vfn.i.i.i.i3268, align 8
   call void %551(ptr noundef nonnull align 8 dereferenceable(16) %549) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %549) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3275
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3274
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3275: ; preds = %if.then.i.i.i3270, %if.then.i.i3267, %_ZN8TestCaseD2Ev.exit3306
-  %substituted_regex.i3271 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 6, i32 2
-  %bf.load.i.i.i3272 = load i8, ptr %substituted_regex.i3271, align 8
-  %bf.clear.i.i.i3273 = and i8 %bf.load.i.i.i3272, 1
-  %tobool.i.not.i.i3274 = icmp eq i8 %bf.clear.i.i.i3273, 0
-  br i1 %tobool.i.not.i.i3274, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3281, label %if.then.i2.i3277
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3274: ; preds = %if.then.i.i.i3269, %if.then.i.i3266, %_ZN8TestCaseD2Ev.exit3305
+  %substituted_regex.i3270 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 6, i32 2
+  %bf.load.i.i.i3271 = load i8, ptr %substituted_regex.i3270, align 8
+  %bf.clear.i.i.i3272 = and i8 %bf.load.i.i.i3271, 1
+  %tobool.i.not.i.i3273 = icmp eq i8 %bf.clear.i.i.i3272, 0
+  br i1 %tobool.i.not.i.i3273, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3280, label %if.then.i2.i3276
 
-if.then.i2.i3277:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3275
-  %__data_.i.i.i3276 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 6, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %552 = load ptr, ptr %__data_.i.i.i3276, align 8, !tbaa !5
+if.then.i2.i3276:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3274
+  %__data_.i.i.i3275 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 6, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %552 = load ptr, ptr %__data_.i.i.i3275, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %552) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3281
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3280
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3281: ; preds = %if.then.i2.i3277, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3275
-  %bf.load.i.i3.i3278 = load i8, ptr %arrayinit.element28.i593, align 8
-  %bf.clear.i.i4.i3279 = and i8 %bf.load.i.i3.i3278, 1
-  %tobool.i.not.i5.i3280 = icmp eq i8 %bf.clear.i.i4.i3279, 0
-  br i1 %tobool.i.not.i5.i3280, label %_ZN8TestCaseD2Ev.exit3284, label %if.then.i7.i3283
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3280: ; preds = %if.then.i2.i3276, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3274
+  %bf.load.i.i3.i3277 = load i8, ptr %arrayinit.element28.i593, align 8
+  %bf.clear.i.i4.i3278 = and i8 %bf.load.i.i3.i3277, 1
+  %tobool.i.not.i5.i3279 = icmp eq i8 %bf.clear.i.i4.i3278, 0
+  br i1 %tobool.i.not.i5.i3279, label %_ZN8TestCaseD2Ev.exit3283, label %if.then.i7.i3282
 
-if.then.i7.i3283:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3281
-  %__data_.i.i6.i3282 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 6, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %553 = load ptr, ptr %__data_.i.i6.i3282, align 8, !tbaa !5
+if.then.i7.i3282:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3280
+  %__data_.i.i6.i3281 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 6, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %553 = load ptr, ptr %__data_.i.i6.i3281, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %553) #25
-  br label %_ZN8TestCaseD2Ev.exit3284
+  br label %_ZN8TestCaseD2Ev.exit3283
 
-_ZN8TestCaseD2Ev.exit3284:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3281, %if.then.i7.i3283
-  %__cntrl_.i.i3241 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 5, i32 3, i32 1
-  %554 = load ptr, ptr %__cntrl_.i.i3241, align 8, !tbaa !98
-  %tobool.not.i.i3242 = icmp eq ptr %554, null
-  br i1 %tobool.not.i.i3242, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3253, label %if.then.i.i3245
+_ZN8TestCaseD2Ev.exit3283:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3280, %if.then.i7.i3282
+  %__cntrl_.i.i3240 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 5, i32 3, i32 1
+  %554 = load ptr, ptr %__cntrl_.i.i3240, align 8, !tbaa !98
+  %tobool.not.i.i3241 = icmp eq ptr %554, null
+  br i1 %tobool.not.i.i3241, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3252, label %if.then.i.i3244
 
-if.then.i.i3245:                                  ; preds = %_ZN8TestCaseD2Ev.exit3284
-  %__shared_owners_.i.i.i.i3243 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %554, i64 0, i32 1
-  %555 = atomicrmw add ptr %__shared_owners_.i.i.i.i3243, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3244 = icmp eq i64 %555, 0
-  br i1 %cmp.i.i.i.i3244, label %if.then.i.i.i3248, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3253
+if.then.i.i3244:                                  ; preds = %_ZN8TestCaseD2Ev.exit3283
+  %__shared_owners_.i.i.i.i3242 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %554, i64 0, i32 1
+  %555 = atomicrmw add ptr %__shared_owners_.i.i.i.i3242, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3243 = icmp eq i64 %555, 0
+  br i1 %cmp.i.i.i.i3243, label %if.then.i.i.i3247, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3252
 
-if.then.i.i.i3248:                                ; preds = %if.then.i.i3245
-  %vtable.i.i.i.i3246 = load ptr, ptr %554, align 8, !tbaa !24
-  %vfn.i.i.i.i3247 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3246, i64 2
-  %556 = load ptr, ptr %vfn.i.i.i.i3247, align 8
+if.then.i.i.i3247:                                ; preds = %if.then.i.i3244
+  %vtable.i.i.i.i3245 = load ptr, ptr %554, align 8, !tbaa !24
+  %vfn.i.i.i.i3246 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3245, i64 2
+  %556 = load ptr, ptr %vfn.i.i.i.i3246, align 8
   call void %556(ptr noundef nonnull align 8 dereferenceable(16) %554) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %554) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3253
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3252
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3253: ; preds = %if.then.i.i.i3248, %if.then.i.i3245, %_ZN8TestCaseD2Ev.exit3284
-  %substituted_regex.i3249 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 5, i32 2
-  %bf.load.i.i.i3250 = load i8, ptr %substituted_regex.i3249, align 8
-  %bf.clear.i.i.i3251 = and i8 %bf.load.i.i.i3250, 1
-  %tobool.i.not.i.i3252 = icmp eq i8 %bf.clear.i.i.i3251, 0
-  br i1 %tobool.i.not.i.i3252, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3259, label %if.then.i2.i3255
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3252: ; preds = %if.then.i.i.i3247, %if.then.i.i3244, %_ZN8TestCaseD2Ev.exit3283
+  %substituted_regex.i3248 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 5, i32 2
+  %bf.load.i.i.i3249 = load i8, ptr %substituted_regex.i3248, align 8
+  %bf.clear.i.i.i3250 = and i8 %bf.load.i.i.i3249, 1
+  %tobool.i.not.i.i3251 = icmp eq i8 %bf.clear.i.i.i3250, 0
+  br i1 %tobool.i.not.i.i3251, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3258, label %if.then.i2.i3254
 
-if.then.i2.i3255:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3253
-  %__data_.i.i.i3254 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 5, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %557 = load ptr, ptr %__data_.i.i.i3254, align 8, !tbaa !5
+if.then.i2.i3254:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3252
+  %__data_.i.i.i3253 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 5, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %557 = load ptr, ptr %__data_.i.i.i3253, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %557) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3259
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3258
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3259: ; preds = %if.then.i2.i3255, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3253
-  %bf.load.i.i3.i3256 = load i8, ptr %arrayinit.element23.i591, align 8
-  %bf.clear.i.i4.i3257 = and i8 %bf.load.i.i3.i3256, 1
-  %tobool.i.not.i5.i3258 = icmp eq i8 %bf.clear.i.i4.i3257, 0
-  br i1 %tobool.i.not.i5.i3258, label %_ZN8TestCaseD2Ev.exit3262, label %if.then.i7.i3261
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3258: ; preds = %if.then.i2.i3254, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3252
+  %bf.load.i.i3.i3255 = load i8, ptr %arrayinit.element23.i591, align 8
+  %bf.clear.i.i4.i3256 = and i8 %bf.load.i.i3.i3255, 1
+  %tobool.i.not.i5.i3257 = icmp eq i8 %bf.clear.i.i4.i3256, 0
+  br i1 %tobool.i.not.i5.i3257, label %_ZN8TestCaseD2Ev.exit3261, label %if.then.i7.i3260
 
-if.then.i7.i3261:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3259
-  %__data_.i.i6.i3260 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 5, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %558 = load ptr, ptr %__data_.i.i6.i3260, align 8, !tbaa !5
+if.then.i7.i3260:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3258
+  %__data_.i.i6.i3259 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 5, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %558 = load ptr, ptr %__data_.i.i6.i3259, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %558) #25
-  br label %_ZN8TestCaseD2Ev.exit3262
+  br label %_ZN8TestCaseD2Ev.exit3261
 
-_ZN8TestCaseD2Ev.exit3262:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3259, %if.then.i7.i3261
-  %__cntrl_.i.i3219 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 4, i32 3, i32 1
-  %559 = load ptr, ptr %__cntrl_.i.i3219, align 8, !tbaa !98
-  %tobool.not.i.i3220 = icmp eq ptr %559, null
-  br i1 %tobool.not.i.i3220, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3231, label %if.then.i.i3223
+_ZN8TestCaseD2Ev.exit3261:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3258, %if.then.i7.i3260
+  %__cntrl_.i.i3218 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 4, i32 3, i32 1
+  %559 = load ptr, ptr %__cntrl_.i.i3218, align 8, !tbaa !98
+  %tobool.not.i.i3219 = icmp eq ptr %559, null
+  br i1 %tobool.not.i.i3219, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3230, label %if.then.i.i3222
 
-if.then.i.i3223:                                  ; preds = %_ZN8TestCaseD2Ev.exit3262
-  %__shared_owners_.i.i.i.i3221 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %559, i64 0, i32 1
-  %560 = atomicrmw add ptr %__shared_owners_.i.i.i.i3221, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3222 = icmp eq i64 %560, 0
-  br i1 %cmp.i.i.i.i3222, label %if.then.i.i.i3226, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3231
+if.then.i.i3222:                                  ; preds = %_ZN8TestCaseD2Ev.exit3261
+  %__shared_owners_.i.i.i.i3220 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %559, i64 0, i32 1
+  %560 = atomicrmw add ptr %__shared_owners_.i.i.i.i3220, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3221 = icmp eq i64 %560, 0
+  br i1 %cmp.i.i.i.i3221, label %if.then.i.i.i3225, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3230
 
-if.then.i.i.i3226:                                ; preds = %if.then.i.i3223
-  %vtable.i.i.i.i3224 = load ptr, ptr %559, align 8, !tbaa !24
-  %vfn.i.i.i.i3225 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3224, i64 2
-  %561 = load ptr, ptr %vfn.i.i.i.i3225, align 8
+if.then.i.i.i3225:                                ; preds = %if.then.i.i3222
+  %vtable.i.i.i.i3223 = load ptr, ptr %559, align 8, !tbaa !24
+  %vfn.i.i.i.i3224 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3223, i64 2
+  %561 = load ptr, ptr %vfn.i.i.i.i3224, align 8
   call void %561(ptr noundef nonnull align 8 dereferenceable(16) %559) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %559) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3231
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3230
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3231: ; preds = %if.then.i.i.i3226, %if.then.i.i3223, %_ZN8TestCaseD2Ev.exit3262
-  %substituted_regex.i3227 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 4, i32 2
-  %bf.load.i.i.i3228 = load i8, ptr %substituted_regex.i3227, align 8
-  %bf.clear.i.i.i3229 = and i8 %bf.load.i.i.i3228, 1
-  %tobool.i.not.i.i3230 = icmp eq i8 %bf.clear.i.i.i3229, 0
-  br i1 %tobool.i.not.i.i3230, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3237, label %if.then.i2.i3233
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3230: ; preds = %if.then.i.i.i3225, %if.then.i.i3222, %_ZN8TestCaseD2Ev.exit3261
+  %substituted_regex.i3226 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 4, i32 2
+  %bf.load.i.i.i3227 = load i8, ptr %substituted_regex.i3226, align 8
+  %bf.clear.i.i.i3228 = and i8 %bf.load.i.i.i3227, 1
+  %tobool.i.not.i.i3229 = icmp eq i8 %bf.clear.i.i.i3228, 0
+  br i1 %tobool.i.not.i.i3229, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3236, label %if.then.i2.i3232
 
-if.then.i2.i3233:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3231
-  %__data_.i.i.i3232 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %562 = load ptr, ptr %__data_.i.i.i3232, align 8, !tbaa !5
+if.then.i2.i3232:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3230
+  %__data_.i.i.i3231 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %562 = load ptr, ptr %__data_.i.i.i3231, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %562) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3237
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3236
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3237: ; preds = %if.then.i2.i3233, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3231
-  %bf.load.i.i3.i3234 = load i8, ptr %arrayinit.element18.i589, align 8
-  %bf.clear.i.i4.i3235 = and i8 %bf.load.i.i3.i3234, 1
-  %tobool.i.not.i5.i3236 = icmp eq i8 %bf.clear.i.i4.i3235, 0
-  br i1 %tobool.i.not.i5.i3236, label %_ZN8TestCaseD2Ev.exit3240, label %if.then.i7.i3239
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3236: ; preds = %if.then.i2.i3232, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3230
+  %bf.load.i.i3.i3233 = load i8, ptr %arrayinit.element18.i589, align 8
+  %bf.clear.i.i4.i3234 = and i8 %bf.load.i.i3.i3233, 1
+  %tobool.i.not.i5.i3235 = icmp eq i8 %bf.clear.i.i4.i3234, 0
+  br i1 %tobool.i.not.i5.i3235, label %_ZN8TestCaseD2Ev.exit3239, label %if.then.i7.i3238
 
-if.then.i7.i3239:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3237
-  %__data_.i.i6.i3238 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %563 = load ptr, ptr %__data_.i.i6.i3238, align 8, !tbaa !5
+if.then.i7.i3238:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3236
+  %__data_.i.i6.i3237 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %563 = load ptr, ptr %__data_.i.i6.i3237, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %563) #25
-  br label %_ZN8TestCaseD2Ev.exit3240
+  br label %_ZN8TestCaseD2Ev.exit3239
 
-_ZN8TestCaseD2Ev.exit3240:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3237, %if.then.i7.i3239
-  %__cntrl_.i.i3197 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 3, i32 3, i32 1
-  %564 = load ptr, ptr %__cntrl_.i.i3197, align 8, !tbaa !98
-  %tobool.not.i.i3198 = icmp eq ptr %564, null
-  br i1 %tobool.not.i.i3198, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3209, label %if.then.i.i3201
+_ZN8TestCaseD2Ev.exit3239:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3236, %if.then.i7.i3238
+  %__cntrl_.i.i3196 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 3, i32 3, i32 1
+  %564 = load ptr, ptr %__cntrl_.i.i3196, align 8, !tbaa !98
+  %tobool.not.i.i3197 = icmp eq ptr %564, null
+  br i1 %tobool.not.i.i3197, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3208, label %if.then.i.i3200
 
-if.then.i.i3201:                                  ; preds = %_ZN8TestCaseD2Ev.exit3240
-  %__shared_owners_.i.i.i.i3199 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %564, i64 0, i32 1
-  %565 = atomicrmw add ptr %__shared_owners_.i.i.i.i3199, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3200 = icmp eq i64 %565, 0
-  br i1 %cmp.i.i.i.i3200, label %if.then.i.i.i3204, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3209
+if.then.i.i3200:                                  ; preds = %_ZN8TestCaseD2Ev.exit3239
+  %__shared_owners_.i.i.i.i3198 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %564, i64 0, i32 1
+  %565 = atomicrmw add ptr %__shared_owners_.i.i.i.i3198, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3199 = icmp eq i64 %565, 0
+  br i1 %cmp.i.i.i.i3199, label %if.then.i.i.i3203, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3208
 
-if.then.i.i.i3204:                                ; preds = %if.then.i.i3201
-  %vtable.i.i.i.i3202 = load ptr, ptr %564, align 8, !tbaa !24
-  %vfn.i.i.i.i3203 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3202, i64 2
-  %566 = load ptr, ptr %vfn.i.i.i.i3203, align 8
+if.then.i.i.i3203:                                ; preds = %if.then.i.i3200
+  %vtable.i.i.i.i3201 = load ptr, ptr %564, align 8, !tbaa !24
+  %vfn.i.i.i.i3202 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3201, i64 2
+  %566 = load ptr, ptr %vfn.i.i.i.i3202, align 8
   call void %566(ptr noundef nonnull align 8 dereferenceable(16) %564) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %564) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3209
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3208
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3209: ; preds = %if.then.i.i.i3204, %if.then.i.i3201, %_ZN8TestCaseD2Ev.exit3240
-  %substituted_regex.i3205 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 3, i32 2
-  %bf.load.i.i.i3206 = load i8, ptr %substituted_regex.i3205, align 8
-  %bf.clear.i.i.i3207 = and i8 %bf.load.i.i.i3206, 1
-  %tobool.i.not.i.i3208 = icmp eq i8 %bf.clear.i.i.i3207, 0
-  br i1 %tobool.i.not.i.i3208, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3215, label %if.then.i2.i3211
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3208: ; preds = %if.then.i.i.i3203, %if.then.i.i3200, %_ZN8TestCaseD2Ev.exit3239
+  %substituted_regex.i3204 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 3, i32 2
+  %bf.load.i.i.i3205 = load i8, ptr %substituted_regex.i3204, align 8
+  %bf.clear.i.i.i3206 = and i8 %bf.load.i.i.i3205, 1
+  %tobool.i.not.i.i3207 = icmp eq i8 %bf.clear.i.i.i3206, 0
+  br i1 %tobool.i.not.i.i3207, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3214, label %if.then.i2.i3210
 
-if.then.i2.i3211:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3209
-  %__data_.i.i.i3210 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %567 = load ptr, ptr %__data_.i.i.i3210, align 8, !tbaa !5
+if.then.i2.i3210:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3208
+  %__data_.i.i.i3209 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %567 = load ptr, ptr %__data_.i.i.i3209, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %567) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3215
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3214
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3215: ; preds = %if.then.i2.i3211, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3209
-  %bf.load.i.i3.i3212 = load i8, ptr %arrayinit.element13.i587, align 8
-  %bf.clear.i.i4.i3213 = and i8 %bf.load.i.i3.i3212, 1
-  %tobool.i.not.i5.i3214 = icmp eq i8 %bf.clear.i.i4.i3213, 0
-  br i1 %tobool.i.not.i5.i3214, label %_ZN8TestCaseD2Ev.exit3218, label %if.then.i7.i3217
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3214: ; preds = %if.then.i2.i3210, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3208
+  %bf.load.i.i3.i3211 = load i8, ptr %arrayinit.element13.i587, align 8
+  %bf.clear.i.i4.i3212 = and i8 %bf.load.i.i3.i3211, 1
+  %tobool.i.not.i5.i3213 = icmp eq i8 %bf.clear.i.i4.i3212, 0
+  br i1 %tobool.i.not.i5.i3213, label %_ZN8TestCaseD2Ev.exit3217, label %if.then.i7.i3216
 
-if.then.i7.i3217:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3215
-  %__data_.i.i6.i3216 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %568 = load ptr, ptr %__data_.i.i6.i3216, align 8, !tbaa !5
+if.then.i7.i3216:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3214
+  %__data_.i.i6.i3215 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %568 = load ptr, ptr %__data_.i.i6.i3215, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %568) #25
-  br label %_ZN8TestCaseD2Ev.exit3218
+  br label %_ZN8TestCaseD2Ev.exit3217
 
-_ZN8TestCaseD2Ev.exit3218:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3215, %if.then.i7.i3217
-  %__cntrl_.i.i3175 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 2, i32 3, i32 1
-  %569 = load ptr, ptr %__cntrl_.i.i3175, align 8, !tbaa !98
-  %tobool.not.i.i3176 = icmp eq ptr %569, null
-  br i1 %tobool.not.i.i3176, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3187, label %if.then.i.i3179
+_ZN8TestCaseD2Ev.exit3217:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3214, %if.then.i7.i3216
+  %__cntrl_.i.i3174 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 2, i32 3, i32 1
+  %569 = load ptr, ptr %__cntrl_.i.i3174, align 8, !tbaa !98
+  %tobool.not.i.i3175 = icmp eq ptr %569, null
+  br i1 %tobool.not.i.i3175, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3186, label %if.then.i.i3178
 
-if.then.i.i3179:                                  ; preds = %_ZN8TestCaseD2Ev.exit3218
-  %__shared_owners_.i.i.i.i3177 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %569, i64 0, i32 1
-  %570 = atomicrmw add ptr %__shared_owners_.i.i.i.i3177, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3178 = icmp eq i64 %570, 0
-  br i1 %cmp.i.i.i.i3178, label %if.then.i.i.i3182, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3187
+if.then.i.i3178:                                  ; preds = %_ZN8TestCaseD2Ev.exit3217
+  %__shared_owners_.i.i.i.i3176 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %569, i64 0, i32 1
+  %570 = atomicrmw add ptr %__shared_owners_.i.i.i.i3176, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3177 = icmp eq i64 %570, 0
+  br i1 %cmp.i.i.i.i3177, label %if.then.i.i.i3181, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3186
 
-if.then.i.i.i3182:                                ; preds = %if.then.i.i3179
-  %vtable.i.i.i.i3180 = load ptr, ptr %569, align 8, !tbaa !24
-  %vfn.i.i.i.i3181 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3180, i64 2
-  %571 = load ptr, ptr %vfn.i.i.i.i3181, align 8
+if.then.i.i.i3181:                                ; preds = %if.then.i.i3178
+  %vtable.i.i.i.i3179 = load ptr, ptr %569, align 8, !tbaa !24
+  %vfn.i.i.i.i3180 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3179, i64 2
+  %571 = load ptr, ptr %vfn.i.i.i.i3180, align 8
   call void %571(ptr noundef nonnull align 8 dereferenceable(16) %569) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %569) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3187
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3186
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3187: ; preds = %if.then.i.i.i3182, %if.then.i.i3179, %_ZN8TestCaseD2Ev.exit3218
-  %substituted_regex.i3183 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 2, i32 2
-  %bf.load.i.i.i3184 = load i8, ptr %substituted_regex.i3183, align 8
-  %bf.clear.i.i.i3185 = and i8 %bf.load.i.i.i3184, 1
-  %tobool.i.not.i.i3186 = icmp eq i8 %bf.clear.i.i.i3185, 0
-  br i1 %tobool.i.not.i.i3186, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3193, label %if.then.i2.i3189
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3186: ; preds = %if.then.i.i.i3181, %if.then.i.i3178, %_ZN8TestCaseD2Ev.exit3217
+  %substituted_regex.i3182 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 2, i32 2
+  %bf.load.i.i.i3183 = load i8, ptr %substituted_regex.i3182, align 8
+  %bf.clear.i.i.i3184 = and i8 %bf.load.i.i.i3183, 1
+  %tobool.i.not.i.i3185 = icmp eq i8 %bf.clear.i.i.i3184, 0
+  br i1 %tobool.i.not.i.i3185, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3192, label %if.then.i2.i3188
 
-if.then.i2.i3189:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3187
-  %__data_.i.i.i3188 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %572 = load ptr, ptr %__data_.i.i.i3188, align 8, !tbaa !5
+if.then.i2.i3188:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3186
+  %__data_.i.i.i3187 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %572 = load ptr, ptr %__data_.i.i.i3187, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %572) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3193
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3192
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3193: ; preds = %if.then.i2.i3189, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3187
-  %bf.load.i.i3.i3190 = load i8, ptr %arrayinit.element8.i585, align 8
-  %bf.clear.i.i4.i3191 = and i8 %bf.load.i.i3.i3190, 1
-  %tobool.i.not.i5.i3192 = icmp eq i8 %bf.clear.i.i4.i3191, 0
-  br i1 %tobool.i.not.i5.i3192, label %_ZN8TestCaseD2Ev.exit3196, label %if.then.i7.i3195
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3192: ; preds = %if.then.i2.i3188, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3186
+  %bf.load.i.i3.i3189 = load i8, ptr %arrayinit.element8.i585, align 8
+  %bf.clear.i.i4.i3190 = and i8 %bf.load.i.i3.i3189, 1
+  %tobool.i.not.i5.i3191 = icmp eq i8 %bf.clear.i.i4.i3190, 0
+  br i1 %tobool.i.not.i5.i3191, label %_ZN8TestCaseD2Ev.exit3195, label %if.then.i7.i3194
 
-if.then.i7.i3195:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3193
-  %__data_.i.i6.i3194 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %573 = load ptr, ptr %__data_.i.i6.i3194, align 8, !tbaa !5
+if.then.i7.i3194:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3192
+  %__data_.i.i6.i3193 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %573 = load ptr, ptr %__data_.i.i6.i3193, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %573) #25
-  br label %_ZN8TestCaseD2Ev.exit3196
+  br label %_ZN8TestCaseD2Ev.exit3195
 
-_ZN8TestCaseD2Ev.exit3196:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3193, %if.then.i7.i3195
-  %__cntrl_.i.i3153 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 1, i32 3, i32 1
-  %574 = load ptr, ptr %__cntrl_.i.i3153, align 8, !tbaa !98
-  %tobool.not.i.i3154 = icmp eq ptr %574, null
-  br i1 %tobool.not.i.i3154, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3165, label %if.then.i.i3157
+_ZN8TestCaseD2Ev.exit3195:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3192, %if.then.i7.i3194
+  %__cntrl_.i.i3152 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 1, i32 3, i32 1
+  %574 = load ptr, ptr %__cntrl_.i.i3152, align 8, !tbaa !98
+  %tobool.not.i.i3153 = icmp eq ptr %574, null
+  br i1 %tobool.not.i.i3153, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3164, label %if.then.i.i3156
 
-if.then.i.i3157:                                  ; preds = %_ZN8TestCaseD2Ev.exit3196
-  %__shared_owners_.i.i.i.i3155 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %574, i64 0, i32 1
-  %575 = atomicrmw add ptr %__shared_owners_.i.i.i.i3155, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3156 = icmp eq i64 %575, 0
-  br i1 %cmp.i.i.i.i3156, label %if.then.i.i.i3160, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3165
+if.then.i.i3156:                                  ; preds = %_ZN8TestCaseD2Ev.exit3195
+  %__shared_owners_.i.i.i.i3154 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %574, i64 0, i32 1
+  %575 = atomicrmw add ptr %__shared_owners_.i.i.i.i3154, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3155 = icmp eq i64 %575, 0
+  br i1 %cmp.i.i.i.i3155, label %if.then.i.i.i3159, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3164
 
-if.then.i.i.i3160:                                ; preds = %if.then.i.i3157
-  %vtable.i.i.i.i3158 = load ptr, ptr %574, align 8, !tbaa !24
-  %vfn.i.i.i.i3159 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3158, i64 2
-  %576 = load ptr, ptr %vfn.i.i.i.i3159, align 8
+if.then.i.i.i3159:                                ; preds = %if.then.i.i3156
+  %vtable.i.i.i.i3157 = load ptr, ptr %574, align 8, !tbaa !24
+  %vfn.i.i.i.i3158 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3157, i64 2
+  %576 = load ptr, ptr %vfn.i.i.i.i3158, align 8
   call void %576(ptr noundef nonnull align 8 dereferenceable(16) %574) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %574) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3165
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3164
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3165: ; preds = %if.then.i.i.i3160, %if.then.i.i3157, %_ZN8TestCaseD2Ev.exit3196
-  %substituted_regex.i3161 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 1, i32 2
-  %bf.load.i.i.i3162 = load i8, ptr %substituted_regex.i3161, align 8
-  %bf.clear.i.i.i3163 = and i8 %bf.load.i.i.i3162, 1
-  %tobool.i.not.i.i3164 = icmp eq i8 %bf.clear.i.i.i3163, 0
-  br i1 %tobool.i.not.i.i3164, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3171, label %if.then.i2.i3167
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3164: ; preds = %if.then.i.i.i3159, %if.then.i.i3156, %_ZN8TestCaseD2Ev.exit3195
+  %substituted_regex.i3160 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 1, i32 2
+  %bf.load.i.i.i3161 = load i8, ptr %substituted_regex.i3160, align 8
+  %bf.clear.i.i.i3162 = and i8 %bf.load.i.i.i3161, 1
+  %tobool.i.not.i.i3163 = icmp eq i8 %bf.clear.i.i.i3162, 0
+  br i1 %tobool.i.not.i.i3163, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3170, label %if.then.i2.i3166
 
-if.then.i2.i3167:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3165
-  %__data_.i.i.i3166 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %577 = load ptr, ptr %__data_.i.i.i3166, align 8, !tbaa !5
+if.then.i2.i3166:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3164
+  %__data_.i.i.i3165 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %577 = load ptr, ptr %__data_.i.i.i3165, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %577) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3171
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3170
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3171: ; preds = %if.then.i2.i3167, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3165
-  %bf.load.i.i3.i3168 = load i8, ptr %arrayinit.element.i583, align 8
-  %bf.clear.i.i4.i3169 = and i8 %bf.load.i.i3.i3168, 1
-  %tobool.i.not.i5.i3170 = icmp eq i8 %bf.clear.i.i4.i3169, 0
-  br i1 %tobool.i.not.i5.i3170, label %_ZN8TestCaseD2Ev.exit3174, label %if.then.i7.i3173
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3170: ; preds = %if.then.i2.i3166, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3164
+  %bf.load.i.i3.i3167 = load i8, ptr %arrayinit.element.i583, align 8
+  %bf.clear.i.i4.i3168 = and i8 %bf.load.i.i3.i3167, 1
+  %tobool.i.not.i5.i3169 = icmp eq i8 %bf.clear.i.i4.i3168, 0
+  br i1 %tobool.i.not.i5.i3169, label %_ZN8TestCaseD2Ev.exit3173, label %if.then.i7.i3172
 
-if.then.i7.i3173:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3171
-  %__data_.i.i6.i3172 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %578 = load ptr, ptr %__data_.i.i6.i3172, align 8, !tbaa !5
+if.then.i7.i3172:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3170
+  %__data_.i.i6.i3171 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %578 = load ptr, ptr %__data_.i.i6.i3171, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %578) #25
-  br label %_ZN8TestCaseD2Ev.exit3174
+  br label %_ZN8TestCaseD2Ev.exit3173
 
-_ZN8TestCaseD2Ev.exit3174:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3171, %if.then.i7.i3173
-  %__cntrl_.i.i3131 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 0, i32 3, i32 1
-  %579 = load ptr, ptr %__cntrl_.i.i3131, align 8, !tbaa !98
-  %tobool.not.i.i3132 = icmp eq ptr %579, null
-  br i1 %tobool.not.i.i3132, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3143, label %if.then.i.i3135
+_ZN8TestCaseD2Ev.exit3173:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3170, %if.then.i7.i3172
+  %__cntrl_.i.i3130 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 0, i32 3, i32 1
+  %579 = load ptr, ptr %__cntrl_.i.i3130, align 8, !tbaa !98
+  %tobool.not.i.i3131 = icmp eq ptr %579, null
+  br i1 %tobool.not.i.i3131, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3142, label %if.then.i.i3134
 
-if.then.i.i3135:                                  ; preds = %_ZN8TestCaseD2Ev.exit3174
-  %__shared_owners_.i.i.i.i3133 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %579, i64 0, i32 1
-  %580 = atomicrmw add ptr %__shared_owners_.i.i.i.i3133, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3134 = icmp eq i64 %580, 0
-  br i1 %cmp.i.i.i.i3134, label %if.then.i.i.i3138, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3143
+if.then.i.i3134:                                  ; preds = %_ZN8TestCaseD2Ev.exit3173
+  %__shared_owners_.i.i.i.i3132 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %579, i64 0, i32 1
+  %580 = atomicrmw add ptr %__shared_owners_.i.i.i.i3132, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3133 = icmp eq i64 %580, 0
+  br i1 %cmp.i.i.i.i3133, label %if.then.i.i.i3137, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3142
 
-if.then.i.i.i3138:                                ; preds = %if.then.i.i3135
-  %vtable.i.i.i.i3136 = load ptr, ptr %579, align 8, !tbaa !24
-  %vfn.i.i.i.i3137 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3136, i64 2
-  %581 = load ptr, ptr %vfn.i.i.i.i3137, align 8
+if.then.i.i.i3137:                                ; preds = %if.then.i.i3134
+  %vtable.i.i.i.i3135 = load ptr, ptr %579, align 8, !tbaa !24
+  %vfn.i.i.i.i3136 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3135, i64 2
+  %581 = load ptr, ptr %vfn.i.i.i.i3136, align 8
   call void %581(ptr noundef nonnull align 8 dereferenceable(16) %579) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %579) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3143
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3142
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3143: ; preds = %if.then.i.i.i3138, %if.then.i.i3135, %_ZN8TestCaseD2Ev.exit3174
-  %substituted_regex.i3139 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 0, i32 2
-  %bf.load.i.i.i3140 = load i8, ptr %substituted_regex.i3139, align 8
-  %bf.clear.i.i.i3141 = and i8 %bf.load.i.i.i3140, 1
-  %tobool.i.not.i.i3142 = icmp eq i8 %bf.clear.i.i.i3141, 0
-  br i1 %tobool.i.not.i.i3142, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3149, label %if.then.i2.i3145
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3142: ; preds = %if.then.i.i.i3137, %if.then.i.i3134, %_ZN8TestCaseD2Ev.exit3173
+  %substituted_regex.i3138 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 0, i32 2
+  %bf.load.i.i.i3139 = load i8, ptr %substituted_regex.i3138, align 8
+  %bf.clear.i.i.i3140 = and i8 %bf.load.i.i.i3139, 1
+  %tobool.i.not.i.i3141 = icmp eq i8 %bf.clear.i.i.i3140, 0
+  br i1 %tobool.i.not.i.i3141, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3148, label %if.then.i2.i3144
 
-if.then.i2.i3145:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3143
-  %__data_.i.i.i3144 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %582 = load ptr, ptr %__data_.i.i.i3144, align 8, !tbaa !5
+if.then.i2.i3144:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3142
+  %__data_.i.i.i3143 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i559, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %582 = load ptr, ptr %__data_.i.i.i3143, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %582) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3149
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3148
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3149: ; preds = %if.then.i2.i3145, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3143
-  %bf.load.i.i3.i3146 = load i8, ptr %ref.tmp.i559, align 8
-  %bf.clear.i.i4.i3147 = and i8 %bf.load.i.i3.i3146, 1
-  %tobool.i.not.i5.i3148 = icmp eq i8 %bf.clear.i.i4.i3147, 0
-  br i1 %tobool.i.not.i5.i3148, label %ehcleanup.i766, label %if.then.i7.i3151
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3148: ; preds = %if.then.i2.i3144, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3142
+  %bf.load.i.i3.i3145 = load i8, ptr %ref.tmp.i559, align 8
+  %bf.clear.i.i4.i3146 = and i8 %bf.load.i.i3.i3145, 1
+  %tobool.i.not.i5.i3147 = icmp eq i8 %bf.clear.i.i4.i3146, 0
+  br i1 %tobool.i.not.i5.i3147, label %ehcleanup.i766, label %if.then.i7.i3150
 
-if.then.i7.i3151:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3149
-  %__data_.i.i6.i3150 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i559, i64 0, i32 2
-  %583 = load ptr, ptr %__data_.i.i6.i3150, align 8, !tbaa !5
+if.then.i7.i3150:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3148
+  %__data_.i.i6.i3149 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i559, i64 0, i32 2
+  %583 = load ptr, ptr %__data_.i.i6.i3149, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %583) #25
   br label %ehcleanup.i766
 
-ehcleanup.i766:                                   ; preds = %if.then.i7.i3151, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3149, %lpad91.i
-  %.pn.i761 = phi { ptr, i32 } [ %487, %lpad91.i ], [ %488, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3149 ], [ %488, %if.then.i7.i3151 ]
-  %cleanup.isactive.0.i762 = phi i1 [ true, %lpad91.i ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3149 ], [ false, %if.then.i7.i3151 ]
+ehcleanup.i766:                                   ; preds = %if.then.i7.i3150, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3148, %lpad91.i
+  %.pn.i761 = phi { ptr, i32 } [ %487, %lpad91.i ], [ %488, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3148 ], [ %488, %if.then.i7.i3150 ]
+  %cleanup.isactive.0.i762 = phi i1 [ true, %lpad91.i ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3148 ], [ false, %if.then.i7.i3150 ]
   %bf.load.i.i673.i763 = load i8, ptr %agg.tmp89.i, align 8
   %bf.clear.i.i674.i764 = and i8 %bf.load.i.i673.i763, 1
   %tobool.i.not.i675.i765 = icmp eq i8 %bf.clear.i.i674.i764, 0
@@ -11571,58 +11571,58 @@ ehcleanup120.i:                                   ; preds = %if.then.i785.i, %eh
   %or.cond.not.i878 = select i1 %cleanup.isactive.18.i, i1 %arraydestroy.isempty.i877, i1 false
   br i1 %or.cond.not.i878, label %arraydestroy.body121.i, label %cleanup.done.i879
 
-arraydestroy.body121.i:                           ; preds = %ehcleanup120.i, %_ZN8TestCaseD2Ev.exit3130
-  %arraydestroy.elementPast122.i = phi ptr [ %arraydestroy.element123.i, %_ZN8TestCaseD2Ev.exit3130 ], [ %arrayinit.endOfInit.35.i, %ehcleanup120.i ]
+arraydestroy.body121.i:                           ; preds = %ehcleanup120.i, %_ZN8TestCaseD2Ev.exit3129
+  %arraydestroy.elementPast122.i = phi ptr [ %arraydestroy.element123.i, %_ZN8TestCaseD2Ev.exit3129 ], [ %arrayinit.endOfInit.35.i, %ehcleanup120.i ]
   %arraydestroy.element123.i = getelementptr inbounds %struct.TestCase, ptr %arraydestroy.elementPast122.i, i64 -1
-  %__cntrl_.i.i3109 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i, i64 -1, i32 3, i32 1
-  %603 = load ptr, ptr %__cntrl_.i.i3109, align 8, !tbaa !98
-  %tobool.not.i.i3110 = icmp eq ptr %603, null
-  br i1 %tobool.not.i.i3110, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3121, label %if.then.i.i3113
+  %__cntrl_.i.i3108 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i, i64 -1, i32 3, i32 1
+  %603 = load ptr, ptr %__cntrl_.i.i3108, align 8, !tbaa !98
+  %tobool.not.i.i3109 = icmp eq ptr %603, null
+  br i1 %tobool.not.i.i3109, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3120, label %if.then.i.i3112
 
-if.then.i.i3113:                                  ; preds = %arraydestroy.body121.i
-  %__shared_owners_.i.i.i.i3111 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %603, i64 0, i32 1
-  %604 = atomicrmw add ptr %__shared_owners_.i.i.i.i3111, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3112 = icmp eq i64 %604, 0
-  br i1 %cmp.i.i.i.i3112, label %if.then.i.i.i3116, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3121
+if.then.i.i3112:                                  ; preds = %arraydestroy.body121.i
+  %__shared_owners_.i.i.i.i3110 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %603, i64 0, i32 1
+  %604 = atomicrmw add ptr %__shared_owners_.i.i.i.i3110, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3111 = icmp eq i64 %604, 0
+  br i1 %cmp.i.i.i.i3111, label %if.then.i.i.i3115, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3120
 
-if.then.i.i.i3116:                                ; preds = %if.then.i.i3113
-  %vtable.i.i.i.i3114 = load ptr, ptr %603, align 8, !tbaa !24
-  %vfn.i.i.i.i3115 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3114, i64 2
-  %605 = load ptr, ptr %vfn.i.i.i.i3115, align 8
+if.then.i.i.i3115:                                ; preds = %if.then.i.i3112
+  %vtable.i.i.i.i3113 = load ptr, ptr %603, align 8, !tbaa !24
+  %vfn.i.i.i.i3114 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3113, i64 2
+  %605 = load ptr, ptr %vfn.i.i.i.i3114, align 8
   call void %605(ptr noundef nonnull align 8 dereferenceable(16) %603) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %603) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3121
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3120
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3121: ; preds = %if.then.i.i.i3116, %if.then.i.i3113, %arraydestroy.body121.i
-  %substituted_regex.i3117 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i, i64 -1, i32 2
-  %bf.load.i.i.i3118 = load i8, ptr %substituted_regex.i3117, align 8
-  %bf.clear.i.i.i3119 = and i8 %bf.load.i.i.i3118, 1
-  %tobool.i.not.i.i3120 = icmp eq i8 %bf.clear.i.i.i3119, 0
-  br i1 %tobool.i.not.i.i3120, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3127, label %if.then.i2.i3123
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3120: ; preds = %if.then.i.i.i3115, %if.then.i.i3112, %arraydestroy.body121.i
+  %substituted_regex.i3116 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i, i64 -1, i32 2
+  %bf.load.i.i.i3117 = load i8, ptr %substituted_regex.i3116, align 8
+  %bf.clear.i.i.i3118 = and i8 %bf.load.i.i.i3117, 1
+  %tobool.i.not.i.i3119 = icmp eq i8 %bf.clear.i.i.i3118, 0
+  br i1 %tobool.i.not.i.i3119, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3126, label %if.then.i2.i3122
 
-if.then.i2.i3123:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3121
-  %__data_.i.i.i3122 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %606 = load ptr, ptr %__data_.i.i.i3122, align 8, !tbaa !5
+if.then.i2.i3122:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3120
+  %__data_.i.i.i3121 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %606 = load ptr, ptr %__data_.i.i.i3121, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %606) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3127
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3126
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3127: ; preds = %if.then.i2.i3123, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3121
-  %bf.load.i.i3.i3124 = load i8, ptr %arraydestroy.element123.i, align 8
-  %bf.clear.i.i4.i3125 = and i8 %bf.load.i.i3.i3124, 1
-  %tobool.i.not.i5.i3126 = icmp eq i8 %bf.clear.i.i4.i3125, 0
-  br i1 %tobool.i.not.i5.i3126, label %_ZN8TestCaseD2Ev.exit3130, label %if.then.i7.i3129
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3126: ; preds = %if.then.i2.i3122, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3120
+  %bf.load.i.i3.i3123 = load i8, ptr %arraydestroy.element123.i, align 8
+  %bf.clear.i.i4.i3124 = and i8 %bf.load.i.i3.i3123, 1
+  %tobool.i.not.i5.i3125 = icmp eq i8 %bf.clear.i.i4.i3124, 0
+  br i1 %tobool.i.not.i5.i3125, label %_ZN8TestCaseD2Ev.exit3129, label %if.then.i7.i3128
 
-if.then.i7.i3129:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3127
-  %__data_.i.i6.i3128 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %607 = load ptr, ptr %__data_.i.i6.i3128, align 8, !tbaa !5
+if.then.i7.i3128:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3126
+  %__data_.i.i6.i3127 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %607 = load ptr, ptr %__data_.i.i6.i3127, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %607) #25
-  br label %_ZN8TestCaseD2Ev.exit3130
+  br label %_ZN8TestCaseD2Ev.exit3129
 
-_ZN8TestCaseD2Ev.exit3130:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3127, %if.then.i7.i3129
+_ZN8TestCaseD2Ev.exit3129:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3126, %if.then.i7.i3128
   %arraydestroy.done124.i = icmp eq ptr %arraydestroy.element123.i, %ref.tmp.i559
   br i1 %arraydestroy.done124.i, label %cleanup.done.i879, label %arraydestroy.body121.i
 
-cleanup.done.i879:                                ; preds = %_ZN8TestCaseD2Ev.exit3130, %ehcleanup120.i
+cleanup.done.i879:                                ; preds = %_ZN8TestCaseD2Ev.exit3129, %ehcleanup120.i
   call void @llvm.lifetime.end.p0(i64 1368, ptr nonnull %ref.tmp.i559) #24
   br label %common.resume
 
@@ -12390,863 +12390,863 @@ lpad91.i1204:                                     ; preds = %invoke.cont87.i1043
 lpad93.i1223:                                     ; preds = %invoke.cont92.i1045
   %671 = landingpad { ptr, i32 }
           cleanup
-  %__cntrl_.i.i3967 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 18, i32 3, i32 1
-  %672 = load ptr, ptr %__cntrl_.i.i3967, align 8, !tbaa !98
-  %tobool.not.i.i3968 = icmp eq ptr %672, null
-  br i1 %tobool.not.i.i3968, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3979, label %if.then.i.i3971
+  %__cntrl_.i.i3966 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 18, i32 3, i32 1
+  %672 = load ptr, ptr %__cntrl_.i.i3966, align 8, !tbaa !98
+  %tobool.not.i.i3967 = icmp eq ptr %672, null
+  br i1 %tobool.not.i.i3967, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3978, label %if.then.i.i3970
 
-if.then.i.i3971:                                  ; preds = %lpad93.i1223
-  %__shared_owners_.i.i.i.i3969 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %672, i64 0, i32 1
-  %673 = atomicrmw add ptr %__shared_owners_.i.i.i.i3969, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3970 = icmp eq i64 %673, 0
-  br i1 %cmp.i.i.i.i3970, label %if.then.i.i.i3974, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3979
+if.then.i.i3970:                                  ; preds = %lpad93.i1223
+  %__shared_owners_.i.i.i.i3968 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %672, i64 0, i32 1
+  %673 = atomicrmw add ptr %__shared_owners_.i.i.i.i3968, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3969 = icmp eq i64 %673, 0
+  br i1 %cmp.i.i.i.i3969, label %if.then.i.i.i3973, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3978
 
-if.then.i.i.i3974:                                ; preds = %if.then.i.i3971
-  %vtable.i.i.i.i3972 = load ptr, ptr %672, align 8, !tbaa !24
-  %vfn.i.i.i.i3973 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3972, i64 2
-  %674 = load ptr, ptr %vfn.i.i.i.i3973, align 8
+if.then.i.i.i3973:                                ; preds = %if.then.i.i3970
+  %vtable.i.i.i.i3971 = load ptr, ptr %672, align 8, !tbaa !24
+  %vfn.i.i.i.i3972 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3971, i64 2
+  %674 = load ptr, ptr %vfn.i.i.i.i3972, align 8
   call void %674(ptr noundef nonnull align 8 dereferenceable(16) %672) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %672) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3979
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3978
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3979: ; preds = %if.then.i.i.i3974, %if.then.i.i3971, %lpad93.i1223
-  %substituted_regex.i3975 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 18, i32 2
-  %bf.load.i.i.i3976 = load i8, ptr %substituted_regex.i3975, align 8
-  %bf.clear.i.i.i3977 = and i8 %bf.load.i.i.i3976, 1
-  %tobool.i.not.i.i3978 = icmp eq i8 %bf.clear.i.i.i3977, 0
-  br i1 %tobool.i.not.i.i3978, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3985, label %if.then.i2.i3981
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3978: ; preds = %if.then.i.i.i3973, %if.then.i.i3970, %lpad93.i1223
+  %substituted_regex.i3974 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 18, i32 2
+  %bf.load.i.i.i3975 = load i8, ptr %substituted_regex.i3974, align 8
+  %bf.clear.i.i.i3976 = and i8 %bf.load.i.i.i3975, 1
+  %tobool.i.not.i.i3977 = icmp eq i8 %bf.clear.i.i.i3976, 0
+  br i1 %tobool.i.not.i.i3977, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3984, label %if.then.i2.i3980
 
-if.then.i2.i3981:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3979
-  %__data_.i.i.i3980 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 18, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %675 = load ptr, ptr %__data_.i.i.i3980, align 8, !tbaa !5
+if.then.i2.i3980:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3978
+  %__data_.i.i.i3979 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 18, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %675 = load ptr, ptr %__data_.i.i.i3979, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %675) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3985
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3984
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3985: ; preds = %if.then.i2.i3981, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3979
-  %bf.load.i.i3.i3982 = load i8, ptr %arrayinit.element88.i1038, align 8
-  %bf.clear.i.i4.i3983 = and i8 %bf.load.i.i3.i3982, 1
-  %tobool.i.not.i5.i3984 = icmp eq i8 %bf.clear.i.i4.i3983, 0
-  br i1 %tobool.i.not.i5.i3984, label %_ZN8TestCaseD2Ev.exit3988, label %if.then.i7.i3987
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3984: ; preds = %if.then.i2.i3980, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3978
+  %bf.load.i.i3.i3981 = load i8, ptr %arrayinit.element88.i1038, align 8
+  %bf.clear.i.i4.i3982 = and i8 %bf.load.i.i3.i3981, 1
+  %tobool.i.not.i5.i3983 = icmp eq i8 %bf.clear.i.i4.i3982, 0
+  br i1 %tobool.i.not.i5.i3983, label %_ZN8TestCaseD2Ev.exit3987, label %if.then.i7.i3986
 
-if.then.i7.i3987:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3985
-  %__data_.i.i6.i3986 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 18, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %676 = load ptr, ptr %__data_.i.i6.i3986, align 8, !tbaa !5
+if.then.i7.i3986:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3984
+  %__data_.i.i6.i3985 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 18, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %676 = load ptr, ptr %__data_.i.i6.i3985, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %676) #25
-  br label %_ZN8TestCaseD2Ev.exit3988
+  br label %_ZN8TestCaseD2Ev.exit3987
 
-_ZN8TestCaseD2Ev.exit3988:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3985, %if.then.i7.i3987
-  %__cntrl_.i.i3945 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 17, i32 3, i32 1
-  %677 = load ptr, ptr %__cntrl_.i.i3945, align 8, !tbaa !98
-  %tobool.not.i.i3946 = icmp eq ptr %677, null
-  br i1 %tobool.not.i.i3946, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3957, label %if.then.i.i3949
+_ZN8TestCaseD2Ev.exit3987:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3984, %if.then.i7.i3986
+  %__cntrl_.i.i3944 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 17, i32 3, i32 1
+  %677 = load ptr, ptr %__cntrl_.i.i3944, align 8, !tbaa !98
+  %tobool.not.i.i3945 = icmp eq ptr %677, null
+  br i1 %tobool.not.i.i3945, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3956, label %if.then.i.i3948
 
-if.then.i.i3949:                                  ; preds = %_ZN8TestCaseD2Ev.exit3988
-  %__shared_owners_.i.i.i.i3947 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %677, i64 0, i32 1
-  %678 = atomicrmw add ptr %__shared_owners_.i.i.i.i3947, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3948 = icmp eq i64 %678, 0
-  br i1 %cmp.i.i.i.i3948, label %if.then.i.i.i3952, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3957
+if.then.i.i3948:                                  ; preds = %_ZN8TestCaseD2Ev.exit3987
+  %__shared_owners_.i.i.i.i3946 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %677, i64 0, i32 1
+  %678 = atomicrmw add ptr %__shared_owners_.i.i.i.i3946, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3947 = icmp eq i64 %678, 0
+  br i1 %cmp.i.i.i.i3947, label %if.then.i.i.i3951, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3956
 
-if.then.i.i.i3952:                                ; preds = %if.then.i.i3949
-  %vtable.i.i.i.i3950 = load ptr, ptr %677, align 8, !tbaa !24
-  %vfn.i.i.i.i3951 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3950, i64 2
-  %679 = load ptr, ptr %vfn.i.i.i.i3951, align 8
+if.then.i.i.i3951:                                ; preds = %if.then.i.i3948
+  %vtable.i.i.i.i3949 = load ptr, ptr %677, align 8, !tbaa !24
+  %vfn.i.i.i.i3950 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3949, i64 2
+  %679 = load ptr, ptr %vfn.i.i.i.i3950, align 8
   call void %679(ptr noundef nonnull align 8 dereferenceable(16) %677) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %677) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3957
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3956
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3957: ; preds = %if.then.i.i.i3952, %if.then.i.i3949, %_ZN8TestCaseD2Ev.exit3988
-  %substituted_regex.i3953 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 17, i32 2
-  %bf.load.i.i.i3954 = load i8, ptr %substituted_regex.i3953, align 8
-  %bf.clear.i.i.i3955 = and i8 %bf.load.i.i.i3954, 1
-  %tobool.i.not.i.i3956 = icmp eq i8 %bf.clear.i.i.i3955, 0
-  br i1 %tobool.i.not.i.i3956, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3963, label %if.then.i2.i3959
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3956: ; preds = %if.then.i.i.i3951, %if.then.i.i3948, %_ZN8TestCaseD2Ev.exit3987
+  %substituted_regex.i3952 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 17, i32 2
+  %bf.load.i.i.i3953 = load i8, ptr %substituted_regex.i3952, align 8
+  %bf.clear.i.i.i3954 = and i8 %bf.load.i.i.i3953, 1
+  %tobool.i.not.i.i3955 = icmp eq i8 %bf.clear.i.i.i3954, 0
+  br i1 %tobool.i.not.i.i3955, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3962, label %if.then.i2.i3958
 
-if.then.i2.i3959:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3957
-  %__data_.i.i.i3958 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 17, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %680 = load ptr, ptr %__data_.i.i.i3958, align 8, !tbaa !5
+if.then.i2.i3958:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3956
+  %__data_.i.i.i3957 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 17, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %680 = load ptr, ptr %__data_.i.i.i3957, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %680) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3963
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3962
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3963: ; preds = %if.then.i2.i3959, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3957
-  %bf.load.i.i3.i3960 = load i8, ptr %arrayinit.element83.i1029, align 8
-  %bf.clear.i.i4.i3961 = and i8 %bf.load.i.i3.i3960, 1
-  %tobool.i.not.i5.i3962 = icmp eq i8 %bf.clear.i.i4.i3961, 0
-  br i1 %tobool.i.not.i5.i3962, label %_ZN8TestCaseD2Ev.exit3966, label %if.then.i7.i3965
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3962: ; preds = %if.then.i2.i3958, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3956
+  %bf.load.i.i3.i3959 = load i8, ptr %arrayinit.element83.i1029, align 8
+  %bf.clear.i.i4.i3960 = and i8 %bf.load.i.i3.i3959, 1
+  %tobool.i.not.i5.i3961 = icmp eq i8 %bf.clear.i.i4.i3960, 0
+  br i1 %tobool.i.not.i5.i3961, label %_ZN8TestCaseD2Ev.exit3965, label %if.then.i7.i3964
 
-if.then.i7.i3965:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3963
-  %__data_.i.i6.i3964 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 17, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %681 = load ptr, ptr %__data_.i.i6.i3964, align 8, !tbaa !5
+if.then.i7.i3964:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3962
+  %__data_.i.i6.i3963 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 17, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %681 = load ptr, ptr %__data_.i.i6.i3963, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %681) #25
-  br label %_ZN8TestCaseD2Ev.exit3966
+  br label %_ZN8TestCaseD2Ev.exit3965
 
-_ZN8TestCaseD2Ev.exit3966:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3963, %if.then.i7.i3965
-  %__cntrl_.i.i3923 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 16, i32 3, i32 1
-  %682 = load ptr, ptr %__cntrl_.i.i3923, align 8, !tbaa !98
-  %tobool.not.i.i3924 = icmp eq ptr %682, null
-  br i1 %tobool.not.i.i3924, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3935, label %if.then.i.i3927
+_ZN8TestCaseD2Ev.exit3965:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3962, %if.then.i7.i3964
+  %__cntrl_.i.i3922 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 16, i32 3, i32 1
+  %682 = load ptr, ptr %__cntrl_.i.i3922, align 8, !tbaa !98
+  %tobool.not.i.i3923 = icmp eq ptr %682, null
+  br i1 %tobool.not.i.i3923, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3934, label %if.then.i.i3926
 
-if.then.i.i3927:                                  ; preds = %_ZN8TestCaseD2Ev.exit3966
-  %__shared_owners_.i.i.i.i3925 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %682, i64 0, i32 1
-  %683 = atomicrmw add ptr %__shared_owners_.i.i.i.i3925, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3926 = icmp eq i64 %683, 0
-  br i1 %cmp.i.i.i.i3926, label %if.then.i.i.i3930, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3935
+if.then.i.i3926:                                  ; preds = %_ZN8TestCaseD2Ev.exit3965
+  %__shared_owners_.i.i.i.i3924 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %682, i64 0, i32 1
+  %683 = atomicrmw add ptr %__shared_owners_.i.i.i.i3924, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3925 = icmp eq i64 %683, 0
+  br i1 %cmp.i.i.i.i3925, label %if.then.i.i.i3929, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3934
 
-if.then.i.i.i3930:                                ; preds = %if.then.i.i3927
-  %vtable.i.i.i.i3928 = load ptr, ptr %682, align 8, !tbaa !24
-  %vfn.i.i.i.i3929 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3928, i64 2
-  %684 = load ptr, ptr %vfn.i.i.i.i3929, align 8
+if.then.i.i.i3929:                                ; preds = %if.then.i.i3926
+  %vtable.i.i.i.i3927 = load ptr, ptr %682, align 8, !tbaa !24
+  %vfn.i.i.i.i3928 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3927, i64 2
+  %684 = load ptr, ptr %vfn.i.i.i.i3928, align 8
   call void %684(ptr noundef nonnull align 8 dereferenceable(16) %682) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %682) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3935
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3934
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3935: ; preds = %if.then.i.i.i3930, %if.then.i.i3927, %_ZN8TestCaseD2Ev.exit3966
-  %substituted_regex.i3931 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 16, i32 2
-  %bf.load.i.i.i3932 = load i8, ptr %substituted_regex.i3931, align 8
-  %bf.clear.i.i.i3933 = and i8 %bf.load.i.i.i3932, 1
-  %tobool.i.not.i.i3934 = icmp eq i8 %bf.clear.i.i.i3933, 0
-  br i1 %tobool.i.not.i.i3934, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3941, label %if.then.i2.i3937
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3934: ; preds = %if.then.i.i.i3929, %if.then.i.i3926, %_ZN8TestCaseD2Ev.exit3965
+  %substituted_regex.i3930 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 16, i32 2
+  %bf.load.i.i.i3931 = load i8, ptr %substituted_regex.i3930, align 8
+  %bf.clear.i.i.i3932 = and i8 %bf.load.i.i.i3931, 1
+  %tobool.i.not.i.i3933 = icmp eq i8 %bf.clear.i.i.i3932, 0
+  br i1 %tobool.i.not.i.i3933, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3940, label %if.then.i2.i3936
 
-if.then.i2.i3937:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3935
-  %__data_.i.i.i3936 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 16, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %685 = load ptr, ptr %__data_.i.i.i3936, align 8, !tbaa !5
+if.then.i2.i3936:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3934
+  %__data_.i.i.i3935 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 16, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %685 = load ptr, ptr %__data_.i.i.i3935, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %685) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3941
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3940
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3941: ; preds = %if.then.i2.i3937, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3935
-  %bf.load.i.i3.i3938 = load i8, ptr %arrayinit.element78.i1020, align 8
-  %bf.clear.i.i4.i3939 = and i8 %bf.load.i.i3.i3938, 1
-  %tobool.i.not.i5.i3940 = icmp eq i8 %bf.clear.i.i4.i3939, 0
-  br i1 %tobool.i.not.i5.i3940, label %_ZN8TestCaseD2Ev.exit3944, label %if.then.i7.i3943
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3940: ; preds = %if.then.i2.i3936, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3934
+  %bf.load.i.i3.i3937 = load i8, ptr %arrayinit.element78.i1020, align 8
+  %bf.clear.i.i4.i3938 = and i8 %bf.load.i.i3.i3937, 1
+  %tobool.i.not.i5.i3939 = icmp eq i8 %bf.clear.i.i4.i3938, 0
+  br i1 %tobool.i.not.i5.i3939, label %_ZN8TestCaseD2Ev.exit3943, label %if.then.i7.i3942
 
-if.then.i7.i3943:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3941
-  %__data_.i.i6.i3942 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 16, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %686 = load ptr, ptr %__data_.i.i6.i3942, align 8, !tbaa !5
+if.then.i7.i3942:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3940
+  %__data_.i.i6.i3941 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 16, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %686 = load ptr, ptr %__data_.i.i6.i3941, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %686) #25
-  br label %_ZN8TestCaseD2Ev.exit3944
+  br label %_ZN8TestCaseD2Ev.exit3943
 
-_ZN8TestCaseD2Ev.exit3944:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3941, %if.then.i7.i3943
-  %__cntrl_.i.i3901 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 15, i32 3, i32 1
-  %687 = load ptr, ptr %__cntrl_.i.i3901, align 8, !tbaa !98
-  %tobool.not.i.i3902 = icmp eq ptr %687, null
-  br i1 %tobool.not.i.i3902, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3913, label %if.then.i.i3905
+_ZN8TestCaseD2Ev.exit3943:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3940, %if.then.i7.i3942
+  %__cntrl_.i.i3900 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 15, i32 3, i32 1
+  %687 = load ptr, ptr %__cntrl_.i.i3900, align 8, !tbaa !98
+  %tobool.not.i.i3901 = icmp eq ptr %687, null
+  br i1 %tobool.not.i.i3901, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3912, label %if.then.i.i3904
 
-if.then.i.i3905:                                  ; preds = %_ZN8TestCaseD2Ev.exit3944
-  %__shared_owners_.i.i.i.i3903 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %687, i64 0, i32 1
-  %688 = atomicrmw add ptr %__shared_owners_.i.i.i.i3903, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3904 = icmp eq i64 %688, 0
-  br i1 %cmp.i.i.i.i3904, label %if.then.i.i.i3908, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3913
+if.then.i.i3904:                                  ; preds = %_ZN8TestCaseD2Ev.exit3943
+  %__shared_owners_.i.i.i.i3902 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %687, i64 0, i32 1
+  %688 = atomicrmw add ptr %__shared_owners_.i.i.i.i3902, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3903 = icmp eq i64 %688, 0
+  br i1 %cmp.i.i.i.i3903, label %if.then.i.i.i3907, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3912
 
-if.then.i.i.i3908:                                ; preds = %if.then.i.i3905
-  %vtable.i.i.i.i3906 = load ptr, ptr %687, align 8, !tbaa !24
-  %vfn.i.i.i.i3907 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3906, i64 2
-  %689 = load ptr, ptr %vfn.i.i.i.i3907, align 8
+if.then.i.i.i3907:                                ; preds = %if.then.i.i3904
+  %vtable.i.i.i.i3905 = load ptr, ptr %687, align 8, !tbaa !24
+  %vfn.i.i.i.i3906 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3905, i64 2
+  %689 = load ptr, ptr %vfn.i.i.i.i3906, align 8
   call void %689(ptr noundef nonnull align 8 dereferenceable(16) %687) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %687) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3913
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3912
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3913: ; preds = %if.then.i.i.i3908, %if.then.i.i3905, %_ZN8TestCaseD2Ev.exit3944
-  %substituted_regex.i3909 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 15, i32 2
-  %bf.load.i.i.i3910 = load i8, ptr %substituted_regex.i3909, align 8
-  %bf.clear.i.i.i3911 = and i8 %bf.load.i.i.i3910, 1
-  %tobool.i.not.i.i3912 = icmp eq i8 %bf.clear.i.i.i3911, 0
-  br i1 %tobool.i.not.i.i3912, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3919, label %if.then.i2.i3915
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3912: ; preds = %if.then.i.i.i3907, %if.then.i.i3904, %_ZN8TestCaseD2Ev.exit3943
+  %substituted_regex.i3908 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 15, i32 2
+  %bf.load.i.i.i3909 = load i8, ptr %substituted_regex.i3908, align 8
+  %bf.clear.i.i.i3910 = and i8 %bf.load.i.i.i3909, 1
+  %tobool.i.not.i.i3911 = icmp eq i8 %bf.clear.i.i.i3910, 0
+  br i1 %tobool.i.not.i.i3911, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3918, label %if.then.i2.i3914
 
-if.then.i2.i3915:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3913
-  %__data_.i.i.i3914 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 15, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %690 = load ptr, ptr %__data_.i.i.i3914, align 8, !tbaa !5
+if.then.i2.i3914:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3912
+  %__data_.i.i.i3913 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 15, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %690 = load ptr, ptr %__data_.i.i.i3913, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %690) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3919
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3918
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3919: ; preds = %if.then.i2.i3915, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3913
-  %bf.load.i.i3.i3916 = load i8, ptr %arrayinit.element73.i1011, align 8
-  %bf.clear.i.i4.i3917 = and i8 %bf.load.i.i3.i3916, 1
-  %tobool.i.not.i5.i3918 = icmp eq i8 %bf.clear.i.i4.i3917, 0
-  br i1 %tobool.i.not.i5.i3918, label %_ZN8TestCaseD2Ev.exit3922, label %if.then.i7.i3921
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3918: ; preds = %if.then.i2.i3914, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3912
+  %bf.load.i.i3.i3915 = load i8, ptr %arrayinit.element73.i1011, align 8
+  %bf.clear.i.i4.i3916 = and i8 %bf.load.i.i3.i3915, 1
+  %tobool.i.not.i5.i3917 = icmp eq i8 %bf.clear.i.i4.i3916, 0
+  br i1 %tobool.i.not.i5.i3917, label %_ZN8TestCaseD2Ev.exit3921, label %if.then.i7.i3920
 
-if.then.i7.i3921:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3919
-  %__data_.i.i6.i3920 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 15, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %691 = load ptr, ptr %__data_.i.i6.i3920, align 8, !tbaa !5
+if.then.i7.i3920:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3918
+  %__data_.i.i6.i3919 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 15, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %691 = load ptr, ptr %__data_.i.i6.i3919, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %691) #25
-  br label %_ZN8TestCaseD2Ev.exit3922
+  br label %_ZN8TestCaseD2Ev.exit3921
 
-_ZN8TestCaseD2Ev.exit3922:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3919, %if.then.i7.i3921
-  %__cntrl_.i.i3879 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 14, i32 3, i32 1
-  %692 = load ptr, ptr %__cntrl_.i.i3879, align 8, !tbaa !98
-  %tobool.not.i.i3880 = icmp eq ptr %692, null
-  br i1 %tobool.not.i.i3880, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3891, label %if.then.i.i3883
+_ZN8TestCaseD2Ev.exit3921:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3918, %if.then.i7.i3920
+  %__cntrl_.i.i3878 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 14, i32 3, i32 1
+  %692 = load ptr, ptr %__cntrl_.i.i3878, align 8, !tbaa !98
+  %tobool.not.i.i3879 = icmp eq ptr %692, null
+  br i1 %tobool.not.i.i3879, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3890, label %if.then.i.i3882
 
-if.then.i.i3883:                                  ; preds = %_ZN8TestCaseD2Ev.exit3922
-  %__shared_owners_.i.i.i.i3881 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %692, i64 0, i32 1
-  %693 = atomicrmw add ptr %__shared_owners_.i.i.i.i3881, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3882 = icmp eq i64 %693, 0
-  br i1 %cmp.i.i.i.i3882, label %if.then.i.i.i3886, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3891
+if.then.i.i3882:                                  ; preds = %_ZN8TestCaseD2Ev.exit3921
+  %__shared_owners_.i.i.i.i3880 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %692, i64 0, i32 1
+  %693 = atomicrmw add ptr %__shared_owners_.i.i.i.i3880, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3881 = icmp eq i64 %693, 0
+  br i1 %cmp.i.i.i.i3881, label %if.then.i.i.i3885, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3890
 
-if.then.i.i.i3886:                                ; preds = %if.then.i.i3883
-  %vtable.i.i.i.i3884 = load ptr, ptr %692, align 8, !tbaa !24
-  %vfn.i.i.i.i3885 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3884, i64 2
-  %694 = load ptr, ptr %vfn.i.i.i.i3885, align 8
+if.then.i.i.i3885:                                ; preds = %if.then.i.i3882
+  %vtable.i.i.i.i3883 = load ptr, ptr %692, align 8, !tbaa !24
+  %vfn.i.i.i.i3884 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3883, i64 2
+  %694 = load ptr, ptr %vfn.i.i.i.i3884, align 8
   call void %694(ptr noundef nonnull align 8 dereferenceable(16) %692) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %692) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3891
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3890
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3891: ; preds = %if.then.i.i.i3886, %if.then.i.i3883, %_ZN8TestCaseD2Ev.exit3922
-  %substituted_regex.i3887 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 14, i32 2
-  %bf.load.i.i.i3888 = load i8, ptr %substituted_regex.i3887, align 8
-  %bf.clear.i.i.i3889 = and i8 %bf.load.i.i.i3888, 1
-  %tobool.i.not.i.i3890 = icmp eq i8 %bf.clear.i.i.i3889, 0
-  br i1 %tobool.i.not.i.i3890, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3897, label %if.then.i2.i3893
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3890: ; preds = %if.then.i.i.i3885, %if.then.i.i3882, %_ZN8TestCaseD2Ev.exit3921
+  %substituted_regex.i3886 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 14, i32 2
+  %bf.load.i.i.i3887 = load i8, ptr %substituted_regex.i3886, align 8
+  %bf.clear.i.i.i3888 = and i8 %bf.load.i.i.i3887, 1
+  %tobool.i.not.i.i3889 = icmp eq i8 %bf.clear.i.i.i3888, 0
+  br i1 %tobool.i.not.i.i3889, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3896, label %if.then.i2.i3892
 
-if.then.i2.i3893:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3891
-  %__data_.i.i.i3892 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 14, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %695 = load ptr, ptr %__data_.i.i.i3892, align 8, !tbaa !5
+if.then.i2.i3892:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3890
+  %__data_.i.i.i3891 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 14, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %695 = load ptr, ptr %__data_.i.i.i3891, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %695) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3897
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3896
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3897: ; preds = %if.then.i2.i3893, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3891
-  %bf.load.i.i3.i3894 = load i8, ptr %arrayinit.element68.i1002, align 8
-  %bf.clear.i.i4.i3895 = and i8 %bf.load.i.i3.i3894, 1
-  %tobool.i.not.i5.i3896 = icmp eq i8 %bf.clear.i.i4.i3895, 0
-  br i1 %tobool.i.not.i5.i3896, label %_ZN8TestCaseD2Ev.exit3900, label %if.then.i7.i3899
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3896: ; preds = %if.then.i2.i3892, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3890
+  %bf.load.i.i3.i3893 = load i8, ptr %arrayinit.element68.i1002, align 8
+  %bf.clear.i.i4.i3894 = and i8 %bf.load.i.i3.i3893, 1
+  %tobool.i.not.i5.i3895 = icmp eq i8 %bf.clear.i.i4.i3894, 0
+  br i1 %tobool.i.not.i5.i3895, label %_ZN8TestCaseD2Ev.exit3899, label %if.then.i7.i3898
 
-if.then.i7.i3899:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3897
-  %__data_.i.i6.i3898 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 14, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %696 = load ptr, ptr %__data_.i.i6.i3898, align 8, !tbaa !5
+if.then.i7.i3898:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3896
+  %__data_.i.i6.i3897 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 14, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %696 = load ptr, ptr %__data_.i.i6.i3897, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %696) #25
-  br label %_ZN8TestCaseD2Ev.exit3900
+  br label %_ZN8TestCaseD2Ev.exit3899
 
-_ZN8TestCaseD2Ev.exit3900:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3897, %if.then.i7.i3899
-  %__cntrl_.i.i3857 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 13, i32 3, i32 1
-  %697 = load ptr, ptr %__cntrl_.i.i3857, align 8, !tbaa !98
-  %tobool.not.i.i3858 = icmp eq ptr %697, null
-  br i1 %tobool.not.i.i3858, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3869, label %if.then.i.i3861
+_ZN8TestCaseD2Ev.exit3899:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3896, %if.then.i7.i3898
+  %__cntrl_.i.i3856 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 13, i32 3, i32 1
+  %697 = load ptr, ptr %__cntrl_.i.i3856, align 8, !tbaa !98
+  %tobool.not.i.i3857 = icmp eq ptr %697, null
+  br i1 %tobool.not.i.i3857, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3868, label %if.then.i.i3860
 
-if.then.i.i3861:                                  ; preds = %_ZN8TestCaseD2Ev.exit3900
-  %__shared_owners_.i.i.i.i3859 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %697, i64 0, i32 1
-  %698 = atomicrmw add ptr %__shared_owners_.i.i.i.i3859, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3860 = icmp eq i64 %698, 0
-  br i1 %cmp.i.i.i.i3860, label %if.then.i.i.i3864, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3869
+if.then.i.i3860:                                  ; preds = %_ZN8TestCaseD2Ev.exit3899
+  %__shared_owners_.i.i.i.i3858 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %697, i64 0, i32 1
+  %698 = atomicrmw add ptr %__shared_owners_.i.i.i.i3858, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3859 = icmp eq i64 %698, 0
+  br i1 %cmp.i.i.i.i3859, label %if.then.i.i.i3863, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3868
 
-if.then.i.i.i3864:                                ; preds = %if.then.i.i3861
-  %vtable.i.i.i.i3862 = load ptr, ptr %697, align 8, !tbaa !24
-  %vfn.i.i.i.i3863 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3862, i64 2
-  %699 = load ptr, ptr %vfn.i.i.i.i3863, align 8
+if.then.i.i.i3863:                                ; preds = %if.then.i.i3860
+  %vtable.i.i.i.i3861 = load ptr, ptr %697, align 8, !tbaa !24
+  %vfn.i.i.i.i3862 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3861, i64 2
+  %699 = load ptr, ptr %vfn.i.i.i.i3862, align 8
   call void %699(ptr noundef nonnull align 8 dereferenceable(16) %697) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %697) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3869
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3868
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3869: ; preds = %if.then.i.i.i3864, %if.then.i.i3861, %_ZN8TestCaseD2Ev.exit3900
-  %substituted_regex.i3865 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 13, i32 2
-  %bf.load.i.i.i3866 = load i8, ptr %substituted_regex.i3865, align 8
-  %bf.clear.i.i.i3867 = and i8 %bf.load.i.i.i3866, 1
-  %tobool.i.not.i.i3868 = icmp eq i8 %bf.clear.i.i.i3867, 0
-  br i1 %tobool.i.not.i.i3868, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3875, label %if.then.i2.i3871
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3868: ; preds = %if.then.i.i.i3863, %if.then.i.i3860, %_ZN8TestCaseD2Ev.exit3899
+  %substituted_regex.i3864 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 13, i32 2
+  %bf.load.i.i.i3865 = load i8, ptr %substituted_regex.i3864, align 8
+  %bf.clear.i.i.i3866 = and i8 %bf.load.i.i.i3865, 1
+  %tobool.i.not.i.i3867 = icmp eq i8 %bf.clear.i.i.i3866, 0
+  br i1 %tobool.i.not.i.i3867, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3874, label %if.then.i2.i3870
 
-if.then.i2.i3871:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3869
-  %__data_.i.i.i3870 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 13, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %700 = load ptr, ptr %__data_.i.i.i3870, align 8, !tbaa !5
+if.then.i2.i3870:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3868
+  %__data_.i.i.i3869 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 13, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %700 = load ptr, ptr %__data_.i.i.i3869, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %700) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3875
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3874
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3875: ; preds = %if.then.i2.i3871, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3869
-  %bf.load.i.i3.i3872 = load i8, ptr %arrayinit.element63.i993, align 8
-  %bf.clear.i.i4.i3873 = and i8 %bf.load.i.i3.i3872, 1
-  %tobool.i.not.i5.i3874 = icmp eq i8 %bf.clear.i.i4.i3873, 0
-  br i1 %tobool.i.not.i5.i3874, label %_ZN8TestCaseD2Ev.exit3878, label %if.then.i7.i3877
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3874: ; preds = %if.then.i2.i3870, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3868
+  %bf.load.i.i3.i3871 = load i8, ptr %arrayinit.element63.i993, align 8
+  %bf.clear.i.i4.i3872 = and i8 %bf.load.i.i3.i3871, 1
+  %tobool.i.not.i5.i3873 = icmp eq i8 %bf.clear.i.i4.i3872, 0
+  br i1 %tobool.i.not.i5.i3873, label %_ZN8TestCaseD2Ev.exit3877, label %if.then.i7.i3876
 
-if.then.i7.i3877:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3875
-  %__data_.i.i6.i3876 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 13, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %701 = load ptr, ptr %__data_.i.i6.i3876, align 8, !tbaa !5
+if.then.i7.i3876:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3874
+  %__data_.i.i6.i3875 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 13, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %701 = load ptr, ptr %__data_.i.i6.i3875, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %701) #25
-  br label %_ZN8TestCaseD2Ev.exit3878
+  br label %_ZN8TestCaseD2Ev.exit3877
 
-_ZN8TestCaseD2Ev.exit3878:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3875, %if.then.i7.i3877
-  %__cntrl_.i.i3835 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 12, i32 3, i32 1
-  %702 = load ptr, ptr %__cntrl_.i.i3835, align 8, !tbaa !98
-  %tobool.not.i.i3836 = icmp eq ptr %702, null
-  br i1 %tobool.not.i.i3836, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3847, label %if.then.i.i3839
+_ZN8TestCaseD2Ev.exit3877:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3874, %if.then.i7.i3876
+  %__cntrl_.i.i3834 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 12, i32 3, i32 1
+  %702 = load ptr, ptr %__cntrl_.i.i3834, align 8, !tbaa !98
+  %tobool.not.i.i3835 = icmp eq ptr %702, null
+  br i1 %tobool.not.i.i3835, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3846, label %if.then.i.i3838
 
-if.then.i.i3839:                                  ; preds = %_ZN8TestCaseD2Ev.exit3878
-  %__shared_owners_.i.i.i.i3837 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %702, i64 0, i32 1
-  %703 = atomicrmw add ptr %__shared_owners_.i.i.i.i3837, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3838 = icmp eq i64 %703, 0
-  br i1 %cmp.i.i.i.i3838, label %if.then.i.i.i3842, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3847
+if.then.i.i3838:                                  ; preds = %_ZN8TestCaseD2Ev.exit3877
+  %__shared_owners_.i.i.i.i3836 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %702, i64 0, i32 1
+  %703 = atomicrmw add ptr %__shared_owners_.i.i.i.i3836, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3837 = icmp eq i64 %703, 0
+  br i1 %cmp.i.i.i.i3837, label %if.then.i.i.i3841, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3846
 
-if.then.i.i.i3842:                                ; preds = %if.then.i.i3839
-  %vtable.i.i.i.i3840 = load ptr, ptr %702, align 8, !tbaa !24
-  %vfn.i.i.i.i3841 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3840, i64 2
-  %704 = load ptr, ptr %vfn.i.i.i.i3841, align 8
+if.then.i.i.i3841:                                ; preds = %if.then.i.i3838
+  %vtable.i.i.i.i3839 = load ptr, ptr %702, align 8, !tbaa !24
+  %vfn.i.i.i.i3840 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3839, i64 2
+  %704 = load ptr, ptr %vfn.i.i.i.i3840, align 8
   call void %704(ptr noundef nonnull align 8 dereferenceable(16) %702) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %702) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3847
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3846
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3847: ; preds = %if.then.i.i.i3842, %if.then.i.i3839, %_ZN8TestCaseD2Ev.exit3878
-  %substituted_regex.i3843 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 12, i32 2
-  %bf.load.i.i.i3844 = load i8, ptr %substituted_regex.i3843, align 8
-  %bf.clear.i.i.i3845 = and i8 %bf.load.i.i.i3844, 1
-  %tobool.i.not.i.i3846 = icmp eq i8 %bf.clear.i.i.i3845, 0
-  br i1 %tobool.i.not.i.i3846, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3853, label %if.then.i2.i3849
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3846: ; preds = %if.then.i.i.i3841, %if.then.i.i3838, %_ZN8TestCaseD2Ev.exit3877
+  %substituted_regex.i3842 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 12, i32 2
+  %bf.load.i.i.i3843 = load i8, ptr %substituted_regex.i3842, align 8
+  %bf.clear.i.i.i3844 = and i8 %bf.load.i.i.i3843, 1
+  %tobool.i.not.i.i3845 = icmp eq i8 %bf.clear.i.i.i3844, 0
+  br i1 %tobool.i.not.i.i3845, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3852, label %if.then.i2.i3848
 
-if.then.i2.i3849:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3847
-  %__data_.i.i.i3848 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 12, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %705 = load ptr, ptr %__data_.i.i.i3848, align 8, !tbaa !5
+if.then.i2.i3848:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3846
+  %__data_.i.i.i3847 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 12, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %705 = load ptr, ptr %__data_.i.i.i3847, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %705) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3853
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3852
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3853: ; preds = %if.then.i2.i3849, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3847
-  %bf.load.i.i3.i3850 = load i8, ptr %arrayinit.element58.i987, align 8
-  %bf.clear.i.i4.i3851 = and i8 %bf.load.i.i3.i3850, 1
-  %tobool.i.not.i5.i3852 = icmp eq i8 %bf.clear.i.i4.i3851, 0
-  br i1 %tobool.i.not.i5.i3852, label %_ZN8TestCaseD2Ev.exit3856, label %if.then.i7.i3855
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3852: ; preds = %if.then.i2.i3848, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3846
+  %bf.load.i.i3.i3849 = load i8, ptr %arrayinit.element58.i987, align 8
+  %bf.clear.i.i4.i3850 = and i8 %bf.load.i.i3.i3849, 1
+  %tobool.i.not.i5.i3851 = icmp eq i8 %bf.clear.i.i4.i3850, 0
+  br i1 %tobool.i.not.i5.i3851, label %_ZN8TestCaseD2Ev.exit3855, label %if.then.i7.i3854
 
-if.then.i7.i3855:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3853
-  %__data_.i.i6.i3854 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 12, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %706 = load ptr, ptr %__data_.i.i6.i3854, align 8, !tbaa !5
+if.then.i7.i3854:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3852
+  %__data_.i.i6.i3853 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 12, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %706 = load ptr, ptr %__data_.i.i6.i3853, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %706) #25
-  br label %_ZN8TestCaseD2Ev.exit3856
+  br label %_ZN8TestCaseD2Ev.exit3855
 
-_ZN8TestCaseD2Ev.exit3856:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3853, %if.then.i7.i3855
-  %__cntrl_.i.i3813 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 11, i32 3, i32 1
-  %707 = load ptr, ptr %__cntrl_.i.i3813, align 8, !tbaa !98
-  %tobool.not.i.i3814 = icmp eq ptr %707, null
-  br i1 %tobool.not.i.i3814, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3825, label %if.then.i.i3817
+_ZN8TestCaseD2Ev.exit3855:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3852, %if.then.i7.i3854
+  %__cntrl_.i.i3812 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 11, i32 3, i32 1
+  %707 = load ptr, ptr %__cntrl_.i.i3812, align 8, !tbaa !98
+  %tobool.not.i.i3813 = icmp eq ptr %707, null
+  br i1 %tobool.not.i.i3813, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3824, label %if.then.i.i3816
 
-if.then.i.i3817:                                  ; preds = %_ZN8TestCaseD2Ev.exit3856
-  %__shared_owners_.i.i.i.i3815 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %707, i64 0, i32 1
-  %708 = atomicrmw add ptr %__shared_owners_.i.i.i.i3815, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3816 = icmp eq i64 %708, 0
-  br i1 %cmp.i.i.i.i3816, label %if.then.i.i.i3820, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3825
+if.then.i.i3816:                                  ; preds = %_ZN8TestCaseD2Ev.exit3855
+  %__shared_owners_.i.i.i.i3814 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %707, i64 0, i32 1
+  %708 = atomicrmw add ptr %__shared_owners_.i.i.i.i3814, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3815 = icmp eq i64 %708, 0
+  br i1 %cmp.i.i.i.i3815, label %if.then.i.i.i3819, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3824
 
-if.then.i.i.i3820:                                ; preds = %if.then.i.i3817
-  %vtable.i.i.i.i3818 = load ptr, ptr %707, align 8, !tbaa !24
-  %vfn.i.i.i.i3819 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3818, i64 2
-  %709 = load ptr, ptr %vfn.i.i.i.i3819, align 8
+if.then.i.i.i3819:                                ; preds = %if.then.i.i3816
+  %vtable.i.i.i.i3817 = load ptr, ptr %707, align 8, !tbaa !24
+  %vfn.i.i.i.i3818 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3817, i64 2
+  %709 = load ptr, ptr %vfn.i.i.i.i3818, align 8
   call void %709(ptr noundef nonnull align 8 dereferenceable(16) %707) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %707) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3825
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3824
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3825: ; preds = %if.then.i.i.i3820, %if.then.i.i3817, %_ZN8TestCaseD2Ev.exit3856
-  %substituted_regex.i3821 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 11, i32 2
-  %bf.load.i.i.i3822 = load i8, ptr %substituted_regex.i3821, align 8
-  %bf.clear.i.i.i3823 = and i8 %bf.load.i.i.i3822, 1
-  %tobool.i.not.i.i3824 = icmp eq i8 %bf.clear.i.i.i3823, 0
-  br i1 %tobool.i.not.i.i3824, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3831, label %if.then.i2.i3827
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3824: ; preds = %if.then.i.i.i3819, %if.then.i.i3816, %_ZN8TestCaseD2Ev.exit3855
+  %substituted_regex.i3820 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 11, i32 2
+  %bf.load.i.i.i3821 = load i8, ptr %substituted_regex.i3820, align 8
+  %bf.clear.i.i.i3822 = and i8 %bf.load.i.i.i3821, 1
+  %tobool.i.not.i.i3823 = icmp eq i8 %bf.clear.i.i.i3822, 0
+  br i1 %tobool.i.not.i.i3823, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3830, label %if.then.i2.i3826
 
-if.then.i2.i3827:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3825
-  %__data_.i.i.i3826 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 11, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %710 = load ptr, ptr %__data_.i.i.i3826, align 8, !tbaa !5
+if.then.i2.i3826:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3824
+  %__data_.i.i.i3825 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 11, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %710 = load ptr, ptr %__data_.i.i.i3825, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %710) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3831
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3830
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3831: ; preds = %if.then.i2.i3827, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3825
-  %bf.load.i.i3.i3828 = load i8, ptr %arrayinit.element53.i981, align 8
-  %bf.clear.i.i4.i3829 = and i8 %bf.load.i.i3.i3828, 1
-  %tobool.i.not.i5.i3830 = icmp eq i8 %bf.clear.i.i4.i3829, 0
-  br i1 %tobool.i.not.i5.i3830, label %_ZN8TestCaseD2Ev.exit3834, label %if.then.i7.i3833
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3830: ; preds = %if.then.i2.i3826, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3824
+  %bf.load.i.i3.i3827 = load i8, ptr %arrayinit.element53.i981, align 8
+  %bf.clear.i.i4.i3828 = and i8 %bf.load.i.i3.i3827, 1
+  %tobool.i.not.i5.i3829 = icmp eq i8 %bf.clear.i.i4.i3828, 0
+  br i1 %tobool.i.not.i5.i3829, label %_ZN8TestCaseD2Ev.exit3833, label %if.then.i7.i3832
 
-if.then.i7.i3833:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3831
-  %__data_.i.i6.i3832 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 11, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %711 = load ptr, ptr %__data_.i.i6.i3832, align 8, !tbaa !5
+if.then.i7.i3832:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3830
+  %__data_.i.i6.i3831 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 11, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %711 = load ptr, ptr %__data_.i.i6.i3831, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %711) #25
-  br label %_ZN8TestCaseD2Ev.exit3834
+  br label %_ZN8TestCaseD2Ev.exit3833
 
-_ZN8TestCaseD2Ev.exit3834:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3831, %if.then.i7.i3833
-  %__cntrl_.i.i3791 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 10, i32 3, i32 1
-  %712 = load ptr, ptr %__cntrl_.i.i3791, align 8, !tbaa !98
-  %tobool.not.i.i3792 = icmp eq ptr %712, null
-  br i1 %tobool.not.i.i3792, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3803, label %if.then.i.i3795
+_ZN8TestCaseD2Ev.exit3833:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3830, %if.then.i7.i3832
+  %__cntrl_.i.i3790 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 10, i32 3, i32 1
+  %712 = load ptr, ptr %__cntrl_.i.i3790, align 8, !tbaa !98
+  %tobool.not.i.i3791 = icmp eq ptr %712, null
+  br i1 %tobool.not.i.i3791, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3802, label %if.then.i.i3794
 
-if.then.i.i3795:                                  ; preds = %_ZN8TestCaseD2Ev.exit3834
-  %__shared_owners_.i.i.i.i3793 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %712, i64 0, i32 1
-  %713 = atomicrmw add ptr %__shared_owners_.i.i.i.i3793, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3794 = icmp eq i64 %713, 0
-  br i1 %cmp.i.i.i.i3794, label %if.then.i.i.i3798, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3803
+if.then.i.i3794:                                  ; preds = %_ZN8TestCaseD2Ev.exit3833
+  %__shared_owners_.i.i.i.i3792 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %712, i64 0, i32 1
+  %713 = atomicrmw add ptr %__shared_owners_.i.i.i.i3792, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3793 = icmp eq i64 %713, 0
+  br i1 %cmp.i.i.i.i3793, label %if.then.i.i.i3797, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3802
 
-if.then.i.i.i3798:                                ; preds = %if.then.i.i3795
-  %vtable.i.i.i.i3796 = load ptr, ptr %712, align 8, !tbaa !24
-  %vfn.i.i.i.i3797 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3796, i64 2
-  %714 = load ptr, ptr %vfn.i.i.i.i3797, align 8
+if.then.i.i.i3797:                                ; preds = %if.then.i.i3794
+  %vtable.i.i.i.i3795 = load ptr, ptr %712, align 8, !tbaa !24
+  %vfn.i.i.i.i3796 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3795, i64 2
+  %714 = load ptr, ptr %vfn.i.i.i.i3796, align 8
   call void %714(ptr noundef nonnull align 8 dereferenceable(16) %712) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %712) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3803
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3802
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3803: ; preds = %if.then.i.i.i3798, %if.then.i.i3795, %_ZN8TestCaseD2Ev.exit3834
-  %substituted_regex.i3799 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 10, i32 2
-  %bf.load.i.i.i3800 = load i8, ptr %substituted_regex.i3799, align 8
-  %bf.clear.i.i.i3801 = and i8 %bf.load.i.i.i3800, 1
-  %tobool.i.not.i.i3802 = icmp eq i8 %bf.clear.i.i.i3801, 0
-  br i1 %tobool.i.not.i.i3802, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3809, label %if.then.i2.i3805
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3802: ; preds = %if.then.i.i.i3797, %if.then.i.i3794, %_ZN8TestCaseD2Ev.exit3833
+  %substituted_regex.i3798 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 10, i32 2
+  %bf.load.i.i.i3799 = load i8, ptr %substituted_regex.i3798, align 8
+  %bf.clear.i.i.i3800 = and i8 %bf.load.i.i.i3799, 1
+  %tobool.i.not.i.i3801 = icmp eq i8 %bf.clear.i.i.i3800, 0
+  br i1 %tobool.i.not.i.i3801, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3808, label %if.then.i2.i3804
 
-if.then.i2.i3805:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3803
-  %__data_.i.i.i3804 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 10, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %715 = load ptr, ptr %__data_.i.i.i3804, align 8, !tbaa !5
+if.then.i2.i3804:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3802
+  %__data_.i.i.i3803 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 10, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %715 = load ptr, ptr %__data_.i.i.i3803, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %715) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3809
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3808
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3809: ; preds = %if.then.i2.i3805, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3803
-  %bf.load.i.i3.i3806 = load i8, ptr %arrayinit.element48.i975, align 8
-  %bf.clear.i.i4.i3807 = and i8 %bf.load.i.i3.i3806, 1
-  %tobool.i.not.i5.i3808 = icmp eq i8 %bf.clear.i.i4.i3807, 0
-  br i1 %tobool.i.not.i5.i3808, label %_ZN8TestCaseD2Ev.exit3812, label %if.then.i7.i3811
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3808: ; preds = %if.then.i2.i3804, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3802
+  %bf.load.i.i3.i3805 = load i8, ptr %arrayinit.element48.i975, align 8
+  %bf.clear.i.i4.i3806 = and i8 %bf.load.i.i3.i3805, 1
+  %tobool.i.not.i5.i3807 = icmp eq i8 %bf.clear.i.i4.i3806, 0
+  br i1 %tobool.i.not.i5.i3807, label %_ZN8TestCaseD2Ev.exit3811, label %if.then.i7.i3810
 
-if.then.i7.i3811:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3809
-  %__data_.i.i6.i3810 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 10, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %716 = load ptr, ptr %__data_.i.i6.i3810, align 8, !tbaa !5
+if.then.i7.i3810:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3808
+  %__data_.i.i6.i3809 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 10, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %716 = load ptr, ptr %__data_.i.i6.i3809, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %716) #25
-  br label %_ZN8TestCaseD2Ev.exit3812
+  br label %_ZN8TestCaseD2Ev.exit3811
 
-_ZN8TestCaseD2Ev.exit3812:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3809, %if.then.i7.i3811
-  %__cntrl_.i.i3769 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 9, i32 3, i32 1
-  %717 = load ptr, ptr %__cntrl_.i.i3769, align 8, !tbaa !98
-  %tobool.not.i.i3770 = icmp eq ptr %717, null
-  br i1 %tobool.not.i.i3770, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3781, label %if.then.i.i3773
+_ZN8TestCaseD2Ev.exit3811:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3808, %if.then.i7.i3810
+  %__cntrl_.i.i3768 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 9, i32 3, i32 1
+  %717 = load ptr, ptr %__cntrl_.i.i3768, align 8, !tbaa !98
+  %tobool.not.i.i3769 = icmp eq ptr %717, null
+  br i1 %tobool.not.i.i3769, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3780, label %if.then.i.i3772
 
-if.then.i.i3773:                                  ; preds = %_ZN8TestCaseD2Ev.exit3812
-  %__shared_owners_.i.i.i.i3771 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %717, i64 0, i32 1
-  %718 = atomicrmw add ptr %__shared_owners_.i.i.i.i3771, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3772 = icmp eq i64 %718, 0
-  br i1 %cmp.i.i.i.i3772, label %if.then.i.i.i3776, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3781
+if.then.i.i3772:                                  ; preds = %_ZN8TestCaseD2Ev.exit3811
+  %__shared_owners_.i.i.i.i3770 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %717, i64 0, i32 1
+  %718 = atomicrmw add ptr %__shared_owners_.i.i.i.i3770, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3771 = icmp eq i64 %718, 0
+  br i1 %cmp.i.i.i.i3771, label %if.then.i.i.i3775, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3780
 
-if.then.i.i.i3776:                                ; preds = %if.then.i.i3773
-  %vtable.i.i.i.i3774 = load ptr, ptr %717, align 8, !tbaa !24
-  %vfn.i.i.i.i3775 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3774, i64 2
-  %719 = load ptr, ptr %vfn.i.i.i.i3775, align 8
+if.then.i.i.i3775:                                ; preds = %if.then.i.i3772
+  %vtable.i.i.i.i3773 = load ptr, ptr %717, align 8, !tbaa !24
+  %vfn.i.i.i.i3774 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3773, i64 2
+  %719 = load ptr, ptr %vfn.i.i.i.i3774, align 8
   call void %719(ptr noundef nonnull align 8 dereferenceable(16) %717) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %717) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3781
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3780
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3781: ; preds = %if.then.i.i.i3776, %if.then.i.i3773, %_ZN8TestCaseD2Ev.exit3812
-  %substituted_regex.i3777 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 9, i32 2
-  %bf.load.i.i.i3778 = load i8, ptr %substituted_regex.i3777, align 8
-  %bf.clear.i.i.i3779 = and i8 %bf.load.i.i.i3778, 1
-  %tobool.i.not.i.i3780 = icmp eq i8 %bf.clear.i.i.i3779, 0
-  br i1 %tobool.i.not.i.i3780, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3787, label %if.then.i2.i3783
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3780: ; preds = %if.then.i.i.i3775, %if.then.i.i3772, %_ZN8TestCaseD2Ev.exit3811
+  %substituted_regex.i3776 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 9, i32 2
+  %bf.load.i.i.i3777 = load i8, ptr %substituted_regex.i3776, align 8
+  %bf.clear.i.i.i3778 = and i8 %bf.load.i.i.i3777, 1
+  %tobool.i.not.i.i3779 = icmp eq i8 %bf.clear.i.i.i3778, 0
+  br i1 %tobool.i.not.i.i3779, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3786, label %if.then.i2.i3782
 
-if.then.i2.i3783:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3781
-  %__data_.i.i.i3782 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 9, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %720 = load ptr, ptr %__data_.i.i.i3782, align 8, !tbaa !5
+if.then.i2.i3782:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3780
+  %__data_.i.i.i3781 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 9, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %720 = load ptr, ptr %__data_.i.i.i3781, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %720) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3787
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3786
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3787: ; preds = %if.then.i2.i3783, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3781
-  %bf.load.i.i3.i3784 = load i8, ptr %arrayinit.element43.i969, align 8
-  %bf.clear.i.i4.i3785 = and i8 %bf.load.i.i3.i3784, 1
-  %tobool.i.not.i5.i3786 = icmp eq i8 %bf.clear.i.i4.i3785, 0
-  br i1 %tobool.i.not.i5.i3786, label %_ZN8TestCaseD2Ev.exit3790, label %if.then.i7.i3789
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3786: ; preds = %if.then.i2.i3782, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3780
+  %bf.load.i.i3.i3783 = load i8, ptr %arrayinit.element43.i969, align 8
+  %bf.clear.i.i4.i3784 = and i8 %bf.load.i.i3.i3783, 1
+  %tobool.i.not.i5.i3785 = icmp eq i8 %bf.clear.i.i4.i3784, 0
+  br i1 %tobool.i.not.i5.i3785, label %_ZN8TestCaseD2Ev.exit3789, label %if.then.i7.i3788
 
-if.then.i7.i3789:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3787
-  %__data_.i.i6.i3788 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %721 = load ptr, ptr %__data_.i.i6.i3788, align 8, !tbaa !5
+if.then.i7.i3788:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3786
+  %__data_.i.i6.i3787 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %721 = load ptr, ptr %__data_.i.i6.i3787, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %721) #25
-  br label %_ZN8TestCaseD2Ev.exit3790
+  br label %_ZN8TestCaseD2Ev.exit3789
 
-_ZN8TestCaseD2Ev.exit3790:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3787, %if.then.i7.i3789
-  %__cntrl_.i.i3747 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 8, i32 3, i32 1
-  %722 = load ptr, ptr %__cntrl_.i.i3747, align 8, !tbaa !98
-  %tobool.not.i.i3748 = icmp eq ptr %722, null
-  br i1 %tobool.not.i.i3748, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3759, label %if.then.i.i3751
+_ZN8TestCaseD2Ev.exit3789:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3786, %if.then.i7.i3788
+  %__cntrl_.i.i3746 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 8, i32 3, i32 1
+  %722 = load ptr, ptr %__cntrl_.i.i3746, align 8, !tbaa !98
+  %tobool.not.i.i3747 = icmp eq ptr %722, null
+  br i1 %tobool.not.i.i3747, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3758, label %if.then.i.i3750
 
-if.then.i.i3751:                                  ; preds = %_ZN8TestCaseD2Ev.exit3790
-  %__shared_owners_.i.i.i.i3749 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %722, i64 0, i32 1
-  %723 = atomicrmw add ptr %__shared_owners_.i.i.i.i3749, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3750 = icmp eq i64 %723, 0
-  br i1 %cmp.i.i.i.i3750, label %if.then.i.i.i3754, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3759
+if.then.i.i3750:                                  ; preds = %_ZN8TestCaseD2Ev.exit3789
+  %__shared_owners_.i.i.i.i3748 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %722, i64 0, i32 1
+  %723 = atomicrmw add ptr %__shared_owners_.i.i.i.i3748, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3749 = icmp eq i64 %723, 0
+  br i1 %cmp.i.i.i.i3749, label %if.then.i.i.i3753, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3758
 
-if.then.i.i.i3754:                                ; preds = %if.then.i.i3751
-  %vtable.i.i.i.i3752 = load ptr, ptr %722, align 8, !tbaa !24
-  %vfn.i.i.i.i3753 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3752, i64 2
-  %724 = load ptr, ptr %vfn.i.i.i.i3753, align 8
+if.then.i.i.i3753:                                ; preds = %if.then.i.i3750
+  %vtable.i.i.i.i3751 = load ptr, ptr %722, align 8, !tbaa !24
+  %vfn.i.i.i.i3752 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3751, i64 2
+  %724 = load ptr, ptr %vfn.i.i.i.i3752, align 8
   call void %724(ptr noundef nonnull align 8 dereferenceable(16) %722) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %722) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3759
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3758
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3759: ; preds = %if.then.i.i.i3754, %if.then.i.i3751, %_ZN8TestCaseD2Ev.exit3790
-  %substituted_regex.i3755 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 8, i32 2
-  %bf.load.i.i.i3756 = load i8, ptr %substituted_regex.i3755, align 8
-  %bf.clear.i.i.i3757 = and i8 %bf.load.i.i.i3756, 1
-  %tobool.i.not.i.i3758 = icmp eq i8 %bf.clear.i.i.i3757, 0
-  br i1 %tobool.i.not.i.i3758, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3765, label %if.then.i2.i3761
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3758: ; preds = %if.then.i.i.i3753, %if.then.i.i3750, %_ZN8TestCaseD2Ev.exit3789
+  %substituted_regex.i3754 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 8, i32 2
+  %bf.load.i.i.i3755 = load i8, ptr %substituted_regex.i3754, align 8
+  %bf.clear.i.i.i3756 = and i8 %bf.load.i.i.i3755, 1
+  %tobool.i.not.i.i3757 = icmp eq i8 %bf.clear.i.i.i3756, 0
+  br i1 %tobool.i.not.i.i3757, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3764, label %if.then.i2.i3760
 
-if.then.i2.i3761:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3759
-  %__data_.i.i.i3760 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 8, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %725 = load ptr, ptr %__data_.i.i.i3760, align 8, !tbaa !5
+if.then.i2.i3760:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3758
+  %__data_.i.i.i3759 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 8, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %725 = load ptr, ptr %__data_.i.i.i3759, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %725) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3765
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3764
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3765: ; preds = %if.then.i2.i3761, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3759
-  %bf.load.i.i3.i3762 = load i8, ptr %arrayinit.element38.i960, align 8
-  %bf.clear.i.i4.i3763 = and i8 %bf.load.i.i3.i3762, 1
-  %tobool.i.not.i5.i3764 = icmp eq i8 %bf.clear.i.i4.i3763, 0
-  br i1 %tobool.i.not.i5.i3764, label %_ZN8TestCaseD2Ev.exit3768, label %if.then.i7.i3767
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3764: ; preds = %if.then.i2.i3760, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3758
+  %bf.load.i.i3.i3761 = load i8, ptr %arrayinit.element38.i960, align 8
+  %bf.clear.i.i4.i3762 = and i8 %bf.load.i.i3.i3761, 1
+  %tobool.i.not.i5.i3763 = icmp eq i8 %bf.clear.i.i4.i3762, 0
+  br i1 %tobool.i.not.i5.i3763, label %_ZN8TestCaseD2Ev.exit3767, label %if.then.i7.i3766
 
-if.then.i7.i3767:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3765
-  %__data_.i.i6.i3766 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 8, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %726 = load ptr, ptr %__data_.i.i6.i3766, align 8, !tbaa !5
+if.then.i7.i3766:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3764
+  %__data_.i.i6.i3765 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 8, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %726 = load ptr, ptr %__data_.i.i6.i3765, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %726) #25
-  br label %_ZN8TestCaseD2Ev.exit3768
+  br label %_ZN8TestCaseD2Ev.exit3767
 
-_ZN8TestCaseD2Ev.exit3768:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3765, %if.then.i7.i3767
-  %__cntrl_.i.i3725 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 7, i32 3, i32 1
-  %727 = load ptr, ptr %__cntrl_.i.i3725, align 8, !tbaa !98
-  %tobool.not.i.i3726 = icmp eq ptr %727, null
-  br i1 %tobool.not.i.i3726, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3737, label %if.then.i.i3729
+_ZN8TestCaseD2Ev.exit3767:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3764, %if.then.i7.i3766
+  %__cntrl_.i.i3724 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 7, i32 3, i32 1
+  %727 = load ptr, ptr %__cntrl_.i.i3724, align 8, !tbaa !98
+  %tobool.not.i.i3725 = icmp eq ptr %727, null
+  br i1 %tobool.not.i.i3725, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3736, label %if.then.i.i3728
 
-if.then.i.i3729:                                  ; preds = %_ZN8TestCaseD2Ev.exit3768
-  %__shared_owners_.i.i.i.i3727 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %727, i64 0, i32 1
-  %728 = atomicrmw add ptr %__shared_owners_.i.i.i.i3727, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3728 = icmp eq i64 %728, 0
-  br i1 %cmp.i.i.i.i3728, label %if.then.i.i.i3732, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3737
+if.then.i.i3728:                                  ; preds = %_ZN8TestCaseD2Ev.exit3767
+  %__shared_owners_.i.i.i.i3726 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %727, i64 0, i32 1
+  %728 = atomicrmw add ptr %__shared_owners_.i.i.i.i3726, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3727 = icmp eq i64 %728, 0
+  br i1 %cmp.i.i.i.i3727, label %if.then.i.i.i3731, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3736
 
-if.then.i.i.i3732:                                ; preds = %if.then.i.i3729
-  %vtable.i.i.i.i3730 = load ptr, ptr %727, align 8, !tbaa !24
-  %vfn.i.i.i.i3731 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3730, i64 2
-  %729 = load ptr, ptr %vfn.i.i.i.i3731, align 8
+if.then.i.i.i3731:                                ; preds = %if.then.i.i3728
+  %vtable.i.i.i.i3729 = load ptr, ptr %727, align 8, !tbaa !24
+  %vfn.i.i.i.i3730 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3729, i64 2
+  %729 = load ptr, ptr %vfn.i.i.i.i3730, align 8
   call void %729(ptr noundef nonnull align 8 dereferenceable(16) %727) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %727) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3737
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3736
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3737: ; preds = %if.then.i.i.i3732, %if.then.i.i3729, %_ZN8TestCaseD2Ev.exit3768
-  %substituted_regex.i3733 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 7, i32 2
-  %bf.load.i.i.i3734 = load i8, ptr %substituted_regex.i3733, align 8
-  %bf.clear.i.i.i3735 = and i8 %bf.load.i.i.i3734, 1
-  %tobool.i.not.i.i3736 = icmp eq i8 %bf.clear.i.i.i3735, 0
-  br i1 %tobool.i.not.i.i3736, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3743, label %if.then.i2.i3739
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3736: ; preds = %if.then.i.i.i3731, %if.then.i.i3728, %_ZN8TestCaseD2Ev.exit3767
+  %substituted_regex.i3732 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 7, i32 2
+  %bf.load.i.i.i3733 = load i8, ptr %substituted_regex.i3732, align 8
+  %bf.clear.i.i.i3734 = and i8 %bf.load.i.i.i3733, 1
+  %tobool.i.not.i.i3735 = icmp eq i8 %bf.clear.i.i.i3734, 0
+  br i1 %tobool.i.not.i.i3735, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3742, label %if.then.i2.i3738
 
-if.then.i2.i3739:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3737
-  %__data_.i.i.i3738 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 7, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %730 = load ptr, ptr %__data_.i.i.i3738, align 8, !tbaa !5
+if.then.i2.i3738:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3736
+  %__data_.i.i.i3737 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 7, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %730 = load ptr, ptr %__data_.i.i.i3737, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %730) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3743
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3742
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3743: ; preds = %if.then.i2.i3739, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3737
-  %bf.load.i.i3.i3740 = load i8, ptr %arrayinit.element33.i951, align 8
-  %bf.clear.i.i4.i3741 = and i8 %bf.load.i.i3.i3740, 1
-  %tobool.i.not.i5.i3742 = icmp eq i8 %bf.clear.i.i4.i3741, 0
-  br i1 %tobool.i.not.i5.i3742, label %_ZN8TestCaseD2Ev.exit3746, label %if.then.i7.i3745
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3742: ; preds = %if.then.i2.i3738, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3736
+  %bf.load.i.i3.i3739 = load i8, ptr %arrayinit.element33.i951, align 8
+  %bf.clear.i.i4.i3740 = and i8 %bf.load.i.i3.i3739, 1
+  %tobool.i.not.i5.i3741 = icmp eq i8 %bf.clear.i.i4.i3740, 0
+  br i1 %tobool.i.not.i5.i3741, label %_ZN8TestCaseD2Ev.exit3745, label %if.then.i7.i3744
 
-if.then.i7.i3745:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3743
-  %__data_.i.i6.i3744 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 7, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %731 = load ptr, ptr %__data_.i.i6.i3744, align 8, !tbaa !5
+if.then.i7.i3744:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3742
+  %__data_.i.i6.i3743 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 7, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %731 = load ptr, ptr %__data_.i.i6.i3743, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %731) #25
-  br label %_ZN8TestCaseD2Ev.exit3746
+  br label %_ZN8TestCaseD2Ev.exit3745
 
-_ZN8TestCaseD2Ev.exit3746:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3743, %if.then.i7.i3745
-  %__cntrl_.i.i3703 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 6, i32 3, i32 1
-  %732 = load ptr, ptr %__cntrl_.i.i3703, align 8, !tbaa !98
-  %tobool.not.i.i3704 = icmp eq ptr %732, null
-  br i1 %tobool.not.i.i3704, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3715, label %if.then.i.i3707
+_ZN8TestCaseD2Ev.exit3745:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3742, %if.then.i7.i3744
+  %__cntrl_.i.i3702 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 6, i32 3, i32 1
+  %732 = load ptr, ptr %__cntrl_.i.i3702, align 8, !tbaa !98
+  %tobool.not.i.i3703 = icmp eq ptr %732, null
+  br i1 %tobool.not.i.i3703, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3714, label %if.then.i.i3706
 
-if.then.i.i3707:                                  ; preds = %_ZN8TestCaseD2Ev.exit3746
-  %__shared_owners_.i.i.i.i3705 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %732, i64 0, i32 1
-  %733 = atomicrmw add ptr %__shared_owners_.i.i.i.i3705, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3706 = icmp eq i64 %733, 0
-  br i1 %cmp.i.i.i.i3706, label %if.then.i.i.i3710, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3715
+if.then.i.i3706:                                  ; preds = %_ZN8TestCaseD2Ev.exit3745
+  %__shared_owners_.i.i.i.i3704 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %732, i64 0, i32 1
+  %733 = atomicrmw add ptr %__shared_owners_.i.i.i.i3704, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3705 = icmp eq i64 %733, 0
+  br i1 %cmp.i.i.i.i3705, label %if.then.i.i.i3709, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3714
 
-if.then.i.i.i3710:                                ; preds = %if.then.i.i3707
-  %vtable.i.i.i.i3708 = load ptr, ptr %732, align 8, !tbaa !24
-  %vfn.i.i.i.i3709 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3708, i64 2
-  %734 = load ptr, ptr %vfn.i.i.i.i3709, align 8
+if.then.i.i.i3709:                                ; preds = %if.then.i.i3706
+  %vtable.i.i.i.i3707 = load ptr, ptr %732, align 8, !tbaa !24
+  %vfn.i.i.i.i3708 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3707, i64 2
+  %734 = load ptr, ptr %vfn.i.i.i.i3708, align 8
   call void %734(ptr noundef nonnull align 8 dereferenceable(16) %732) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %732) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3715
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3714
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3715: ; preds = %if.then.i.i.i3710, %if.then.i.i3707, %_ZN8TestCaseD2Ev.exit3746
-  %substituted_regex.i3711 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 6, i32 2
-  %bf.load.i.i.i3712 = load i8, ptr %substituted_regex.i3711, align 8
-  %bf.clear.i.i.i3713 = and i8 %bf.load.i.i.i3712, 1
-  %tobool.i.not.i.i3714 = icmp eq i8 %bf.clear.i.i.i3713, 0
-  br i1 %tobool.i.not.i.i3714, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3721, label %if.then.i2.i3717
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3714: ; preds = %if.then.i.i.i3709, %if.then.i.i3706, %_ZN8TestCaseD2Ev.exit3745
+  %substituted_regex.i3710 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 6, i32 2
+  %bf.load.i.i.i3711 = load i8, ptr %substituted_regex.i3710, align 8
+  %bf.clear.i.i.i3712 = and i8 %bf.load.i.i.i3711, 1
+  %tobool.i.not.i.i3713 = icmp eq i8 %bf.clear.i.i.i3712, 0
+  br i1 %tobool.i.not.i.i3713, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3720, label %if.then.i2.i3716
 
-if.then.i2.i3717:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3715
-  %__data_.i.i.i3716 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 6, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %735 = load ptr, ptr %__data_.i.i.i3716, align 8, !tbaa !5
+if.then.i2.i3716:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3714
+  %__data_.i.i.i3715 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 6, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %735 = load ptr, ptr %__data_.i.i.i3715, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %735) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3721
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3720
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3721: ; preds = %if.then.i2.i3717, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3715
-  %bf.load.i.i3.i3718 = load i8, ptr %arrayinit.element28.i945, align 8
-  %bf.clear.i.i4.i3719 = and i8 %bf.load.i.i3.i3718, 1
-  %tobool.i.not.i5.i3720 = icmp eq i8 %bf.clear.i.i4.i3719, 0
-  br i1 %tobool.i.not.i5.i3720, label %_ZN8TestCaseD2Ev.exit3724, label %if.then.i7.i3723
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3720: ; preds = %if.then.i2.i3716, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3714
+  %bf.load.i.i3.i3717 = load i8, ptr %arrayinit.element28.i945, align 8
+  %bf.clear.i.i4.i3718 = and i8 %bf.load.i.i3.i3717, 1
+  %tobool.i.not.i5.i3719 = icmp eq i8 %bf.clear.i.i4.i3718, 0
+  br i1 %tobool.i.not.i5.i3719, label %_ZN8TestCaseD2Ev.exit3723, label %if.then.i7.i3722
 
-if.then.i7.i3723:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3721
-  %__data_.i.i6.i3722 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 6, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %736 = load ptr, ptr %__data_.i.i6.i3722, align 8, !tbaa !5
+if.then.i7.i3722:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3720
+  %__data_.i.i6.i3721 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 6, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %736 = load ptr, ptr %__data_.i.i6.i3721, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %736) #25
-  br label %_ZN8TestCaseD2Ev.exit3724
+  br label %_ZN8TestCaseD2Ev.exit3723
 
-_ZN8TestCaseD2Ev.exit3724:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3721, %if.then.i7.i3723
-  %__cntrl_.i.i3681 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 5, i32 3, i32 1
-  %737 = load ptr, ptr %__cntrl_.i.i3681, align 8, !tbaa !98
-  %tobool.not.i.i3682 = icmp eq ptr %737, null
-  br i1 %tobool.not.i.i3682, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3693, label %if.then.i.i3685
+_ZN8TestCaseD2Ev.exit3723:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3720, %if.then.i7.i3722
+  %__cntrl_.i.i3680 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 5, i32 3, i32 1
+  %737 = load ptr, ptr %__cntrl_.i.i3680, align 8, !tbaa !98
+  %tobool.not.i.i3681 = icmp eq ptr %737, null
+  br i1 %tobool.not.i.i3681, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3692, label %if.then.i.i3684
 
-if.then.i.i3685:                                  ; preds = %_ZN8TestCaseD2Ev.exit3724
-  %__shared_owners_.i.i.i.i3683 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %737, i64 0, i32 1
-  %738 = atomicrmw add ptr %__shared_owners_.i.i.i.i3683, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3684 = icmp eq i64 %738, 0
-  br i1 %cmp.i.i.i.i3684, label %if.then.i.i.i3688, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3693
+if.then.i.i3684:                                  ; preds = %_ZN8TestCaseD2Ev.exit3723
+  %__shared_owners_.i.i.i.i3682 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %737, i64 0, i32 1
+  %738 = atomicrmw add ptr %__shared_owners_.i.i.i.i3682, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3683 = icmp eq i64 %738, 0
+  br i1 %cmp.i.i.i.i3683, label %if.then.i.i.i3687, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3692
 
-if.then.i.i.i3688:                                ; preds = %if.then.i.i3685
-  %vtable.i.i.i.i3686 = load ptr, ptr %737, align 8, !tbaa !24
-  %vfn.i.i.i.i3687 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3686, i64 2
-  %739 = load ptr, ptr %vfn.i.i.i.i3687, align 8
+if.then.i.i.i3687:                                ; preds = %if.then.i.i3684
+  %vtable.i.i.i.i3685 = load ptr, ptr %737, align 8, !tbaa !24
+  %vfn.i.i.i.i3686 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3685, i64 2
+  %739 = load ptr, ptr %vfn.i.i.i.i3686, align 8
   call void %739(ptr noundef nonnull align 8 dereferenceable(16) %737) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %737) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3693
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3692
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3693: ; preds = %if.then.i.i.i3688, %if.then.i.i3685, %_ZN8TestCaseD2Ev.exit3724
-  %substituted_regex.i3689 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 5, i32 2
-  %bf.load.i.i.i3690 = load i8, ptr %substituted_regex.i3689, align 8
-  %bf.clear.i.i.i3691 = and i8 %bf.load.i.i.i3690, 1
-  %tobool.i.not.i.i3692 = icmp eq i8 %bf.clear.i.i.i3691, 0
-  br i1 %tobool.i.not.i.i3692, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3699, label %if.then.i2.i3695
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3692: ; preds = %if.then.i.i.i3687, %if.then.i.i3684, %_ZN8TestCaseD2Ev.exit3723
+  %substituted_regex.i3688 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 5, i32 2
+  %bf.load.i.i.i3689 = load i8, ptr %substituted_regex.i3688, align 8
+  %bf.clear.i.i.i3690 = and i8 %bf.load.i.i.i3689, 1
+  %tobool.i.not.i.i3691 = icmp eq i8 %bf.clear.i.i.i3690, 0
+  br i1 %tobool.i.not.i.i3691, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3698, label %if.then.i2.i3694
 
-if.then.i2.i3695:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3693
-  %__data_.i.i.i3694 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 5, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %740 = load ptr, ptr %__data_.i.i.i3694, align 8, !tbaa !5
+if.then.i2.i3694:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3692
+  %__data_.i.i.i3693 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 5, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %740 = load ptr, ptr %__data_.i.i.i3693, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %740) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3699
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3698
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3699: ; preds = %if.then.i2.i3695, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3693
-  %bf.load.i.i3.i3696 = load i8, ptr %arrayinit.element23.i939, align 8
-  %bf.clear.i.i4.i3697 = and i8 %bf.load.i.i3.i3696, 1
-  %tobool.i.not.i5.i3698 = icmp eq i8 %bf.clear.i.i4.i3697, 0
-  br i1 %tobool.i.not.i5.i3698, label %_ZN8TestCaseD2Ev.exit3702, label %if.then.i7.i3701
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3698: ; preds = %if.then.i2.i3694, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3692
+  %bf.load.i.i3.i3695 = load i8, ptr %arrayinit.element23.i939, align 8
+  %bf.clear.i.i4.i3696 = and i8 %bf.load.i.i3.i3695, 1
+  %tobool.i.not.i5.i3697 = icmp eq i8 %bf.clear.i.i4.i3696, 0
+  br i1 %tobool.i.not.i5.i3697, label %_ZN8TestCaseD2Ev.exit3701, label %if.then.i7.i3700
 
-if.then.i7.i3701:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3699
-  %__data_.i.i6.i3700 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 5, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %741 = load ptr, ptr %__data_.i.i6.i3700, align 8, !tbaa !5
+if.then.i7.i3700:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3698
+  %__data_.i.i6.i3699 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 5, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %741 = load ptr, ptr %__data_.i.i6.i3699, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %741) #25
-  br label %_ZN8TestCaseD2Ev.exit3702
+  br label %_ZN8TestCaseD2Ev.exit3701
 
-_ZN8TestCaseD2Ev.exit3702:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3699, %if.then.i7.i3701
-  %__cntrl_.i.i3659 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 4, i32 3, i32 1
-  %742 = load ptr, ptr %__cntrl_.i.i3659, align 8, !tbaa !98
-  %tobool.not.i.i3660 = icmp eq ptr %742, null
-  br i1 %tobool.not.i.i3660, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3671, label %if.then.i.i3663
+_ZN8TestCaseD2Ev.exit3701:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3698, %if.then.i7.i3700
+  %__cntrl_.i.i3658 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 4, i32 3, i32 1
+  %742 = load ptr, ptr %__cntrl_.i.i3658, align 8, !tbaa !98
+  %tobool.not.i.i3659 = icmp eq ptr %742, null
+  br i1 %tobool.not.i.i3659, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3670, label %if.then.i.i3662
 
-if.then.i.i3663:                                  ; preds = %_ZN8TestCaseD2Ev.exit3702
-  %__shared_owners_.i.i.i.i3661 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %742, i64 0, i32 1
-  %743 = atomicrmw add ptr %__shared_owners_.i.i.i.i3661, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3662 = icmp eq i64 %743, 0
-  br i1 %cmp.i.i.i.i3662, label %if.then.i.i.i3666, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3671
+if.then.i.i3662:                                  ; preds = %_ZN8TestCaseD2Ev.exit3701
+  %__shared_owners_.i.i.i.i3660 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %742, i64 0, i32 1
+  %743 = atomicrmw add ptr %__shared_owners_.i.i.i.i3660, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3661 = icmp eq i64 %743, 0
+  br i1 %cmp.i.i.i.i3661, label %if.then.i.i.i3665, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3670
 
-if.then.i.i.i3666:                                ; preds = %if.then.i.i3663
-  %vtable.i.i.i.i3664 = load ptr, ptr %742, align 8, !tbaa !24
-  %vfn.i.i.i.i3665 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3664, i64 2
-  %744 = load ptr, ptr %vfn.i.i.i.i3665, align 8
+if.then.i.i.i3665:                                ; preds = %if.then.i.i3662
+  %vtable.i.i.i.i3663 = load ptr, ptr %742, align 8, !tbaa !24
+  %vfn.i.i.i.i3664 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3663, i64 2
+  %744 = load ptr, ptr %vfn.i.i.i.i3664, align 8
   call void %744(ptr noundef nonnull align 8 dereferenceable(16) %742) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %742) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3671
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3670
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3671: ; preds = %if.then.i.i.i3666, %if.then.i.i3663, %_ZN8TestCaseD2Ev.exit3702
-  %substituted_regex.i3667 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 4, i32 2
-  %bf.load.i.i.i3668 = load i8, ptr %substituted_regex.i3667, align 8
-  %bf.clear.i.i.i3669 = and i8 %bf.load.i.i.i3668, 1
-  %tobool.i.not.i.i3670 = icmp eq i8 %bf.clear.i.i.i3669, 0
-  br i1 %tobool.i.not.i.i3670, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3677, label %if.then.i2.i3673
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3670: ; preds = %if.then.i.i.i3665, %if.then.i.i3662, %_ZN8TestCaseD2Ev.exit3701
+  %substituted_regex.i3666 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 4, i32 2
+  %bf.load.i.i.i3667 = load i8, ptr %substituted_regex.i3666, align 8
+  %bf.clear.i.i.i3668 = and i8 %bf.load.i.i.i3667, 1
+  %tobool.i.not.i.i3669 = icmp eq i8 %bf.clear.i.i.i3668, 0
+  br i1 %tobool.i.not.i.i3669, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3676, label %if.then.i2.i3672
 
-if.then.i2.i3673:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3671
-  %__data_.i.i.i3672 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %745 = load ptr, ptr %__data_.i.i.i3672, align 8, !tbaa !5
+if.then.i2.i3672:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3670
+  %__data_.i.i.i3671 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %745 = load ptr, ptr %__data_.i.i.i3671, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %745) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3677
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3676
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3677: ; preds = %if.then.i2.i3673, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3671
-  %bf.load.i.i3.i3674 = load i8, ptr %arrayinit.element18.i930, align 8
-  %bf.clear.i.i4.i3675 = and i8 %bf.load.i.i3.i3674, 1
-  %tobool.i.not.i5.i3676 = icmp eq i8 %bf.clear.i.i4.i3675, 0
-  br i1 %tobool.i.not.i5.i3676, label %_ZN8TestCaseD2Ev.exit3680, label %if.then.i7.i3679
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3676: ; preds = %if.then.i2.i3672, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3670
+  %bf.load.i.i3.i3673 = load i8, ptr %arrayinit.element18.i930, align 8
+  %bf.clear.i.i4.i3674 = and i8 %bf.load.i.i3.i3673, 1
+  %tobool.i.not.i5.i3675 = icmp eq i8 %bf.clear.i.i4.i3674, 0
+  br i1 %tobool.i.not.i5.i3675, label %_ZN8TestCaseD2Ev.exit3679, label %if.then.i7.i3678
 
-if.then.i7.i3679:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3677
-  %__data_.i.i6.i3678 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %746 = load ptr, ptr %__data_.i.i6.i3678, align 8, !tbaa !5
+if.then.i7.i3678:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3676
+  %__data_.i.i6.i3677 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %746 = load ptr, ptr %__data_.i.i6.i3677, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %746) #25
-  br label %_ZN8TestCaseD2Ev.exit3680
+  br label %_ZN8TestCaseD2Ev.exit3679
 
-_ZN8TestCaseD2Ev.exit3680:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3677, %if.then.i7.i3679
-  %__cntrl_.i.i3637 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 3, i32 3, i32 1
-  %747 = load ptr, ptr %__cntrl_.i.i3637, align 8, !tbaa !98
-  %tobool.not.i.i3638 = icmp eq ptr %747, null
-  br i1 %tobool.not.i.i3638, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3649, label %if.then.i.i3641
+_ZN8TestCaseD2Ev.exit3679:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3676, %if.then.i7.i3678
+  %__cntrl_.i.i3636 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 3, i32 3, i32 1
+  %747 = load ptr, ptr %__cntrl_.i.i3636, align 8, !tbaa !98
+  %tobool.not.i.i3637 = icmp eq ptr %747, null
+  br i1 %tobool.not.i.i3637, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3648, label %if.then.i.i3640
 
-if.then.i.i3641:                                  ; preds = %_ZN8TestCaseD2Ev.exit3680
-  %__shared_owners_.i.i.i.i3639 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %747, i64 0, i32 1
-  %748 = atomicrmw add ptr %__shared_owners_.i.i.i.i3639, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3640 = icmp eq i64 %748, 0
-  br i1 %cmp.i.i.i.i3640, label %if.then.i.i.i3644, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3649
+if.then.i.i3640:                                  ; preds = %_ZN8TestCaseD2Ev.exit3679
+  %__shared_owners_.i.i.i.i3638 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %747, i64 0, i32 1
+  %748 = atomicrmw add ptr %__shared_owners_.i.i.i.i3638, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3639 = icmp eq i64 %748, 0
+  br i1 %cmp.i.i.i.i3639, label %if.then.i.i.i3643, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3648
 
-if.then.i.i.i3644:                                ; preds = %if.then.i.i3641
-  %vtable.i.i.i.i3642 = load ptr, ptr %747, align 8, !tbaa !24
-  %vfn.i.i.i.i3643 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3642, i64 2
-  %749 = load ptr, ptr %vfn.i.i.i.i3643, align 8
+if.then.i.i.i3643:                                ; preds = %if.then.i.i3640
+  %vtable.i.i.i.i3641 = load ptr, ptr %747, align 8, !tbaa !24
+  %vfn.i.i.i.i3642 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3641, i64 2
+  %749 = load ptr, ptr %vfn.i.i.i.i3642, align 8
   call void %749(ptr noundef nonnull align 8 dereferenceable(16) %747) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %747) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3649
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3648
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3649: ; preds = %if.then.i.i.i3644, %if.then.i.i3641, %_ZN8TestCaseD2Ev.exit3680
-  %substituted_regex.i3645 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 3, i32 2
-  %bf.load.i.i.i3646 = load i8, ptr %substituted_regex.i3645, align 8
-  %bf.clear.i.i.i3647 = and i8 %bf.load.i.i.i3646, 1
-  %tobool.i.not.i.i3648 = icmp eq i8 %bf.clear.i.i.i3647, 0
-  br i1 %tobool.i.not.i.i3648, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3655, label %if.then.i2.i3651
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3648: ; preds = %if.then.i.i.i3643, %if.then.i.i3640, %_ZN8TestCaseD2Ev.exit3679
+  %substituted_regex.i3644 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 3, i32 2
+  %bf.load.i.i.i3645 = load i8, ptr %substituted_regex.i3644, align 8
+  %bf.clear.i.i.i3646 = and i8 %bf.load.i.i.i3645, 1
+  %tobool.i.not.i.i3647 = icmp eq i8 %bf.clear.i.i.i3646, 0
+  br i1 %tobool.i.not.i.i3647, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3654, label %if.then.i2.i3650
 
-if.then.i2.i3651:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3649
-  %__data_.i.i.i3650 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %750 = load ptr, ptr %__data_.i.i.i3650, align 8, !tbaa !5
+if.then.i2.i3650:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3648
+  %__data_.i.i.i3649 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %750 = load ptr, ptr %__data_.i.i.i3649, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %750) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3655
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3654
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3655: ; preds = %if.then.i2.i3651, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3649
-  %bf.load.i.i3.i3652 = load i8, ptr %arrayinit.element13.i921, align 8
-  %bf.clear.i.i4.i3653 = and i8 %bf.load.i.i3.i3652, 1
-  %tobool.i.not.i5.i3654 = icmp eq i8 %bf.clear.i.i4.i3653, 0
-  br i1 %tobool.i.not.i5.i3654, label %_ZN8TestCaseD2Ev.exit3658, label %if.then.i7.i3657
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3654: ; preds = %if.then.i2.i3650, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3648
+  %bf.load.i.i3.i3651 = load i8, ptr %arrayinit.element13.i921, align 8
+  %bf.clear.i.i4.i3652 = and i8 %bf.load.i.i3.i3651, 1
+  %tobool.i.not.i5.i3653 = icmp eq i8 %bf.clear.i.i4.i3652, 0
+  br i1 %tobool.i.not.i5.i3653, label %_ZN8TestCaseD2Ev.exit3657, label %if.then.i7.i3656
 
-if.then.i7.i3657:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3655
-  %__data_.i.i6.i3656 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %751 = load ptr, ptr %__data_.i.i6.i3656, align 8, !tbaa !5
+if.then.i7.i3656:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3654
+  %__data_.i.i6.i3655 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %751 = load ptr, ptr %__data_.i.i6.i3655, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %751) #25
-  br label %_ZN8TestCaseD2Ev.exit3658
+  br label %_ZN8TestCaseD2Ev.exit3657
 
-_ZN8TestCaseD2Ev.exit3658:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3655, %if.then.i7.i3657
-  %__cntrl_.i.i3615 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 2, i32 3, i32 1
-  %752 = load ptr, ptr %__cntrl_.i.i3615, align 8, !tbaa !98
-  %tobool.not.i.i3616 = icmp eq ptr %752, null
-  br i1 %tobool.not.i.i3616, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3627, label %if.then.i.i3619
+_ZN8TestCaseD2Ev.exit3657:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3654, %if.then.i7.i3656
+  %__cntrl_.i.i3614 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 2, i32 3, i32 1
+  %752 = load ptr, ptr %__cntrl_.i.i3614, align 8, !tbaa !98
+  %tobool.not.i.i3615 = icmp eq ptr %752, null
+  br i1 %tobool.not.i.i3615, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3626, label %if.then.i.i3618
 
-if.then.i.i3619:                                  ; preds = %_ZN8TestCaseD2Ev.exit3658
-  %__shared_owners_.i.i.i.i3617 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %752, i64 0, i32 1
-  %753 = atomicrmw add ptr %__shared_owners_.i.i.i.i3617, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3618 = icmp eq i64 %753, 0
-  br i1 %cmp.i.i.i.i3618, label %if.then.i.i.i3622, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3627
+if.then.i.i3618:                                  ; preds = %_ZN8TestCaseD2Ev.exit3657
+  %__shared_owners_.i.i.i.i3616 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %752, i64 0, i32 1
+  %753 = atomicrmw add ptr %__shared_owners_.i.i.i.i3616, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3617 = icmp eq i64 %753, 0
+  br i1 %cmp.i.i.i.i3617, label %if.then.i.i.i3621, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3626
 
-if.then.i.i.i3622:                                ; preds = %if.then.i.i3619
-  %vtable.i.i.i.i3620 = load ptr, ptr %752, align 8, !tbaa !24
-  %vfn.i.i.i.i3621 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3620, i64 2
-  %754 = load ptr, ptr %vfn.i.i.i.i3621, align 8
+if.then.i.i.i3621:                                ; preds = %if.then.i.i3618
+  %vtable.i.i.i.i3619 = load ptr, ptr %752, align 8, !tbaa !24
+  %vfn.i.i.i.i3620 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3619, i64 2
+  %754 = load ptr, ptr %vfn.i.i.i.i3620, align 8
   call void %754(ptr noundef nonnull align 8 dereferenceable(16) %752) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %752) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3627
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3626
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3627: ; preds = %if.then.i.i.i3622, %if.then.i.i3619, %_ZN8TestCaseD2Ev.exit3658
-  %substituted_regex.i3623 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 2, i32 2
-  %bf.load.i.i.i3624 = load i8, ptr %substituted_regex.i3623, align 8
-  %bf.clear.i.i.i3625 = and i8 %bf.load.i.i.i3624, 1
-  %tobool.i.not.i.i3626 = icmp eq i8 %bf.clear.i.i.i3625, 0
-  br i1 %tobool.i.not.i.i3626, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3633, label %if.then.i2.i3629
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3626: ; preds = %if.then.i.i.i3621, %if.then.i.i3618, %_ZN8TestCaseD2Ev.exit3657
+  %substituted_regex.i3622 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 2, i32 2
+  %bf.load.i.i.i3623 = load i8, ptr %substituted_regex.i3622, align 8
+  %bf.clear.i.i.i3624 = and i8 %bf.load.i.i.i3623, 1
+  %tobool.i.not.i.i3625 = icmp eq i8 %bf.clear.i.i.i3624, 0
+  br i1 %tobool.i.not.i.i3625, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3632, label %if.then.i2.i3628
 
-if.then.i2.i3629:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3627
-  %__data_.i.i.i3628 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %755 = load ptr, ptr %__data_.i.i.i3628, align 8, !tbaa !5
+if.then.i2.i3628:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3626
+  %__data_.i.i.i3627 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %755 = load ptr, ptr %__data_.i.i.i3627, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %755) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3633
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3632
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3633: ; preds = %if.then.i2.i3629, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3627
-  %bf.load.i.i3.i3630 = load i8, ptr %arrayinit.element8.i912, align 8
-  %bf.clear.i.i4.i3631 = and i8 %bf.load.i.i3.i3630, 1
-  %tobool.i.not.i5.i3632 = icmp eq i8 %bf.clear.i.i4.i3631, 0
-  br i1 %tobool.i.not.i5.i3632, label %_ZN8TestCaseD2Ev.exit3636, label %if.then.i7.i3635
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3632: ; preds = %if.then.i2.i3628, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3626
+  %bf.load.i.i3.i3629 = load i8, ptr %arrayinit.element8.i912, align 8
+  %bf.clear.i.i4.i3630 = and i8 %bf.load.i.i3.i3629, 1
+  %tobool.i.not.i5.i3631 = icmp eq i8 %bf.clear.i.i4.i3630, 0
+  br i1 %tobool.i.not.i5.i3631, label %_ZN8TestCaseD2Ev.exit3635, label %if.then.i7.i3634
 
-if.then.i7.i3635:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3633
-  %__data_.i.i6.i3634 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %756 = load ptr, ptr %__data_.i.i6.i3634, align 8, !tbaa !5
+if.then.i7.i3634:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3632
+  %__data_.i.i6.i3633 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %756 = load ptr, ptr %__data_.i.i6.i3633, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %756) #25
-  br label %_ZN8TestCaseD2Ev.exit3636
+  br label %_ZN8TestCaseD2Ev.exit3635
 
-_ZN8TestCaseD2Ev.exit3636:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3633, %if.then.i7.i3635
-  %__cntrl_.i.i3593 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 1, i32 3, i32 1
-  %757 = load ptr, ptr %__cntrl_.i.i3593, align 8, !tbaa !98
-  %tobool.not.i.i3594 = icmp eq ptr %757, null
-  br i1 %tobool.not.i.i3594, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3605, label %if.then.i.i3597
+_ZN8TestCaseD2Ev.exit3635:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3632, %if.then.i7.i3634
+  %__cntrl_.i.i3592 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 1, i32 3, i32 1
+  %757 = load ptr, ptr %__cntrl_.i.i3592, align 8, !tbaa !98
+  %tobool.not.i.i3593 = icmp eq ptr %757, null
+  br i1 %tobool.not.i.i3593, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3604, label %if.then.i.i3596
 
-if.then.i.i3597:                                  ; preds = %_ZN8TestCaseD2Ev.exit3636
-  %__shared_owners_.i.i.i.i3595 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %757, i64 0, i32 1
-  %758 = atomicrmw add ptr %__shared_owners_.i.i.i.i3595, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3596 = icmp eq i64 %758, 0
-  br i1 %cmp.i.i.i.i3596, label %if.then.i.i.i3600, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3605
+if.then.i.i3596:                                  ; preds = %_ZN8TestCaseD2Ev.exit3635
+  %__shared_owners_.i.i.i.i3594 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %757, i64 0, i32 1
+  %758 = atomicrmw add ptr %__shared_owners_.i.i.i.i3594, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3595 = icmp eq i64 %758, 0
+  br i1 %cmp.i.i.i.i3595, label %if.then.i.i.i3599, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3604
 
-if.then.i.i.i3600:                                ; preds = %if.then.i.i3597
-  %vtable.i.i.i.i3598 = load ptr, ptr %757, align 8, !tbaa !24
-  %vfn.i.i.i.i3599 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3598, i64 2
-  %759 = load ptr, ptr %vfn.i.i.i.i3599, align 8
+if.then.i.i.i3599:                                ; preds = %if.then.i.i3596
+  %vtable.i.i.i.i3597 = load ptr, ptr %757, align 8, !tbaa !24
+  %vfn.i.i.i.i3598 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3597, i64 2
+  %759 = load ptr, ptr %vfn.i.i.i.i3598, align 8
   call void %759(ptr noundef nonnull align 8 dereferenceable(16) %757) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %757) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3605
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3604
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3605: ; preds = %if.then.i.i.i3600, %if.then.i.i3597, %_ZN8TestCaseD2Ev.exit3636
-  %substituted_regex.i3601 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 1, i32 2
-  %bf.load.i.i.i3602 = load i8, ptr %substituted_regex.i3601, align 8
-  %bf.clear.i.i.i3603 = and i8 %bf.load.i.i.i3602, 1
-  %tobool.i.not.i.i3604 = icmp eq i8 %bf.clear.i.i.i3603, 0
-  br i1 %tobool.i.not.i.i3604, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3611, label %if.then.i2.i3607
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3604: ; preds = %if.then.i.i.i3599, %if.then.i.i3596, %_ZN8TestCaseD2Ev.exit3635
+  %substituted_regex.i3600 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 1, i32 2
+  %bf.load.i.i.i3601 = load i8, ptr %substituted_regex.i3600, align 8
+  %bf.clear.i.i.i3602 = and i8 %bf.load.i.i.i3601, 1
+  %tobool.i.not.i.i3603 = icmp eq i8 %bf.clear.i.i.i3602, 0
+  br i1 %tobool.i.not.i.i3603, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3610, label %if.then.i2.i3606
 
-if.then.i2.i3607:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3605
-  %__data_.i.i.i3606 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %760 = load ptr, ptr %__data_.i.i.i3606, align 8, !tbaa !5
+if.then.i2.i3606:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3604
+  %__data_.i.i.i3605 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %760 = load ptr, ptr %__data_.i.i.i3605, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %760) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3611
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3610
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3611: ; preds = %if.then.i2.i3607, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3605
-  %bf.load.i.i3.i3608 = load i8, ptr %arrayinit.element.i906, align 8
-  %bf.clear.i.i4.i3609 = and i8 %bf.load.i.i3.i3608, 1
-  %tobool.i.not.i5.i3610 = icmp eq i8 %bf.clear.i.i4.i3609, 0
-  br i1 %tobool.i.not.i5.i3610, label %_ZN8TestCaseD2Ev.exit3614, label %if.then.i7.i3613
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3610: ; preds = %if.then.i2.i3606, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3604
+  %bf.load.i.i3.i3607 = load i8, ptr %arrayinit.element.i906, align 8
+  %bf.clear.i.i4.i3608 = and i8 %bf.load.i.i3.i3607, 1
+  %tobool.i.not.i5.i3609 = icmp eq i8 %bf.clear.i.i4.i3608, 0
+  br i1 %tobool.i.not.i5.i3609, label %_ZN8TestCaseD2Ev.exit3613, label %if.then.i7.i3612
 
-if.then.i7.i3613:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3611
-  %__data_.i.i6.i3612 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %761 = load ptr, ptr %__data_.i.i6.i3612, align 8, !tbaa !5
+if.then.i7.i3612:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3610
+  %__data_.i.i6.i3611 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %761 = load ptr, ptr %__data_.i.i6.i3611, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %761) #25
-  br label %_ZN8TestCaseD2Ev.exit3614
+  br label %_ZN8TestCaseD2Ev.exit3613
 
-_ZN8TestCaseD2Ev.exit3614:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3611, %if.then.i7.i3613
-  %__cntrl_.i.i3571 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 0, i32 3, i32 1
-  %762 = load ptr, ptr %__cntrl_.i.i3571, align 8, !tbaa !98
-  %tobool.not.i.i3572 = icmp eq ptr %762, null
-  br i1 %tobool.not.i.i3572, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3583, label %if.then.i.i3575
+_ZN8TestCaseD2Ev.exit3613:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3610, %if.then.i7.i3612
+  %__cntrl_.i.i3570 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 0, i32 3, i32 1
+  %762 = load ptr, ptr %__cntrl_.i.i3570, align 8, !tbaa !98
+  %tobool.not.i.i3571 = icmp eq ptr %762, null
+  br i1 %tobool.not.i.i3571, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3582, label %if.then.i.i3574
 
-if.then.i.i3575:                                  ; preds = %_ZN8TestCaseD2Ev.exit3614
-  %__shared_owners_.i.i.i.i3573 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %762, i64 0, i32 1
-  %763 = atomicrmw add ptr %__shared_owners_.i.i.i.i3573, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3574 = icmp eq i64 %763, 0
-  br i1 %cmp.i.i.i.i3574, label %if.then.i.i.i3578, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3583
+if.then.i.i3574:                                  ; preds = %_ZN8TestCaseD2Ev.exit3613
+  %__shared_owners_.i.i.i.i3572 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %762, i64 0, i32 1
+  %763 = atomicrmw add ptr %__shared_owners_.i.i.i.i3572, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3573 = icmp eq i64 %763, 0
+  br i1 %cmp.i.i.i.i3573, label %if.then.i.i.i3577, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3582
 
-if.then.i.i.i3578:                                ; preds = %if.then.i.i3575
-  %vtable.i.i.i.i3576 = load ptr, ptr %762, align 8, !tbaa !24
-  %vfn.i.i.i.i3577 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3576, i64 2
-  %764 = load ptr, ptr %vfn.i.i.i.i3577, align 8
+if.then.i.i.i3577:                                ; preds = %if.then.i.i3574
+  %vtable.i.i.i.i3575 = load ptr, ptr %762, align 8, !tbaa !24
+  %vfn.i.i.i.i3576 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3575, i64 2
+  %764 = load ptr, ptr %vfn.i.i.i.i3576, align 8
   call void %764(ptr noundef nonnull align 8 dereferenceable(16) %762) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %762) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3583
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3582
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3583: ; preds = %if.then.i.i.i3578, %if.then.i.i3575, %_ZN8TestCaseD2Ev.exit3614
-  %substituted_regex.i3579 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 0, i32 2
-  %bf.load.i.i.i3580 = load i8, ptr %substituted_regex.i3579, align 8
-  %bf.clear.i.i.i3581 = and i8 %bf.load.i.i.i3580, 1
-  %tobool.i.not.i.i3582 = icmp eq i8 %bf.clear.i.i.i3581, 0
-  br i1 %tobool.i.not.i.i3582, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3589, label %if.then.i2.i3585
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3582: ; preds = %if.then.i.i.i3577, %if.then.i.i3574, %_ZN8TestCaseD2Ev.exit3613
+  %substituted_regex.i3578 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 0, i32 2
+  %bf.load.i.i.i3579 = load i8, ptr %substituted_regex.i3578, align 8
+  %bf.clear.i.i.i3580 = and i8 %bf.load.i.i.i3579, 1
+  %tobool.i.not.i.i3581 = icmp eq i8 %bf.clear.i.i.i3580, 0
+  br i1 %tobool.i.not.i.i3581, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3588, label %if.then.i2.i3584
 
-if.then.i2.i3585:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3583
-  %__data_.i.i.i3584 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %765 = load ptr, ptr %__data_.i.i.i3584, align 8, !tbaa !5
+if.then.i2.i3584:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3582
+  %__data_.i.i.i3583 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i880, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %765 = load ptr, ptr %__data_.i.i.i3583, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %765) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3589
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3588
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3589: ; preds = %if.then.i2.i3585, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3583
-  %bf.load.i.i3.i3586 = load i8, ptr %ref.tmp.i880, align 8
-  %bf.clear.i.i4.i3587 = and i8 %bf.load.i.i3.i3586, 1
-  %tobool.i.not.i5.i3588 = icmp eq i8 %bf.clear.i.i4.i3587, 0
-  br i1 %tobool.i.not.i5.i3588, label %ehcleanup.i1229, label %if.then.i7.i3591
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3588: ; preds = %if.then.i2.i3584, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3582
+  %bf.load.i.i3.i3585 = load i8, ptr %ref.tmp.i880, align 8
+  %bf.clear.i.i4.i3586 = and i8 %bf.load.i.i3.i3585, 1
+  %tobool.i.not.i5.i3587 = icmp eq i8 %bf.clear.i.i4.i3586, 0
+  br i1 %tobool.i.not.i5.i3587, label %ehcleanup.i1229, label %if.then.i7.i3590
 
-if.then.i7.i3591:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3589
-  %__data_.i.i6.i3590 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i880, i64 0, i32 2
-  %766 = load ptr, ptr %__data_.i.i6.i3590, align 8, !tbaa !5
+if.then.i7.i3590:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3588
+  %__data_.i.i6.i3589 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i880, i64 0, i32 2
+  %766 = load ptr, ptr %__data_.i.i6.i3589, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %766) #25
   br label %ehcleanup.i1229
 
-ehcleanup.i1229:                                  ; preds = %if.then.i7.i3591, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3589, %lpad91.i1204
-  %.pn.i1224 = phi { ptr, i32 } [ %670, %lpad91.i1204 ], [ %671, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3589 ], [ %671, %if.then.i7.i3591 ]
-  %cleanup.isactive.0.i1225 = phi i1 [ true, %lpad91.i1204 ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3589 ], [ false, %if.then.i7.i3591 ]
+ehcleanup.i1229:                                  ; preds = %if.then.i7.i3590, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3588, %lpad91.i1204
+  %.pn.i1224 = phi { ptr, i32 } [ %670, %lpad91.i1204 ], [ %671, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3588 ], [ %671, %if.then.i7.i3590 ]
+  %cleanup.isactive.0.i1225 = phi i1 [ true, %lpad91.i1204 ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3588 ], [ false, %if.then.i7.i3590 ]
   %bf.load.i.i673.i1226 = load i8, ptr %agg.tmp89.i899, align 8
   %bf.clear.i.i674.i1227 = and i8 %bf.load.i.i673.i1226, 1
   %tobool.i.not.i675.i1228 = icmp eq i8 %bf.clear.i.i674.i1227, 0
@@ -13522,58 +13522,58 @@ ehcleanup120.i1385:                               ; preds = %if.then.i785.i1382,
   %or.cond.not.i1384 = select i1 %cleanup.isactive.18.i1377, i1 %arraydestroy.isempty.i1383, i1 false
   br i1 %or.cond.not.i1384, label %arraydestroy.body121.i1389, label %cleanup.done.i1390
 
-arraydestroy.body121.i1389:                       ; preds = %ehcleanup120.i1385, %_ZN8TestCaseD2Ev.exit3570
-  %arraydestroy.elementPast122.i1386 = phi ptr [ %arraydestroy.element123.i1387, %_ZN8TestCaseD2Ev.exit3570 ], [ %arrayinit.endOfInit.35.i1375, %ehcleanup120.i1385 ]
+arraydestroy.body121.i1389:                       ; preds = %ehcleanup120.i1385, %_ZN8TestCaseD2Ev.exit3569
+  %arraydestroy.elementPast122.i1386 = phi ptr [ %arraydestroy.element123.i1387, %_ZN8TestCaseD2Ev.exit3569 ], [ %arrayinit.endOfInit.35.i1375, %ehcleanup120.i1385 ]
   %arraydestroy.element123.i1387 = getelementptr inbounds %struct.TestCase, ptr %arraydestroy.elementPast122.i1386, i64 -1
-  %__cntrl_.i.i3549 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1386, i64 -1, i32 3, i32 1
-  %786 = load ptr, ptr %__cntrl_.i.i3549, align 8, !tbaa !98
-  %tobool.not.i.i3550 = icmp eq ptr %786, null
-  br i1 %tobool.not.i.i3550, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3561, label %if.then.i.i3553
+  %__cntrl_.i.i3548 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1386, i64 -1, i32 3, i32 1
+  %786 = load ptr, ptr %__cntrl_.i.i3548, align 8, !tbaa !98
+  %tobool.not.i.i3549 = icmp eq ptr %786, null
+  br i1 %tobool.not.i.i3549, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3560, label %if.then.i.i3552
 
-if.then.i.i3553:                                  ; preds = %arraydestroy.body121.i1389
-  %__shared_owners_.i.i.i.i3551 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %786, i64 0, i32 1
-  %787 = atomicrmw add ptr %__shared_owners_.i.i.i.i3551, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3552 = icmp eq i64 %787, 0
-  br i1 %cmp.i.i.i.i3552, label %if.then.i.i.i3556, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3561
+if.then.i.i3552:                                  ; preds = %arraydestroy.body121.i1389
+  %__shared_owners_.i.i.i.i3550 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %786, i64 0, i32 1
+  %787 = atomicrmw add ptr %__shared_owners_.i.i.i.i3550, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3551 = icmp eq i64 %787, 0
+  br i1 %cmp.i.i.i.i3551, label %if.then.i.i.i3555, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3560
 
-if.then.i.i.i3556:                                ; preds = %if.then.i.i3553
-  %vtable.i.i.i.i3554 = load ptr, ptr %786, align 8, !tbaa !24
-  %vfn.i.i.i.i3555 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3554, i64 2
-  %788 = load ptr, ptr %vfn.i.i.i.i3555, align 8
+if.then.i.i.i3555:                                ; preds = %if.then.i.i3552
+  %vtable.i.i.i.i3553 = load ptr, ptr %786, align 8, !tbaa !24
+  %vfn.i.i.i.i3554 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3553, i64 2
+  %788 = load ptr, ptr %vfn.i.i.i.i3554, align 8
   call void %788(ptr noundef nonnull align 8 dereferenceable(16) %786) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %786) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3561
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3560
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3561: ; preds = %if.then.i.i.i3556, %if.then.i.i3553, %arraydestroy.body121.i1389
-  %substituted_regex.i3557 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1386, i64 -1, i32 2
-  %bf.load.i.i.i3558 = load i8, ptr %substituted_regex.i3557, align 8
-  %bf.clear.i.i.i3559 = and i8 %bf.load.i.i.i3558, 1
-  %tobool.i.not.i.i3560 = icmp eq i8 %bf.clear.i.i.i3559, 0
-  br i1 %tobool.i.not.i.i3560, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3567, label %if.then.i2.i3563
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3560: ; preds = %if.then.i.i.i3555, %if.then.i.i3552, %arraydestroy.body121.i1389
+  %substituted_regex.i3556 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1386, i64 -1, i32 2
+  %bf.load.i.i.i3557 = load i8, ptr %substituted_regex.i3556, align 8
+  %bf.clear.i.i.i3558 = and i8 %bf.load.i.i.i3557, 1
+  %tobool.i.not.i.i3559 = icmp eq i8 %bf.clear.i.i.i3558, 0
+  br i1 %tobool.i.not.i.i3559, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3566, label %if.then.i2.i3562
 
-if.then.i2.i3563:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3561
-  %__data_.i.i.i3562 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1386, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %789 = load ptr, ptr %__data_.i.i.i3562, align 8, !tbaa !5
+if.then.i2.i3562:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3560
+  %__data_.i.i.i3561 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1386, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %789 = load ptr, ptr %__data_.i.i.i3561, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %789) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3567
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3566
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3567: ; preds = %if.then.i2.i3563, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3561
-  %bf.load.i.i3.i3564 = load i8, ptr %arraydestroy.element123.i1387, align 8
-  %bf.clear.i.i4.i3565 = and i8 %bf.load.i.i3.i3564, 1
-  %tobool.i.not.i5.i3566 = icmp eq i8 %bf.clear.i.i4.i3565, 0
-  br i1 %tobool.i.not.i5.i3566, label %_ZN8TestCaseD2Ev.exit3570, label %if.then.i7.i3569
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3566: ; preds = %if.then.i2.i3562, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i3560
+  %bf.load.i.i3.i3563 = load i8, ptr %arraydestroy.element123.i1387, align 8
+  %bf.clear.i.i4.i3564 = and i8 %bf.load.i.i3.i3563, 1
+  %tobool.i.not.i5.i3565 = icmp eq i8 %bf.clear.i.i4.i3564, 0
+  br i1 %tobool.i.not.i5.i3565, label %_ZN8TestCaseD2Ev.exit3569, label %if.then.i7.i3568
 
-if.then.i7.i3569:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3567
-  %__data_.i.i6.i3568 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1386, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %790 = load ptr, ptr %__data_.i.i6.i3568, align 8, !tbaa !5
+if.then.i7.i3568:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3566
+  %__data_.i.i6.i3567 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1386, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %790 = load ptr, ptr %__data_.i.i6.i3567, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %790) #25
-  br label %_ZN8TestCaseD2Ev.exit3570
+  br label %_ZN8TestCaseD2Ev.exit3569
 
-_ZN8TestCaseD2Ev.exit3570:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3567, %if.then.i7.i3569
+_ZN8TestCaseD2Ev.exit3569:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i3566, %if.then.i7.i3568
   %arraydestroy.done124.i1388 = icmp eq ptr %arraydestroy.element123.i1387, %ref.tmp.i880
   br i1 %arraydestroy.done124.i1388, label %cleanup.done.i1390, label %arraydestroy.body121.i1389
 
-cleanup.done.i1390:                               ; preds = %_ZN8TestCaseD2Ev.exit3570, %ehcleanup120.i1385
+cleanup.done.i1390:                               ; preds = %_ZN8TestCaseD2Ev.exit3569, %ehcleanup120.i1385
   call void @llvm.lifetime.end.p0(i64 1368, ptr nonnull %ref.tmp.i880) #24
   br label %common.resume
 
@@ -14341,863 +14341,863 @@ lpad91.i1715:                                     ; preds = %invoke.cont87.i1554
 lpad93.i1734:                                     ; preds = %invoke.cont92.i1556
   %854 = landingpad { ptr, i32 }
           cleanup
-  %__cntrl_.i.i4407 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 18, i32 3, i32 1
-  %855 = load ptr, ptr %__cntrl_.i.i4407, align 8, !tbaa !98
-  %tobool.not.i.i4408 = icmp eq ptr %855, null
-  br i1 %tobool.not.i.i4408, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4419, label %if.then.i.i4411
+  %__cntrl_.i.i4406 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 18, i32 3, i32 1
+  %855 = load ptr, ptr %__cntrl_.i.i4406, align 8, !tbaa !98
+  %tobool.not.i.i4407 = icmp eq ptr %855, null
+  br i1 %tobool.not.i.i4407, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4418, label %if.then.i.i4410
 
-if.then.i.i4411:                                  ; preds = %lpad93.i1734
-  %__shared_owners_.i.i.i.i4409 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %855, i64 0, i32 1
-  %856 = atomicrmw add ptr %__shared_owners_.i.i.i.i4409, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4410 = icmp eq i64 %856, 0
-  br i1 %cmp.i.i.i.i4410, label %if.then.i.i.i4414, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4419
+if.then.i.i4410:                                  ; preds = %lpad93.i1734
+  %__shared_owners_.i.i.i.i4408 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %855, i64 0, i32 1
+  %856 = atomicrmw add ptr %__shared_owners_.i.i.i.i4408, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4409 = icmp eq i64 %856, 0
+  br i1 %cmp.i.i.i.i4409, label %if.then.i.i.i4413, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4418
 
-if.then.i.i.i4414:                                ; preds = %if.then.i.i4411
-  %vtable.i.i.i.i4412 = load ptr, ptr %855, align 8, !tbaa !24
-  %vfn.i.i.i.i4413 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4412, i64 2
-  %857 = load ptr, ptr %vfn.i.i.i.i4413, align 8
+if.then.i.i.i4413:                                ; preds = %if.then.i.i4410
+  %vtable.i.i.i.i4411 = load ptr, ptr %855, align 8, !tbaa !24
+  %vfn.i.i.i.i4412 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4411, i64 2
+  %857 = load ptr, ptr %vfn.i.i.i.i4412, align 8
   call void %857(ptr noundef nonnull align 8 dereferenceable(16) %855) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %855) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4419
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4418
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4419: ; preds = %if.then.i.i.i4414, %if.then.i.i4411, %lpad93.i1734
-  %substituted_regex.i4415 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 18, i32 2
-  %bf.load.i.i.i4416 = load i8, ptr %substituted_regex.i4415, align 8
-  %bf.clear.i.i.i4417 = and i8 %bf.load.i.i.i4416, 1
-  %tobool.i.not.i.i4418 = icmp eq i8 %bf.clear.i.i.i4417, 0
-  br i1 %tobool.i.not.i.i4418, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4425, label %if.then.i2.i4421
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4418: ; preds = %if.then.i.i.i4413, %if.then.i.i4410, %lpad93.i1734
+  %substituted_regex.i4414 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 18, i32 2
+  %bf.load.i.i.i4415 = load i8, ptr %substituted_regex.i4414, align 8
+  %bf.clear.i.i.i4416 = and i8 %bf.load.i.i.i4415, 1
+  %tobool.i.not.i.i4417 = icmp eq i8 %bf.clear.i.i.i4416, 0
+  br i1 %tobool.i.not.i.i4417, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4424, label %if.then.i2.i4420
 
-if.then.i2.i4421:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4419
-  %__data_.i.i.i4420 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 18, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %858 = load ptr, ptr %__data_.i.i.i4420, align 8, !tbaa !5
+if.then.i2.i4420:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4418
+  %__data_.i.i.i4419 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 18, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %858 = load ptr, ptr %__data_.i.i.i4419, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %858) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4425
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4424
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4425: ; preds = %if.then.i2.i4421, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4419
-  %bf.load.i.i3.i4422 = load i8, ptr %arrayinit.element88.i1549, align 8
-  %bf.clear.i.i4.i4423 = and i8 %bf.load.i.i3.i4422, 1
-  %tobool.i.not.i5.i4424 = icmp eq i8 %bf.clear.i.i4.i4423, 0
-  br i1 %tobool.i.not.i5.i4424, label %_ZN8TestCaseD2Ev.exit4428, label %if.then.i7.i4427
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4424: ; preds = %if.then.i2.i4420, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4418
+  %bf.load.i.i3.i4421 = load i8, ptr %arrayinit.element88.i1549, align 8
+  %bf.clear.i.i4.i4422 = and i8 %bf.load.i.i3.i4421, 1
+  %tobool.i.not.i5.i4423 = icmp eq i8 %bf.clear.i.i4.i4422, 0
+  br i1 %tobool.i.not.i5.i4423, label %_ZN8TestCaseD2Ev.exit4427, label %if.then.i7.i4426
 
-if.then.i7.i4427:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4425
-  %__data_.i.i6.i4426 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 18, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %859 = load ptr, ptr %__data_.i.i6.i4426, align 8, !tbaa !5
+if.then.i7.i4426:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4424
+  %__data_.i.i6.i4425 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 18, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %859 = load ptr, ptr %__data_.i.i6.i4425, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %859) #25
-  br label %_ZN8TestCaseD2Ev.exit4428
+  br label %_ZN8TestCaseD2Ev.exit4427
 
-_ZN8TestCaseD2Ev.exit4428:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4425, %if.then.i7.i4427
-  %__cntrl_.i.i4385 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 17, i32 3, i32 1
-  %860 = load ptr, ptr %__cntrl_.i.i4385, align 8, !tbaa !98
-  %tobool.not.i.i4386 = icmp eq ptr %860, null
-  br i1 %tobool.not.i.i4386, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4397, label %if.then.i.i4389
+_ZN8TestCaseD2Ev.exit4427:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4424, %if.then.i7.i4426
+  %__cntrl_.i.i4384 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 17, i32 3, i32 1
+  %860 = load ptr, ptr %__cntrl_.i.i4384, align 8, !tbaa !98
+  %tobool.not.i.i4385 = icmp eq ptr %860, null
+  br i1 %tobool.not.i.i4385, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4396, label %if.then.i.i4388
 
-if.then.i.i4389:                                  ; preds = %_ZN8TestCaseD2Ev.exit4428
-  %__shared_owners_.i.i.i.i4387 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %860, i64 0, i32 1
-  %861 = atomicrmw add ptr %__shared_owners_.i.i.i.i4387, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4388 = icmp eq i64 %861, 0
-  br i1 %cmp.i.i.i.i4388, label %if.then.i.i.i4392, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4397
+if.then.i.i4388:                                  ; preds = %_ZN8TestCaseD2Ev.exit4427
+  %__shared_owners_.i.i.i.i4386 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %860, i64 0, i32 1
+  %861 = atomicrmw add ptr %__shared_owners_.i.i.i.i4386, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4387 = icmp eq i64 %861, 0
+  br i1 %cmp.i.i.i.i4387, label %if.then.i.i.i4391, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4396
 
-if.then.i.i.i4392:                                ; preds = %if.then.i.i4389
-  %vtable.i.i.i.i4390 = load ptr, ptr %860, align 8, !tbaa !24
-  %vfn.i.i.i.i4391 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4390, i64 2
-  %862 = load ptr, ptr %vfn.i.i.i.i4391, align 8
+if.then.i.i.i4391:                                ; preds = %if.then.i.i4388
+  %vtable.i.i.i.i4389 = load ptr, ptr %860, align 8, !tbaa !24
+  %vfn.i.i.i.i4390 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4389, i64 2
+  %862 = load ptr, ptr %vfn.i.i.i.i4390, align 8
   call void %862(ptr noundef nonnull align 8 dereferenceable(16) %860) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %860) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4397
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4396
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4397: ; preds = %if.then.i.i.i4392, %if.then.i.i4389, %_ZN8TestCaseD2Ev.exit4428
-  %substituted_regex.i4393 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 17, i32 2
-  %bf.load.i.i.i4394 = load i8, ptr %substituted_regex.i4393, align 8
-  %bf.clear.i.i.i4395 = and i8 %bf.load.i.i.i4394, 1
-  %tobool.i.not.i.i4396 = icmp eq i8 %bf.clear.i.i.i4395, 0
-  br i1 %tobool.i.not.i.i4396, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4403, label %if.then.i2.i4399
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4396: ; preds = %if.then.i.i.i4391, %if.then.i.i4388, %_ZN8TestCaseD2Ev.exit4427
+  %substituted_regex.i4392 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 17, i32 2
+  %bf.load.i.i.i4393 = load i8, ptr %substituted_regex.i4392, align 8
+  %bf.clear.i.i.i4394 = and i8 %bf.load.i.i.i4393, 1
+  %tobool.i.not.i.i4395 = icmp eq i8 %bf.clear.i.i.i4394, 0
+  br i1 %tobool.i.not.i.i4395, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4402, label %if.then.i2.i4398
 
-if.then.i2.i4399:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4397
-  %__data_.i.i.i4398 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 17, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %863 = load ptr, ptr %__data_.i.i.i4398, align 8, !tbaa !5
+if.then.i2.i4398:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4396
+  %__data_.i.i.i4397 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 17, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %863 = load ptr, ptr %__data_.i.i.i4397, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %863) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4403
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4402
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4403: ; preds = %if.then.i2.i4399, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4397
-  %bf.load.i.i3.i4400 = load i8, ptr %arrayinit.element83.i1540, align 8
-  %bf.clear.i.i4.i4401 = and i8 %bf.load.i.i3.i4400, 1
-  %tobool.i.not.i5.i4402 = icmp eq i8 %bf.clear.i.i4.i4401, 0
-  br i1 %tobool.i.not.i5.i4402, label %_ZN8TestCaseD2Ev.exit4406, label %if.then.i7.i4405
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4402: ; preds = %if.then.i2.i4398, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4396
+  %bf.load.i.i3.i4399 = load i8, ptr %arrayinit.element83.i1540, align 8
+  %bf.clear.i.i4.i4400 = and i8 %bf.load.i.i3.i4399, 1
+  %tobool.i.not.i5.i4401 = icmp eq i8 %bf.clear.i.i4.i4400, 0
+  br i1 %tobool.i.not.i5.i4401, label %_ZN8TestCaseD2Ev.exit4405, label %if.then.i7.i4404
 
-if.then.i7.i4405:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4403
-  %__data_.i.i6.i4404 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 17, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %864 = load ptr, ptr %__data_.i.i6.i4404, align 8, !tbaa !5
+if.then.i7.i4404:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4402
+  %__data_.i.i6.i4403 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 17, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %864 = load ptr, ptr %__data_.i.i6.i4403, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %864) #25
-  br label %_ZN8TestCaseD2Ev.exit4406
+  br label %_ZN8TestCaseD2Ev.exit4405
 
-_ZN8TestCaseD2Ev.exit4406:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4403, %if.then.i7.i4405
-  %__cntrl_.i.i4363 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 16, i32 3, i32 1
-  %865 = load ptr, ptr %__cntrl_.i.i4363, align 8, !tbaa !98
-  %tobool.not.i.i4364 = icmp eq ptr %865, null
-  br i1 %tobool.not.i.i4364, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4375, label %if.then.i.i4367
+_ZN8TestCaseD2Ev.exit4405:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4402, %if.then.i7.i4404
+  %__cntrl_.i.i4362 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 16, i32 3, i32 1
+  %865 = load ptr, ptr %__cntrl_.i.i4362, align 8, !tbaa !98
+  %tobool.not.i.i4363 = icmp eq ptr %865, null
+  br i1 %tobool.not.i.i4363, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4374, label %if.then.i.i4366
 
-if.then.i.i4367:                                  ; preds = %_ZN8TestCaseD2Ev.exit4406
-  %__shared_owners_.i.i.i.i4365 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %865, i64 0, i32 1
-  %866 = atomicrmw add ptr %__shared_owners_.i.i.i.i4365, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4366 = icmp eq i64 %866, 0
-  br i1 %cmp.i.i.i.i4366, label %if.then.i.i.i4370, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4375
+if.then.i.i4366:                                  ; preds = %_ZN8TestCaseD2Ev.exit4405
+  %__shared_owners_.i.i.i.i4364 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %865, i64 0, i32 1
+  %866 = atomicrmw add ptr %__shared_owners_.i.i.i.i4364, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4365 = icmp eq i64 %866, 0
+  br i1 %cmp.i.i.i.i4365, label %if.then.i.i.i4369, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4374
 
-if.then.i.i.i4370:                                ; preds = %if.then.i.i4367
-  %vtable.i.i.i.i4368 = load ptr, ptr %865, align 8, !tbaa !24
-  %vfn.i.i.i.i4369 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4368, i64 2
-  %867 = load ptr, ptr %vfn.i.i.i.i4369, align 8
+if.then.i.i.i4369:                                ; preds = %if.then.i.i4366
+  %vtable.i.i.i.i4367 = load ptr, ptr %865, align 8, !tbaa !24
+  %vfn.i.i.i.i4368 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4367, i64 2
+  %867 = load ptr, ptr %vfn.i.i.i.i4368, align 8
   call void %867(ptr noundef nonnull align 8 dereferenceable(16) %865) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %865) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4375
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4374
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4375: ; preds = %if.then.i.i.i4370, %if.then.i.i4367, %_ZN8TestCaseD2Ev.exit4406
-  %substituted_regex.i4371 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 16, i32 2
-  %bf.load.i.i.i4372 = load i8, ptr %substituted_regex.i4371, align 8
-  %bf.clear.i.i.i4373 = and i8 %bf.load.i.i.i4372, 1
-  %tobool.i.not.i.i4374 = icmp eq i8 %bf.clear.i.i.i4373, 0
-  br i1 %tobool.i.not.i.i4374, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4381, label %if.then.i2.i4377
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4374: ; preds = %if.then.i.i.i4369, %if.then.i.i4366, %_ZN8TestCaseD2Ev.exit4405
+  %substituted_regex.i4370 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 16, i32 2
+  %bf.load.i.i.i4371 = load i8, ptr %substituted_regex.i4370, align 8
+  %bf.clear.i.i.i4372 = and i8 %bf.load.i.i.i4371, 1
+  %tobool.i.not.i.i4373 = icmp eq i8 %bf.clear.i.i.i4372, 0
+  br i1 %tobool.i.not.i.i4373, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4380, label %if.then.i2.i4376
 
-if.then.i2.i4377:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4375
-  %__data_.i.i.i4376 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 16, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %868 = load ptr, ptr %__data_.i.i.i4376, align 8, !tbaa !5
+if.then.i2.i4376:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4374
+  %__data_.i.i.i4375 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 16, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %868 = load ptr, ptr %__data_.i.i.i4375, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %868) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4381
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4380
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4381: ; preds = %if.then.i2.i4377, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4375
-  %bf.load.i.i3.i4378 = load i8, ptr %arrayinit.element78.i1531, align 8
-  %bf.clear.i.i4.i4379 = and i8 %bf.load.i.i3.i4378, 1
-  %tobool.i.not.i5.i4380 = icmp eq i8 %bf.clear.i.i4.i4379, 0
-  br i1 %tobool.i.not.i5.i4380, label %_ZN8TestCaseD2Ev.exit4384, label %if.then.i7.i4383
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4380: ; preds = %if.then.i2.i4376, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4374
+  %bf.load.i.i3.i4377 = load i8, ptr %arrayinit.element78.i1531, align 8
+  %bf.clear.i.i4.i4378 = and i8 %bf.load.i.i3.i4377, 1
+  %tobool.i.not.i5.i4379 = icmp eq i8 %bf.clear.i.i4.i4378, 0
+  br i1 %tobool.i.not.i5.i4379, label %_ZN8TestCaseD2Ev.exit4383, label %if.then.i7.i4382
 
-if.then.i7.i4383:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4381
-  %__data_.i.i6.i4382 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 16, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %869 = load ptr, ptr %__data_.i.i6.i4382, align 8, !tbaa !5
+if.then.i7.i4382:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4380
+  %__data_.i.i6.i4381 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 16, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %869 = load ptr, ptr %__data_.i.i6.i4381, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %869) #25
-  br label %_ZN8TestCaseD2Ev.exit4384
+  br label %_ZN8TestCaseD2Ev.exit4383
 
-_ZN8TestCaseD2Ev.exit4384:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4381, %if.then.i7.i4383
-  %__cntrl_.i.i4341 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 15, i32 3, i32 1
-  %870 = load ptr, ptr %__cntrl_.i.i4341, align 8, !tbaa !98
-  %tobool.not.i.i4342 = icmp eq ptr %870, null
-  br i1 %tobool.not.i.i4342, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4353, label %if.then.i.i4345
+_ZN8TestCaseD2Ev.exit4383:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4380, %if.then.i7.i4382
+  %__cntrl_.i.i4340 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 15, i32 3, i32 1
+  %870 = load ptr, ptr %__cntrl_.i.i4340, align 8, !tbaa !98
+  %tobool.not.i.i4341 = icmp eq ptr %870, null
+  br i1 %tobool.not.i.i4341, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4352, label %if.then.i.i4344
 
-if.then.i.i4345:                                  ; preds = %_ZN8TestCaseD2Ev.exit4384
-  %__shared_owners_.i.i.i.i4343 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %870, i64 0, i32 1
-  %871 = atomicrmw add ptr %__shared_owners_.i.i.i.i4343, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4344 = icmp eq i64 %871, 0
-  br i1 %cmp.i.i.i.i4344, label %if.then.i.i.i4348, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4353
+if.then.i.i4344:                                  ; preds = %_ZN8TestCaseD2Ev.exit4383
+  %__shared_owners_.i.i.i.i4342 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %870, i64 0, i32 1
+  %871 = atomicrmw add ptr %__shared_owners_.i.i.i.i4342, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4343 = icmp eq i64 %871, 0
+  br i1 %cmp.i.i.i.i4343, label %if.then.i.i.i4347, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4352
 
-if.then.i.i.i4348:                                ; preds = %if.then.i.i4345
-  %vtable.i.i.i.i4346 = load ptr, ptr %870, align 8, !tbaa !24
-  %vfn.i.i.i.i4347 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4346, i64 2
-  %872 = load ptr, ptr %vfn.i.i.i.i4347, align 8
+if.then.i.i.i4347:                                ; preds = %if.then.i.i4344
+  %vtable.i.i.i.i4345 = load ptr, ptr %870, align 8, !tbaa !24
+  %vfn.i.i.i.i4346 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4345, i64 2
+  %872 = load ptr, ptr %vfn.i.i.i.i4346, align 8
   call void %872(ptr noundef nonnull align 8 dereferenceable(16) %870) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %870) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4353
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4352
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4353: ; preds = %if.then.i.i.i4348, %if.then.i.i4345, %_ZN8TestCaseD2Ev.exit4384
-  %substituted_regex.i4349 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 15, i32 2
-  %bf.load.i.i.i4350 = load i8, ptr %substituted_regex.i4349, align 8
-  %bf.clear.i.i.i4351 = and i8 %bf.load.i.i.i4350, 1
-  %tobool.i.not.i.i4352 = icmp eq i8 %bf.clear.i.i.i4351, 0
-  br i1 %tobool.i.not.i.i4352, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4359, label %if.then.i2.i4355
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4352: ; preds = %if.then.i.i.i4347, %if.then.i.i4344, %_ZN8TestCaseD2Ev.exit4383
+  %substituted_regex.i4348 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 15, i32 2
+  %bf.load.i.i.i4349 = load i8, ptr %substituted_regex.i4348, align 8
+  %bf.clear.i.i.i4350 = and i8 %bf.load.i.i.i4349, 1
+  %tobool.i.not.i.i4351 = icmp eq i8 %bf.clear.i.i.i4350, 0
+  br i1 %tobool.i.not.i.i4351, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4358, label %if.then.i2.i4354
 
-if.then.i2.i4355:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4353
-  %__data_.i.i.i4354 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 15, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %873 = load ptr, ptr %__data_.i.i.i4354, align 8, !tbaa !5
+if.then.i2.i4354:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4352
+  %__data_.i.i.i4353 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 15, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %873 = load ptr, ptr %__data_.i.i.i4353, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %873) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4359
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4358
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4359: ; preds = %if.then.i2.i4355, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4353
-  %bf.load.i.i3.i4356 = load i8, ptr %arrayinit.element73.i1522, align 8
-  %bf.clear.i.i4.i4357 = and i8 %bf.load.i.i3.i4356, 1
-  %tobool.i.not.i5.i4358 = icmp eq i8 %bf.clear.i.i4.i4357, 0
-  br i1 %tobool.i.not.i5.i4358, label %_ZN8TestCaseD2Ev.exit4362, label %if.then.i7.i4361
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4358: ; preds = %if.then.i2.i4354, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4352
+  %bf.load.i.i3.i4355 = load i8, ptr %arrayinit.element73.i1522, align 8
+  %bf.clear.i.i4.i4356 = and i8 %bf.load.i.i3.i4355, 1
+  %tobool.i.not.i5.i4357 = icmp eq i8 %bf.clear.i.i4.i4356, 0
+  br i1 %tobool.i.not.i5.i4357, label %_ZN8TestCaseD2Ev.exit4361, label %if.then.i7.i4360
 
-if.then.i7.i4361:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4359
-  %__data_.i.i6.i4360 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 15, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %874 = load ptr, ptr %__data_.i.i6.i4360, align 8, !tbaa !5
+if.then.i7.i4360:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4358
+  %__data_.i.i6.i4359 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 15, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %874 = load ptr, ptr %__data_.i.i6.i4359, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %874) #25
-  br label %_ZN8TestCaseD2Ev.exit4362
+  br label %_ZN8TestCaseD2Ev.exit4361
 
-_ZN8TestCaseD2Ev.exit4362:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4359, %if.then.i7.i4361
-  %__cntrl_.i.i4319 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 14, i32 3, i32 1
-  %875 = load ptr, ptr %__cntrl_.i.i4319, align 8, !tbaa !98
-  %tobool.not.i.i4320 = icmp eq ptr %875, null
-  br i1 %tobool.not.i.i4320, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4331, label %if.then.i.i4323
+_ZN8TestCaseD2Ev.exit4361:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4358, %if.then.i7.i4360
+  %__cntrl_.i.i4318 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 14, i32 3, i32 1
+  %875 = load ptr, ptr %__cntrl_.i.i4318, align 8, !tbaa !98
+  %tobool.not.i.i4319 = icmp eq ptr %875, null
+  br i1 %tobool.not.i.i4319, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4330, label %if.then.i.i4322
 
-if.then.i.i4323:                                  ; preds = %_ZN8TestCaseD2Ev.exit4362
-  %__shared_owners_.i.i.i.i4321 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %875, i64 0, i32 1
-  %876 = atomicrmw add ptr %__shared_owners_.i.i.i.i4321, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4322 = icmp eq i64 %876, 0
-  br i1 %cmp.i.i.i.i4322, label %if.then.i.i.i4326, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4331
+if.then.i.i4322:                                  ; preds = %_ZN8TestCaseD2Ev.exit4361
+  %__shared_owners_.i.i.i.i4320 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %875, i64 0, i32 1
+  %876 = atomicrmw add ptr %__shared_owners_.i.i.i.i4320, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4321 = icmp eq i64 %876, 0
+  br i1 %cmp.i.i.i.i4321, label %if.then.i.i.i4325, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4330
 
-if.then.i.i.i4326:                                ; preds = %if.then.i.i4323
-  %vtable.i.i.i.i4324 = load ptr, ptr %875, align 8, !tbaa !24
-  %vfn.i.i.i.i4325 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4324, i64 2
-  %877 = load ptr, ptr %vfn.i.i.i.i4325, align 8
+if.then.i.i.i4325:                                ; preds = %if.then.i.i4322
+  %vtable.i.i.i.i4323 = load ptr, ptr %875, align 8, !tbaa !24
+  %vfn.i.i.i.i4324 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4323, i64 2
+  %877 = load ptr, ptr %vfn.i.i.i.i4324, align 8
   call void %877(ptr noundef nonnull align 8 dereferenceable(16) %875) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %875) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4331
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4330
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4331: ; preds = %if.then.i.i.i4326, %if.then.i.i4323, %_ZN8TestCaseD2Ev.exit4362
-  %substituted_regex.i4327 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 14, i32 2
-  %bf.load.i.i.i4328 = load i8, ptr %substituted_regex.i4327, align 8
-  %bf.clear.i.i.i4329 = and i8 %bf.load.i.i.i4328, 1
-  %tobool.i.not.i.i4330 = icmp eq i8 %bf.clear.i.i.i4329, 0
-  br i1 %tobool.i.not.i.i4330, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4337, label %if.then.i2.i4333
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4330: ; preds = %if.then.i.i.i4325, %if.then.i.i4322, %_ZN8TestCaseD2Ev.exit4361
+  %substituted_regex.i4326 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 14, i32 2
+  %bf.load.i.i.i4327 = load i8, ptr %substituted_regex.i4326, align 8
+  %bf.clear.i.i.i4328 = and i8 %bf.load.i.i.i4327, 1
+  %tobool.i.not.i.i4329 = icmp eq i8 %bf.clear.i.i.i4328, 0
+  br i1 %tobool.i.not.i.i4329, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4336, label %if.then.i2.i4332
 
-if.then.i2.i4333:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4331
-  %__data_.i.i.i4332 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 14, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %878 = load ptr, ptr %__data_.i.i.i4332, align 8, !tbaa !5
+if.then.i2.i4332:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4330
+  %__data_.i.i.i4331 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 14, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %878 = load ptr, ptr %__data_.i.i.i4331, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %878) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4337
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4336
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4337: ; preds = %if.then.i2.i4333, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4331
-  %bf.load.i.i3.i4334 = load i8, ptr %arrayinit.element68.i1513, align 8
-  %bf.clear.i.i4.i4335 = and i8 %bf.load.i.i3.i4334, 1
-  %tobool.i.not.i5.i4336 = icmp eq i8 %bf.clear.i.i4.i4335, 0
-  br i1 %tobool.i.not.i5.i4336, label %_ZN8TestCaseD2Ev.exit4340, label %if.then.i7.i4339
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4336: ; preds = %if.then.i2.i4332, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4330
+  %bf.load.i.i3.i4333 = load i8, ptr %arrayinit.element68.i1513, align 8
+  %bf.clear.i.i4.i4334 = and i8 %bf.load.i.i3.i4333, 1
+  %tobool.i.not.i5.i4335 = icmp eq i8 %bf.clear.i.i4.i4334, 0
+  br i1 %tobool.i.not.i5.i4335, label %_ZN8TestCaseD2Ev.exit4339, label %if.then.i7.i4338
 
-if.then.i7.i4339:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4337
-  %__data_.i.i6.i4338 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 14, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %879 = load ptr, ptr %__data_.i.i6.i4338, align 8, !tbaa !5
+if.then.i7.i4338:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4336
+  %__data_.i.i6.i4337 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 14, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %879 = load ptr, ptr %__data_.i.i6.i4337, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %879) #25
-  br label %_ZN8TestCaseD2Ev.exit4340
+  br label %_ZN8TestCaseD2Ev.exit4339
 
-_ZN8TestCaseD2Ev.exit4340:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4337, %if.then.i7.i4339
-  %__cntrl_.i.i4297 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 13, i32 3, i32 1
-  %880 = load ptr, ptr %__cntrl_.i.i4297, align 8, !tbaa !98
-  %tobool.not.i.i4298 = icmp eq ptr %880, null
-  br i1 %tobool.not.i.i4298, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4309, label %if.then.i.i4301
+_ZN8TestCaseD2Ev.exit4339:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4336, %if.then.i7.i4338
+  %__cntrl_.i.i4296 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 13, i32 3, i32 1
+  %880 = load ptr, ptr %__cntrl_.i.i4296, align 8, !tbaa !98
+  %tobool.not.i.i4297 = icmp eq ptr %880, null
+  br i1 %tobool.not.i.i4297, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4308, label %if.then.i.i4300
 
-if.then.i.i4301:                                  ; preds = %_ZN8TestCaseD2Ev.exit4340
-  %__shared_owners_.i.i.i.i4299 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %880, i64 0, i32 1
-  %881 = atomicrmw add ptr %__shared_owners_.i.i.i.i4299, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4300 = icmp eq i64 %881, 0
-  br i1 %cmp.i.i.i.i4300, label %if.then.i.i.i4304, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4309
+if.then.i.i4300:                                  ; preds = %_ZN8TestCaseD2Ev.exit4339
+  %__shared_owners_.i.i.i.i4298 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %880, i64 0, i32 1
+  %881 = atomicrmw add ptr %__shared_owners_.i.i.i.i4298, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4299 = icmp eq i64 %881, 0
+  br i1 %cmp.i.i.i.i4299, label %if.then.i.i.i4303, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4308
 
-if.then.i.i.i4304:                                ; preds = %if.then.i.i4301
-  %vtable.i.i.i.i4302 = load ptr, ptr %880, align 8, !tbaa !24
-  %vfn.i.i.i.i4303 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4302, i64 2
-  %882 = load ptr, ptr %vfn.i.i.i.i4303, align 8
+if.then.i.i.i4303:                                ; preds = %if.then.i.i4300
+  %vtable.i.i.i.i4301 = load ptr, ptr %880, align 8, !tbaa !24
+  %vfn.i.i.i.i4302 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4301, i64 2
+  %882 = load ptr, ptr %vfn.i.i.i.i4302, align 8
   call void %882(ptr noundef nonnull align 8 dereferenceable(16) %880) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %880) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4309
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4308
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4309: ; preds = %if.then.i.i.i4304, %if.then.i.i4301, %_ZN8TestCaseD2Ev.exit4340
-  %substituted_regex.i4305 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 13, i32 2
-  %bf.load.i.i.i4306 = load i8, ptr %substituted_regex.i4305, align 8
-  %bf.clear.i.i.i4307 = and i8 %bf.load.i.i.i4306, 1
-  %tobool.i.not.i.i4308 = icmp eq i8 %bf.clear.i.i.i4307, 0
-  br i1 %tobool.i.not.i.i4308, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4315, label %if.then.i2.i4311
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4308: ; preds = %if.then.i.i.i4303, %if.then.i.i4300, %_ZN8TestCaseD2Ev.exit4339
+  %substituted_regex.i4304 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 13, i32 2
+  %bf.load.i.i.i4305 = load i8, ptr %substituted_regex.i4304, align 8
+  %bf.clear.i.i.i4306 = and i8 %bf.load.i.i.i4305, 1
+  %tobool.i.not.i.i4307 = icmp eq i8 %bf.clear.i.i.i4306, 0
+  br i1 %tobool.i.not.i.i4307, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4314, label %if.then.i2.i4310
 
-if.then.i2.i4311:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4309
-  %__data_.i.i.i4310 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 13, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %883 = load ptr, ptr %__data_.i.i.i4310, align 8, !tbaa !5
+if.then.i2.i4310:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4308
+  %__data_.i.i.i4309 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 13, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %883 = load ptr, ptr %__data_.i.i.i4309, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %883) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4315
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4314
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4315: ; preds = %if.then.i2.i4311, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4309
-  %bf.load.i.i3.i4312 = load i8, ptr %arrayinit.element63.i1504, align 8
-  %bf.clear.i.i4.i4313 = and i8 %bf.load.i.i3.i4312, 1
-  %tobool.i.not.i5.i4314 = icmp eq i8 %bf.clear.i.i4.i4313, 0
-  br i1 %tobool.i.not.i5.i4314, label %_ZN8TestCaseD2Ev.exit4318, label %if.then.i7.i4317
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4314: ; preds = %if.then.i2.i4310, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4308
+  %bf.load.i.i3.i4311 = load i8, ptr %arrayinit.element63.i1504, align 8
+  %bf.clear.i.i4.i4312 = and i8 %bf.load.i.i3.i4311, 1
+  %tobool.i.not.i5.i4313 = icmp eq i8 %bf.clear.i.i4.i4312, 0
+  br i1 %tobool.i.not.i5.i4313, label %_ZN8TestCaseD2Ev.exit4317, label %if.then.i7.i4316
 
-if.then.i7.i4317:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4315
-  %__data_.i.i6.i4316 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 13, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %884 = load ptr, ptr %__data_.i.i6.i4316, align 8, !tbaa !5
+if.then.i7.i4316:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4314
+  %__data_.i.i6.i4315 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 13, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %884 = load ptr, ptr %__data_.i.i6.i4315, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %884) #25
-  br label %_ZN8TestCaseD2Ev.exit4318
+  br label %_ZN8TestCaseD2Ev.exit4317
 
-_ZN8TestCaseD2Ev.exit4318:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4315, %if.then.i7.i4317
-  %__cntrl_.i.i4275 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 12, i32 3, i32 1
-  %885 = load ptr, ptr %__cntrl_.i.i4275, align 8, !tbaa !98
-  %tobool.not.i.i4276 = icmp eq ptr %885, null
-  br i1 %tobool.not.i.i4276, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4287, label %if.then.i.i4279
+_ZN8TestCaseD2Ev.exit4317:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4314, %if.then.i7.i4316
+  %__cntrl_.i.i4274 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 12, i32 3, i32 1
+  %885 = load ptr, ptr %__cntrl_.i.i4274, align 8, !tbaa !98
+  %tobool.not.i.i4275 = icmp eq ptr %885, null
+  br i1 %tobool.not.i.i4275, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4286, label %if.then.i.i4278
 
-if.then.i.i4279:                                  ; preds = %_ZN8TestCaseD2Ev.exit4318
-  %__shared_owners_.i.i.i.i4277 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %885, i64 0, i32 1
-  %886 = atomicrmw add ptr %__shared_owners_.i.i.i.i4277, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4278 = icmp eq i64 %886, 0
-  br i1 %cmp.i.i.i.i4278, label %if.then.i.i.i4282, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4287
+if.then.i.i4278:                                  ; preds = %_ZN8TestCaseD2Ev.exit4317
+  %__shared_owners_.i.i.i.i4276 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %885, i64 0, i32 1
+  %886 = atomicrmw add ptr %__shared_owners_.i.i.i.i4276, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4277 = icmp eq i64 %886, 0
+  br i1 %cmp.i.i.i.i4277, label %if.then.i.i.i4281, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4286
 
-if.then.i.i.i4282:                                ; preds = %if.then.i.i4279
-  %vtable.i.i.i.i4280 = load ptr, ptr %885, align 8, !tbaa !24
-  %vfn.i.i.i.i4281 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4280, i64 2
-  %887 = load ptr, ptr %vfn.i.i.i.i4281, align 8
+if.then.i.i.i4281:                                ; preds = %if.then.i.i4278
+  %vtable.i.i.i.i4279 = load ptr, ptr %885, align 8, !tbaa !24
+  %vfn.i.i.i.i4280 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4279, i64 2
+  %887 = load ptr, ptr %vfn.i.i.i.i4280, align 8
   call void %887(ptr noundef nonnull align 8 dereferenceable(16) %885) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %885) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4287
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4286
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4287: ; preds = %if.then.i.i.i4282, %if.then.i.i4279, %_ZN8TestCaseD2Ev.exit4318
-  %substituted_regex.i4283 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 12, i32 2
-  %bf.load.i.i.i4284 = load i8, ptr %substituted_regex.i4283, align 8
-  %bf.clear.i.i.i4285 = and i8 %bf.load.i.i.i4284, 1
-  %tobool.i.not.i.i4286 = icmp eq i8 %bf.clear.i.i.i4285, 0
-  br i1 %tobool.i.not.i.i4286, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4293, label %if.then.i2.i4289
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4286: ; preds = %if.then.i.i.i4281, %if.then.i.i4278, %_ZN8TestCaseD2Ev.exit4317
+  %substituted_regex.i4282 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 12, i32 2
+  %bf.load.i.i.i4283 = load i8, ptr %substituted_regex.i4282, align 8
+  %bf.clear.i.i.i4284 = and i8 %bf.load.i.i.i4283, 1
+  %tobool.i.not.i.i4285 = icmp eq i8 %bf.clear.i.i.i4284, 0
+  br i1 %tobool.i.not.i.i4285, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4292, label %if.then.i2.i4288
 
-if.then.i2.i4289:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4287
-  %__data_.i.i.i4288 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 12, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %888 = load ptr, ptr %__data_.i.i.i4288, align 8, !tbaa !5
+if.then.i2.i4288:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4286
+  %__data_.i.i.i4287 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 12, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %888 = load ptr, ptr %__data_.i.i.i4287, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %888) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4293
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4292
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4293: ; preds = %if.then.i2.i4289, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4287
-  %bf.load.i.i3.i4290 = load i8, ptr %arrayinit.element58.i1498, align 8
-  %bf.clear.i.i4.i4291 = and i8 %bf.load.i.i3.i4290, 1
-  %tobool.i.not.i5.i4292 = icmp eq i8 %bf.clear.i.i4.i4291, 0
-  br i1 %tobool.i.not.i5.i4292, label %_ZN8TestCaseD2Ev.exit4296, label %if.then.i7.i4295
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4292: ; preds = %if.then.i2.i4288, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4286
+  %bf.load.i.i3.i4289 = load i8, ptr %arrayinit.element58.i1498, align 8
+  %bf.clear.i.i4.i4290 = and i8 %bf.load.i.i3.i4289, 1
+  %tobool.i.not.i5.i4291 = icmp eq i8 %bf.clear.i.i4.i4290, 0
+  br i1 %tobool.i.not.i5.i4291, label %_ZN8TestCaseD2Ev.exit4295, label %if.then.i7.i4294
 
-if.then.i7.i4295:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4293
-  %__data_.i.i6.i4294 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 12, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %889 = load ptr, ptr %__data_.i.i6.i4294, align 8, !tbaa !5
+if.then.i7.i4294:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4292
+  %__data_.i.i6.i4293 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 12, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %889 = load ptr, ptr %__data_.i.i6.i4293, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %889) #25
-  br label %_ZN8TestCaseD2Ev.exit4296
+  br label %_ZN8TestCaseD2Ev.exit4295
 
-_ZN8TestCaseD2Ev.exit4296:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4293, %if.then.i7.i4295
-  %__cntrl_.i.i4253 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 11, i32 3, i32 1
-  %890 = load ptr, ptr %__cntrl_.i.i4253, align 8, !tbaa !98
-  %tobool.not.i.i4254 = icmp eq ptr %890, null
-  br i1 %tobool.not.i.i4254, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4265, label %if.then.i.i4257
+_ZN8TestCaseD2Ev.exit4295:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4292, %if.then.i7.i4294
+  %__cntrl_.i.i4252 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 11, i32 3, i32 1
+  %890 = load ptr, ptr %__cntrl_.i.i4252, align 8, !tbaa !98
+  %tobool.not.i.i4253 = icmp eq ptr %890, null
+  br i1 %tobool.not.i.i4253, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4264, label %if.then.i.i4256
 
-if.then.i.i4257:                                  ; preds = %_ZN8TestCaseD2Ev.exit4296
-  %__shared_owners_.i.i.i.i4255 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %890, i64 0, i32 1
-  %891 = atomicrmw add ptr %__shared_owners_.i.i.i.i4255, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4256 = icmp eq i64 %891, 0
-  br i1 %cmp.i.i.i.i4256, label %if.then.i.i.i4260, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4265
+if.then.i.i4256:                                  ; preds = %_ZN8TestCaseD2Ev.exit4295
+  %__shared_owners_.i.i.i.i4254 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %890, i64 0, i32 1
+  %891 = atomicrmw add ptr %__shared_owners_.i.i.i.i4254, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4255 = icmp eq i64 %891, 0
+  br i1 %cmp.i.i.i.i4255, label %if.then.i.i.i4259, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4264
 
-if.then.i.i.i4260:                                ; preds = %if.then.i.i4257
-  %vtable.i.i.i.i4258 = load ptr, ptr %890, align 8, !tbaa !24
-  %vfn.i.i.i.i4259 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4258, i64 2
-  %892 = load ptr, ptr %vfn.i.i.i.i4259, align 8
+if.then.i.i.i4259:                                ; preds = %if.then.i.i4256
+  %vtable.i.i.i.i4257 = load ptr, ptr %890, align 8, !tbaa !24
+  %vfn.i.i.i.i4258 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4257, i64 2
+  %892 = load ptr, ptr %vfn.i.i.i.i4258, align 8
   call void %892(ptr noundef nonnull align 8 dereferenceable(16) %890) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %890) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4265
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4264
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4265: ; preds = %if.then.i.i.i4260, %if.then.i.i4257, %_ZN8TestCaseD2Ev.exit4296
-  %substituted_regex.i4261 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 11, i32 2
-  %bf.load.i.i.i4262 = load i8, ptr %substituted_regex.i4261, align 8
-  %bf.clear.i.i.i4263 = and i8 %bf.load.i.i.i4262, 1
-  %tobool.i.not.i.i4264 = icmp eq i8 %bf.clear.i.i.i4263, 0
-  br i1 %tobool.i.not.i.i4264, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4271, label %if.then.i2.i4267
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4264: ; preds = %if.then.i.i.i4259, %if.then.i.i4256, %_ZN8TestCaseD2Ev.exit4295
+  %substituted_regex.i4260 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 11, i32 2
+  %bf.load.i.i.i4261 = load i8, ptr %substituted_regex.i4260, align 8
+  %bf.clear.i.i.i4262 = and i8 %bf.load.i.i.i4261, 1
+  %tobool.i.not.i.i4263 = icmp eq i8 %bf.clear.i.i.i4262, 0
+  br i1 %tobool.i.not.i.i4263, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4270, label %if.then.i2.i4266
 
-if.then.i2.i4267:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4265
-  %__data_.i.i.i4266 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 11, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %893 = load ptr, ptr %__data_.i.i.i4266, align 8, !tbaa !5
+if.then.i2.i4266:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4264
+  %__data_.i.i.i4265 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 11, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %893 = load ptr, ptr %__data_.i.i.i4265, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %893) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4271
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4270
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4271: ; preds = %if.then.i2.i4267, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4265
-  %bf.load.i.i3.i4268 = load i8, ptr %arrayinit.element53.i1492, align 8
-  %bf.clear.i.i4.i4269 = and i8 %bf.load.i.i3.i4268, 1
-  %tobool.i.not.i5.i4270 = icmp eq i8 %bf.clear.i.i4.i4269, 0
-  br i1 %tobool.i.not.i5.i4270, label %_ZN8TestCaseD2Ev.exit4274, label %if.then.i7.i4273
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4270: ; preds = %if.then.i2.i4266, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4264
+  %bf.load.i.i3.i4267 = load i8, ptr %arrayinit.element53.i1492, align 8
+  %bf.clear.i.i4.i4268 = and i8 %bf.load.i.i3.i4267, 1
+  %tobool.i.not.i5.i4269 = icmp eq i8 %bf.clear.i.i4.i4268, 0
+  br i1 %tobool.i.not.i5.i4269, label %_ZN8TestCaseD2Ev.exit4273, label %if.then.i7.i4272
 
-if.then.i7.i4273:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4271
-  %__data_.i.i6.i4272 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 11, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %894 = load ptr, ptr %__data_.i.i6.i4272, align 8, !tbaa !5
+if.then.i7.i4272:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4270
+  %__data_.i.i6.i4271 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 11, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %894 = load ptr, ptr %__data_.i.i6.i4271, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %894) #25
-  br label %_ZN8TestCaseD2Ev.exit4274
+  br label %_ZN8TestCaseD2Ev.exit4273
 
-_ZN8TestCaseD2Ev.exit4274:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4271, %if.then.i7.i4273
-  %__cntrl_.i.i4231 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 10, i32 3, i32 1
-  %895 = load ptr, ptr %__cntrl_.i.i4231, align 8, !tbaa !98
-  %tobool.not.i.i4232 = icmp eq ptr %895, null
-  br i1 %tobool.not.i.i4232, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4243, label %if.then.i.i4235
+_ZN8TestCaseD2Ev.exit4273:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4270, %if.then.i7.i4272
+  %__cntrl_.i.i4230 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 10, i32 3, i32 1
+  %895 = load ptr, ptr %__cntrl_.i.i4230, align 8, !tbaa !98
+  %tobool.not.i.i4231 = icmp eq ptr %895, null
+  br i1 %tobool.not.i.i4231, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4242, label %if.then.i.i4234
 
-if.then.i.i4235:                                  ; preds = %_ZN8TestCaseD2Ev.exit4274
-  %__shared_owners_.i.i.i.i4233 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %895, i64 0, i32 1
-  %896 = atomicrmw add ptr %__shared_owners_.i.i.i.i4233, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4234 = icmp eq i64 %896, 0
-  br i1 %cmp.i.i.i.i4234, label %if.then.i.i.i4238, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4243
+if.then.i.i4234:                                  ; preds = %_ZN8TestCaseD2Ev.exit4273
+  %__shared_owners_.i.i.i.i4232 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %895, i64 0, i32 1
+  %896 = atomicrmw add ptr %__shared_owners_.i.i.i.i4232, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4233 = icmp eq i64 %896, 0
+  br i1 %cmp.i.i.i.i4233, label %if.then.i.i.i4237, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4242
 
-if.then.i.i.i4238:                                ; preds = %if.then.i.i4235
-  %vtable.i.i.i.i4236 = load ptr, ptr %895, align 8, !tbaa !24
-  %vfn.i.i.i.i4237 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4236, i64 2
-  %897 = load ptr, ptr %vfn.i.i.i.i4237, align 8
+if.then.i.i.i4237:                                ; preds = %if.then.i.i4234
+  %vtable.i.i.i.i4235 = load ptr, ptr %895, align 8, !tbaa !24
+  %vfn.i.i.i.i4236 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4235, i64 2
+  %897 = load ptr, ptr %vfn.i.i.i.i4236, align 8
   call void %897(ptr noundef nonnull align 8 dereferenceable(16) %895) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %895) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4243
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4242
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4243: ; preds = %if.then.i.i.i4238, %if.then.i.i4235, %_ZN8TestCaseD2Ev.exit4274
-  %substituted_regex.i4239 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 10, i32 2
-  %bf.load.i.i.i4240 = load i8, ptr %substituted_regex.i4239, align 8
-  %bf.clear.i.i.i4241 = and i8 %bf.load.i.i.i4240, 1
-  %tobool.i.not.i.i4242 = icmp eq i8 %bf.clear.i.i.i4241, 0
-  br i1 %tobool.i.not.i.i4242, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4249, label %if.then.i2.i4245
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4242: ; preds = %if.then.i.i.i4237, %if.then.i.i4234, %_ZN8TestCaseD2Ev.exit4273
+  %substituted_regex.i4238 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 10, i32 2
+  %bf.load.i.i.i4239 = load i8, ptr %substituted_regex.i4238, align 8
+  %bf.clear.i.i.i4240 = and i8 %bf.load.i.i.i4239, 1
+  %tobool.i.not.i.i4241 = icmp eq i8 %bf.clear.i.i.i4240, 0
+  br i1 %tobool.i.not.i.i4241, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4248, label %if.then.i2.i4244
 
-if.then.i2.i4245:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4243
-  %__data_.i.i.i4244 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 10, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %898 = load ptr, ptr %__data_.i.i.i4244, align 8, !tbaa !5
+if.then.i2.i4244:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4242
+  %__data_.i.i.i4243 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 10, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %898 = load ptr, ptr %__data_.i.i.i4243, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %898) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4249
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4248
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4249: ; preds = %if.then.i2.i4245, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4243
-  %bf.load.i.i3.i4246 = load i8, ptr %arrayinit.element48.i1486, align 8
-  %bf.clear.i.i4.i4247 = and i8 %bf.load.i.i3.i4246, 1
-  %tobool.i.not.i5.i4248 = icmp eq i8 %bf.clear.i.i4.i4247, 0
-  br i1 %tobool.i.not.i5.i4248, label %_ZN8TestCaseD2Ev.exit4252, label %if.then.i7.i4251
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4248: ; preds = %if.then.i2.i4244, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4242
+  %bf.load.i.i3.i4245 = load i8, ptr %arrayinit.element48.i1486, align 8
+  %bf.clear.i.i4.i4246 = and i8 %bf.load.i.i3.i4245, 1
+  %tobool.i.not.i5.i4247 = icmp eq i8 %bf.clear.i.i4.i4246, 0
+  br i1 %tobool.i.not.i5.i4247, label %_ZN8TestCaseD2Ev.exit4251, label %if.then.i7.i4250
 
-if.then.i7.i4251:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4249
-  %__data_.i.i6.i4250 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 10, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %899 = load ptr, ptr %__data_.i.i6.i4250, align 8, !tbaa !5
+if.then.i7.i4250:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4248
+  %__data_.i.i6.i4249 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 10, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %899 = load ptr, ptr %__data_.i.i6.i4249, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %899) #25
-  br label %_ZN8TestCaseD2Ev.exit4252
+  br label %_ZN8TestCaseD2Ev.exit4251
 
-_ZN8TestCaseD2Ev.exit4252:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4249, %if.then.i7.i4251
-  %__cntrl_.i.i4209 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 9, i32 3, i32 1
-  %900 = load ptr, ptr %__cntrl_.i.i4209, align 8, !tbaa !98
-  %tobool.not.i.i4210 = icmp eq ptr %900, null
-  br i1 %tobool.not.i.i4210, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4221, label %if.then.i.i4213
+_ZN8TestCaseD2Ev.exit4251:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4248, %if.then.i7.i4250
+  %__cntrl_.i.i4208 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 9, i32 3, i32 1
+  %900 = load ptr, ptr %__cntrl_.i.i4208, align 8, !tbaa !98
+  %tobool.not.i.i4209 = icmp eq ptr %900, null
+  br i1 %tobool.not.i.i4209, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4220, label %if.then.i.i4212
 
-if.then.i.i4213:                                  ; preds = %_ZN8TestCaseD2Ev.exit4252
-  %__shared_owners_.i.i.i.i4211 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %900, i64 0, i32 1
-  %901 = atomicrmw add ptr %__shared_owners_.i.i.i.i4211, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4212 = icmp eq i64 %901, 0
-  br i1 %cmp.i.i.i.i4212, label %if.then.i.i.i4216, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4221
+if.then.i.i4212:                                  ; preds = %_ZN8TestCaseD2Ev.exit4251
+  %__shared_owners_.i.i.i.i4210 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %900, i64 0, i32 1
+  %901 = atomicrmw add ptr %__shared_owners_.i.i.i.i4210, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4211 = icmp eq i64 %901, 0
+  br i1 %cmp.i.i.i.i4211, label %if.then.i.i.i4215, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4220
 
-if.then.i.i.i4216:                                ; preds = %if.then.i.i4213
-  %vtable.i.i.i.i4214 = load ptr, ptr %900, align 8, !tbaa !24
-  %vfn.i.i.i.i4215 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4214, i64 2
-  %902 = load ptr, ptr %vfn.i.i.i.i4215, align 8
+if.then.i.i.i4215:                                ; preds = %if.then.i.i4212
+  %vtable.i.i.i.i4213 = load ptr, ptr %900, align 8, !tbaa !24
+  %vfn.i.i.i.i4214 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4213, i64 2
+  %902 = load ptr, ptr %vfn.i.i.i.i4214, align 8
   call void %902(ptr noundef nonnull align 8 dereferenceable(16) %900) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %900) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4221
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4220
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4221: ; preds = %if.then.i.i.i4216, %if.then.i.i4213, %_ZN8TestCaseD2Ev.exit4252
-  %substituted_regex.i4217 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 9, i32 2
-  %bf.load.i.i.i4218 = load i8, ptr %substituted_regex.i4217, align 8
-  %bf.clear.i.i.i4219 = and i8 %bf.load.i.i.i4218, 1
-  %tobool.i.not.i.i4220 = icmp eq i8 %bf.clear.i.i.i4219, 0
-  br i1 %tobool.i.not.i.i4220, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4227, label %if.then.i2.i4223
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4220: ; preds = %if.then.i.i.i4215, %if.then.i.i4212, %_ZN8TestCaseD2Ev.exit4251
+  %substituted_regex.i4216 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 9, i32 2
+  %bf.load.i.i.i4217 = load i8, ptr %substituted_regex.i4216, align 8
+  %bf.clear.i.i.i4218 = and i8 %bf.load.i.i.i4217, 1
+  %tobool.i.not.i.i4219 = icmp eq i8 %bf.clear.i.i.i4218, 0
+  br i1 %tobool.i.not.i.i4219, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4226, label %if.then.i2.i4222
 
-if.then.i2.i4223:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4221
-  %__data_.i.i.i4222 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 9, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %903 = load ptr, ptr %__data_.i.i.i4222, align 8, !tbaa !5
+if.then.i2.i4222:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4220
+  %__data_.i.i.i4221 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 9, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %903 = load ptr, ptr %__data_.i.i.i4221, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %903) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4227
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4226
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4227: ; preds = %if.then.i2.i4223, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4221
-  %bf.load.i.i3.i4224 = load i8, ptr %arrayinit.element43.i1480, align 8
-  %bf.clear.i.i4.i4225 = and i8 %bf.load.i.i3.i4224, 1
-  %tobool.i.not.i5.i4226 = icmp eq i8 %bf.clear.i.i4.i4225, 0
-  br i1 %tobool.i.not.i5.i4226, label %_ZN8TestCaseD2Ev.exit4230, label %if.then.i7.i4229
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4226: ; preds = %if.then.i2.i4222, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4220
+  %bf.load.i.i3.i4223 = load i8, ptr %arrayinit.element43.i1480, align 8
+  %bf.clear.i.i4.i4224 = and i8 %bf.load.i.i3.i4223, 1
+  %tobool.i.not.i5.i4225 = icmp eq i8 %bf.clear.i.i4.i4224, 0
+  br i1 %tobool.i.not.i5.i4225, label %_ZN8TestCaseD2Ev.exit4229, label %if.then.i7.i4228
 
-if.then.i7.i4229:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4227
-  %__data_.i.i6.i4228 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %904 = load ptr, ptr %__data_.i.i6.i4228, align 8, !tbaa !5
+if.then.i7.i4228:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4226
+  %__data_.i.i6.i4227 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %904 = load ptr, ptr %__data_.i.i6.i4227, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %904) #25
-  br label %_ZN8TestCaseD2Ev.exit4230
+  br label %_ZN8TestCaseD2Ev.exit4229
 
-_ZN8TestCaseD2Ev.exit4230:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4227, %if.then.i7.i4229
-  %__cntrl_.i.i4187 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 8, i32 3, i32 1
-  %905 = load ptr, ptr %__cntrl_.i.i4187, align 8, !tbaa !98
-  %tobool.not.i.i4188 = icmp eq ptr %905, null
-  br i1 %tobool.not.i.i4188, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4199, label %if.then.i.i4191
+_ZN8TestCaseD2Ev.exit4229:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4226, %if.then.i7.i4228
+  %__cntrl_.i.i4186 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 8, i32 3, i32 1
+  %905 = load ptr, ptr %__cntrl_.i.i4186, align 8, !tbaa !98
+  %tobool.not.i.i4187 = icmp eq ptr %905, null
+  br i1 %tobool.not.i.i4187, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4198, label %if.then.i.i4190
 
-if.then.i.i4191:                                  ; preds = %_ZN8TestCaseD2Ev.exit4230
-  %__shared_owners_.i.i.i.i4189 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %905, i64 0, i32 1
-  %906 = atomicrmw add ptr %__shared_owners_.i.i.i.i4189, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4190 = icmp eq i64 %906, 0
-  br i1 %cmp.i.i.i.i4190, label %if.then.i.i.i4194, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4199
+if.then.i.i4190:                                  ; preds = %_ZN8TestCaseD2Ev.exit4229
+  %__shared_owners_.i.i.i.i4188 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %905, i64 0, i32 1
+  %906 = atomicrmw add ptr %__shared_owners_.i.i.i.i4188, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4189 = icmp eq i64 %906, 0
+  br i1 %cmp.i.i.i.i4189, label %if.then.i.i.i4193, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4198
 
-if.then.i.i.i4194:                                ; preds = %if.then.i.i4191
-  %vtable.i.i.i.i4192 = load ptr, ptr %905, align 8, !tbaa !24
-  %vfn.i.i.i.i4193 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4192, i64 2
-  %907 = load ptr, ptr %vfn.i.i.i.i4193, align 8
+if.then.i.i.i4193:                                ; preds = %if.then.i.i4190
+  %vtable.i.i.i.i4191 = load ptr, ptr %905, align 8, !tbaa !24
+  %vfn.i.i.i.i4192 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4191, i64 2
+  %907 = load ptr, ptr %vfn.i.i.i.i4192, align 8
   call void %907(ptr noundef nonnull align 8 dereferenceable(16) %905) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %905) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4199
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4198
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4199: ; preds = %if.then.i.i.i4194, %if.then.i.i4191, %_ZN8TestCaseD2Ev.exit4230
-  %substituted_regex.i4195 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 8, i32 2
-  %bf.load.i.i.i4196 = load i8, ptr %substituted_regex.i4195, align 8
-  %bf.clear.i.i.i4197 = and i8 %bf.load.i.i.i4196, 1
-  %tobool.i.not.i.i4198 = icmp eq i8 %bf.clear.i.i.i4197, 0
-  br i1 %tobool.i.not.i.i4198, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4205, label %if.then.i2.i4201
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4198: ; preds = %if.then.i.i.i4193, %if.then.i.i4190, %_ZN8TestCaseD2Ev.exit4229
+  %substituted_regex.i4194 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 8, i32 2
+  %bf.load.i.i.i4195 = load i8, ptr %substituted_regex.i4194, align 8
+  %bf.clear.i.i.i4196 = and i8 %bf.load.i.i.i4195, 1
+  %tobool.i.not.i.i4197 = icmp eq i8 %bf.clear.i.i.i4196, 0
+  br i1 %tobool.i.not.i.i4197, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4204, label %if.then.i2.i4200
 
-if.then.i2.i4201:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4199
-  %__data_.i.i.i4200 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 8, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %908 = load ptr, ptr %__data_.i.i.i4200, align 8, !tbaa !5
+if.then.i2.i4200:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4198
+  %__data_.i.i.i4199 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 8, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %908 = load ptr, ptr %__data_.i.i.i4199, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %908) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4205
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4204
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4205: ; preds = %if.then.i2.i4201, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4199
-  %bf.load.i.i3.i4202 = load i8, ptr %arrayinit.element38.i1471, align 8
-  %bf.clear.i.i4.i4203 = and i8 %bf.load.i.i3.i4202, 1
-  %tobool.i.not.i5.i4204 = icmp eq i8 %bf.clear.i.i4.i4203, 0
-  br i1 %tobool.i.not.i5.i4204, label %_ZN8TestCaseD2Ev.exit4208, label %if.then.i7.i4207
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4204: ; preds = %if.then.i2.i4200, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4198
+  %bf.load.i.i3.i4201 = load i8, ptr %arrayinit.element38.i1471, align 8
+  %bf.clear.i.i4.i4202 = and i8 %bf.load.i.i3.i4201, 1
+  %tobool.i.not.i5.i4203 = icmp eq i8 %bf.clear.i.i4.i4202, 0
+  br i1 %tobool.i.not.i5.i4203, label %_ZN8TestCaseD2Ev.exit4207, label %if.then.i7.i4206
 
-if.then.i7.i4207:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4205
-  %__data_.i.i6.i4206 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 8, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %909 = load ptr, ptr %__data_.i.i6.i4206, align 8, !tbaa !5
+if.then.i7.i4206:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4204
+  %__data_.i.i6.i4205 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 8, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %909 = load ptr, ptr %__data_.i.i6.i4205, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %909) #25
-  br label %_ZN8TestCaseD2Ev.exit4208
+  br label %_ZN8TestCaseD2Ev.exit4207
 
-_ZN8TestCaseD2Ev.exit4208:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4205, %if.then.i7.i4207
-  %__cntrl_.i.i4165 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 7, i32 3, i32 1
-  %910 = load ptr, ptr %__cntrl_.i.i4165, align 8, !tbaa !98
-  %tobool.not.i.i4166 = icmp eq ptr %910, null
-  br i1 %tobool.not.i.i4166, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4177, label %if.then.i.i4169
+_ZN8TestCaseD2Ev.exit4207:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4204, %if.then.i7.i4206
+  %__cntrl_.i.i4164 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 7, i32 3, i32 1
+  %910 = load ptr, ptr %__cntrl_.i.i4164, align 8, !tbaa !98
+  %tobool.not.i.i4165 = icmp eq ptr %910, null
+  br i1 %tobool.not.i.i4165, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4176, label %if.then.i.i4168
 
-if.then.i.i4169:                                  ; preds = %_ZN8TestCaseD2Ev.exit4208
-  %__shared_owners_.i.i.i.i4167 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %910, i64 0, i32 1
-  %911 = atomicrmw add ptr %__shared_owners_.i.i.i.i4167, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4168 = icmp eq i64 %911, 0
-  br i1 %cmp.i.i.i.i4168, label %if.then.i.i.i4172, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4177
+if.then.i.i4168:                                  ; preds = %_ZN8TestCaseD2Ev.exit4207
+  %__shared_owners_.i.i.i.i4166 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %910, i64 0, i32 1
+  %911 = atomicrmw add ptr %__shared_owners_.i.i.i.i4166, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4167 = icmp eq i64 %911, 0
+  br i1 %cmp.i.i.i.i4167, label %if.then.i.i.i4171, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4176
 
-if.then.i.i.i4172:                                ; preds = %if.then.i.i4169
-  %vtable.i.i.i.i4170 = load ptr, ptr %910, align 8, !tbaa !24
-  %vfn.i.i.i.i4171 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4170, i64 2
-  %912 = load ptr, ptr %vfn.i.i.i.i4171, align 8
+if.then.i.i.i4171:                                ; preds = %if.then.i.i4168
+  %vtable.i.i.i.i4169 = load ptr, ptr %910, align 8, !tbaa !24
+  %vfn.i.i.i.i4170 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4169, i64 2
+  %912 = load ptr, ptr %vfn.i.i.i.i4170, align 8
   call void %912(ptr noundef nonnull align 8 dereferenceable(16) %910) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %910) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4177
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4176
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4177: ; preds = %if.then.i.i.i4172, %if.then.i.i4169, %_ZN8TestCaseD2Ev.exit4208
-  %substituted_regex.i4173 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 7, i32 2
-  %bf.load.i.i.i4174 = load i8, ptr %substituted_regex.i4173, align 8
-  %bf.clear.i.i.i4175 = and i8 %bf.load.i.i.i4174, 1
-  %tobool.i.not.i.i4176 = icmp eq i8 %bf.clear.i.i.i4175, 0
-  br i1 %tobool.i.not.i.i4176, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4183, label %if.then.i2.i4179
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4176: ; preds = %if.then.i.i.i4171, %if.then.i.i4168, %_ZN8TestCaseD2Ev.exit4207
+  %substituted_regex.i4172 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 7, i32 2
+  %bf.load.i.i.i4173 = load i8, ptr %substituted_regex.i4172, align 8
+  %bf.clear.i.i.i4174 = and i8 %bf.load.i.i.i4173, 1
+  %tobool.i.not.i.i4175 = icmp eq i8 %bf.clear.i.i.i4174, 0
+  br i1 %tobool.i.not.i.i4175, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4182, label %if.then.i2.i4178
 
-if.then.i2.i4179:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4177
-  %__data_.i.i.i4178 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 7, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %913 = load ptr, ptr %__data_.i.i.i4178, align 8, !tbaa !5
+if.then.i2.i4178:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4176
+  %__data_.i.i.i4177 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 7, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %913 = load ptr, ptr %__data_.i.i.i4177, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %913) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4183
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4182
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4183: ; preds = %if.then.i2.i4179, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4177
-  %bf.load.i.i3.i4180 = load i8, ptr %arrayinit.element33.i1462, align 8
-  %bf.clear.i.i4.i4181 = and i8 %bf.load.i.i3.i4180, 1
-  %tobool.i.not.i5.i4182 = icmp eq i8 %bf.clear.i.i4.i4181, 0
-  br i1 %tobool.i.not.i5.i4182, label %_ZN8TestCaseD2Ev.exit4186, label %if.then.i7.i4185
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4182: ; preds = %if.then.i2.i4178, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4176
+  %bf.load.i.i3.i4179 = load i8, ptr %arrayinit.element33.i1462, align 8
+  %bf.clear.i.i4.i4180 = and i8 %bf.load.i.i3.i4179, 1
+  %tobool.i.not.i5.i4181 = icmp eq i8 %bf.clear.i.i4.i4180, 0
+  br i1 %tobool.i.not.i5.i4181, label %_ZN8TestCaseD2Ev.exit4185, label %if.then.i7.i4184
 
-if.then.i7.i4185:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4183
-  %__data_.i.i6.i4184 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 7, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %914 = load ptr, ptr %__data_.i.i6.i4184, align 8, !tbaa !5
+if.then.i7.i4184:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4182
+  %__data_.i.i6.i4183 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 7, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %914 = load ptr, ptr %__data_.i.i6.i4183, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %914) #25
-  br label %_ZN8TestCaseD2Ev.exit4186
+  br label %_ZN8TestCaseD2Ev.exit4185
 
-_ZN8TestCaseD2Ev.exit4186:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4183, %if.then.i7.i4185
-  %__cntrl_.i.i4143 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 6, i32 3, i32 1
-  %915 = load ptr, ptr %__cntrl_.i.i4143, align 8, !tbaa !98
-  %tobool.not.i.i4144 = icmp eq ptr %915, null
-  br i1 %tobool.not.i.i4144, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4155, label %if.then.i.i4147
+_ZN8TestCaseD2Ev.exit4185:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4182, %if.then.i7.i4184
+  %__cntrl_.i.i4142 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 6, i32 3, i32 1
+  %915 = load ptr, ptr %__cntrl_.i.i4142, align 8, !tbaa !98
+  %tobool.not.i.i4143 = icmp eq ptr %915, null
+  br i1 %tobool.not.i.i4143, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4154, label %if.then.i.i4146
 
-if.then.i.i4147:                                  ; preds = %_ZN8TestCaseD2Ev.exit4186
-  %__shared_owners_.i.i.i.i4145 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %915, i64 0, i32 1
-  %916 = atomicrmw add ptr %__shared_owners_.i.i.i.i4145, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4146 = icmp eq i64 %916, 0
-  br i1 %cmp.i.i.i.i4146, label %if.then.i.i.i4150, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4155
+if.then.i.i4146:                                  ; preds = %_ZN8TestCaseD2Ev.exit4185
+  %__shared_owners_.i.i.i.i4144 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %915, i64 0, i32 1
+  %916 = atomicrmw add ptr %__shared_owners_.i.i.i.i4144, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4145 = icmp eq i64 %916, 0
+  br i1 %cmp.i.i.i.i4145, label %if.then.i.i.i4149, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4154
 
-if.then.i.i.i4150:                                ; preds = %if.then.i.i4147
-  %vtable.i.i.i.i4148 = load ptr, ptr %915, align 8, !tbaa !24
-  %vfn.i.i.i.i4149 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4148, i64 2
-  %917 = load ptr, ptr %vfn.i.i.i.i4149, align 8
+if.then.i.i.i4149:                                ; preds = %if.then.i.i4146
+  %vtable.i.i.i.i4147 = load ptr, ptr %915, align 8, !tbaa !24
+  %vfn.i.i.i.i4148 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4147, i64 2
+  %917 = load ptr, ptr %vfn.i.i.i.i4148, align 8
   call void %917(ptr noundef nonnull align 8 dereferenceable(16) %915) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %915) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4155
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4154
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4155: ; preds = %if.then.i.i.i4150, %if.then.i.i4147, %_ZN8TestCaseD2Ev.exit4186
-  %substituted_regex.i4151 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 6, i32 2
-  %bf.load.i.i.i4152 = load i8, ptr %substituted_regex.i4151, align 8
-  %bf.clear.i.i.i4153 = and i8 %bf.load.i.i.i4152, 1
-  %tobool.i.not.i.i4154 = icmp eq i8 %bf.clear.i.i.i4153, 0
-  br i1 %tobool.i.not.i.i4154, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4161, label %if.then.i2.i4157
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4154: ; preds = %if.then.i.i.i4149, %if.then.i.i4146, %_ZN8TestCaseD2Ev.exit4185
+  %substituted_regex.i4150 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 6, i32 2
+  %bf.load.i.i.i4151 = load i8, ptr %substituted_regex.i4150, align 8
+  %bf.clear.i.i.i4152 = and i8 %bf.load.i.i.i4151, 1
+  %tobool.i.not.i.i4153 = icmp eq i8 %bf.clear.i.i.i4152, 0
+  br i1 %tobool.i.not.i.i4153, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4160, label %if.then.i2.i4156
 
-if.then.i2.i4157:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4155
-  %__data_.i.i.i4156 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 6, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %918 = load ptr, ptr %__data_.i.i.i4156, align 8, !tbaa !5
+if.then.i2.i4156:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4154
+  %__data_.i.i.i4155 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 6, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %918 = load ptr, ptr %__data_.i.i.i4155, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %918) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4161
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4160
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4161: ; preds = %if.then.i2.i4157, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4155
-  %bf.load.i.i3.i4158 = load i8, ptr %arrayinit.element28.i1456, align 8
-  %bf.clear.i.i4.i4159 = and i8 %bf.load.i.i3.i4158, 1
-  %tobool.i.not.i5.i4160 = icmp eq i8 %bf.clear.i.i4.i4159, 0
-  br i1 %tobool.i.not.i5.i4160, label %_ZN8TestCaseD2Ev.exit4164, label %if.then.i7.i4163
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4160: ; preds = %if.then.i2.i4156, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4154
+  %bf.load.i.i3.i4157 = load i8, ptr %arrayinit.element28.i1456, align 8
+  %bf.clear.i.i4.i4158 = and i8 %bf.load.i.i3.i4157, 1
+  %tobool.i.not.i5.i4159 = icmp eq i8 %bf.clear.i.i4.i4158, 0
+  br i1 %tobool.i.not.i5.i4159, label %_ZN8TestCaseD2Ev.exit4163, label %if.then.i7.i4162
 
-if.then.i7.i4163:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4161
-  %__data_.i.i6.i4162 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 6, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %919 = load ptr, ptr %__data_.i.i6.i4162, align 8, !tbaa !5
+if.then.i7.i4162:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4160
+  %__data_.i.i6.i4161 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 6, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %919 = load ptr, ptr %__data_.i.i6.i4161, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %919) #25
-  br label %_ZN8TestCaseD2Ev.exit4164
+  br label %_ZN8TestCaseD2Ev.exit4163
 
-_ZN8TestCaseD2Ev.exit4164:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4161, %if.then.i7.i4163
-  %__cntrl_.i.i4121 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 5, i32 3, i32 1
-  %920 = load ptr, ptr %__cntrl_.i.i4121, align 8, !tbaa !98
-  %tobool.not.i.i4122 = icmp eq ptr %920, null
-  br i1 %tobool.not.i.i4122, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4133, label %if.then.i.i4125
+_ZN8TestCaseD2Ev.exit4163:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4160, %if.then.i7.i4162
+  %__cntrl_.i.i4120 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 5, i32 3, i32 1
+  %920 = load ptr, ptr %__cntrl_.i.i4120, align 8, !tbaa !98
+  %tobool.not.i.i4121 = icmp eq ptr %920, null
+  br i1 %tobool.not.i.i4121, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4132, label %if.then.i.i4124
 
-if.then.i.i4125:                                  ; preds = %_ZN8TestCaseD2Ev.exit4164
-  %__shared_owners_.i.i.i.i4123 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %920, i64 0, i32 1
-  %921 = atomicrmw add ptr %__shared_owners_.i.i.i.i4123, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4124 = icmp eq i64 %921, 0
-  br i1 %cmp.i.i.i.i4124, label %if.then.i.i.i4128, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4133
+if.then.i.i4124:                                  ; preds = %_ZN8TestCaseD2Ev.exit4163
+  %__shared_owners_.i.i.i.i4122 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %920, i64 0, i32 1
+  %921 = atomicrmw add ptr %__shared_owners_.i.i.i.i4122, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4123 = icmp eq i64 %921, 0
+  br i1 %cmp.i.i.i.i4123, label %if.then.i.i.i4127, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4132
 
-if.then.i.i.i4128:                                ; preds = %if.then.i.i4125
-  %vtable.i.i.i.i4126 = load ptr, ptr %920, align 8, !tbaa !24
-  %vfn.i.i.i.i4127 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4126, i64 2
-  %922 = load ptr, ptr %vfn.i.i.i.i4127, align 8
+if.then.i.i.i4127:                                ; preds = %if.then.i.i4124
+  %vtable.i.i.i.i4125 = load ptr, ptr %920, align 8, !tbaa !24
+  %vfn.i.i.i.i4126 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4125, i64 2
+  %922 = load ptr, ptr %vfn.i.i.i.i4126, align 8
   call void %922(ptr noundef nonnull align 8 dereferenceable(16) %920) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %920) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4133
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4132
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4133: ; preds = %if.then.i.i.i4128, %if.then.i.i4125, %_ZN8TestCaseD2Ev.exit4164
-  %substituted_regex.i4129 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 5, i32 2
-  %bf.load.i.i.i4130 = load i8, ptr %substituted_regex.i4129, align 8
-  %bf.clear.i.i.i4131 = and i8 %bf.load.i.i.i4130, 1
-  %tobool.i.not.i.i4132 = icmp eq i8 %bf.clear.i.i.i4131, 0
-  br i1 %tobool.i.not.i.i4132, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4139, label %if.then.i2.i4135
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4132: ; preds = %if.then.i.i.i4127, %if.then.i.i4124, %_ZN8TestCaseD2Ev.exit4163
+  %substituted_regex.i4128 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 5, i32 2
+  %bf.load.i.i.i4129 = load i8, ptr %substituted_regex.i4128, align 8
+  %bf.clear.i.i.i4130 = and i8 %bf.load.i.i.i4129, 1
+  %tobool.i.not.i.i4131 = icmp eq i8 %bf.clear.i.i.i4130, 0
+  br i1 %tobool.i.not.i.i4131, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4138, label %if.then.i2.i4134
 
-if.then.i2.i4135:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4133
-  %__data_.i.i.i4134 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 5, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %923 = load ptr, ptr %__data_.i.i.i4134, align 8, !tbaa !5
+if.then.i2.i4134:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4132
+  %__data_.i.i.i4133 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 5, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %923 = load ptr, ptr %__data_.i.i.i4133, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %923) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4139
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4138
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4139: ; preds = %if.then.i2.i4135, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4133
-  %bf.load.i.i3.i4136 = load i8, ptr %arrayinit.element23.i1450, align 8
-  %bf.clear.i.i4.i4137 = and i8 %bf.load.i.i3.i4136, 1
-  %tobool.i.not.i5.i4138 = icmp eq i8 %bf.clear.i.i4.i4137, 0
-  br i1 %tobool.i.not.i5.i4138, label %_ZN8TestCaseD2Ev.exit4142, label %if.then.i7.i4141
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4138: ; preds = %if.then.i2.i4134, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4132
+  %bf.load.i.i3.i4135 = load i8, ptr %arrayinit.element23.i1450, align 8
+  %bf.clear.i.i4.i4136 = and i8 %bf.load.i.i3.i4135, 1
+  %tobool.i.not.i5.i4137 = icmp eq i8 %bf.clear.i.i4.i4136, 0
+  br i1 %tobool.i.not.i5.i4137, label %_ZN8TestCaseD2Ev.exit4141, label %if.then.i7.i4140
 
-if.then.i7.i4141:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4139
-  %__data_.i.i6.i4140 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 5, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %924 = load ptr, ptr %__data_.i.i6.i4140, align 8, !tbaa !5
+if.then.i7.i4140:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4138
+  %__data_.i.i6.i4139 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 5, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %924 = load ptr, ptr %__data_.i.i6.i4139, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %924) #25
-  br label %_ZN8TestCaseD2Ev.exit4142
+  br label %_ZN8TestCaseD2Ev.exit4141
 
-_ZN8TestCaseD2Ev.exit4142:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4139, %if.then.i7.i4141
-  %__cntrl_.i.i4099 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 4, i32 3, i32 1
-  %925 = load ptr, ptr %__cntrl_.i.i4099, align 8, !tbaa !98
-  %tobool.not.i.i4100 = icmp eq ptr %925, null
-  br i1 %tobool.not.i.i4100, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4111, label %if.then.i.i4103
+_ZN8TestCaseD2Ev.exit4141:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4138, %if.then.i7.i4140
+  %__cntrl_.i.i4098 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 4, i32 3, i32 1
+  %925 = load ptr, ptr %__cntrl_.i.i4098, align 8, !tbaa !98
+  %tobool.not.i.i4099 = icmp eq ptr %925, null
+  br i1 %tobool.not.i.i4099, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4110, label %if.then.i.i4102
 
-if.then.i.i4103:                                  ; preds = %_ZN8TestCaseD2Ev.exit4142
-  %__shared_owners_.i.i.i.i4101 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %925, i64 0, i32 1
-  %926 = atomicrmw add ptr %__shared_owners_.i.i.i.i4101, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4102 = icmp eq i64 %926, 0
-  br i1 %cmp.i.i.i.i4102, label %if.then.i.i.i4106, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4111
+if.then.i.i4102:                                  ; preds = %_ZN8TestCaseD2Ev.exit4141
+  %__shared_owners_.i.i.i.i4100 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %925, i64 0, i32 1
+  %926 = atomicrmw add ptr %__shared_owners_.i.i.i.i4100, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4101 = icmp eq i64 %926, 0
+  br i1 %cmp.i.i.i.i4101, label %if.then.i.i.i4105, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4110
 
-if.then.i.i.i4106:                                ; preds = %if.then.i.i4103
-  %vtable.i.i.i.i4104 = load ptr, ptr %925, align 8, !tbaa !24
-  %vfn.i.i.i.i4105 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4104, i64 2
-  %927 = load ptr, ptr %vfn.i.i.i.i4105, align 8
+if.then.i.i.i4105:                                ; preds = %if.then.i.i4102
+  %vtable.i.i.i.i4103 = load ptr, ptr %925, align 8, !tbaa !24
+  %vfn.i.i.i.i4104 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4103, i64 2
+  %927 = load ptr, ptr %vfn.i.i.i.i4104, align 8
   call void %927(ptr noundef nonnull align 8 dereferenceable(16) %925) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %925) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4111
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4110
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4111: ; preds = %if.then.i.i.i4106, %if.then.i.i4103, %_ZN8TestCaseD2Ev.exit4142
-  %substituted_regex.i4107 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 4, i32 2
-  %bf.load.i.i.i4108 = load i8, ptr %substituted_regex.i4107, align 8
-  %bf.clear.i.i.i4109 = and i8 %bf.load.i.i.i4108, 1
-  %tobool.i.not.i.i4110 = icmp eq i8 %bf.clear.i.i.i4109, 0
-  br i1 %tobool.i.not.i.i4110, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4117, label %if.then.i2.i4113
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4110: ; preds = %if.then.i.i.i4105, %if.then.i.i4102, %_ZN8TestCaseD2Ev.exit4141
+  %substituted_regex.i4106 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 4, i32 2
+  %bf.load.i.i.i4107 = load i8, ptr %substituted_regex.i4106, align 8
+  %bf.clear.i.i.i4108 = and i8 %bf.load.i.i.i4107, 1
+  %tobool.i.not.i.i4109 = icmp eq i8 %bf.clear.i.i.i4108, 0
+  br i1 %tobool.i.not.i.i4109, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4116, label %if.then.i2.i4112
 
-if.then.i2.i4113:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4111
-  %__data_.i.i.i4112 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %928 = load ptr, ptr %__data_.i.i.i4112, align 8, !tbaa !5
+if.then.i2.i4112:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4110
+  %__data_.i.i.i4111 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %928 = load ptr, ptr %__data_.i.i.i4111, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %928) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4117
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4116
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4117: ; preds = %if.then.i2.i4113, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4111
-  %bf.load.i.i3.i4114 = load i8, ptr %arrayinit.element18.i1441, align 8
-  %bf.clear.i.i4.i4115 = and i8 %bf.load.i.i3.i4114, 1
-  %tobool.i.not.i5.i4116 = icmp eq i8 %bf.clear.i.i4.i4115, 0
-  br i1 %tobool.i.not.i5.i4116, label %_ZN8TestCaseD2Ev.exit4120, label %if.then.i7.i4119
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4116: ; preds = %if.then.i2.i4112, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4110
+  %bf.load.i.i3.i4113 = load i8, ptr %arrayinit.element18.i1441, align 8
+  %bf.clear.i.i4.i4114 = and i8 %bf.load.i.i3.i4113, 1
+  %tobool.i.not.i5.i4115 = icmp eq i8 %bf.clear.i.i4.i4114, 0
+  br i1 %tobool.i.not.i5.i4115, label %_ZN8TestCaseD2Ev.exit4119, label %if.then.i7.i4118
 
-if.then.i7.i4119:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4117
-  %__data_.i.i6.i4118 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %929 = load ptr, ptr %__data_.i.i6.i4118, align 8, !tbaa !5
+if.then.i7.i4118:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4116
+  %__data_.i.i6.i4117 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %929 = load ptr, ptr %__data_.i.i6.i4117, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %929) #25
-  br label %_ZN8TestCaseD2Ev.exit4120
+  br label %_ZN8TestCaseD2Ev.exit4119
 
-_ZN8TestCaseD2Ev.exit4120:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4117, %if.then.i7.i4119
-  %__cntrl_.i.i4077 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 3, i32 3, i32 1
-  %930 = load ptr, ptr %__cntrl_.i.i4077, align 8, !tbaa !98
-  %tobool.not.i.i4078 = icmp eq ptr %930, null
-  br i1 %tobool.not.i.i4078, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4089, label %if.then.i.i4081
+_ZN8TestCaseD2Ev.exit4119:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4116, %if.then.i7.i4118
+  %__cntrl_.i.i4076 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 3, i32 3, i32 1
+  %930 = load ptr, ptr %__cntrl_.i.i4076, align 8, !tbaa !98
+  %tobool.not.i.i4077 = icmp eq ptr %930, null
+  br i1 %tobool.not.i.i4077, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4088, label %if.then.i.i4080
 
-if.then.i.i4081:                                  ; preds = %_ZN8TestCaseD2Ev.exit4120
-  %__shared_owners_.i.i.i.i4079 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %930, i64 0, i32 1
-  %931 = atomicrmw add ptr %__shared_owners_.i.i.i.i4079, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4080 = icmp eq i64 %931, 0
-  br i1 %cmp.i.i.i.i4080, label %if.then.i.i.i4084, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4089
+if.then.i.i4080:                                  ; preds = %_ZN8TestCaseD2Ev.exit4119
+  %__shared_owners_.i.i.i.i4078 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %930, i64 0, i32 1
+  %931 = atomicrmw add ptr %__shared_owners_.i.i.i.i4078, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4079 = icmp eq i64 %931, 0
+  br i1 %cmp.i.i.i.i4079, label %if.then.i.i.i4083, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4088
 
-if.then.i.i.i4084:                                ; preds = %if.then.i.i4081
-  %vtable.i.i.i.i4082 = load ptr, ptr %930, align 8, !tbaa !24
-  %vfn.i.i.i.i4083 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4082, i64 2
-  %932 = load ptr, ptr %vfn.i.i.i.i4083, align 8
+if.then.i.i.i4083:                                ; preds = %if.then.i.i4080
+  %vtable.i.i.i.i4081 = load ptr, ptr %930, align 8, !tbaa !24
+  %vfn.i.i.i.i4082 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4081, i64 2
+  %932 = load ptr, ptr %vfn.i.i.i.i4082, align 8
   call void %932(ptr noundef nonnull align 8 dereferenceable(16) %930) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %930) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4089
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4088
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4089: ; preds = %if.then.i.i.i4084, %if.then.i.i4081, %_ZN8TestCaseD2Ev.exit4120
-  %substituted_regex.i4085 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 3, i32 2
-  %bf.load.i.i.i4086 = load i8, ptr %substituted_regex.i4085, align 8
-  %bf.clear.i.i.i4087 = and i8 %bf.load.i.i.i4086, 1
-  %tobool.i.not.i.i4088 = icmp eq i8 %bf.clear.i.i.i4087, 0
-  br i1 %tobool.i.not.i.i4088, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4095, label %if.then.i2.i4091
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4088: ; preds = %if.then.i.i.i4083, %if.then.i.i4080, %_ZN8TestCaseD2Ev.exit4119
+  %substituted_regex.i4084 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 3, i32 2
+  %bf.load.i.i.i4085 = load i8, ptr %substituted_regex.i4084, align 8
+  %bf.clear.i.i.i4086 = and i8 %bf.load.i.i.i4085, 1
+  %tobool.i.not.i.i4087 = icmp eq i8 %bf.clear.i.i.i4086, 0
+  br i1 %tobool.i.not.i.i4087, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4094, label %if.then.i2.i4090
 
-if.then.i2.i4091:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4089
-  %__data_.i.i.i4090 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %933 = load ptr, ptr %__data_.i.i.i4090, align 8, !tbaa !5
+if.then.i2.i4090:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4088
+  %__data_.i.i.i4089 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %933 = load ptr, ptr %__data_.i.i.i4089, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %933) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4095
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4094
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4095: ; preds = %if.then.i2.i4091, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4089
-  %bf.load.i.i3.i4092 = load i8, ptr %arrayinit.element13.i1432, align 8
-  %bf.clear.i.i4.i4093 = and i8 %bf.load.i.i3.i4092, 1
-  %tobool.i.not.i5.i4094 = icmp eq i8 %bf.clear.i.i4.i4093, 0
-  br i1 %tobool.i.not.i5.i4094, label %_ZN8TestCaseD2Ev.exit4098, label %if.then.i7.i4097
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4094: ; preds = %if.then.i2.i4090, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4088
+  %bf.load.i.i3.i4091 = load i8, ptr %arrayinit.element13.i1432, align 8
+  %bf.clear.i.i4.i4092 = and i8 %bf.load.i.i3.i4091, 1
+  %tobool.i.not.i5.i4093 = icmp eq i8 %bf.clear.i.i4.i4092, 0
+  br i1 %tobool.i.not.i5.i4093, label %_ZN8TestCaseD2Ev.exit4097, label %if.then.i7.i4096
 
-if.then.i7.i4097:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4095
-  %__data_.i.i6.i4096 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %934 = load ptr, ptr %__data_.i.i6.i4096, align 8, !tbaa !5
+if.then.i7.i4096:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4094
+  %__data_.i.i6.i4095 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %934 = load ptr, ptr %__data_.i.i6.i4095, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %934) #25
-  br label %_ZN8TestCaseD2Ev.exit4098
+  br label %_ZN8TestCaseD2Ev.exit4097
 
-_ZN8TestCaseD2Ev.exit4098:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4095, %if.then.i7.i4097
-  %__cntrl_.i.i4055 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 2, i32 3, i32 1
-  %935 = load ptr, ptr %__cntrl_.i.i4055, align 8, !tbaa !98
-  %tobool.not.i.i4056 = icmp eq ptr %935, null
-  br i1 %tobool.not.i.i4056, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4067, label %if.then.i.i4059
+_ZN8TestCaseD2Ev.exit4097:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4094, %if.then.i7.i4096
+  %__cntrl_.i.i4054 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 2, i32 3, i32 1
+  %935 = load ptr, ptr %__cntrl_.i.i4054, align 8, !tbaa !98
+  %tobool.not.i.i4055 = icmp eq ptr %935, null
+  br i1 %tobool.not.i.i4055, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4066, label %if.then.i.i4058
 
-if.then.i.i4059:                                  ; preds = %_ZN8TestCaseD2Ev.exit4098
-  %__shared_owners_.i.i.i.i4057 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %935, i64 0, i32 1
-  %936 = atomicrmw add ptr %__shared_owners_.i.i.i.i4057, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4058 = icmp eq i64 %936, 0
-  br i1 %cmp.i.i.i.i4058, label %if.then.i.i.i4062, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4067
+if.then.i.i4058:                                  ; preds = %_ZN8TestCaseD2Ev.exit4097
+  %__shared_owners_.i.i.i.i4056 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %935, i64 0, i32 1
+  %936 = atomicrmw add ptr %__shared_owners_.i.i.i.i4056, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4057 = icmp eq i64 %936, 0
+  br i1 %cmp.i.i.i.i4057, label %if.then.i.i.i4061, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4066
 
-if.then.i.i.i4062:                                ; preds = %if.then.i.i4059
-  %vtable.i.i.i.i4060 = load ptr, ptr %935, align 8, !tbaa !24
-  %vfn.i.i.i.i4061 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4060, i64 2
-  %937 = load ptr, ptr %vfn.i.i.i.i4061, align 8
+if.then.i.i.i4061:                                ; preds = %if.then.i.i4058
+  %vtable.i.i.i.i4059 = load ptr, ptr %935, align 8, !tbaa !24
+  %vfn.i.i.i.i4060 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4059, i64 2
+  %937 = load ptr, ptr %vfn.i.i.i.i4060, align 8
   call void %937(ptr noundef nonnull align 8 dereferenceable(16) %935) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %935) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4067
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4066
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4067: ; preds = %if.then.i.i.i4062, %if.then.i.i4059, %_ZN8TestCaseD2Ev.exit4098
-  %substituted_regex.i4063 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 2, i32 2
-  %bf.load.i.i.i4064 = load i8, ptr %substituted_regex.i4063, align 8
-  %bf.clear.i.i.i4065 = and i8 %bf.load.i.i.i4064, 1
-  %tobool.i.not.i.i4066 = icmp eq i8 %bf.clear.i.i.i4065, 0
-  br i1 %tobool.i.not.i.i4066, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4073, label %if.then.i2.i4069
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4066: ; preds = %if.then.i.i.i4061, %if.then.i.i4058, %_ZN8TestCaseD2Ev.exit4097
+  %substituted_regex.i4062 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 2, i32 2
+  %bf.load.i.i.i4063 = load i8, ptr %substituted_regex.i4062, align 8
+  %bf.clear.i.i.i4064 = and i8 %bf.load.i.i.i4063, 1
+  %tobool.i.not.i.i4065 = icmp eq i8 %bf.clear.i.i.i4064, 0
+  br i1 %tobool.i.not.i.i4065, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4072, label %if.then.i2.i4068
 
-if.then.i2.i4069:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4067
-  %__data_.i.i.i4068 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %938 = load ptr, ptr %__data_.i.i.i4068, align 8, !tbaa !5
+if.then.i2.i4068:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4066
+  %__data_.i.i.i4067 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %938 = load ptr, ptr %__data_.i.i.i4067, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %938) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4073
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4072
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4073: ; preds = %if.then.i2.i4069, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4067
-  %bf.load.i.i3.i4070 = load i8, ptr %arrayinit.element8.i1423, align 8
-  %bf.clear.i.i4.i4071 = and i8 %bf.load.i.i3.i4070, 1
-  %tobool.i.not.i5.i4072 = icmp eq i8 %bf.clear.i.i4.i4071, 0
-  br i1 %tobool.i.not.i5.i4072, label %_ZN8TestCaseD2Ev.exit4076, label %if.then.i7.i4075
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4072: ; preds = %if.then.i2.i4068, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4066
+  %bf.load.i.i3.i4069 = load i8, ptr %arrayinit.element8.i1423, align 8
+  %bf.clear.i.i4.i4070 = and i8 %bf.load.i.i3.i4069, 1
+  %tobool.i.not.i5.i4071 = icmp eq i8 %bf.clear.i.i4.i4070, 0
+  br i1 %tobool.i.not.i5.i4071, label %_ZN8TestCaseD2Ev.exit4075, label %if.then.i7.i4074
 
-if.then.i7.i4075:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4073
-  %__data_.i.i6.i4074 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %939 = load ptr, ptr %__data_.i.i6.i4074, align 8, !tbaa !5
+if.then.i7.i4074:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4072
+  %__data_.i.i6.i4073 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %939 = load ptr, ptr %__data_.i.i6.i4073, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %939) #25
-  br label %_ZN8TestCaseD2Ev.exit4076
+  br label %_ZN8TestCaseD2Ev.exit4075
 
-_ZN8TestCaseD2Ev.exit4076:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4073, %if.then.i7.i4075
-  %__cntrl_.i.i4033 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 1, i32 3, i32 1
-  %940 = load ptr, ptr %__cntrl_.i.i4033, align 8, !tbaa !98
-  %tobool.not.i.i4034 = icmp eq ptr %940, null
-  br i1 %tobool.not.i.i4034, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4045, label %if.then.i.i4037
+_ZN8TestCaseD2Ev.exit4075:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4072, %if.then.i7.i4074
+  %__cntrl_.i.i4032 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 1, i32 3, i32 1
+  %940 = load ptr, ptr %__cntrl_.i.i4032, align 8, !tbaa !98
+  %tobool.not.i.i4033 = icmp eq ptr %940, null
+  br i1 %tobool.not.i.i4033, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4044, label %if.then.i.i4036
 
-if.then.i.i4037:                                  ; preds = %_ZN8TestCaseD2Ev.exit4076
-  %__shared_owners_.i.i.i.i4035 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %940, i64 0, i32 1
-  %941 = atomicrmw add ptr %__shared_owners_.i.i.i.i4035, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4036 = icmp eq i64 %941, 0
-  br i1 %cmp.i.i.i.i4036, label %if.then.i.i.i4040, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4045
+if.then.i.i4036:                                  ; preds = %_ZN8TestCaseD2Ev.exit4075
+  %__shared_owners_.i.i.i.i4034 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %940, i64 0, i32 1
+  %941 = atomicrmw add ptr %__shared_owners_.i.i.i.i4034, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4035 = icmp eq i64 %941, 0
+  br i1 %cmp.i.i.i.i4035, label %if.then.i.i.i4039, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4044
 
-if.then.i.i.i4040:                                ; preds = %if.then.i.i4037
-  %vtable.i.i.i.i4038 = load ptr, ptr %940, align 8, !tbaa !24
-  %vfn.i.i.i.i4039 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4038, i64 2
-  %942 = load ptr, ptr %vfn.i.i.i.i4039, align 8
+if.then.i.i.i4039:                                ; preds = %if.then.i.i4036
+  %vtable.i.i.i.i4037 = load ptr, ptr %940, align 8, !tbaa !24
+  %vfn.i.i.i.i4038 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4037, i64 2
+  %942 = load ptr, ptr %vfn.i.i.i.i4038, align 8
   call void %942(ptr noundef nonnull align 8 dereferenceable(16) %940) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %940) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4045
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4044
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4045: ; preds = %if.then.i.i.i4040, %if.then.i.i4037, %_ZN8TestCaseD2Ev.exit4076
-  %substituted_regex.i4041 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 1, i32 2
-  %bf.load.i.i.i4042 = load i8, ptr %substituted_regex.i4041, align 8
-  %bf.clear.i.i.i4043 = and i8 %bf.load.i.i.i4042, 1
-  %tobool.i.not.i.i4044 = icmp eq i8 %bf.clear.i.i.i4043, 0
-  br i1 %tobool.i.not.i.i4044, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4051, label %if.then.i2.i4047
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4044: ; preds = %if.then.i.i.i4039, %if.then.i.i4036, %_ZN8TestCaseD2Ev.exit4075
+  %substituted_regex.i4040 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 1, i32 2
+  %bf.load.i.i.i4041 = load i8, ptr %substituted_regex.i4040, align 8
+  %bf.clear.i.i.i4042 = and i8 %bf.load.i.i.i4041, 1
+  %tobool.i.not.i.i4043 = icmp eq i8 %bf.clear.i.i.i4042, 0
+  br i1 %tobool.i.not.i.i4043, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4050, label %if.then.i2.i4046
 
-if.then.i2.i4047:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4045
-  %__data_.i.i.i4046 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %943 = load ptr, ptr %__data_.i.i.i4046, align 8, !tbaa !5
+if.then.i2.i4046:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4044
+  %__data_.i.i.i4045 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %943 = load ptr, ptr %__data_.i.i.i4045, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %943) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4051
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4050
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4051: ; preds = %if.then.i2.i4047, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4045
-  %bf.load.i.i3.i4048 = load i8, ptr %arrayinit.element.i1417, align 8
-  %bf.clear.i.i4.i4049 = and i8 %bf.load.i.i3.i4048, 1
-  %tobool.i.not.i5.i4050 = icmp eq i8 %bf.clear.i.i4.i4049, 0
-  br i1 %tobool.i.not.i5.i4050, label %_ZN8TestCaseD2Ev.exit4054, label %if.then.i7.i4053
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4050: ; preds = %if.then.i2.i4046, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4044
+  %bf.load.i.i3.i4047 = load i8, ptr %arrayinit.element.i1417, align 8
+  %bf.clear.i.i4.i4048 = and i8 %bf.load.i.i3.i4047, 1
+  %tobool.i.not.i5.i4049 = icmp eq i8 %bf.clear.i.i4.i4048, 0
+  br i1 %tobool.i.not.i5.i4049, label %_ZN8TestCaseD2Ev.exit4053, label %if.then.i7.i4052
 
-if.then.i7.i4053:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4051
-  %__data_.i.i6.i4052 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %944 = load ptr, ptr %__data_.i.i6.i4052, align 8, !tbaa !5
+if.then.i7.i4052:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4050
+  %__data_.i.i6.i4051 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %944 = load ptr, ptr %__data_.i.i6.i4051, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %944) #25
-  br label %_ZN8TestCaseD2Ev.exit4054
+  br label %_ZN8TestCaseD2Ev.exit4053
 
-_ZN8TestCaseD2Ev.exit4054:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4051, %if.then.i7.i4053
-  %__cntrl_.i.i4011 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 0, i32 3, i32 1
-  %945 = load ptr, ptr %__cntrl_.i.i4011, align 8, !tbaa !98
-  %tobool.not.i.i4012 = icmp eq ptr %945, null
-  br i1 %tobool.not.i.i4012, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4023, label %if.then.i.i4015
+_ZN8TestCaseD2Ev.exit4053:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4050, %if.then.i7.i4052
+  %__cntrl_.i.i4010 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 0, i32 3, i32 1
+  %945 = load ptr, ptr %__cntrl_.i.i4010, align 8, !tbaa !98
+  %tobool.not.i.i4011 = icmp eq ptr %945, null
+  br i1 %tobool.not.i.i4011, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4022, label %if.then.i.i4014
 
-if.then.i.i4015:                                  ; preds = %_ZN8TestCaseD2Ev.exit4054
-  %__shared_owners_.i.i.i.i4013 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %945, i64 0, i32 1
-  %946 = atomicrmw add ptr %__shared_owners_.i.i.i.i4013, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4014 = icmp eq i64 %946, 0
-  br i1 %cmp.i.i.i.i4014, label %if.then.i.i.i4018, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4023
+if.then.i.i4014:                                  ; preds = %_ZN8TestCaseD2Ev.exit4053
+  %__shared_owners_.i.i.i.i4012 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %945, i64 0, i32 1
+  %946 = atomicrmw add ptr %__shared_owners_.i.i.i.i4012, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4013 = icmp eq i64 %946, 0
+  br i1 %cmp.i.i.i.i4013, label %if.then.i.i.i4017, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4022
 
-if.then.i.i.i4018:                                ; preds = %if.then.i.i4015
-  %vtable.i.i.i.i4016 = load ptr, ptr %945, align 8, !tbaa !24
-  %vfn.i.i.i.i4017 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4016, i64 2
-  %947 = load ptr, ptr %vfn.i.i.i.i4017, align 8
+if.then.i.i.i4017:                                ; preds = %if.then.i.i4014
+  %vtable.i.i.i.i4015 = load ptr, ptr %945, align 8, !tbaa !24
+  %vfn.i.i.i.i4016 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4015, i64 2
+  %947 = load ptr, ptr %vfn.i.i.i.i4016, align 8
   call void %947(ptr noundef nonnull align 8 dereferenceable(16) %945) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %945) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4023
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4022
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4023: ; preds = %if.then.i.i.i4018, %if.then.i.i4015, %_ZN8TestCaseD2Ev.exit4054
-  %substituted_regex.i4019 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 0, i32 2
-  %bf.load.i.i.i4020 = load i8, ptr %substituted_regex.i4019, align 8
-  %bf.clear.i.i.i4021 = and i8 %bf.load.i.i.i4020, 1
-  %tobool.i.not.i.i4022 = icmp eq i8 %bf.clear.i.i.i4021, 0
-  br i1 %tobool.i.not.i.i4022, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4029, label %if.then.i2.i4025
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4022: ; preds = %if.then.i.i.i4017, %if.then.i.i4014, %_ZN8TestCaseD2Ev.exit4053
+  %substituted_regex.i4018 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 0, i32 2
+  %bf.load.i.i.i4019 = load i8, ptr %substituted_regex.i4018, align 8
+  %bf.clear.i.i.i4020 = and i8 %bf.load.i.i.i4019, 1
+  %tobool.i.not.i.i4021 = icmp eq i8 %bf.clear.i.i.i4020, 0
+  br i1 %tobool.i.not.i.i4021, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4028, label %if.then.i2.i4024
 
-if.then.i2.i4025:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4023
-  %__data_.i.i.i4024 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %948 = load ptr, ptr %__data_.i.i.i4024, align 8, !tbaa !5
+if.then.i2.i4024:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4022
+  %__data_.i.i.i4023 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1391, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %948 = load ptr, ptr %__data_.i.i.i4023, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %948) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4029
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4028
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4029: ; preds = %if.then.i2.i4025, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4023
-  %bf.load.i.i3.i4026 = load i8, ptr %ref.tmp.i1391, align 8
-  %bf.clear.i.i4.i4027 = and i8 %bf.load.i.i3.i4026, 1
-  %tobool.i.not.i5.i4028 = icmp eq i8 %bf.clear.i.i4.i4027, 0
-  br i1 %tobool.i.not.i5.i4028, label %ehcleanup.i1740, label %if.then.i7.i4031
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4028: ; preds = %if.then.i2.i4024, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4022
+  %bf.load.i.i3.i4025 = load i8, ptr %ref.tmp.i1391, align 8
+  %bf.clear.i.i4.i4026 = and i8 %bf.load.i.i3.i4025, 1
+  %tobool.i.not.i5.i4027 = icmp eq i8 %bf.clear.i.i4.i4026, 0
+  br i1 %tobool.i.not.i5.i4027, label %ehcleanup.i1740, label %if.then.i7.i4030
 
-if.then.i7.i4031:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4029
-  %__data_.i.i6.i4030 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i1391, i64 0, i32 2
-  %949 = load ptr, ptr %__data_.i.i6.i4030, align 8, !tbaa !5
+if.then.i7.i4030:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4028
+  %__data_.i.i6.i4029 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i1391, i64 0, i32 2
+  %949 = load ptr, ptr %__data_.i.i6.i4029, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %949) #25
   br label %ehcleanup.i1740
 
-ehcleanup.i1740:                                  ; preds = %if.then.i7.i4031, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4029, %lpad91.i1715
-  %.pn.i1735 = phi { ptr, i32 } [ %853, %lpad91.i1715 ], [ %854, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4029 ], [ %854, %if.then.i7.i4031 ]
-  %cleanup.isactive.0.i1736 = phi i1 [ true, %lpad91.i1715 ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4029 ], [ false, %if.then.i7.i4031 ]
+ehcleanup.i1740:                                  ; preds = %if.then.i7.i4030, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4028, %lpad91.i1715
+  %.pn.i1735 = phi { ptr, i32 } [ %853, %lpad91.i1715 ], [ %854, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4028 ], [ %854, %if.then.i7.i4030 ]
+  %cleanup.isactive.0.i1736 = phi i1 [ true, %lpad91.i1715 ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4028 ], [ false, %if.then.i7.i4030 ]
   %bf.load.i.i673.i1737 = load i8, ptr %agg.tmp89.i1410, align 8
   %bf.clear.i.i674.i1738 = and i8 %bf.load.i.i673.i1737, 1
   %tobool.i.not.i675.i1739 = icmp eq i8 %bf.clear.i.i674.i1738, 0
@@ -15473,58 +15473,58 @@ ehcleanup120.i1896:                               ; preds = %if.then.i785.i1893,
   %or.cond.not.i1895 = select i1 %cleanup.isactive.18.i1888, i1 %arraydestroy.isempty.i1894, i1 false
   br i1 %or.cond.not.i1895, label %arraydestroy.body121.i1900, label %cleanup.done.i1901
 
-arraydestroy.body121.i1900:                       ; preds = %ehcleanup120.i1896, %_ZN8TestCaseD2Ev.exit4010
-  %arraydestroy.elementPast122.i1897 = phi ptr [ %arraydestroy.element123.i1898, %_ZN8TestCaseD2Ev.exit4010 ], [ %arrayinit.endOfInit.35.i1886, %ehcleanup120.i1896 ]
+arraydestroy.body121.i1900:                       ; preds = %ehcleanup120.i1896, %_ZN8TestCaseD2Ev.exit4009
+  %arraydestroy.elementPast122.i1897 = phi ptr [ %arraydestroy.element123.i1898, %_ZN8TestCaseD2Ev.exit4009 ], [ %arrayinit.endOfInit.35.i1886, %ehcleanup120.i1896 ]
   %arraydestroy.element123.i1898 = getelementptr inbounds %struct.TestCase, ptr %arraydestroy.elementPast122.i1897, i64 -1
-  %__cntrl_.i.i3989 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1897, i64 -1, i32 3, i32 1
-  %969 = load ptr, ptr %__cntrl_.i.i3989, align 8, !tbaa !98
-  %tobool.not.i.i3990 = icmp eq ptr %969, null
-  br i1 %tobool.not.i.i3990, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4001, label %if.then.i.i3993
+  %__cntrl_.i.i3988 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1897, i64 -1, i32 3, i32 1
+  %969 = load ptr, ptr %__cntrl_.i.i3988, align 8, !tbaa !98
+  %tobool.not.i.i3989 = icmp eq ptr %969, null
+  br i1 %tobool.not.i.i3989, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4000, label %if.then.i.i3992
 
-if.then.i.i3993:                                  ; preds = %arraydestroy.body121.i1900
-  %__shared_owners_.i.i.i.i3991 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %969, i64 0, i32 1
-  %970 = atomicrmw add ptr %__shared_owners_.i.i.i.i3991, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i3992 = icmp eq i64 %970, 0
-  br i1 %cmp.i.i.i.i3992, label %if.then.i.i.i3996, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4001
+if.then.i.i3992:                                  ; preds = %arraydestroy.body121.i1900
+  %__shared_owners_.i.i.i.i3990 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %969, i64 0, i32 1
+  %970 = atomicrmw add ptr %__shared_owners_.i.i.i.i3990, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i3991 = icmp eq i64 %970, 0
+  br i1 %cmp.i.i.i.i3991, label %if.then.i.i.i3995, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4000
 
-if.then.i.i.i3996:                                ; preds = %if.then.i.i3993
-  %vtable.i.i.i.i3994 = load ptr, ptr %969, align 8, !tbaa !24
-  %vfn.i.i.i.i3995 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3994, i64 2
-  %971 = load ptr, ptr %vfn.i.i.i.i3995, align 8
+if.then.i.i.i3995:                                ; preds = %if.then.i.i3992
+  %vtable.i.i.i.i3993 = load ptr, ptr %969, align 8, !tbaa !24
+  %vfn.i.i.i.i3994 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i3993, i64 2
+  %971 = load ptr, ptr %vfn.i.i.i.i3994, align 8
   call void %971(ptr noundef nonnull align 8 dereferenceable(16) %969) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %969) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4001
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4000
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4001: ; preds = %if.then.i.i.i3996, %if.then.i.i3993, %arraydestroy.body121.i1900
-  %substituted_regex.i3997 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1897, i64 -1, i32 2
-  %bf.load.i.i.i3998 = load i8, ptr %substituted_regex.i3997, align 8
-  %bf.clear.i.i.i3999 = and i8 %bf.load.i.i.i3998, 1
-  %tobool.i.not.i.i4000 = icmp eq i8 %bf.clear.i.i.i3999, 0
-  br i1 %tobool.i.not.i.i4000, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4007, label %if.then.i2.i4003
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4000: ; preds = %if.then.i.i.i3995, %if.then.i.i3992, %arraydestroy.body121.i1900
+  %substituted_regex.i3996 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1897, i64 -1, i32 2
+  %bf.load.i.i.i3997 = load i8, ptr %substituted_regex.i3996, align 8
+  %bf.clear.i.i.i3998 = and i8 %bf.load.i.i.i3997, 1
+  %tobool.i.not.i.i3999 = icmp eq i8 %bf.clear.i.i.i3998, 0
+  br i1 %tobool.i.not.i.i3999, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4006, label %if.then.i2.i4002
 
-if.then.i2.i4003:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4001
-  %__data_.i.i.i4002 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1897, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %972 = load ptr, ptr %__data_.i.i.i4002, align 8, !tbaa !5
+if.then.i2.i4002:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4000
+  %__data_.i.i.i4001 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1897, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %972 = load ptr, ptr %__data_.i.i.i4001, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %972) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4007
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4006
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4007: ; preds = %if.then.i2.i4003, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4001
-  %bf.load.i.i3.i4004 = load i8, ptr %arraydestroy.element123.i1898, align 8
-  %bf.clear.i.i4.i4005 = and i8 %bf.load.i.i3.i4004, 1
-  %tobool.i.not.i5.i4006 = icmp eq i8 %bf.clear.i.i4.i4005, 0
-  br i1 %tobool.i.not.i5.i4006, label %_ZN8TestCaseD2Ev.exit4010, label %if.then.i7.i4009
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4006: ; preds = %if.then.i2.i4002, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4000
+  %bf.load.i.i3.i4003 = load i8, ptr %arraydestroy.element123.i1898, align 8
+  %bf.clear.i.i4.i4004 = and i8 %bf.load.i.i3.i4003, 1
+  %tobool.i.not.i5.i4005 = icmp eq i8 %bf.clear.i.i4.i4004, 0
+  br i1 %tobool.i.not.i5.i4005, label %_ZN8TestCaseD2Ev.exit4009, label %if.then.i7.i4008
 
-if.then.i7.i4009:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4007
-  %__data_.i.i6.i4008 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1897, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %973 = load ptr, ptr %__data_.i.i6.i4008, align 8, !tbaa !5
+if.then.i7.i4008:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4006
+  %__data_.i.i6.i4007 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast122.i1897, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %973 = load ptr, ptr %__data_.i.i6.i4007, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %973) #25
-  br label %_ZN8TestCaseD2Ev.exit4010
+  br label %_ZN8TestCaseD2Ev.exit4009
 
-_ZN8TestCaseD2Ev.exit4010:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4007, %if.then.i7.i4009
+_ZN8TestCaseD2Ev.exit4009:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4006, %if.then.i7.i4008
   %arraydestroy.done124.i1899 = icmp eq ptr %arraydestroy.element123.i1898, %ref.tmp.i1391
   br i1 %arraydestroy.done124.i1899, label %cleanup.done.i1901, label %arraydestroy.body121.i1900
 
-cleanup.done.i1901:                               ; preds = %_ZN8TestCaseD2Ev.exit4010, %ehcleanup120.i1896
+cleanup.done.i1901:                               ; preds = %_ZN8TestCaseD2Ev.exit4009, %ehcleanup120.i1896
   call void @llvm.lifetime.end.p0(i64 1368, ptr nonnull %ref.tmp.i1391) #24
   br label %common.resume
 
@@ -15972,233 +15972,233 @@ lpad21.i2099:                                     ; preds = %call.i.i.i.i.i.i.no
 lpad23.i2104:                                     ; preds = %invoke.cont22.i1951
   %1014 = landingpad { ptr, i32 }
           cleanup
-  %__cntrl_.i.i4539 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 4, i32 3, i32 1
-  %1015 = load ptr, ptr %__cntrl_.i.i4539, align 8, !tbaa !98
-  %tobool.not.i.i4540 = icmp eq ptr %1015, null
-  br i1 %tobool.not.i.i4540, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4551, label %if.then.i.i4543
+  %__cntrl_.i.i4538 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 4, i32 3, i32 1
+  %1015 = load ptr, ptr %__cntrl_.i.i4538, align 8, !tbaa !98
+  %tobool.not.i.i4539 = icmp eq ptr %1015, null
+  br i1 %tobool.not.i.i4539, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4550, label %if.then.i.i4542
 
-if.then.i.i4543:                                  ; preds = %lpad23.i2104
-  %__shared_owners_.i.i.i.i4541 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1015, i64 0, i32 1
-  %1016 = atomicrmw add ptr %__shared_owners_.i.i.i.i4541, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4542 = icmp eq i64 %1016, 0
-  br i1 %cmp.i.i.i.i4542, label %if.then.i.i.i4546, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4551
+if.then.i.i4542:                                  ; preds = %lpad23.i2104
+  %__shared_owners_.i.i.i.i4540 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1015, i64 0, i32 1
+  %1016 = atomicrmw add ptr %__shared_owners_.i.i.i.i4540, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4541 = icmp eq i64 %1016, 0
+  br i1 %cmp.i.i.i.i4541, label %if.then.i.i.i4545, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4550
 
-if.then.i.i.i4546:                                ; preds = %if.then.i.i4543
-  %vtable.i.i.i.i4544 = load ptr, ptr %1015, align 8, !tbaa !24
-  %vfn.i.i.i.i4545 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4544, i64 2
-  %1017 = load ptr, ptr %vfn.i.i.i.i4545, align 8
+if.then.i.i.i4545:                                ; preds = %if.then.i.i4542
+  %vtable.i.i.i.i4543 = load ptr, ptr %1015, align 8, !tbaa !24
+  %vfn.i.i.i.i4544 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4543, i64 2
+  %1017 = load ptr, ptr %vfn.i.i.i.i4544, align 8
   call void %1017(ptr noundef nonnull align 8 dereferenceable(16) %1015) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %1015) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4551
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4550
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4551: ; preds = %if.then.i.i.i4546, %if.then.i.i4543, %lpad23.i2104
-  %substituted_regex.i4547 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 4, i32 2
-  %bf.load.i.i.i4548 = load i8, ptr %substituted_regex.i4547, align 8
-  %bf.clear.i.i.i4549 = and i8 %bf.load.i.i.i4548, 1
-  %tobool.i.not.i.i4550 = icmp eq i8 %bf.clear.i.i.i4549, 0
-  br i1 %tobool.i.not.i.i4550, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4557, label %if.then.i2.i4553
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4550: ; preds = %if.then.i.i.i4545, %if.then.i.i4542, %lpad23.i2104
+  %substituted_regex.i4546 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 4, i32 2
+  %bf.load.i.i.i4547 = load i8, ptr %substituted_regex.i4546, align 8
+  %bf.clear.i.i.i4548 = and i8 %bf.load.i.i.i4547, 1
+  %tobool.i.not.i.i4549 = icmp eq i8 %bf.clear.i.i.i4548, 0
+  br i1 %tobool.i.not.i.i4549, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4556, label %if.then.i2.i4552
 
-if.then.i2.i4553:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4551
-  %__data_.i.i.i4552 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1018 = load ptr, ptr %__data_.i.i.i4552, align 8, !tbaa !5
+if.then.i2.i4552:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4550
+  %__data_.i.i.i4551 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 4, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1018 = load ptr, ptr %__data_.i.i.i4551, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1018) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4557
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4556
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4557: ; preds = %if.then.i2.i4553, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4551
-  %bf.load.i.i3.i4554 = load i8, ptr %arrayinit.element18.i1941, align 8
-  %bf.clear.i.i4.i4555 = and i8 %bf.load.i.i3.i4554, 1
-  %tobool.i.not.i5.i4556 = icmp eq i8 %bf.clear.i.i4.i4555, 0
-  br i1 %tobool.i.not.i5.i4556, label %_ZN8TestCaseD2Ev.exit4560, label %if.then.i7.i4559
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4556: ; preds = %if.then.i2.i4552, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4550
+  %bf.load.i.i3.i4553 = load i8, ptr %arrayinit.element18.i1941, align 8
+  %bf.clear.i.i4.i4554 = and i8 %bf.load.i.i3.i4553, 1
+  %tobool.i.not.i5.i4555 = icmp eq i8 %bf.clear.i.i4.i4554, 0
+  br i1 %tobool.i.not.i5.i4555, label %_ZN8TestCaseD2Ev.exit4559, label %if.then.i7.i4558
 
-if.then.i7.i4559:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4557
-  %__data_.i.i6.i4558 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1019 = load ptr, ptr %__data_.i.i6.i4558, align 8, !tbaa !5
+if.then.i7.i4558:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4556
+  %__data_.i.i6.i4557 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 4, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1019 = load ptr, ptr %__data_.i.i6.i4557, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1019) #25
-  br label %_ZN8TestCaseD2Ev.exit4560
+  br label %_ZN8TestCaseD2Ev.exit4559
 
-_ZN8TestCaseD2Ev.exit4560:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4557, %if.then.i7.i4559
-  %__cntrl_.i.i4517 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 3, i32 3, i32 1
-  %1020 = load ptr, ptr %__cntrl_.i.i4517, align 8, !tbaa !98
-  %tobool.not.i.i4518 = icmp eq ptr %1020, null
-  br i1 %tobool.not.i.i4518, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4529, label %if.then.i.i4521
+_ZN8TestCaseD2Ev.exit4559:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4556, %if.then.i7.i4558
+  %__cntrl_.i.i4516 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 3, i32 3, i32 1
+  %1020 = load ptr, ptr %__cntrl_.i.i4516, align 8, !tbaa !98
+  %tobool.not.i.i4517 = icmp eq ptr %1020, null
+  br i1 %tobool.not.i.i4517, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4528, label %if.then.i.i4520
 
-if.then.i.i4521:                                  ; preds = %_ZN8TestCaseD2Ev.exit4560
-  %__shared_owners_.i.i.i.i4519 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1020, i64 0, i32 1
-  %1021 = atomicrmw add ptr %__shared_owners_.i.i.i.i4519, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4520 = icmp eq i64 %1021, 0
-  br i1 %cmp.i.i.i.i4520, label %if.then.i.i.i4524, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4529
+if.then.i.i4520:                                  ; preds = %_ZN8TestCaseD2Ev.exit4559
+  %__shared_owners_.i.i.i.i4518 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1020, i64 0, i32 1
+  %1021 = atomicrmw add ptr %__shared_owners_.i.i.i.i4518, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4519 = icmp eq i64 %1021, 0
+  br i1 %cmp.i.i.i.i4519, label %if.then.i.i.i4523, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4528
 
-if.then.i.i.i4524:                                ; preds = %if.then.i.i4521
-  %vtable.i.i.i.i4522 = load ptr, ptr %1020, align 8, !tbaa !24
-  %vfn.i.i.i.i4523 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4522, i64 2
-  %1022 = load ptr, ptr %vfn.i.i.i.i4523, align 8
+if.then.i.i.i4523:                                ; preds = %if.then.i.i4520
+  %vtable.i.i.i.i4521 = load ptr, ptr %1020, align 8, !tbaa !24
+  %vfn.i.i.i.i4522 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4521, i64 2
+  %1022 = load ptr, ptr %vfn.i.i.i.i4522, align 8
   call void %1022(ptr noundef nonnull align 8 dereferenceable(16) %1020) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %1020) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4529
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4528
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4529: ; preds = %if.then.i.i.i4524, %if.then.i.i4521, %_ZN8TestCaseD2Ev.exit4560
-  %substituted_regex.i4525 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 3, i32 2
-  %bf.load.i.i.i4526 = load i8, ptr %substituted_regex.i4525, align 8
-  %bf.clear.i.i.i4527 = and i8 %bf.load.i.i.i4526, 1
-  %tobool.i.not.i.i4528 = icmp eq i8 %bf.clear.i.i.i4527, 0
-  br i1 %tobool.i.not.i.i4528, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4535, label %if.then.i2.i4531
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4528: ; preds = %if.then.i.i.i4523, %if.then.i.i4520, %_ZN8TestCaseD2Ev.exit4559
+  %substituted_regex.i4524 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 3, i32 2
+  %bf.load.i.i.i4525 = load i8, ptr %substituted_regex.i4524, align 8
+  %bf.clear.i.i.i4526 = and i8 %bf.load.i.i.i4525, 1
+  %tobool.i.not.i.i4527 = icmp eq i8 %bf.clear.i.i.i4526, 0
+  br i1 %tobool.i.not.i.i4527, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4534, label %if.then.i2.i4530
 
-if.then.i2.i4531:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4529
-  %__data_.i.i.i4530 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1023 = load ptr, ptr %__data_.i.i.i4530, align 8, !tbaa !5
+if.then.i2.i4530:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4528
+  %__data_.i.i.i4529 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 3, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1023 = load ptr, ptr %__data_.i.i.i4529, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1023) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4535
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4534
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4535: ; preds = %if.then.i2.i4531, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4529
-  %bf.load.i.i3.i4532 = load i8, ptr %arrayinit.element13.i1932, align 8
-  %bf.clear.i.i4.i4533 = and i8 %bf.load.i.i3.i4532, 1
-  %tobool.i.not.i5.i4534 = icmp eq i8 %bf.clear.i.i4.i4533, 0
-  br i1 %tobool.i.not.i5.i4534, label %_ZN8TestCaseD2Ev.exit4538, label %if.then.i7.i4537
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4534: ; preds = %if.then.i2.i4530, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4528
+  %bf.load.i.i3.i4531 = load i8, ptr %arrayinit.element13.i1932, align 8
+  %bf.clear.i.i4.i4532 = and i8 %bf.load.i.i3.i4531, 1
+  %tobool.i.not.i5.i4533 = icmp eq i8 %bf.clear.i.i4.i4532, 0
+  br i1 %tobool.i.not.i5.i4533, label %_ZN8TestCaseD2Ev.exit4537, label %if.then.i7.i4536
 
-if.then.i7.i4537:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4535
-  %__data_.i.i6.i4536 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1024 = load ptr, ptr %__data_.i.i6.i4536, align 8, !tbaa !5
+if.then.i7.i4536:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4534
+  %__data_.i.i6.i4535 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 3, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1024 = load ptr, ptr %__data_.i.i6.i4535, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1024) #25
-  br label %_ZN8TestCaseD2Ev.exit4538
+  br label %_ZN8TestCaseD2Ev.exit4537
 
-_ZN8TestCaseD2Ev.exit4538:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4535, %if.then.i7.i4537
-  %__cntrl_.i.i4495 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 2, i32 3, i32 1
-  %1025 = load ptr, ptr %__cntrl_.i.i4495, align 8, !tbaa !98
-  %tobool.not.i.i4496 = icmp eq ptr %1025, null
-  br i1 %tobool.not.i.i4496, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4507, label %if.then.i.i4499
+_ZN8TestCaseD2Ev.exit4537:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4534, %if.then.i7.i4536
+  %__cntrl_.i.i4494 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 2, i32 3, i32 1
+  %1025 = load ptr, ptr %__cntrl_.i.i4494, align 8, !tbaa !98
+  %tobool.not.i.i4495 = icmp eq ptr %1025, null
+  br i1 %tobool.not.i.i4495, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4506, label %if.then.i.i4498
 
-if.then.i.i4499:                                  ; preds = %_ZN8TestCaseD2Ev.exit4538
-  %__shared_owners_.i.i.i.i4497 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1025, i64 0, i32 1
-  %1026 = atomicrmw add ptr %__shared_owners_.i.i.i.i4497, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4498 = icmp eq i64 %1026, 0
-  br i1 %cmp.i.i.i.i4498, label %if.then.i.i.i4502, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4507
+if.then.i.i4498:                                  ; preds = %_ZN8TestCaseD2Ev.exit4537
+  %__shared_owners_.i.i.i.i4496 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1025, i64 0, i32 1
+  %1026 = atomicrmw add ptr %__shared_owners_.i.i.i.i4496, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4497 = icmp eq i64 %1026, 0
+  br i1 %cmp.i.i.i.i4497, label %if.then.i.i.i4501, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4506
 
-if.then.i.i.i4502:                                ; preds = %if.then.i.i4499
-  %vtable.i.i.i.i4500 = load ptr, ptr %1025, align 8, !tbaa !24
-  %vfn.i.i.i.i4501 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4500, i64 2
-  %1027 = load ptr, ptr %vfn.i.i.i.i4501, align 8
+if.then.i.i.i4501:                                ; preds = %if.then.i.i4498
+  %vtable.i.i.i.i4499 = load ptr, ptr %1025, align 8, !tbaa !24
+  %vfn.i.i.i.i4500 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4499, i64 2
+  %1027 = load ptr, ptr %vfn.i.i.i.i4500, align 8
   call void %1027(ptr noundef nonnull align 8 dereferenceable(16) %1025) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %1025) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4507
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4506
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4507: ; preds = %if.then.i.i.i4502, %if.then.i.i4499, %_ZN8TestCaseD2Ev.exit4538
-  %substituted_regex.i4503 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 2, i32 2
-  %bf.load.i.i.i4504 = load i8, ptr %substituted_regex.i4503, align 8
-  %bf.clear.i.i.i4505 = and i8 %bf.load.i.i.i4504, 1
-  %tobool.i.not.i.i4506 = icmp eq i8 %bf.clear.i.i.i4505, 0
-  br i1 %tobool.i.not.i.i4506, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4513, label %if.then.i2.i4509
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4506: ; preds = %if.then.i.i.i4501, %if.then.i.i4498, %_ZN8TestCaseD2Ev.exit4537
+  %substituted_regex.i4502 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 2, i32 2
+  %bf.load.i.i.i4503 = load i8, ptr %substituted_regex.i4502, align 8
+  %bf.clear.i.i.i4504 = and i8 %bf.load.i.i.i4503, 1
+  %tobool.i.not.i.i4505 = icmp eq i8 %bf.clear.i.i.i4504, 0
+  br i1 %tobool.i.not.i.i4505, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4512, label %if.then.i2.i4508
 
-if.then.i2.i4509:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4507
-  %__data_.i.i.i4508 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1028 = load ptr, ptr %__data_.i.i.i4508, align 8, !tbaa !5
+if.then.i2.i4508:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4506
+  %__data_.i.i.i4507 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 2, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1028 = load ptr, ptr %__data_.i.i.i4507, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1028) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4513
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4512
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4513: ; preds = %if.then.i2.i4509, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4507
-  %bf.load.i.i3.i4510 = load i8, ptr %arrayinit.element8.i1923, align 8
-  %bf.clear.i.i4.i4511 = and i8 %bf.load.i.i3.i4510, 1
-  %tobool.i.not.i5.i4512 = icmp eq i8 %bf.clear.i.i4.i4511, 0
-  br i1 %tobool.i.not.i5.i4512, label %_ZN8TestCaseD2Ev.exit4516, label %if.then.i7.i4515
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4512: ; preds = %if.then.i2.i4508, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4506
+  %bf.load.i.i3.i4509 = load i8, ptr %arrayinit.element8.i1923, align 8
+  %bf.clear.i.i4.i4510 = and i8 %bf.load.i.i3.i4509, 1
+  %tobool.i.not.i5.i4511 = icmp eq i8 %bf.clear.i.i4.i4510, 0
+  br i1 %tobool.i.not.i5.i4511, label %_ZN8TestCaseD2Ev.exit4515, label %if.then.i7.i4514
 
-if.then.i7.i4515:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4513
-  %__data_.i.i6.i4514 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1029 = load ptr, ptr %__data_.i.i6.i4514, align 8, !tbaa !5
+if.then.i7.i4514:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4512
+  %__data_.i.i6.i4513 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1029 = load ptr, ptr %__data_.i.i6.i4513, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1029) #25
-  br label %_ZN8TestCaseD2Ev.exit4516
+  br label %_ZN8TestCaseD2Ev.exit4515
 
-_ZN8TestCaseD2Ev.exit4516:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4513, %if.then.i7.i4515
-  %__cntrl_.i.i4473 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 1, i32 3, i32 1
-  %1030 = load ptr, ptr %__cntrl_.i.i4473, align 8, !tbaa !98
-  %tobool.not.i.i4474 = icmp eq ptr %1030, null
-  br i1 %tobool.not.i.i4474, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4485, label %if.then.i.i4477
+_ZN8TestCaseD2Ev.exit4515:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4512, %if.then.i7.i4514
+  %__cntrl_.i.i4472 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 1, i32 3, i32 1
+  %1030 = load ptr, ptr %__cntrl_.i.i4472, align 8, !tbaa !98
+  %tobool.not.i.i4473 = icmp eq ptr %1030, null
+  br i1 %tobool.not.i.i4473, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4484, label %if.then.i.i4476
 
-if.then.i.i4477:                                  ; preds = %_ZN8TestCaseD2Ev.exit4516
-  %__shared_owners_.i.i.i.i4475 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1030, i64 0, i32 1
-  %1031 = atomicrmw add ptr %__shared_owners_.i.i.i.i4475, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4476 = icmp eq i64 %1031, 0
-  br i1 %cmp.i.i.i.i4476, label %if.then.i.i.i4480, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4485
+if.then.i.i4476:                                  ; preds = %_ZN8TestCaseD2Ev.exit4515
+  %__shared_owners_.i.i.i.i4474 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1030, i64 0, i32 1
+  %1031 = atomicrmw add ptr %__shared_owners_.i.i.i.i4474, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4475 = icmp eq i64 %1031, 0
+  br i1 %cmp.i.i.i.i4475, label %if.then.i.i.i4479, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4484
 
-if.then.i.i.i4480:                                ; preds = %if.then.i.i4477
-  %vtable.i.i.i.i4478 = load ptr, ptr %1030, align 8, !tbaa !24
-  %vfn.i.i.i.i4479 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4478, i64 2
-  %1032 = load ptr, ptr %vfn.i.i.i.i4479, align 8
+if.then.i.i.i4479:                                ; preds = %if.then.i.i4476
+  %vtable.i.i.i.i4477 = load ptr, ptr %1030, align 8, !tbaa !24
+  %vfn.i.i.i.i4478 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4477, i64 2
+  %1032 = load ptr, ptr %vfn.i.i.i.i4478, align 8
   call void %1032(ptr noundef nonnull align 8 dereferenceable(16) %1030) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %1030) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4485
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4484
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4485: ; preds = %if.then.i.i.i4480, %if.then.i.i4477, %_ZN8TestCaseD2Ev.exit4516
-  %substituted_regex.i4481 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 1, i32 2
-  %bf.load.i.i.i4482 = load i8, ptr %substituted_regex.i4481, align 8
-  %bf.clear.i.i.i4483 = and i8 %bf.load.i.i.i4482, 1
-  %tobool.i.not.i.i4484 = icmp eq i8 %bf.clear.i.i.i4483, 0
-  br i1 %tobool.i.not.i.i4484, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4491, label %if.then.i2.i4487
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4484: ; preds = %if.then.i.i.i4479, %if.then.i.i4476, %_ZN8TestCaseD2Ev.exit4515
+  %substituted_regex.i4480 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 1, i32 2
+  %bf.load.i.i.i4481 = load i8, ptr %substituted_regex.i4480, align 8
+  %bf.clear.i.i.i4482 = and i8 %bf.load.i.i.i4481, 1
+  %tobool.i.not.i.i4483 = icmp eq i8 %bf.clear.i.i.i4482, 0
+  br i1 %tobool.i.not.i.i4483, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4490, label %if.then.i2.i4486
 
-if.then.i2.i4487:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4485
-  %__data_.i.i.i4486 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1033 = load ptr, ptr %__data_.i.i.i4486, align 8, !tbaa !5
+if.then.i2.i4486:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4484
+  %__data_.i.i.i4485 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1033 = load ptr, ptr %__data_.i.i.i4485, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1033) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4491
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4490
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4491: ; preds = %if.then.i2.i4487, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4485
-  %bf.load.i.i3.i4488 = load i8, ptr %arrayinit.element.i1914, align 8
-  %bf.clear.i.i4.i4489 = and i8 %bf.load.i.i3.i4488, 1
-  %tobool.i.not.i5.i4490 = icmp eq i8 %bf.clear.i.i4.i4489, 0
-  br i1 %tobool.i.not.i5.i4490, label %_ZN8TestCaseD2Ev.exit4494, label %if.then.i7.i4493
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4490: ; preds = %if.then.i2.i4486, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4484
+  %bf.load.i.i3.i4487 = load i8, ptr %arrayinit.element.i1914, align 8
+  %bf.clear.i.i4.i4488 = and i8 %bf.load.i.i3.i4487, 1
+  %tobool.i.not.i5.i4489 = icmp eq i8 %bf.clear.i.i4.i4488, 0
+  br i1 %tobool.i.not.i5.i4489, label %_ZN8TestCaseD2Ev.exit4493, label %if.then.i7.i4492
 
-if.then.i7.i4493:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4491
-  %__data_.i.i6.i4492 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1034 = load ptr, ptr %__data_.i.i6.i4492, align 8, !tbaa !5
+if.then.i7.i4492:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4490
+  %__data_.i.i6.i4491 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1034 = load ptr, ptr %__data_.i.i6.i4491, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1034) #25
-  br label %_ZN8TestCaseD2Ev.exit4494
+  br label %_ZN8TestCaseD2Ev.exit4493
 
-_ZN8TestCaseD2Ev.exit4494:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4491, %if.then.i7.i4493
-  %__cntrl_.i.i4451 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 0, i32 3, i32 1
-  %1035 = load ptr, ptr %__cntrl_.i.i4451, align 8, !tbaa !98
-  %tobool.not.i.i4452 = icmp eq ptr %1035, null
-  br i1 %tobool.not.i.i4452, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4463, label %if.then.i.i4455
+_ZN8TestCaseD2Ev.exit4493:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4490, %if.then.i7.i4492
+  %__cntrl_.i.i4450 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 0, i32 3, i32 1
+  %1035 = load ptr, ptr %__cntrl_.i.i4450, align 8, !tbaa !98
+  %tobool.not.i.i4451 = icmp eq ptr %1035, null
+  br i1 %tobool.not.i.i4451, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4462, label %if.then.i.i4454
 
-if.then.i.i4455:                                  ; preds = %_ZN8TestCaseD2Ev.exit4494
-  %__shared_owners_.i.i.i.i4453 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1035, i64 0, i32 1
-  %1036 = atomicrmw add ptr %__shared_owners_.i.i.i.i4453, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4454 = icmp eq i64 %1036, 0
-  br i1 %cmp.i.i.i.i4454, label %if.then.i.i.i4458, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4463
+if.then.i.i4454:                                  ; preds = %_ZN8TestCaseD2Ev.exit4493
+  %__shared_owners_.i.i.i.i4452 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1035, i64 0, i32 1
+  %1036 = atomicrmw add ptr %__shared_owners_.i.i.i.i4452, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4453 = icmp eq i64 %1036, 0
+  br i1 %cmp.i.i.i.i4453, label %if.then.i.i.i4457, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4462
 
-if.then.i.i.i4458:                                ; preds = %if.then.i.i4455
-  %vtable.i.i.i.i4456 = load ptr, ptr %1035, align 8, !tbaa !24
-  %vfn.i.i.i.i4457 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4456, i64 2
-  %1037 = load ptr, ptr %vfn.i.i.i.i4457, align 8
+if.then.i.i.i4457:                                ; preds = %if.then.i.i4454
+  %vtable.i.i.i.i4455 = load ptr, ptr %1035, align 8, !tbaa !24
+  %vfn.i.i.i.i4456 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4455, i64 2
+  %1037 = load ptr, ptr %vfn.i.i.i.i4456, align 8
   call void %1037(ptr noundef nonnull align 8 dereferenceable(16) %1035) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %1035) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4463
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4462
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4463: ; preds = %if.then.i.i.i4458, %if.then.i.i4455, %_ZN8TestCaseD2Ev.exit4494
-  %substituted_regex.i4459 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 0, i32 2
-  %bf.load.i.i.i4460 = load i8, ptr %substituted_regex.i4459, align 8
-  %bf.clear.i.i.i4461 = and i8 %bf.load.i.i.i4460, 1
-  %tobool.i.not.i.i4462 = icmp eq i8 %bf.clear.i.i.i4461, 0
-  br i1 %tobool.i.not.i.i4462, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4469, label %if.then.i2.i4465
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4462: ; preds = %if.then.i.i.i4457, %if.then.i.i4454, %_ZN8TestCaseD2Ev.exit4493
+  %substituted_regex.i4458 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 0, i32 2
+  %bf.load.i.i.i4459 = load i8, ptr %substituted_regex.i4458, align 8
+  %bf.clear.i.i.i4460 = and i8 %bf.load.i.i.i4459, 1
+  %tobool.i.not.i.i4461 = icmp eq i8 %bf.clear.i.i.i4460, 0
+  br i1 %tobool.i.not.i.i4461, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4468, label %if.then.i2.i4464
 
-if.then.i2.i4465:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4463
-  %__data_.i.i.i4464 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1038 = load ptr, ptr %__data_.i.i.i4464, align 8, !tbaa !5
+if.then.i2.i4464:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4462
+  %__data_.i.i.i4463 = getelementptr inbounds %struct.TestCase, ptr %ref.tmp.i1902, i64 0, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1038 = load ptr, ptr %__data_.i.i.i4463, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1038) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4469
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4468
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4469: ; preds = %if.then.i2.i4465, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4463
-  %bf.load.i.i3.i4466 = load i8, ptr %ref.tmp.i1902, align 8
-  %bf.clear.i.i4.i4467 = and i8 %bf.load.i.i3.i4466, 1
-  %tobool.i.not.i5.i4468 = icmp eq i8 %bf.clear.i.i4.i4467, 0
-  br i1 %tobool.i.not.i5.i4468, label %ehcleanup.i2110, label %if.then.i7.i4471
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4468: ; preds = %if.then.i2.i4464, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4462
+  %bf.load.i.i3.i4465 = load i8, ptr %ref.tmp.i1902, align 8
+  %bf.clear.i.i4.i4466 = and i8 %bf.load.i.i3.i4465, 1
+  %tobool.i.not.i5.i4467 = icmp eq i8 %bf.clear.i.i4.i4466, 0
+  br i1 %tobool.i.not.i5.i4467, label %ehcleanup.i2110, label %if.then.i7.i4470
 
-if.then.i7.i4471:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4469
-  %__data_.i.i6.i4470 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i1902, i64 0, i32 2
-  %1039 = load ptr, ptr %__data_.i.i6.i4470, align 8, !tbaa !5
+if.then.i7.i4470:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4468
+  %__data_.i.i6.i4469 = getelementptr inbounds %"struct.std::__1::basic_string<char>::__long", ptr %ref.tmp.i1902, i64 0, i32 2
+  %1039 = load ptr, ptr %__data_.i.i6.i4469, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1039) #25
   br label %ehcleanup.i2110
 
-ehcleanup.i2110:                                  ; preds = %if.then.i7.i4471, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4469, %lpad21.i2099
-  %.pn.i2105 = phi { ptr, i32 } [ %1013, %lpad21.i2099 ], [ %1014, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4469 ], [ %1014, %if.then.i7.i4471 ]
-  %cleanup.isactive.0.i2106 = phi i1 [ true, %lpad21.i2099 ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4469 ], [ false, %if.then.i7.i4471 ]
+ehcleanup.i2110:                                  ; preds = %if.then.i7.i4470, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4468, %lpad21.i2099
+  %.pn.i2105 = phi { ptr, i32 } [ %1013, %lpad21.i2099 ], [ %1014, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4468 ], [ %1014, %if.then.i7.i4470 ]
+  %cleanup.isactive.0.i2106 = phi i1 [ true, %lpad21.i2099 ], [ false, %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4468 ], [ false, %if.then.i7.i4470 ]
   %bf.load.i.i169.i2107 = load i8, ptr %agg.tmp19.i1907, align 8
   %bf.clear.i.i170.i2108 = and i8 %bf.load.i.i169.i2107, 1
   %tobool.i.not.i171.i2109 = icmp eq i8 %bf.clear.i.i170.i2108, 0
@@ -16270,58 +16270,58 @@ ehcleanup36.i2146:                                ; preds = %if.then.i197.i2143,
   %or.cond.not.i2145 = select i1 %cleanup.isactive.4.i2138, i1 %arraydestroy.isempty.i2144, i1 false
   br i1 %or.cond.not.i2145, label %arraydestroy.body37.i2150, label %cleanup.done.i2151
 
-arraydestroy.body37.i2150:                        ; preds = %ehcleanup36.i2146, %_ZN8TestCaseD2Ev.exit4450
-  %arraydestroy.elementPast38.i2147 = phi ptr [ %arraydestroy.element39.i2148, %_ZN8TestCaseD2Ev.exit4450 ], [ %arrayinit.endOfInit.7.i2136, %ehcleanup36.i2146 ]
+arraydestroy.body37.i2150:                        ; preds = %ehcleanup36.i2146, %_ZN8TestCaseD2Ev.exit4449
+  %arraydestroy.elementPast38.i2147 = phi ptr [ %arraydestroy.element39.i2148, %_ZN8TestCaseD2Ev.exit4449 ], [ %arrayinit.endOfInit.7.i2136, %ehcleanup36.i2146 ]
   %arraydestroy.element39.i2148 = getelementptr inbounds %struct.TestCase, ptr %arraydestroy.elementPast38.i2147, i64 -1
-  %__cntrl_.i.i4429 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i2147, i64 -1, i32 3, i32 1
-  %1045 = load ptr, ptr %__cntrl_.i.i4429, align 8, !tbaa !98
-  %tobool.not.i.i4430 = icmp eq ptr %1045, null
-  br i1 %tobool.not.i.i4430, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4441, label %if.then.i.i4433
+  %__cntrl_.i.i4428 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i2147, i64 -1, i32 3, i32 1
+  %1045 = load ptr, ptr %__cntrl_.i.i4428, align 8, !tbaa !98
+  %tobool.not.i.i4429 = icmp eq ptr %1045, null
+  br i1 %tobool.not.i.i4429, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4440, label %if.then.i.i4432
 
-if.then.i.i4433:                                  ; preds = %arraydestroy.body37.i2150
-  %__shared_owners_.i.i.i.i4431 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1045, i64 0, i32 1
-  %1046 = atomicrmw add ptr %__shared_owners_.i.i.i.i4431, i64 -1 acq_rel, align 8
-  %cmp.i.i.i.i4432 = icmp eq i64 %1046, 0
-  br i1 %cmp.i.i.i.i4432, label %if.then.i.i.i4436, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4441
+if.then.i.i4432:                                  ; preds = %arraydestroy.body37.i2150
+  %__shared_owners_.i.i.i.i4430 = getelementptr inbounds %"class.std::__1::__shared_count", ptr %1045, i64 0, i32 1
+  %1046 = atomicrmw add ptr %__shared_owners_.i.i.i.i4430, i64 -1 acq_rel, align 8
+  %cmp.i.i.i.i4431 = icmp eq i64 %1046, 0
+  br i1 %cmp.i.i.i.i4431, label %if.then.i.i.i4435, label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4440
 
-if.then.i.i.i4436:                                ; preds = %if.then.i.i4433
-  %vtable.i.i.i.i4434 = load ptr, ptr %1045, align 8, !tbaa !24
-  %vfn.i.i.i.i4435 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4434, i64 2
-  %1047 = load ptr, ptr %vfn.i.i.i.i4435, align 8
+if.then.i.i.i4435:                                ; preds = %if.then.i.i4432
+  %vtable.i.i.i.i4433 = load ptr, ptr %1045, align 8, !tbaa !24
+  %vfn.i.i.i.i4434 = getelementptr inbounds ptr, ptr %vtable.i.i.i.i4433, i64 2
+  %1047 = load ptr, ptr %vfn.i.i.i.i4434, align 8
   call void %1047(ptr noundef nonnull align 8 dereferenceable(16) %1045) #24
   call void @_ZNSt3__119__shared_weak_count14__release_weakEv(ptr noundef nonnull align 8 dereferenceable(24) %1045) #24
-  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4441
+  br label %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4440
 
-_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4441: ; preds = %if.then.i.i.i4436, %if.then.i.i4433, %arraydestroy.body37.i2150
-  %substituted_regex.i4437 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i2147, i64 -1, i32 2
-  %bf.load.i.i.i4438 = load i8, ptr %substituted_regex.i4437, align 8
-  %bf.clear.i.i.i4439 = and i8 %bf.load.i.i.i4438, 1
-  %tobool.i.not.i.i4440 = icmp eq i8 %bf.clear.i.i.i4439, 0
-  br i1 %tobool.i.not.i.i4440, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4447, label %if.then.i2.i4443
+_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4440: ; preds = %if.then.i.i.i4435, %if.then.i.i4432, %arraydestroy.body37.i2150
+  %substituted_regex.i4436 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i2147, i64 -1, i32 2
+  %bf.load.i.i.i4437 = load i8, ptr %substituted_regex.i4436, align 8
+  %bf.clear.i.i.i4438 = and i8 %bf.load.i.i.i4437, 1
+  %tobool.i.not.i.i4439 = icmp eq i8 %bf.clear.i.i.i4438, 0
+  br i1 %tobool.i.not.i.i4439, label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4446, label %if.then.i2.i4442
 
-if.then.i2.i4443:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4441
-  %__data_.i.i.i4442 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i2147, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1048 = load ptr, ptr %__data_.i.i.i4442, align 8, !tbaa !5
+if.then.i2.i4442:                                 ; preds = %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4440
+  %__data_.i.i.i4441 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i2147, i64 -1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1048 = load ptr, ptr %__data_.i.i.i4441, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1048) #25
-  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4447
+  br label %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4446
 
-_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4447: ; preds = %if.then.i2.i4443, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4441
-  %bf.load.i.i3.i4444 = load i8, ptr %arraydestroy.element39.i2148, align 8
-  %bf.clear.i.i4.i4445 = and i8 %bf.load.i.i3.i4444, 1
-  %tobool.i.not.i5.i4446 = icmp eq i8 %bf.clear.i.i4.i4445, 0
-  br i1 %tobool.i.not.i5.i4446, label %_ZN8TestCaseD2Ev.exit4450, label %if.then.i7.i4449
+_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4446: ; preds = %if.then.i2.i4442, %_ZNSt3__110shared_ptrIN9benchmark5RegexEED2B7v170000Ev.exit.i4440
+  %bf.load.i.i3.i4443 = load i8, ptr %arraydestroy.element39.i2148, align 8
+  %bf.clear.i.i4.i4444 = and i8 %bf.load.i.i3.i4443, 1
+  %tobool.i.not.i5.i4445 = icmp eq i8 %bf.clear.i.i4.i4444, 0
+  br i1 %tobool.i.not.i5.i4445, label %_ZN8TestCaseD2Ev.exit4449, label %if.then.i7.i4448
 
-if.then.i7.i4449:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4447
-  %__data_.i.i6.i4448 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i2147, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %1049 = load ptr, ptr %__data_.i.i6.i4448, align 8, !tbaa !5
+if.then.i7.i4448:                                 ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4446
+  %__data_.i.i6.i4447 = getelementptr %struct.TestCase, ptr %arraydestroy.elementPast38.i2147, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %1049 = load ptr, ptr %__data_.i.i6.i4447, align 8, !tbaa !5
   call void @_ZdlPv(ptr noundef %1049) #25
-  br label %_ZN8TestCaseD2Ev.exit4450
+  br label %_ZN8TestCaseD2Ev.exit4449
 
-_ZN8TestCaseD2Ev.exit4450:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4447, %if.then.i7.i4449
+_ZN8TestCaseD2Ev.exit4449:                        ; preds = %_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev.exit.i4446, %if.then.i7.i4448
   %arraydestroy.done40.i2149 = icmp eq ptr %arraydestroy.element39.i2148, %ref.tmp.i1902
   br i1 %arraydestroy.done40.i2149, label %cleanup.done.i2151, label %arraydestroy.body37.i2150
 
-cleanup.done.i2151:                               ; preds = %_ZN8TestCaseD2Ev.exit4450, %ehcleanup36.i2146
+cleanup.done.i2151:                               ; preds = %_ZN8TestCaseD2Ev.exit4449, %ehcleanup36.i2146
   call void @llvm.lifetime.end.p0(i64 360, ptr nonnull %ref.tmp.i1902) #24
   br label %common.resume
 
@@ -16345,27 +16345,18 @@ __cxx_global_var_init.50.exit:                    ; preds = %_ZNSt3__112basic_st
 invoke.cont.i:                                    ; preds = %__cxx_global_var_init.50.exit
   %1050 = load ptr, ptr %__f_.i.i.i.i, align 16, !tbaa !101
   %cmp.i.i.i = icmp eq ptr %1050, %ref.tmp.i2152
-  br i1 %cmp.i.i.i, label %if.then.i.i.i, label %if.else.i.i.i
-
-if.then.i.i.i:                                    ; preds = %invoke.cont.i
-  %vtable.i.i.i = load ptr, ptr %ref.tmp.i2152, align 16, !tbaa !24
-  %vfn.i.i.i = getelementptr inbounds ptr, ptr %vtable.i.i.i, i64 4
-  br label %if.end8.sink.split.i.i.i
+  br i1 %cmp.i.i.i, label %if.end8.sink.split.i.i.i, label %if.else.i.i.i
 
 if.else.i.i.i:                                    ; preds = %invoke.cont.i
   %tobool.not.i.i.i2154 = icmp eq ptr %1050, null
-  br i1 %tobool.not.i.i.i2154, label %__cxx_global_var_init.76.exit, label %if.then4.i.i.i
+  br i1 %tobool.not.i.i.i2154, label %__cxx_global_var_init.76.exit, label %if.end8.sink.split.i.i.i
 
-if.then4.i.i.i:                                   ; preds = %if.else.i.i.i
+if.end8.sink.split.i.i.i:                         ; preds = %if.else.i.i.i, %invoke.cont.i
+  %.sink.i.i.i = phi i64 [ 4, %invoke.cont.i ], [ 5, %if.else.i.i.i ]
   %vtable6.i.i.i = load ptr, ptr %1050, align 8, !tbaa !24
-  %vfn7.i.i.i = getelementptr inbounds ptr, ptr %vtable6.i.i.i, i64 5
-  br label %if.end8.sink.split.i.i.i
-
-if.end8.sink.split.i.i.i:                         ; preds = %if.then4.i.i.i, %if.then.i.i.i
-  %vfn7.sink.i.i.i = phi ptr [ %vfn7.i.i.i, %if.then4.i.i.i ], [ %vfn.i.i.i, %if.then.i.i.i ]
-  %.sink.i.i.i = phi ptr [ %1050, %if.then4.i.i.i ], [ %ref.tmp.i2152, %if.then.i.i.i ]
-  %1051 = load ptr, ptr %vfn7.sink.i.i.i, align 8
-  call void %1051(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i.i) #24
+  %vfn7.i.i.i = getelementptr inbounds ptr, ptr %vtable6.i.i.i, i64 %.sink.i.i.i
+  %1051 = load ptr, ptr %vfn7.i.i.i, align 8
+  call void %1051(ptr noundef nonnull align 8 dereferenceable(8) %1050) #24
   br label %__cxx_global_var_init.76.exit
 
 lpad.i2155:                                       ; preds = %__cxx_global_var_init.50.exit
@@ -16373,30 +16364,21 @@ lpad.i2155:                                       ; preds = %__cxx_global_var_in
           cleanup
   %1053 = load ptr, ptr %__f_.i.i.i.i, align 16, !tbaa !101
   %cmp.i.i3.i = icmp eq ptr %1053, %ref.tmp.i2152
-  br i1 %cmp.i.i3.i, label %if.then.i.i6.i, label %if.else.i.i8.i
+  br i1 %cmp.i.i3.i, label %if.end8.sink.split.i.i9.i, label %if.else.i.i5.i
 
-if.then.i.i6.i:                                   ; preds = %lpad.i2155
-  %vtable.i.i4.i = load ptr, ptr %ref.tmp.i2152, align 16, !tbaa !24
-  %vfn.i.i5.i = getelementptr inbounds ptr, ptr %vtable.i.i4.i, i64 4
-  br label %if.end8.sink.split.i.i14.i
+if.else.i.i5.i:                                   ; preds = %lpad.i2155
+  %tobool.not.i.i4.i = icmp eq ptr %1053, null
+  br i1 %tobool.not.i.i4.i, label %_ZNSt3__18functionIFvRK7ResultsEED2Ev.exit10.i, label %if.end8.sink.split.i.i9.i
 
-if.else.i.i8.i:                                   ; preds = %lpad.i2155
-  %tobool.not.i.i7.i = icmp eq ptr %1053, null
-  br i1 %tobool.not.i.i7.i, label %_ZNSt3__18functionIFvRK7ResultsEED2Ev.exit15.i, label %if.then4.i.i11.i
+if.end8.sink.split.i.i9.i:                        ; preds = %if.else.i.i5.i, %lpad.i2155
+  %.sink.i.i6.i = phi i64 [ 4, %lpad.i2155 ], [ 5, %if.else.i.i5.i ]
+  %vtable6.i.i7.i = load ptr, ptr %1053, align 8, !tbaa !24
+  %vfn7.i.i8.i = getelementptr inbounds ptr, ptr %vtable6.i.i7.i, i64 %.sink.i.i6.i
+  %1054 = load ptr, ptr %vfn7.i.i8.i, align 8
+  call void %1054(ptr noundef nonnull align 8 dereferenceable(8) %1053) #24
+  br label %_ZNSt3__18functionIFvRK7ResultsEED2Ev.exit10.i
 
-if.then4.i.i11.i:                                 ; preds = %if.else.i.i8.i
-  %vtable6.i.i9.i = load ptr, ptr %1053, align 8, !tbaa !24
-  %vfn7.i.i10.i = getelementptr inbounds ptr, ptr %vtable6.i.i9.i, i64 5
-  br label %if.end8.sink.split.i.i14.i
-
-if.end8.sink.split.i.i14.i:                       ; preds = %if.then4.i.i11.i, %if.then.i.i6.i
-  %vfn7.sink.i.i12.i = phi ptr [ %vfn7.i.i10.i, %if.then4.i.i11.i ], [ %vfn.i.i5.i, %if.then.i.i6.i ]
-  %.sink.i.i13.i = phi ptr [ %1053, %if.then4.i.i11.i ], [ %ref.tmp.i2152, %if.then.i.i6.i ]
-  %1054 = load ptr, ptr %vfn7.sink.i.i12.i, align 8
-  call void %1054(ptr noundef nonnull align 8 dereferenceable(8) %.sink.i.i13.i) #24
-  br label %_ZNSt3__18functionIFvRK7ResultsEED2Ev.exit15.i
-
-_ZNSt3__18functionIFvRK7ResultsEED2Ev.exit15.i:   ; preds = %if.end8.sink.split.i.i14.i, %if.else.i.i8.i
+_ZNSt3__18functionIFvRK7ResultsEED2Ev.exit10.i:   ; preds = %if.end8.sink.split.i.i9.i, %if.else.i.i5.i
   call void @llvm.lifetime.end.p0(i64 48, ptr nonnull %ref.tmp.i2152) #24
   br label %common.resume
 
