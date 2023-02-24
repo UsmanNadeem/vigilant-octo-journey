@@ -550,7 +550,7 @@ if.then66:                                        ; preds = %if.then62
   %inc69 = add nuw nsw i32 %15, 1
   store i32 %inc69, ptr %tv, align 8, !tbaa !43
   %idxprom70 = zext i32 %15 to i64
-  %arrayidx71 = getelementptr inbounds ptr, ptr %e58, i64 %idxprom70
+  %arrayidx71 = getelementptr inbounds ptr, ptr %13, i64 %idxprom70
   store ptr %11, ptr %arrayidx71, align 8, !tbaa !24
   br label %do.end85
 

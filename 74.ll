@@ -6507,7 +6507,7 @@ for.inc.i.i260:                                   ; preds = %for.inc.i.i260.preh
 
 if.then.i.i265:                                   ; preds = %for.inc.i.i260, %middle.block, %call.i.i.i.i.i.i248.noexc
   %storemerge.i261 = phi ptr [ %add.ptr.i.i249, %call.i.i.i.i.i.i248.noexc ], [ %add.ptr.i.i54.i, %middle.block ], [ %add.ptr.i.i54.i, %for.inc.i.i260 ]
-  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.12.1340) #20
+  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.0.1339) #20
   br label %_ZNSt3__114__split_bufferIPPN2kc13impl_filelineERNS_9allocatorIS4_EEE10push_frontERKS4_.exit
 
 _ZNSt3__114__split_bufferIPPN2kc13impl_filelineERNS_9allocatorIS4_EEE10push_frontERKS4_.exit: ; preds = %for.body, %if.then3.i239, %if.then.i.i265
@@ -6824,7 +6824,7 @@ _ZNSt3__114__split_bufferIPPN2kc13impl_filelineERNS_9allocatorIS4_EEE5clearB7v17
   br i1 %tobool.not.i, label %if.end38, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferIPPN2kc13impl_filelineERNS_9allocatorIS4_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %0) #20
+  tail call void @_ZdlPv(ptr noundef nonnull %1) #20
   %.pre = load ptr, ptr %__begin_, align 8, !tbaa !38
   br label %if.end38
 
@@ -7407,7 +7407,7 @@ for.inc.i.i260:                                   ; preds = %for.inc.i.i260.preh
 
 if.then.i.i265:                                   ; preds = %for.inc.i.i260, %middle.block, %call.i.i.i.i.i.i248.noexc
   %storemerge.i261 = phi ptr [ %add.ptr.i.i249, %call.i.i.i.i.i.i248.noexc ], [ %add.ptr.i.i54.i, %middle.block ], [ %add.ptr.i.i54.i, %for.inc.i.i260 ]
-  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.12.1340) #20
+  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.0.1339) #20
   br label %_ZNSt3__114__split_bufferIPPN2kc20impl_withexpressionsERNS_9allocatorIS4_EEE10push_frontERKS4_.exit
 
 _ZNSt3__114__split_bufferIPPN2kc20impl_withexpressionsERNS_9allocatorIS4_EEE10push_frontERKS4_.exit: ; preds = %for.body, %if.then3.i239, %if.then.i.i265
@@ -7724,7 +7724,7 @@ _ZNSt3__114__split_bufferIPPN2kc20impl_withexpressionsERNS_9allocatorIS4_EEE5cle
   br i1 %tobool.not.i, label %if.end38, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferIPPN2kc20impl_withexpressionsERNS_9allocatorIS4_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %0) #20
+  tail call void @_ZdlPv(ptr noundef nonnull %1) #20
   %.pre = load ptr, ptr %__begin_, align 8, !tbaa !54
   br label %if.end38
 
@@ -8286,7 +8286,7 @@ for.inc.i.i260:                                   ; preds = %for.inc.i.i260.preh
 
 if.then.i.i265:                                   ; preds = %for.inc.i.i260, %middle.block, %call.i.i.i.i.i.i248.noexc
   %storemerge.i261 = phi ptr [ %add.ptr.i.i249, %call.i.i.i.i.i.i248.noexc ], [ %add.ptr.i.i54.i, %middle.block ], [ %add.ptr.i.i54.i, %for.inc.i.i260 ]
-  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.12.1340) #20
+  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.0.1339) #20
   br label %_ZNSt3__114__split_bufferIPiRNS_9allocatorIS1_EEE10push_frontERKS1_.exit
 
 _ZNSt3__114__split_bufferIPiRNS_9allocatorIS1_EEE10push_frontERKS1_.exit: ; preds = %for.body, %if.then3.i239, %if.then.i.i265
@@ -8603,7 +8603,7 @@ _ZNSt3__114__split_bufferIPiRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i: ; pre
   br i1 %tobool.not.i, label %if.end38, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferIPiRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %0) #20
+  tail call void @_ZdlPv(ptr noundef nonnull %1) #20
   %.pre = load ptr, ptr %__begin_, align 8, !tbaa !64
   br label %if.end38
 
@@ -9165,7 +9165,7 @@ for.inc.i.i260:                                   ; preds = %for.inc.i.i260.preh
 
 if.then.i.i265:                                   ; preds = %for.inc.i.i260, %middle.block, %call.i.i.i.i.i.i248.noexc
   %storemerge.i261 = phi ptr [ %add.ptr.i.i249, %call.i.i.i.i.i.i248.noexc ], [ %add.ptr.i.i54.i, %middle.block ], [ %add.ptr.i.i54.i, %for.inc.i.i260 ]
-  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.12.1340) #20
+  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.0.1339) #20
   br label %_ZNSt3__114__split_bufferIPPN2kc19impl_idCexpressionsERNS_9allocatorIS4_EEE10push_frontERKS4_.exit
 
 _ZNSt3__114__split_bufferIPPN2kc19impl_idCexpressionsERNS_9allocatorIS4_EEE10push_frontERKS4_.exit: ; preds = %for.body, %if.then3.i239, %if.then.i.i265
@@ -9482,7 +9482,7 @@ _ZNSt3__114__split_bufferIPPN2kc19impl_idCexpressionsERNS_9allocatorIS4_EEE5clea
   br i1 %tobool.not.i, label %if.end38, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferIPPN2kc19impl_idCexpressionsERNS_9allocatorIS4_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %0) #20
+  tail call void @_ZdlPv(ptr noundef nonnull %1) #20
   %.pre = load ptr, ptr %__begin_, align 8, !tbaa !76
   br label %if.end38
 

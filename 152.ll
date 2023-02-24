@@ -733,13 +733,14 @@ for.body:                                         ; preds = %entry, %for.body
   br i1 %cmp.not, label %for.end, label %for.body, !llvm.loop !68
 
 for.end:                                          ; preds = %for.body, %entry
-  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 1 dereferenceable(6) %add.ptr, ptr noundef nonnull align 1 dereferenceable(6) %tmp, i64 6, i1 false), !tbaa.struct !67
+  %s.0.lcssa = phi ptr [ %3, %entry ], [ %add.ptr, %for.body ]
+  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 1 dereferenceable(6) %s.0.lcssa, ptr noundef nonnull align 1 dereferenceable(6) %tmp, i64 6, i1 false), !tbaa.struct !67
   call void @llvm.lifetime.end.p0(i64 6, ptr nonnull %tmp)
   %4 = load ptr, ptr %p, align 8, !tbaa !42
   %SummFreq = getelementptr inbounds %struct.CPpmd8_Context_, ptr %4, i64 0, i32 2
   %5 = load i16, ptr %SummFreq, align 2, !tbaa !47
   %conv = zext i16 %5 to i32
-  %Freq = getelementptr inbounds %struct.CPpmd_State, ptr %add.ptr, i64 0, i32 1
+  %Freq = getelementptr inbounds %struct.CPpmd_State, ptr %s.0.lcssa, i64 0, i32 1
   %6 = load i8, ptr %Freq, align 1, !tbaa !53
   %conv3 = zext i8 %6 to i32
   %sub = sub nsw i32 %conv, %conv3
@@ -758,7 +759,7 @@ for.end:                                          ; preds = %for.body, %entry
   br label %do.body
 
 do.body:                                          ; preds = %do.cond53, %for.end
-  %s.1 = phi ptr [ %add.ptr, %for.end ], [ %incdec.ptr18, %do.cond53 ]
+  %s.1 = phi ptr [ %s.0.lcssa, %for.end ], [ %incdec.ptr18, %do.cond53 ]
   %escFreq.0 = phi i32 [ %sub, %for.end ], [ %sub21, %do.cond53 ]
   %sumFreq.0 = phi i32 [ %shr, %for.end ], [ %add30, %do.cond53 ]
   %i.0 = phi i32 [ %conv17, %for.end ], [ %dec, %do.cond53 ]
@@ -798,8 +799,7 @@ land.rhs:                                         ; preds = %do.body40
   br i1 %cmp51, label %do.body40, label %do.end, !llvm.loop !69
 
 do.end:                                           ; preds = %do.body40, %land.rhs
-  %arrayidx42.lcssa = phi ptr [ %add.ptr, %do.body40 ], [ %arrayidx42, %land.rhs ]
-  store i8 %tmp39.sroa.0.0.copyload, ptr %arrayidx42.lcssa, align 1, !tbaa.struct !67
+  store i8 %tmp39.sroa.0.0.copyload, ptr %arrayidx42, align 1, !tbaa.struct !67
   %tmp39.sroa.4.0..sroa_idx206 = getelementptr %struct.CPpmd_State, ptr %s1.0, i64 -1, i32 1
   store i8 %conv26, ptr %tmp39.sroa.4.0..sroa_idx206, align 1, !tbaa.struct !70
   %tmp39.sroa.5.0..sroa_idx208 = getelementptr %struct.CPpmd_State, ptr %s1.0, i64 -1, i32 2
@@ -852,7 +852,8 @@ do.end70:                                         ; preds = %do.body63
 
 cleanup.thread:                                   ; preds = %do.end70
   %tmp85.sroa.0.0.copyload = load i8, ptr %add.ptr, align 1, !tbaa.struct !67
-  %tmp85.sroa.5.0.copyload = load i8, ptr %Freq, align 1, !tbaa.struct !70
+  %tmp85.sroa.5.0..sroa_idx = getelementptr inbounds i8, ptr %add.ptr, i64 1
+  %tmp85.sroa.5.0.copyload = load i8, ptr %tmp85.sroa.5.0..sroa_idx, align 1, !tbaa.struct !70
   %tmp85.sroa.9.0..sroa_idx = getelementptr inbounds i8, ptr %add.ptr, i64 2
   %18 = load i32, ptr %tmp85.sroa.9.0..sroa_idx, align 1
   %conv87 = zext i8 %tmp85.sroa.5.0.copyload to i32
@@ -2786,7 +2787,7 @@ if.then.i:                                        ; preds = %if.then
   br label %SpecialFreeUnit.exit
 
 if.else.i:                                        ; preds = %if.then
-  %add.ptr.i = getelementptr inbounds i8, ptr %add.ptr6, i64 12
+  %add.ptr.i = getelementptr inbounds i8, ptr %11, i64 12
   store ptr %add.ptr.i, ptr %UnitsStart.i, align 8, !tbaa !34
   %.pre.pre = load ptr, ptr %Base, align 8, !tbaa !5
   br label %SpecialFreeUnit.exit
@@ -3793,7 +3794,7 @@ if.then.i:                                        ; preds = %if.end29
   br label %cleanup
 
 if.else.i:                                        ; preds = %if.end29
-  %add.ptr.i = getelementptr inbounds i8, ptr %ctx, i64 12
+  %add.ptr.i = getelementptr inbounds i8, ptr %9, i64 12
   store ptr %add.ptr.i, ptr %UnitsStart, align 8, !tbaa !34
   br label %cleanup
 
@@ -3915,7 +3916,7 @@ if.else.i236:                                     ; preds = %do.end.i
   %34 = load i8, ptr %arrayidx20.i, align 1, !tbaa !13
   %conv21.i = zext i8 %34 to i64
   %mul.i = mul nuw nsw i64 %conv21.i, 12
-  %add.ptr23.i = getelementptr inbounds i8, ptr %add.ptr33, i64 %mul.i
+  %add.ptr23.i = getelementptr inbounds i8, ptr %15, i64 %mul.i
   store ptr %add.ptr23.i, ptr %UnitsStart.i228, align 8, !tbaa !34
   br label %for.body.lr.ph
 
@@ -4055,7 +4056,7 @@ if.then.i275:                                     ; preds = %if.then110
   br label %cleanup
 
 if.else.i277:                                     ; preds = %if.then110
-  %add.ptr.i276 = getelementptr inbounds i8, ptr %ctx, i64 12
+  %add.ptr.i276 = getelementptr inbounds i8, ptr %46, i64 12
   store ptr %add.ptr.i276, ptr %UnitsStart.i228, align 8, !tbaa !34
   br label %cleanup
 

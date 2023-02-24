@@ -429,7 +429,7 @@ if.end52:                                         ; preds = %if.then15, %if.then
   br i1 %cmp53, label %if.then55, label %cleanup
 
 if.then55:                                        ; preds = %if.end52
-  %call56 = call i32 @fflush(ptr noundef %fd.3)
+  %call56 = call i32 @fflush(ptr noundef %11)
   br label %cleanup
 
 cleanup:                                          ; preds = %if.end52, %if.then55, %entry

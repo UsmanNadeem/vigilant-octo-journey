@@ -1698,7 +1698,7 @@ if.then2:                                         ; preds = %if.else
   br label %cleanup
 
 if.else5:                                         ; preds = %if.else
-  %call = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %0) #11
+  %call = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %buffer) #11
   %add = add i64 %call, 1
   %call8 = tail call noalias ptr @malloc(i64 noundef %add) #12
   %tobool9.not = icmp eq ptr %call8, null
@@ -1709,7 +1709,7 @@ if.then10:                                        ; preds = %if.else5
   br label %if.end
 
 if.end:                                           ; preds = %if.then10, %if.else5
-  %call13 = tail call ptr @strcpy(ptr noundef nonnull dereferenceable(1) %call8, ptr noundef nonnull dereferenceable(1) %0) #9
+  %call13 = tail call ptr @strcpy(ptr noundef nonnull dereferenceable(1) %call8, ptr noundef nonnull dereferenceable(1) %buffer) #9
   store ptr null, ptr %text, align 8, !tbaa !12
   br label %cleanup
 

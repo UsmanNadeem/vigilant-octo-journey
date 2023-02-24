@@ -2480,8 +2480,7 @@ land.rhs:                                         ; preds = %do.body
   br i1 %call22, label %do.body, label %do.end, !llvm.loop !83
 
 do.end:                                           ; preds = %do.body, %land.rhs
-  %__k.0.lcssa = phi ptr [ %__first, %do.body ], [ %__k.0, %land.rhs ]
-  store double %65, ptr %__k.0.lcssa, align 8, !tbaa !28
+  store double %65, ptr %__k.0, align 8, !tbaa !28
   %inc = add i32 %__count.082, 1
   %cmp23.not = icmp eq i32 %inc, 8
   br i1 %cmp23.not, label %cleanup.thread, label %if.end29
@@ -3834,8 +3833,7 @@ land.rhs:                                         ; preds = %do.body
   br i1 %cmp.i66, label %do.body, label %do.end, !llvm.loop !108
 
 do.end:                                           ; preds = %do.body, %land.rhs
-  %__k.0.lcssa = phi ptr [ %__first, %do.body ], [ %__k.0, %land.rhs ]
-  store double %19, ptr %__k.0.lcssa, align 8, !tbaa !28
+  store double %19, ptr %__k.0, align 8, !tbaa !28
   %inc = add i32 %__count.082, 1
   %cmp23.not = icmp eq i32 %inc, 8
   br i1 %cmp23.not, label %cleanup.thread, label %if.end29
@@ -5180,8 +5178,7 @@ land.rhs:                                         ; preds = %do.body
   br i1 %cmp.i66, label %do.body, label %do.end, !llvm.loop !133
 
 do.end:                                           ; preds = %do.body, %land.rhs
-  %__k.0.lcssa = phi ptr [ %__first, %do.body ], [ %__k.0, %land.rhs ]
-  store double %19, ptr %__k.0.lcssa, align 8, !tbaa !28
+  store double %19, ptr %__k.0, align 8, !tbaa !28
   %inc = add i32 %__count.082, 1
   %cmp23.not = icmp eq i32 %inc, 8
   br i1 %cmp23.not, label %cleanup.thread, label %if.end29

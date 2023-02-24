@@ -524,7 +524,7 @@ for.end:                                          ; preds = %for.cond, %for.end.
   br i1 %cmp.i18, label %for.end.invoke.cont_crit_edge, label %if.end.i
 
 for.end.invoke.cont_crit_edge:                    ; preds = %for.end
-  %.pre = load ptr, ptr %dirPrefix, align 8, !tbaa !5
+  %.pre = load ptr, ptr %ref.tmp, align 8, !tbaa !5
   br label %invoke.cont
 
 if.end.i:                                         ; preds = %for.end
@@ -605,7 +605,7 @@ _ZN11CStringBaseIwED2Ev.exit:                     ; preds = %invoke.cont, %delet
   br i1 %cmp.i22, label %_ZN11CStringBaseIwED2Ev.exit.invoke.cont7_crit_edge, label %if.end.i28
 
 _ZN11CStringBaseIwED2Ev.exit.invoke.cont7_crit_edge: ; preds = %_ZN11CStringBaseIwED2Ev.exit
-  %.pre59 = load ptr, ptr %name, align 8, !tbaa !5
+  %.pre59 = load ptr, ptr %ref.tmp4, align 8, !tbaa !5
   br label %invoke.cont7
 
 if.end.i28:                                       ; preds = %_ZN11CStringBaseIwED2Ev.exit

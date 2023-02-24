@@ -13263,7 +13263,7 @@ invoke.cont7.loopexit:                            ; preds = %invoke.cont4.i.i
 
 invoke.cont7:                                     ; preds = %invoke.cont7.loopexit, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIN9benchmark8internal12PerfCountersEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS8_m.exit.i
   %16 = phi ptr [ %9, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIN9benchmark8internal12PerfCountersEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS8_m.exit.i ], [ %.pre20, %invoke.cont7.loopexit ]
-  %17 = phi ptr [ %9, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIN9benchmark8internal12PerfCountersEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS8_m.exit.i ], [ %.pre, %invoke.cont7.loopexit ]
+  %17 = phi ptr [ %10, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIN9benchmark8internal12PerfCountersEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS8_m.exit.i ], [ %.pre, %invoke.cont7.loopexit ]
   %retval.sroa.2.0.copyload.i.i = phi ptr [ %add.ptr.i, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorIN9benchmark8internal12PerfCountersEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERS8_m.exit.i ], [ %incdec.ptr.i.i.i.i.i.i, %invoke.cont7.loopexit ]
   store ptr %retval.sroa.2.0.copyload.i.i, ptr %this, align 8, !tbaa !24
   store ptr %17, ptr %__begin_.i, align 8, !tbaa !24
@@ -15293,7 +15293,7 @@ invoke.cont7.loopexit:                            ; preds = %invoke.cont4.i.i
 
 invoke.cont7:                                     ; preds = %invoke.cont7.loopexit, %invoke.cont
   %6 = phi ptr [ %4, %invoke.cont ], [ %.pre21, %invoke.cont7.loopexit ]
-  %.pr = phi ptr [ %4, %invoke.cont ], [ %.pre, %invoke.cont7.loopexit ]
+  %.pr = phi ptr [ %5, %invoke.cont ], [ %.pre, %invoke.cont7.loopexit ]
   %retval.sroa.2.0.copyload.i.i = phi ptr [ %add.ptr.i, %invoke.cont ], [ %incdec.ptr.i.i.i.i.i.i, %invoke.cont7.loopexit ]
   store ptr %retval.sroa.2.0.copyload.i.i, ptr %this, align 8, !tbaa !24
   store ptr %incdec.ptr, ptr %__end_.i, align 8, !tbaa !24
@@ -15309,12 +15309,11 @@ while.body.i.i.i.i:                               ; preds = %invoke.cont7, %whil
   br i1 %cmp.not.i.i.i.i, label %_ZNSt3__114__split_bufferIN9benchmark8internal23PerfCountersMeasurementERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit.i, label %while.body.i.i.i.i
 
 _ZNSt3__114__split_bufferIN9benchmark8internal23PerfCountersMeasurementERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit.i: ; preds = %while.body.i.i.i.i, %invoke.cont7
-  %8 = phi ptr [ %6, %invoke.cont7 ], [ %.pr, %while.body.i.i.i.i ]
-  %tobool.not.i = icmp eq ptr %8, null
+  %tobool.not.i = icmp eq ptr %.pr, null
   br i1 %tobool.not.i, label %_ZNSt3__114__split_bufferIN9benchmark8internal23PerfCountersMeasurementERNS_9allocatorIS3_EEED2Ev.exit, label %if.then.i19
 
 if.then.i19:                                      ; preds = %_ZNSt3__114__split_bufferIN9benchmark8internal23PerfCountersMeasurementERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %8) #25
+  tail call void @_ZdlPv(ptr noundef nonnull %.pr) #25
   br label %_ZNSt3__114__split_bufferIN9benchmark8internal23PerfCountersMeasurementERNS_9allocatorIS3_EEED2Ev.exit
 
 _ZNSt3__114__split_bufferIN9benchmark8internal23PerfCountersMeasurementERNS_9allocatorIS3_EEED2Ev.exit: ; preds = %_ZNSt3__114__split_bufferIN9benchmark8internal23PerfCountersMeasurementERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit.i, %if.then.i19
@@ -15322,11 +15321,11 @@ _ZNSt3__114__split_bufferIN9benchmark8internal23PerfCountersMeasurementERNS_9all
   ret void
 
 lpad:                                             ; preds = %_ZNSt3__114__split_bufferIN9benchmark8internal23PerfCountersMeasurementERNS_9allocatorIS3_EEEC2EmmS6_.exit
-  %9 = landingpad { ptr, i32 }
+  %8 = landingpad { ptr, i32 }
           cleanup
   call void @_ZNSt3__114__split_bufferIN9benchmark8internal23PerfCountersMeasurementERNS_9allocatorIS3_EEED2Ev(ptr noundef nonnull align 8 dereferenceable(40) %__v) #24
   call void @llvm.lifetime.end.p0(i64 40, ptr nonnull %__v) #24
-  resume { ptr, i32 } %9
+  resume { ptr, i32 } %8
 }
 
 declare void @_ZN9benchmark8internal23PerfCountersMeasurementC1ERKNSt3__16vectorINS2_12basic_stringIcNS2_11char_traitsIcEENS2_9allocatorIcEEEENS7_IS9_EEEE(ptr noundef nonnull align 8 dereferenceable(88), ptr noundef nonnull align 8 dereferenceable(24)) unnamed_addr #0
@@ -15387,13 +15386,7 @@ _ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorINS_4pairINS_12basic_string
   %4 = load ptr, ptr %__end_.i, align 8, !tbaa !191
   %5 = load ptr, ptr %this, align 8, !tbaa !196
   %cmp.i.not19.i.i = icmp eq ptr %4, %5
-  br i1 %cmp.i.not19.i.i, label %invoke.cont7.thread, label %invoke.cont4.i.i
-
-invoke.cont7.thread:                              ; preds = %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERSC_m.exit.i
-  store ptr %add.ptr.i, ptr %this, align 8, !tbaa !24
-  store ptr %incdec.ptr, ptr %__end_.i, align 8, !tbaa !24
-  store ptr %add.ptr6.i, ptr %__end_cap_.i, align 8, !tbaa !24
-  br label %_ZNSt3__114__split_bufferINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEdEERNS5_IS8_EEE5clearB7v170000Ev.exit.i
+  br i1 %cmp.i.not19.i.i, label %invoke.cont7, label %invoke.cont4.i.i
 
 invoke.cont4.i.i:                                 ; preds = %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERSC_m.exit.i, %invoke.cont4.i.i
   %incdec.ptr.i.i.i.i21.i.i = phi ptr [ %incdec.ptr.i.i.i.i.i.i, %invoke.cont4.i.i ], [ %add.ptr.i, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERSC_m.exit.i ]
@@ -15407,42 +15400,47 @@ invoke.cont4.i.i:                                 ; preds = %_ZNSt3__119__alloca
   %6 = load double, ptr %second3.i.i.i.i.i, align 8, !tbaa !188
   store double %6, ptr %second.i.i.i.i.i, align 8, !tbaa !188
   %cmp.i.not.i.i = icmp eq ptr %incdec.ptr.i.i.i, %5
-  br i1 %cmp.i.not.i.i, label %invoke.cont7, label %invoke.cont4.i.i, !llvm.loop !205
+  br i1 %cmp.i.not.i.i, label %invoke.cont7.loopexit, label %invoke.cont4.i.i, !llvm.loop !205
 
-invoke.cont7:                                     ; preds = %invoke.cont4.i.i
+invoke.cont7.loopexit:                            ; preds = %invoke.cont4.i.i
   %.pre = load ptr, ptr %this, align 8, !tbaa !24
   %.pre20 = load ptr, ptr %__end_.i, align 8, !tbaa !24
-  store ptr %incdec.ptr.i.i.i.i.i.i, ptr %this, align 8, !tbaa !24
+  br label %invoke.cont7
+
+invoke.cont7:                                     ; preds = %invoke.cont7.loopexit, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERSC_m.exit.i
+  %7 = phi ptr [ %4, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERSC_m.exit.i ], [ %.pre20, %invoke.cont7.loopexit ]
+  %8 = phi ptr [ %5, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERSC_m.exit.i ], [ %.pre, %invoke.cont7.loopexit ]
+  %retval.sroa.2.0.copyload.i.i = phi ptr [ %add.ptr.i, %_ZNSt3__119__allocate_at_leastB7v170000INS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEEENS_19__allocation_resultINS_16allocator_traitsIT_E7pointerEEERSC_m.exit.i ], [ %incdec.ptr.i.i.i.i.i.i, %invoke.cont7.loopexit ]
+  store ptr %retval.sroa.2.0.copyload.i.i, ptr %this, align 8, !tbaa !24
   store ptr %incdec.ptr, ptr %__end_.i, align 8, !tbaa !24
   store ptr %add.ptr6.i, ptr %__end_cap_.i, align 8, !tbaa !24
-  %cmp.not4.i.i.i.i = icmp eq ptr %.pre20, %.pre
+  %cmp.not4.i.i.i.i = icmp eq ptr %7, %8
   br i1 %cmp.not4.i.i.i.i, label %_ZNSt3__114__split_bufferINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEdEERNS5_IS8_EEE5clearB7v170000Ev.exit.i, label %while.body.i.i.i.i
 
 while.body.i.i.i.i:                               ; preds = %invoke.cont7, %_ZNSt3__116allocator_traitsINS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEE7destroyB7v170000IS8_vEEvRS9_PT_.exit.i.i.i.i
-  %7 = phi ptr [ %incdec.ptr.i.i.i.i, %_ZNSt3__116allocator_traitsINS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEE7destroyB7v170000IS8_vEEvRS9_PT_.exit.i.i.i.i ], [ %.pre20, %invoke.cont7 ]
-  %incdec.ptr.i.i.i.i = getelementptr inbounds %"struct.std::__1::pair.86", ptr %7, i64 -1
+  %9 = phi ptr [ %incdec.ptr.i.i.i.i, %_ZNSt3__116allocator_traitsINS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEE7destroyB7v170000IS8_vEEvRS9_PT_.exit.i.i.i.i ], [ %7, %invoke.cont7 ]
+  %incdec.ptr.i.i.i.i = getelementptr inbounds %"struct.std::__1::pair.86", ptr %9, i64 -1
   %bf.load.i.i.i.i.i.i.i.i.i = load i8, ptr %incdec.ptr.i.i.i.i, align 8
   %bf.clear.i.i.i.i.i.i.i.i.i = and i8 %bf.load.i.i.i.i.i.i.i.i.i, 1
   %tobool.i.not.i.i.i.i.i.i.i.i = icmp eq i8 %bf.clear.i.i.i.i.i.i.i.i.i, 0
   br i1 %tobool.i.not.i.i.i.i.i.i.i.i, label %_ZNSt3__116allocator_traitsINS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEE7destroyB7v170000IS8_vEEvRS9_PT_.exit.i.i.i.i, label %if.then.i.i.i.i.i.i.i.i
 
 if.then.i.i.i.i.i.i.i.i:                          ; preds = %while.body.i.i.i.i
-  %__data_.i.i.i.i.i.i.i.i.i = getelementptr %"struct.std::__1::pair.86", ptr %7, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
-  %8 = load ptr, ptr %__data_.i.i.i.i.i.i.i.i.i, align 8, !tbaa !25
-  tail call void @_ZdlPv(ptr noundef %8) #25
+  %__data_.i.i.i.i.i.i.i.i.i = getelementptr %"struct.std::__1::pair.86", ptr %9, i64 -1, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 2
+  %10 = load ptr, ptr %__data_.i.i.i.i.i.i.i.i.i, align 8, !tbaa !25
+  tail call void @_ZdlPv(ptr noundef %10) #25
   br label %_ZNSt3__116allocator_traitsINS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEE7destroyB7v170000IS8_vEEvRS9_PT_.exit.i.i.i.i
 
 _ZNSt3__116allocator_traitsINS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEE7destroyB7v170000IS8_vEEvRS9_PT_.exit.i.i.i.i: ; preds = %if.then.i.i.i.i.i.i.i.i, %while.body.i.i.i.i
-  %cmp.not.i.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i, %.pre
+  %cmp.not.i.i.i.i = icmp eq ptr %incdec.ptr.i.i.i.i, %8
   br i1 %cmp.not.i.i.i.i, label %_ZNSt3__114__split_bufferINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEdEERNS5_IS8_EEE5clearB7v170000Ev.exit.i, label %while.body.i.i.i.i
 
-_ZNSt3__114__split_bufferINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEdEERNS5_IS8_EEE5clearB7v170000Ev.exit.i: ; preds = %_ZNSt3__116allocator_traitsINS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEE7destroyB7v170000IS8_vEEvRS9_PT_.exit.i.i.i.i, %invoke.cont7.thread, %invoke.cont7
-  %9 = phi ptr [ %.pre20, %invoke.cont7 ], [ %4, %invoke.cont7.thread ], [ %.pre, %_ZNSt3__116allocator_traitsINS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEE7destroyB7v170000IS8_vEEvRS9_PT_.exit.i.i.i.i ]
-  %tobool.not.i = icmp eq ptr %9, null
+_ZNSt3__114__split_bufferINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEdEERNS5_IS8_EEE5clearB7v170000Ev.exit.i: ; preds = %_ZNSt3__116allocator_traitsINS_9allocatorINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEdEEEEE7destroyB7v170000IS8_vEEvRS9_PT_.exit.i.i.i.i, %invoke.cont7
+  %tobool.not.i = icmp eq ptr %8, null
   br i1 %tobool.not.i, label %_ZNSt3__114__split_bufferINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEdEERNS5_IS8_EEED2Ev.exit, label %if.then.i19
 
 if.then.i19:                                      ; preds = %_ZNSt3__114__split_bufferINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEdEERNS5_IS8_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %9) #25
+  tail call void @_ZdlPv(ptr noundef nonnull %8) #25
   br label %_ZNSt3__114__split_bufferINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEdEERNS5_IS8_EEED2Ev.exit
 
 _ZNSt3__114__split_bufferINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEdEERNS5_IS8_EEED2Ev.exit: ; preds = %_ZNSt3__114__split_bufferINS_4pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEdEERNS5_IS8_EEE5clearB7v170000Ev.exit.i, %if.then.i19

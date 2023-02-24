@@ -242,47 +242,43 @@ while.body.lr.ph:                                 ; preds = %entry
 
 while.body:                                       ; preds = %while.body.lr.ph, %if.end23
   %dec94.in = phi i32 [ %7, %while.body.lr.ph ], [ %dec94, %if.end23 ]
-  %pair.093 = phi ptr [ %add.ptr, %while.body.lr.ph ], [ %pair.1, %if.end23 ]
+  %pair.093 = phi ptr [ %add.ptr, %while.body.lr.ph ], [ %incdec.ptr, %if.end23 ]
   %dec94 = add nsw i32 %dec94.in, -1
   %cmp = icmp eq ptr %pair.093, %6
-  br i1 %cmp, label %if.then, label %if.else
+  br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %while.body
   %9 = load i32, ptr %mmax, align 4, !tbaa !50
   %idx.ext7 = zext i32 %9 to i64
-  %add.ptr8 = getelementptr inbounds %struct.cached_fm_pair_s, ptr %6, i64 %idx.ext7
   br label %if.end
 
-if.else:                                          ; preds = %while.body
-  %incdec.ptr = getelementptr inbounds %struct.cached_fm_pair_s, ptr %pair.093, i64 -1
-  br label %if.end
-
-if.end:                                           ; preds = %if.else, %if.then
-  %pair.1 = phi ptr [ %add.ptr8, %if.then ], [ %incdec.ptr, %if.else ]
-  %10 = load ptr, ptr %pair.1, align 8, !tbaa !51
+if.end:                                           ; preds = %while.body, %if.then
+  %.sink = phi i64 [ %idx.ext7, %if.then ], [ -1, %while.body ]
+  %incdec.ptr = getelementptr inbounds %struct.cached_fm_pair_s, ptr %pair.093, i64 %.sink
+  %10 = load ptr, ptr %incdec.ptr, align 8, !tbaa !51
   %cmp10 = icmp eq ptr %10, %4
   br i1 %cmp10, label %land.lhs.true, label %if.end23
 
 land.lhs.true:                                    ; preds = %if.end
-  %mxx11 = getelementptr inbounds %struct.cached_fm_pair_s, ptr %pair.1, i64 0, i32 1
+  %mxx11 = getelementptr inbounds %struct.cached_fm_pair_s, ptr %pair.093, i64 %.sink, i32 1
   %11 = load float, ptr %mxx11, align 8, !tbaa !53
   %cmp12 = fcmp oeq float %11, %0
   br i1 %cmp12, label %land.lhs.true13, label %if.end23
 
 land.lhs.true13:                                  ; preds = %land.lhs.true
-  %mxy14 = getelementptr inbounds %struct.cached_fm_pair_s, ptr %pair.1, i64 0, i32 2
+  %mxy14 = getelementptr inbounds %struct.cached_fm_pair_s, ptr %pair.093, i64 %.sink, i32 2
   %12 = load float, ptr %mxy14, align 4, !tbaa !54
   %cmp15 = fcmp oeq float %12, %1
   br i1 %cmp15, label %land.lhs.true16, label %if.end23
 
 land.lhs.true16:                                  ; preds = %land.lhs.true13
-  %myx17 = getelementptr inbounds %struct.cached_fm_pair_s, ptr %pair.1, i64 0, i32 3
+  %myx17 = getelementptr inbounds %struct.cached_fm_pair_s, ptr %pair.093, i64 %.sink, i32 3
   %13 = load float, ptr %myx17, align 8, !tbaa !55
   %cmp18 = fcmp oeq float %13, %2
   br i1 %cmp18, label %land.lhs.true19, label %if.end23
 
 land.lhs.true19:                                  ; preds = %land.lhs.true16
-  %myy20 = getelementptr inbounds %struct.cached_fm_pair_s, ptr %pair.1, i64 0, i32 4
+  %myy20 = getelementptr inbounds %struct.cached_fm_pair_s, ptr %pair.093, i64 %.sink, i32 4
   %14 = load float, ptr %myy20, align 4, !tbaa !56
   %cmp21 = fcmp oeq float %14, %3
   br i1 %cmp21, label %cleanup, label %if.end23
@@ -337,7 +333,7 @@ if.end28:                                         ; preds = %while.end.if.end28_
   br label %cleanup
 
 cleanup:                                          ; preds = %land.lhs.true19, %if.end28
-  %retval.0 = phi ptr [ %add.ptr33, %if.end28 ], [ %pair.1, %land.lhs.true19 ]
+  %retval.0 = phi ptr [ %add.ptr33, %if.end28 ], [ %incdec.ptr, %land.lhs.true19 ]
   ret ptr %retval.0
 }
 

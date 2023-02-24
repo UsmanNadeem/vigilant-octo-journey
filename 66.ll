@@ -251,7 +251,7 @@ if.then16.i1156.i:                                ; preds = %if.then12.i1152.i
   %inc21.i1153.i = add nuw nsw i32 %28, 1
   store i32 %inc21.i1153.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1154.i = zext i32 %28 to i64
-  %arrayidx23.i1155.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1154.i
+  %arrayidx23.i1155.i = getelementptr inbounds ptr, ptr %26, i64 %idxprom22.i1154.i
   store ptr %calloc.i1139.i, ptr %arrayidx23.i1155.i, align 8, !tbaa !14
   br label %new_NFAState.exit1165.i
 
@@ -320,7 +320,7 @@ if.then16.i1183.i:                                ; preds = %if.then12.i1179.i
   %inc21.i1180.i = add nuw nsw i32 %33, 1
   store i32 %inc21.i1180.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1181.i = zext i32 %33 to i64
-  %arrayidx23.i1182.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1181.i
+  %arrayidx23.i1182.i = getelementptr inbounds ptr, ptr %31, i64 %idxprom22.i1181.i
   store ptr %calloc.i1166.i, ptr %arrayidx23.i1182.i, align 8, !tbaa !14
   br label %new_NFAState.exit1192.i
 
@@ -378,7 +378,7 @@ if.then16.i1210.i:                                ; preds = %if.then12.i1206.i
   %inc21.i1207.i = add nuw nsw i32 %37, 1
   store i32 %inc21.i1207.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1208.i = zext i32 %37 to i64
-  %arrayidx23.i1209.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1208.i
+  %arrayidx23.i1209.i = getelementptr inbounds ptr, ptr %31, i64 %idxprom22.i1208.i
   store ptr %calloc.i1166.i, ptr %arrayidx23.i1209.i, align 8, !tbaa !14
   br label %new_NFAState.exit1219.i
 
@@ -530,7 +530,7 @@ if.then16.i1237.i:                                ; preds = %if.then12.i1233.i
   %inc21.i1234.i = add nuw nsw i32 %53, 1
   store i32 %inc21.i1234.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1235.i = zext i32 %53 to i64
-  %arrayidx23.i1236.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1235.i
+  %arrayidx23.i1236.i = getelementptr inbounds ptr, ptr %51, i64 %idxprom22.i1235.i
   store ptr %calloc.i1220.i, ptr %arrayidx23.i1236.i, align 8, !tbaa !14
   br label %new_NFAState.exit1246.i
 
@@ -606,7 +606,7 @@ if.then16.i1264.i:                                ; preds = %if.then12.i1260.i
   %inc21.i1261.i = add nuw nsw i32 %60, 1
   store i32 %inc21.i1261.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1262.i = zext i32 %60 to i64
-  %arrayidx23.i1263.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1262.i
+  %arrayidx23.i1263.i = getelementptr inbounds ptr, ptr %58, i64 %idxprom22.i1262.i
   store ptr %calloc.i1247.i, ptr %arrayidx23.i1263.i, align 8, !tbaa !14
   br label %new_NFAState.exit1273.i
 
@@ -667,7 +667,7 @@ if.then16.i1291.i:                                ; preds = %if.then12.i1287.i
   %inc21.i1288.i = add nuw nsw i32 %65, 1
   store i32 %inc21.i1288.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1289.i = zext i32 %65 to i64
-  %arrayidx23.i1290.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1289.i
+  %arrayidx23.i1290.i = getelementptr inbounds ptr, ptr %58, i64 %idxprom22.i1289.i
   store ptr %calloc.i1247.i, ptr %arrayidx23.i1290.i, align 8, !tbaa !14
   br label %new_NFAState.exit1300.i
 
@@ -767,7 +767,7 @@ if.then16.i1318.i:                                ; preds = %if.then12.i1314.i
   %inc21.i1315.i = add nuw nsw i32 %78, 1
   store i32 %inc21.i1315.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1316.i = zext i32 %78 to i64
-  %arrayidx23.i1317.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1316.i
+  %arrayidx23.i1317.i = getelementptr inbounds ptr, ptr %76, i64 %idxprom22.i1316.i
   store ptr %calloc.i1301.i, ptr %arrayidx23.i1317.i, align 8, !tbaa !14
   br label %new_NFAState.exit1327.i
 
@@ -856,7 +856,7 @@ if.then16.i1345.i:                                ; preds = %if.then12.i1341.i
   %inc21.i1342.i = add nuw nsw i32 %90, 1
   store i32 %inc21.i1342.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1343.i = zext i32 %90 to i64
-  %arrayidx23.i1344.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1343.i
+  %arrayidx23.i1344.i = getelementptr inbounds ptr, ptr %88, i64 %idxprom22.i1343.i
   store ptr %calloc.i1328.i, ptr %arrayidx23.i1344.i, align 8, !tbaa !14
   br label %new_NFAState.exit1354.i
 
@@ -933,7 +933,7 @@ if.then16.i1372.i:                                ; preds = %if.then12.i1368.i
   %inc21.i1369.i = add nuw nsw i32 %99, 1
   store i32 %inc21.i1369.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1370.i = zext i32 %99 to i64
-  %arrayidx23.i1371.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1370.i
+  %arrayidx23.i1371.i = getelementptr inbounds ptr, ptr %97, i64 %idxprom22.i1370.i
   store ptr %calloc.i1355.i, ptr %arrayidx23.i1371.i, align 8, !tbaa !14
   br label %new_NFAState.exit1381.i
 
@@ -1005,7 +1005,7 @@ if.then16.i1399.i:                                ; preds = %if.then12.i1395.i
   %inc21.i1396.i = add nuw nsw i32 %108, 1
   store i32 %inc21.i1396.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1397.i = zext i32 %108 to i64
-  %arrayidx23.i1398.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1397.i
+  %arrayidx23.i1398.i = getelementptr inbounds ptr, ptr %106, i64 %idxprom22.i1397.i
   store ptr %calloc.i1382.i, ptr %arrayidx23.i1398.i, align 8, !tbaa !14
   br label %new_NFAState.exit1408.i
 
@@ -1137,7 +1137,7 @@ if.then16.i1426.i:                                ; preds = %if.then12.i1422.i
   %inc21.i1423.i = add nuw nsw i32 %122, 1
   store i32 %inc21.i1423.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1424.i = zext i32 %122 to i64
-  %arrayidx23.i1425.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1424.i
+  %arrayidx23.i1425.i = getelementptr inbounds ptr, ptr %120, i64 %idxprom22.i1424.i
   store ptr %calloc.i1409.i, ptr %arrayidx23.i1425.i, align 8, !tbaa !14
   br label %new_NFAState.exit1435.i
 
@@ -1218,7 +1218,7 @@ if.then16.i1453.i:                                ; preds = %if.then12.i1449.i
   %inc21.i1450.i = add nuw nsw i32 %130, 1
   store i32 %inc21.i1450.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1451.i = zext i32 %130 to i64
-  %arrayidx23.i1452.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1451.i
+  %arrayidx23.i1452.i = getelementptr inbounds ptr, ptr %128, i64 %idxprom22.i1451.i
   store ptr %calloc.i1436.i, ptr %arrayidx23.i1452.i, align 8, !tbaa !14
   br label %new_NFAState.exit1462.i
 
@@ -1291,7 +1291,7 @@ if.then16.i1480.i:                                ; preds = %if.then12.i1476.i
   %inc21.i1477.i = add nuw nsw i32 %137, 1
   store i32 %inc21.i1477.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1478.i = zext i32 %137 to i64
-  %arrayidx23.i1479.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1478.i
+  %arrayidx23.i1479.i = getelementptr inbounds ptr, ptr %135, i64 %idxprom22.i1478.i
   store ptr %calloc.i1463.i, ptr %arrayidx23.i1479.i, align 8, !tbaa !14
   br label %new_NFAState.exit1489.i
 
@@ -1359,7 +1359,7 @@ if.then16.i1507.i:                                ; preds = %if.then12.i1503.i
   %inc21.i1504.i = add nuw nsw i32 %144, 1
   store i32 %inc21.i1504.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1505.i = zext i32 %144 to i64
-  %arrayidx23.i1506.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1505.i
+  %arrayidx23.i1506.i = getelementptr inbounds ptr, ptr %142, i64 %idxprom22.i1505.i
   store ptr %calloc.i1490.i, ptr %arrayidx23.i1506.i, align 8, !tbaa !14
   br label %new_NFAState.exit1516.i
 
@@ -1510,7 +1510,7 @@ if.then16.i1534.i:                                ; preds = %if.then12.i1530.i
   %inc21.i1531.i = add nuw nsw i32 %161, 1
   store i32 %inc21.i1531.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1532.i = zext i32 %161 to i64
-  %arrayidx23.i1533.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1532.i
+  %arrayidx23.i1533.i = getelementptr inbounds ptr, ptr %159, i64 %idxprom22.i1532.i
   store ptr %calloc.i1517.i, ptr %arrayidx23.i1533.i, align 8, !tbaa !14
   br label %new_NFAState.exit1543.i
 
@@ -1583,7 +1583,7 @@ if.then16.i1561.i:                                ; preds = %if.then12.i1557.i
   %inc21.i1558.i = add nuw nsw i32 %167, 1
   store i32 %inc21.i1558.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1559.i = zext i32 %167 to i64
-  %arrayidx23.i1560.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1559.i
+  %arrayidx23.i1560.i = getelementptr inbounds ptr, ptr %165, i64 %idxprom22.i1559.i
   store ptr %calloc.i1544.i, ptr %arrayidx23.i1560.i, align 8, !tbaa !14
   br label %new_NFAState.exit1570.i
 
@@ -1653,7 +1653,7 @@ if.then16.i1588.i:                                ; preds = %if.then12.i1584.i
   %inc21.i1585.i = add nuw nsw i32 %173, 1
   store i32 %inc21.i1585.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1586.i = zext i32 %173 to i64
-  %arrayidx23.i1587.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1586.i
+  %arrayidx23.i1587.i = getelementptr inbounds ptr, ptr %171, i64 %idxprom22.i1586.i
   store ptr %calloc.i1571.i, ptr %arrayidx23.i1587.i, align 8, !tbaa !14
   br label %new_NFAState.exit1597.i
 
@@ -1718,7 +1718,7 @@ if.then16.i1615.i:                                ; preds = %if.then12.i1611.i
   %inc21.i1612.i = add nuw nsw i32 %179, 1
   store i32 %inc21.i1612.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1613.i = zext i32 %179 to i64
-  %arrayidx23.i1614.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1613.i
+  %arrayidx23.i1614.i = getelementptr inbounds ptr, ptr %177, i64 %idxprom22.i1613.i
   store ptr %calloc.i1598.i, ptr %arrayidx23.i1614.i, align 8, !tbaa !14
   br label %new_NFAState.exit1624.i
 
@@ -1777,7 +1777,7 @@ if.then16.i1642.i:                                ; preds = %if.then12.i1638.i
   %inc21.i1639.i = add nuw nsw i32 %183, 1
   store i32 %inc21.i1639.i, ptr %allnfas.i.i, align 8, !tbaa !35
   %idxprom22.i1640.i = zext i32 %183 to i64
-  %arrayidx23.i1641.i = getelementptr inbounds ptr, ptr %e.i.i, i64 %idxprom22.i1640.i
+  %arrayidx23.i1641.i = getelementptr inbounds ptr, ptr %181, i64 %idxprom22.i1640.i
   store ptr %calloc.i1625.i, ptr %arrayidx23.i1641.i, align 8, !tbaa !14
   br label %new_NFAState.exit1651.i
 
@@ -1942,7 +1942,7 @@ if.then53.i.i:                                    ; preds = %if.then49.i.i, %do.
   %200 = phi ptr [ %198, %if.then49.i.i ], [ %.pre1824.i, %do.body.thread.i.i ]
   %inc66.i.i = add nuw nsw i32 %196, 1
   store i32 %inc66.i.i, ptr %calloc.i.i.i, align 8, !tbaa !55
-  %arrayidx68.i.i = getelementptr inbounds ptr, ptr %e.i1653.i, i64 %idxprom67.i.pre-phi.i
+  %arrayidx68.i.i = getelementptr inbounds ptr, ptr %195, i64 %idxprom67.i.pre-phi.i
   store ptr %200, ptr %arrayidx68.i.i, align 8, !tbaa !14
   br label %for.inc102.i.i
 
@@ -2152,7 +2152,7 @@ if.then53.i.i.i:                                  ; preds = %if.then49.i.i.i, %d
   %241 = phi ptr [ %239, %if.then49.i.i.i ], [ %.pre350.i.i, %do.body.thread.i.i.i ]
   %inc66.i.i.i = add nuw nsw i32 %237, 1
   store i32 %inc66.i.i.i, ptr %y.1.lcssa.i.i, align 8, !tbaa !55
-  %arrayidx68.i.i.i = getelementptr inbounds ptr, ptr %e46.i.i.i, i64 %idxprom67.i.pre-phi.i.i
+  %arrayidx68.i.i.i = getelementptr inbounds ptr, ptr %236, i64 %idxprom67.i.pre-phi.i.i
   store ptr %241, ptr %arrayidx68.i.i.i, align 8, !tbaa !14
   br label %for.inc102.i.i.i
 
@@ -2310,7 +2310,7 @@ if.then163.i.i:                                   ; preds = %if.then160.i.i
   %inc166.i.i = add nuw nsw i32 %251, 1
   store i32 %inc166.i.i, ptr %alldfas.i.i, align 8, !tbaa !37
   %idxprom167.i.i = zext i32 %251 to i64
-  %arrayidx168.i.i = getelementptr inbounds ptr, ptr %e44.i.i, i64 %idxprom167.i.i
+  %arrayidx168.i.i = getelementptr inbounds ptr, ptr %.pre352.i.i, i64 %idxprom167.i.i
   store ptr %y.1.lcssa.i.i, ptr %arrayidx168.i.i, align 8, !tbaa !14
   br label %Lnext.i.i
 
@@ -2410,7 +2410,7 @@ if.then24.i.i.i:                                  ; preds = %if.then21.i.i.i
   %inc31.i.i.i = add nuw nsw i32 %274, 1
   store i32 %inc31.i.i.i, ptr %scanner.i, align 8, !tbaa !37
   %idxprom32.i.i.i = zext i32 %274 to i64
-  %arrayidx33.i.i.i = getelementptr inbounds ptr, ptr %e18.i.i.i, i64 %idxprom32.i.i.i
+  %arrayidx33.i.i.i = getelementptr inbounds ptr, ptr %272, i64 %idxprom32.i.i.i
   store ptr %270, ptr %arrayidx33.i.i.i, align 8, !tbaa !14
   br label %for.inc.i.i.i
 
@@ -2971,7 +2971,7 @@ if.then22.i.i.i.i:                                ; preds = %if.then19.i.i.i.i
   %inc29.i.i.i.i = add nuw nsw i32 %378, 1
   store i32 %inc29.i.i.i.i, ptr %live_diff.i.i.i, align 8, !tbaa !37
   %idxprom30.i.i.i.i = zext i32 %378 to i64
-  %arrayidx31.i.i.i.i = getelementptr inbounds ptr, ptr %e93.i.i.i.i, i64 %idxprom30.i.i.i.i
+  %arrayidx31.i.i.i.i = getelementptr inbounds ptr, ptr %374, i64 %idxprom30.i.i.i.i
   store ptr %380, ptr %arrayidx31.i.i.i.i, align 8, !tbaa !14
   br label %do.end.i.i.i.i
 
@@ -3062,7 +3062,7 @@ if.then99.i.i.i.i:                                ; preds = %if.then96.i.i.i.i
   %inc106.i.i.i.i = add nuw nsw i32 %399, 1
   store i32 %inc106.i.i.i.i, ptr %live_diff.i.i.i, align 8, !tbaa !37
   %idxprom107.i.i.i.i = zext i32 %399 to i64
-  %arrayidx108.i.i.i.i = getelementptr inbounds ptr, ptr %e93.i.i.i.i, i64 %idxprom107.i.i.i.i
+  %arrayidx108.i.i.i.i = getelementptr inbounds ptr, ptr %397, i64 %idxprom107.i.i.i.i
   store ptr %390, ptr %arrayidx108.i.i.i.i, align 8, !tbaa !14
   br label %do.end132.i.i.i.i
 
@@ -3173,7 +3173,7 @@ if.then28.i.i.i.i:                                ; preds = %if.then25.i.i.i.i
   %inc35.i.i.i.i = add nuw nsw i32 %420, 1
   store i32 %inc35.i.i.i.i, ptr %accepts_diff.i.i.i, align 8, !tbaa !37
   %idxprom36.i.i.i.i = zext i32 %420 to i64
-  %arrayidx37.i.i.i.i = getelementptr inbounds ptr, ptr %e22.i.i.i.i, i64 %idxprom36.i.i.i.i
+  %arrayidx37.i.i.i.i = getelementptr inbounds ptr, ptr %418, i64 %idxprom36.i.i.i.i
   store ptr %414, ptr %arrayidx37.i.i.i.i, align 8, !tbaa !14
   br label %do.end.i136.i.i.i
 
@@ -3580,7 +3580,7 @@ if.then16.i:                                      ; preds = %if.then12.i
   %inc21.i = add nuw nsw i32 %6, 1
   store i32 %inc21.i, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i = zext i32 %6 to i64
-  %arrayidx23.i = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i
+  %arrayidx23.i = getelementptr inbounds ptr, ptr %4, i64 %idxprom22.i
   store ptr %calloc.i, ptr %arrayidx23.i, align 8, !tbaa !14
   br label %new_NFAState.exit
 
@@ -3636,7 +3636,7 @@ if.then20:                                        ; preds = %if.then15
   %inc25 = add nuw nsw i32 %9, 1
   store i32 %inc25, ptr %epsilon, align 8, !tbaa !50
   %idxprom26 = zext i32 %9 to i64
-  %arrayidx27 = getelementptr inbounds ptr, ptr %e, i64 %idxprom26
+  %arrayidx27 = getelementptr inbounds ptr, ptr %7, i64 %idxprom26
   store ptr %nn, ptr %arrayidx27, align 8, !tbaa !14
   br label %do.body44
 
@@ -3695,7 +3695,7 @@ if.then16.i1267:                                  ; preds = %if.then12.i1263
   %inc21.i1264 = add nuw nsw i32 %14, 1
   store i32 %inc21.i1264, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1265 = zext i32 %14 to i64
-  %arrayidx23.i1266 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1265
+  %arrayidx23.i1266 = getelementptr inbounds ptr, ptr %12, i64 %idxprom22.i1265
   store ptr %calloc.i1250, ptr %arrayidx23.i1266, align 8, !tbaa !14
   br label %new_NFAState.exit1276
 
@@ -3768,7 +3768,7 @@ if.then16.i1294:                                  ; preds = %if.then12.i1290
   %inc21.i1291 = add nuw nsw i32 %20, 1
   store i32 %inc21.i1291, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1292 = zext i32 %20 to i64
-  %arrayidx23.i1293 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1292
+  %arrayidx23.i1293 = getelementptr inbounds ptr, ptr %18, i64 %idxprom22.i1292
   store ptr %calloc.i1277, ptr %arrayidx23.i1293, align 8, !tbaa !14
   br label %new_NFAState.exit1303
 
@@ -3838,7 +3838,7 @@ if.then16.i1321:                                  ; preds = %if.then12.i1317
   %inc21.i1318 = add nuw nsw i32 %26, 1
   store i32 %inc21.i1318, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1319 = zext i32 %26 to i64
-  %arrayidx23.i1320 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1319
+  %arrayidx23.i1320 = getelementptr inbounds ptr, ptr %24, i64 %idxprom22.i1319
   store ptr %calloc.i1304, ptr %arrayidx23.i1320, align 8, !tbaa !14
   br label %new_NFAState.exit1330
 
@@ -3903,7 +3903,7 @@ if.then16.i1348:                                  ; preds = %if.then12.i1344
   %inc21.i1345 = add nuw nsw i32 %32, 1
   store i32 %inc21.i1345, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1346 = zext i32 %32 to i64
-  %arrayidx23.i1347 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1346
+  %arrayidx23.i1347 = getelementptr inbounds ptr, ptr %30, i64 %idxprom22.i1346
   store ptr %calloc.i1331, ptr %arrayidx23.i1347, align 8, !tbaa !14
   br label %new_NFAState.exit1357
 
@@ -3981,13 +3981,13 @@ for.cond.preheader:                               ; preds = %if.end129
 for.body.preheader:                               ; preds = %for.cond.preheader
   %37 = add i8 %pc.0, 1
   %38 = add nuw i8 %c.0, 1
-  %umax1629 = tail call i8 @llvm.umax.i8(i8 %37, i8 %38)
+  %umax1634 = tail call i8 @llvm.umax.i8(i8 %37, i8 %38)
   %39 = xor i8 %pc.0, -1
-  %40 = add i8 %umax1629, %39
+  %40 = add i8 %umax1634, %39
   %41 = zext i8 %40 to i32
   %42 = add nuw nsw i32 %41, 1
   %min.iters.check = icmp ult i8 %40, 31
-  br i1 %min.iters.check, label %for.body.preheader1631, label %vector.scevcheck
+  br i1 %min.iters.check, label %for.body.preheader1636, label %vector.scevcheck
 
 vector.scevcheck:                                 ; preds = %for.body.preheader
   %43 = add i8 %pc.0, 1
@@ -3995,7 +3995,7 @@ vector.scevcheck:                                 ; preds = %for.body.preheader
   %umax = tail call i8 @llvm.umax.i8(i8 %43, i8 %44)
   %45 = add i8 %umax, -1
   %46 = icmp ult i8 %45, %pc.0
-  br i1 %46, label %for.body.preheader1631, label %vector.ph
+  br i1 %46, label %for.body.preheader1636, label %vector.ph
 
 vector.ph:                                        ; preds = %vector.scevcheck
   %n.vec = and i32 %42, -32
@@ -4005,8 +4005,8 @@ vector.ph:                                        ; preds = %vector.scevcheck
 
 vector.body:                                      ; preds = %vector.body, %vector.ph
   %index = phi i32 [ 0, %vector.ph ], [ %index.next, %vector.body ]
-  %.cast1630 = trunc i32 %index to i8
-  %offset.idx = add i8 %pc.0, %.cast1630
+  %.cast1635 = trunc i32 %index to i8
+  %offset.idx = add i8 %pc.0, %.cast1635
   %47 = zext i8 %offset.idx to i64
   %48 = getelementptr inbounds [256 x i8], ptr %mark, i64 0, i64 %47
   store <16 x i8> <i8 1, i8 1, i8 1, i8 1, i8 1, i8 1, i8 1, i8 1, i8 1, i8 1, i8 1, i8 1, i8 1, i8 1, i8 1, i8 1>, ptr %48, align 1, !tbaa !29
@@ -4018,14 +4018,14 @@ vector.body:                                      ; preds = %vector.body, %vecto
 
 middle.block:                                     ; preds = %vector.body
   %cmp.n = icmp eq i32 %42, %n.vec
-  br i1 %cmp.n, label %sw.epilog, label %for.body.preheader1631
+  br i1 %cmp.n, label %sw.epilog, label %for.body.preheader1636
 
-for.body.preheader1631:                           ; preds = %vector.scevcheck, %for.body.preheader, %middle.block
+for.body.preheader1636:                           ; preds = %vector.scevcheck, %for.body.preheader, %middle.block
   %pc.11605.ph = phi i8 [ %pc.0, %vector.scevcheck ], [ %pc.0, %for.body.preheader ], [ %ind.end, %middle.block ]
   br label %for.body
 
-for.body:                                         ; preds = %for.body.preheader1631, %for.body
-  %pc.11605 = phi i8 [ %inc139, %for.body ], [ %pc.11605.ph, %for.body.preheader1631 ]
+for.body:                                         ; preds = %for.body.preheader1636, %for.body
+  %pc.11605 = phi i8 [ %inc139, %for.body ], [ %pc.11605.ph, %for.body.preheader1636 ]
   %idxprom137 = zext i8 %pc.11605 to i64
   %arrayidx138 = getelementptr inbounds [256 x i8], ptr %mark, i64 0, i64 %idxprom137
   store i8 1, ptr %arrayidx138, align 1, !tbaa !29
@@ -4085,7 +4085,7 @@ if.then16.i1375:                                  ; preds = %if.then12.i1371
   %inc21.i1372 = add nuw nsw i32 %55, 1
   store i32 %inc21.i1372, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1373 = zext i32 %55 to i64
-  %arrayidx23.i1374 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1373
+  %arrayidx23.i1374 = getelementptr inbounds ptr, ptr %53, i64 %idxprom22.i1373
   store ptr %calloc.i1358, ptr %arrayidx23.i1374, align 8, !tbaa !14
   br label %for.body148.preheader
 
@@ -4210,7 +4210,7 @@ if.then274:                                       ; preds = %if.then269
   %inc279 = add nuw nsw i32 %62, 1
   store i32 %inc279, ptr %epsilon247, align 8, !tbaa !50
   %idxprom280 = zext i32 %62 to i64
-  %arrayidx281 = getelementptr inbounds ptr, ptr %e252, i64 %idxprom280
+  %arrayidx281 = getelementptr inbounds ptr, ptr %60, i64 %idxprom280
   store ptr %s.0, ptr %arrayidx281, align 8, !tbaa !14
   br label %sw.epilog898
 
@@ -4314,7 +4314,7 @@ if.then387:                                       ; preds = %if.then382
   %inc392 = add nuw nsw i32 %68, 1
   store i32 %inc392, ptr %epsilon360, align 8, !tbaa !50
   %idxprom393 = zext i32 %68 to i64
-  %arrayidx394 = getelementptr inbounds ptr, ptr %e365, i64 %idxprom393
+  %arrayidx394 = getelementptr inbounds ptr, ptr %66, i64 %idxprom393
   store ptr %p.0, ptr %arrayidx394, align 8, !tbaa !14
   br label %sw.epilog898
 
@@ -4401,7 +4401,7 @@ sw.default477:                                    ; preds = %while.cond, %sw.bb4
   br i1 %tobool478.not, label %sw.default477.do.body488_crit_edge, label %lor.lhs.false479
 
 sw.default477.do.body488_crit_edge:               ; preds = %sw.default477
-  %.pre1620 = zext i8 %c.2 to i64
+  %.pre1621 = zext i8 %c.2 to i64
   br label %do.body488
 
 lor.lhs.false479:                                 ; preds = %sw.default477
@@ -4415,7 +4415,7 @@ lor.lhs.false479:                                 ; preds = %sw.default477
   br i1 %tobool486.not, label %do.body488, label %do.body575
 
 do.body488:                                       ; preds = %sw.default477.do.body488_crit_edge, %lor.lhs.false479
-  %idxprom490.pre-phi = phi i64 [ %.pre1620, %sw.default477.do.body488_crit_edge ], [ %idxprom482, %lor.lhs.false479 ]
+  %idxprom490.pre-phi = phi i64 [ %.pre1621, %sw.default477.do.body488_crit_edge ], [ %idxprom482, %lor.lhs.false479 ]
   %arrayidx491 = getelementptr inbounds %struct.NFAState, ptr %s.0, i64 0, i32 1, i64 %idxprom490.pre-phi
   %v492 = getelementptr inbounds %struct.NFAState, ptr %s.0, i64 0, i32 1, i64 %idxprom490.pre-phi, i32 2
   %77 = load ptr, ptr %v492, align 8, !tbaa !38
@@ -4455,7 +4455,7 @@ if.then16.i1402:                                  ; preds = %if.then12.i1398
   %inc21.i1399 = add nuw nsw i32 %81, 1
   store i32 %inc21.i1399, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1400 = zext i32 %81 to i64
-  %arrayidx23.i1401 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1400
+  %arrayidx23.i1401 = getelementptr inbounds ptr, ptr %79, i64 %idxprom22.i1400
   store ptr %calloc.i1385, ptr %arrayidx23.i1401, align 8, !tbaa !14
   br label %new_NFAState.exit1411
 
@@ -4530,7 +4530,7 @@ if.then16.i1429:                                  ; preds = %if.then12.i1425
   %inc21.i1426 = add nuw nsw i32 %87, 1
   store i32 %inc21.i1426, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1427 = zext i32 %87 to i64
-  %arrayidx23.i1428 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1427
+  %arrayidx23.i1428 = getelementptr inbounds ptr, ptr %85, i64 %idxprom22.i1427
   store ptr %calloc.i1412, ptr %arrayidx23.i1428, align 8, !tbaa !14
   br label %new_NFAState.exit1438
 
@@ -4599,7 +4599,7 @@ if.then16.i1456:                                  ; preds = %if.then12.i1452
   %inc21.i1453 = add nuw nsw i32 %93, 1
   store i32 %inc21.i1453, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1454 = zext i32 %93 to i64
-  %arrayidx23.i1455 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1454
+  %arrayidx23.i1455 = getelementptr inbounds ptr, ptr %91, i64 %idxprom22.i1454
   store ptr %calloc.i1439, ptr %arrayidx23.i1455, align 8, !tbaa !14
   br label %new_NFAState.exit1465
 
@@ -4663,7 +4663,7 @@ if.then16.i1483:                                  ; preds = %if.then12.i1479
   %inc21.i1480 = add nuw nsw i32 %99, 1
   store i32 %inc21.i1480, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1481 = zext i32 %99 to i64
-  %arrayidx23.i1482 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1481
+  %arrayidx23.i1482 = getelementptr inbounds ptr, ptr %97, i64 %idxprom22.i1481
   store ptr %calloc.i1466, ptr %arrayidx23.i1482, align 8, !tbaa !14
   br label %new_NFAState.exit1492
 
@@ -4733,7 +4733,7 @@ if.then16.i1510:                                  ; preds = %if.then12.i1506
   %inc21.i1507 = add nuw nsw i32 %106, 1
   store i32 %inc21.i1507, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1508 = zext i32 %106 to i64
-  %arrayidx23.i1509 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1508
+  %arrayidx23.i1509 = getelementptr inbounds ptr, ptr %104, i64 %idxprom22.i1508
   store ptr %calloc.i1493, ptr %arrayidx23.i1509, align 8, !tbaa !14
   br label %new_NFAState.exit1519
 
@@ -4818,7 +4818,7 @@ if.then16.i1537:                                  ; preds = %if.then12.i1533
   %inc21.i1534 = add nuw nsw i32 %116, 1
   store i32 %inc21.i1534, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1535 = zext i32 %116 to i64
-  %arrayidx23.i1536 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1535
+  %arrayidx23.i1536 = getelementptr inbounds ptr, ptr %114, i64 %idxprom22.i1535
   store ptr %calloc.i1520, ptr %arrayidx23.i1536, align 8, !tbaa !14
   br label %new_NFAState.exit1546
 
@@ -4893,7 +4893,7 @@ if.then16.i1564:                                  ; preds = %if.then12.i1560
   %inc21.i1561 = add nuw nsw i32 %124, 1
   store i32 %inc21.i1561, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1562 = zext i32 %124 to i64
-  %arrayidx23.i1563 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1562
+  %arrayidx23.i1563 = getelementptr inbounds ptr, ptr %122, i64 %idxprom22.i1562
   store ptr %calloc.i1547, ptr %arrayidx23.i1563, align 8, !tbaa !14
   br label %new_NFAState.exit1573
 
@@ -4963,7 +4963,7 @@ if.then16.i1591:                                  ; preds = %if.then12.i1587
   %inc21.i1588 = add nuw nsw i32 %132, 1
   store i32 %inc21.i1588, ptr %allnfas.i1360, align 8, !tbaa !35
   %idxprom22.i1589 = zext i32 %132 to i64
-  %arrayidx23.i1590 = getelementptr inbounds ptr, ptr %e.i1363, i64 %idxprom22.i1589
+  %arrayidx23.i1590 = getelementptr inbounds ptr, ptr %130, i64 %idxprom22.i1589
   store ptr %calloc.i1574, ptr %arrayidx23.i1590, align 8, !tbaa !14
   br label %new_NFAState.exit1600
 
@@ -5073,6 +5073,7 @@ if.then904:                                       ; preds = %do.body900
   %idxprom913 = zext i32 %141 to i64
   %arrayidx914 = getelementptr inbounds ptr, ptr %e906, i64 %idxprom913
   store ptr %nn, ptr %arrayidx914, align 8, !tbaa !14
+  %.pre1620 = load ptr, ptr %reg, align 8, !tbaa !14
   br label %do.end955
 
 if.else915:                                       ; preds = %do.body900
@@ -5088,7 +5089,7 @@ if.then928:                                       ; preds = %if.then923
   %inc933 = add nuw nsw i32 %142, 1
   store i32 %inc933, ptr %epsilon901, align 8, !tbaa !50
   %idxprom934 = zext i32 %142 to i64
-  %arrayidx935 = getelementptr inbounds ptr, ptr %e906, i64 %idxprom934
+  %arrayidx935 = getelementptr inbounds ptr, ptr %140, i64 %idxprom934
   store ptr %nn, ptr %arrayidx935, align 8, !tbaa !14
   br label %do.end955
 
@@ -5110,7 +5111,7 @@ if.end952:                                        ; preds = %if.then923, %if.els
   br label %do.end955
 
 do.end955:                                        ; preds = %if.end952, %if.then942, %if.then928, %if.then904
-  %143 = load ptr, ptr %reg, align 8, !tbaa !14
+  %143 = phi ptr [ %incdec.ptr, %if.end952 ], [ %incdec.ptr, %if.then942 ], [ %incdec.ptr, %if.then928 ], [ %.pre1620, %if.then904 ]
   store ptr %143, ptr %areg, align 8, !tbaa !14
   br label %cleanup
 

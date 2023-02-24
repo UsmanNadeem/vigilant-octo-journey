@@ -3709,25 +3709,29 @@ _Z15yy_flush_bufferP15yy_buffer_state.exit.i.thread: ; preds = %if.end.i.i
   br label %cond.end.i
 
 _Z15yy_flush_bufferP15yy_buffer_state.exit.thread.i: ; preds = %cond.end.i.i
-  store i32 0, ptr @_ZL10yy_n_chars, align 4, !tbaa !9
-  store ptr %call.i15, ptr @_ZL10yy_c_buf_p, align 8, !tbaa !5
-  store ptr %call.i15, ptr @yytext_ptr, align 8, !tbaa !5
-  %6 = load ptr, ptr %arrayidx6.i.i, align 8, !tbaa !5
-  %7 = load ptr, ptr %6, align 8, !tbaa !16
-  store ptr %7, ptr @yyin, align 8, !tbaa !5
-  %8 = load i8, ptr %call.i15, align 1, !tbaa !17
-  store i8 %8, ptr @_ZL12yy_hold_char, align 1, !tbaa !17
+  %yy_n_chars.i.i.i = getelementptr inbounds %struct.yy_buffer_state, ptr %5, i64 0, i32 4
+  %6 = load i32, ptr %yy_n_chars.i.i.i, align 4, !tbaa !13
+  store i32 %6, ptr @_ZL10yy_n_chars, align 4, !tbaa !9
+  %yy_buf_pos.i.i.i = getelementptr inbounds %struct.yy_buffer_state, ptr %5, i64 0, i32 2
+  %7 = load ptr, ptr %yy_buf_pos.i.i.i, align 8, !tbaa !15
+  store ptr %7, ptr @_ZL10yy_c_buf_p, align 8, !tbaa !5
+  store ptr %7, ptr @yytext_ptr, align 8, !tbaa !5
+  %8 = load ptr, ptr %arrayidx6.i.i, align 8, !tbaa !5
+  %9 = load ptr, ptr %8, align 8, !tbaa !16
+  store ptr %9, ptr @yyin, align 8, !tbaa !5
+  %10 = load i8, ptr %7, align 1, !tbaa !17
+  store i8 %10, ptr @_ZL12yy_hold_char, align 1, !tbaa !17
   br label %cond.true.i
 
 cond.true.i:                                      ; preds = %cond.end.i.i, %_Z15yy_flush_bufferP15yy_buffer_state.exit.thread.i
   store ptr %file, ptr %call.i, align 8
-  %9 = getelementptr inbounds %struct.yy_buffer_state, ptr %call.i, i64 0, i32 10
-  store i32 1, ptr %9, align 4
-  %10 = load ptr, ptr %arrayidx6.i.i, align 8, !tbaa !5
+  %11 = getelementptr inbounds %struct.yy_buffer_state, ptr %call.i, i64 0, i32 10
+  store i32 1, ptr %11, align 4
+  %12 = load ptr, ptr %arrayidx6.i.i, align 8, !tbaa !5
   br label %cond.end.i
 
 cond.end.i:                                       ; preds = %_Z15yy_flush_bufferP15yy_buffer_state.exit.i.thread, %cond.true.i
-  %cond.i = phi ptr [ %10, %cond.true.i ], [ null, %_Z15yy_flush_bufferP15yy_buffer_state.exit.i.thread ]
+  %cond.i = phi ptr [ %12, %cond.true.i ], [ null, %_Z15yy_flush_bufferP15yy_buffer_state.exit.i.thread ]
   %cmp.not.i = icmp eq ptr %cond.i, %call.i
   br i1 %cmp.not.i, label %_ZL14yy_init_bufferP15yy_buffer_stateP8_IO_FILE.exit, label %if.then.i
 

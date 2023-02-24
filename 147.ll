@@ -324,7 +324,7 @@ if.else:                                          ; preds = %_ZNK11CStringBaseIw
   br i1 %cmp.i23, label %if.else.invoke.cont_crit_edge, label %if.end.i29
 
 if.else.invoke.cont_crit_edge:                    ; preds = %if.else
-  %.pre = load ptr, ptr %pureName, align 8, !tbaa !11
+  %.pre = load ptr, ptr %ref.tmp, align 8, !tbaa !11
   br label %invoke.cont
 
 if.end.i29:                                       ; preds = %if.else
@@ -440,7 +440,7 @@ _ZN11CStringBaseIwEaSEw.exit:                     ; preds = %_ZN11CStringBaseIwE
   br i1 %cmp.i62, label %_ZN11CStringBaseIwEaSEw.exit.invoke.cont6_crit_edge, label %if.end.i68
 
 _ZN11CStringBaseIwEaSEw.exit.invoke.cont6_crit_edge: ; preds = %_ZN11CStringBaseIwEaSEw.exit
-  %.pre101 = load ptr, ptr %extension, align 8, !tbaa !11
+  %.pre101 = load ptr, ptr %ref.tmp4, align 8, !tbaa !11
   br label %invoke.cont6
 
 if.end.i68:                                       ; preds = %_ZN11CStringBaseIwEaSEw.exit

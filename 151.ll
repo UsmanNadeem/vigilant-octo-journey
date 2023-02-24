@@ -779,13 +779,14 @@ for.body:                                         ; preds = %entry, %for.body
   br i1 %cmp.not, label %for.end, label %for.body, !llvm.loop !64
 
 for.end:                                          ; preds = %for.body, %entry
-  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 1 dereferenceable(6) %add.ptr, ptr noundef nonnull align 1 dereferenceable(6) %tmp, i64 6, i1 false), !tbaa.struct !63
+  %s.0.lcssa = phi ptr [ %3, %entry ], [ %add.ptr, %for.body ]
+  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 1 dereferenceable(6) %s.0.lcssa, ptr noundef nonnull align 1 dereferenceable(6) %tmp, i64 6, i1 false), !tbaa.struct !63
   call void @llvm.lifetime.end.p0(i64 6, ptr nonnull %tmp)
   %4 = load ptr, ptr %p, align 8, !tbaa !41
   %SummFreq = getelementptr inbounds %struct.CPpmd7_Context_, ptr %4, i64 0, i32 1
   %5 = load i16, ptr %SummFreq, align 2, !tbaa !45
   %conv = zext i16 %5 to i32
-  %Freq = getelementptr inbounds %struct.CPpmd_State, ptr %add.ptr, i64 0, i32 1
+  %Freq = getelementptr inbounds %struct.CPpmd_State, ptr %s.0.lcssa, i64 0, i32 1
   %6 = load i8, ptr %Freq, align 1, !tbaa !51
   %conv3 = zext i8 %6 to i32
   %sub = sub nsw i32 %conv, %conv3
@@ -805,7 +806,7 @@ for.end:                                          ; preds = %for.body, %entry
   br label %do.body
 
 do.body:                                          ; preds = %do.cond54, %for.end
-  %s.1 = phi ptr [ %add.ptr, %for.end ], [ %incdec.ptr19, %do.cond54 ]
+  %s.1 = phi ptr [ %s.0.lcssa, %for.end ], [ %incdec.ptr19, %do.cond54 ]
   %escFreq.0 = phi i32 [ %sub, %for.end ], [ %sub22, %do.cond54 ]
   %sumFreq.0 = phi i32 [ %shr, %for.end ], [ %add31, %do.cond54 ]
   %i.0 = phi i32 [ %sub18, %for.end ], [ %dec, %do.cond54 ]
@@ -845,8 +846,7 @@ land.rhs:                                         ; preds = %do.body41
   br i1 %cmp52, label %do.body41, label %do.end, !llvm.loop !65
 
 do.end:                                           ; preds = %do.body41, %land.rhs
-  %arrayidx43.lcssa = phi ptr [ %add.ptr, %do.body41 ], [ %arrayidx43, %land.rhs ]
-  store i8 %tmp40.sroa.0.0.copyload, ptr %arrayidx43.lcssa, align 1, !tbaa.struct !63
+  store i8 %tmp40.sroa.0.0.copyload, ptr %arrayidx43, align 1, !tbaa.struct !63
   %tmp40.sroa.4.0..sroa_idx155 = getelementptr %struct.CPpmd_State, ptr %s1.0, i64 -1, i32 1
   store i8 %conv27, ptr %tmp40.sroa.4.0..sroa_idx155, align 1, !tbaa.struct !66
   %tmp40.sroa.5.0..sroa_idx157 = getelementptr %struct.CPpmd_State, ptr %s1.0, i64 -1, i32 2
@@ -890,7 +890,8 @@ do.end71:                                         ; preds = %do.body64
 
 if.then85:                                        ; preds = %do.end71
   %tmp86.sroa.0.0.copyload = load i8, ptr %add.ptr, align 1, !tbaa.struct !63
-  %tmp86.sroa.4.0.copyload = load i8, ptr %Freq, align 1, !tbaa.struct !66
+  %tmp86.sroa.4.0..sroa_idx = getelementptr inbounds i8, ptr %add.ptr, i64 1
+  %tmp86.sroa.4.0.copyload = load i8, ptr %tmp86.sroa.4.0..sroa_idx, align 1, !tbaa.struct !66
   %tmp86.sroa.7.0..sroa_idx = getelementptr inbounds i8, ptr %add.ptr, i64 2
   %18 = load i32, ptr %tmp86.sroa.7.0..sroa_idx, align 1
   br label %do.body87

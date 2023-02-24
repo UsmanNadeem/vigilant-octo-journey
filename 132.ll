@@ -608,7 +608,7 @@ for.inc198:                                       ; preds = %for.cond172, %land.
   br i1 %cmp166.not, label %for.end202, label %for.cond172.preheader, !llvm.loop !23
 
 for.end202:                                       ; preds = %for.inc198, %land.lhs.true189, %for.cond165.preheader
-  %lp.0.lcssa = phi ptr [ %tlink.0, %for.cond165.preheader ], [ %lp.01638, %land.lhs.true189 ], [ %tlink.0, %for.inc198 ]
+  %lp.0.lcssa = phi ptr [ %lp.01636, %for.cond165.preheader ], [ %lp.01638, %land.lhs.true189 ], [ %tlink.0, %for.inc198 ]
   %cmp166.not.lcssa = phi i1 [ true, %for.cond165.preheader ], [ false, %land.lhs.true189 ], [ true, %for.inc198 ]
   %rp.01644 = load ptr, ptr %osucc97, align 8, !tbaa !5
   %cmp207.not1645 = icmp eq ptr %rp.01644, %tlink.0
@@ -1382,7 +1382,7 @@ for.inc833:                                       ; preds = %for.cond807, %land.
   br i1 %cmp801.not, label %for.end837, label %for.cond807.preheader, !llvm.loop !26
 
 for.end837:                                       ; preds = %for.inc833, %land.lhs.true824, %for.cond800.preheader
-  %lp.1.lcssa = phi ptr [ %tlink.0, %for.cond800.preheader ], [ %lp.11615, %land.lhs.true824 ], [ %tlink.0, %for.inc833 ]
+  %lp.1.lcssa = phi ptr [ %lp.11613, %for.cond800.preheader ], [ %lp.11615, %land.lhs.true824 ], [ %tlink.0, %for.inc833 ]
   %cmp801.not.lcssa = phi i1 [ true, %for.cond800.preheader ], [ false, %land.lhs.true824 ], [ true, %for.inc833 ]
   %rp.11620 = load ptr, ptr %osucc97, align 8, !tbaa !5
   %cmp842.not1621 = icmp eq ptr %rp.11620, %tlink.0

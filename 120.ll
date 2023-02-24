@@ -7937,7 +7937,7 @@ if.else.i.i:                                      ; preds = %if.then.i.i
 _ZNKSt3__116__deque_iteratorIN2PP4WordEPS2_RS2_PS3_lLl39EEplB7v170000El.exit: ; preds = %_ZNSt3__15dequeIN2PP4WordENS_9allocatorIS2_EEE5beginB7v170000Ev.exit, %_ZNSt3__1miB7v170000ERKNS_16__deque_iteratorIN2PP4WordEPKS2_RS3_PKS4_lLl39EEESA_.exit74, %if.then3.i.i, %if.else.i.i
   %cmp.not.i.i256 = phi i1 [ true, %_ZNSt3__1miB7v170000ERKNS_16__deque_iteratorIN2PP4WordEPKS2_RS3_PKS4_lLl39EEESA_.exit74 ], [ false, %if.then3.i.i ], [ false, %if.else.i.i ], [ true, %_ZNSt3__15dequeIN2PP4WordENS_9allocatorIS2_EEE5beginB7v170000Ev.exit ]
   %retval.0.i73255 = phi i64 [ 0, %_ZNSt3__1miB7v170000ERKNS_16__deque_iteratorIN2PP4WordEPKS2_RS3_PKS4_lLl39EEESA_.exit74 ], [ %sub.i71, %if.then3.i.i ], [ %sub.i71, %if.else.i.i ], [ 0, %_ZNSt3__15dequeIN2PP4WordENS_9allocatorIS2_EEE5beginB7v170000Ev.exit ]
-  %retval.sroa.5.0.i = phi ptr [ %cond.i, %_ZNSt3__1miB7v170000ERKNS_16__deque_iteratorIN2PP4WordEPKS2_RS3_PKS4_lLl39EEESA_.exit74 ], [ %add.ptr6.i.i, %if.then3.i.i ], [ %add.ptr14.i.i, %if.else.i.i ], [ %__f.coerce1, %_ZNSt3__15dequeIN2PP4WordENS_9allocatorIS2_EEE5beginB7v170000Ev.exit ]
+  %retval.sroa.5.0.i = phi ptr [ %cond.i, %_ZNSt3__1miB7v170000ERKNS_16__deque_iteratorIN2PP4WordEPKS2_RS3_PKS4_lLl39EEESA_.exit74 ], [ %add.ptr6.i.i, %if.then3.i.i ], [ %add.ptr14.i.i, %if.else.i.i ], [ %cond.i, %_ZNSt3__15dequeIN2PP4WordENS_9allocatorIS2_EEE5beginB7v170000Ev.exit ]
   %retval.sroa.0.1.i = phi ptr [ %add.ptr.i, %_ZNSt3__1miB7v170000ERKNS_16__deque_iteratorIN2PP4WordEPKS2_RS3_PKS4_lLl39EEESA_.exit74 ], [ %add.ptr.i.i, %if.then3.i.i ], [ %add.ptr10.i.i, %if.else.i.i ], [ %add.ptr.i, %_ZNSt3__15dequeIN2PP4WordENS_9allocatorIS2_EEE5beginB7v170000Ev.exit ]
   %cmp = icmp sgt i64 %retval.0.i, 0
   br i1 %cmp, label %if.then, label %if.end40
@@ -9588,7 +9588,7 @@ for.inc.i.i260:                                   ; preds = %for.inc.i.i260.preh
 
 if.then.i.i265:                                   ; preds = %for.inc.i.i260, %middle.block, %call.i5.i.i.i.i.i248.noexc
   %storemerge.i261 = phi ptr [ %add.ptr.i.i249, %call.i5.i.i.i.i.i248.noexc ], [ %add.ptr.i.i54.i, %middle.block ], [ %add.ptr.i.i54.i, %for.inc.i.i260 ]
-  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.12.1340) #17
+  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.0.1339) #17
   br label %_ZNSt3__114__split_bufferIPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEERNS4_IS7_EEE10push_frontERKS7_.exit
 
 _ZNSt3__114__split_bufferIPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEERNS4_IS7_EEE10push_frontERKS7_.exit: ; preds = %for.body, %if.then3.i239, %if.then.i.i265
@@ -9905,7 +9905,7 @@ _ZNSt3__114__split_bufferIPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorI
   br i1 %tobool.not.i, label %if.end38, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferIPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEERNS4_IS7_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %0) #17
+  tail call void @_ZdlPv(ptr noundef nonnull %1) #17
   %.pre = load ptr, ptr %__begin_, align 8, !tbaa !55
   br label %if.end38
 
@@ -10469,7 +10469,7 @@ for.inc.i.i260:                                   ; preds = %for.inc.i.i260.preh
 
 if.then.i.i265:                                   ; preds = %for.inc.i.i260, %middle.block, %call.i5.i.i.i.i.i248.noexc
   %storemerge.i261 = phi ptr [ %add.ptr.i.i249, %call.i5.i.i.i.i.i248.noexc ], [ %add.ptr.i.i54.i, %middle.block ], [ %add.ptr.i.i54.i, %for.inc.i.i260 ]
-  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.12.1340) #17
+  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.0.1339) #17
   br label %_ZNSt3__114__split_bufferIPbRNS_9allocatorIS1_EEE10push_frontERKS1_.exit
 
 _ZNSt3__114__split_bufferIPbRNS_9allocatorIS1_EEE10push_frontERKS1_.exit: ; preds = %for.body, %if.then3.i239, %if.then.i.i265
@@ -10786,7 +10786,7 @@ _ZNSt3__114__split_bufferIPbRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i: ; pre
   br i1 %tobool.not.i, label %if.end38, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferIPbRNS_9allocatorIS1_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %0) #17
+  tail call void @_ZdlPv(ptr noundef nonnull %1) #17
   %.pre = load ptr, ptr %__begin_, align 8, !tbaa !65
   br label %if.end38
 
@@ -11348,7 +11348,7 @@ for.inc.i.i260:                                   ; preds = %for.inc.i.i260.preh
 
 if.then.i.i265:                                   ; preds = %for.inc.i.i260, %middle.block, %call.i5.i.i.i.i.i248.noexc
   %storemerge.i261 = phi ptr [ %add.ptr.i.i249, %call.i5.i.i.i.i.i248.noexc ], [ %add.ptr.i.i54.i, %middle.block ], [ %add.ptr.i.i54.i, %for.inc.i.i260 ]
-  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.12.1340) #17
+  tail call void @_ZdlPv(ptr noundef nonnull %__buf.sroa.0.1339) #17
   br label %_ZNSt3__114__split_bufferIPN2PP4WordERNS_9allocatorIS3_EEE10push_frontERKS3_.exit
 
 _ZNSt3__114__split_bufferIPN2PP4WordERNS_9allocatorIS3_EEE10push_frontERKS3_.exit: ; preds = %for.body, %if.then3.i239, %if.then.i.i265
@@ -11665,7 +11665,7 @@ _ZNSt3__114__split_bufferIPN2PP4WordERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit
   br i1 %tobool.not.i, label %if.end38, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferIPN2PP4WordERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %0) #17
+  tail call void @_ZdlPv(ptr noundef nonnull %1) #17
   %.pre = load ptr, ptr %__begin_, align 8, !tbaa !42
   br label %if.end38
 
@@ -11764,7 +11764,7 @@ cleanup.i.i.i.i:                                  ; preds = %_ZNSt3__115__move_b
 _ZNSt3__115__move_backwardB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit: ; preds = %if.then, %if.then16.i.i.i.i, %if.then.i.i.i.i.i
   %retval.sroa.0.0.i.sink.i.i.i.i = phi ptr [ %__segment_iterator.0.i.i.i.i, %if.then16.i.i.i.i ], [ %incdec.ptr.i.i.i.i.i, %if.then.i.i.i.i.i ], [ %agg.tmp8.sroa.0.0.copyload, %if.then ]
   %retval.sroa.3.0.i.sink.i.i.i.i = phi ptr [ %add.ptr.i.i.i.i.i.i.i.i.i, %if.then16.i.i.i.i ], [ %2, %if.then.i.i.i.i.i ], [ %agg.tmp8.sroa.2.0.copyload, %if.then ]
-  store ptr %__first.coerce0, ptr %agg.result, align 8, !tbaa.struct !138
+  store ptr %__last.coerce0, ptr %agg.result, align 8, !tbaa.struct !138
   %__last.sroa.6.0.agg.result.sroa_idx = getelementptr inbounds i8, ptr %agg.result, i64 8
   store ptr %__last.coerce1, ptr %__last.sroa.6.0.agg.result.sroa_idx, align 8, !tbaa.struct !128
   %second.i.i = getelementptr inbounds %"struct.std::__1::pair.103", ptr %agg.result, i64 0, i32 1
@@ -11932,9 +11932,10 @@ _ZNSt3__115__move_backwardB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__
 while.end:                                        ; preds = %_ZNSt3__115__move_backwardB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit139, %_ZNSt3__115__move_backwardB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit87
   %storemerge.lcssa = phi ptr [ %retval.sroa.3.0.i.sink.i.i.i.i80, %_ZNSt3__115__move_backwardB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit87 ], [ %retval.sroa.3.0.i.sink.i.i.i.i132, %_ZNSt3__115__move_backwardB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit139 ]
   %storemerge197.lcssa = phi ptr [ %retval.sroa.0.0.i.sink.i.i.i.i79, %_ZNSt3__115__move_backwardB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit87 ], [ %retval.sroa.0.0.i.sink.i.i.i.i131, %_ZNSt3__115__move_backwardB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit139 ]
+  %__slast.0.lcssa = phi ptr [ %__slast.0200, %_ZNSt3__115__move_backwardB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit87 ], [ %__first.coerce0, %_ZNSt3__115__move_backwardB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit139 ]
   store ptr %storemerge197.lcssa, ptr %__result, align 8
   store ptr %storemerge.lcssa, ptr %agg.tmp12.sroa.2.0.__result.sroa_idx, align 8
-  %14 = load ptr, ptr %__first.coerce0, align 8, !tbaa !43
+  %14 = load ptr, ptr %__slast.0.lcssa, align 8, !tbaa !43
   %add.ptr.i140 = getelementptr inbounds %"class.PP::Word", ptr %14, i64 39
   %cmp.i.i.i.i142 = icmp eq ptr %add.ptr.i140, %__first.coerce1
   %.pre.i.i.i143 = ptrtoint ptr %__first.coerce1 to i64
@@ -12106,7 +12107,7 @@ cleanup.i.i.i.i:                                  ; preds = %_ZNSt3__16__moveB7v
 _ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit: ; preds = %if.then, %if.then13.i.i.i.i, %if.then.i.i.i.i.i
   %retval.sroa.0.0.i.sink.i.i.i.i = phi ptr [ %incdec.ptr.i.i.i.i.i, %if.then.i.i.i.i.i ], [ %__segment_iterator.0.i.i.i.i, %if.then13.i.i.i.i ], [ %agg.tmp8.sroa.0.0.copyload, %if.then ]
   %retval.sroa.3.0.i.sink.i.i.i.i = phi ptr [ %2, %if.then.i.i.i.i.i ], [ %add.ptr.i.i.i.i.i.i.i.i.i, %if.then13.i.i.i.i ], [ %agg.tmp8.sroa.2.0.copyload, %if.then ]
-  store ptr %__first.coerce0, ptr %agg.result, align 8, !tbaa.struct !138
+  store ptr %__last.coerce0, ptr %agg.result, align 8, !tbaa.struct !138
   %__last.sroa.6.0.agg.result.sroa_idx = getelementptr inbounds i8, ptr %agg.result, i64 8
   store ptr %__last.coerce1, ptr %__last.sroa.6.0.agg.result.sroa_idx, align 8, !tbaa.struct !128
   %second.i.i = getelementptr inbounds %"struct.std::__1::pair.103", ptr %agg.result, i64 0, i32 1
@@ -12289,9 +12290,10 @@ _ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iter
 while.end:                                        ; preds = %_ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit152, %_ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit93
   %storemerge.lcssa = phi ptr [ %retval.sroa.3.0.i.sink.i.i.i.i85, %_ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit93 ], [ %retval.sroa.3.0.i.sink.i.i.i.i144, %_ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit152 ]
   %storemerge215.lcssa = phi ptr [ %retval.sroa.0.0.i.sink.i.i.i.i84, %_ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit93 ], [ %retval.sroa.0.0.i.sink.i.i.i.i143, %_ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit152 ]
+  %__sfirst.0.lcssa = phi ptr [ %__sfirst.0218, %_ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit93 ], [ %__last.coerce0, %_ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit152 ]
   store ptr %storemerge215.lcssa, ptr %__result, align 8
   store ptr %storemerge.lcssa, ptr %agg.tmp12.sroa.2.0.__result.sroa_idx, align 8
-  %14 = load ptr, ptr %__last.coerce0, align 8, !tbaa !43
+  %14 = load ptr, ptr %__sfirst.0.lcssa, align 8, !tbaa !43
   %cmp.i.i.i.i154 = icmp eq ptr %14, %__last.coerce1
   br i1 %cmp.i.i.i.i154, label %_ZNSt3__16__moveB7v170000INS_17_ClassicAlgPolicyEPN2PP4WordES4_NS_16__deque_iteratorIS3_S4_RS3_PS4_lLl39EEEEENS_4pairIT0_T2_EESA_T1_SB_.exit210, label %while.cond.preheader.i.i.i.i157
 
@@ -13345,7 +13347,7 @@ _ZNSt3__114__split_bufferIPN2PP4WordERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit
   br i1 %tobool.not.i, label %if.end38, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferIPN2PP4WordERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %0) #17
+  tail call void @_ZdlPv(ptr noundef nonnull %1) #17
   %.pre = load ptr, ptr %__begin_, align 8, !tbaa !42
   br label %if.end38
 

@@ -96,7 +96,7 @@ if.else:                                          ; preds = %entry
   br i1 %cmp14, label %if.then15, label %if.end16
 
 if.then15:                                        ; preds = %if.else
-  %next = getelementptr inbounds %struct.vert_st, ptr %inserted, i64 0, i32 1
+  %next = getelementptr inbounds %struct.vert_st, ptr %2, i64 0, i32 1
   %3 = load ptr, ptr %next, align 8, !tbaa !11
   store ptr %3, ptr @MyVertexList, align 8, !tbaa !9
   br label %if.end16
@@ -135,21 +135,18 @@ if.end12.i:                                       ; preds = %if.else.i, %if.then
   %tmp.0.in78.i = getelementptr inbounds %struct.vert_st, ptr %4, i64 0, i32 1
   %tmp.079.i = load ptr, ptr %tmp.0.in78.i, align 8, !tbaa !11
   %tobool13.not80.i = icmp eq ptr %tmp.079.i, null
-  br i1 %tobool13.not80.i, label %BlueRule.exit, label %for.body.preheader.i
+  br i1 %tobool13.not80.i, label %BlueRule.exit, label %for.body.i
 
-for.body.preheader.i:                             ; preds = %if.end12.i
-  %next17.i = getelementptr inbounds %struct.vert_st, ptr %inserted, i64 0, i32 1
-  br label %for.body.i
-
-for.body.i:                                       ; preds = %for.inc.i, %for.body.preheader.i
-  %tmp.084.i = phi ptr [ %tmp.0.i, %for.inc.i ], [ %tmp.079.i, %for.body.preheader.i ]
-  %tmp.0.in83.i = phi ptr [ %tmp.0.in.i, %for.inc.i ], [ %tmp.0.in78.i, %for.body.preheader.i ]
-  %retval.sroa.3.182.i = phi i32 [ %retval.sroa.3.2.i, %for.inc.i ], [ %retval.sroa.3.0.i, %for.body.preheader.i ]
-  %retval.sroa.0.081.i = phi ptr [ %retval.sroa.0.1.i, %for.inc.i ], [ %4, %for.body.preheader.i ]
+for.body.i:                                       ; preds = %if.end12.i, %for.inc.i
+  %tmp.084.i = phi ptr [ %tmp.0.i, %for.inc.i ], [ %tmp.079.i, %if.end12.i ]
+  %tmp.0.in83.i = phi ptr [ %tmp.0.in.i, %for.inc.i ], [ %tmp.0.in78.i, %if.end12.i ]
+  %retval.sroa.3.182.i = phi i32 [ %retval.sroa.3.2.i, %for.inc.i ], [ %retval.sroa.3.0.i, %if.end12.i ]
+  %retval.sroa.0.081.i = phi ptr [ %retval.sroa.0.1.i, %for.inc.i ], [ %4, %if.end12.i ]
   %cmp14.i = icmp eq ptr %tmp.084.i, %inserted
   br i1 %cmp14.i, label %if.then15.i, label %if.else19.i
 
 if.then15.i:                                      ; preds = %for.body.i
+  %next17.i = getelementptr inbounds %struct.vert_st, ptr %tmp.084.i, i64 0, i32 1
   %11 = load ptr, ptr %next17.i, align 8, !tbaa !11
   store ptr %11, ptr %tmp.0.in83.i, align 8, !tbaa !11
   br label %for.inc.i

@@ -2288,11 +2288,11 @@ cond.false194:                                    ; preds = %if.else138, %if.the
   store ptr %21, ptr %21, align 8, !tbaa !5
   store ptr %21, ptr @xx_link, align 8, !tbaa !10
   store ptr %21, ptr @zz_res, align 8, !tbaa !10
-  store ptr %hd, ptr @zz_hold, align 8, !tbaa !10
-  %22 = load ptr, ptr %hd, align 8, !tbaa !5
+  store ptr %stop_link, ptr @zz_hold, align 8, !tbaa !10
+  %22 = load ptr, ptr %stop_link, align 8, !tbaa !5
   store ptr %22, ptr @zz_tmp, align 8, !tbaa !10
   %23 = load ptr, ptr %21, align 8, !tbaa !5
-  store ptr %23, ptr %hd, align 8, !tbaa !5
+  store ptr %23, ptr %stop_link, align 8, !tbaa !5
   %24 = load ptr, ptr @zz_hold, align 8, !tbaa !10
   %25 = load ptr, ptr @zz_res, align 8, !tbaa !10
   %26 = load ptr, ptr %25, align 8, !tbaa !5
@@ -2326,7 +2326,7 @@ cond.false198:                                    ; preds = %cond.false194
 
 if.end224:                                        ; preds = %cond.false194, %cond.false198, %if.end46
   %y.1 = phi ptr [ %y.0, %if.end46 ], [ %14, %cond.false198 ], [ %14, %cond.false194 ]
-  %stop_link.addr.0 = phi ptr [ %9, %if.end46 ], [ %hd, %cond.false198 ], [ %hd, %cond.false194 ]
+  %stop_link.addr.0 = phi ptr [ %9, %if.end46 ], [ %stop_link, %cond.false198 ], [ %stop_link, %cond.false194 ]
   %oopt_components = getelementptr inbounds %struct.head_type, ptr %hd, i64 0, i32 8
   %34 = load ptr, ptr %oopt_components, align 8, !tbaa !5
   %cmp225.not = icmp eq ptr %34, null
@@ -6357,7 +6357,7 @@ cond.end253:                                      ; preds = %cond.end223, %cond.
   br i1 %cmp189.not, label %while.end285, label %while.body191, !llvm.loop !54
 
 while.end285:                                     ; preds = %cond.end253, %while.end, %while.cond185.preheader
-  %.lcssa765 = phi ptr [ %.pre796, %while.cond185.preheader ], [ %y.0, %while.end ], [ %45, %cond.end253 ]
+  %.lcssa765 = phi ptr [ %29, %while.cond185.preheader ], [ %y.0, %while.end ], [ %45, %cond.end253 ]
   store ptr %.lcssa765, ptr @zz_hold, align 8, !tbaa !10
   %ou1286 = getelementptr inbounds %struct.word_type, ptr %.lcssa765, i64 0, i32 1
   %47 = load i8, ptr %ou1286, align 8, !tbaa !5

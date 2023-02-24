@@ -140,7 +140,7 @@ while.end:                                        ; preds = %while.cond
   br label %do.end15
 
 do.end15:                                         ; preds = %if.then, %while.end
-  %.sink = phi ptr [ %2, %while.end ], [ %1, %if.then ]
+  %.sink = phi ptr [ %3, %while.end ], [ %1, %if.then ]
   %genmalloc_memory_head.sink = phi ptr [ %genmalloc_memory_entries4.le, %while.end ], [ @genmalloc_memory_head, %if.then ]
   %genmalloc_memory_entries = getelementptr inbounds %struct.genmalloc_memory_entry, ptr %.sink, i64 0, i32 2
   %4 = load ptr, ptr %genmalloc_memory_entries, align 8, !tbaa !16

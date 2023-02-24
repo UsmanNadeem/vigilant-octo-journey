@@ -689,17 +689,18 @@ if.then199.sink.split:                            ; preds = %if.then135, %if.the
   br label %if.then199
 
 if.then199:                                       ; preds = %if.then199.sink.split, %if.end197
+  %element.1510 = phi ptr [ %p171.0.lcssa, %if.end197 ], [ %call132, %if.then199.sink.split ]
   %last_row200 = getelementptr inbounds %struct.sm_col_struct, ptr %pcol.1, i64 0, i32 4
   %35 = load ptr, ptr %last_row200, align 8, !tbaa !42
   %cmp201 = icmp eq ptr %35, null
   br i1 %cmp201, label %if.then202, label %if.else210
 
 if.then202:                                       ; preds = %if.then199
-  store i32 %row, ptr %call132, align 8, !tbaa !26
+  store i32 %row, ptr %element.1510, align 8, !tbaa !26
   %first_row204 = getelementptr inbounds %struct.sm_col_struct, ptr %pcol.1, i64 0, i32 3
-  store ptr %call132, ptr %first_row204, align 8, !tbaa !43
-  store ptr %call132, ptr %last_row200, align 8, !tbaa !42
-  %next_row206 = getelementptr inbounds %struct.sm_element_struct, ptr %call132, i64 0, i32 2
+  store ptr %element.1510, ptr %first_row204, align 8, !tbaa !43
+  store ptr %element.1510, ptr %last_row200, align 8, !tbaa !42
+  %next_row206 = getelementptr inbounds %struct.sm_element_struct, ptr %element.1510, i64 0, i32 2
   %length208 = getelementptr inbounds %struct.sm_col_struct, ptr %pcol.1, i64 0, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(16) %next_row206, i8 0, i64 16, i1 false)
   %36 = load i32, ptr %length208, align 4, !tbaa !44
@@ -713,13 +714,13 @@ if.else210:                                       ; preds = %if.then199
   br i1 %cmp213, label %if.then214, label %if.else224
 
 if.then214:                                       ; preds = %if.else210
-  store i32 %row, ptr %call132, align 8, !tbaa !26
+  store i32 %row, ptr %element.1510, align 8, !tbaa !26
   %next_row217 = getelementptr inbounds %struct.sm_element_struct, ptr %35, i64 0, i32 2
-  store ptr %call132, ptr %next_row217, align 8, !tbaa !45
-  %prev_row219 = getelementptr inbounds %struct.sm_element_struct, ptr %call132, i64 0, i32 3
+  store ptr %element.1510, ptr %next_row217, align 8, !tbaa !45
+  %prev_row219 = getelementptr inbounds %struct.sm_element_struct, ptr %element.1510, i64 0, i32 3
   store ptr %35, ptr %prev_row219, align 8, !tbaa !46
-  store ptr %call132, ptr %last_row200, align 8, !tbaa !42
-  %next_row221 = getelementptr inbounds %struct.sm_element_struct, ptr %call132, i64 0, i32 2
+  store ptr %element.1510, ptr %last_row200, align 8, !tbaa !42
+  %next_row221 = getelementptr inbounds %struct.sm_element_struct, ptr %element.1510, i64 0, i32 2
   store ptr null, ptr %next_row221, align 8, !tbaa !45
   %length222 = getelementptr inbounds %struct.sm_col_struct, ptr %pcol.1, i64 0, i32 1
   %38 = load i32, ptr %length222, align 4, !tbaa !44
@@ -739,13 +740,13 @@ for.cond241.preheader:                            ; preds = %if.else224
   br i1 %cmp243526, label %for.inc245, label %for.end247
 
 if.then228:                                       ; preds = %if.else224
-  store i32 %row, ptr %call132, align 8, !tbaa !26
+  store i32 %row, ptr %element.1510, align 8, !tbaa !26
   %prev_row231 = getelementptr inbounds %struct.sm_element_struct, ptr %39, i64 0, i32 3
-  store ptr %call132, ptr %prev_row231, align 8, !tbaa !46
-  %next_row233 = getelementptr inbounds %struct.sm_element_struct, ptr %call132, i64 0, i32 2
+  store ptr %element.1510, ptr %prev_row231, align 8, !tbaa !46
+  %next_row233 = getelementptr inbounds %struct.sm_element_struct, ptr %element.1510, i64 0, i32 2
   store ptr %39, ptr %next_row233, align 8, !tbaa !45
-  store ptr %call132, ptr %first_row225, align 8, !tbaa !43
-  %prev_row235 = getelementptr inbounds %struct.sm_element_struct, ptr %call132, i64 0, i32 3
+  store ptr %element.1510, ptr %first_row225, align 8, !tbaa !43
+  %prev_row235 = getelementptr inbounds %struct.sm_element_struct, ptr %element.1510, i64 0, i32 3
   store ptr null, ptr %prev_row235, align 8, !tbaa !46
   %length236 = getelementptr inbounds %struct.sm_col_struct, ptr %pcol.1, i64 0, i32 1
   %41 = load i32, ptr %length236, align 4, !tbaa !44
@@ -768,17 +769,17 @@ for.end247:                                       ; preds = %for.inc245, %for.co
   br i1 %cmp249, label %if.then250, label %if.end269
 
 if.then250:                                       ; preds = %for.end247
-  store i32 %row, ptr %call132, align 8, !tbaa !26
+  store i32 %row, ptr %element.1510, align 8, !tbaa !26
   %prev_row252 = getelementptr inbounds %struct.sm_element_struct, ptr %p239.0.lcssa, i64 0, i32 3
   %44 = load ptr, ptr %prev_row252, align 8, !tbaa !46
   %next_row253 = getelementptr inbounds %struct.sm_element_struct, ptr %44, i64 0, i32 2
   %45 = load ptr, ptr %next_row253, align 8, !tbaa !45
   %prev_row254 = getelementptr inbounds %struct.sm_element_struct, ptr %45, i64 0, i32 3
-  store ptr %call132, ptr %prev_row254, align 8, !tbaa !46
-  %next_row256 = getelementptr inbounds %struct.sm_element_struct, ptr %call132, i64 0, i32 2
+  store ptr %element.1510, ptr %prev_row254, align 8, !tbaa !46
+  %next_row256 = getelementptr inbounds %struct.sm_element_struct, ptr %element.1510, i64 0, i32 2
   store ptr %45, ptr %next_row256, align 8, !tbaa !45
-  store ptr %call132, ptr %next_row253, align 8, !tbaa !45
-  %prev_row258 = getelementptr inbounds %struct.sm_element_struct, ptr %call132, i64 0, i32 3
+  store ptr %element.1510, ptr %next_row253, align 8, !tbaa !45
+  %prev_row258 = getelementptr inbounds %struct.sm_element_struct, ptr %element.1510, i64 0, i32 3
   store ptr %44, ptr %prev_row258, align 8, !tbaa !46
   %length259 = getelementptr inbounds %struct.sm_col_struct, ptr %pcol.1, i64 0, i32 1
   %46 = load i32, ptr %length259, align 4, !tbaa !44
@@ -795,7 +796,7 @@ if.then267:                                       ; preds = %if.else266
   br label %if.end269
 
 if.end269:                                        ; preds = %if.then250, %for.end247, %if.else266, %if.then267, %if.then202, %if.then228, %if.then214
-  %element.3 = phi ptr [ %call132, %if.then202 ], [ %call132, %if.then214 ], [ %call132, %if.then228 ], [ %p171.0.lcssa, %if.then267 ], [ %p171.0.lcssa, %if.else266 ], [ %call132, %if.then250 ], [ %p239.0.lcssa, %for.end247 ]
+  %element.3 = phi ptr [ %element.1510, %if.then202 ], [ %element.1510, %if.then214 ], [ %element.1510, %if.then228 ], [ %p171.0.lcssa, %if.then267 ], [ %p171.0.lcssa, %if.else266 ], [ %element.1510, %if.then250 ], [ %p239.0.lcssa, %for.end247 ]
   ret ptr %element.3
 }
 

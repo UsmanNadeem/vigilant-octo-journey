@@ -933,7 +933,7 @@ if.then16:                                        ; preds = %cond.end
   %idx.neg = sub nsw i64 0, %cond
   %__binp_.i151 = getelementptr inbounds %"class.std::__1::basic_streambuf", ptr %this, i64 0, i32 2
   %12 = load ptr, ptr %__binp_.i151, align 8, !tbaa !43
-  %add.ptr19 = getelementptr inbounds i8, ptr %10, i64 %idx.neg
+  %add.ptr19 = getelementptr inbounds i8, ptr %.pre191, i64 %idx.neg
   call void @llvm.memmove.p0.p0.i64(ptr align 1 %12, ptr align 1 %add.ptr19, i64 %cond, i1 false)
   %__always_noconv_ = getelementptr inbounds %"class.std::__1::basic_filebuf", ptr %this, i64 0, i32 16
   %13 = load i8, ptr %__always_noconv_, align 2, !tbaa !29, !range !23, !noundef !24

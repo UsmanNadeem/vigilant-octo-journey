@@ -4605,7 +4605,7 @@ cond.end5696:                                     ; preds = %cond.end5666, %cond
   br i1 %cmp5632.not, label %while.end5728, label %while.body5634, !llvm.loop !46
 
 while.end5728:                                    ; preds = %cond.end5696, %if.then5526, %while.cond5628.preheader
-  %.lcssa6625 = phi ptr [ %.pre6912, %while.cond5628.preheader ], [ %726, %if.then5526 ], [ %799, %cond.end5696 ]
+  %.lcssa6625 = phi ptr [ %783, %while.cond5628.preheader ], [ %726, %if.then5526 ], [ %799, %cond.end5696 ]
   store ptr %.lcssa6625, ptr @zz_hold, align 8, !tbaa !8
   %ou15729 = getelementptr inbounds %struct.word_type, ptr %.lcssa6625, i64 0, i32 1
   %801 = load i8, ptr %ou15729, align 8, !tbaa !5

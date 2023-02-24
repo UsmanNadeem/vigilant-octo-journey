@@ -2485,7 +2485,7 @@ invoke.cont13:                                    ; preds = %if.then9
   br i1 %cmp.i25, label %invoke.cont13.invoke.cont15_crit_edge, label %if.end.i
 
 invoke.cont13.invoke.cont15_crit_edge:            ; preds = %invoke.cont13
-  %.pre35 = load ptr, ptr %agg.result, align 8, !tbaa !62
+  %.pre35 = load ptr, ptr %ref.tmp, align 8, !tbaa !62
   br label %invoke.cont15
 
 if.end.i:                                         ; preds = %invoke.cont13

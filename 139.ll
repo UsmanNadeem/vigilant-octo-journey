@@ -1475,7 +1475,7 @@ for.body6.i:                                      ; preds = %for.body6.lr.ph.i, 
   br i1 %tobool.not.i55, label %if.end.i, label %for.inc.i
 
 if.end.i:                                         ; preds = %for.body6.i
-  store i8 %10, ptr %newword.i53, align 16, !tbaa !13
+  store i8 %10, ptr %r.078.i, align 1, !tbaa !13
   %call16.i = call i32 @good(ptr noundef nonnull %newword.i53, i32 noundef 0, i32 noundef 1, i32 noundef 0, i32 noundef 0) #13
   %tobool17.not.i = icmp eq i32 %call16.i, 0
   br i1 %tobool17.not.i, label %for.inc.i, label %if.then18.i

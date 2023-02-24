@@ -3910,7 +3910,7 @@ if.then16:                                        ; preds = %cond.end
   %idx.neg = sub nsw i64 0, %cond
   %__binp_.i151 = getelementptr inbounds %"class.std::__1::basic_streambuf", ptr %this, i64 0, i32 2
   %12 = load ptr, ptr %__binp_.i151, align 8, !tbaa !106
-  %add.ptr19 = getelementptr inbounds i8, ptr %10, i64 %idx.neg
+  %add.ptr19 = getelementptr inbounds i8, ptr %.pre191, i64 %idx.neg
   call void @llvm.memmove.p0.p0.i64(ptr align 1 %12, ptr align 1 %add.ptr19, i64 %cond, i1 false)
   %__always_noconv_ = getelementptr inbounds %"class.std::__1::basic_filebuf", ptr %this, i64 0, i32 16
   %13 = load i8, ptr %__always_noconv_, align 2, !tbaa !89, !range !91, !noundef !92
@@ -7230,7 +7230,7 @@ invoke.cont7.loopexit:                            ; preds = %invoke.cont4.i.i
 
 invoke.cont7:                                     ; preds = %invoke.cont7.loopexit, %invoke.cont
   %7 = phi ptr [ %4, %invoke.cont ], [ %.pre20, %invoke.cont7.loopexit ]
-  %.pr = phi ptr [ %4, %invoke.cont ], [ %.pre, %invoke.cont7.loopexit ]
+  %.pr = phi ptr [ %5, %invoke.cont ], [ %.pre, %invoke.cont7.loopexit ]
   %retval.sroa.2.0.copyload.i.i = phi ptr [ %add.ptr.i, %invoke.cont ], [ %incdec.ptr.i.i.i.i.i.i, %invoke.cont7.loopexit ]
   store ptr %retval.sroa.2.0.copyload.i.i, ptr %this, align 8, !tbaa !6
   store ptr %incdec.ptr, ptr %__end_.i, align 8, !tbaa !6
@@ -7257,12 +7257,11 @@ _ZNSt3__116allocator_traitsINS_9allocatorIN9benchmark7CPUInfo9CacheInfoEEEE7dest
   br i1 %cmp.not.i.i.i.i, label %_ZNSt3__114__split_bufferIN9benchmark7CPUInfo9CacheInfoERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit.i, label %while.body.i.i.i.i
 
 _ZNSt3__114__split_bufferIN9benchmark7CPUInfo9CacheInfoERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit.i: ; preds = %_ZNSt3__116allocator_traitsINS_9allocatorIN9benchmark7CPUInfo9CacheInfoEEEE7destroyB7v170000IS4_vEEvRS5_PT_.exit.i.i.i.i, %invoke.cont7
-  %10 = phi ptr [ %7, %invoke.cont7 ], [ %.pr, %_ZNSt3__116allocator_traitsINS_9allocatorIN9benchmark7CPUInfo9CacheInfoEEEE7destroyB7v170000IS4_vEEvRS5_PT_.exit.i.i.i.i ]
-  %tobool.not.i = icmp eq ptr %10, null
+  %tobool.not.i = icmp eq ptr %.pr, null
   br i1 %tobool.not.i, label %_ZNSt3__114__split_bufferIN9benchmark7CPUInfo9CacheInfoERNS_9allocatorIS3_EEED2Ev.exit, label %if.then.i19
 
 if.then.i19:                                      ; preds = %_ZNSt3__114__split_bufferIN9benchmark7CPUInfo9CacheInfoERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %10) #28
+  tail call void @_ZdlPv(ptr noundef nonnull %.pr) #28
   br label %_ZNSt3__114__split_bufferIN9benchmark7CPUInfo9CacheInfoERNS_9allocatorIS3_EEED2Ev.exit
 
 _ZNSt3__114__split_bufferIN9benchmark7CPUInfo9CacheInfoERNS_9allocatorIS3_EEED2Ev.exit: ; preds = %_ZNSt3__114__split_bufferIN9benchmark7CPUInfo9CacheInfoERNS_9allocatorIS3_EEE5clearB7v170000Ev.exit.i, %if.then.i19
@@ -7270,11 +7269,11 @@ _ZNSt3__114__split_bufferIN9benchmark7CPUInfo9CacheInfoERNS_9allocatorIS3_EEED2E
   ret void
 
 lpad:                                             ; preds = %_ZNSt3__114__split_bufferIN9benchmark7CPUInfo9CacheInfoERNS_9allocatorIS3_EEEC2EmmS6_.exit
-  %11 = landingpad { ptr, i32 }
+  %10 = landingpad { ptr, i32 }
           cleanup
   call void @_ZNSt3__114__split_bufferIN9benchmark7CPUInfo9CacheInfoERNS_9allocatorIS3_EEED2Ev(ptr noundef nonnull align 8 dereferenceable(40) %__v) #26
   call void @llvm.lifetime.end.p0(i64 40, ptr nonnull %__v) #26
-  resume { ptr, i32 } %11
+  resume { ptr, i32 } %10
 }
 
 ; Function Attrs: nounwind uwtable

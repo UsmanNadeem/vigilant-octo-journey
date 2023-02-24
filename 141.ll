@@ -66,7 +66,7 @@ for.cond.outer.split.split.us:                    ; preds = %for.cond.outer.spli
   br i1 %cmp9.not.us244, label %if.then20.us, label %if.then11
 
 if.then20.us:                                     ; preds = %for.cond.outer.split.split.us, %if.else.us
-  store i8 0, ptr %str, align 1, !tbaa !11
+  store i8 0, ptr %s.0.ph, align 1, !tbaa !11
   %5 = load ptr, ptr @xgets.current_F, align 8, !tbaa !9
   %cmp21.us = icmp eq ptr %5, @xgets.F
   br i1 %cmp21.us, label %if.then23, label %if.else.us

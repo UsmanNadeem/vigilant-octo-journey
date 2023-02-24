@@ -186,7 +186,7 @@ if.then68:                                        ; preds = %if.then62
 if.end71:                                         ; preds = %if.then68, %if.then62
   store ptr %14, ptr %next46, align 8, !tbaa !14
   %cmp74 = icmp eq ptr %10, %lowest.0.lcssa
-  br i1 %cmp74, label %if.then85.critedge, label %if.else
+  br i1 %cmp74, label %if.end90, label %if.else
 
 if.else:                                          ; preds = %if.end71
   %previous78 = getelementptr inbounds %struct.vlink, ptr %lowest.0.lcssa, i64 0, i32 19
@@ -195,15 +195,12 @@ if.else:                                          ; preds = %if.end71
   store ptr %p.2193, ptr %next79, align 8, !tbaa !14
   store ptr %15, ptr %previous64, align 8, !tbaa !17
   %previous88 = getelementptr inbounds %struct.vlink, ptr %12, i64 0, i32 19
-  store ptr %lowest.0.lcssa, ptr %previous88, align 8, !tbaa !17
   br label %if.end90
 
-if.then85.critedge:                               ; preds = %if.end71
-  store ptr %10, ptr %previous64, align 8, !tbaa !17
-  br label %if.end90
-
-if.end90:                                         ; preds = %if.then85.critedge, %if.else
-  %storemerge182 = phi ptr [ %12, %if.else ], [ %p.2193, %if.then85.critedge ]
+if.end90:                                         ; preds = %if.end71, %if.else
+  %previous64.sink = phi ptr [ %previous88, %if.else ], [ %previous64, %if.end71 ]
+  %storemerge182 = phi ptr [ %12, %if.else ], [ %p.2193, %if.end71 ]
+  store ptr %lowest.0.lcssa, ptr %previous64.sink, align 8, !tbaa !17
   store ptr %storemerge182, ptr %next65, align 8, !tbaa !14
   %cmp91.not = icmp eq ptr %13, null
   br i1 %cmp91.not, label %if.end95, label %if.then93

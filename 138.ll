@@ -2371,7 +2371,6 @@ do.body29:                                        ; preds = %if.then28, %for.con
   %arrayidx58 = getelementptr inbounds [300 x i32], ptr @npars_only, i64 0, i64 %indvars.iv.next
   %arrayidx67 = getelementptr inbounds [300 x i32], ptr @vis_only, i64 0, i64 %indvars.iv.next
   %arrayidx78 = getelementptr inbounds [300 x i32], ptr @body_ok, i64 0, i64 %indvars.iv.next
-  %ohas_body.us = getelementptr inbounds i8, ptr %22, i64 41
   br i1 %.b.fr, label %for.cond41.preheader.us, label %for.cond41.preheader
 
 for.cond41.preheader.us:                          ; preds = %do.body29, %for.inc447.us
@@ -2421,6 +2420,7 @@ land.lhs.true76.us:                               ; preds = %lor.lhs.false69.us,
   br i1 %or.cond538.us, label %lor.lhs.false86.us, label %land.lhs.true96.us
 
 lor.lhs.false86.us:                               ; preds = %land.lhs.true76.us
+  %ohas_body.us = getelementptr inbounds i8, ptr %24, i64 41
   %bf.load89.us = load i24, ptr %ohas_body.us, align 1
   %29 = and i24 %bf.load89.us, 256
   %tobool93.us = icmp eq i24 %29, 0
@@ -2490,7 +2490,8 @@ land.lhs.true76:                                  ; preds = %lor.lhs.false69, %l
   br i1 %or.cond538, label %lor.lhs.false86, label %cleanup
 
 lor.lhs.false86:                                  ; preds = %land.lhs.true76
-  %bf.load89 = load i24, ptr %ohas_body.us, align 1
+  %ohas_body = getelementptr inbounds i8, ptr %31, i64 41
+  %bf.load89 = load i24, ptr %ohas_body, align 1
   %36 = and i24 %bf.load89, 256
   %tobool93 = icmp eq i24 %36, 0
   %or.cond474 = select i1 %tobool93, i1 true, i1 %tobool75

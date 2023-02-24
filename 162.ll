@@ -326,7 +326,7 @@ for.cond.cleanup.loopexit.i:                      ; preds = %for.body.i194
   br label %for.cond.cleanup.i
 
 for.cond.cleanup.i:                               ; preds = %for.cond.cleanup.loopexit.i, %if.then.i
-  %26 = phi ptr [ %.pre.i, %for.cond.cleanup.loopexit.i ], [ %B, %if.then.i ]
+  %26 = phi ptr [ %.pre.i, %for.cond.cleanup.loopexit.i ], [ %25, %if.then.i ]
   %27 = load ptr, ptr %B, align 8, !tbaa !16
   store ptr %26, ptr %B, align 8, !tbaa !16
   store ptr %27, ptr %__next_.i.i.i, align 8, !tbaa !16

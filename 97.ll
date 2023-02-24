@@ -439,8 +439,9 @@ if.then25:                                        ; preds = %land.lhs.true19
   br i1 %cmp.i114, label %if.end.i121, label %if.else.i125
 
 if.end.i121:                                      ; preds = %if.then25
-  store ptr %root.tr.i, ptr %left.i113, align 8, !tbaa !18
-  store ptr %13, ptr %father, align 8, !tbaa !19
+  store ptr %35, ptr %left.i113, align 8, !tbaa !18
+  %father8.i118 = getelementptr inbounds %struct.CHsplay_node, ptr %35, i64 0, i32 1
+  store ptr %13, ptr %father8.i118, align 8, !tbaa !19
   %.pre69.i119 = load ptr, ptr %father2, align 8, !tbaa !19
   store ptr %.pre69.i119, ptr %right, align 8, !tbaa !17
   br label %if.end23.i132

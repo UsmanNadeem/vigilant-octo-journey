@@ -185,7 +185,7 @@ entry:
   br i1 %cmp18.not, label %for.cond.cleanup, label %for.body
 
 for.cond.cleanup:                                 ; preds = %for.inc, %entry
-  %.lcssa = phi ptr [ %0, %entry ], [ %7, %for.inc ]
+  %.lcssa = phi ptr [ %1, %entry ], [ %7, %for.inc ]
   store ptr %.lcssa, ptr %__end_.i, align 8, !tbaa !12
   %cmp.not.i.i = icmp eq ptr %.lcssa, null
   br i1 %cmp.not.i.i, label %_ZNSt3__16vectorIP12YAML_ElementNS_9allocatorIS2_EEED2B7v170000Ev.exit, label %if.then.i.i
@@ -453,7 +453,7 @@ invoke.cont7.loopexit.i.i:                        ; preds = %while.body.i.i.i.i.
   br label %invoke.cont7.i.i
 
 invoke.cont7.i.i:                                 ; preds = %invoke.cont7.loopexit.i.i, %invoke.cont.i.i
-  %27 = phi ptr [ %4, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
+  %27 = phi ptr [ %6, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
   %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i = phi ptr [ %add.ptr.i.i.i, %invoke.cont.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i.i.i.i.lcssa, %invoke.cont7.loopexit.i.i ]
   store ptr %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i, ptr %children, align 8, !tbaa !14
   store ptr %incdec.ptr.i4.i, ptr %__end_.i, align 8, !tbaa !14
@@ -796,7 +796,7 @@ invoke.cont7.loopexit.i.i:                        ; preds = %while.body.i.i.i.i.
   br label %invoke.cont7.i.i
 
 invoke.cont7.i.i:                                 ; preds = %invoke.cont7.loopexit.i.i, %invoke.cont.i.i
-  %27 = phi ptr [ %4, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
+  %27 = phi ptr [ %6, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
   %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i = phi ptr [ %add.ptr.i.i.i, %invoke.cont.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i.i.i.i.lcssa, %invoke.cont7.loopexit.i.i ]
   store ptr %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i, ptr %children, align 8, !tbaa !14
   store ptr %incdec.ptr.i4.i, ptr %__end_.i, align 8, !tbaa !14
@@ -1136,7 +1136,7 @@ invoke.cont7.loopexit.i.i:                        ; preds = %while.body.i.i.i.i.
   br label %invoke.cont7.i.i
 
 invoke.cont7.i.i:                                 ; preds = %invoke.cont7.loopexit.i.i, %invoke.cont.i.i
-  %27 = phi ptr [ %4, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
+  %27 = phi ptr [ %6, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
   %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i = phi ptr [ %add.ptr.i.i.i, %invoke.cont.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i.i.i.i.lcssa, %invoke.cont7.loopexit.i.i ]
   store ptr %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i, ptr %children, align 8, !tbaa !14
   store ptr %incdec.ptr.i4.i, ptr %__end_.i, align 8, !tbaa !14
@@ -1476,7 +1476,7 @@ invoke.cont7.loopexit.i.i:                        ; preds = %while.body.i.i.i.i.
   br label %invoke.cont7.i.i
 
 invoke.cont7.i.i:                                 ; preds = %invoke.cont7.loopexit.i.i, %invoke.cont.i.i
-  %27 = phi ptr [ %4, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
+  %27 = phi ptr [ %6, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
   %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i = phi ptr [ %add.ptr.i.i.i, %invoke.cont.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i.i.i.i.lcssa, %invoke.cont7.loopexit.i.i ]
   store ptr %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i, ptr %children, align 8, !tbaa !14
   store ptr %incdec.ptr.i4.i, ptr %__end_.i, align 8, !tbaa !14
@@ -1804,7 +1804,7 @@ invoke.cont7.loopexit.i.i:                        ; preds = %while.body.i.i.i.i.
   br label %invoke.cont7.i.i
 
 invoke.cont7.i.i:                                 ; preds = %invoke.cont7.loopexit.i.i, %invoke.cont.i.i
-  %27 = phi ptr [ %4, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
+  %27 = phi ptr [ %6, %invoke.cont.i.i ], [ %.pre.i.i, %invoke.cont7.loopexit.i.i ]
   %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i = phi ptr [ %add.ptr.i.i.i, %invoke.cont.i.i ], [ %incdec.ptr.i.i.i.i.i.i.i.i.i.i.lcssa, %invoke.cont7.loopexit.i.i ]
   store ptr %agg.tmp416.sroa.4.0.i.i.i.i.i.i.i.i, ptr %children, align 8, !tbaa !14
   store ptr %incdec.ptr.i4.i, ptr %__end_.i, align 8, !tbaa !14

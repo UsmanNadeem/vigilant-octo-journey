@@ -9258,7 +9258,8 @@ if.end55.i:                                       ; preds = %while.body47.i, %if
   br i1 %cmp.not.i, label %while.end56.i, label %while.cond2.preheader.i, !llvm.loop !155
 
 while.end56.i:                                    ; preds = %if.end55.i, %entry
-  %call57.i = tail call ptr @fol_FreeVariables(ptr noundef %call.i) #18
+  %Term1.0.lcssa.i = phi ptr [ %SubTerm.val.i, %entry ], [ %call.i, %if.end55.i ]
+  %call57.i = tail call ptr @fol_FreeVariables(ptr noundef %Term1.0.lcssa.i) #18
   %cmp.i123.not.i = icmp eq ptr %call57.i, null
   br i1 %cmp.i123.not.i, label %cnf_RemoveQuantFromPathAndFlatten.exit, label %if.then60.i
 
@@ -9267,7 +9268,7 @@ if.then60.i:                                      ; preds = %while.end56.i
   %18 = load i32, ptr @fol_ALL, align 4
   %call.i.i125.i = tail call ptr @memory_Malloc(i32 noundef 16) #18
   %car.i.i126.i = getelementptr inbounds %struct.LIST_HELP, ptr %call.i.i125.i, i64 0, i32 1
-  store ptr %call.i, ptr %car.i.i126.i, align 8
+  store ptr %Term1.0.lcssa.i, ptr %car.i.i126.i, align 8
   store ptr null, ptr %call.i.i125.i, align 8
   %call63.i = tail call ptr @fol_CreateQuantifier(i32 noundef %18, ptr noundef nonnull %call57.i, ptr noundef nonnull %call.i.i125.i) #18
   br label %cnf_RemoveQuantFromPathAndFlatten.exit

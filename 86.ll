@@ -11696,7 +11696,6 @@ for.body41.lr.ph:                                 ; preds = %for.cond37.preheade
   %6 = load ptr, ptr %errsym, align 8, !tbaa !160
   %add49 = or i32 %mul, 1
   %wide.trip.count564 = zext i32 %0 to i64
-  %dtnum = getelementptr inbounds %struct.symbol, ptr %6, i64 0, i32 13
   br label %for.body41
 
 if.then34:                                        ; preds = %for.end26
@@ -11713,6 +11712,7 @@ for.body41:                                       ; preds = %for.body41.lr.ph, %
   br i1 %cmp46, label %if.then48, label %if.end50
 
 if.then48:                                        ; preds = %for.body41
+  %dtnum = getelementptr inbounds %struct.symbol, ptr %9, i64 0, i32 13
   store i32 %add49, ptr %dtnum, align 8, !tbaa !309
   br label %cleanup340
 

@@ -1676,7 +1676,7 @@ for.inc417:                                       ; preds = %for.cond391, %land.
   br i1 %cmp385.not, label %for.end421, label %for.cond391.preheader, !llvm.loop !21
 
 for.end421:                                       ; preds = %for.inc417, %land.lhs.true408, %REST_OF_HEAD
-  %lp.0.lcssa = phi ptr [ %tlink.0, %REST_OF_HEAD ], [ %lp.0981, %land.lhs.true408 ], [ %tlink.0, %for.inc417 ]
+  %lp.0.lcssa = phi ptr [ %lp.0979, %REST_OF_HEAD ], [ %lp.0981, %land.lhs.true408 ], [ %tlink.0, %for.inc417 ]
   %cmp385.not.lcssa = phi i1 [ true, %REST_OF_HEAD ], [ false, %land.lhs.true408 ], [ true, %for.inc417 ]
   %rp.0986 = load ptr, ptr %osucc23, align 8, !tbaa !18
   %cmp426.not987 = icmp eq ptr %rp.0986, %tlink.0

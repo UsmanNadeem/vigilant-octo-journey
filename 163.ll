@@ -1008,7 +1008,7 @@ _ZNSt3__114__split_bufferIPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorI
   br i1 %tobool.not.i, label %if.end38, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferIPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEERNS4_IS7_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %0) #18
+  tail call void @_ZdlPv(ptr noundef nonnull %1) #18
   %.pre = load ptr, ptr %__begin_, align 8, !tbaa !23
   br label %if.end38
 
@@ -1155,7 +1155,7 @@ _ZNSt3__114__split_bufferIPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorI
   br i1 %tobool.not.i, label %if.end38, label %if.then.i
 
 if.then.i:                                        ; preds = %_ZNSt3__114__split_bufferIPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEERNS4_IS7_EEE5clearB7v170000Ev.exit.i
-  tail call void @_ZdlPv(ptr noundef nonnull %0) #18
+  tail call void @_ZdlPv(ptr noundef nonnull %1) #18
   %.pre = load ptr, ptr %__begin_, align 8, !tbaa !23
   br label %if.end38
 
@@ -1493,8 +1493,9 @@ _ZNSt3__121__unwrap_and_dispatchB7v170000INS_10__overloadINS_11__copy_loopINS_17
   br i1 %cmp14.not.i, label %while.end.i, label %while.body.i, !llvm.loop !52
 
 while.end.i:                                      ; preds = %_ZNSt3__121__unwrap_and_dispatchB7v170000INS_10__overloadINS_11__copy_loopINS_17_ClassicAlgPolicyEEENS_14__copy_trivialEEEPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEESD_NS_16ostream_iteratorISC_cS9_EELi0EEENS_4pairIT0_T2_EESH_T1_SI_.exit.loopexit27, %_ZNSt3__121__unwrap_and_dispatchB7v170000INS_10__overloadINS_11__copy_loopINS_17_ClassicAlgPolicyEEENS_14__copy_trivialEEEPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEESD_NS_16ostream_iteratorISC_cS9_EELi0EEENS_4pairIT0_T2_EESH_T1_SI_.exit.loopexit.us, %if.end.i
+  %__sfirst.0.lcssa.i = phi ptr [ %__sfirst.041.i, %if.end.i ], [ %__last.coerce0, %_ZNSt3__121__unwrap_and_dispatchB7v170000INS_10__overloadINS_11__copy_loopINS_17_ClassicAlgPolicyEEENS_14__copy_trivialEEEPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEESD_NS_16ostream_iteratorISC_cS9_EELi0EEENS_4pairIT0_T2_EESH_T1_SI_.exit.loopexit.us ], [ %__last.coerce0, %_ZNSt3__121__unwrap_and_dispatchB7v170000INS_10__overloadINS_11__copy_loopINS_17_ClassicAlgPolicyEEENS_14__copy_trivialEEEPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEESD_NS_16ostream_iteratorISC_cS9_EELi0EEENS_4pairIT0_T2_EESH_T1_SI_.exit.loopexit27 ]
   call void @llvm.lifetime.start.p0(i64 24, ptr nonnull %ref.tmp21.i) #15, !noalias !43
-  %8 = load ptr, ptr %__last.coerce0, align 8, !tbaa !25, !noalias !43
+  %8 = load ptr, ptr %__sfirst.0.lcssa.i, align 8, !tbaa !25, !noalias !43
   call void @_ZNSt3__121__unwrap_and_dispatchB7v170000INS_10__overloadINS_11__copy_loopINS_17_ClassicAlgPolicyEEENS_14__copy_trivialEEEPNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEESD_NS_16ostream_iteratorISC_cS9_EELi0EEENS_4pairIT0_T2_EESH_T1_SI_(ptr nonnull sret(%"struct.std::__1::pair.28") align 8 %ref.tmp21.i, ptr noundef %8, ptr noundef %__last.coerce1, ptr %agg.tmp416.sroa.0.0.copyload, ptr %agg.tmp416.sroa.11.0.copyload.fr), !noalias !43
   %second26.i = getelementptr inbounds %"struct.std::__1::pair.28", ptr %ref.tmp21.i, i64 0, i32 1
   %9 = load <2 x ptr>, ptr %second26.i, align 8, !noalias !43
@@ -1502,9 +1503,8 @@ while.end.i:                                      ; preds = %_ZNSt3__121__unwrap
   br label %_ZNKSt3__111__copy_loopINS_17_ClassicAlgPolicyEEclB7v170000INS_16__deque_iteratorINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEPSA_RSA_PSB_lLl170EEENS_16ostream_iteratorISA_cS7_EELi0EEENS_4pairIT_T0_EESI_SI_SJ_.exit
 
 _ZNKSt3__111__copy_loopINS_17_ClassicAlgPolicyEEclB7v170000INS_16__deque_iteratorINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEPSA_RSA_PSB_lLl170EEENS_16ostream_iteratorISA_cS7_EELi0EEENS_4pairIT_T0_EESI_SI_SJ_.exit: ; preds = %if.then.i, %while.end.i
-  %__result.sroa.0.0 = phi ptr [ %__first.coerce0, %if.then.i ], [ %__last.coerce0, %while.end.i ]
   %10 = phi <2 x ptr> [ %0, %if.then.i ], [ %9, %while.end.i ]
-  store ptr %__result.sroa.0.0, ptr %agg.result, align 8, !tbaa.struct !53
+  store ptr %__last.coerce0, ptr %agg.result, align 8, !tbaa.struct !53
   %ref.tmp6.sroa.4.0.agg.result.sroa_idx = getelementptr inbounds i8, ptr %agg.result, i64 8
   store ptr %__last.coerce1, ptr %ref.tmp6.sroa.4.0.agg.result.sroa_idx, align 8, !tbaa.struct !54
   %second.i.i = getelementptr inbounds %"struct.std::__1::pair.26", ptr %agg.result, i64 0, i32 1

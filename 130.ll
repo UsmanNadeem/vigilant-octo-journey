@@ -977,7 +977,7 @@ sw.epilog.sink.split:                             ; preds = %cond.end503, %if.th
   br label %sw.epilog
 
 sw.epilog:                                        ; preds = %for.inc587, %for.cond568, %for.cond527, %sw.epilog.sink.split, %for.cond561.preheader, %sw.bb511, %land.lhs.true544, %cond.end503
-  %link.4 = phi ptr [ %link.2795, %cond.end503 ], [ %51, %land.lhs.true544 ], [ %x, %sw.bb511 ], [ %x, %for.cond561.preheader ], [ %56, %sw.epilog.sink.split ], [ %51, %for.cond527 ], [ %link.3798, %for.cond568 ], [ %x, %for.inc587 ]
+  %link.4 = phi ptr [ %link.2795, %cond.end503 ], [ %51, %land.lhs.true544 ], [ %51, %sw.bb511 ], [ %link.3796, %for.cond561.preheader ], [ %56, %sw.epilog.sink.split ], [ %51, %for.cond527 ], [ %link.3798, %for.cond568 ], [ %x, %for.inc587 ]
   %57 = load i8, ptr @zz_lengths, align 1, !tbaa !5
   %conv592 = zext i8 %57 to i32
   store i32 %conv592, ptr @zz_size, align 4, !tbaa !8

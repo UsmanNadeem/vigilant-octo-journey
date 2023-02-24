@@ -3350,7 +3350,7 @@ if.then105.i:                                     ; preds = %if.then101.i
   %inc108.i = add nuw nsw i32 %507, 1
   store i32 %inc108.i, ptr %vgoto.i, align 8, !tbaa !27
   %idxprom109.i = zext i32 %507 to i64
-  %arrayidx110.i = getelementptr inbounds i64, ptr %e97.i, i64 %idxprom109.i
+  %arrayidx110.i = getelementptr inbounds i64, ptr %508, i64 %idxprom109.i
   store i64 0, ptr %arrayidx110.i, align 8, !tbaa !142
   br label %do.end125.i
 

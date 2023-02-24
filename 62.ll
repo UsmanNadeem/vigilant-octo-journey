@@ -1976,7 +1976,7 @@ entry:
   br i1 %cmp, label %if.then, label %if.end4
 
 if.then:                                          ; preds = %entry
-  %next = getelementptr inbounds %struct.concealment_node, ptr %ptr, i64 0, i32 2
+  %next = getelementptr inbounds %struct.concealment_node, ptr %0, i64 0, i32 2
   %1 = load ptr, ptr %next, align 8, !tbaa !112
   store ptr %1, ptr @concealment_head, align 8, !tbaa !12
   %2 = load ptr, ptr @concealment_end, align 8, !tbaa !12
@@ -1984,11 +1984,13 @@ if.then:                                          ; preds = %entry
   br i1 %cmp1, label %if.then2, label %if.end
 
 if.then2:                                         ; preds = %if.then
-  store ptr %1, ptr @concealment_end, align 8, !tbaa !12
+  %next3 = getelementptr inbounds %struct.concealment_node, ptr %2, i64 0, i32 2
+  %3 = load ptr, ptr %next3, align 8, !tbaa !112
+  store ptr %3, ptr @concealment_end, align 8, !tbaa !12
   br label %if.end
 
 if.end:                                           ; preds = %if.then2, %if.then
-  tail call void @free(ptr noundef nonnull %ptr) #22
+  tail call void @free(ptr noundef %ptr) #22
   br label %if.end4
 
 if.end4:                                          ; preds = %if.end, %entry
@@ -3315,7 +3317,9 @@ if.then.i:                                        ; preds = %if.then
   br i1 %cmp1.i, label %if.then2.i, label %delete_node.exit
 
 if.then2.i:                                       ; preds = %if.then.i
-  store ptr %6, ptr @concealment_end, align 8, !tbaa !12
+  %next3.i = getelementptr inbounds %struct.concealment_node, ptr %7, i64 0, i32 2
+  %8 = load ptr, ptr %next3.i, align 8, !tbaa !112
+  store ptr %8, ptr @concealment_end, align 8, !tbaa !12
   br label %delete_node.exit
 
 delete_node.exit:                                 ; preds = %if.then.i, %if.then2.i

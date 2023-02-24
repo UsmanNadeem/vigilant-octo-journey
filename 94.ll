@@ -126,11 +126,11 @@ if.end11:                                         ; preds = %if.else8, %if.then6
   br i1 %cmp3.not, label %while.end, label %while.body, !llvm.loop !13
 
 while.end:                                        ; preds = %if.end11
-  %q112 = getelementptr inbounds %struct.DCEL_segment, ptr %right, i64 0, i32 4
+  %q112 = getelementptr inbounds %struct.DCEL_segment, ptr %tmp.1, i64 0, i32 4
   %5 = load ptr, ptr %q112, align 8, !tbaa !9
   %cmp13 = icmp eq ptr %5, %left.addr.051
-  %v217 = getelementptr inbounds %struct.DCEL_segment, ptr %right, i64 0, i32 1
-  %v217.sink = select i1 %cmp13, ptr %right, ptr %v217
+  %v217 = getelementptr inbounds %struct.DCEL_segment, ptr %tmp.1, i64 0, i32 1
+  %v217.sink = select i1 %cmp13, ptr %tmp.1, ptr %v217
   %6 = load i64, ptr %v217.sink, align 8
   br label %if.end25.sink.split
 

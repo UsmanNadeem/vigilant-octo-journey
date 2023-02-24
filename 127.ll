@@ -4345,7 +4345,7 @@ for.inc:                                          ; preds = %land.rhs
   br i1 %cmp.i.i.not, label %for.end, label %land.rhs, !llvm.loop !137
 
 for.end:                                          ; preds = %land.rhs, %for.inc, %for.body.i.i.i121.preheader
-  %__m2.sroa.0.0.lcssa = phi ptr [ %__e2.coerce, %for.body.i.i.i121.preheader ], [ %__e2.coerce, %for.inc ], [ %__m2.sroa.0.0204, %land.rhs ]
+  %__m2.sroa.0.0.lcssa = phi ptr [ %11, %for.body.i.i.i121.preheader ], [ %__e2.coerce, %for.inc ], [ %__m2.sroa.0.0204, %land.rhs ]
   %14 = load ptr, ptr %__m2.sroa.0.0.lcssa, align 8, !tbaa !41
   %__next_.i128 = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %14, i64 0, i32 1
   %15 = load ptr, ptr %__next_.i128, align 8, !tbaa !43
@@ -4409,7 +4409,7 @@ for.inc68:                                        ; preds = %land.rhs62
   br i1 %cmp.i.i152.not, label %for.end70, label %land.rhs62, !llvm.loop !138
 
 for.end70:                                        ; preds = %land.rhs62, %for.inc68, %for.body.i.i.i149.preheader
-  %__m255.sroa.0.0.lcssa = phi ptr [ %__e2.coerce, %for.body.i.i.i149.preheader ], [ %__e2.coerce, %for.inc68 ], [ %__m255.sroa.0.0207, %land.rhs62 ]
+  %__m255.sroa.0.0.lcssa = phi ptr [ %23, %for.body.i.i.i149.preheader ], [ %__e2.coerce, %for.inc68 ], [ %__m255.sroa.0.0207, %land.rhs62 ]
   %26 = load ptr, ptr %__m255.sroa.0.0.lcssa, align 8, !tbaa !41
   %cmp.i157 = icmp eq ptr %__e1.sroa.0.1214, %__f2.sroa.0.1215
   %__next_.i158 = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %26, i64 0, i32 1
@@ -4477,7 +4477,7 @@ for.body.i.i.i.preheader.us:                      ; preds = %for.body.i.i.i.preh
   %__next_.i.i.i.i.us = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %__i.sroa.0.066.us, i64 0, i32 1
   %1 = load ptr, ptr %__next_.i.i.i.i.us, align 8, !tbaa !43
   %cmp.i.i45.not62.us = icmp eq ptr %1, %this
-  br i1 %cmp.i.i45.not62.us, label %invoke.cont20.us, label %land.rhs.lr.ph.us
+  br i1 %cmp.i.i45.not62.us, label %if.end.us, label %land.rhs.lr.ph.us
 
 land.rhs.us:                                      ; preds = %land.rhs.lr.ph.us, %for.inc.us
   %__j.sroa.0.063.us = phi ptr [ %1, %land.rhs.lr.ph.us ], [ %3, %for.inc.us ]
@@ -4492,8 +4492,8 @@ for.inc.us:                                       ; preds = %land.rhs.us
   %cmp.i.i45.not.us = icmp eq ptr %3, %this
   br i1 %cmp.i.i45.not.us, label %invoke.cont20.us, label %land.rhs.us, !llvm.loop !140
 
-invoke.cont20.us:                                 ; preds = %for.inc.us, %land.rhs.us, %for.body.i.i.i.preheader.us
-  %__j.sroa.0.0.lcssa.us = phi ptr [ %this, %for.body.i.i.i.preheader.us ], [ %__j.sroa.0.063.us, %land.rhs.us ], [ %this, %for.inc.us ]
+invoke.cont20.us:                                 ; preds = %for.inc.us, %land.rhs.us
+  %__j.sroa.0.0.lcssa.us = phi ptr [ %this, %for.inc.us ], [ %__j.sroa.0.063.us, %land.rhs.us ]
   %cmp.i.i48.not.us = icmp eq ptr %1, %__j.sroa.0.0.lcssa.us
   br i1 %cmp.i.i48.not.us, label %if.end.us, label %if.then.i.us
 
@@ -4506,16 +4506,16 @@ if.then.i.us:                                     ; preds = %invoke.cont20.us
   store ptr %5, ptr %__next_1.i.i.us, align 8, !tbaa !43
   %7 = load ptr, ptr %__next_.i.i52.us, align 8, !tbaa !43
   store ptr %6, ptr %7, align 8, !tbaa !41
-  %8 = load ptr, ptr %this, align 8, !tbaa !41
+  %8 = load ptr, ptr %__deleted_nodes, align 8, !tbaa !41
   %__next_.i21.i.us = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %8, i64 0, i32 1
   store ptr %1, ptr %__next_.i21.i.us, align 8, !tbaa !43
   store ptr %8, ptr %1, align 8, !tbaa !41
-  store ptr %4, ptr %this, align 8, !tbaa !41
-  store ptr %this, ptr %__next_.i.i52.us, align 8, !tbaa !43
+  store ptr %4, ptr %__deleted_nodes, align 8, !tbaa !41
+  store ptr %__deleted_nodes, ptr %__next_.i.i52.us, align 8, !tbaa !43
   br label %if.end.us
 
-if.end.us:                                        ; preds = %if.then.i.us, %invoke.cont20.us
-  %__i.sroa.0.1.us = phi ptr [ %__j.sroa.0.0.lcssa.us, %if.then.i.us ], [ %1, %invoke.cont20.us ]
+if.end.us:                                        ; preds = %for.body.i.i.i.preheader.us, %if.then.i.us, %invoke.cont20.us
+  %__i.sroa.0.1.us = phi ptr [ %__j.sroa.0.0.lcssa.us, %if.then.i.us ], [ %1, %invoke.cont20.us ], [ %1, %for.body.i.i.i.preheader.us ]
   %cmp.i.i.not.us = icmp eq ptr %__i.sroa.0.1.us, %this
   br i1 %cmp.i.i.not.us, label %_ZNSt3__110__list_impIiNS_9allocatorIiEEED2Ev.exit, label %for.body.i.i.i.preheader.us, !llvm.loop !141
 
@@ -4525,34 +4525,34 @@ land.rhs.lr.ph.us:                                ; preds = %for.body.i.i.i.preh
   br label %land.rhs.us
 
 for.body.i.i.i.preheader:                         ; preds = %for.body.i.i.i.preheader.preheader, %if.end
+  %10 = phi ptr [ %28, %if.end ], [ %__deleted_nodes, %for.body.i.i.i.preheader.preheader ]
   %sub.i69 = phi i64 [ %sub.i68, %if.end ], [ %__size_alloc_.i.i51.promoted, %for.body.i.i.i.preheader.preheader ]
   %__i.sroa.0.066 = phi ptr [ %__i.sroa.0.1, %if.end ], [ %0, %for.body.i.i.i.preheader.preheader ]
-  %10 = phi i64 [ %28, %if.end ], [ 0, %for.body.i.i.i.preheader.preheader ]
+  %11 = phi i64 [ %29, %if.end ], [ 0, %for.body.i.i.i.preheader.preheader ]
   %__next_.i.i.i.i = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %__i.sroa.0.066, i64 0, i32 1
-  %11 = load ptr, ptr %__next_.i.i.i.i, align 8, !tbaa !43
-  %cmp.i.i45.not62 = icmp eq ptr %11, %this
-  br i1 %cmp.i.i45.not62, label %invoke.cont20, label %land.rhs.lr.ph
+  %12 = load ptr, ptr %__next_.i.i.i.i, align 8, !tbaa !43
+  %cmp.i.i45.not62 = icmp eq ptr %12, %this
+  br i1 %cmp.i.i45.not62, label %if.end, label %land.rhs.lr.ph
 
 for.cond.cleanup:                                 ; preds = %if.end
-  %cmp.i.i.i = icmp eq i64 %28, 0
+  %cmp.i.i.i = icmp eq i64 %29, 0
   br i1 %cmp.i.i.i, label %_ZNSt3__110__list_impIiNS_9allocatorIiEEED2Ev.exit, label %if.then.i.i
 
 if.then.i.i:                                      ; preds = %for.cond.cleanup
-  %12 = load ptr, ptr %__next_.i.i.i, align 8, !tbaa !45
-  %13 = load ptr, ptr %__deleted_nodes, align 8, !tbaa !41
-  %__next_.i.i.i44 = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %13, i64 0, i32 1
+  %13 = load ptr, ptr %__next_.i.i.i, align 8, !tbaa !45
+  %__next_.i.i.i44 = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %28, i64 0, i32 1
   %14 = load ptr, ptr %__next_.i.i.i44, align 8, !tbaa !43
-  %15 = load ptr, ptr %12, align 8, !tbaa !41
+  %15 = load ptr, ptr %13, align 8, !tbaa !41
   %__next_1.i.i.i = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %15, i64 0, i32 1
   store ptr %14, ptr %__next_1.i.i.i, align 8, !tbaa !43
   %16 = load ptr, ptr %__next_.i.i.i44, align 8, !tbaa !43
   store ptr %15, ptr %16, align 8, !tbaa !41
   store i64 0, ptr %__size_alloc_.i.i, align 8, !tbaa !49
-  %cmp.not16.i.i = icmp eq ptr %12, %__deleted_nodes
+  %cmp.not16.i.i = icmp eq ptr %13, %__deleted_nodes
   br i1 %cmp.not16.i.i, label %_ZNSt3__110__list_impIiNS_9allocatorIiEEED2Ev.exit, label %while.body.i.i
 
 while.body.i.i:                                   ; preds = %if.then.i.i, %while.body.i.i
-  %__f.017.i.i = phi ptr [ %17, %while.body.i.i ], [ %12, %if.then.i.i ]
+  %__f.017.i.i = phi ptr [ %17, %while.body.i.i ], [ %13, %if.then.i.i ]
   %__next_6.i.i = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %__f.017.i.i, i64 0, i32 1
   %17 = load ptr, ptr %__next_6.i.i, align 8, !tbaa !43
   call void @_ZdlPv(ptr noundef %__f.017.i.i) #21
@@ -4569,7 +4569,7 @@ land.rhs.lr.ph:                                   ; preds = %for.body.i.i.i.preh
   br label %land.rhs
 
 land.rhs:                                         ; preds = %land.rhs.lr.ph, %for.inc
-  %__j.sroa.0.063 = phi ptr [ %11, %land.rhs.lr.ph ], [ %20, %for.inc ]
+  %__j.sroa.0.063 = phi ptr [ %12, %land.rhs.lr.ph ], [ %20, %for.inc ]
   %__value_.i46 = getelementptr inbounds %"struct.std::__1::__list_node", ptr %__j.sroa.0.063, i64 0, i32 1
   %19 = load i32, ptr %__value_.i46, align 4, !tbaa !5
   %cmp.i = icmp eq i32 %18, %19
@@ -4581,19 +4581,19 @@ for.inc:                                          ; preds = %land.rhs
   %cmp.i.i45.not = icmp eq ptr %20, %this
   br i1 %cmp.i.i45.not, label %invoke.cont20, label %land.rhs, !llvm.loop !140
 
-invoke.cont20:                                    ; preds = %for.inc, %land.rhs, %for.body.i.i.i.preheader
-  %__j.sroa.0.0.lcssa = phi ptr [ %this, %for.body.i.i.i.preheader ], [ %__j.sroa.0.063, %land.rhs ], [ %this, %for.inc ]
-  %cmp.i.i48.not = icmp eq ptr %11, %__j.sroa.0.0.lcssa
+invoke.cont20:                                    ; preds = %for.inc, %land.rhs
+  %__j.sroa.0.0.lcssa = phi ptr [ %this, %for.inc ], [ %__j.sroa.0.063, %land.rhs ]
+  %cmp.i.i48.not = icmp eq ptr %12, %__j.sroa.0.0.lcssa
   br i1 %cmp.i.i48.not, label %if.end, label %if.then.i
 
 if.then.i:                                        ; preds = %invoke.cont20
   %21 = load ptr, ptr %__j.sroa.0.0.lcssa, align 8, !tbaa !41
-  %cmp.i.i.not5.i.i.i = icmp eq ptr %21, %11
+  %cmp.i.i.not5.i.i.i = icmp eq ptr %21, %12
   br i1 %cmp.i.i.not5.i.i.i, label %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.i, label %for.body.i.i.i50
 
 for.body.i.i.i50:                                 ; preds = %if.then.i, %for.body.i.i.i50
   %__r.07.i.i.i = phi i64 [ %inc.i.i.i, %for.body.i.i.i50 ], [ 0, %if.then.i ]
-  %__first.sroa.0.06.i.i.i = phi ptr [ %22, %for.body.i.i.i50 ], [ %11, %if.then.i ]
+  %__first.sroa.0.06.i.i.i = phi ptr [ %22, %for.body.i.i.i50 ], [ %12, %if.then.i ]
   %inc.i.i.i = add nuw nsw i64 %__r.07.i.i.i, 1
   %__next_.i.i.i.i49 = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %__first.sroa.0.06.i.i.i, i64 0, i32 1
   %22 = load ptr, ptr %__next_.i.i.i.i49, align 8, !tbaa !43
@@ -4608,26 +4608,27 @@ _ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_trai
   %__r.0.lcssa.i.i.i = phi i64 [ 1, %if.then.i ], [ %23, %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.loopexit.i ]
   %sub.i = sub i64 %sub.i69, %__r.0.lcssa.i.i.i
   store i64 %sub.i, ptr %__size_alloc_.i.i51, align 8, !tbaa !49
-  %add13.i = add i64 %10, %__r.0.lcssa.i.i.i
+  %add13.i = add i64 %11, %__r.0.lcssa.i.i.i
   %__next_.i.i52 = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %21, i64 0, i32 1
   %24 = load ptr, ptr %__next_.i.i52, align 8, !tbaa !43
-  %25 = load ptr, ptr %11, align 8, !tbaa !41
+  %25 = load ptr, ptr %12, align 8, !tbaa !41
   %__next_1.i.i = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %25, i64 0, i32 1
   store ptr %24, ptr %__next_1.i.i, align 8, !tbaa !43
   %26 = load ptr, ptr %__next_.i.i52, align 8, !tbaa !43
   store ptr %25, ptr %26, align 8, !tbaa !41
   %27 = load ptr, ptr %__deleted_nodes, align 8, !tbaa !41
   %__next_.i21.i = getelementptr inbounds %"struct.std::__1::__list_node_base", ptr %27, i64 0, i32 1
-  store ptr %11, ptr %__next_.i21.i, align 8, !tbaa !43
-  store ptr %27, ptr %11, align 8, !tbaa !41
+  store ptr %12, ptr %__next_.i21.i, align 8, !tbaa !43
+  store ptr %27, ptr %12, align 8, !tbaa !41
   store ptr %21, ptr %__deleted_nodes, align 8, !tbaa !41
   store ptr %__deleted_nodes, ptr %__next_.i.i52, align 8, !tbaa !43
   br label %if.end
 
-if.end:                                           ; preds = %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.i, %invoke.cont20
-  %sub.i68 = phi i64 [ %sub.i, %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.i ], [ %sub.i69, %invoke.cont20 ]
-  %28 = phi i64 [ %add13.i, %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.i ], [ %10, %invoke.cont20 ]
-  %__i.sroa.0.1 = phi ptr [ %__j.sroa.0.0.lcssa, %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.i ], [ %11, %invoke.cont20 ]
+if.end:                                           ; preds = %for.body.i.i.i.preheader, %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.i, %invoke.cont20
+  %28 = phi ptr [ %21, %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.i ], [ %10, %invoke.cont20 ], [ %10, %for.body.i.i.i.preheader ]
+  %sub.i68 = phi i64 [ %sub.i, %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.i ], [ %sub.i69, %invoke.cont20 ], [ %sub.i69, %for.body.i.i.i.preheader ]
+  %29 = phi i64 [ %add13.i, %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.i ], [ %11, %invoke.cont20 ], [ %11, %for.body.i.i.i.preheader ]
+  %__i.sroa.0.1 = phi ptr [ %__j.sroa.0.0.lcssa, %_ZNSt3__18distanceB7v170000INS_21__list_const_iteratorIiPvEEEENS_15iterator_traitsIT_E15difference_typeES5_S5_.exit.i ], [ %12, %invoke.cont20 ], [ %12, %for.body.i.i.i.preheader ]
   %cmp.i.i.not = icmp eq ptr %__i.sroa.0.1, %this
   br i1 %cmp.i.i.not, label %for.cond.cleanup, label %for.body.i.i.i.preheader, !llvm.loop !141
 }
